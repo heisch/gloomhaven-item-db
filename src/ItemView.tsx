@@ -578,9 +578,12 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
         ];
 
         return (
-            <div className={spoilerFilter.all ? 'spoiler' : ''}>
-                <Tab panes={panes} defaultActiveIndex={0}/>
-            </div>
+            <React.Fragment>
+                <div className={spoilerFilter.all ? 'spoiler' : ''}>
+                    <Tab panes={panes} defaultActiveIndex={0}/>
+                </div>
+                <em className={'pull-right ui text grey'}>Gloomhaven and all related properties, images and text are owned by <a href={'https://www.cephalofair.com/'} target={'_blank'}>Cephalofair Games</a>.</em>
+            </React.Fragment>
         );
     }
 }
