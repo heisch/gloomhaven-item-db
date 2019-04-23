@@ -488,7 +488,7 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
 
                 <List horizontal>
                     <List.Item>
-                        <List.Header>Filter Slot:</List.Header>
+                        <List.Header>Find Item:</List.Header>
                     </List.Item>
                     <List.Item>
                         <List.Content>
