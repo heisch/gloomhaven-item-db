@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Checkbox, Icon, Image, Input, List, Message, Popup, Radio, Select, Tab, Table, Form} from 'semantic-ui-react';
+import {Button, Checkbox, Form, Icon, Image, Input, List, Message, Popup, Radio, Tab, Table} from 'semantic-ui-react';
 import {Helpers} from "./helpers";
 
 type GloomhavenItemSlot = 'Head' | 'Body' | 'Legs' | 'One Hand' | 'Two Hands' | 'Small Item';
