@@ -508,7 +508,7 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
     renderTable() {
         const {spoilerFilter, sorting} = this.state;
         const items = this.getSortedAndFilteredItems();
-        return items.length === 0
+        const table = items.length === 0
             ? (
                 <Message negative>
                     No items found matching your filters and/or search criteria
@@ -516,8 +516,6 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
             )
             : (
                 <React.Fragment>
-
-                    {this.renderSearchOptions()}
 
                     {this.state.spoilerFilter.all &&  (
                         <Message negative>
@@ -566,6 +564,16 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
                     </Table>
                 </React.Fragment>
             );
+
+        return (
+            <React.Fragment>
+
+                {this.renderSearchOptions()}
+
+                {table}
+
+            </React.Fragment>
+        );
     }
 
     render() {

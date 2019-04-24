@@ -223,8 +223,7 @@ div.spoiler .ui.tabular.menu {
     }
 
     .items-table .ui.image {
-        vertical-align: -webkit-baseline-middle;
-        vertical-align: -moz-middle-with-baseline;
+        margin-top: 7px;
     }
 
     .items-table thead tr th:nth-child(1),
