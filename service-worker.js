@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/gloomhaven-item-db/precache-manifest.80c7b58bd3dd10ce02f90154009f8d6f.js"
+  "/gloomhaven-item-db/precache-manifest.cb39e07be1224f7c667ec51b64f53642.js"
 );
 
 workbox.clientsClaim();
