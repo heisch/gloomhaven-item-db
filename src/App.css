@@ -189,8 +189,26 @@ div.spoiler .ui.tabular.menu {
     border-bottom: 1px dashed #db2828;
 }
 
-@media screen and (max-width: 736px) {
+img.item-card {
+    max-width: 20%;
+    height: auto;
+    filter: brightness(105%) contrast(90%);
+    border-radius: 10px;
+}
 
+@media screen and (max-width: 414px) {
+    img.item-card {
+        max-width: 50%;
+    }
+}
+
+@media screen and (min-width: 415px) and (max-width: 768px) {
+    img.item-card {
+        max-width: 33%;
+    }
+}
+
+@media screen and (max-width: 768px) {
 
     .ui.table,
     .ui.basic.table,
@@ -226,14 +244,8 @@ div.spoiler .ui.tabular.menu {
         margin-top: 7px;
     }
 
-    .items-table thead tr th:nth-child(1),
-    .items-table tbody tr td:nth-child(1) {
-        grid-column: 1;
-        border-top: none !important;
-    }
-
-    .items-table thead tr th:nth-child(2),
-    .items-table tbody tr td:nth-child(2) {
+    .items-table thead tr th.name-col,
+    .items-table tbody tr td.name-col {
         grid-column: 3/8;
         font-size: 1.1em;
         font-weight: bold;
@@ -241,37 +253,37 @@ div.spoiler .ui.tabular.menu {
         border-top: none;
     }
 
-    .items-table thead tr th:nth-child(3),
-    .items-table tbody tr td:nth-child(3) {
+    .items-table thead tr th.slot-col,
+    .items-table tbody tr td.slot-col {
         grid-row: 1;
         grid-column: 2;
         border-top: none;
     }
 
-    .items-table thead tr th:nth-child(4),
-    .items-table tbody tr td:nth-child(4) {
+    .items-table thead tr th.cost-col,
+    .items-table tbody tr td.cost-col {
         grid-row: 2;
         grid-column: 2;
         border-bottom: none;
     }
 
-    .items-table thead tr th:nth-child(5),
-    .items-table tbody tr td:nth-child(5) {
+    .items-table thead tr th.use-col,
+    .items-table tbody tr td.use-col {
         grid-column: 1;
         grid-row: 2;
         border-left: none !important;
         border-bottom: none;
     }
 
-    .items-table thead tr th:nth-child(6),
-    .items-table tbody tr td:nth-child(6) {
+    .items-table thead tr th.text-col,
+    .items-table tbody tr td.text-col {
         grid-column: 3/11;
         grid-row: 2;
         border-bottom: none;
     }
 
-    .items-table thead tr th:nth-child(7),
-    .items-table tbody tr td:nth-child(7) {
+    .items-table thead tr th.source-col,
+    .items-table tbody tr td.source-col {
         grid-column: 8/11;
         grid-row: 1;
         font-size: 0.9em;

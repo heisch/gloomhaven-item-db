@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Checkbox, Icon, Image, Input, List, Message, Popup, Radio, Select, Tab, Table} from 'semantic-ui-react';
+import {Button, Checkbox, Icon, Image, Input, List, Message, Popup, Radio, Select, Tab, Table, Form} from 'semantic-ui-react';
 import {Helpers} from "./helpers";
 
 type GloomhavenItemSlot = 'Head' | 'Body' | 'Legs' | 'One Hand' | 'Two Hands' | 'Small Item';
@@ -20,14 +20,17 @@ interface GloomhavenItem {
     cost: number
     slot: GloomhavenItemSlot
     source: string,
-    sourceTypes: Array<GloomhavenItemSourceType>,
+    sourceTypes: Array<GloomhavenItemSourceType>
     spent?: boolean
     consumed?: boolean
     minusOneCardsAdded?: number
     useSlots?: number
     desc: string
+    descHTML: string
     faq?: string
 }
+
+type ItemViewDisplayType = 'list' | 'images';
 
 interface SpoilerFilter {
     all: boolean
@@ -55,7 +58,8 @@ interface SpoilerFilter {
         EL: boolean
         BT: boolean
     }
-    discount: number
+    discount: number,
+    displayAs: ItemViewDisplayType
 }
 
 interface ItemViewProps {}
@@ -95,7 +99,7 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
 
         items.forEach(item => {
 
-            item.desc = Helpers.parseEffectText(item.desc);
+            item.descHTML = Helpers.parseEffectText(item.desc);
 
             let sourceType: string = item.source;
 
@@ -159,7 +163,8 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
                 EL: false,
                 BT: false,
             },
-            discount: 0
+            discount: 0,
+            displayAs: 'list'
         };
 
         const spoilerFilter: SpoilerFilter = typeof storage === 'string'
@@ -209,6 +214,22 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
                 throw new Error(`item slot unrecognized: ${slot}`);
         }
         return require('./img/icons/equipment_slot/'+src+'.png');
+    }
+
+    static getItemImageSrc(item: GloomhavenItem): string {
+        let src = '';
+        let name = item.name.toLowerCase().replace(/\s/g, '-').replace(/'/, '');
+        if (item.id >= 64) {
+            src = require('../vendor/any2cards/images/items/64-151/' + name + '.png');
+        } else if (item.id <= 14) {
+            src = require('../vendor/any2cards/images/items/1-14/' + name + '.png');
+        } else {
+            let range_from = item.id % 7 === 0
+                ? Math.floor((item.id - 1) / 7) * 7
+                : Math.floor((item.id) / 7) * 7;
+            src = require('../vendor/any2cards/images/items/' + (range_from + 1) + '-' + (range_from + 7) + '/' + name + '.png');
+        }
+        return src;
     }
 
     setProsperityFilter(prosperity: number) {
@@ -374,7 +395,7 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
                         return (
                             <List.Item key={val}>
                                 <List.Content>
-                                    <Popup content={this.getItemById(id).name} trigger={<Checkbox label={'#'+ (id+'').padStart(3, '0')} checked={spoilerFilter.item[id]} onChange={() => this.toggleItemFilter(id)}/>}/>
+                                    <Popup closeOnDocumentClick hideOnScroll content={this.getItemById(id).name} trigger={<Checkbox label={'#'+ (id+'').padStart(3, '0')} checked={spoilerFilter.item[id]} onChange={() => this.toggleItemFilter(id)}/>}/>
                                 </List.Content>
                             </List.Item>
                         )
@@ -392,7 +413,7 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
                         return (
                             <List.Item key={val}>
                                 <List.Content>
-                                    <Popup content={this.getItemById(id).name} trigger={<Checkbox label={'#'+ (id+'').padStart(3, '0')} checked={spoilerFilter.item[id]} onChange={() => this.toggleItemFilter(id)}/>}/>
+                                    <Popup closeOnDocumentClick hideOnScroll content={this.getItemById(id).name} trigger={<Checkbox label={'#'+ (id+'').padStart(3, '0')} checked={spoilerFilter.item[id]} onChange={() => this.toggleItemFilter(id)}/>}/>
                                 </List.Content>
                             </List.Item>
                         )
@@ -410,7 +431,7 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
                         return (
                             <List.Item key={val}>
                                 <List.Content>
-                                    <Popup content={this.getItemById(id).name} trigger={<Checkbox label={'#'+ (id+'').padStart(3, '0')} checked={spoilerFilter.item[id]} onChange={() => this.toggleItemFilter(id)}/>}/>
+                                    <Popup closeOnDocumentClick hideOnScroll content={this.getItemById(id).name} trigger={<Checkbox label={'#'+ (id+'').padStart(3, '0')} checked={spoilerFilter.item[id]} onChange={() => this.toggleItemFilter(id)}/>}/>
                                 </List.Content>
                             </List.Item>
                         )
@@ -432,75 +453,71 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
     }
 
     renderSearchOptions() {
-        const {spoilerFilter, filter} = this.state;
+        const {spoilerFilter, filter, sorting} = this.state;
         return (
             <React.Fragment>
 
-                <List horizontal>
-                    <List.Item>
-                        <List.Header>Reputation Discount:</List.Header>
-                    </List.Item>
-                    <List.Item>
-                        <List.Content>
-                            <Select value={spoilerFilter.discount}
-                                    options={[
-                                        {value: -5, text: "-5 gold"}, // (19 - 20)
-                                        {value: -4, text: "-4 gold"}, // (15 - 18)
-                                        {value: -3, text: "-3 gold"}, // (11 - 14)
-                                        {value: -2, text: "-2 gold"}, // (7 - 13)
-                                        {value: -1, text: "-1 gold"}, // (3 - 6)
-                                        {value: 0, text: "none"}, // (-2 - 2)
-                                        {value: 1, text: "+1 gold"}, // (-3 - -6)
-                                        {value: 2, text: "+2 gold"}, // (-7 - -10)
-                                        {value: 3, text: "+3 gold"}, // (-11 - -14)
-                                        {value: 4, text: "+4 gold"}, // (-15 - -18)
-                                        {value: 5, text: "+5 gold"}, // (-19 - -20)
-                                    ]}
-                                    onChange={(obj, e) => {
-                                        const state = this.state;
-                                        state.spoilerFilter.discount = typeof e.value === 'number' ? e.value : 0;
-                                        this.storeToLocalStorageAndSetState(state);
-                                    }}
-                            />
-                        </List.Content>
-                    </List.Item>
-                </List>
-
-                <List horizontal>
-                    <List.Item>
-                        <List.Header>Filter Slot:</List.Header>
-                    </List.Item>
-                    <List.Item>
-                        <List.Content>
-                            <Radio label={'all'} checked={filter.slot === undefined} onChange={() => this.setFilterSlot(undefined)}/>
-                        </List.Content>
-                    </List.Item>
-                    {gloomhavenItemSlots.map(slot => {
-                        return (
-                            <List.Item key={slot}>
-                                <List.Content>
-                                    <Radio label={<img className={'icon'} src={ItemView.getSlotImageSrc(slot)}/>} checked={filter.slot === slot} onChange={() => this.setFilterSlot(slot)} alt={slot}/>
-                                </List.Content>
-                            </List.Item>
-                        )
-                    })}
-                </List>
-
-                <List horizontal>
-                    <List.Item>
-                        <List.Header>Find Item:</List.Header>
-                    </List.Item>
-                    <List.Item>
-                        <List.Content>
-                            <Input
-                                value={filter.search}
-                                onChange={(e) => this.setState({...this.state, filter: {...this.state.filter, search: e.target.value}})}
-                                icon={{name: 'close', link: true, onClick: () => this.setState({...this.state, filter: {...this.state.filter, search: ''}})}}
-                                placeholder={'Search...'}
-                            />
-                        </List.Content>
-                    </List.Item>
-                </List>
+                <Form>
+                    <Form.Group inline>
+                        <label>Render as:</label>
+                        <Button.Group>
+                            <Button color={spoilerFilter.displayAs === 'list' ? 'blue' : undefined} onClick={() => this.storeToLocalStorageAndSetState({...this.state, spoilerFilter: {...this.state.spoilerFilter, displayAs: 'list'}})}>List</Button>
+                            <Button.Or/>
+                            <Button color={spoilerFilter.displayAs === 'images' ? 'blue' : undefined} onClick={() => this.storeToLocalStorageAndSetState({...this.state, spoilerFilter: {...this.state.spoilerFilter, displayAs: 'images'}})}>Images</Button>
+                        </Button.Group>
+                    </Form.Group>
+                    {spoilerFilter.displayAs === 'list' && <Form.Group inline>
+                        <label>Reputation Discount:</label>
+                        <Form.Select value={spoilerFilter.discount}
+                                options={[
+                                    {value: -5, text: "-5 gold"}, // (19 - 20)
+                                    {value: -4, text: "-4 gold"}, // (15 - 18)
+                                    {value: -3, text: "-3 gold"}, // (11 - 14)
+                                    {value: -2, text: "-2 gold"}, // (7 - 13)
+                                    {value: -1, text: "-1 gold"}, // (3 - 6)
+                                    {value: 0, text: "none"}, // (-2 - 2)
+                                    {value: 1, text: "+1 gold"}, // (-3 - -6)
+                                    {value: 2, text: "+2 gold"}, // (-7 - -10)
+                                    {value: 3, text: "+3 gold"}, // (-11 - -14)
+                                    {value: 4, text: "+4 gold"}, // (-15 - -18)
+                                    {value: 5, text: "+5 gold"}, // (-19 - -20)
+                                ]}
+                                onChange={(obj, e) => {
+                                    const state = this.state;
+                                    state.spoilerFilter.discount = typeof e.value === 'number' ? e.value : 0;
+                                    this.storeToLocalStorageAndSetState(state);
+                                }}
+                        />
+                    </Form.Group>}
+                    {spoilerFilter.displayAs === 'images' && <Form.Group inline>
+                        <label>Sort By:</label>
+                        <Form.Select
+                            value={sorting.property}
+                            options={[
+                                {value: 'id', text: 'Item Number'},
+                                {value: 'slot', text: 'Equipment Slot'},
+                                {value: 'cost', text: 'Cost'},
+                                {value: 'name', text: 'Name'},
+                                {value: 'source', text: 'Source'},
+                            ]}
+                            onChange={(obj, e) => this.setSorting(e.value as SortProperty)}
+                        />
+                    </Form.Group>}
+                    <Form.Group inline>
+                        <label>Filter Slot:</label>
+                        <Form.Radio label={'all'} checked={filter.slot === undefined} onChange={() => this.setFilterSlot(undefined)}/>
+                        {gloomhavenItemSlots.map(slot => <Form.Radio key={slot} label={<img className={'icon'} src={ItemView.getSlotImageSrc(slot)} alt={slot}/>} checked={filter.slot === slot} onChange={() => this.setFilterSlot(slot)} alt={slot}/>)}
+                    </Form.Group>
+                    <Form.Group inline>
+                        <label>Find Item:</label>
+                        <Input
+                            value={filter.search}
+                            onChange={(e) => this.setState({...this.state, filter: {...this.state.filter, search: e.target.value}})}
+                            icon={{name: 'close', link: true, onClick: () => this.setState({...this.state, filter: {...this.state.filter, search: ''}})}}
+                            placeholder={'Search...'}
+                        />
+                    </Form.Group>
+                </Form>
             </React.Fragment>
         );
     }
@@ -508,7 +525,8 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
     renderTable() {
         const {spoilerFilter, sorting} = this.state;
         const items = this.getSortedAndFilteredItems();
-        const table = items.length === 0
+        const itemsListAsImages = () => <React.Fragment>{items.map(item => <img key={item.id} src={ItemView.getItemImageSrc(item)} alt={''} className={'item-card'}/>)}</React.Fragment>;
+        const table = () => items.length === 0
             ? (
                 <Message negative>
                     No items found matching your filters and/or search criteria
@@ -516,23 +534,16 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
             )
             : (
                 <React.Fragment>
-
-                    {this.state.spoilerFilter.all &&  (
-                        <Message negative>
-                            <Message.Header><Icon name="exclamation triangle"/>Spoiler alert</Message.Header>
-                            You are currently viewing all possible items.
-                        </Message>
-                    )}
                     <Table basic sortable celled className={'items-table'} unstackable>
                         <Table.Header>
                             <Table.Row>
-                                <Table.HeaderCell textAlign={'right'} onClick={() => this.setSorting('id')} sorted={sorting.property === 'id' ? sorting.direction : undefined}>#</Table.HeaderCell>
-                                <Table.HeaderCell selectable={false} onClick={() => this.setSorting('name')} sorted={sorting.property === 'name' ? sorting.direction : undefined}>Name</Table.HeaderCell>
-                                <Table.HeaderCell textAlign={'center'} onClick={() => this.setSorting('slot')} sorted={sorting.property === 'slot' ? sorting.direction : undefined}>Slot</Table.HeaderCell>
-                                <Table.HeaderCell textAlign={'right'} onClick={() => this.setSorting('cost')} sorted={sorting.property === 'cost' ? sorting.direction : undefined}>Cost</Table.HeaderCell>
-                                <Table.HeaderCell>Use</Table.HeaderCell>
-                                <Table.HeaderCell>Effect</Table.HeaderCell>
-                                <Table.HeaderCell onClick={() => this.setSorting('source')} sorted={sorting.property === 'source' ? sorting.direction : undefined}>Source</Table.HeaderCell>
+                                <Table.HeaderCell className={'id-col'} textAlign={'right'} onClick={() => this.setSorting('id')} sorted={sorting.property === 'id' ? sorting.direction : undefined}>#</Table.HeaderCell>
+                                <Table.HeaderCell className={'name-col'} selectable={false} onClick={() => this.setSorting('name')} sorted={sorting.property === 'name' ? sorting.direction : undefined}>Name</Table.HeaderCell>
+                                <Table.HeaderCell className={'slot-col'} textAlign={'center'} onClick={() => this.setSorting('slot')} sorted={sorting.property === 'slot' ? sorting.direction : undefined}>Slot</Table.HeaderCell>
+                                <Table.HeaderCell className={'cost-col'} textAlign={'right'} onClick={() => this.setSorting('cost')} sorted={sorting.property === 'cost' ? sorting.direction : undefined}>Cost</Table.HeaderCell>
+                                <Table.HeaderCell className={'use-col'}>Use</Table.HeaderCell>
+                                <Table.HeaderCell className={'text-col'}>Effect</Table.HeaderCell>
+                                <Table.HeaderCell className={'source-col'} onClick={() => this.setSorting('source')} sorted={sorting.property === 'source' ? sorting.direction : undefined}>Source</Table.HeaderCell>
                             </Table.Row>
                         </Table.Header>
                         <Table.Body>
@@ -542,17 +553,17 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
                                     : (<strong>{item.cost}g</strong>);
                                 return (
                                     <Table.Row key={item.id}>
-                                        <Table.Cell textAlign={'right'}>#{(item.id + '').padStart(3, '0')}</Table.Cell>
+                                        <Table.Cell className={'id-col'} textAlign={'right'}>#{(item.id + '').padStart(3, '0')}</Table.Cell>
                                         <Table.Cell className={'name-col'}>{item.name}</Table.Cell>
-                                        <Table.Cell textAlign={'center'}><Image src={ItemView.getSlotImageSrc(item.slot)}/></Table.Cell>
-                                        <Table.Cell textAlign={'right'}>{cost}</Table.Cell>
-                                        <Table.Cell textAlign={'center'}>
+                                        <Table.Cell className={'slot-col'} textAlign={'center'}><Image src={ItemView.getSlotImageSrc(item.slot)}/></Table.Cell>
+                                        <Table.Cell className={'cost-col'} textAlign={'right'}>{cost}</Table.Cell>
+                                        <Table.Cell className={'use-col'} textAlign={'center'}>
                                             {item.spent && <img className={'icon'} src={require('./img/icons/general/spent.png')} alt={'icon spent'}/>}
                                             {item.consumed && <img className={'icon'} src={require('./img/icons/general/consumed.png')} alt={'icon consumed'}/>}
                                         </Table.Cell>
                                         <Table.Cell className={'text-col'}>
-                                            <span dangerouslySetInnerHTML={{__html:item.desc}}/>
-                                            {item.faq && <Popup trigger={<Icon name={'question circle'} className={'pink'}/>} header={'FAQ'} content={item.faq}/>}
+                                            <span dangerouslySetInnerHTML={{__html:item.descHTML}}/>
+                                            {item.faq && <Popup closeOnDocumentClick hideOnScroll trigger={<Icon name={'question circle'} className={'pink'}/>} header={'FAQ'} content={item.faq}/>}
                                         </Table.Cell>
                                         <Table.Cell className={'source-col'}>
                                             {item.source.split("\n").map(s => <React.Fragment key={s}><span dangerouslySetInnerHTML={{__html: s}}/><br/></React.Fragment>)}
@@ -570,7 +581,14 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
 
                 {this.renderSearchOptions()}
 
-                {table}
+                {this.state.spoilerFilter.all &&  (
+                    <Message negative>
+                        <Message.Header><Icon name="exclamation triangle"/>Spoiler alert</Message.Header>
+                        You are currently viewing all possible items.
+                    </Message>
+                )}
+
+                {spoilerFilter.displayAs === 'list' ? table() : itemsListAsImages()}
 
             </React.Fragment>
         );

@@ -711,7 +711,7 @@
   },
   {
     "id": 72,
-    "name": "Boots of Happiness",
+    "name": "Shoes of Happiness",
     "count": 2,
     "cost": 50,
     "slot": "Legs",
@@ -1437,7 +1437,7 @@
   },
   {
     "id": 146,
-    "name": "Master’s Lute",
+    "name": "Master's Lute",
     "count": 1,
     "cost": 50,
     "slot": "Two Hands",
@@ -1455,7 +1455,7 @@
   },
   {
     "id": 148,
-    "name": "Doctor’s Coat",
+    "name": "Doctor's Coat",
     "count": 1,
     "cost": 50,
     "slot": "Body",
