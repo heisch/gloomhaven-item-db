@@ -612,16 +612,11 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
     static renderSummon(item: GloomhavenItem) {
         return item.summon === undefined ? null : (
             <React.Fragment>
-                <br/>
                 <div className={'item-summon'}>
-                    <div>
-                        <div>HP: {item.summon.hp}</div>
-                        <div>Move: {item.summon.move}</div>
-                    </div>
-                    <div>
-                        <div>Attack: {item.summon.attack}</div>
-                        <div>Range: {item.summon.range || '-'}</div>
-                    </div>
+                    <div><img src={require('./img/icons/general/heal.png')} className={'icon'} alt={'hp'}/>: {item.summon.hp}</div>
+                    <div><img src={require('./img/icons/general/move.png')} className={'icon'} alt={'hp'}/>: {item.summon.move}</div>
+                    <div><img src={require('./img/icons/general/attack.png')} className={'icon'} alt={'hp'}/>: {item.summon.attack}</div>
+                    <div><img src={require('./img/icons/general/range.png')} className={'icon'} alt={'hp'}/>: {item.summon.range || '-'}</div>
                 </div>
             </React.Fragment>
         );
@@ -753,7 +748,7 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
                     <Header icon='cloud download' content='Apply Configuration from Link'/>
                     <Modal.Content>
                         <p>
-                            Do you with to load the configuration passed with this link?
+                            Do you want to load the configuration passed with this link?
                         </p>
                     </Modal.Content>
                     <Modal.Actions>
