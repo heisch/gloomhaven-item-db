@@ -549,7 +549,7 @@
     "slot": "Two Hands",
     "source": "Prosperity 7",
     "spent": true,
-    "desc": "During your ranged attack, {any} to add +1 Attack to the entire Attack action."
+    "desc": "During your ranged attack, {anyX} to add +1 Attack to the entire Attack action."
   },
   {
     "id": 55,
