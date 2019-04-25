@@ -457,7 +457,7 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
                     </Form.Group>
 
                     <Form.Group inline>
-                        <label>Enable Store Stock management:</label>
+                        <label>Enable Store Stock Management:</label>
                         <Form.Checkbox
                             toggle
                             checked={spoilerFilter.enableStoreStockManagement}
