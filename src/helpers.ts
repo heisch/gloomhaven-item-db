@@ -1,5 +1,3 @@
-import {Table, Image} from 'semantic-ui-react'
-
 export class Helpers {
     static uniqueArray(arr: Array<any>, sort: boolean = true) {
         const result: Array<any> = [];
@@ -9,6 +7,18 @@ export class Helpers {
             }
         });
         return sort ? result.sort() : result
+    }
+
+    static numberAmountToText(number: number) {
+        switch (number) {
+            case 0: return 'zero';
+            case 1: return 'one';
+            case 2: return 'two';
+            case 3: return 'three';
+            case 4: return 'four';
+            case 5: return 'five';
+            default: return number;
+        }
     }
 
     static parseEffectText(text: string) {

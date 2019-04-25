@@ -182,7 +182,6 @@
     "slot": "One Hand",
     "source": "Prosperity 2",
     "consumed": true,
-    "minusOneCardsAdded": null,
     "desc": "During your single-target melee attack action, turn the attack into the following: {multi_attack.cone_0_1}"
   },
   {
@@ -354,7 +353,14 @@
     "slot": "Small Item",
     "source": "Prosperity 4",
     "consumed": true,
-    "desc": "Summon Jade Falcon (Flying)"
+    "summon": {
+      "hp": 2,
+      "move": 3,
+      "attack": 2,
+      "range": 0
+    },
+    "desc": "Summon Jade Falcon (Flying)",
+    "faq": "The card is treated like a persistent bonus, going in the active area until the summon is killed or the card is removed (removing the summon and consuming the item). If the card is refreshed and there is an active summon from the card, the active summon disappears."
   },
   {
     "id": 36,
@@ -747,7 +753,6 @@
     "slot": "Head",
     "source": "Random Item",
     "spent": true,
-    "minusOneCardsAdded": null,
     "desc": "During your turn, {any} to create any element. {any}"
   },
   {
@@ -952,7 +957,6 @@
     "slot": "Legs",
     "source": "Scenario #66 (Treasure #36)",
     "spent": true,
-    "minusOneCardsAdded": null,
     "desc": "During your movement, add +3 Move and Jump to a single movement"
   },
   {
@@ -962,7 +966,6 @@
     "cost": 40,
     "slot": "Legs",
     "source": "Scenario #38 (Treasure #29)",
-    "minusOneCardsAdded": null,
     "desc": "If you move 4 or more hexes on your turn, perform a \"\"Heal 1, Self\"\" action."
   },
   {
@@ -1135,6 +1138,12 @@
     "slot": "Two Hands",
     "source": "Scenario #82 (Treasure #62)",
     "consumed": true,
+    "summon": {
+      "hp": 4,
+      "move": 1,
+      "attack": 3,
+      "range": 0
+    },
     "desc": "Summon Warrior Spirit",
     "faq": "The card is treated like a persistent bonus, going in the active area until the summon is killed or the card is removed (removing the summon and consuming the item). If the card is refreshed and there is an active summon from the card, the active summon disappears."
   },
@@ -1214,6 +1223,12 @@
     "slot": "Small Item",
     "source": "Scenario #04 (Treasure #38)",
     "consumed": true,
+    "summon": {
+      "hp": 3,
+      "move": 2,
+      "attack": 2,
+      "range": 0
+    },
     "desc": "Summon Skeleton",
     "faq": "The card is treated like a persistent bonus, going in the active area until the summon is killed or the card is removed (removing the summon and consuming the item). If the card is refreshed and there is an active summon from the card, the active summon disappears."
   },
@@ -1306,6 +1321,12 @@
     "slot": "Small Item",
     "source": "Scenario #67",
     "consumed": true,
+    "summon": {
+      "hp": 5,
+      "move": 2,
+      "attack": 3,
+      "range": 0
+    },
     "desc": "Summon Steel Construct.",
     "faq": "The card is treated like a persistent bonus, going in the active area until the summon is killed or the card is removed (removing the summon and consuming the item). If the card is refreshed and there is an active summon from the card, the active summon disappears."
   },
