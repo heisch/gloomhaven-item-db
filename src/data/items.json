@@ -380,7 +380,7 @@
     "slot": "Body",
     "source": "Prosperity 5",
     "spent": true,
-    "desc": "During your attack, consume {any} to add +1 Attack to the entire Attack action."
+    "desc": "During your attack, {anyX} to add +1 Attack to the entire Attack action."
   },
   {
     "id": 38,
@@ -753,7 +753,7 @@
     "slot": "Head",
     "source": "Random Item",
     "spent": true,
-    "desc": "During your turn, {any} to create any element. {any}"
+    "desc": "During your turn, {anyX} to create any element. {any}"
   },
   {
     "id": 76,
@@ -772,7 +772,7 @@
     "cost": 30,
     "slot": "One Hand",
     "source": "Random Item",
-    "desc": "During your melee attack, consume {ice} to add +2 Attack to a single attack."
+    "desc": "During your melee attack, {iceX} to add +2 Attack to a single attack."
   },
   {
     "id": 78,
@@ -781,7 +781,7 @@
     "cost": 30,
     "slot": "One Hand",
     "source": "Random Item",
-    "desc": "During your melee attack, consume {wind} to add +2 Attack to a single attack."
+    "desc": "During your melee attack, {windX} to add +2 Attack to a single attack."
   },
   {
     "id": 79,
@@ -790,7 +790,7 @@
     "cost": 30,
     "slot": "One Hand",
     "source": "Random Item",
-    "desc": "During your melee attack, consume {fire} to add +2 Attack to a single attack."
+    "desc": "During your melee attack, {fireX} to add +2 Attack to a single attack."
   },
   {
     "id": 80,
@@ -799,7 +799,7 @@
     "cost": 30,
     "slot": "One Hand",
     "source": "Random Item",
-    "desc": "During your melee attack, consume {earth} to add +2 Attack to a single attack."
+    "desc": "During your melee attack, {earthX} to add +2 Attack to a single attack."
   },
   {
     "id": 81,
@@ -808,7 +808,7 @@
     "cost": 30,
     "slot": "One Hand",
     "source": "Random Item",
-    "desc": "During your melee attack, consume {light} to add +2 Attack to a single attack."
+    "desc": "During your melee attack, {lightX} to add +2 Attack to a single attack."
   },
   {
     "id": 82,
@@ -817,7 +817,7 @@
     "cost": 30,
     "slot": "One Hand",
     "source": "Random Item",
-    "desc": "During your melee attack, consume {dark} to add +2 Attack to a single attack."
+    "desc": "During your melee attack, {darkX} to add +2 Attack to a single attack."
   },
   {
     "id": 83,
@@ -1204,7 +1204,7 @@
     "cost": 50,
     "slot": "One Hand",
     "source": "Reward From Scenario #85",
-    "desc": "During your turn, {dark} to create Light. {light}"
+    "desc": "During your turn, {darkX} to create Light. {light}"
   },
   {
     "id": 122,
@@ -1213,7 +1213,7 @@
     "cost": 50,
     "slot": "One Hand",
     "source": "Scenario #89 (Treasure #27)",
-    "desc": "During your turn, {light} to create Dark. {dark}"
+    "desc": "During your turn, {lightX} to create Dark. {dark}"
   },
   {
     "id": 123,
@@ -1404,7 +1404,7 @@
     "cost": 50,
     "slot": "One Hand",
     "source": "Reward from Solo Scenario #07 — {SK}",
-    "desc": "When damaged by an attack, you may {light} to gain Shield 3 for the attack."
+    "desc": "When damaged by an attack, you may {lightX} to gain Shield 3 for the attack."
   },
   {
     "id": 141,
