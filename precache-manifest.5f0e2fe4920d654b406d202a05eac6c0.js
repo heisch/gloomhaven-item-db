@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "7272219b71dde1a00cb9",
+    "revision": "af8ab064266d38db03bc",
     "url": "/gloomhaven-item-db/static/css/main.c13e5d4d.chunk.css"
   },
   {
-    "revision": "7272219b71dde1a00cb9",
-    "url": "/gloomhaven-item-db/static/js/main.2488f8f7.chunk.js"
+    "revision": "af8ab064266d38db03bc",
+    "url": "/gloomhaven-item-db/static/js/main.715a9a93.chunk.js"
   },
   {
     "revision": "967e9c5ebb01dc23ffc9",
@@ -20,8 +20,8 @@ self.__precacheManifest = [
     "url": "/gloomhaven-item-db/static/js/2.b02d53b6.chunk.js"
   },
   {
-    "revision": "5b023c5ea6485f40105734dc248ba4be",
-    "url": "/gloomhaven-item-db/static/media/modifier_minus_one.5b023c5e.png"
+    "revision": "1ade0fe390d93fcac49b9e9b2a88a64c",
+    "url": "/gloomhaven-item-db/static/media/modifier_minus_one.1ade0fe3.png"
   },
   {
     "revision": "2e5188841705bf999726e173b2a6eaaa",
@@ -520,12 +520,12 @@ self.__precacheManifest = [
     "url": "/gloomhaven-item-db/static/media/icons.b87b9ba5.ttf"
   },
   {
-    "revision": "13db00b7a34fee4d819ab7f9838cc428",
-    "url": "/gloomhaven-item-db/static/media/brand-icons.13db00b7.eot"
-  },
-  {
     "revision": "c5ebe0b32dc1b5cc449a76c4204d13bb",
     "url": "/gloomhaven-item-db/static/media/brand-icons.c5ebe0b3.ttf"
+  },
+  {
+    "revision": "13db00b7a34fee4d819ab7f9838cc428",
+    "url": "/gloomhaven-item-db/static/media/brand-icons.13db00b7.eot"
   },
   {
     "revision": "82f60bd0b94a1ed68b1e6e309ce2e8c3",
@@ -652,8 +652,8 @@ self.__precacheManifest = [
     "url": "/gloomhaven-item-db/static/media/modifier_minus_one_1.31f36920.png"
   },
   {
-    "revision": "6a8cb57fa0e1590ca53a10d790fbf1b2",
-    "url": "/gloomhaven-item-db/static/media/modifier_minus_one_cropped.6a8cb57f.png"
+    "revision": "3485e20699590013a65b2aa62ab9833c",
+    "url": "/gloomhaven-item-db/static/media/modifier_minus_one_cropped.3485e206.png"
   },
   {
     "revision": "a5da5feb3572ca72bbc145b4397c535e",
@@ -1072,7 +1072,7 @@ self.__precacheManifest = [
     "url": "/gloomhaven-item-db/static/media/wall-shield.8a6f3611.png"
   },
   {
-    "revision": "2ece26fe7fb51b13d58680378657d622",
+    "revision": "00ab5b6856d976aaf60a0709fb2cfe2b",
     "url": "/gloomhaven-item-db/index.html"
   }
 ];
