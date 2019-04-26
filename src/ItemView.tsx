@@ -488,10 +488,9 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
                         {[...Array(70 - (spoilerFilter.prosperity + 1) * 7).keys()].map((val) => {
                             const id = val + 1 + (spoilerFilter.prosperity + 1) * 7;
                             return (
-                                <Popup key={val} closeOnDocumentClick hideOnScroll content={this.getItemById(id).name}
-                                       trigger={<Form.Checkbox label={'#' + (id + '').padStart(3, '0')}
-                                                               checked={spoilerFilter.item.includes(id)}
-                                                               onChange={() => this.toggleItemFilter(id)}/>}/>
+                                <Form.Checkbox key={val} label={'#' + (id + '').padStart(3, '0')}
+                                               checked={spoilerFilter.item.includes(id)}
+                                               onChange={() => this.toggleItemFilter(id)}/>
                             )
                         })}
                     </Form.Group>}
@@ -502,10 +501,9 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
                         {[...Array(25).keys()].map((val) => {
                             const id = val + 71;
                             return (
-                                <Popup key={val} closeOnDocumentClick hideOnScroll content={this.getItemById(id).name}
-                                       trigger={<Form.Checkbox label={'#' + (id + '').padStart(3, '0')}
-                                                               checked={spoilerFilter.item.includes(id)}
-                                                               onChange={() => this.toggleItemFilter(id)}/>}/>
+                                <Form.Checkbox key={val} label={'#' + (id + '').padStart(3, '0')}
+                                               checked={spoilerFilter.item.includes(id)}
+                                               onChange={() => this.toggleItemFilter(id)}/>
                             )
                         })}
                     </Form.Group>
@@ -517,10 +515,9 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
                         {[...Array(38).keys()].map((val) => {
                             const id = val + 96;
                             return (
-                                <Popup key={val} closeOnDocumentClick hideOnScroll content={this.getItemById(id).name}
-                                       trigger={<Form.Checkbox label={'#' + (id + '').padStart(3, '0')}
-                                                               checked={spoilerFilter.item.includes(id)}
-                                                               onChange={() => this.toggleItemFilter(id)}/>}/>
+                                <Form.Checkbox key={val} label={'#' + (id + '').padStart(3, '0')}
+                                               checked={spoilerFilter.item.includes(id)}
+                                               onChange={() => this.toggleItemFilter(id)}/>
                             )
                         })}
                     </Form.Group>
