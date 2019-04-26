@@ -1,23 +1,23 @@
 self.__precacheManifest = [
   {
-    "revision": "d5dffb128d78e32f1d58",
+    "revision": "aaee921ab2e524a34834",
     "url": "/gloomhaven-item-db/static/css/main.c13e5d4d.chunk.css"
   },
   {
-    "revision": "d5dffb128d78e32f1d58",
-    "url": "/gloomhaven-item-db/static/js/main.328f3980.chunk.js"
+    "revision": "aaee921ab2e524a34834",
+    "url": "/gloomhaven-item-db/static/js/main.98e08125.chunk.js"
   },
   {
     "revision": "967e9c5ebb01dc23ffc9",
     "url": "/gloomhaven-item-db/static/js/runtime~main.9dfa5d91.js"
   },
   {
-    "revision": "d7065337d30f83088d4a",
+    "revision": "fccc425f56b60e1d0451",
     "url": "/gloomhaven-item-db/static/css/2.276dad88.chunk.css"
   },
   {
-    "revision": "d7065337d30f83088d4a",
-    "url": "/gloomhaven-item-db/static/js/2.759fb19c.chunk.js"
+    "revision": "fccc425f56b60e1d0451",
+    "url": "/gloomhaven-item-db/static/js/2.b02d53b6.chunk.js"
   },
   {
     "revision": "5b023c5ea6485f40105734dc248ba4be",
@@ -512,10 +512,6 @@ self.__precacheManifest = [
     "url": "/gloomhaven-item-db/static/media/brand-icons.a046592b.woff"
   },
   {
-    "revision": "c5ebe0b32dc1b5cc449a76c4204d13bb",
-    "url": "/gloomhaven-item-db/static/media/brand-icons.c5ebe0b3.ttf"
-  },
-  {
     "revision": "8e3c7f5520f5ae906c6cf6d7f3ddcd19",
     "url": "/gloomhaven-item-db/static/media/icons.8e3c7f55.eot"
   },
@@ -526,6 +522,10 @@ self.__precacheManifest = [
   {
     "revision": "13db00b7a34fee4d819ab7f9838cc428",
     "url": "/gloomhaven-item-db/static/media/brand-icons.13db00b7.eot"
+  },
+  {
+    "revision": "c5ebe0b32dc1b5cc449a76c4204d13bb",
+    "url": "/gloomhaven-item-db/static/media/brand-icons.c5ebe0b3.ttf"
   },
   {
     "revision": "82f60bd0b94a1ed68b1e6e309ce2e8c3",
@@ -1072,7 +1072,7 @@ self.__precacheManifest = [
     "url": "/gloomhaven-item-db/static/media/wall-shield.8a6f3611.png"
   },
   {
-    "revision": "71a765e1faf6408f02fa047c6b3e660c",
+    "revision": "2c1bd1f28f8d32b8910a595932d625f8",
     "url": "/gloomhaven-item-db/index.html"
   }
 ];
