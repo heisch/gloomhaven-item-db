@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "aaee921ab2e524a34834",
+    "revision": "7272219b71dde1a00cb9",
     "url": "/gloomhaven-item-db/static/css/main.c13e5d4d.chunk.css"
   },
   {
-    "revision": "aaee921ab2e524a34834",
-    "url": "/gloomhaven-item-db/static/js/main.98e08125.chunk.js"
+    "revision": "7272219b71dde1a00cb9",
+    "url": "/gloomhaven-item-db/static/js/main.2488f8f7.chunk.js"
   },
   {
     "revision": "967e9c5ebb01dc23ffc9",
@@ -1072,7 +1072,7 @@ self.__precacheManifest = [
     "url": "/gloomhaven-item-db/static/media/wall-shield.8a6f3611.png"
   },
   {
-    "revision": "2c1bd1f28f8d32b8910a595932d625f8",
+    "revision": "2ece26fe7fb51b13d58680378657d622",
     "url": "/gloomhaven-item-db/index.html"
   }
 ];
