@@ -112,7 +112,7 @@
     "slot": "One Hand",
     "source": "Prosperity 1",
     "spent": true,
-    "desc": "During your melee attack, add POISON to a single action."
+    "desc": "During your melee attack, add POISON to a single attack."
   },
   {
     "id": 12,
