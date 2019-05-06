@@ -625,10 +625,24 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
         const itemsListAsImages = () => (
             <React.Fragment>
                 {items.map(item => (
-                    <img key={item.id}
-                        src={ItemView.getItemImageSrc(item)}
-                        alt={item.name}
-                        className={'item-card'}/>
+                    <div className={'item-card-wrapper'}>
+                        <img key={item.id}
+                            src={ItemView.getItemImageSrc(item)}
+                            alt={item.name}
+                            className={'item-card'}/>
+
+                        {spoilerFilter.enableStoreStockManagement
+                            ? [...Array(item.count).keys()].map(index =>
+                                <Checkbox key={index}
+                                          className={'i'+index}
+                                          toggle
+                                          disabled={spoilerFilter.lockSpoilerPanel}
+                                          checked={!!(spoilerFilter.itemsInUse[item.id] & Math.pow(2, index))}
+                                          onChange={() => this.toggleItemInUse(item.id, Math.pow(2, index))}/>
+                            )
+                            : item.count
+                        }
+                    </div>
                     ))}
             </React.Fragment>
         );

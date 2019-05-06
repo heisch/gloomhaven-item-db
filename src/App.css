@@ -161,12 +161,42 @@ div.spoiler .ui.tabular.menu {
     border-bottom: 1px dashed #db2828;
 }
 
-img.item-card {
+.item-card-wrapper {
     max-width: 20%;
+    position: relative;
+    display: inline-block;
+}
+img.item-card {
+    width: 100%;
     height: auto;
     filter: brightness(105%) contrast(90%);
     border-radius: 15px;
     padding: 0 2px;
+}
+.item-card-wrapper .ui.toggle.checkbox label:before {
+    background: rgba(255,255,255,0.5);
+}
+
+.item-card-wrapper .ui.toggle.checkbox {
+    position: absolute;
+}
+
+.item-card-wrapper .ui.toggle.checkbox.i0 {
+    left: 7px;
+    top: 50px;
+}
+.item-card-wrapper .ui.toggle.checkbox.i1 {
+    left: 7px;
+    top: 85px;
+}
+
+.item-card-wrapper .ui.toggle.checkbox.i2 {
+    right: 7px;
+    top: 50px;
+}
+.item-card-wrapper .ui.toggle.checkbox.i3 {
+    right: 7px;
+    top: 85px;
 }
 
 .ui.form .fields.inline-break {
@@ -295,7 +325,7 @@ img.item-card {
 }
 
 @media screen and (min-width: 415px) and (max-width: 768px) {
-    img.item-card {
+    .item-card-wrapper{
         max-width: 33.3333333333333%;
         padding: 0 2px;
     }
@@ -303,12 +333,12 @@ img.item-card {
 
 @media screen and (max-width: 414px) {
 
-    img.item-card {
+    .item-card-wrapper {
         max-width: 50%;
         padding-right: 2px;
     }
 
-    img.item-card:nth-of-type(2n) {
+    .item-card-wrapper:nth-of-type(2n) {
         padding-right: 0;
         padding-left: 2px;
     }
