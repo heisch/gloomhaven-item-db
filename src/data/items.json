@@ -1182,7 +1182,7 @@
     "name": "Skull of Hatred",
     "count": 1,
     "cost": 50,
-    "slot": "Head",
+    "slot": "One Hand",
     "source": "Reward From Scenario #95",
     "consumed": true,
     "desc": "During your turn, CURSE all adjacent enemies."
