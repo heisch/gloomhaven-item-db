@@ -625,7 +625,7 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
         const itemsListAsImages = () => (
             <React.Fragment>
                 {items.map(item => (
-                    <div className={'item-card-wrapper'}>
+                    <div key={item.id} className={'item-card-wrapper'}>
                         <img key={item.id}
                             src={ItemView.getItemImageSrc(item)}
                             alt={item.name}
