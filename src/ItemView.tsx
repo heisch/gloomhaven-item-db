@@ -61,7 +61,7 @@ enum SortDirection {
     descending = 'descending'
 }
 
-type SortProperty = 'id' | 'slot' | 'cost' | 'name';
+type SortProperty = 'id' | 'slot' | 'cost' | 'name' | 'use';
 
 interface ItemViewState {
     items: Array<GloomhavenItem>
@@ -362,7 +362,12 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
                     if (itemA[sorting.property] === itemB[sorting.property]) return 0;
                     value = itemA[sorting.property] > itemB[sorting.property] ? 1 : -1;
                     break;
-
+                case "use":
+                    // assign a dummy value to sort by
+                    const itemAuse = itemA.spent ? 'c' : (itemA.consumed ? 'b' : 'a');
+                    const itemBuse = itemB.spent ? 'c' : (itemB.consumed ? 'b' : 'a');
+                    value = itemAuse.localeCompare(itemBuse);
+                    break;
             }
             return sorting.direction === SortDirection.ascending ? value : value * -1;
         });
@@ -583,6 +588,7 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
                                 {value: 'cost', text: 'Cost'},
                                 {value: 'name', text: 'Name'},
                                 {value: 'source', text: 'Source'},
+                                {value: 'use', text: 'Use'}
                             ]}
                             onChange={(obj, e) => this.setSorting(e.value as SortProperty)}
                         />
@@ -661,7 +667,7 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
                                 <Table.HeaderCell className={'name-col'} selectable={false} onClick={() => this.setSorting('name')} sorted={sorting.property === 'name' ? sorting.direction : undefined}>Name</Table.HeaderCell>
                                 <Table.HeaderCell className={'slot-col'} textAlign={'center'} onClick={() => this.setSorting('slot')} sorted={sorting.property === 'slot' ? sorting.direction : undefined}>Slot</Table.HeaderCell>
                                 <Table.HeaderCell className={'cost-col'} textAlign={'right'} onClick={() => this.setSorting('cost')} sorted={sorting.property === 'cost' ? sorting.direction : undefined}>Cost</Table.HeaderCell>
-                                <Table.HeaderCell className={'use-col'}>Use</Table.HeaderCell>
+                                <Table.HeaderCell className={'use-col'} onClick={() => this.setSorting('use')} sorted={sorting.property === 'use' ? sorting.direction : undefined}>Use</Table.HeaderCell>
                                 <Table.HeaderCell className={'text-col'}>Effect</Table.HeaderCell>
                                 <Table.HeaderCell className={'source-col'}>Source</Table.HeaderCell>
                                 <Table.HeaderCell
