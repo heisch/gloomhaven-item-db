@@ -363,19 +363,11 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
                     value = itemA[sorting.property] > itemB[sorting.property] ? 1 : -1;
                     break;
                 case "use":
-                    let itemAuse = '';
-                    if(itemA.spent) 
-                        itemAuse = 'spent';
-                    else if(itemA.consumed) 
-                        itemAuse = 'consumed';
-
-                    let itemBuse = '';
-                    if(itemB.spent) 
-                        itemBuse = 'spent';
-                    else if(itemB.consumed) 
-                        itemBuse = 'consumed';
-
+                    // assign a dummy value to sort by
+                    const itemAuse = itemA.spent ? 'c' : (itemA.consumed ? 'b' : 'a');
+                    const itemBuse = itemB.spent ? 'c' : (itemB.consumed ? 'b' : 'a');
                     value = itemAuse.localeCompare(itemBuse);
+                    break;
             }
             return sorting.direction === SortDirection.ascending ? value : value * -1;
         });
