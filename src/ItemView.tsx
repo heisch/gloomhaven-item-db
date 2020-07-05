@@ -5,13 +5,14 @@ import { SortDirection, SortProperty, SoloClassShorthand, GloomhavenItem, Gloomh
 import { SpoilerFilter, OldSpoilerFilter } from './State/SpoilerFilter';
 import { connect } from 'react-redux';
 import { ItemViewState } from './State/State';
-import { storeItems, storeSpoilerFilter, storeImportModalOpen, storeProsperity, storeFilterSlot, storeSortingProperty, storeFilterSearch, storeShareLockSpoilerPanel } from './State/Actions';
+import { storeItems, storeImportModalOpen, storeFilterSlot, storeSortingProperty, storeFilterSearch, storeShareLockSpoilerPanel } from './State/Actions/ItemViewActions';
+import { storeSpoilerFilter, storeProsperity, storeSoloClass, storeItem, storeItemsInUse, storeAll, storeEnableStoreStockManagement, storeDisplayAs, storeDiscount } from './State/Actions/SpoilerFilterActions';
 
 const gloomhavenItemSlots: Array<GloomhavenItemSlot> = ['Head', 'Body', 'Legs', 'One Hand', 'Two Hands', 'Small Item'];
 
 const GloomhavenSoloClassShorthands: Array<SoloClassShorthand> = ['BR', 'TI', 'SW', 'SC', 'CH', 'MT', 'SK', 'QM', 'SU', 'NS', 'PH', 'BE', 'SS', 'DS', 'SB', 'EL', 'BT'];
 
-interface ItemViewProps { itemViewState: ItemViewState, dispatch: any}
+interface ItemViewProps { itemViewState: ItemViewState, spoilerFilter: SpoilerFilter, dispatch: any}
 
 class ItemView extends Component<ItemViewProps, ItemViewState> {
 
@@ -67,9 +68,8 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
         sourceTypes = Helpers.uniqueArray(sourceTypes);
         sources = Helpers.uniqueArray(sources);
 
-        const spoilerFilter: SpoilerFilter = this.restoreFromLocalStorage();
         this.props.dispatch(storeItems(items));
-        this.props.dispatch(storeSpoilerFilter(spoilerFilter));
+        this.props.dispatch(storeSpoilerFilter(this.restoreFromLocalStorage()));
     }
 
     static parseHash(): SpoilerFilter | undefined {
@@ -185,8 +185,6 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
     }
 
     setProsperityFilter(prosperity: number) {
-        const state = this.props.itemViewState;
-        state.spoilerFilter.prosperity = prosperity;
         this.props.dispatch(storeProsperity(prosperity));
     }
 
@@ -208,27 +206,28 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
     }
 
     toggleClassFilter(key: SoloClassShorthand) {
-        const state = this.props.itemViewState;
-        if (state.spoilerFilter.soloClass.includes(key)) {
-            state.spoilerFilter.soloClass.splice(state.spoilerFilter.soloClass.indexOf(key), 1);
+        const {soloClass} = this.props.spoilerFilter;
+        if (soloClass.includes(key)) {
+            soloClass.splice(soloClass.indexOf(key), 1);
         } else {
-            state.spoilerFilter.soloClass.push(key)
+            soloClass.push(key)
         }
-        this.props.dispatch(storeSpoilerFilter(state.spoilerFilter));
+        this.props.dispatch(storeSoloClass(soloClass));
     }
 
     toggleItemFilter(key: number) {
-        const state = this.props.itemViewState;
-        if (state.spoilerFilter.item.includes(key)) {
-            state.spoilerFilter.item.splice(state.spoilerFilter.item.indexOf(key), 1);
+        const {item} = this.props.spoilerFilter;
+        if (item.includes(key)) {
+            item.splice(item.indexOf(key), 1);
         } else {
-            state.spoilerFilter.item.push(key)
+            item.push(key)
         }
-        this.props.dispatch(storeSpoilerFilter(state.spoilerFilter));
+        this.props.dispatch(storeItem(item));
     }
 
     getSpoilerFilteredItems() {
-        const {items, spoilerFilter} = this.props.itemViewState;;
+        const {items} = this.props.itemViewState;;
+        const spoilerFilter = this.props.spoilerFilter;
         if (spoilerFilter.all) return items;
         return items.filter(item => {
             if (item.id <= (spoilerFilter.prosperity+1)*7) return true;
@@ -306,25 +305,25 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
 
     toggleItemInUse(id: number, bit: number) {
 
-        const {spoilerFilter} = this.props.itemViewState;
+        const {itemsInUse} = this.props.spoilerFilter;
 
-        spoilerFilter.itemsInUse[id] = spoilerFilter.itemsInUse[id] & bit ? spoilerFilter.itemsInUse[id] ^ bit : spoilerFilter.itemsInUse[id] | bit;
+        itemsInUse[id] = itemsInUse[id] & bit ? itemsInUse[id] ^ bit : itemsInUse[id] | bit;
 
-        if (spoilerFilter.itemsInUse[id] === 0) {
-            delete (spoilerFilter.itemsInUse[id]);
+        if (itemsInUse[id] === 0) {
+            delete (itemsInUse[id]);
         }
 
-        this.props.dispatch(storeSpoilerFilter(spoilerFilter));
+        this.props.dispatch(storeItemsInUse(itemsInUse));
     }
 
     toggleShowAll() {
-        const state = this.props.itemViewState;
-        state.spoilerFilter.all = !state.spoilerFilter.all;
-        this.props.dispatch(storeSpoilerFilter(state.spoilerFilter));
+        const {all} = this.props.spoilerFilter;
+        this.props.dispatch(storeAll(!all));
     }
 
     renderShareTab() {
-        const {spoilerFilter, shareLockSpoilerPanel} = this.props.itemViewState;
+        const {shareLockSpoilerPanel} = this.props.itemViewState;
+        const spoilerFilter = this.props.spoilerFilter;
 
         const shareUrl = location.origin + location.pathname + '#' + btoa(JSON.stringify({
             ...spoilerFilter,
@@ -360,7 +359,8 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
 
     renderSpoilerFilters() {
 
-        const {spoilerFilter} = this.props.itemViewState;
+        const spoilerFilter = this.props.spoilerFilter;
+        const {enableStoreStockManagement, all} = spoilerFilter;
 
         return (
             <React.Fragment>
@@ -370,10 +370,10 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
                     <Form.Group inline>
                         <label>Respecting Spoiler Settings:</label>
                         <Button
-                            color={spoilerFilter.all ? 'red' : 'blue'}
+                            color={all ? 'red' : 'blue'}
                             onClick={() => this.toggleShowAll()}
                         >
-                            {spoilerFilter.all
+                            {all
                                 ? <React.Fragment><Icon name={'eye'}/> disabled</React.Fragment>
                                 : <React.Fragment><Icon name={'eye slash'}/> enabled</React.Fragment>
                             }
@@ -384,10 +384,9 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
                         <label>Enable Store Stock Management:</label>
                         <Form.Checkbox
                             toggle
-                            checked={spoilerFilter.enableStoreStockManagement}
+                            checked={enableStoreStockManagement}
                             onClick={() => {
-                                spoilerFilter.enableStoreStockManagement = !spoilerFilter.enableStoreStockManagement
-                                this.props.dispatch(storeSpoilerFilter(spoilerFilter));
+                                this.props.dispatch(storeEnableStoreStockManagement(!spoilerFilter.enableStoreStockManagement));
                             }}/>
                     </Form.Group>
 
@@ -399,8 +398,7 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
                                 <Form.Radio key={index} label={prosperity}
                                             checked={spoilerFilter.prosperity === prosperity}
                                             onChange={() => this.setProsperityFilter(prosperity)}/>
-                            )
-                        })}
+                            )})}
                     </Form.Group>
 
                     {spoilerFilter.prosperity < 9 && <Form.Group inline className={'inline-break'}>
@@ -458,7 +456,8 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
     }
 
     renderSearchOptions() {
-        const {spoilerFilter, filter, sorting} = this.props.itemViewState;
+        const {filter, sorting} = this.props.itemViewState;
+        const { displayAs, discount } = this.props.spoilerFilter;
         return (
             <React.Fragment>
 
@@ -466,20 +465,18 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
                     <Form.Group inline>
                         <label>Render as:</label>
                         <Button.Group>
-                            <Button color={spoilerFilter.displayAs === 'list' ? 'blue' : undefined} onClick={() => {
-                                    spoilerFilter.displayAs = 'list';
-                                    this.props.dispatch(storeSpoilerFilter(spoilerFilter));
+                            <Button color={displayAs === 'list' ? 'blue' : undefined} onClick={() => {
+                                    this.props.dispatch(storeDisplayAs('list'));
                                 }}>List</Button>
                             <Button.Or/>
-                            <Button color={spoilerFilter.displayAs === 'images' ? 'blue' : undefined} onClick={() => {
-                                    spoilerFilter.displayAs = 'images';
-                                    this.props.dispatch(storeSpoilerFilter(spoilerFilter));
+                            <Button color={displayAs === 'images' ? 'blue' : undefined} onClick={() => {
+                                    this.props.dispatch(storeDisplayAs('images'));
                                 }}>Images</Button>
                         </Button.Group>
                     </Form.Group>
-                    {spoilerFilter.displayAs === 'list' && <Form.Group inline>
+                    {displayAs === 'list' && <Form.Group inline>
                         <label>Reputation Discount:</label>
-                        <Form.Select value={spoilerFilter.discount}
+                        <Form.Select value={discount}
                                 options={[
                                     {value: -5, text: "-5 gold"}, // (19 - 20)
                                     {value: -4, text: "-4 gold"}, // (15 - 18)
@@ -494,12 +491,11 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
                                     {value: 5, text: "+5 gold"}, // (-19 - -20)
                                 ]}
                                 onChange={(obj, e) => {
-                                    spoilerFilter.discount = typeof e.value === 'number' ? e.value : 0;
-                                    this.props.dispatch(storeSpoilerFilter(spoilerFilter));
+                                    this.props.dispatch(storeDiscount(typeof e.value === 'number' ? e.value : 0));
                                 }}
                         />
                     </Form.Group>}
-                    {spoilerFilter.displayAs === 'images' && <Form.Group inline>
+                    {displayAs === 'images' && <Form.Group inline>
                         <label>Sort By:</label>
                         <Form.Select
                             value={sorting.property}
@@ -547,7 +543,8 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
     }
 
     renderTable() {
-        const {spoilerFilter, sorting} = this.props.itemViewState;
+        const { sorting } = this.props.itemViewState;
+        const { displayAs, all, discount, enableStoreStockManagement, lockSpoilerPanel, itemsInUse} = this.props.spoilerFilter;
         const items = this.getSortedAndFilteredItems();
         const itemsListAsImages = () => (
             <React.Fragment>
@@ -558,13 +555,13 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
                             alt={item.name}
                             className={'item-card'}/>
 
-                        {spoilerFilter.enableStoreStockManagement
+                        {enableStoreStockManagement
                             ? [...Array(item.count).keys()].map(index =>
                                 <Checkbox key={index}
                                           className={'i'+index}
                                           toggle
-                                          disabled={spoilerFilter.lockSpoilerPanel}
-                                          checked={!!(spoilerFilter.itemsInUse[item.id] & Math.pow(2, index))}
+                                          disabled={lockSpoilerPanel}
+                                          checked={!!(itemsInUse[item.id] & Math.pow(2, index))}
                                           onChange={() => this.toggleItemInUse(item.id, Math.pow(2, index))}/>
                             )
                             : item.count
@@ -592,13 +589,13 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
                                 <Table.HeaderCell className={'text-col'}>Effect</Table.HeaderCell>
                                 <Table.HeaderCell className={'source-col'}>Source</Table.HeaderCell>
                                 <Table.HeaderCell
-                                    className={'store-inventory-col'}>{spoilerFilter.enableStoreStockManagement ? 'In Use' : 'Stock'}</Table.HeaderCell>
+                                    className={'store-inventory-col'}>{enableStoreStockManagement ? 'In Use' : 'Stock'}</Table.HeaderCell>
                             </Table.Row>
                         </Table.Header>
                         <Table.Body>
                             {items.map(item => {
-                                const cost = spoilerFilter.discount !== 0
-                                    ? (<strong className={"ui text " + (item.cost > 0 ? 'blue' : 'orange')}>{item.cost + spoilerFilter.discount}g</strong>)
+                                const cost = discount !== 0
+                                    ? (<strong className={"ui text " + (item.cost > 0 ? 'blue' : 'orange')}>{item.cost + discount}g</strong>)
                                     : (<strong>{item.cost}g</strong>);
                                 return (
                                     <Table.Row key={item.id}>
@@ -624,12 +621,12 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
                                             {item.source.split("\n").map(s => <React.Fragment key={s}><span dangerouslySetInnerHTML={{__html: s}}/><br/></React.Fragment>)}
                                         </Table.Cell>
                                         <Table.Cell className={'store-inventory-col'} textAlign={'right'}>
-                                            {spoilerFilter.enableStoreStockManagement
+                                            {enableStoreStockManagement
                                                 ? [...Array(item.count).keys()].map(index =>
                                                     <Checkbox key={index}
                                                               toggle
-                                                              disabled={spoilerFilter.lockSpoilerPanel}
-                                                              checked={!!(spoilerFilter.itemsInUse[item.id] & Math.pow(2, index))}
+                                                              disabled={lockSpoilerPanel}
+                                                              checked={!!(itemsInUse[item.id] & Math.pow(2, index))}
                                                               onChange={() => this.toggleItemInUse(item.id, Math.pow(2, index))}/>
                                                 )
                                                 : item.count
@@ -648,14 +645,14 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
 
                 {this.renderSearchOptions()}
 
-                {this.props.itemViewState.spoilerFilter.all &&  (
+                {all &&  (
                     <Message negative>
                         <Message.Header><Icon name="exclamation triangle"/>Spoiler alert</Message.Header>
                         You are currently viewing all possible items.
                     </Message>
                 )}
 
-                {spoilerFilter.displayAs === 'list' ? table() : itemsListAsImages()}
+                {displayAs === 'list' ? table() : itemsListAsImages()}
 
             </React.Fragment>
         );
@@ -663,19 +660,20 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
 
     render() {
 
-        const {spoilerFilter, importModalOpen} = this.props.itemViewState;
+        const {importModalOpen} = this.props.itemViewState; 
+        const {all, lockSpoilerPanel} = this.props.spoilerFilter;
 
         let panes = [
-            { menuItem: 'Item List', render: () => <Tab.Pane className={spoilerFilter.all ? 'spoiler' : ''}>{this.renderTable()}</Tab.Pane> },
-            { menuItem: 'Spoiler Configuration', render: () => <Tab.Pane className={spoilerFilter.all ? 'spoiler' : ''}>{this.renderSpoilerFilters()}</Tab.Pane>},
+            { menuItem: 'Item List', render: () => <Tab.Pane className={all ? 'spoiler' : ''}>{this.renderTable()}</Tab.Pane> },
+            { menuItem: 'Spoiler Configuration', render: () => <Tab.Pane className={all ? 'spoiler' : ''}>{this.renderSpoilerFilters()}</Tab.Pane>},
             {
                 menuItem: 'Share',
                 render: () => <Tab.Pane
-                    className={spoilerFilter.all ? 'spoiler' : ''}>{this.renderShareTab()}</Tab.Pane>
+                    className={all ? 'spoiler' : ''}>{this.renderShareTab()}</Tab.Pane>
             },
         ];
 
-        if (spoilerFilter.lockSpoilerPanel) {
+        if (lockSpoilerPanel) {
             panes = [panes[0]];
         }
 
@@ -702,7 +700,7 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
                     </Modal.Actions>
                 </Modal>
 
-                <div className={spoilerFilter.all ? 'spoiler' : ''}>
+                <div className={all ? 'spoiler' : ''}>
                     <Tab panes={panes} defaultActiveIndex={0}/>
                 </div>
                 <em className={'pull-right ui text grey'}>Gloomhaven and all related properties, images and text are owned by <a href={'https://www.cephalofair.com/'} target={'_blank'} rel={'noopener'}>Cephalofair Games</a>.</em>
@@ -712,7 +710,7 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
 }
 
 const mapStateToProps = (state:any) => {
-    return { itemViewState: state.stateReducer, dispatch: state.dispatch };
+    return { itemViewState: state.itemViewState, spoilerFilter: state.spoilerFilter, dispatch: state.dispatch };
   };
 
 const ConnectedApp = connect(
