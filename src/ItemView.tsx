@@ -4,9 +4,9 @@ import {Helpers} from "./helpers";
 import { SortDirection, SortProperty, SoloClassShorthand, GloomhavenItem, GloomhavenItemSlot, GloomhavenItemSourceType } from "./State/Types";
 import { SpoilerFilter, OldSpoilerFilter } from './State/SpoilerFilter';
 import { connect } from 'react-redux';
-import { ItemViewState } from './State/State';
-import { storeItems, storeImportModalOpen, storeFilterSlot, storeSortingProperty, storeFilterSearch, storeShareLockSpoilerPanel } from './State/Actions/ItemViewActions';
-import { storeSpoilerFilter, storeProsperity, storeSoloClass, storeItem, storeItemsInUse, storeAll, storeEnableStoreStockManagement, storeDisplayAs, storeDiscount } from './State/Actions/SpoilerFilterActions';
+import { ItemViewState } from './State/ItemViewState';
+import { storeItems, storeImportModalOpen, storeFilterSlot, storeSortingProperty, storeFilterSearch, storeShareLockSpoilerPanel } from './State/ItemViewState';
+import { storeSpoilerFilter, storeProsperity, storeSoloClass, storeItem, storeItemsInUse, storeAll, storeEnableStoreStockManagement, storeDisplayAs, storeDiscount } from './State/SpoilerFilter';
 
 const gloomhavenItemSlots: Array<GloomhavenItemSlot> = ['Head', 'Body', 'Legs', 'One Hand', 'Two Hands', 'Small Item'];
 
@@ -69,7 +69,9 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
         sources = Helpers.uniqueArray(sources);
 
         this.props.dispatch(storeItems(items));
-        this.props.dispatch(storeSpoilerFilter(this.restoreFromLocalStorage()));
+        this.restoreFromLocalStorage();
+
+        this.props.dispatch(storeImportModalOpen(ItemView.parseHash() != undefined));
     }
 
     static parseHash(): SpoilerFilter | undefined {
@@ -87,12 +89,12 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
         if (hashConfig !== undefined) {
             localStorage.setItem(this.filterLocalStorageKey, JSON.stringify(hashConfig));
             this.props.dispatch(storeImportModalOpen(false));
-            this.props.dispatch(storeSpoilerFilter(this.restoreFromLocalStorage()));
+            this.restoreFromLocalStorage();
         }
         location.hash = '';
     }
 
-    restoreFromLocalStorage(): SpoilerFilter {
+    restoreFromLocalStorage() {
         const storage = localStorage.getItem(this.filterLocalStorageKey);
 
         const initialSpoilerFilter: SpoilerFilter = {
@@ -106,6 +108,8 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
             enableStoreStockManagement: false,
             lockSpoilerPanel: false,
         };
+
+        let spoilerFilter = initialSpoilerFilter;
 
         if (typeof storage === 'string') {
             const configFromStorage: OldSpoilerFilter = JSON.parse(storage);
@@ -131,10 +135,10 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
                 configFromStorage.item = items;
             }
 
-            return Object.assign({}, initialSpoilerFilter, configFromStorage);
+            spoilerFilter = Object.assign({}, initialSpoilerFilter, configFromStorage);
         }
 
-        return initialSpoilerFilter;
+        this.props.dispatch(storeSpoilerFilter(spoilerFilter));
     }
 
     static deSpoilerItemSource(source:string): string {
