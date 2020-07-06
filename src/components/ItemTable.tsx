@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../State/Reducer';
 import { storeSortingProperty } from '../State/ItemViewState';
 import ItemManagement from './ItemManagement';
-import { Helpers } from '../helpers';
+import { Helpers, getSlotImageSrc } from '../helpers';
 
 type Props = {
     items : GloomhavenItem[];
@@ -13,7 +13,7 @@ type Props = {
 
 const ItemTable = (props:Props) => {
     const {items} = props;
-    const { enableStoreStockManagement, discount, itemsInUse } = useSelector<RootState>( state => state.spoilerFilter) as RootState['spoilerFilter'];
+    const { enableStoreStockManagement, discount } = useSelector<RootState>( state => state.spoilerFilter) as RootState['spoilerFilter'];
     const { sorting } = useSelector<RootState>( state => state.itemViewState) as RootState['itemViewState'];
     const dispatch = useDispatch();
 
@@ -31,33 +31,9 @@ const ItemTable = (props:Props) => {
         sorting.property = property;
         dispatch(storeSortingProperty(property));
     }
-    
-    const getSlotImageSrc = (slot: GloomhavenItemSlot):string => {
-        let src: string;
-        switch (slot) {
-            case "Head":
-                src = 'head';
-                break;
-            case "Body":
-                src = 'body';
-                break;
-            case "Legs":
-                src = 'legs';
-                break;
-            case "One Hand":
-                src = '1h';
-                break;
-            case "Two Hands":
-                src = '2h';
-                break;
-            case "Small Item":
-                src = 'small';
-                break;
-            default:
-                throw new Error(`item slot unrecognized: ${slot}`);
-        }
-        return require('../img/icons/equipment_slot/'+src+'.png');
-    }
+
+    // TODO: see what can be done as local state?
+    // TODO: Move this into a component!
     const renderSummon = (item: GloomhavenItem) => {
         return item.summon === undefined ? null : (
             <React.Fragment>

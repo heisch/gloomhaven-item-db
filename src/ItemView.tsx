@@ -1,16 +1,13 @@
 import React, {Component} from 'react';
-import {Button, Checkbox, Form, Header, Icon, Image, Input, Message, Modal, Popup, Tab, Table, Item} from 'semantic-ui-react';
+import {Button, Form, Header, Icon, Image, Message, Modal, Tab} from 'semantic-ui-react';
 import {Helpers} from "./helpers";
-import { SortDirection, SortProperty, SoloClassShorthand, GloomhavenItem, GloomhavenItemSlot, GloomhavenItemSourceType } from "./State/Types";
+import { SortDirection, SoloClassShorthand, GloomhavenItem, GloomhavenItemSlot, GloomhavenItemSourceType } from "./State/Types";
 import { SpoilerFilter, OldSpoilerFilter } from './State/SpoilerFilter';
 import { connect } from 'react-redux';
 import { ItemViewState } from './State/ItemViewState';
-import { storeItems, storeImportModalOpen, storeFilterSlot, storeSortingProperty, storeFilterSearch, storeShareLockSpoilerPanel } from './State/ItemViewState';
-import { storeSpoilerFilter, storeProsperity, storeSoloClass, storeItem, storeItemsInUse, storeAll, storeEnableStoreStockManagement, storeDisplayAs, storeDiscount } from './State/SpoilerFilter';
-import ItemCard from './components/ItemCard';
-import ItemManagement from './components/ItemManagement';
-import ItemGrid from './components/ItemTable';
-import ItemTable from './components/ItemTable';
+import { storeItems, storeImportModalOpen, storeShareLockSpoilerPanel } from './State/ItemViewState';
+import { storeSpoilerFilter, storeProsperity, storeSoloClass, storeItem, storeAll, storeEnableStoreStockManagement } from './State/SpoilerFilter';
+import ItemList from './components/Tabs/ItemList';
 
 const gloomhavenItemSlots: Array<GloomhavenItemSlot> = ['Head', 'Body', 'Legs', 'One Hand', 'Two Hands', 'Small Item'];
 
@@ -149,52 +146,8 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
         return source.replace(/{(.{2})}/, (m, m1) => '<img class="icon" src="'+require('./img/classes/'+m1+'.png')+'" alt="" />');
     }
 
-    static getSlotImageSrc(slot: GloomhavenItemSlot):string {
-        let src: string;
-        switch (slot) {
-            case "Head":
-                src = 'head';
-                break;
-            case "Body":
-                src = 'body';
-                break;
-            case "Legs":
-                src = 'legs';
-                break;
-            case "One Hand":
-                src = '1h';
-                break;
-            case "Two Hands":
-                src = '2h';
-                break;
-            case "Small Item":
-                src = 'small';
-                break;
-            default:
-                throw new Error(`item slot unrecognized: ${slot}`);
-        }
-        return require('./img/icons/equipment_slot/'+src+'.png');
-    }
-
     setProsperityFilter(prosperity: number) {
         this.props.dispatch(storeProsperity(prosperity));
-    }
-
-    setFilterSlot(slot?: GloomhavenItemSlot) {
-        const state = this.props.itemViewState;
-        state.filter.slot = slot;
-        this.props.dispatch(storeFilterSlot(slot));
-    }
-
-    setSorting(property: SortProperty) {
-        const {sorting} = this.props.itemViewState;;
-        if (property === sorting.property) {
-            sorting.direction = sorting.direction === SortDirection.ascending ? SortDirection.descending : SortDirection.ascending;
-        } else {
-            sorting.direction = SortDirection.ascending;
-        }
-        sorting.property = property;
-        this.props.dispatch(storeSortingProperty(property));
     }
 
     toggleClassFilter(key: SoloClassShorthand) {
@@ -286,26 +239,6 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
             }
             return sorting.direction === SortDirection.ascending ? value : value * -1;
         });
-    }
-
-    getItemById(id: number): GloomhavenItem {
-        const {items} = this.props.itemViewState;
-        const item = items.find(i => i.id === id);
-        if (item === undefined) throw new Error('invalid item id');
-        return item;
-    }
-
-    toggleItemInUse(id: number, bit: number) {
-
-        const {itemsInUse} = this.props.spoilerFilter;
-
-        itemsInUse[id] = itemsInUse[id] & bit ? itemsInUse[id] ^ bit : itemsInUse[id] | bit;
-
-        if (itemsInUse[id] === 0) {
-            delete (itemsInUse[id]);
-        }
-
-        this.props.dispatch(storeItemsInUse(itemsInUse));
     }
 
     toggleShowAll() {
@@ -447,108 +380,12 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
         );
     }
 
-    renderSearchOptions() {
-        const {filter, sorting} = this.props.itemViewState;
-        const { displayAs, discount } = this.props.spoilerFilter;
-        return (
-            <React.Fragment>
-
-                <Form>
-                    <Form.Group inline>
-                        <label>Render as:</label>
-                        <Button.Group>
-                            <Button color={displayAs === 'list' ? 'blue' : undefined} onClick={() => {
-                                    this.props.dispatch(storeDisplayAs('list'));
-                                }}>List</Button>
-                            <Button.Or/>
-                            <Button color={displayAs === 'images' ? 'blue' : undefined} onClick={() => {
-                                    this.props.dispatch(storeDisplayAs('images'));
-                                }}>Images</Button>
-                        </Button.Group>
-                    </Form.Group>
-                    {displayAs === 'list' && <Form.Group inline>
-                        <label>Reputation Discount:</label>
-                        <Form.Select value={discount}
-                                options={[
-                                    {value: -5, text: "-5 gold"}, // (19 - 20)
-                                    {value: -4, text: "-4 gold"}, // (15 - 18)
-                                    {value: -3, text: "-3 gold"}, // (11 - 14)
-                                    {value: -2, text: "-2 gold"}, // (7 - 13)
-                                    {value: -1, text: "-1 gold"}, // (3 - 6)
-                                    {value: 0, text: "none"}, // (-2 - 2)
-                                    {value: 1, text: "+1 gold"}, // (-3 - -6)
-                                    {value: 2, text: "+2 gold"}, // (-7 - -10)
-                                    {value: 3, text: "+3 gold"}, // (-11 - -14)
-                                    {value: 4, text: "+4 gold"}, // (-15 - -18)
-                                    {value: 5, text: "+5 gold"}, // (-19 - -20)
-                                ]}
-                                onChange={(obj, e) => {
-                                    this.props.dispatch(storeDiscount(typeof e.value === 'number' ? e.value : 0));
-                                }}
-                        />
-                    </Form.Group>}
-                    {displayAs === 'images' && <Form.Group inline>
-                        <label>Sort By:</label>
-                        <Form.Select
-                            value={sorting.property}
-                            options={[
-                                {value: 'id', text: 'Item Number'},
-                                {value: 'slot', text: 'Equipment Slot'},
-                                {value: 'cost', text: 'Cost'},
-                                {value: 'name', text: 'Name'},
-                                {value: 'source', text: 'Source'},
-                                {value: 'use', text: 'Use'}
-                            ]}
-                            onChange={(obj, e) => this.setSorting(e.value as SortProperty)}
-                        />
-                    </Form.Group>}
-                    <Form.Group inline>
-                        <label>Filter Slot:</label>
-                        <Form.Radio label={'all'} checked={filter.slot === undefined} onChange={() => this.setFilterSlot(undefined)}/>
-                        {gloomhavenItemSlots.map(slot => <Form.Radio key={slot} label={<img className={'icon'} src={ItemView.getSlotImageSrc(slot)} alt={slot}/>} checked={filter.slot === slot} onChange={() => this.setFilterSlot(slot)} alt={slot}/>)}
-                    </Form.Group>
-                    <Form.Group inline>
-                        <label>Find Item:</label>
-                        <Input
-                            value={filter.search}
-                            onChange={(e) => this.props.dispatch(storeFilterSearch(e.target.value))}
-                            icon={{name: 'close', link: true, onClick: () => this.props.dispatch(storeFilterSearch(''))}}
-                            placeholder={'Search...'}
-                        />
-                    </Form.Group>
-                </Form>
-            </React.Fragment>
-        );
-    }
-
-    renderTable() {
-        const { displayAs, all} = this.props.spoilerFilter;
-        const items = this.getSortedAndFilteredItems();
-        return (
-            <React.Fragment>
-
-                {this.renderSearchOptions()}
-
-                {all &&  (
-                    <Message negative>
-                        <Message.Header><Icon name="exclamation triangle"/>Spoiler alert</Message.Header>
-                        You are currently viewing all possible items.
-                    </Message>
-                )}
-
-                {displayAs === 'list' ? <ItemTable items={items}/> : <ItemGrid items={items}/>}
-
-            </React.Fragment>
-        );
-    }
-
     render() {
-
         const {importModalOpen} = this.props.itemViewState; 
         const {all, lockSpoilerPanel} = this.props.spoilerFilter;
 
         let panes = [
-            { menuItem: 'Item List', render: () => <Tab.Pane className={all ? 'spoiler' : ''}>{this.renderTable()}</Tab.Pane> },
+            { menuItem: 'Item List', render: () => <Tab.Pane className={all ? 'spoiler' : ''}>{<ItemList items={this.getSortedAndFilteredItems()}/>}</Tab.Pane> },
             { menuItem: 'Spoiler Configuration', render: () => <Tab.Pane className={all ? 'spoiler' : ''}>{this.renderSpoilerFilters()}</Tab.Pane>},
             {
                 menuItem: 'Share',
