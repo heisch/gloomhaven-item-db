@@ -1,6 +1,5 @@
 import React from 'react'
 import { GloomhavenItem } from "../State/Types"
-import { Checkbox, Item } from "semantic-ui-react";
 import ItemManagement from "./ItemManagement";
 
 type Props = {

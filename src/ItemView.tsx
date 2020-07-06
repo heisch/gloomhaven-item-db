@@ -9,6 +9,8 @@ import { storeItems, storeImportModalOpen, storeFilterSlot, storeSortingProperty
 import { storeSpoilerFilter, storeProsperity, storeSoloClass, storeItem, storeItemsInUse, storeAll, storeEnableStoreStockManagement, storeDisplayAs, storeDiscount } from './State/SpoilerFilter';
 import ItemCard from './components/ItemCard';
 import ItemManagement from './components/ItemManagement';
+import ItemGrid from './components/ItemTable';
+import ItemTable from './components/ItemTable';
 
 const gloomhavenItemSlots: Array<GloomhavenItemSlot> = ['Head', 'Body', 'Legs', 'One Hand', 'Two Hands', 'Small Item'];
 
@@ -519,91 +521,9 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
         );
     }
 
-    static renderSummon(item: GloomhavenItem) {
-        return item.summon === undefined ? null : (
-            <React.Fragment>
-                <div className={'item-summon'}>
-                    <div><img src={require('./img/icons/general/heal.png')} className={'icon'} alt={'hp'}/>: {item.summon.hp}</div>
-                    <div><img src={require('./img/icons/general/move.png')} className={'icon'} alt={'hp'}/>: {item.summon.move}</div>
-                    <div><img src={require('./img/icons/general/attack.png')} className={'icon'} alt={'hp'}/>: {item.summon.attack}</div>
-                    <div><img src={require('./img/icons/general/range.png')} className={'icon'} alt={'hp'}/>: {item.summon.range || '-'}</div>
-                </div>
-            </React.Fragment>
-        );
-    }
-
     renderTable() {
-        const { sorting } = this.props.itemViewState;
-        const { displayAs, all, discount, enableStoreStockManagement, lockSpoilerPanel, itemsInUse} = this.props.spoilerFilter;
+        const { displayAs, all} = this.props.spoilerFilter;
         const items = this.getSortedAndFilteredItems();
-        const itemsListAsImages = () => (
-            <React.Fragment>
-                {items.map(item => (
-                    <ItemCard key={item.id} item={item}/>
-                    ))}
-            </React.Fragment>
-        );
-        const table = () => items.length === 0
-            ? (
-                <Message negative>
-                    No items found matching your filters and/or search criteria
-                </Message>
-            )
-            : (
-                <React.Fragment>
-                    <Table basic sortable celled className={'items-table'} unstackable>
-                        <Table.Header>
-                            <Table.Row>
-                                <Table.HeaderCell className={'id-col'} textAlign={'right'} onClick={() => this.setSorting('id')} sorted={sorting.property === 'id' ? sorting.direction : undefined}>#</Table.HeaderCell>
-                                <Table.HeaderCell className={'name-col'} selectable={false} onClick={() => this.setSorting('name')} sorted={sorting.property === 'name' ? sorting.direction : undefined}>Name</Table.HeaderCell>
-                                <Table.HeaderCell className={'slot-col'} textAlign={'center'} onClick={() => this.setSorting('slot')} sorted={sorting.property === 'slot' ? sorting.direction : undefined}>Slot</Table.HeaderCell>
-                                <Table.HeaderCell className={'cost-col'} textAlign={'right'} onClick={() => this.setSorting('cost')} sorted={sorting.property === 'cost' ? sorting.direction : undefined}>Cost</Table.HeaderCell>
-                                <Table.HeaderCell className={'use-col'} onClick={() => this.setSorting('use')} sorted={sorting.property === 'use' ? sorting.direction : undefined}>Use</Table.HeaderCell>
-                                <Table.HeaderCell className={'text-col'}>Effect</Table.HeaderCell>
-                                <Table.HeaderCell className={'source-col'}>Source</Table.HeaderCell>
-                                <Table.HeaderCell
-                                    className={'store-inventory-col'}>{enableStoreStockManagement ? 'In Use' : 'Stock'}</Table.HeaderCell>
-                            </Table.Row>
-                        </Table.Header>
-                        <Table.Body>
-                            {items.map(item => {
-                                const cost = discount !== 0
-                                    ? (<strong className={"ui text " + (item.cost > 0 ? 'blue' : 'orange')}>{item.cost + discount}g</strong>)
-                                    : (<strong>{item.cost}g</strong>);
-                                return (
-                                    <Table.Row key={item.id}>
-                                        <Table.Cell className={'id-col'} textAlign={'right'}>#{(item.id + '').padStart(3, '0')}</Table.Cell>
-                                        <Table.Cell className={'name-col'}>{item.name}</Table.Cell>
-                                        <Table.Cell className={'slot-col'} textAlign={'center'}><Image src={ItemView.getSlotImageSrc(item.slot)}/></Table.Cell>
-                                        <Table.Cell className={'cost-col'} textAlign={'right'}>{cost}</Table.Cell>
-                                        <Table.Cell className={'use-col'} textAlign={'center'}>
-                                            {item.spent && <img className={'icon'} src={require('./img/icons/general/spent.png')} alt={'icon spent'}/>}
-                                            {item.consumed && <img className={'icon'} src={require('./img/icons/general/consumed.png')} alt={'icon consumed'}/>}
-                                        </Table.Cell>
-                                        <Table.Cell className={'text-col'}>
-                                            <span dangerouslySetInnerHTML={{__html:item.descHTML}}/>
-                                            {item.minusOneCardsAdded &&
-                                            <React.Fragment><br/><span>Add {Helpers.numberAmountToText(item.minusOneCardsAdded)}
-                                                <img className={'icon'}
-                                                     src={require('./img/icons/general/modifier_minus_one.png')}
-                                                     alt={'modifier -1'}/> to your attack modifier deck.</span></React.Fragment>}
-                                            {item.faq && <Popup closeOnDocumentClick hideOnScroll trigger={<Icon name={'question circle'} className={'pink'}/>} header={'FAQ'} content={item.faq}/>}
-                                            {ItemView.renderSummon(item)}
-                                        </Table.Cell>
-                                        <Table.Cell className={'source-col'}>
-                                            {item.source.split("\n").map(s => <React.Fragment key={s}><span dangerouslySetInnerHTML={{__html: s}}/><br/></React.Fragment>)}
-                                        </Table.Cell>
-                                        <Table.Cell className={'store-inventory-col'} textAlign={'right'}>
-                                            <ItemManagement item={item}/>
-                                        </Table.Cell>
-                                    </Table.Row>
-                                );
-                            })}
-                        </Table.Body>
-                    </Table>
-                </React.Fragment>
-            );
-
         return (
             <React.Fragment>
 
@@ -616,7 +536,7 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
                     </Message>
                 )}
 
-                {displayAs === 'list' ? table() : itemsListAsImages()}
+                {displayAs === 'list' ? <ItemTable items={items}/> : <ItemGrid items={items}/>}
 
             </React.Fragment>
         );
