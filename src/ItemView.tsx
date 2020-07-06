@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Checkbox, Form, Header, Icon, Image, Input, Message, Modal, Popup, Tab, Table} from 'semantic-ui-react';
+import {Button, Checkbox, Form, Header, Icon, Image, Input, Message, Modal, Popup, Tab, Table, Item} from 'semantic-ui-react';
 import {Helpers} from "./helpers";
 import { SortDirection, SortProperty, SoloClassShorthand, GloomhavenItem, GloomhavenItemSlot, GloomhavenItemSourceType } from "./State/Types";
 import { SpoilerFilter, OldSpoilerFilter } from './State/SpoilerFilter';
@@ -7,6 +7,8 @@ import { connect } from 'react-redux';
 import { ItemViewState } from './State/ItemViewState';
 import { storeItems, storeImportModalOpen, storeFilterSlot, storeSortingProperty, storeFilterSearch, storeShareLockSpoilerPanel } from './State/ItemViewState';
 import { storeSpoilerFilter, storeProsperity, storeSoloClass, storeItem, storeItemsInUse, storeAll, storeEnableStoreStockManagement, storeDisplayAs, storeDiscount } from './State/SpoilerFilter';
+import ItemCard from './components/ItemCard';
+import ItemManagement from './components/ItemManagement';
 
 const gloomhavenItemSlots: Array<GloomhavenItemSlot> = ['Head', 'Body', 'Legs', 'One Hand', 'Two Hands', 'Small Item'];
 
@@ -170,22 +172,6 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
                 throw new Error(`item slot unrecognized: ${slot}`);
         }
         return require('./img/icons/equipment_slot/'+src+'.png');
-    }
-
-    static getItemImageSrc(item: GloomhavenItem): string {
-        let src = '';
-        let name = item.name.toLowerCase().replace(/\s/g, '-').replace(/'/, '');
-        if (item.id >= 64) {
-            src = require('../vendor/any2cards/images/items/64-151/' + name + '.png');
-        } else if (item.id <= 14) {
-            src = require('../vendor/any2cards/images/items/1-14/' + name + '.png');
-        } else {
-            let range_from = item.id % 7 === 0
-                ? Math.floor((item.id - 1) / 7) * 7
-                : Math.floor((item.id) / 7) * 7;
-            src = require('../vendor/any2cards/images/items/' + (range_from + 1) + '-' + (range_from + 7) + '/' + name + '.png');
-        }
-        return src;
     }
 
     setProsperityFilter(prosperity: number) {
@@ -553,24 +539,7 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
         const itemsListAsImages = () => (
             <React.Fragment>
                 {items.map(item => (
-                    <div key={item.id} className={'item-card-wrapper'}>
-                        <img key={item.id}
-                            src={ItemView.getItemImageSrc(item)}
-                            alt={item.name}
-                            className={'item-card'}/>
-
-                        {enableStoreStockManagement
-                            ? [...Array(item.count).keys()].map(index =>
-                                <Checkbox key={index}
-                                          className={'i'+index}
-                                          toggle
-                                          disabled={lockSpoilerPanel}
-                                          checked={!!(itemsInUse[item.id] & Math.pow(2, index))}
-                                          onChange={() => this.toggleItemInUse(item.id, Math.pow(2, index))}/>
-                            )
-                            : item.count
-                        }
-                    </div>
+                    <ItemCard key={item.id} item={item}/>
                     ))}
             </React.Fragment>
         );
@@ -625,16 +594,7 @@ class ItemView extends Component<ItemViewProps, ItemViewState> {
                                             {item.source.split("\n").map(s => <React.Fragment key={s}><span dangerouslySetInnerHTML={{__html: s}}/><br/></React.Fragment>)}
                                         </Table.Cell>
                                         <Table.Cell className={'store-inventory-col'} textAlign={'right'}>
-                                            {enableStoreStockManagement
-                                                ? [...Array(item.count).keys()].map(index =>
-                                                    <Checkbox key={index}
-                                                              toggle
-                                                              disabled={lockSpoilerPanel}
-                                                              checked={!!(itemsInUse[item.id] & Math.pow(2, index))}
-                                                              onChange={() => this.toggleItemInUse(item.id, Math.pow(2, index))}/>
-                                                )
-                                                : item.count
-                                            }
+                                            <ItemManagement item={item}/>
                                         </Table.Cell>
                                     </Table.Row>
                                 );
