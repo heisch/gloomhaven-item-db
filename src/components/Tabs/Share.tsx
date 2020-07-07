@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Form, Icon, Message } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
-import { storeShareLockSpoilerPanel } from '../../State/ItemViewState';
 import { RootState } from '../../State/Reducer';
 
 type Props = {
@@ -9,8 +8,8 @@ type Props = {
 
 const Share = (props:Props) => {
     const {} = props;
-    const { shareLockSpoilerPanel } = useSelector<RootState>( state => state.itemViewState) as RootState['itemViewState'];
     const spoilerFilter = useSelector<RootState>( state => state.spoilerFilter) as RootState['spoilerFilter'];
+    const [ shareLockSpoilerPanel, setShareLockSpoilerPanel] = useState(false);
 
     const shareUrl = location.origin + location.pathname + '#' + btoa(JSON.stringify({
         ...spoilerFilter,
@@ -27,7 +26,7 @@ const Share = (props:Props) => {
                         following your shared link.</label>
                     <Form.Checkbox id={'share-spoiler-toggle'} toggle className={'share-spoiler-toggle'}
                                     checked={shareLockSpoilerPanel}
-                                    onChange={() => dispatch( storeShareLockSpoilerPanel(!shareLockSpoilerPanel))}/>
+                                    onChange={() => setShareLockSpoilerPanel(!shareLockSpoilerPanel)}/>
                 </Form.Group>
                 {shareLockSpoilerPanel && false && <Message negative>
                     <Icon name="exclamation triangle"/>Do not open the link yourself or you will not be able to

@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { RootState } from '../State/Reducer';
 import { Modal, Header, Button, Icon, Tab } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
-import { storeImportModalOpen, storeItems } from '../State/ItemViewState';
 import SpoilerFilter, { OldSpoilerFilter, storeSpoilerFilter } from '../State/SpoilerFilter';
 import { SoloClassShorthand, SortDirection, GloomhavenItem, GloomhavenItemSlot, GloomhavenItemSourceType } from '../State/Types';
 import ItemList from './Tabs/ItemList';
@@ -15,8 +14,10 @@ const filterLocalStorageKey = 'ItemView:spoilerFilter';
 
 const MainView = () => {
     const { all, lockSpoilerPanel, prosperity, soloClass, item: spoilerFilterItem } = useSelector<RootState>( state => state.spoilerFilter) as RootState['spoilerFilter'];
-    const { items, importModalOpen, sorting, filter } = useSelector<RootState>( state => state.itemViewState) as RootState['itemViewState'];
+    const { sorting, filter } = useSelector<RootState>( state => state.itemViewState) as RootState['itemViewState'];
     const dispatch = useDispatch();
+    const [items, setItems] = useState<Array<GloomhavenItem>>([]);
+    const [importModalOpen, setImportModalOpen] = useState(false);
 
     const deSpoilerItemSource = (source:string): string => {
         return source.replace(/{(.{2})}/, (m, m1) => '<img class="icon" src="'+require('../img/classes/'+m1+'.png')+'" alt="" />');
@@ -71,10 +72,10 @@ const MainView = () => {
         sourceTypes = Helpers.uniqueArray(sourceTypes);
         sources = Helpers.uniqueArray(sources);
 
-        dispatch(storeItems(items));
+        setItems(items);
         restoreFromLocalStorage();
 
-        dispatch(storeImportModalOpen(parseHash() != undefined));
+        setImportModalOpen(parseHash() != undefined);
     },[]);
 
     // TODO: Use a Hook for filtering?
@@ -208,7 +209,7 @@ const MainView = () => {
         const hashConfig = parseHash();
         if (hashConfig !== undefined) {
             localStorage.setItem(filterLocalStorageKey, JSON.stringify(hashConfig));
-            dispatch(storeImportModalOpen(false));
+            setImportModalOpen(false);
             restoreFromLocalStorage();
         }
         location.hash = '';
@@ -237,7 +238,7 @@ const MainView = () => {
                 <Modal.Actions>
                     <Button basic color='red' inverted onClick={() => {
                         location.hash = '';
-                        dispatch(storeImportModalOpen(false));
+                        setImportModalOpen(false);
                     }}>
                         <Icon name='remove'/> No
                     </Button>
