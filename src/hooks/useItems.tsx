@@ -42,7 +42,6 @@ const useItems = (): Array<GloomhavenItem> => {
             if (item.id === 150 && soloClass.includes('BT')) return true;
             return spoilerFilterItem.includes(item.id);
         });
-        console.log("Here", spoilerFiltered);
         return spoilerFiltered.filter(item => {
             let hit = true;
             if (slot) { 
@@ -57,7 +56,6 @@ const useItems = (): Array<GloomhavenItem> => {
 
     const getSortedAndFilteredItems = () => {
         const items = getFilteredItems();
-        console.log("Filtered items", items);
         return (items.sort((itemA, itemB) => {
             let value = 0;
             switch (property) {

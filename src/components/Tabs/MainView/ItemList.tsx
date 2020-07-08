@@ -1,11 +1,11 @@
 import React from 'react'
-import { GloomhavenItem } from '../../State/Types';
+import { GloomhavenItem } from '../../../State/Types';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../State/Reducer';
-import SearchOptions from '../SearchOptions';
+import { RootState } from '../../../State/Reducer';
+import SearchOptions from './SearchOptions';
 import { Message, Icon } from 'semantic-ui-react';
-import ItemTable from '../ItemTable';
-import ItemGrid from '../ItemGrid';
+import ItemTable from './ItemTable';
+import ItemGrid from './ItemGrid';
 
 type Props = {
     items : GloomhavenItem[];

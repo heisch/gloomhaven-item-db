@@ -1,14 +1,25 @@
 import React from 'react'
-import { GloomhavenItem, SortProperty, SortDirection, GloomhavenItemSlot } from '../State/Types'
+import { GloomhavenItem, SortProperty, SortDirection, GloomhavenItemSlot } from '../../../State/Types'
 import { Message, Table, Popup, Icon, Image } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../State/Reducer';
-import { storeSortingProperty } from '../State/ItemViewState';
+import { RootState } from '../../../State/Reducer';
+import { storeSortingProperty } from '../../../State/ItemViewState';
 import ItemManagement from './ItemManagement';
-import { Helpers, getSlotImageSrc } from '../helpers';
+import { Helpers, getSlotImageSrc } from '../../../helpers';
 
 type Props = {
     items : GloomhavenItem[];
+}
+
+type IconProps = {
+    name:string;
+}
+
+const GHIcon = (props:IconProps) => {
+    const {name} = props;
+    return (
+        <img src={require( `../../../img/icons/general/${name}`)} className={'icon'} alt={name}/>
+    )
 }
 
 const ItemTable = (props:Props) => {
@@ -36,14 +47,14 @@ const ItemTable = (props:Props) => {
     // TODO: Move this into a component!
     const renderSummon = (item: GloomhavenItem) => {
         return item.summon === undefined ? null : (
-            <React.Fragment>
+            <>
                 <div className={'item-summon'}>
-                    <div><img src={require('../img/icons/general/heal.png')} className={'icon'} alt={'hp'}/>: {item.summon.hp}</div>
-                    <div><img src={require('../img/icons/general/move.png')} className={'icon'} alt={'hp'}/>: {item.summon.move}</div>
-                    <div><img src={require('../img/icons/general/attack.png')} className={'icon'} alt={'hp'}/>: {item.summon.attack}</div>
-                    <div><img src={require('../img/icons/general/range.png')} className={'icon'} alt={'hp'}/>: {item.summon.range || '-'}</div>
+                    <div><GHIcon name={'heal.png'}/>: {item.summon.hp}</div>
+                    <div><GHIcon name={'move.png'}/>: {item.summon.move}</div>
+                    <div><GHIcon name={'attack.png'}/>: {item.summon.attack}</div>
+                    <div><GHIcon name={'range.png'}/>: {item.summon.range || '-'}</div>
                 </div>
-            </React.Fragment>
+            </>
         );
     }
 
@@ -75,16 +86,14 @@ const ItemTable = (props:Props) => {
                                 <Table.Cell className={'slot-col'} textAlign={'center'}><Image src={getSlotImageSrc(item.slot)}/></Table.Cell>
                                 <Table.Cell className={'cost-col'} textAlign={'right'}>{cost}</Table.Cell>
                                 <Table.Cell className={'use-col'} textAlign={'center'}>
-                                    {item.spent && <img className={'icon'} src={require('../img/icons/general/spent.png')} alt={'icon spent'}/>}
-                                    {item.consumed && <img className={'icon'} src={require('../img/icons/general/consumed.png')} alt={'icon consumed'}/>}
+                                    {item.spent && <GHIcon name={'spent.png'}/>}
+                                    {item.consumed && <GHIcon name={'consumed.png'}/>}
                                 </Table.Cell>
                                 <Table.Cell className={'text-col'}>
                                     <span dangerouslySetInnerHTML={{__html:item.descHTML}}/>
                                     {item.minusOneCardsAdded &&
                                     <React.Fragment><br/><span>Add {Helpers.numberAmountToText(item.minusOneCardsAdded)}
-                                        <img className={'icon'}
-                                            src={require('../img/icons/general/modifier_minus_one.png')}
-                                            alt={'modifier -1'}/> to your attack modifier deck.</span></React.Fragment>}
+                                        <GHIcon name={'modifier_minus_one.png'}/>to your attack modifier deck.</span></React.Fragment>}
                                     {item.faq && <Popup closeOnDocumentClick hideOnScroll trigger={<Icon name={'question circle'} className={'pink'}/>} header={'FAQ'} content={item.faq}/>}
                                     {renderSummon(item)}
                                 </Table.Cell>

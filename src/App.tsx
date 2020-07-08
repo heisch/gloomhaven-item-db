@@ -5,7 +5,7 @@ import { Container } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css';
 import './App.css';
 import dbApp from "./State/Reducer";
-import MainView from './components/MainView';
+import MainView from './components/Tabs/MainView/MainView';
 
 const store = createStore(dbApp,  (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__());
 

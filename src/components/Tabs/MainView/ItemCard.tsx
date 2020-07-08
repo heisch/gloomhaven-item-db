@@ -1,5 +1,5 @@
 import React from 'react'
-import { GloomhavenItem } from "../State/Types"
+import { GloomhavenItem } from "../../../State/Types"
 import ItemManagement from "./ItemManagement";
 
 type Props = {
@@ -22,7 +22,7 @@ const ItemCard = (props:Props) => {
                 : Math.floor((item.id) / 7) * 7;
             folder = (range_from + 1) + '-' + (range_from + 7);
         }
-        const req = require(`../../vendor/any2cards/images/items/${folder}/${name}.png`);
+        const req = require(`../../../../vendor/any2cards/images/items/${folder}/${name}.png`);
         return req;
     }
 

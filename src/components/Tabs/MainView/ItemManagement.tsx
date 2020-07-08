@@ -1,9 +1,9 @@
 import React from 'react';
-import { GloomhavenItem } from "../State/Types";
+import { GloomhavenItem } from "../../../State/Types";
 import { Checkbox } from "semantic-ui-react";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../State/Reducer"
-import { storeItemsInUse } from "../State/SpoilerFilter";
+import { RootState } from "../../../State/Reducer"
+import { storeItemsInUse } from "../../../State/SpoilerFilter";
 
 type Props = {
     item : GloomhavenItem;

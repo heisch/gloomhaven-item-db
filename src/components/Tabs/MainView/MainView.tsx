@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { RootState } from '../State/Reducer';
+import { RootState } from '../../../State/Reducer';
 import { Modal, Header, Button, Icon, Tab } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
-import SpoilerFilter, { OldSpoilerFilter, storeSpoilerFilter } from '../State/SpoilerFilter';
-import { SoloClassShorthand } from '../State/Types';
-import ItemList from './Tabs/ItemList';
-import SpoilerFilters from './Tabs/SpoilerFilters';
-import Share from './Tabs/Share';
-import useItems  from '../hooks/useItems'
+import SpoilerFilter, { OldSpoilerFilter, storeSpoilerFilter } from '../../../State/SpoilerFilter';
+import { SoloClassShorthand } from '../../../State/Types';
+import ItemList from './ItemList';
+import SpoilerFilters from '../SpoilerFilters/SpoilerFilters';
+import Share from '../Share';
+import useItems  from '../../../hooks/useItems'
 
 const filterLocalStorageKey = 'ItemView:spoilerFilter';
 
