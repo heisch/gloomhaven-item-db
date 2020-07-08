@@ -20,7 +20,7 @@ export function storeFilterSearch(search: string) {
 }
 
 export function storeSortingProperty(property: SortProperty) {
-    return { type: STORE_FILTER_SLOT, property}
+    return { type: STORE_SORTING_PROPERTY, property}
 }
 
 export function storeImportModalOpen(importModalOpen: boolean) {

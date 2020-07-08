@@ -80,29 +80,41 @@ const initialSpoilerFilterState:SpoilerFilter = {
 };
 
 export function spoilerFilter(state = initialSpoilerFilterState, action:any) {
+    let newState = state;
     switch (action.type)
     {
         case STORE_SPOILER_FILTER:
-            return action.spoilerFilter;
+            newState = action.spoilerFilter;
+            break;
         case STORE_PROSPERITY:
-            return { ...state, prosperity: action.prosperity};
+            newState = { ...state, prosperity: action.prosperity};
+            break;
         case STORE_SOLO_CLASS:
-            return { ...state, soloClass: action.soloClass};
+            newState = { ...state, soloClass: action.soloClass};
+            break;
         case STORE_ITEM:
-            return { ...state, item: action.item};
+            newState = { ...state, item: action.item};
+            break;
         case STORE_ITEMS_IN_USE:
-            return { ...state, itemsInUse: action.itemsInUse};
+            newState = { ...state, itemsInUse: action.itemsInUse};
+            break;
         case STORE_ALL:
-            return { ...state, all: action.all};
+            newState = { ...state, all: action.all};
+            break;
         case STORE_ENABLE_STORE_STOCK_MANAGEMENT:
-            return {...state, enableStoreStockManagement: action.enableStoreStockManagement};
+            newState = {...state, enableStoreStockManagement: action.enableStoreStockManagement};
+            break;
         case STORE_DISPLAY_AS:
-            return {...state, displayAs: action.displayAs};
+            newState = {...state, displayAs: action.displayAs};
+            break;
         case STORE_DISCOUNT:
-            return {...state, discount: action.discount};
+            newState = {...state, discount: action.discount};
+            break;
         default:
             return state;
-    }    
+    }
+    localStorage.setItem('ItemView:spoilerFilter', JSON.stringify(newState));
+    return newState;
 }
 
 export default SpoilerFilter;
