@@ -5,6 +5,7 @@ import { RootState } from '../../../State/Reducer';
 import { storeEnableStoreStockManagement, storeAll, storeProsperity, storeSoloClass } from '../../../State/SpoilerFilter';
 import { SoloClassShorthand } from '../../../State/Types';
 import FilterCheckbox from './FilterCheckbox';
+import SpoilerFilterItemList from './SpoilerFilterItemList';
 
 type Props = {
 }
@@ -63,33 +64,9 @@ const SpoilerFilters = (props:Props) => {
                         )})}
                 </Form.Group>
 
-                {prosperity < 9 && <Form.Group inline className={'inline-break'}>
-                    <label>Prosperity Items:</label>
-                    {/* 15-70 prosperity 2-9*/}
-                    {[...Array(70 - (prosperity + 1) * 7).keys()].map((val) => {
-                        const id = val + 1 + (prosperity + 1) * 7;
-                        return <FilterCheckbox id={id}/>
-                    })}
-                </Form.Group>}
-
-                <Form.Group inline className={'inline-break'}>
-                    <label>Random Item Design:</label>
-                    {/* 71-95 random item design*/}
-                    {[...Array(25).keys()].map((val) => {
-                        const id = val + 71;
-                        return <FilterCheckbox id={id}/>
-                    })}
-                </Form.Group>
-
-
-                <Form.Group inline className={'inline-break'}>
-                    <label>Other Items:</label>
-                    {/* 96-133 other items*/}
-                    {[...Array(38).keys()].map((val) => {
-                        const id = val + 96;
-                        return <FilterCheckbox id={id}/>
-                    })}
-                </Form.Group>
+                <SpoilerFilterItemList start={(prosperity + 1) * 7 + 1} end={70} title="Prosperity Items"/>
+                <SpoilerFilterItemList start={71} end={95} title="Random Item Design"/>
+                <SpoilerFilterItemList start={96} end={133} title="Other Items"/>
 
                 <Form.Group inline className={'inline-break'}>
                     <label>Solo Class Items:</label>
