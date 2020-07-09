@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../State/Reducer';
 import { storeEnableStoreStockManagement, storeAll, storeProsperity, storeSoloClass } from '../../../State/SpoilerFilter';
 import { SoloClassShorthand } from '../../../State/Types';
-import FilterCheckbox from './FilterCheckbox';
 import SpoilerFilterItemList from './SpoilerFilterItemList';
 
 type Props = {

@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { RootState } from '../../../State/Reducer';
 import { Modal, Header, Button, Icon, Tab } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
-import SpoilerFilter, { OldSpoilerFilter, storeSpoilerFilter } from '../../../State/SpoilerFilter';
-import { SoloClassShorthand } from '../../../State/Types';
+import SpoilerFilter, { storeSpoilerFilter, restoreFromLocalStorage } from '../../../State/SpoilerFilter';
 import ItemList from './ItemList';
 import SpoilerFilters from '../SpoilerFilters/SpoilerFilters';
 import Share from '../Share';
@@ -18,7 +17,8 @@ const MainView = () => {
     const [importModalOpen, setImportModalOpen] = useState(false);
 
     useEffect( () => {
-        restoreFromLocalStorage();
+        const loadedSpoilerFilter = restoreFromLocalStorage();
+        dispatch(storeSpoilerFilter(loadedSpoilerFilter));
 
         setImportModalOpen(parseHash() != undefined);
     },[]);
@@ -33,62 +33,14 @@ const MainView = () => {
         }
     }
 
-    // TODO: Move this into it's own section?
-    const restoreFromLocalStorage = () => {
-        const storage = localStorage.getItem(filterLocalStorageKey);
-
-        const initialSpoilerFilter: SpoilerFilter = {
-            all: false,
-            prosperity: 1,
-            item: [],
-            itemsInUse: {},
-            soloClass: [],
-            discount: 0,
-            displayAs: 'list',
-            enableStoreStockManagement: false,
-            lockSpoilerPanel: false,
-        };
-
-        let spoilerFilter = initialSpoilerFilter;
-
-        if (typeof storage === 'string') {
-            const configFromStorage: OldSpoilerFilter = JSON.parse(storage);
-
-            // convert from old object style to array
-            if (!configFromStorage.soloClass.hasOwnProperty('length')) {
-                const soloClass: Array<SoloClassShorthand> = [];
-                Object.keys(configFromStorage.soloClass).forEach(k => {
-                    if (configFromStorage.soloClass[k] === true) {
-                        soloClass.push(k as SoloClassShorthand);
-                    }
-                });
-                configFromStorage.soloClass = soloClass;
-            }
-            // convert from old object style to array
-            if (!configFromStorage.item.hasOwnProperty('length')) {
-                const items: Array<number> = [];
-                Object.keys(configFromStorage.item).forEach(k => {
-                    if (configFromStorage.item[k] === true) {
-                        items.push(parseInt(k));
-                    }
-                });
-                configFromStorage.item = items;
-            }
-
-            spoilerFilter = Object.assign({}, initialSpoilerFilter, configFromStorage);
-        }
-
-        dispatch(storeSpoilerFilter(spoilerFilter));
-    }
-
-
     const importFromHash = () => {
         const hashConfig = parseHash();
         if (hashConfig !== undefined) {
             localStorage.setItem(filterLocalStorageKey, JSON.stringify(hashConfig));
             setImportModalOpen(false);
-            restoreFromLocalStorage();
-        }
+            const loadedSpoilerFilter = restoreFromLocalStorage();
+            dispatch(storeSpoilerFilter(loadedSpoilerFilter));
+            }
         location.hash = '';
     }
 

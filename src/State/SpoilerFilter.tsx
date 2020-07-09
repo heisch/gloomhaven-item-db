@@ -1,4 +1,7 @@
+import { Store } from 'redux'
 import { SoloClassShorthand, ItemViewDisplayType } from "./Types";
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from './Reducer';
 
 export const STORE_SPOILER_FILTER = 'STORE_SPOILER_FILTER';
 export const STORE_PROSPERITY = 'STORE_PROSPERITY';
@@ -45,6 +48,8 @@ export function storeDisplayAs(displayAs: string) {
 export function storeDiscount(discount: number) {
     return {type: STORE_DISCOUNT, discount};
 }
+
+const filterLocalStorageKey = 'ItemView:spoilerFilter';
 
 export interface SpoilerFilter {
     all: boolean
@@ -103,6 +108,53 @@ export function spoilerFilter(state = initialSpoilerFilterState, action:any) {
         default:
             return state;
     }
+}
+
+export const restoreFromLocalStorage = () => {
+    const storage = localStorage.getItem(filterLocalStorageKey);
+
+    const initialSpoilerFilter: SpoilerFilter = {
+        all: false,
+        prosperity: 1,
+        item: [],
+        itemsInUse: {},
+        soloClass: [],
+        discount: 0,
+        displayAs: 'list',
+        enableStoreStockManagement: false,
+        lockSpoilerPanel: false,
+    };
+
+    let spoilerFilter = initialSpoilerFilter;
+
+    if (typeof storage === 'string') {
+        const configFromStorage: OldSpoilerFilter = JSON.parse(storage);
+
+        // convert from old object style to array
+        if (!configFromStorage.soloClass.hasOwnProperty('length')) {
+            const soloClass: Array<SoloClassShorthand> = [];
+            Object.keys(configFromStorage.soloClass).forEach(k => {
+                if (configFromStorage.soloClass[k] === true) {
+                    soloClass.push(k as SoloClassShorthand);
+                }
+            });
+            configFromStorage.soloClass = soloClass;
+        }
+        // convert from old object style to array
+        if (!configFromStorage.item.hasOwnProperty('length')) {
+            const items: Array<number> = [];
+            Object.keys(configFromStorage.item).forEach(k => {
+                if (configFromStorage.item[k] === true) {
+                    items.push(parseInt(k));
+                }
+            });
+            configFromStorage.item = items;
+        }
+
+        spoilerFilter = Object.assign({}, initialSpoilerFilter, configFromStorage);
+    }
+
+    return spoilerFilter;
 }
 
 export default SpoilerFilter;
