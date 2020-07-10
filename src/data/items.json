@@ -351,7 +351,7 @@
     "count": 2,
     "cost": 50,
     "slot": "Small Item",
-    "source": "Prosperity 4",
+    "source": "Prosperity 4\nScenario #98 (Treasure #79)",
     "consumed": true,
     "summon": {
       "hp": 2,
@@ -417,7 +417,7 @@
     "count": 4,
     "cost": 40,
     "slot": "Small Item",
-    "source": "Prosperity 5",
+    "source": "Prosperity 5\nScenario #105 (Treasure #83)",
     "consumed": true,
     "desc": "During your attack, add +2 Attack to your entire Attack action."
   },
@@ -488,7 +488,7 @@
     "count": 4,
     "cost": 30,
     "slot": "Small Item",
-    "source": "Prosperity 6",
+    "source": "Prosperity 6\nReward from Scenario #104",
     "consumed": true,
     "desc": "During your turn, create any two elements. {any} {any}"
   },
@@ -528,7 +528,7 @@
     "count": 2,
     "cost": 60,
     "slot": "Head",
-    "source": "Prosperity 7",
+    "source": "Prosperity 7\nReward from Scenario #109",
     "desc": "You are immune to POISON and WOUND."
   },
   {
@@ -595,7 +595,7 @@
     "count": 2,
     "cost": 50,
     "slot": "Head",
-    "source": "Prosperity 8",
+    "source": "Prosperity 8\nOption from Scenario 100",
     "spent": true,
     "desc": "During your ranged attack, add +2 Range to your entire Attack action"
   },
@@ -667,7 +667,7 @@
     "count": 2,
     "cost": 50,
     "slot": "Head",
-    "source": "Prosperity 9",
+    "source": "Prosperity 9\nScenario #110 (Treasure #84)",
     "desc": "During your melee attack, add PUSH 1."
   },
   {
@@ -685,7 +685,7 @@
     "count": 2,
     "cost": 60,
     "slot": "Two Hands",
-    "source": "Prosperity 9",
+    "source": "Prosperity 9\nScenario #?? (Treasure #92)\nSection 106\"Strangler's Park\" in book",
     "desc": "During your single target melee attack, you can attack and single enemy within 2 hexes."
   },
   {
@@ -703,7 +703,7 @@
     "count": 2,
     "cost": 75,
     "slot": "Small Item",
-    "source": "Prosperity 9",
+    "source": "Prosperity 9\nScenario #?? (Treasure #89)\nSection 103 - 84\"Gateway to the Firmament\" in book",
     "desc": "At the end of your turn, play two cards from your hand and perform an additional turn this round based on your new leading initiative (which must be later than your previous initiative)."
   },
   {
@@ -895,7 +895,7 @@
     "count": 2,
     "cost": 30,
     "slot": "Small Item",
-    "source": "Random Item",
+    "source": "Random Item\nScenario #102 (Treasure #77)",
     "consumed": true,
     "desc": "During your turn, remove all negative conditions on yourself. This can be used while you have STUN."
   },
@@ -1106,7 +1106,7 @@
     "count": 2,
     "cost": 30,
     "slot": "Two Hands",
-    "source": "Reward From Scenario #65",
+    "source": "Reward From Scenario #65\nOption from Scenario 100",
     "consumed": true,
     "desc": "During your melee attack, add +2 Attack and PIERCE 2 to the entire Attack action"
   },
@@ -1248,7 +1248,7 @@
     "count": 1,
     "cost": 50,
     "slot": "Small Item",
-    "source": "City Event 03",
+    "source": "City Event 03\nOption from Scenario 100",
     "consumed": true,
     "desc": "During your turn, disarm all traps within Range 2."
   },
@@ -1258,7 +1258,7 @@
     "count": 1,
     "cost": 40,
     "slot": "Small Item",
-    "source": "City Event 43",
+    "source": "City Event 43\nOption from Scenario 100",
     "consumed": true,
     "desc": "During your turn, POISON all adjacent enemies."
   },
@@ -1518,6 +1518,132 @@
     "source": "Reward from Solo Scenario #17 — {BT}",
     "spent": true,
     "desc": "After performing a Command action, play one card from your hand and immediately perform the same side of the card (top or bottom) as the Command action.",
-    "soloItem" : "BT"
+    "soloItem": "BT"
+  },
+  {
+    "id": 152,
+    "name": "Ring of Duality",
+    "count": 1,
+    "cost": 50,
+    "slot": "Small Item",
+    "source": "Reward from Scenario #??\nSection 125 \"A locked chest\" in book",
+    "consumed": true,
+    "desc": "After performing the top action of any ability card, you may immediately peform the bottom action of the same card. This item cannot be used if both actions trigger a lot card icon {consumed}."
+  },
+  {
+    "id": 153,
+    "name": "Minor Antidote",
+    "count": 2,
+    "cost": 25,
+    "slot": "Small Item",
+    "source": "Reward From Scenario #99",
+    "desc": "The next three times you would gain POISON prevent the condition."
+  },
+  {
+    "id": 154,
+    "name": "Major Antidote",
+    "count": 2,
+    "cost": 50,
+    "slot": "Small Item",
+    "source": "Reward from Scenario #105",
+    "desc": "The next five times you would gain POISON prevent the condition."
+  },
+  {
+    "id": 155,
+    "name": "Curseward Armor",
+    "count": 1,
+    "cost": 75,
+    "slot": "Body",
+    "source": "Reward from Scenario #108",
+    "desc": "You are immune to CURSE, even if the item is spent. On the next three sources of damage from attacks targeting you gain Shield 1.",
+    "spent": true,
+    "minusOneCardsAdded": 3
+  },
+  {
+    "id": 156,
+    "name": "Elemental Claymore",
+    "count": 2,
+    "cost": 50,
+    "slot": "Two Hands",
+    "source": "Unknown",
+    "desc": "During your melee attack, {anyX} to add +2 Attack to a single attack."
+  },
+  {
+    "id": 157,
+    "name": "Ancient Bow",
+    "count": 2,
+    "cost": 40,
+    "slot": "Two Hands",
+    "source": "Scenario #?? (Treasure #78)\nSection 32\"Collapsed Atrium\" in book",
+    "desc": "During your ranged attack, add +2 Attack, CURSE, and WOUND to a single attack.",
+    "consumed": true
+  },
+  {
+    "id": 158,
+    "name": "Rejuvenation Greaves",
+    "count": 2,
+    "cost": 35,
+    "slot": "Legs",
+    "source": "Scenario #111 (Treasure #82)",
+    "desc": "During your movement, add +2 Move to the movement and gain REGENERATE.",
+    "spent": true
+  },
+  {
+    "id": 159,
+    "name": "Scroll of Haste",
+    "count": 2,
+    "cost": 30,
+    "slot": "Small Item",
+    "source": "Scenario #103 (Treasure #81)",
+    "desc": "During any one ally's movement, add +2 Move to the movement.",
+    "consumed": true
+  },
+  {
+    "id": 160,
+    "name": "Cutpurse Dagger",
+    "count": 1,
+    "cost": 45,
+    "slot": "One Hand",
+    "source": "Unknown",
+    "desc": "When you kill a monster during your turn, gain one money token.",
+    "spent": true
+  },
+  {
+    "id": 161,
+    "name": "Throwing Axe",
+    "count": 2,
+    "cost": 35,
+    "slot": "One Hand",
+    "source": "Reward from Scenario #108",
+    "desc": "During your single-target melee attack action, add Range 3 to the attack.",
+    "consumed": true
+  },
+  {
+    "id": 162,
+    "name": "Rift Device",
+    "count": 1,
+    "cost": 50,
+    "slot": "Small Item",
+    "source": "Reward from Scenario #??\nSection 62 \"Mechanical Splendor\"in book.",
+    "desc": "During your turn, Teleport to any unoccupied hex withing 4 hexes of you.",
+    "consumed": true
+  },
+  {
+    "id": 163,
+    "name": "Crystal Tiara",
+    "count": 1,
+    "cost": 75,
+    "slot": "Head",
+    "source": "Reward from Scenario #110",
+    "desc": "When you peform a long or short rest, gain STRENGTHEN."
+  },
+  {
+    "id": 164,
+    "name": "Basin of Prophecy",
+    "count": 1,
+    "cost": 50,
+    "slot": "Two Hands",
+    "source": "Reward from Solo Scenario #18 — {DR}",
+    "desc": "When you reveal cards from any deck, reveal one additional card."
   }
 ]
