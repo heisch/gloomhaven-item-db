@@ -685,7 +685,7 @@
     "count": 2,
     "cost": 60,
     "slot": "Two Hands",
-    "source": "Prosperity 9\nScenario #?? (Treasure #92)\nSection 106\"Strangler's Park\" in book",
+    "source": "Prosperity 9\nScenario #?? (Treasure #92)\nSection 132 -> g106\"Strangler's Park\" in book",
     "desc": "During your single target melee attack, you can attack and single enemy within 2 hexes."
   },
   {
@@ -703,7 +703,7 @@
     "count": 2,
     "cost": 75,
     "slot": "Small Item",
-    "source": "Prosperity 9\nScenario #?? (Treasure #89)\nSection 103 - 84\"Gateway to the Firmament\" in book",
+    "source": "Prosperity 9\nScenario #?? (Treasure #89)\nSection 103 -> 84\"Gateway to the Firmament\" in book",
     "desc": "At the end of your turn, play two cards from your hand and perform an additional turn this round based on your new leading initiative (which must be later than your previous initiative)."
   },
   {

@@ -38,6 +38,7 @@ const useItems = (): Array<GloomhavenItem> => {
             if (item.id === 148 && soloClass.includes('SB')) return true;
             if (item.id === 149 && soloClass.includes('EL')) return true;
             if (item.id === 150 && soloClass.includes('BT')) return true;
+            if (item.id === 164 && soloClass.includes('DR')) return true;
             return spoilerFilterItem.includes(item.id);
         });
         return spoilerFiltered.filter(item => {
