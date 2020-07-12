@@ -1644,6 +1644,7 @@
     "cost": 50,
     "slot": "Two Hands",
     "source": "Reward from Solo Scenario #18 — {DR}",
-    "desc": "When you reveal cards from any deck, reveal one additional card."
+    "desc": "When you reveal cards from any deck, reveal one additional card.",
+    "soloItem": "DR"
   }
 ]

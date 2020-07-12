@@ -21,24 +21,7 @@ const useItems = (): Array<GloomhavenItem> => {
         if (all) return initialItems;
         const spoilerFiltered = initialItems.filter(item => {
             if (item.id <= (prosperity+1)*7) return true;
-            if (item.id === 134 && soloClass.includes('BR')) return true;
-            if (item.id === 135 && soloClass.includes('TI')) return true;
-            if (item.id === 136 && soloClass.includes('SW')) return true;
-            if (item.id === 137 && soloClass.includes('SC')) return true;
-            if (item.id === 138 && soloClass.includes('CH')) return true;
-            if (item.id === 139 && soloClass.includes('MT')) return true;
-            if (item.id === 140 && soloClass.includes('SK')) return true;
-            if (item.id === 141 && soloClass.includes('QM')) return true;
-            if (item.id === 142 && soloClass.includes('SU')) return true;
-            if (item.id === 143 && soloClass.includes('NS')) return true;
-            if (item.id === 144 && soloClass.includes('PH')) return true;
-            if (item.id === 145 && soloClass.includes('BE')) return true;
-            if (item.id === 146 && soloClass.includes('SS')) return true;
-            if (item.id === 147 && soloClass.includes('DS')) return true;
-            if (item.id === 148 && soloClass.includes('SB')) return true;
-            if (item.id === 149 && soloClass.includes('EL')) return true;
-            if (item.id === 150 && soloClass.includes('BT')) return true;
-            if (item.id === 164 && soloClass.includes('DR')) return true;
+            if (item.soloItem && soloClass.includes(item.soloItem)) return true;
             return spoilerFilterItem.includes(item.id);
         });
         return spoilerFiltered.filter(item => {
