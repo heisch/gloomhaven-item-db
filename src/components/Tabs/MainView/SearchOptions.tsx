@@ -3,7 +3,7 @@ import { Form, Button, Input } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { storeDisplayAs, storeDiscount } from '../../../State/SpoilerFilter';
 import { RootState } from '../../../State/Reducer';
-import { storeFilterSearch, storeFilterSlot } from '../../../State/ItemViewState';
+import { storeFilterSearch, storeFilterSlots } from '../../../State/ItemViewState';
 import { getSlotImageSrc } from '../../../helpers';
 import { GloomhavenItemSlot, SortProperty} from '../../../State/Types';
 
@@ -15,12 +15,29 @@ const SearchOptions = (props:Props) => {
     const { setSorting } =  props;
     const gloomhavenItemSlots: Array<GloomhavenItemSlot> = ['Head', 'Body', 'Legs', 'One Hand', 'Two Hands', 'Small Item'];
     const { displayAs, discount } = useSelector<RootState>( state => state.spoilerFilter) as RootState['spoilerFilter'];
-    const { property, search, slot } = useSelector<RootState>( state => state.itemViewState) as RootState['itemViewState'];
+    const { property, search, slots } = useSelector<RootState>( state => state.itemViewState) as RootState['itemViewState'];
     const dispatch = useDispatch();
 
     const setFilterSlot = (slot?: GloomhavenItemSlot) => {
-        dispatch(storeFilterSlot(slot));
+        if (!slot)
+        {
+            dispatch(storeFilterSlots(undefined));    
+            return;
+        }
+        let newSlots = slots ? slots : [];
+        const index = newSlots.indexOf(slot);
+        if (index !== -1) {
+            newSlots.splice(index, 1);
+        } else {
+            newSlots.push(slot);
+        }
+        if (newSlots.length === 0)
+        {
+            newSlots = undefined;
+        }
+        dispatch(storeFilterSlots(newSlots));
     }
+
 
     return (
         <React.Fragment>
@@ -75,11 +92,11 @@ const SearchOptions = (props:Props) => {
                 </Form.Group>}
                 <Form.Group inline>
                     <label>Filter Slot:</label>
-                    <Form.Radio label={'all'} checked={slot === undefined} onChange={() => setFilterSlot(undefined)}/>
+                    <Form.Radio label={'all'} checked={slots === undefined} onChange={() => setFilterSlot(undefined)}/>
                     {gloomhavenItemSlots.map(itemSlot => 
-                        <Form.Radio key={itemSlot}
+                        <Form.Checkbox key={itemSlot}
                                     label={<img className={'icon'} src={getSlotImageSrc(itemSlot)} alt={itemSlot}/>} 
-                                    checked={itemSlot === slot} 
+                                    checked={slots === undefined ? false : slots && slots.includes(itemSlot)} 
                                     onChange={() => setFilterSlot(itemSlot)} alt={itemSlot}/>)
                     }
                 </Form.Group>

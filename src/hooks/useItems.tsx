@@ -9,7 +9,7 @@ const gloomhavenItemSlots: Array<GloomhavenItemSlot> = ['Head', 'Body', 'Legs', 
 const useItems = (): Array<GloomhavenItem> => {
 
     const { all, prosperity, soloClass, item: spoilerFilterItem } = useSelector<RootState>( state => state.spoilerFilter) as RootState['spoilerFilter'];
-    const { property, direction, slot, search } = useSelector<RootState>( state => state.itemViewState) as RootState['itemViewState'];
+    const { property, direction, slots, search } = useSelector<RootState>( state => state.itemViewState) as RootState['itemViewState'];
 
     const [initialItems, setInitialItems] = useState<Array<GloomhavenItem>>([]);
 
@@ -42,8 +42,8 @@ const useItems = (): Array<GloomhavenItem> => {
         });
         return spoilerFiltered.filter(item => {
             let hit = true;
-            if (slot) { 
-                hit = item.slot === slot;
+            if (slots) { 
+                hit = slots.includes(item.slot);
             }
             if (search.length > 2 && hit) { 
                 hit = (!!item.name.match(new RegExp(search, 'i')) || !!item.desc.match(new RegExp(search, 'i')));
