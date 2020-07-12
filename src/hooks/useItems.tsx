@@ -9,9 +9,7 @@ const gloomhavenItemSlots: Array<GloomhavenItemSlot> = ['Head', 'Body', 'Legs', 
 const useItems = (): Array<GloomhavenItem> => {
 
     const { all, prosperity, soloClass, item: spoilerFilterItem } = useSelector<RootState>( state => state.spoilerFilter) as RootState['spoilerFilter'];
-    const { sorting, filter } = useSelector<RootState>( state => state.itemViewState) as RootState['itemViewState'];
-    const { slot, search} = filter;
-    const { property, direction } = sorting;
+    const { property, direction, slot, search } = useSelector<RootState>( state => state.itemViewState) as RootState['itemViewState'];
 
     const [initialItems, setInitialItems] = useState<Array<GloomhavenItem>>([]);
 
@@ -60,7 +58,7 @@ const useItems = (): Array<GloomhavenItem> => {
             let value = 0;
             switch (property) {
                 case "name":
-                    value = itemA[property].localeCompare(itemB[property]);
+                    value = itemA["name"].localeCompare(itemB["name"]);
                     break;
                 case "slot":
                     if (gloomhavenItemSlots.indexOf(itemA.slot) === gloomhavenItemSlots.indexOf(itemB.slot)) {
@@ -70,9 +68,12 @@ const useItems = (): Array<GloomhavenItem> => {
                     }
                     break;
                 case "cost":
+                    if (itemA["cost"] === itemB["cost"]) return 0;
+                    value = itemA["cost"] > itemB["cost"] ? 1 : -1;
+                    break;
                 case "id":
-                    if (itemA[property] === itemB[property]) return 0;
-                    value = itemA[property] > itemB[property] ? 1 : -1;
+                    if (itemA["id"] === itemB["id"]) return 0;
+                    value = itemA["id"] > itemB["id"] ? 1 : -1;
                     break;
                 case "use":
                     // assign a dummy value to sort by

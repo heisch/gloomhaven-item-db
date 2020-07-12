@@ -3,12 +3,13 @@ import { GloomhavenItem, SortProperty, SortDirection, GloomhavenItemSlot } from 
 import { Message, Table, Popup, Icon, Image } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../State/Reducer';
-import { storeSortingProperty } from '../../../State/ItemViewState';
+import { storeSortingProperty, storeSortingDirection } from '../../../State/ItemViewState';
 import ItemManagement from './ItemManagement';
 import { Helpers, getSlotImageSrc } from '../../../helpers';
 
 type Props = {
     items : GloomhavenItem[];
+    setSorting : (newProperty: SortProperty) => void;
 }
 
 type IconProps = {
@@ -23,24 +24,14 @@ const GHIcon = (props:IconProps) => {
 }
 
 const ItemTable = (props:Props) => {
-    const {items} = props;
+    const {items, setSorting} = props;
     const { enableStoreStockManagement, discount } = useSelector<RootState>( state => state.spoilerFilter) as RootState['spoilerFilter'];
-    const { sorting } = useSelector<RootState>( state => state.itemViewState) as RootState['itemViewState'];
-    const dispatch = useDispatch();
+    const { property, direction } = useSelector<RootState>( state => state.itemViewState) as RootState['itemViewState'];
 
     if (items.length === 0) {
         return <Message negative>
             No items found matching your filters and/or search criteria
         </Message>
-    }
-    const setSorting = (property: SortProperty) => {
-        if (property === sorting.property) {
-            sorting.direction = sorting.direction === SortDirection.ascending ? SortDirection.descending : SortDirection.ascending;
-        } else {
-            sorting.direction = SortDirection.ascending;
-        }
-        sorting.property = property;
-        dispatch(storeSortingProperty(property));
     }
 
     // TODO: see what can be done as local state?
@@ -63,11 +54,11 @@ const ItemTable = (props:Props) => {
             <Table basic sortable celled className={'items-table'} unstackable>
                 <Table.Header>
                     <Table.Row>
-                        <Table.HeaderCell className={'id-col'} textAlign={'right'} onClick={() => setSorting('id')} sorted={sorting.property === 'id' ? sorting.direction : undefined}>#</Table.HeaderCell>
-                        <Table.HeaderCell className={'name-col'} selectable={false} onClick={() => setSorting('name')} sorted={sorting.property === 'name' ? sorting.direction : undefined}>Name</Table.HeaderCell>
-                        <Table.HeaderCell className={'slot-col'} textAlign={'center'} onClick={() => setSorting('slot')} sorted={sorting.property === 'slot' ? sorting.direction : undefined}>Slot</Table.HeaderCell>
-                        <Table.HeaderCell className={'cost-col'} textAlign={'right'} onClick={() => setSorting('cost')} sorted={sorting.property === 'cost' ? sorting.direction : undefined}>Cost</Table.HeaderCell>
-                        <Table.HeaderCell className={'use-col'} onClick={() => setSorting('use')} sorted={sorting.property === 'use' ? sorting.direction : undefined}>Use</Table.HeaderCell>
+                        <Table.HeaderCell className={'id-col'} textAlign={'right'} onClick={() => setSorting('id')} sorted={property === 'id' ? direction : undefined}>#</Table.HeaderCell>
+                        <Table.HeaderCell className={'name-col'} selectable={false} onClick={() => setSorting('name')} sorted={property === 'name' ? direction : undefined}>Name</Table.HeaderCell>
+                        <Table.HeaderCell className={'slot-col'} textAlign={'center'} onClick={() => setSorting('slot')} sorted={property === 'slot' ? direction : undefined}>Slot</Table.HeaderCell>
+                        <Table.HeaderCell className={'cost-col'} textAlign={'right'} onClick={() => setSorting('cost')} sorted={property === 'cost' ? direction : undefined}>Cost</Table.HeaderCell>
+                        <Table.HeaderCell className={'use-col'} onClick={() => setSorting('use')} sorted={property === 'use' ? direction : undefined}>Use</Table.HeaderCell>
                         <Table.HeaderCell className={'text-col'}>Effect</Table.HeaderCell>
                         <Table.HeaderCell className={'source-col'}>Source</Table.HeaderCell>
                         <Table.HeaderCell

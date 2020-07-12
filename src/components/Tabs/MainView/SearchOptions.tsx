@@ -3,29 +3,20 @@ import { Form, Button, Input } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { storeDisplayAs, storeDiscount } from '../../../State/SpoilerFilter';
 import { RootState } from '../../../State/Reducer';
-import { storeFilterSearch, storeSortingProperty, storeFilterSlot } from '../../../State/ItemViewState';
+import { storeFilterSearch, storeFilterSlot } from '../../../State/ItemViewState';
 import { getSlotImageSrc } from '../../../helpers';
-import { GloomhavenItemSlot, SortProperty, SortDirection } from '../../../State/Types';
+import { GloomhavenItemSlot, SortProperty} from '../../../State/Types';
 
 type Props = {
+    setSorting : (newProperty: SortProperty) => void;
 }
 
 const SearchOptions = (props:Props) => {
+    const { setSorting } =  props;
     const gloomhavenItemSlots: Array<GloomhavenItemSlot> = ['Head', 'Body', 'Legs', 'One Hand', 'Two Hands', 'Small Item'];
     const { displayAs, discount } = useSelector<RootState>( state => state.spoilerFilter) as RootState['spoilerFilter'];
-    const { sorting, filter } = useSelector<RootState>( state => state.itemViewState) as RootState['itemViewState'];
+    const { property, search, slot } = useSelector<RootState>( state => state.itemViewState) as RootState['itemViewState'];
     const dispatch = useDispatch();
-
-    // TODO: Double usage
-    const setSorting = (property: SortProperty) => {
-        if (property === sorting.property) {
-            sorting.direction = sorting.direction === SortDirection.ascending ? SortDirection.descending : SortDirection.ascending;
-        } else {
-            sorting.direction = SortDirection.ascending;
-        }
-        sorting.property = property;
-        dispatch(storeSortingProperty(property));
-    }
 
     const setFilterSlot = (slot?: GloomhavenItemSlot) => {
         dispatch(storeFilterSlot(slot));
@@ -70,7 +61,7 @@ const SearchOptions = (props:Props) => {
                 {displayAs === 'images' && <Form.Group inline>
                     <label>Sort By:</label>
                     <Form.Select
-                        value={sorting.property}
+                        value={property}
                         options={[
                             {value: 'id', text: 'Item Number'},
                             {value: 'slot', text: 'Equipment Slot'},
@@ -84,18 +75,18 @@ const SearchOptions = (props:Props) => {
                 </Form.Group>}
                 <Form.Group inline>
                     <label>Filter Slot:</label>
-                    <Form.Radio label={'all'} checked={filter.slot === undefined} onChange={() => setFilterSlot(undefined)}/>
-                    {gloomhavenItemSlots.map(slot => 
-                        <Form.Radio key={slot}
-                                    label={<img className={'icon'} src={getSlotImageSrc(slot)} alt={slot}/>} 
-                                    checked={filter.slot === slot} 
-                                    onChange={() => setFilterSlot(slot)} alt={slot}/>)
+                    <Form.Radio label={'all'} checked={slot === undefined} onChange={() => setFilterSlot(undefined)}/>
+                    {gloomhavenItemSlots.map(itemSlot => 
+                        <Form.Radio key={itemSlot}
+                                    label={<img className={'icon'} src={getSlotImageSrc(itemSlot)} alt={itemSlot}/>} 
+                                    checked={itemSlot === slot} 
+                                    onChange={() => setFilterSlot(itemSlot)} alt={itemSlot}/>)
                     }
                 </Form.Group>
                 <Form.Group inline>
                     <label>Find Item:</label>
                     <Input
-                        value={filter.search}
+                        value={search}
                         onChange={(e) => dispatch(storeFilterSearch(e.target.value))}
                         icon={{name: 'close', link: true, onClick: () => dispatch(storeFilterSearch(''))}}
                         placeholder={'Search...'}

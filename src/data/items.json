@@ -1347,7 +1347,8 @@
     "cost": 50,
     "slot": "One Hand",
     "source": "Reward from Solo Scenario #01 — {BR}",
-    "desc": "Any time you kill an enemy during your turn, gain Shield 1 for the rest of the round."
+    "desc": "Any time you kill an enemy during your turn, gain Shield 1 for the rest of the round.",
+    "soloItem" : "BR"
   },
   {
     "id": 135,
@@ -1357,7 +1358,8 @@
     "slot": "One Hand",
     "source": "Reward from Solo Scenario #02 — {TI}",
     "consumed": true,
-    "desc": "During your Heal action, double the value of the Heal."
+    "desc": "During your Heal action, double the value of the Heal.",
+    "soloItem" : "TI"
   },
   {
     "id": 136,
@@ -1367,7 +1369,8 @@
     "slot": "Small Item",
     "source": "Reward from Solo Scenario #03 — {SW}",
     "consumed": true,
-    "desc": "During your ranged attack, add +2 Attack and gain Advantage on the entire Attack action, but suffer 2 damage for each attack made."
+    "desc": "During your ranged attack, add +2 Attack and gain Advantage on the entire Attack action, but suffer 2 damage for each attack made.",
+    "soloItem" : "SW"
   },
   {
     "id": 137,
@@ -1376,7 +1379,8 @@
     "cost": 50,
     "slot": "One Hand",
     "source": "Reward from Solo Scenario #04 — {SC}",
-    "desc": "Any time you perform a melee attack, add PIERCE 1 to the Attack."
+    "desc": "Any time you perform a melee attack, add PIERCE 1 to the Attack.",
+    "soloItem" : "SC"
   },
   {
     "id": 138,
@@ -1386,7 +1390,8 @@
     "slot": "Head",
     "source": "Reward from Solo Scenario #05 — {CH}",
     "spent": true,
-    "desc": "During your action where an obstacle is created, create one additional obstacle and apply all effects of the action to it."
+    "desc": "During your action where an obstacle is created, create one additional obstacle and apply all effects of the action to it.",
+    "soloItem" : "CH"
   },
   {
     "id": 139,
@@ -1395,7 +1400,8 @@
     "cost": 50,
     "slot": "One Hand",
     "source": "Reward from Solo Scenario #06 — {MT}",
-    "desc": "Any time you perform an Augment action, add +1 Attack to the entire action."
+    "desc": "Any time you perform an Augment action, add +1 Attack to the entire action.",
+    "soloItem" : "MT"
   },
   {
     "id": 140,
@@ -1404,7 +1410,8 @@
     "cost": 50,
     "slot": "One Hand",
     "source": "Reward from Solo Scenario #07 — {SK}",
-    "desc": "When damaged by an attack, you may {lightX} to gain Shield 3 for the attack."
+    "desc": "When damaged by an attack, you may {lightX} to gain Shield 3 for the attack.",
+    "soloItem" : "SK"
   },
   {
     "id": 141,
@@ -1415,7 +1422,8 @@
     "source": "Reward from Solo Scenario #09 — {QM}",
     "consumed": true,
     "desc": "During your turn, you or any one ally may Refresh one of your spent or consumed items.",
-    "faq": "This item cannot be refreshed."
+    "faq": "This item cannot be refreshed.",
+    "soloItem" : "QN"
   },
   {
     "id": 142,
@@ -1425,7 +1433,8 @@
     "slot": "Small Item",
     "source": "Reward from Solo Scenario #10 — {SU}",
     "consumed": true,
-    "desc": "When a summon you own is damaged by an attack, it suffers no damage instead."
+    "desc": "When a summon you own is damaged by an attack, it suffers no damage instead.",
+    "soloItem" : "SU"
   },
   {
     "id": 143,
@@ -1435,7 +1444,8 @@
     "slot": "Small Item",
     "source": "Reward from Solo Scenario #11 — {NS}",
     "consumed": true,
-    "desc": "During your turn, gain INVISIBLE and create dark. {dark}"
+    "desc": "During your turn, gain INVISIBLE and create dark. {dark}",
+    "soloItem" : "NS"
   },
   {
     "id": 144,
@@ -1445,7 +1455,8 @@
     "slot": "Head",
     "source": "Reward from Solo Scenario #12 — {PH}",
     "spent": true,
-    "desc": "During your turn, POISON and CURSE one enemy within Range 3."
+    "desc": "During your turn, POISON and CURSE one enemy within Range 3.",
+    "soloItem" : "PH"
   },
   {
     "id": 145,
@@ -1454,7 +1465,8 @@
     "cost": 50,
     "slot": "Head",
     "source": "Reward from Solo Scenario #08 — {BE}",
-    "desc": "Any time you perform a melee attack and you have exactly 1 hit point, add +2 Attack to the Attack."
+    "desc": "Any time you perform a melee attack and you have exactly 1 hit point, add +2 Attack to the Attack.",
+    "soloItem" : "BE"
   },
   {
     "id": 146,
@@ -1463,7 +1475,8 @@
     "cost": 50,
     "slot": "Two Hands",
     "source": "Reward from Solo Scenario #13 — {SS}",
-    "desc": "After performing any song action, immediately perform an Attack 2 or Move 2 action."
+    "desc": "After performing any song action, immediately perform an Attack 2 or Move 2 action.",
+    "soloItem" : "SS"
   },
   {
     "id": 147,
@@ -1472,7 +1485,8 @@
     "cost": 50,
     "slot": "Body",
     "source": "Reward from Solo Scenario #14 — {DS}",
-    "desc": "Any time you perform a {Doom} action, MUDDLE the target of the {Doom}."
+    "desc": "Any time you perform a {Doom} action, MUDDLE the target of the {Doom}.",
+    "soloItem" : "DS"
   },
   {
     "id": 148,
@@ -1481,7 +1495,8 @@
     "cost": 50,
     "slot": "Body",
     "source": "Reward from Solo Scenario #15 — {SB}",
-    "desc": "Any time an ally performs a Medical Pack or Large Medical Pack action, they add +1 Heal to their Heal."
+    "desc": "Any time an ally performs a Medical Pack or Large Medical Pack action, they add +1 Heal to their Heal.",
+    "soloItem" : "SB"
   },
   {
     "id": 149,
@@ -1491,7 +1506,8 @@
     "slot": "Legs",
     "source": "Reward from Solo Scenario #16 — {EL}",
     "spent": true,
-    "desc": "If you move 5 or more hexes on your turn, create any element. {any}"
+    "desc": "If you move 5 or more hexes on your turn, create any element. {any}",
+    "soloItem" : "EL"
   },
   {
     "id": 150,
@@ -1501,6 +1517,7 @@
     "slot": "Two Hands",
     "source": "Reward from Solo Scenario #17 — {BT}",
     "spent": true,
-    "desc": "After performing a Command action, play one card from your hand and immediately perform the same side of the card (top or bottom) as the Command action."
+    "desc": "After performing a Command action, play one card from your hand and immediately perform the same side of the card (top or bottom) as the Command action.",
+    "soloItem" : "BT"
   }
 ]
