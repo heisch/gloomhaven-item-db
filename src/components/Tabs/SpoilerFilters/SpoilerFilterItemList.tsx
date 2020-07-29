@@ -13,7 +13,7 @@ const SpoilerFilterItemList = (props:Props) => {
 
     const checkBoxes = [];
     for (let i = start; i <= end; i++) {
-        checkBoxes.push(<FilterCheckbox id={i}/>);
+        checkBoxes.push(<FilterCheckbox key={`filter${i}`} id={i}/>);
     }
 
     if (start >= end) {

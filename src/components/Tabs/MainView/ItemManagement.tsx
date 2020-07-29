@@ -15,9 +15,9 @@ const ItemManagement = (props:Props) => {
     const dispatch = useDispatch();
 
     if (!enableStoreStockManagement) {
-        return <>
-                {item.count};
-                </>
+        return (<>
+                {item.count}
+                </>)
     }
 
     const toggleItemInUse = (id: number, bit: number) => {

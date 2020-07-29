@@ -16,7 +16,6 @@ const Share = (props:Props) => {
         lockSpoilerPanel: shareLockSpoilerPanel
     }));
 
-    const dispatch = useDispatch();
     return (
         <>
             <p>Here you can generate a link to this app with your current spoiler configuration.</p>

@@ -26,8 +26,6 @@ const ItemList = (props:Props) => {
                 newDirection = SortDirection.ascending;
             }
 
-            console.log(newProperty, newDirection);
-    
             dispatch(storeSortingProperty(newProperty));
             dispatch(storeSortingDirection(newDirection));
         }
