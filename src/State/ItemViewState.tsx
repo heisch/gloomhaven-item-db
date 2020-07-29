@@ -1,12 +1,12 @@
 import { GloomhavenItemSlot, SortDirection, SortProperty, GloomhavenItem } from "./Types";
 
-export const STORE_FILTER_SLOT = 'STORE_FILTER_SLOT';
+export const STORE_FILTER_SLOTS = 'STORE_FILTER_SLOTS';
 export const STORE_FILTER_SEARCH = 'STORE_FILTER_SEARCH';
 export const STORE_SORTING_PROPERTY = 'STORE_SORTING_PROPERTY'
 export const STORE_SORTING_DIRECTION = 'STORE_SORTING_DIRECTION'
 
-export function storeFilterSlot(slot?: GloomhavenItemSlot) {
-    return { type: STORE_FILTER_SLOT, slot}
+export function storeFilterSlots(slots?: Array<GloomhavenItemSlot>) {
+    return { type: STORE_FILTER_SLOTS, slots}
 }
 
 export function storeFilterSearch(search: string) {
@@ -23,14 +23,14 @@ export function storeSortingDirection(direction: SortDirection) {
 
 
 export interface ItemViewState {
-    slot?: GloomhavenItemSlot;
+    slots?: Array<GloomhavenItemSlot>;
     search: string;
     direction: SortDirection;
     property: SortProperty;
 }
 
 const initialItemViewState : ItemViewState = {
-    slot: undefined,
+    slots: undefined,
     search: '',
     direction: SortDirection.ascending,
     property: 'id'
@@ -39,8 +39,8 @@ const initialItemViewState : ItemViewState = {
 export function itemViewState(state = initialItemViewState, action:any) {
     switch (action.type)
     {
-        case STORE_FILTER_SLOT:
-            return { ...state, slot: action.slot};
+        case STORE_FILTER_SLOTS:
+            return { ...state, slots: action.slots};
         case STORE_FILTER_SEARCH:
             return { ...state, search: action.search};
         case STORE_SORTING_PROPERTY:

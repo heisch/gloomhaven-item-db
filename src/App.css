@@ -95,6 +95,10 @@ img.ui.image.icon.disabled {
     border-bottom: 2px solid #21ba45;
 }
 
+.ui.checkbox.checked .icon {
+    border-bottom: 2px solid #21ba45;
+}
+
 .ui.horizontal.list {
     display: block;
 }
