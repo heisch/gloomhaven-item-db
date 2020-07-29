@@ -1,4 +1,7 @@
+import { Store } from 'redux'
 import { SoloClassShorthand, ItemViewDisplayType } from "./Types";
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from './Reducer';
 
 export const STORE_SPOILER_FILTER = 'STORE_SPOILER_FILTER';
 export const STORE_PROSPERITY = 'STORE_PROSPERITY';
@@ -46,6 +49,8 @@ export function storeDiscount(discount: number) {
     return {type: STORE_DISCOUNT, discount};
 }
 
+const filterLocalStorageKey = 'ItemView:spoilerFilter';
+
 export interface SpoilerFilter {
     all: boolean
     prosperity: number
@@ -80,41 +85,76 @@ const initialSpoilerFilterState:SpoilerFilter = {
 };
 
 export function spoilerFilter(state = initialSpoilerFilterState, action:any) {
-    let newState = state;
     switch (action.type)
     {
         case STORE_SPOILER_FILTER:
-            newState = action.spoilerFilter;
-            break;
+            return action.spoilerFilter;
         case STORE_PROSPERITY:
-            newState = { ...state, prosperity: action.prosperity};
-            break;
+            return { ...state, prosperity: action.prosperity};
         case STORE_SOLO_CLASS:
-            newState = { ...state, soloClass: action.soloClass};
-            break;
+            return { ...state, soloClass: action.soloClass};
         case STORE_ITEM:
-            newState = { ...state, item: action.item};
-            break;
+            return { ...state, item: action.item};
         case STORE_ITEMS_IN_USE:
-            newState = { ...state, itemsInUse: action.itemsInUse};
-            break;
+            return { ...state, itemsInUse: action.itemsInUse};
         case STORE_ALL:
-            newState = { ...state, all: action.all};
-            break;
+            return { ...state, all: action.all};
         case STORE_ENABLE_STORE_STOCK_MANAGEMENT:
-            newState = {...state, enableStoreStockManagement: action.enableStoreStockManagement};
-            break;
+            return {...state, enableStoreStockManagement: action.enableStoreStockManagement};
         case STORE_DISPLAY_AS:
-            newState = {...state, displayAs: action.displayAs};
-            break;
+            return {...state, displayAs: action.displayAs};
         case STORE_DISCOUNT:
-            newState = {...state, discount: action.discount};
-            break;
+            return {...state, discount: action.discount};
         default:
             return state;
     }
-    localStorage.setItem('ItemView:spoilerFilter', JSON.stringify(newState));
-    return newState;
+}
+
+export const restoreFromLocalStorage = () => {
+    const storage = localStorage.getItem(filterLocalStorageKey);
+
+    const initialSpoilerFilter: SpoilerFilter = {
+        all: false,
+        prosperity: 1,
+        item: [],
+        itemsInUse: {},
+        soloClass: [],
+        discount: 0,
+        displayAs: 'list',
+        enableStoreStockManagement: false,
+        lockSpoilerPanel: false,
+    };
+
+    let spoilerFilter = initialSpoilerFilter;
+
+    if (typeof storage === 'string') {
+        const configFromStorage: OldSpoilerFilter = JSON.parse(storage);
+
+        // convert from old object style to array
+        if (!configFromStorage.soloClass.hasOwnProperty('length')) {
+            const soloClass: Array<SoloClassShorthand> = [];
+            Object.keys(configFromStorage.soloClass).forEach(k => {
+                if (configFromStorage.soloClass[k] === true) {
+                    soloClass.push(k as SoloClassShorthand);
+                }
+            });
+            configFromStorage.soloClass = soloClass;
+        }
+        // convert from old object style to array
+        if (!configFromStorage.item.hasOwnProperty('length')) {
+            const items: Array<number> = [];
+            Object.keys(configFromStorage.item).forEach(k => {
+                if (configFromStorage.item[k] === true) {
+                    items.push(parseInt(k));
+                }
+            });
+            configFromStorage.item = items;
+        }
+
+        spoilerFilter = Object.assign({}, initialSpoilerFilter, configFromStorage);
+    }
+
+    return spoilerFilter;
 }
 
 export default SpoilerFilter;

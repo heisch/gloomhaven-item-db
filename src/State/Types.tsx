@@ -33,5 +33,6 @@ export interface GloomhavenItem {
         attack: number,
         range: number
     }
+    soloItem?: SoloClassShorthand;
 }
 
