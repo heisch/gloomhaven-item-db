@@ -49,8 +49,6 @@ export function storeDiscount(discount: number) {
     return {type: STORE_DISCOUNT, discount};
 }
 
-const filterLocalStorageKey = 'ItemView:spoilerFilter';
-
 export interface SpoilerFilter {
     all: boolean
     prosperity: number
@@ -110,22 +108,10 @@ export function spoilerFilter(state = initialSpoilerFilterState, action:any) {
     }
 }
 
-export const restoreFromLocalStorage = () => {
+export const restoreFromLocalStorage = (filterLocalStorageKey:string) => {
     const storage = localStorage.getItem(filterLocalStorageKey);
 
-    const initialSpoilerFilter: SpoilerFilter = {
-        all: false,
-        prosperity: 1,
-        item: [],
-        itemsInUse: {},
-        soloClass: [],
-        discount: 0,
-        displayAs: 'list',
-        enableStoreStockManagement: false,
-        lockSpoilerPanel: false,
-    };
-
-    let spoilerFilter = initialSpoilerFilter;
+    let spoilerFilter = initialSpoilerFilterState;
 
     if (typeof storage === 'string') {
         const configFromStorage: OldSpoilerFilter = JSON.parse(storage);
@@ -151,7 +137,7 @@ export const restoreFromLocalStorage = () => {
             configFromStorage.item = items;
         }
 
-        spoilerFilter = Object.assign({}, initialSpoilerFilter, configFromStorage);
+        spoilerFilter = Object.assign({}, initialSpoilerFilterState, configFromStorage);
     }
 
     return spoilerFilter;
