@@ -1,9 +1,8 @@
 import React from 'react'
-import { GloomhavenItem, SortProperty, SortDirection, GloomhavenItemSlot } from '../../../State/Types'
+import { GloomhavenItem, SortProperty } from '../../../State/Types'
 import { Message, Table, Popup, Icon, Image } from 'semantic-ui-react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '../../../State/Reducer';
-import { storeSortingProperty, storeSortingDirection } from '../../../State/ItemViewState';
 import ItemManagement from './ItemManagement';
 import { Helpers, getSlotImageSrc } from '../../../helpers';
 
