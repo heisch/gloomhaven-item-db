@@ -18,8 +18,7 @@ const useItems = (): Array<GloomhavenItem> => {
     }
 
     const getFilteredItems = () => {
-        if (all) return initialItems;
-        const spoilerFiltered = initialItems.filter(item => {
+        const spoilerFiltered = all ? initialItems : initialItems.filter(item => {
             if (item.id <= (prosperity+1)*7) return true;
             if (item.soloItem && soloClass.includes(item.soloItem)) return true;
             return spoilerFilterItem.includes(item.id);
