@@ -6,8 +6,9 @@ import 'semantic-ui-css/semantic.min.css';
 import './App.css';
 import dbApp from "./State/Reducer";
 import MainView from './components/Tabs/MainView/MainView';
-import GameProvider, {GameType} from './components/Game/GameProvider';
+import GameProvider from './components/Game/GameProvider'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import { GameType } from './games';
 
 export const store = createStore(dbApp,  (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__());
 
@@ -18,12 +19,12 @@ const App = () => {
                 <Router>
                     <Switch>
                         <Route exact path="/">
-                            <GameProvider gameType={GameType.GH}>
+                            <GameProvider gameType={GameType.Gloomhaven}>
                                 <MainView/>
                             </GameProvider>
                         </Route>                    
                         <Route exact path="/jotl">
-                        <GameProvider gameType={GameType.JOTL}>
+                        <GameProvider gameType={GameType.JawsOfTheLion}>
                             <MainView/>
                         </GameProvider>
                         </Route>                    

@@ -3,17 +3,11 @@ import { Form, Button, Icon } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../State/Reducer';
 import { storeEnableStoreStockManagement, storeAll } from '../../../State/SpoilerFilter';
-import { useGame, GameType } from '../../Game/GameProvider';
-import GHSpoilerFilter from './GHSpoilerFilter';
-import JOTLSpoilerFilter from './JOTLSpoilerFilter';
+import { useGame } from '../../Game/GameProvider';
 
-type Props = {
-}
-
-const SpoilerFilters = (props:Props) => {
-    const {} = props;
+const SpoilerFilters = () => {
     const dispatch = useDispatch();
-    const gameType = useGame();
+    const { spoilerFilter} = useGame();
 
     const { enableStoreStockManagement, all } = useSelector<RootState>( state => state.spoilerFilter) as RootState['spoilerFilter'];
 
@@ -42,8 +36,7 @@ const SpoilerFilters = (props:Props) => {
                     }}/>
             </Form.Group>
 
-            {gameType == GameType.GH && <GHSpoilerFilter/>}
-            {gameType == GameType.JOTL && <JOTLSpoilerFilter/>}
+           {spoilerFilter}
       
         </Form>
     );
