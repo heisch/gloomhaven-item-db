@@ -7,55 +7,27 @@ import ItemList from './ItemList';
 import SpoilerFilters from '../SpoilerFilters/SpoilerFilters';
 import Share from '../Share';
 import useItems  from '../../../hooks/useItems'
-import {useGame, GameType } from '../../Game/GameProvider';
+import {useGame } from '../../Game/GameProvider';
 import {store} from '../../../App'
 
-const filterLocalStorageKey = 'ItemView:spoilerFilter';
-
 const MainView = () => {
-    const gameType = useGame();
+    const { localStorageKey, convertSavedData, name} = useGame();
     const { all, lockSpoilerPanel} = useSelector<RootState>( state => state.spoilerFilter) as RootState['spoilerFilter'];
-    console.log("Something", store);
     const dispatch = useDispatch();
     const items = useItems();
     const [importModalOpen, setImportModalOpen] = useState(false);
 
-    const getFilterStorageKey = () => {
-        return filterLocalStorageKey + "_" + gameType;
-    }
-
     useEffect( () => {
         store.subscribe (() => {
-            localStorage.setItem(getFilterStorageKey(), JSON.stringify(store.getState().spoilerFilter));
+            localStorage.setItem(localStorageKey, JSON.stringify(store.getState().spoilerFilter));
         });
-    }, [gameType]);
+    }, [localStorageKey]);
     
 
     useEffect( () => {
-        let loadedSpoilerFilter;
-
-        // For GH try to load the old key
-        if (gameType === GameType.GH) {
-            // First try to load fromt the old key
-            const loadedSpoilerFilterString = localStorage.getItem(filterLocalStorageKey)
-            localStorage.removeItem(filterLocalStorageKey);
-
-            // if it exists then it's a gloomhaven storage. Set it tot he new one
-            if (loadedSpoilerFilterString) {
-                localStorage.setItem(getFilterStorageKey(), loadedSpoilerFilterString);
-                loadedSpoilerFilter = JSON.parse(loadedSpoilerFilterString);
-            }
-        }
-
-        // if we still don't have one here, we're either non existent or we need to load it from the new one.
-        if (!loadedSpoilerFilter) {
-            loadedSpoilerFilter = restoreFromLocalStorage(getFilterStorageKey());
-        }
-        
-        if (loadedSpoilerFilter)
-        {
-            dispatch(storeSpoilerFilter(loadedSpoilerFilter));
-        }
+        convertSavedData(localStorageKey);
+        const loadedSpoilerFilter = restoreFromLocalStorage(localStorageKey);
+        dispatch(storeSpoilerFilter(loadedSpoilerFilter));
         setImportModalOpen(parseHash() != undefined);
     },[]);
 
@@ -72,10 +44,9 @@ const MainView = () => {
     const importFromHash = () => {
         const hashConfig = parseHash();
         if (hashConfig !== undefined) {
-            const filterStorageKey = getFilterStorageKey();
-            localStorage.setItem(filterStorageKey, JSON.stringify(hashConfig));
+            localStorage.setItem(localStorageKey, JSON.stringify(hashConfig));
             setImportModalOpen(false);
-            const loadedSpoilerFilter = restoreFromLocalStorage(filterStorageKey);
+            const loadedSpoilerFilter = restoreFromLocalStorage(localStorageKey);
             dispatch(storeSpoilerFilter(loadedSpoilerFilter));
         }
         location.hash = '';
@@ -93,7 +64,7 @@ const MainView = () => {
     
     return (
         <>
-            {gameType}
+            <Header size={'huge'} content={name}/>
             <Modal basic size='small' open={importModalOpen}>
                 <Header icon='cloud download' content='Apply Configuration from Link'/>
                 <Modal.Content>

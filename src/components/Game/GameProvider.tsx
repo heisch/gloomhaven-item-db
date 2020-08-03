@@ -1,12 +1,7 @@
-import React, { useContext, createContext, ReactNode } from 'react';
+import React, { useContext, createContext, ReactNode } from 'react'
+import {BaseGameData, GameType, gameDataTypes} from '../../games'
 
-export enum GameType
-{
-    GH = "gh",
-    JOTL= "jotl"
-}
-
-export const GameContext = createContext<GameType>(GameType.GH);
+export const GameContext = createContext<BaseGameData>(gameDataTypes[GameType.Gloomhaven]);
 
 export function useGame() {
     return useContext(GameContext);
@@ -19,7 +14,7 @@ type Props = {
 
 const GameProvider = (props:Props) => {
     const {gameType, children} = props;
-    return <GameContext.Provider value={gameType}>{children}</GameContext.Provider>
+    return <GameContext.Provider value={gameDataTypes[gameType]}>{children}</GameContext.Provider>
 }
  
 export default GameProvider;

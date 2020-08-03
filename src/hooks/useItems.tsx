@@ -3,14 +3,15 @@ import { useEffect, useState, useContext } from "react";
 import { Helpers } from "../helpers";
 import { useSelector } from "react-redux";
 import { RootState } from "../State/Reducer";
-import { useGame, GameType} from "../components/Game/GameProvider";
+import { useGame } from "../components/Game/GameProvider"
 
 const gloomhavenItemSlots: Array<GloomhavenItemSlot> = ['Head', 'Body', 'Legs', 'One Hand', 'Two Hands', 'Small Item'];
 
 const useItems = (): Array<GloomhavenItem> => {
 
-    const gameType = useGame();
-    const { all, prosperity, soloClass, item: spoilerFilterItem } = useSelector<RootState>( state => state.spoilerFilter) as RootState['spoilerFilter'];
+    const { isItemShown, dataFile} = useGame();
+    const spoilerFilter = useSelector<RootState>( state => state.spoilerFilter) as RootState['spoilerFilter'];
+    const { all, item: spoilerFilterItem } = spoilerFilter;
     const { property, direction, slots, search } = useSelector<RootState>( state => state.itemViewState) as RootState['itemViewState'];
 
     const [initialItems, setInitialItems] = useState<Array<GloomhavenItem>>([]);
@@ -21,9 +22,7 @@ const useItems = (): Array<GloomhavenItem> => {
 
     const getFilteredItems = () => {
         const spoilerFiltered = all ? initialItems : initialItems.filter(item => {
-            if (gameType === GameType.GH && item.id <= (prosperity+1)*7) return true;
-            if (gameType === GameType.JOTL && item.id <= 13) return true;
-            if (item.soloItem && soloClass.includes(item.soloItem)) return true;
+            if (isItemShown(item, spoilerFilter)) return true;
             return spoilerFilterItem.includes(item.id);
         });
         return spoilerFiltered.filter(item => {
@@ -74,7 +73,7 @@ const useItems = (): Array<GloomhavenItem> => {
 
 
     useEffect( () => {
-        const items: Array<GloomhavenItem> = require(`../data/items.${gameType}.json`);
+        const items: Array<GloomhavenItem> = dataFile;
 
         let slots: Array<string> = [];
         let sources: Array<string> = [];
