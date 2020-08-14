@@ -9,7 +9,7 @@ import SpoilerFilterItemList from './SpoilerFilterItemList';
 type Props = {
 }
 
-const GloomhavenSoloClassShorthands: Array<SoloClassShorthand> = ['BR', 'TI', 'SW', 'SC', 'CH', 'MT', 'SK', 'QM', 'SU', 'NS', 'PH', 'BE', 'SS', 'DS', 'SB', 'EL', 'BT'];
+const GloomhavenSoloClassShorthands: Array<SoloClassShorthand> = ['BR', 'TI', 'SW', 'SC', 'CH', 'MT', 'SK', 'QM', 'SU', 'NS', 'PH', 'BE', 'SS', 'DS', 'SB', 'EL', 'BT', 'DR'];
 
 const SpoilerFilters = (props:Props) => {
     const {} = props;
@@ -66,6 +66,7 @@ const SpoilerFilters = (props:Props) => {
                 <SpoilerFilterItemList start={(prosperity + 1) * 7 + 1} end={70} title="Prosperity Items"/>
                 <SpoilerFilterItemList start={71} end={95} title="Random Item Design"/>
                 <SpoilerFilterItemList start={96} end={133} title="Other Items"/>
+                <SpoilerFilterItemList start={152} end={163} title="Fallen Circles Itmes"/>
 
                 <Form.Group inline className={'inline-break'}>
                     <label>Solo Class Items:</label>

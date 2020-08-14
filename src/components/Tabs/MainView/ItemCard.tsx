@@ -12,7 +12,9 @@ const ItemCard = (props:Props) => {
     const getItemImageSrc = (): string => {
         let folder = "";
         let name = item.name.toLowerCase().replace(/\s/g, '-').replace(/'/, '');
-        if (item.id >= 64) {
+        if (item.id >= 152 && item.id <= 165) {
+            folder = '152-165';
+        } else if (item.id >= 64 && item.id <= 151) {
             folder = '64-151';
         } else if (item.id <= 14) {
             folder = '1-14';

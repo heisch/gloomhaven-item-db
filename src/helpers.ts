@@ -35,6 +35,7 @@ export class Helpers {
             "POISON",
             "PULL",
             "PUSH",
+            "REGENERATE",
             "ROLLING",
             "STRENGTHEN",
             "STUN",
@@ -72,10 +73,11 @@ export class Helpers {
         text = text.replace(/\bRecover\b/g, 'Recover<img class="icon" src="'+require('./img/icons/general/recover.png')+'" alt=""/>');
         text = text.replace(/\bJump\b/g, 'Jump<img class="icon" src="'+require('./img/icons/general/jump.png')+'" alt=""/>');
         text = text.replace(/\bFlying\b/g, 'Flying<img class="icon" src="'+require('./img/icons/general/flying.png')+'" alt=""/>');
+        text = text.replace(/\bTeleport\b/g, 'Teleport<img class="icon" src="'+require('./img/icons/general/teleport.png')+'" alt=""/>');
         text = text.replace(/{exp1}/g, '<img class="icon" src="'+require('./img/icons/general/experience_1.png')+'" alt=""/>');
         text = text.replace(/{Doom}/g, '<span class="doom">Doom</span>');
         text = text.replace(/{modifier_minus_one}/g, '<img class="icon" src="'+require('./img/icons/general/modifier_minus_one.png')+'" alt=""/>');
-
+        text = text.replace(/{consumed}/g, '<img class="icon" src="'+require('./img/icons/general/consumed.png')+'" alt=""/>');
         [
             'any',
             'earth',
