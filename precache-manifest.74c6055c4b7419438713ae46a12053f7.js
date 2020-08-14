@@ -1,23 +1,27 @@
 self.__precacheManifest = [
   {
-    "revision": "c1ce7f94edccf550aa83",
-    "url": "/gloomhaven-item-db/static/css/main.56f7f684.chunk.css"
+    "revision": "27ecbc9a435f1b023304",
+    "url": "/gloomhaven-item-db/static/css/main.5efa4d57.chunk.css"
   },
   {
-    "revision": "c1ce7f94edccf550aa83",
-    "url": "/gloomhaven-item-db/static/js/main.65fa0488.chunk.js"
+    "revision": "27ecbc9a435f1b023304",
+    "url": "/gloomhaven-item-db/static/js/main.14393a84.chunk.js"
   },
   {
     "revision": "967e9c5ebb01dc23ffc9",
     "url": "/gloomhaven-item-db/static/js/runtime~main.9dfa5d91.js"
   },
   {
-    "revision": "1d349496b090b84c173f",
+    "revision": "0f2b23939db2da607a79",
     "url": "/gloomhaven-item-db/static/css/2.559a5975.chunk.css"
   },
   {
-    "revision": "1d349496b090b84c173f",
-    "url": "/gloomhaven-item-db/static/js/2.c5adf713.chunk.js"
+    "revision": "0f2b23939db2da607a79",
+    "url": "/gloomhaven-item-db/static/js/2.5914fb47.chunk.js"
+  },
+  {
+    "revision": "dcea1ab82e8d1b9bb5f6f8d5975ea09f",
+    "url": "/gloomhaven-item-db/static/media/consumed.dcea1ab8.png"
   },
   {
     "revision": "62c56b6518b8bc6cf7e348f661d53ce3",
@@ -40,6 +44,10 @@ self.__precacheManifest = [
     "url": "/gloomhaven-item-db/static/media/refresh.13e654a6.png"
   },
   {
+    "revision": "6cb0632c144db36caf4dfe75cdfc0728",
+    "url": "/gloomhaven-item-db/static/media/teleport.6cb0632c.png"
+  },
+  {
     "revision": "2e5188841705bf999726e173b2a6eaaa",
     "url": "/gloomhaven-item-db/static/media/attack.2e518884.png"
   },
@@ -50,10 +58,6 @@ self.__precacheManifest = [
   {
     "revision": "da1ff518364ee160c3874ac66cdefc3b",
     "url": "/gloomhaven-item-db/static/media/check.da1ff518.png"
-  },
-  {
-    "revision": "dcea1ab82e8d1b9bb5f6f8d5975ea09f",
-    "url": "/gloomhaven-item-db/static/media/consumed.dcea1ab8.png"
   },
   {
     "revision": "c8ccbcbffea620963cc23942e73ff833",
@@ -176,6 +180,10 @@ self.__precacheManifest = [
     "url": "/gloomhaven-item-db/static/media/small.ca49eff5.png"
   },
   {
+    "revision": "faff92145777a3cbaf8e7367b4807987",
+    "url": "/gloomhaven-item-db/static/media/icons.faff9214.woff"
+  },
+  {
     "revision": "9c74e172f87984c48ddf5c8108cabe67",
     "url": "/gloomhaven-item-db/static/media/flags.9c74e172.png"
   },
@@ -188,32 +196,28 @@ self.__precacheManifest = [
     "url": "/gloomhaven-item-db/static/media/icons.8e3c7f55.eot"
   },
   {
-    "revision": "faff92145777a3cbaf8e7367b4807987",
-    "url": "/gloomhaven-item-db/static/media/icons.faff9214.woff"
-  },
-  {
     "revision": "cd6c777f1945164224dee082abaea03a",
     "url": "/gloomhaven-item-db/static/media/outline-icons.cd6c777f.woff2"
-  },
-  {
-    "revision": "b87b9ba532ace76ae9f6edfe9f72ded2",
-    "url": "/gloomhaven-item-db/static/media/icons.b87b9ba5.ttf"
   },
   {
     "revision": "701ae6abd4719e9c2ada3535a497b341",
     "url": "/gloomhaven-item-db/static/media/outline-icons.701ae6ab.eot"
   },
   {
-    "revision": "ad97afd3337e8cda302d10ff5a4026b8",
-    "url": "/gloomhaven-item-db/static/media/outline-icons.ad97afd3.ttf"
+    "revision": "962a1bf31c081691065fe333d9fa8105",
+    "url": "/gloomhaven-item-db/static/media/icons.962a1bf3.svg"
+  },
+  {
+    "revision": "b87b9ba532ace76ae9f6edfe9f72ded2",
+    "url": "/gloomhaven-item-db/static/media/icons.b87b9ba5.ttf"
   },
   {
     "revision": "ef60a4f6c25ef7f39f2d25a748dbecfe",
     "url": "/gloomhaven-item-db/static/media/outline-icons.ef60a4f6.woff"
   },
   {
-    "revision": "82f60bd0b94a1ed68b1e6e309ce2e8c3",
-    "url": "/gloomhaven-item-db/static/media/outline-icons.82f60bd0.svg"
+    "revision": "ad97afd3337e8cda302d10ff5a4026b8",
+    "url": "/gloomhaven-item-db/static/media/outline-icons.ad97afd3.ttf"
   },
   {
     "revision": "e8c322de9658cbeb8a774b6624167c2c",
@@ -224,12 +228,12 @@ self.__precacheManifest = [
     "url": "/gloomhaven-item-db/static/media/brand-icons.13db00b7.eot"
   },
   {
-    "revision": "a046592bac8f2fd96e994733faf3858c",
-    "url": "/gloomhaven-item-db/static/media/brand-icons.a046592b.woff"
+    "revision": "82f60bd0b94a1ed68b1e6e309ce2e8c3",
+    "url": "/gloomhaven-item-db/static/media/outline-icons.82f60bd0.svg"
   },
   {
-    "revision": "962a1bf31c081691065fe333d9fa8105",
-    "url": "/gloomhaven-item-db/static/media/icons.962a1bf3.svg"
+    "revision": "a046592bac8f2fd96e994733faf3858c",
+    "url": "/gloomhaven-item-db/static/media/brand-icons.a046592b.woff"
   },
   {
     "revision": "c5ebe0b32dc1b5cc449a76c4204d13bb",
@@ -278,6 +282,10 @@ self.__precacheManifest = [
   {
     "revision": "b2d02056d1d20eef3c78098c21d27bf4",
     "url": "/gloomhaven-item-db/static/media/push.b2d02056.png"
+  },
+  {
+    "revision": "f31bea2acb186443a819e4f5e4806ede",
+    "url": "/gloomhaven-item-db/static/media/regenerate.f31bea2a.png"
   },
   {
     "revision": "8f5e679c144fa329a4a34d5d5c2f895c",
@@ -1132,7 +1140,7 @@ self.__precacheManifest = [
     "url": "/gloomhaven-item-db/static/media/TI.909f63c4.png"
   },
   {
-    "revision": "28ec4f9dca342f92e1e9c35c254d1124",
+    "revision": "979064c81a7f790c2054e1609c92d3bc",
     "url": "/gloomhaven-item-db/index.html"
   }
 ];
