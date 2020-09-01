@@ -1,11 +1,9 @@
-import { Store } from 'redux'
 import { SoloClassShorthand, ItemViewDisplayType } from "./Types";
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from './Reducer';
 
 export const STORE_SPOILER_FILTER = 'STORE_SPOILER_FILTER';
 export const STORE_PROSPERITY = 'STORE_PROSPERITY';
 export const STORE_SOLO_CLASS = 'STORE_SOLO_CLASS'
+export const STORE_SCENARIO_COMPLETED = 'STORE_SCENARIO_COMPLETED'
 export const STORE_ITEM = 'STORE_ITEM'
 export const STORE_ITEMS_IN_USE = 'STORE_ITEMS_IN_USE'
 export const STORE_ALL = 'STORE_ALL'
@@ -23,6 +21,10 @@ export function storeProsperity(prosperity: number) {
 
 export function storeSoloClass(soloClass: Array<SoloClassShorthand>) {
     return { type: STORE_SOLO_CLASS, soloClass}
+}
+
+export function storeScenarioCompleted(scenarioCompleted: Array<number>) {
+    return { type: STORE_SCENARIO_COMPLETED, scenarioCompleted}
 }
 
 export function storeItem(item:Array<number>) {
@@ -61,6 +63,7 @@ export interface SpoilerFilter {
     displayAs: ItemViewDisplayType
     enableStoreStockManagement: boolean
     lockSpoilerPanel: boolean
+    scenarioCompleted: Array<number>
 }
 
 // todo: only keep during migration
@@ -80,6 +83,7 @@ const initialSpoilerFilterState:SpoilerFilter = {
     displayAs: 'list',
     enableStoreStockManagement: false,
     lockSpoilerPanel: false,
+    scenarioCompleted: [],
 };
 
 export function spoilerFilter(state = initialSpoilerFilterState, action:any) {
@@ -91,6 +95,8 @@ export function spoilerFilter(state = initialSpoilerFilterState, action:any) {
             return { ...state, prosperity: action.prosperity};
         case STORE_SOLO_CLASS:
             return { ...state, soloClass: action.soloClass};
+        case STORE_SCENARIO_COMPLETED:
+            return { ...state, scenarioCompleted: action.scenarioCompleted};
         case STORE_ITEM:
             return { ...state, item: action.item};
         case STORE_ITEMS_IN_USE:

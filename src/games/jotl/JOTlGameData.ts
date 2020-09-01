@@ -8,8 +8,17 @@ export class JOTLGameData extends BaseGameData {
     {
         super("Gloomhaven: Jaws of the Lion", "jotl");
     }
-    isItemShown(item:GloomhavenItem, {}:SpoilerFilter) {
-        return (item.id <= 13);
+    isItemShown(item:GloomhavenItem, {scenarioCompleted}:SpoilerFilter) {
+        if (item.id <=13 && scenarioCompleted.includes(2)) {
+            return true;
+        }
+        if (item.id >=15 && item.id <= 20 && scenarioCompleted.includes(9)) {
+            return true;
+        }
+        if (item.id >=21 && item.id <= 26 && scenarioCompleted.includes(15)) {
+            return true;
+        }
+        return false;
     }
     get spoilerFilter() {
         return JOTLSpoilerFilter();
