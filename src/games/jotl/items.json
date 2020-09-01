@@ -5,7 +5,7 @@
         "count": 2,
         "cost": 30,
         "slot": "Head",
-        "source": "",
+        "source": "Reward from Scenario #2",
         "spent": true,
         "desc": "During your attack, gain Advantage on the entire Attack action."
     },
@@ -15,7 +15,7 @@
         "count": 2,
         "cost": 10,
         "slot": "Head",
-        "source": "",
+        "source": "Reward from Scenario #2",
         "desc": "When attacked, consider any 2x attack modifier card the enemy draws to be a +0 instead."
     },
     {
@@ -24,7 +24,7 @@
         "count": 2,
         "cost": 30,
         "slot": "Body",
-        "source": "",
+        "source": "Reward from Scenario #2",
         "desc": "During your turn gain Shield 1 for the rest of the round",
         "spent": true
     },
@@ -34,7 +34,7 @@
         "count": 2,
         "cost": 30,
         "slot": "Body",
-        "source": "",
+        "source": "Reward from Scenario #2",
         "spent": true,
         "desc": "When attacked, the attacker gains Disadvantage on the attack and you gain Shield 1 for the attack."
     },
@@ -44,7 +44,7 @@
         "count": 2,
         "cost": 15,
         "slot": "Body",
-        "source": "",
+        "source": "Reward from Scenario #2",
         "spent": true,
         "desc": "During your movement add +1 Move to a single movement."
     },
@@ -54,7 +54,7 @@
         "cost": 15,
         "count": 2,
         "slot": "Legs",
-        "source": "",
+        "source": "Reward from Scenario #2",
         "spent": true,
         "desc": "During your movement, add Jump to the entire Move Action.",
         "faq": "Winged Shoes may be used for only a single movement ability, not for multiple movement abilities of an action (ex: Action with Move, Attack, Move)."
@@ -65,7 +65,7 @@
         "count": 2,
         "cost": 20,
         "slot": "One Hand",
-        "source": "",
+        "source": "Reward from Scenario #2",
         "spent": true,
         "desc": "When damaged by an attack, gain Shield 1 for the attack."
       },
@@ -75,7 +75,7 @@
         "count": 2,
         "cost": 35,
         "slot": "One Hand",
-        "source": "",
+        "source": "Reward from Scenario #2",
         "desc": "During your ranged attack, add STUN to a single attack",
         "consumed": true
       },
@@ -85,7 +85,7 @@
         "count": 2,
         "cost": 20,
         "slot": "One Hand",
-        "source": "",
+        "source": "Reward from Scenario #2",
         "spent": true,
         "desc": "During your melee attack, add POISON to a single attack."
       },
@@ -95,7 +95,7 @@
         "count": 2,
         "cost": 20,
         "slot": "Head",
-        "source": "",
+        "source": "Reward from Scenario #2",
         "desc": "During your single-target melee Attack ability, attack any one enemy wihin 2 hexes",
         "spent": true
       },
@@ -105,7 +105,7 @@
         "count": 2,
         "cost": 10,
         "slot": "Small Item",
-        "source": "",
+        "source": "Reward from Scenario #2",
         "consumed": true,
         "desc": "During your turn, perform a \"Heal 3, self\" action."
       },
@@ -115,17 +115,17 @@
         "count": 2,
         "cost": 10,
         "slot": "Small Item",
-        "source": "",
+        "source": "Reward from Scenario #2",
         "consumed": true,
         "desc": "During your turn, return one of your discarded cards to your hand."
       },      
-      {
+    {
         "id": 13,
         "name": "Power Potion",
         "count": 2,
         "cost": 10,
         "slot": "Small Item",
-        "source": "",
+        "source": "Reward from Scenario #2",
         "consumed": true,
         "desc": "During your attack, add +1 Attack to your entire Attack action."
       },
@@ -135,7 +135,7 @@
         "count": 2,
         "cost": 10,
         "slot": "Small Item",
-        "source": "",
+        "source": "Reward from Scenario #4\n Scenario #4 (Treasure #16)",
         "consumed": true,
         "desc": "During your turn, infuse any one element. {any}"
       },
@@ -145,7 +145,7 @@
         "count": 1,
         "cost": 20,
         "slot": "Head",
-        "source": "",
+        "source": "Reward from Scenario #9",
         "spent": true,
         "desc": "During your turn, \"Heal 1, Self\" action."
       },
@@ -155,7 +155,7 @@
         "count": 1,
         "cost": 40,
         "slot": "Body",
-        "source": "",
+        "source": "Reward from Scenario #9",
         "spent": true,
         "desc": "During your attack, {anyX} to add +1 Attack to the entire Attack action."
       },
@@ -165,7 +165,7 @@
         "count": 1,
         "cost": 30,
         "slot": "Legs",
-        "source": "",
+        "source": "Reward from Scenario #9",
         "desc": "Whenever you use the default bottom of an ability card, perform a \"Move 3\" action instead of a \"Move 2\" action."
       },
       {
@@ -174,7 +174,7 @@
         "count": 1,
         "cost": 25,
         "slot": "One Hand",
-        "source": "",
+        "source": "Reward from Scenario #9",
         "consumed": true,
         "desc": "During your single-target melee attack action, turn the attack into the following: {multi_attack.cone_0_1}"
       },
@@ -184,7 +184,7 @@
         "count": 1,
         "cost": 40,
         "slot": "One Hand",
-        "source": "",
+        "source": "Reward from Scenario #9",
         "spent": true,
         "desc": "During your ranged attack, add CURSE to a single attack."
       },
@@ -194,7 +194,7 @@
         "count": 2,
         "cost": 20,
         "slot": "Small Item",
-        "source": "",
+        "source": "Reward from Scenario #9",
         "consumed": true,
         "desc": "During your attack, add STUN to a single attack."
       },
@@ -204,7 +204,7 @@
         "count": 1,
         "cost": 20,
         "slot": "Head",
-        "source": "",
+        "source": "Reward from Scenario #15",
         "spent": true,
         "desc": "During your ranged attack, add +1 Range to your entire Attack action."
       },
@@ -214,7 +214,7 @@
         "count": 1,
         "cost": 45,
         "slot": "Body",
-        "source": "",
+        "source": "Reward from Scenario #15",
         "spent": true,
         "desc": "When damaged by an attack, gain Shield 2 for the attack and the attacker suffers 2 damage."
       },
@@ -224,7 +224,7 @@
         "cost": 30,
         "count": 1,
         "slot": "Legs",
-        "source": "",
+        "source": "Reward from Scenario #15",
         "spent": true,
         "desc": "During your movement, add +2 Move to a single movement."
       },
@@ -234,7 +234,7 @@
         "count": 2,
         "cost": 40,
         "slot": "One Hand",
-        "source": "",
+        "source": "Reward from Scenario #15",
         "consumed": true,
         "desc": "During your single-target ranged attack action, turn the attack into the following: {multi_attack.cone_1_1}"
       },
@@ -244,7 +244,7 @@
         "count": 1,
         "cost": 30,
         "slot": "One Hand",
-        "source": "",
+        "source": "Reward from Scenario #15",
         "spent": true,
         "desc": "During your ranged attack, add PULL 2 to a single attack."
       },
@@ -254,7 +254,7 @@
         "count": 2,
         "cost": 30,
         "slot": "Small Item",
-        "source": "",
+        "source": "Reward from Scenario #15",
         "consumed": true,
         "desc": "During your turn, perform a BLESS, Range 5 action."
       },
@@ -264,7 +264,7 @@
         "count": 1,
         "cost": 25,
         "slot": "Small Item",
-        "source": "",
+        "source": "Scenario #3 (Treasure #10)",
         "consumed": true,
         "desc": "During your turn, force one enemy within Range 3 to peform a \"Move 2\" action with you controlling the action."
       },
@@ -274,7 +274,7 @@
         "count": 1,
         "cost": 10,
         "slot": "Body",
-        "source": "",
+        "source": "Reward from Scenario #8\nReward from Scenario #12",
         "desc": "You are considered to have an initiative of 99 for the purpose of enemy focusing.",
         "faq": "The item does not actually change a character's initiative so it doesn't affect their summons' initiative. It only changes how monster's treat the character during focus evaluation."
       },
@@ -284,7 +284,7 @@
         "count": 1,
         "cost": 40,
         "slot": "One Hand",
-        "source": "",
+        "source": "Reward from Scenario #16",
         "spent": true,
         "desc": "When damaged by an attack, gain Shield 2 for the attack."
       },
@@ -294,7 +294,7 @@
         "count": 1,
         "cost": 40,
         "slot": "Small Item",
-        "source": "",
+        "source": "Scenario #21 (Treasure #11)",
         "consumed": true,
         "desc": "At the end of your turn, play one card from your hand and immediately perform the bottom action of that card."
       },
@@ -304,7 +304,7 @@
         "count": 1,
         "cost": 40,
         "slot": "Small Item",
-        "source": "",
+        "source": "Reward from Scenario #19\nScenario #18 (Treasure #2)",
         "consumed": true,
         "desc": "During your turn, gain STRENGTHEN."
       },
@@ -314,7 +314,7 @@
         "count": 1,
         "cost": 40,
         "slot": "Small Item",
-        "source": "",
+        "source": "Misplaced Good #F",
         "consumed": true,
         "desc": "During your turn, perform a \"Heal 3, Range 5\" action."
       },
@@ -324,7 +324,7 @@
         "count": 1,
         "cost": 30,
         "slot": "Small Item",
-        "source": "",
+        "source": "Reward from Scenario #22",
         "consumed": true,
         "desc": "When damaged by an attack, gain Shield 4 for the attack."
       },
@@ -334,7 +334,7 @@
         "count": 1,
         "cost": 40,
         "slot": "One Hand",
-        "source": "",
+        "source": "Reward from Scenario #34",
         "consumed": true,
         "desc": "During your attack, add WOUND to the entire Attack Action."
       },
@@ -344,7 +344,7 @@
         "count": 1,
         "cost": 40,
         "slot": "Body",
-        "source": "",
+        "source": "Reward from Scenario #24",
         "spent": true,
         "desc": "During your turn, one adjacent ally may perform and \"Attack 2\" Action."
       },
@@ -354,7 +354,7 @@
         "count": 1,
         "cost": 30,
         "slot": "Legs",
-        "source": "",
+        "source": "Reward from Scenario #25",
         "spent": true,
         "desc": "During your movement, add +1 Move and Jump to a single movement."
       }
