@@ -232,6 +232,7 @@
     "slot": "Body",
     "source": "Prosperity 3",
     "minusOneCardsAdded": 3,
+    "spent": true,
     "desc": "On the next three sources of damage to you from attacks, gain Shield 1.",
     "faq": "Chainmail only grants the shield for the attack, not until the end of the round."
   },
