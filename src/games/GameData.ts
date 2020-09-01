@@ -1,4 +1,4 @@
-import { GloomhavenItem, SoloClassShorthand } from "../State/Types"
+import { GloomhavenItem } from "../State/Types"
 import SpoilerFilter from "../State/SpoilerFilter";
 
 export abstract class BaseGameData {
