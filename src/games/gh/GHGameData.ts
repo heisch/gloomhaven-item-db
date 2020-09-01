@@ -1,5 +1,5 @@
 import { BaseGameData } from '../GameData'
-import { GloomhavenItem, SoloClassShorthand } from '../../State/Types';
+import { GloomhavenItem } from '../../State/Types';
 import GHSpoilerFilter from '../../components/Tabs/SpoilerFilters/GHSpoilerFilter';
 import SpoilerFilter from '../../State/SpoilerFilter';
 
