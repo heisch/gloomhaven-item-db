@@ -1423,7 +1423,7 @@
     "consumed": true,
     "desc": "During your turn, you or any one ally may Refresh one of your spent or consumed items.",
     "faq": "This item cannot be refreshed.",
-    "soloItem" : "QN"
+    "soloItem" : "QM"
   },
   {
     "id": 142,
