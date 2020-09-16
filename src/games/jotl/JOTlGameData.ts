@@ -22,7 +22,7 @@ export class JOTLGameData extends BaseGameData {
         return false;
     }
     get spoilerFilter() {
-        return JOTLSpoilerFilter();
+        return JOTLSpoilerFilter({gameType:this.key});
     }
     getItemSubfolder (item: GloomhavenItem) {
         if (item.id >= 27) {

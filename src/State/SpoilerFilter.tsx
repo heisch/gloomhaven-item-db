@@ -21,40 +21,40 @@ export function storeSpoilerFilter(spoilerFilter: SpoilerFilter, gameType:GameTy
     return { type: STORE_SPOILER_FILTER, spoilerFilter, gameType}
 }
 
-export function storeProsperity(prosperity: number) {
-    return { type: STORE_PROSPERITY, prosperity}
+export function storeProsperity(prosperity: number, gameType:GameType) {
+    return { type: STORE_PROSPERITY, prosperity, gameType}
 }
 
-export function storeSoloClass(soloClass: Array<SoloClassShorthand>) {
-    return { type: STORE_SOLO_CLASS, soloClass}
+export function storeSoloClass(soloClass: Array<SoloClassShorthand>, gameType:GameType) {
+    return { type: STORE_SOLO_CLASS, soloClass, gameType}
 }
 
-export function storeScenarioCompleted(scenarioCompleted: Array<number>) {
-    return { type: STORE_SCENARIO_COMPLETED, scenarioCompleted}
+export function storeScenarioCompleted(scenarioCompleted: Array<number>, gameType:GameType) {
+    return { type: STORE_SCENARIO_COMPLETED, scenarioCompleted, gameType}
 }
 
-export function storeItem(item:Array<number>) {
-    return { type: STORE_ITEM, item}
+export function storeItem(item:Array<number>, gameType:GameType) {
+    return { type: STORE_ITEM, item, gameType}
 }
 
-export function storeItemsInUse(itemsInUse:any) {
-    return { type: STORE_ITEMS_IN_USE, itemsInUse}
+export function storeItemsInUse(itemsInUse:any, gameType:GameType) {
+    return { type: STORE_ITEMS_IN_USE, itemsInUse, gameType}
 }
 
-export function storeAll(all:boolean) {
-    return { type: STORE_ALL, all}
+export function storeAll(all:boolean, gameType:GameType) {
+    return { type: STORE_ALL, all, gameType}
 }
 
-export function storeEnableStoreStockManagement(enableStoreStockManagement:boolean) {
-    return {type: STORE_ENABLE_STORE_STOCK_MANAGEMENT, enableStoreStockManagement};
+export function storeEnableStoreStockManagement(enableStoreStockManagement:boolean, gameType:GameType) {
+    return {type: STORE_ENABLE_STORE_STOCK_MANAGEMENT, enableStoreStockManagement, gameType};
 }
 
-export function storeDisplayAs(displayAs: string) {
-    return {type: STORE_DISPLAY_AS, displayAs};
+export function storeDisplayAs(displayAs: string, gameType:GameType) {
+    return {type: STORE_DISPLAY_AS, displayAs, gameType};
 }
 
-export function storeDiscount(discount: number) {
-    return {type: STORE_DISCOUNT, discount};
+export function storeDiscount(discount: number, gameType:GameType) {
+    return {type: STORE_DISCOUNT, discount, gameType};
 }
 
 export interface SpoilerFilter {
@@ -111,23 +111,23 @@ export function spoilerFilter(state = initialSpoilerMapState, action:any) {
         case STORE_SPOILER_FILTER:
             return {...state, [action.gameType] : action.spoilerFilter};
         case STORE_PROSPERITY:
-            return { ...state, prosperity: action.prosperity};
+            return { ...state, [action.gameType] : {...state[action.gameType as GameType], prosperity: action.prosperity}};
         case STORE_SOLO_CLASS:
-            return { ...state, soloClass: action.soloClass};
+            return { ...state, [action.gameType] : {...state[action.gameType as GameType], soloClass: action.soloClass}};
         case STORE_SCENARIO_COMPLETED:
-            return { ...state, scenarioCompleted: action.scenarioCompleted};
+            return { ...state, [action.gameType] : {...state[action.gameType as GameType], scenarioCompleted: action.scenarioCompleted}};
         case STORE_ITEM:
-            return { ...state, item: action.item};
+            return { ...state, [action.gameType] : {...state[action.gameType as GameType], item: action.item}};
         case STORE_ITEMS_IN_USE:
-            return { ...state, itemsInUse: action.itemsInUse};
+            return { ...state, [action.gameType] : {...state[action.gameType as GameType], itemsInUse: action.itemsInUse}};
         case STORE_ALL:
-            return { ...state, all: action.all};
+            return { ...state, [action.gameType] : {...state[action.gameType as GameType], all: action.all}};
         case STORE_ENABLE_STORE_STOCK_MANAGEMENT:
-            return {...state, enableStoreStockManagement: action.enableStoreStockManagement};
+            return {...state, [action.gameType] : {...state[action.gameType as GameType], enableStoreStockManagement: action.enableStoreStockManagement}};
         case STORE_DISPLAY_AS:
-            return {...state, displayAs: action.displayAs};
+            return {...state, [action.gameType] : {...state[action.gameType as GameType], displayAs: action.displayAs}};
         case STORE_DISCOUNT:
-            return {...state, discount: action.discount};
+            return {...state, [action.gameType] : {...state[action.gameType as GameType], discount: action.discount}};
         default:
             return state;
     }

@@ -2,13 +2,16 @@ import React from 'react'
 import { Form } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 import { storeItem, getSpoilerFilter } from '../../../State/SpoilerFilter';
+import { useGame } from '../../Game/GameProvider';
+import { GameType } from '../../../games';
 
 type Props = {
     id: number;
+    gameType:GameType;
 }
 
 const FilterCheckbox = (props:Props) => {
-    const { id } = props;
+    const { id, gameType } = props;
     const { item } = getSpoilerFilter();
     const dispatch = useDispatch();
 
@@ -18,7 +21,7 @@ const FilterCheckbox = (props:Props) => {
         } else {
             item.push(key)
         }
-        dispatch(storeItem(item));
+        dispatch(storeItem(item, gameType));
     }
 
     return (

@@ -18,6 +18,7 @@ const MainView = () => {
 
     useEffect( () => {
         store.subscribe (() => {
+            console.log("writing", store.getState().spoilerFilter[key])
             localStorage.setItem(localStorageKey, JSON.stringify(store.getState().spoilerFilter[key]));
         });
     }, [localStorageKey]);

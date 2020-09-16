@@ -22,7 +22,7 @@ class GHGameData extends BaseGameData  {
         return false;
     }
     get spoilerFilter()  {
-        return GHSpoilerFilter();
+        return GHSpoilerFilter({gameType:this.key});
     } 
     convertSavedData(storageKey:string) {
         const loadedSpoilerFilterString = localStorage.getItem(oldFilterLocalStorageKey)
