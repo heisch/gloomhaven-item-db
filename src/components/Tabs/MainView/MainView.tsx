@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { RootState } from '../../../State/Reducer';
 import { Modal, Header, Button, Icon, Tab } from 'semantic-ui-react';
-import { useSelector, useDispatch } from 'react-redux';
-import SpoilerFilter, { storeSpoilerFilter, restoreFromLocalStorage } from '../../../State/SpoilerFilter';
+import {  useDispatch } from 'react-redux';
+import SpoilerFilter, { storeSpoilerFilter, restoreFromLocalStorage, getSpoilerFilter } from '../../../State/SpoilerFilter';
 import ItemList from './ItemList';
 import SpoilerFilters from '../SpoilerFilters/SpoilerFilters';
 import Share from '../Share';
@@ -11,8 +10,8 @@ import {useGame } from '../../Game/GameProvider';
 import {store} from '../../../App'
 
 const MainView = () => {
-    const { localStorageKey, convertSavedData, name} = useGame();
-    const { all, lockSpoilerPanel} = useSelector<RootState>( state => state.spoilerFilter) as RootState['spoilerFilter'];
+    const { localStorageKey, convertSavedData, name } = useGame();
+    const {all, lockSpoilerPanel} = getSpoilerFilter();
     const dispatch = useDispatch();
     const items = useItems();
     const [importModalOpen, setImportModalOpen] = useState(false);

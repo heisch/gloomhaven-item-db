@@ -1,13 +1,12 @@
 import React from 'react'
 import SpoilerFilterItemList from './SpoilerFilterItemList';
 import { Form } from 'semantic-ui-react';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../../State/Reducer';
-import { storeScenarioCompleted } from '../../../State/SpoilerFilter';
+import { useDispatch } from 'react-redux';
+import { storeScenarioCompleted, getSpoilerFilter } from '../../../State/SpoilerFilter';
 
 const JOTLSpoilerFilter = () => {
     const scenariosOfImportance = [2, 9, 15];
-    const { scenarioCompleted } = useSelector<RootState>( state => state.spoilerFilter) as RootState['spoilerFilter'];
+    const { scenarioCompleted } = getSpoilerFilter();
     const dispatch = useDispatch();
 
     const toggleScenarioCompleted = (key: number) => {

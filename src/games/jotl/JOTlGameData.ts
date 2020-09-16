@@ -2,11 +2,12 @@ import { BaseGameData } from '../GameData';
 import { GloomhavenItem } from '../../State/Types';
 import JOTLSpoilerFilter from '../../components/Tabs/SpoilerFilters/JOTLSpoilerFilter';
 import SpoilerFilter, { spoilerFilter } from '../../State/SpoilerFilter';
+import { GameType } from '..';
 
 export class JOTLGameData extends BaseGameData {
     constructor()
     {
-        super("Gloomhaven: Jaws of the Lion", "jotl");
+        super("Gloomhaven: Jaws of the Lion", GameType.JawsOfTheLion);
     }
     isItemShown(item:GloomhavenItem, {scenarioCompleted}:SpoilerFilter) {
         if (item.id <=13 && scenarioCompleted.includes(2)) {

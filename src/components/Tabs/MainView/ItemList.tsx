@@ -7,6 +7,7 @@ import { Message, Icon } from 'semantic-ui-react';
 import ItemTable from './ItemTable';
 import ItemGrid from './ItemGrid';
 import { storeSortingProperty, storeSortingDirection } from '../../../State/ItemViewState';
+import { getSpoilerFilter } from '../../../State/SpoilerFilter';
 
 type Props = {
     items : GloomhavenItem[];
@@ -14,7 +15,7 @@ type Props = {
 
 const ItemList = (props:Props) => {
     const {items} = props;
-    const { displayAs, all } = useSelector<RootState>( state => state.spoilerFilter) as RootState['spoilerFilter'];
+    const { displayAs, all } = getSpoilerFilter();
     const { property, direction } = useSelector<RootState>( state => state.itemViewState) as RootState['itemViewState'];
     const dispatch = useDispatch();
 
