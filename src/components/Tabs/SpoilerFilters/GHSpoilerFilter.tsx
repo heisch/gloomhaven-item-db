@@ -4,10 +4,18 @@ import { useDispatch } from 'react-redux';
 import { storeProsperity, storeSoloClass, getSpoilerFilter } from '../../../State/SpoilerFilter';
 import SpoilerFilterItemList from './SpoilerFilterItemList';
 import { SoloClassShorthand } from '../../../State/Types';
+import { useGame } from '../../Game/GameProvider';
+import { GameType } from '../../../games';
 
 const GloomhavenSoloClassShorthands: Array<SoloClassShorthand> = ['BR', 'TI', 'SW', 'SC', 'CH', 'MT', 'SK', 'QM', 'SU', 'NS', 'PH', 'BE', 'SS', 'DS', 'SB', 'EL', 'BT', 'DR'];
 
-const GHSpoilerFilter = () => {
+type Props = {
+    gameType: GameType;
+}
+
+
+const GHSpoilerFilter = (props: Props) => {
+    const { gameType } = props;
     const { soloClass, prosperity } = getSpoilerFilter();
     const dispatch = useDispatch();
 
@@ -17,7 +25,7 @@ const GHSpoilerFilter = () => {
         } else {
             soloClass.push(key)
         }
-        dispatch(storeSoloClass(soloClass));
+        dispatch(storeSoloClass(soloClass, gameType));
     }
 
     return (
@@ -29,14 +37,14 @@ const GHSpoilerFilter = () => {
                         return (
                             <Form.Radio key={index} label={nextProsperity}
                                         checked={prosperity === nextProsperity}
-                                        onChange={() => dispatch(storeProsperity(nextProsperity))}/>
+                                        onChange={() => dispatch(storeProsperity(nextProsperity, gameType))}/>
                     )})}
             </Form.Group>
 
-            <SpoilerFilterItemList start={(prosperity + 1) * 7 + 1} end={70} title="Prosperity Items"/>
-            <SpoilerFilterItemList start={71} end={95} title="Random Item Design"/>
-            <SpoilerFilterItemList start={96} end={133} title="Other Items"/>
-            <SpoilerFilterItemList start={152} end={163} title="Fallen Circles Itmes"/>
+            <SpoilerFilterItemList gameType={gameType} start={(prosperity + 1) * 7 + 1} end={70} title="Prosperity Items"/>
+            <SpoilerFilterItemList gameType={gameType} start={71} end={95} title="Random Item Design"/>
+            <SpoilerFilterItemList gameType={gameType} start={96} end={133} title="Other Items"/>
+            <SpoilerFilterItemList gameType={gameType} start={152} end={163} title="Fallen Circles Itmes"/>
 
             <Form.Group inline className={'inline-break'}>
                 <label>Solo Class Items:</label>

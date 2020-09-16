@@ -6,6 +6,7 @@ import { RootState } from '../../../State/Reducer';
 import { storeFilterSearch, storeFilterSlots } from '../../../State/ItemViewState';
 import { getSlotImageSrc } from '../../../helpers';
 import { GloomhavenItemSlot, SortProperty} from '../../../State/Types';
+import { useGame } from '../../Game/GameProvider';
 
 type Props = {
     setSorting : (newProperty: SortProperty) => void;
@@ -17,6 +18,7 @@ const SearchOptions = (props:Props) => {
     const { displayAs, discount } = getSpoilerFilter();
     const { property, search, slots } = useSelector<RootState>( state => state.itemViewState) as RootState['itemViewState'];
     const dispatch = useDispatch();
+    const { key } = useGame();
 
     const setFilterSlot = (slot?: GloomhavenItemSlot) => {
         if (!slot)
@@ -46,11 +48,11 @@ const SearchOptions = (props:Props) => {
                     <label>Render as:</label>
                     <Button.Group>
                         <Button color={displayAs === 'list' ? 'blue' : undefined} onClick={() => {
-                                dispatch(storeDisplayAs('list'));
+                                dispatch(storeDisplayAs('list', key));
                             }}>List</Button>
                         <Button.Or/>
                         <Button color={displayAs === 'images' ? 'blue' : undefined} onClick={() => {
-                                dispatch(storeDisplayAs('images'));
+                                dispatch(storeDisplayAs('images', key));
                             }}>Images</Button>
                     </Button.Group>
                 </Form.Group>
@@ -71,7 +73,7 @@ const SearchOptions = (props:Props) => {
                                 {value: 5, text: "+5 gold"}, // (-19 - -20)
                             ]}
                             onChange={(obj, e) => {
-                                dispatch(storeDiscount(typeof e.value === 'number' ? e.value : 0));
+                                dispatch(storeDiscount(typeof e.value === 'number' ? e.value : 0, key));
                             }}
                     />
                 </Form.Group>}

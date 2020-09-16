@@ -3,8 +3,15 @@ import SpoilerFilterItemList from './SpoilerFilterItemList';
 import { Form } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 import { storeScenarioCompleted, getSpoilerFilter } from '../../../State/SpoilerFilter';
+import { useGame } from '../../Game/GameProvider';
+import { GameType } from '../../../games';
 
-const JOTLSpoilerFilter = () => {
+type Props = {
+    gameType: GameType;
+}
+
+const JOTLSpoilerFilter = (props:Props) => {
+    const { gameType } = props;
     const scenariosOfImportance = [2, 9, 15];
     const { scenarioCompleted } = getSpoilerFilter();
     const dispatch = useDispatch();
@@ -15,7 +22,7 @@ const JOTLSpoilerFilter = () => {
         } else {
             scenarioCompleted.push(key)
         }
-        dispatch(storeScenarioCompleted(scenarioCompleted));
+        dispatch(storeScenarioCompleted(scenarioCompleted, gameType));
     }
 
     return (
@@ -28,7 +35,7 @@ const JOTLSpoilerFilter = () => {
                         onChange={() => toggleScenarioCompleted(id)}/> 
                 })}
             </Form.Group>
-            <SpoilerFilterItemList ranges={[{start:14, end:14}, {start:27, end:36}]} title="Items"/>
+            <SpoilerFilterItemList gameType={gameType} ranges={[{start:14, end:14}, {start:27, end:36}]} title="Items"/>
         </>
     )
 }
