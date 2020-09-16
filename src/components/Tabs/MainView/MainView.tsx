@@ -10,7 +10,7 @@ import {useGame } from '../../Game/GameProvider';
 import {store} from '../../../App'
 
 const MainView = () => {
-    const { localStorageKey, convertSavedData, name } = useGame();
+    const { localStorageKey, convertSavedData, name, key } = useGame();
     const {all, lockSpoilerPanel} = getSpoilerFilter();
     const dispatch = useDispatch();
     const items = useItems();
@@ -18,7 +18,7 @@ const MainView = () => {
 
     useEffect( () => {
         store.subscribe (() => {
-            localStorage.setItem(localStorageKey, JSON.stringify(store.getState().spoilerFilter));
+            localStorage.setItem(localStorageKey, JSON.stringify(store.getState().spoilerFilter[key]));
         });
     }, [localStorageKey]);
     
@@ -26,7 +26,7 @@ const MainView = () => {
     useEffect( () => {
         convertSavedData(localStorageKey);
         const loadedSpoilerFilter = restoreFromLocalStorage(localStorageKey);
-        dispatch(storeSpoilerFilter(loadedSpoilerFilter));
+        dispatch(storeSpoilerFilter(loadedSpoilerFilter, key));
         setImportModalOpen(parseHash() != undefined);
     },[]);
 
@@ -46,7 +46,7 @@ const MainView = () => {
             localStorage.setItem(localStorageKey, JSON.stringify(hashConfig));
             setImportModalOpen(false);
             const loadedSpoilerFilter = restoreFromLocalStorage(localStorageKey);
-            dispatch(storeSpoilerFilter(loadedSpoilerFilter));
+            dispatch(storeSpoilerFilter(loadedSpoilerFilter, key));
         }
         location.hash = '';
     }

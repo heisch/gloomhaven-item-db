@@ -17,8 +17,8 @@ export const STORE_ENABLE_STORE_STOCK_MANAGEMENT = 'STORE_ENABLE_STORE_STOCK_MAN
 export const STORE_DISPLAY_AS = 'STORE_DISPLAY_AS';
 export const STORE_DISCOUNT = 'STORE_DISCOUNT';
 
-export function storeSpoilerFilter(spoilerFilter: SpoilerFilter) {
-    return { type: STORE_SPOILER_FILTER, spoilerFilter}
+export function storeSpoilerFilter(spoilerFilter: SpoilerFilter, gameType:GameType) {
+    return { type: STORE_SPOILER_FILTER, spoilerFilter, gameType}
 }
 
 export function storeProsperity(prosperity: number) {
@@ -92,11 +92,24 @@ const initialSpoilerFilterState:SpoilerFilter = {
     scenarioCompleted: [],
 };
 
-export function spoilerFilter(state = initialSpoilerFilterState, action:any) {
+export type SpoilerMap = {
+    [K in GameType]?: SpoilerFilter;
+  };
+
+const initialSpoilerMapState = Object.values(GameType).reduce(
+    (acc, value: GameType) => {
+      acc[value] = initialSpoilerFilterState;
+      return acc;
+    },
+    {} as SpoilerMap,
+  );
+
+
+export function spoilerFilter(state = initialSpoilerMapState, action:any) {
     switch (action.type)
     {
         case STORE_SPOILER_FILTER:
-            return action.spoilerFilter;
+            return {...state, [action.gameType] : action.spoilerFilter};
         case STORE_PROSPERITY:
             return { ...state, prosperity: action.prosperity};
         case STORE_SOLO_CLASS:
@@ -159,7 +172,11 @@ export const spoilerFilterSelector = createSelector(
     (state:RootState) => state.spoilerFilter,
     spoilerFilter => memoize(
       (type:GameType) => {
-          return spoilerFilter;
+          if (spoilerFilter[type] === undefined)
+          {
+              throw new Error("Wrong type");
+          }
+          return spoilerFilter[type] as SpoilerFilter;
       }
     )
   )
