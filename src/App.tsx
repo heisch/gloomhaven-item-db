@@ -9,6 +9,7 @@ import MainView from './components/Tabs/MainView/MainView';
 import GameProvider from './components/Game/GameProvider'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { GameType } from './games';
+import Navigation from './components/Navigation';
 
 export const store = createStore(dbApp,  (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__());
 
@@ -17,6 +18,7 @@ const App = () => {
         <Container>
             <Provider store={store}>
                 <Router>
+                    <Navigation/>
                     <Switch>
                         <Route exact path="/">
                             <GameProvider gameType={GameType.Gloomhaven}>
