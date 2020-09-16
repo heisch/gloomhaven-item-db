@@ -2,6 +2,7 @@ import { GloomhavenItem } from "../State/Types"
 import SpoilerFilter from "../State/SpoilerFilter";
 import { Helpers } from "../helpers";
 import { RootState } from "../State/Reducer";
+import { GameType } from ".";
 
 const deSpoilerItemSource = (source:string): string => {
     return source.replace(/{(.{2})}/, (m, m1) => '<img class="icon" src="'+require('../img/classes/'+m1+'.png')+'" alt="" />');
@@ -9,9 +10,9 @@ const deSpoilerItemSource = (source:string): string => {
 
 export abstract class BaseGameData {
     name: string;
-    key: string;
+    key: GameType;
     initItems: Array<GloomhavenItem> | undefined;
-    constructor(name:string, key:string){
+    constructor(name:string, key:GameType){
         this.name = name;
         this.key = key;
         this.initItems = undefined;

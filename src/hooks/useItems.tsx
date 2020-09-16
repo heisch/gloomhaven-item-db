@@ -2,13 +2,14 @@ import { GloomhavenItemSlot, GloomhavenItem, SortDirection } from "../State/Type
 import { useSelector } from "react-redux";
 import { RootState } from "../State/Reducer";
 import { useGame } from "../components/Game/GameProvider"
+import { getSpoilerFilter } from "../State/SpoilerFilter";
 
 const gloomhavenItemSlots: Array<GloomhavenItemSlot> = ['Head', 'Body', 'Legs', 'One Hand', 'Two Hands', 'Small Item'];
 
 const useItems = (): Array<GloomhavenItem> => {
 
     const { isItemShown, initialItems} = useGame();
-    const spoilerFilter = useSelector<RootState>( state => state.spoilerFilter) as RootState['spoilerFilter'];
+    const spoilerFilter = getSpoilerFilter();
     const { all, item: spoilerFilterItem } = spoilerFilter;
     const { property, direction, slots, search } = useSelector<RootState>( state => state.itemViewState) as RootState['itemViewState'];
 

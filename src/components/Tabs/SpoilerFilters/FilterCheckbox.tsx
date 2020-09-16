@@ -1,8 +1,7 @@
 import React from 'react'
 import { Form } from 'semantic-ui-react';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../../State/Reducer';
-import { storeItem } from '../../../State/SpoilerFilter';
+import { useDispatch } from 'react-redux';
+import { storeItem, getSpoilerFilter } from '../../../State/SpoilerFilter';
 
 type Props = {
     id: number;
@@ -10,7 +9,7 @@ type Props = {
 
 const FilterCheckbox = (props:Props) => {
     const { id } = props;
-    const { item } = useSelector<RootState>( state => state.spoilerFilter) as RootState['spoilerFilter'];
+    const { item } = getSpoilerFilter();
     const dispatch = useDispatch();
 
     const toggleItemFilter = (key: number) => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form, Button, Input } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
-import { storeDisplayAs, storeDiscount } from '../../../State/SpoilerFilter';
+import { storeDisplayAs, storeDiscount, getSpoilerFilter } from '../../../State/SpoilerFilter';
 import { RootState } from '../../../State/Reducer';
 import { storeFilterSearch, storeFilterSlots } from '../../../State/ItemViewState';
 import { getSlotImageSrc } from '../../../helpers';
@@ -14,7 +14,7 @@ type Props = {
 const SearchOptions = (props:Props) => {
     const { setSorting } =  props;
     const gloomhavenItemSlots: Array<GloomhavenItemSlot> = ['Head', 'Body', 'Legs', 'One Hand', 'Two Hands', 'Small Item'];
-    const { displayAs, discount } = useSelector<RootState>( state => state.spoilerFilter) as RootState['spoilerFilter'];
+    const { displayAs, discount } = getSpoilerFilter();
     const { property, search, slots } = useSelector<RootState>( state => state.itemViewState) as RootState['itemViewState'];
     const dispatch = useDispatch();
 

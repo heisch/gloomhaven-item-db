@@ -1,15 +1,14 @@
 import React from 'react'
 import { Form, Button, Icon } from 'semantic-ui-react';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../../State/Reducer';
-import { storeEnableStoreStockManagement, storeAll } from '../../../State/SpoilerFilter';
+import { useDispatch } from 'react-redux';
+import { storeEnableStoreStockManagement, storeAll, getSpoilerFilter } from '../../../State/SpoilerFilter';
 import { useGame } from '../../Game/GameProvider';
 
 const SpoilerFilters = () => {
     const dispatch = useDispatch();
     const { spoilerFilter} = useGame();
 
-    const { enableStoreStockManagement, all } = useSelector<RootState>( state => state.spoilerFilter) as RootState['spoilerFilter'];
+    const { enableStoreStockManagement, all } = getSpoilerFilter();
 
     return (
         <Form>

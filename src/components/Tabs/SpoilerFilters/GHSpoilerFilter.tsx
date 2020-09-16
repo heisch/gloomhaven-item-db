@@ -1,15 +1,14 @@
 import React from 'react'
 import { Form, Image } from 'semantic-ui-react';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../../State/Reducer';
-import { storeProsperity, storeSoloClass } from '../../../State/SpoilerFilter';
+import { useDispatch } from 'react-redux';
+import { storeProsperity, storeSoloClass, getSpoilerFilter } from '../../../State/SpoilerFilter';
 import SpoilerFilterItemList from './SpoilerFilterItemList';
 import { SoloClassShorthand } from '../../../State/Types';
 
 const GloomhavenSoloClassShorthands: Array<SoloClassShorthand> = ['BR', 'TI', 'SW', 'SC', 'CH', 'MT', 'SK', 'QM', 'SU', 'NS', 'PH', 'BE', 'SS', 'DS', 'SB', 'EL', 'BT', 'DR'];
 
 const GHSpoilerFilter = () => {
-    const { soloClass, prosperity } = useSelector<RootState>( state => state.spoilerFilter) as RootState['spoilerFilter'];
+    const { soloClass, prosperity } = getSpoilerFilter();
     const dispatch = useDispatch();
 
     const toggleClassFilter = (key: SoloClassShorthand) => {

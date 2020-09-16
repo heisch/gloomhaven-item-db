@@ -1,4 +1,10 @@
+import { createSelector } from "reselect";
 import { SoloClassShorthand, ItemViewDisplayType } from "./Types";
+import { RootState } from "./Reducer";
+import memoize from 'lodash.memoize'
+import { GameType } from "../games";
+import { useGame } from "../components/Game/GameProvider";
+import { useSelector } from "react-redux";
 
 export const STORE_SPOILER_FILTER = 'STORE_SPOILER_FILTER';
 export const STORE_PROSPERITY = 'STORE_PROSPERITY';
@@ -148,5 +154,19 @@ export const restoreFromLocalStorage = (filterLocalStorageKey:string) => {
 
     return spoilerFilter;
 }
+
+export const spoilerFilterSelector = createSelector(
+    (state:RootState) => state.spoilerFilter,
+    spoilerFilter => memoize(
+      (type:GameType) => {
+          return spoilerFilter;
+      }
+    )
+  )
+
+  export const getSpoilerFilter = () : SpoilerFilter => {
+      const {key} = useGame();
+    return useSelector(spoilerFilterSelector)(key);
+  }
 
 export default SpoilerFilter;

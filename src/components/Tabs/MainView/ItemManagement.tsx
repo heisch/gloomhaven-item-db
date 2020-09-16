@@ -1,9 +1,8 @@
 import React from 'react';
 import { GloomhavenItem } from "../../../State/Types";
 import { Checkbox } from "semantic-ui-react";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../../../State/Reducer"
-import { storeItemsInUse } from "../../../State/SpoilerFilter";
+import { useDispatch } from "react-redux";
+import { storeItemsInUse, getSpoilerFilter } from "../../../State/SpoilerFilter";
 
 type Props = {
     item : GloomhavenItem;
@@ -11,7 +10,7 @@ type Props = {
 
 const ItemManagement = (props:Props) => {
     const {item} = props;
-    const { enableStoreStockManagement, lockSpoilerPanel, itemsInUse } = useSelector<RootState>( state => state.spoilerFilter) as RootState['spoilerFilter'];
+    const { enableStoreStockManagement, lockSpoilerPanel, itemsInUse } = getSpoilerFilter();
     const dispatch = useDispatch();
 
     if (!enableStoreStockManagement) {
