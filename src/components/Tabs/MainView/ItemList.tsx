@@ -6,8 +6,9 @@ import SearchOptions from './SearchOptions';
 import { Message, Icon } from 'semantic-ui-react';
 import ItemTable from './ItemTable';
 import ItemGrid from './ItemGrid';
-import { storeSortingProperty, storeSortingDirection } from '../../../State/ItemViewState';
+import { storeSortingProperty, storeSortingDirection, getItemViewState } from '../../../State/ItemViewState';
 import { getSpoilerFilter } from '../../../State/SpoilerFilter';
+import { useGame } from '../../Game/GameProvider';
 
 type Props = {
     items : GloomhavenItem[];
@@ -15,8 +16,9 @@ type Props = {
 
 const ItemList = (props:Props) => {
     const {items} = props;
+    const { key } = useGame();
     const { displayAs, all } = getSpoilerFilter();
-    const { property, direction } = useSelector<RootState>( state => state.itemViewState) as RootState['itemViewState'];
+    const { property, direction } = getItemViewState();
     const dispatch = useDispatch();
 
         const setSorting = (newProperty: SortProperty) => {
@@ -27,8 +29,8 @@ const ItemList = (props:Props) => {
                 newDirection = SortDirection.ascending;
             }
 
-            dispatch(storeSortingProperty(newProperty));
-            dispatch(storeSortingDirection(newDirection));
+            dispatch(storeSortingProperty(newProperty, key));
+            dispatch(storeSortingDirection(newDirection, key));
         }
         
     return (
