@@ -1,9 +1,8 @@
 import React from 'react'
 import { Form, Button, Input } from 'semantic-ui-react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { storeDisplayAs, storeDiscount, getSpoilerFilter } from '../../../State/SpoilerFilter';
-import { RootState } from '../../../State/Reducer';
-import { storeFilterSearch, storeFilterSlots } from '../../../State/ItemViewState';
+import { storeFilterSearch, storeFilterSlots, getItemViewState } from '../../../State/ItemViewState';
 import { getSlotImageSrc } from '../../../helpers';
 import { GloomhavenItemSlot, SortProperty} from '../../../State/Types';
 import { useGame } from '../../Game/GameProvider';
@@ -16,17 +15,17 @@ const SearchOptions = (props:Props) => {
     const { setSorting } =  props;
     const gloomhavenItemSlots: Array<GloomhavenItemSlot> = ['Head', 'Body', 'Legs', 'One Hand', 'Two Hands', 'Small Item'];
     const { displayAs, discount } = getSpoilerFilter();
-    const { property, search, slots } = useSelector<RootState>( state => state.itemViewState) as RootState['itemViewState'];
+    const { property, search, slots } = getItemViewState();
     const dispatch = useDispatch();
     const { key } = useGame();
 
     const setFilterSlot = (slot?: GloomhavenItemSlot) => {
         if (!slot)
         {
-            dispatch(storeFilterSlots(undefined));    
+            dispatch(storeFilterSlots(undefined, key));    
             return;
         }
-        let newSlots = slots ? slots : [];
+        let newSlots: GloomhavenItemSlot[] | undefined = slots ? slots : [];
         const index = newSlots.indexOf(slot);
         if (index !== -1) {
             newSlots.splice(index, 1);
@@ -37,7 +36,7 @@ const SearchOptions = (props:Props) => {
         {
             newSlots = undefined;
         }
-        dispatch(storeFilterSlots(newSlots));
+        dispatch(storeFilterSlots(newSlots, key));
     }
 
 
@@ -106,8 +105,8 @@ const SearchOptions = (props:Props) => {
                     <label>Find Item:</label>
                     <Input
                         value={search}
-                        onChange={(e) => dispatch(storeFilterSearch(e.target.value))}
-                        icon={{name: 'close', link: true, onClick: () => dispatch(storeFilterSearch(''))}}
+                        onChange={(e) => dispatch(storeFilterSearch(e.target.value, key))}
+                        icon={{name: 'close', link: true, onClick: () => dispatch(storeFilterSearch('', key))}}
                         placeholder={'Search...'}
                     />
                 </Form.Group>

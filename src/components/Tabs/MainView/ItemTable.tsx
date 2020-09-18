@@ -6,6 +6,7 @@ import { RootState } from '../../../State/Reducer';
 import ItemManagement from './ItemManagement';
 import { Helpers, getSlotImageSrc } from '../../../helpers';
 import { getSpoilerFilter } from '../../../State/SpoilerFilter';
+import { getItemViewState } from '../../../State/ItemViewState';
 
 type Props = {
     items : GloomhavenItem[];
@@ -26,7 +27,7 @@ const GHIcon = (props:IconProps) => {
 const ItemTable = (props:Props) => {
     const {items, setSorting} = props;
     const { enableStoreStockManagement, discount } = getSpoilerFilter();
-    const { property, direction } = useSelector<RootState>( state => state.itemViewState) as RootState['itemViewState'];
+    const { property, direction } = getItemViewState();
 
     if (items.length === 0) {
         return <Message negative>
