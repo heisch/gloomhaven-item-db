@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Modal, Header, Button, Icon, Tab } from 'semantic-ui-react';
 import {  useDispatch } from 'react-redux';
-import SpoilerFilter, { storeSpoilerFilter, restoreFromLocalStorage, getSpoilerFilter } from '../../../State/SpoilerFilter';
+import { SpoilerFilter, storeSpoilerFilter, restoreFromLocalStorage, getSpoilerFilter } from '../../../State/SpoilerFilter';
 import ItemList from './ItemList';
 import SpoilerFilters from '../SpoilerFilters/SpoilerFilters';
 import Share from '../Share';
@@ -10,7 +10,7 @@ import {useGame } from '../../Game/GameProvider';
 import {store} from '../../../App'
 
 const MainView = () => {
-    const { localStorageKey, convertSavedData, name, key } = useGame();
+    const { localStorageKey, convertSavedData, name, key:gameType } = useGame();
     const {all, lockSpoilerPanel} = getSpoilerFilter();
     const dispatch = useDispatch();
     const items = useItems();
@@ -18,8 +18,8 @@ const MainView = () => {
 
     useEffect( () => {
         store.subscribe (() => {
-            console.log("writing", store.getState().spoilerFilter[key])
-            localStorage.setItem(localStorageKey, JSON.stringify(store.getState().spoilerFilter[key]));
+            console.log("writing", store.getState())
+            //localStorage.setItem(localStorageKey, JSON.stringify(store.getState().spoilerFilter[key]));
         });
     }, [localStorageKey]);
     
@@ -27,7 +27,7 @@ const MainView = () => {
     useEffect( () => {
         convertSavedData(localStorageKey);
         const loadedSpoilerFilter = restoreFromLocalStorage(localStorageKey);
-        dispatch(storeSpoilerFilter(loadedSpoilerFilter, key));
+        dispatch(storeSpoilerFilter({value:loadedSpoilerFilter, gameType}));
         setImportModalOpen(parseHash() != undefined);
     },[]);
 
@@ -47,7 +47,7 @@ const MainView = () => {
             localStorage.setItem(localStorageKey, JSON.stringify(hashConfig));
             setImportModalOpen(false);
             const loadedSpoilerFilter = restoreFromLocalStorage(localStorageKey);
-            dispatch(storeSpoilerFilter(loadedSpoilerFilter, key));
+            dispatch(storeSpoilerFilter({value:loadedSpoilerFilter, gameType}));
         }
         location.hash = '';
     }

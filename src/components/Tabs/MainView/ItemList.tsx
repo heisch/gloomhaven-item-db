@@ -16,7 +16,7 @@ type Props = {
 
 const ItemList = (props:Props) => {
     const {items} = props;
-    const { key } = useGame();
+    const { key: gameType } = useGame();
     const { displayAs, all } = getSpoilerFilter();
     const { property, direction } = getItemViewState();
     const dispatch = useDispatch();
@@ -29,8 +29,8 @@ const ItemList = (props:Props) => {
                 newDirection = SortDirection.ascending;
             }
 
-            dispatch(storeSortingProperty(newProperty, key));
-            dispatch(storeSortingDirection(newDirection, key));
+            dispatch(storeSortingProperty({value:newProperty, gameType}));
+            dispatch(storeSortingDirection({value:newDirection, gameType}));
         }
         
     return (

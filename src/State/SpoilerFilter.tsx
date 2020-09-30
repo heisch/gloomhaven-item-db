@@ -5,65 +5,19 @@ import memoize from 'lodash.memoize'
 import { GameType } from "../games";
 import { useGame } from "../components/Game/GameProvider";
 import { useSelector } from "react-redux";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { GameTypeAction } from "./GameTypeAction";
 
-export const STORE_SPOILER_FILTER = 'STORE_SPOILER_FILTER';
-export const STORE_PROSPERITY = 'STORE_PROSPERITY';
-export const STORE_SOLO_CLASS = 'STORE_SOLO_CLASS'
-export const STORE_SCENARIO_COMPLETED = 'STORE_SCENARIO_COMPLETED'
-export const STORE_ITEM = 'STORE_ITEM'
-export const STORE_ITEMS_IN_USE = 'STORE_ITEMS_IN_USE'
-export const STORE_ALL = 'STORE_ALL'
-export const STORE_ENABLE_STORE_STOCK_MANAGEMENT = 'STORE_ENABLE_STORE_STOCK_MANAGEMENT';
-export const STORE_DISPLAY_AS = 'STORE_DISPLAY_AS';
-export const STORE_DISCOUNT = 'STORE_DISCOUNT';
+export type ItemsInUse = {
+    [key:number]: number;
+  };
 
-export function storeSpoilerFilter(spoilerFilter: SpoilerFilter, gameType:GameType) {
-    return { type: STORE_SPOILER_FILTER, spoilerFilter, gameType}
-}
-
-export function storeProsperity(prosperity: number, gameType:GameType) {
-    return { type: STORE_PROSPERITY, prosperity, gameType}
-}
-
-export function storeSoloClass(soloClass: Array<SoloClassShorthand>, gameType:GameType) {
-    return { type: STORE_SOLO_CLASS, soloClass, gameType}
-}
-
-export function storeScenarioCompleted(scenarioCompleted: Array<number>, gameType:GameType) {
-    return { type: STORE_SCENARIO_COMPLETED, scenarioCompleted, gameType}
-}
-
-export function storeItem(item:Array<number>, gameType:GameType) {
-    return { type: STORE_ITEM, item, gameType}
-}
-
-export function storeItemsInUse(itemsInUse:any, gameType:GameType) {
-    return { type: STORE_ITEMS_IN_USE, itemsInUse, gameType}
-}
-
-export function storeAll(all:boolean, gameType:GameType) {
-    return { type: STORE_ALL, all, gameType}
-}
-
-export function storeEnableStoreStockManagement(enableStoreStockManagement:boolean, gameType:GameType) {
-    return {type: STORE_ENABLE_STORE_STOCK_MANAGEMENT, enableStoreStockManagement, gameType};
-}
-
-export function storeDisplayAs(displayAs: string, gameType:GameType) {
-    return {type: STORE_DISPLAY_AS, displayAs, gameType};
-}
-
-export function storeDiscount(discount: number, gameType:GameType) {
-    return {type: STORE_DISCOUNT, discount, gameType};
-}
 
 export interface SpoilerFilter {
     all: boolean
     prosperity: number
     item: Array<number>
-    itemsInUse: {
-        [key: number]: number
-    }
+    itemsInUse: ItemsInUse;
     soloClass: Array<SoloClassShorthand>
     discount: number
     displayAs: ItemViewDisplayType
@@ -104,34 +58,71 @@ const initialSpoilerMapState = Object.values(GameType).reduce(
     {} as SpoilerMap,
   );
 
+  const spoilerSlice = createSlice({
+      name: "spoilerFilter",
+      initialState: initialSpoilerMapState,
+      reducers: {
+        storeSpoilerFilter(state, action: PayloadAction<GameTypeAction<SpoilerFilter>>)
+        {
+            state[action.payload.gameType] = action.payload.value;
+        },
+        storeProsperity(state, action: PayloadAction<GameTypeAction<number>>) {
+            const gameState = state[action.payload.gameType]; 
+            if (gameState) {
+                gameState.prosperity = action.payload.value;
+            } 
+        },
+        storeSoloClass(state, action: PayloadAction<GameTypeAction<Array<SoloClassShorthand>>>) {
+            const gameState = state[action.payload.gameType]; 
+            if (gameState) {
+                gameState.soloClass = action.payload.value;
+            } 
+        },
+        storeScenarioCompleted(state, action: PayloadAction<GameTypeAction<Array<number>>>) {
+            const gameState = state[action.payload.gameType]; 
+            if (gameState) {
+                gameState.scenarioCompleted = action.payload.value;
+            } 
+        },
+        storeItem(state, action: PayloadAction<GameTypeAction<Array<number>>>) {
+            const gameState = state[action.payload.gameType]; 
+            if (gameState) {
+                gameState.item = action.payload.value;
+            } 
+        },
+        storeItemsInUse(state, action: PayloadAction<GameTypeAction<ItemsInUse>>) {
+            const gameState = state[action.payload.gameType]; 
+            if (gameState) {
+                gameState.itemsInUse = action.payload.value;
+            } 
+        },
+        storeAll(state, action: PayloadAction<GameTypeAction<boolean>>) {
+            const gameState = state[action.payload.gameType]; 
+            if (gameState) {
+                gameState.all = action.payload.value;
+            } 
+        },
+        storeEnableStoreStockManagement(state, action: PayloadAction<GameTypeAction<boolean>>) {
+            const gameState = state[action.payload.gameType]; 
+            if (gameState) {
+                gameState.enableStoreStockManagement = action.payload.value;
+            } 
+        },        
+        storeDisplayAs(state, action: PayloadAction<GameTypeAction<ItemViewDisplayType>>) {
+            const gameState = state[action.payload.gameType]; 
+            if (gameState) {
+                gameState.displayAs = action.payload.value;
+            } 
+        },
+        storeDiscount(state, action: PayloadAction<GameTypeAction<number>>) {
+            const gameState = state[action.payload.gameType]; 
+            if (gameState) {
+                gameState.discount = action.payload.value;
+            } 
+        },
+      }
+  })
 
-export function spoilerFilter(state = initialSpoilerMapState, action:any) {
-    switch (action.type)
-    {
-        case STORE_SPOILER_FILTER:
-            return {...state, [action.gameType] : action.spoilerFilter};
-        case STORE_PROSPERITY:
-            return { ...state, [action.gameType] : {...state[action.gameType as GameType], prosperity: action.prosperity}};
-        case STORE_SOLO_CLASS:
-            return { ...state, [action.gameType] : {...state[action.gameType as GameType], soloClass: action.soloClass}};
-        case STORE_SCENARIO_COMPLETED:
-            return { ...state, [action.gameType] : {...state[action.gameType as GameType], scenarioCompleted: action.scenarioCompleted}};
-        case STORE_ITEM:
-            return { ...state, [action.gameType] : {...state[action.gameType as GameType], item: action.item}};
-        case STORE_ITEMS_IN_USE:
-            return { ...state, [action.gameType] : {...state[action.gameType as GameType], itemsInUse: action.itemsInUse}};
-        case STORE_ALL:
-            return { ...state, [action.gameType] : {...state[action.gameType as GameType], all: action.all}};
-        case STORE_ENABLE_STORE_STOCK_MANAGEMENT:
-            return {...state, [action.gameType] : {...state[action.gameType as GameType], enableStoreStockManagement: action.enableStoreStockManagement}};
-        case STORE_DISPLAY_AS:
-            return {...state, [action.gameType] : {...state[action.gameType as GameType], displayAs: action.displayAs}};
-        case STORE_DISCOUNT:
-            return {...state, [action.gameType] : {...state[action.gameType as GameType], discount: action.discount}};
-        default:
-            return state;
-    }
-}
 
 export const restoreFromLocalStorage = (filterLocalStorageKey:string) => {
     const storage = localStorage.getItem(filterLocalStorageKey);
@@ -169,21 +160,24 @@ export const restoreFromLocalStorage = (filterLocalStorageKey:string) => {
 }
 
 export const spoilerFilterSelector = createSelector(
-    (state:RootState) => state.spoilerFilter,
+    (state:RootState) => state.spoilerReducer,
     spoilerFilter => memoize(
       (type:GameType) => {
-          if (spoilerFilter[type] === undefined)
+        const state = spoilerFilter[type];
+        if (state === undefined)
           {
               throw new Error("Wrong type");
           }
-          return spoilerFilter[type] as SpoilerFilter;
+          return state as SpoilerFilter;
       }
     )
   )
 
   export const getSpoilerFilter = () : SpoilerFilter => {
-      const {key} = useGame();
-    return useSelector(spoilerFilterSelector)(key);
+      const {key:gameType} = useGame();
+    return useSelector(spoilerFilterSelector)(gameType);
   }
 
-export default SpoilerFilter;
+export const { storeAll, storeItem, storeItemsInUse, storeEnableStoreStockManagement, storeDiscount, storeDisplayAs, storeScenarioCompleted, storeSoloClass, storeProsperity, storeSpoilerFilter} = spoilerSlice.actions;
+
+export default spoilerSlice.reducer;

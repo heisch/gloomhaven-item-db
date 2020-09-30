@@ -10,7 +10,7 @@ type Props = {
 }
 
 const ItemManagement = (props:Props) => {
-    const { key } = useGame();
+    const { key:gameType } = useGame();
     const {item} = props;
     const { enableStoreStockManagement, lockSpoilerPanel, itemsInUse } = getSpoilerFilter();
     const dispatch = useDispatch();
@@ -29,7 +29,7 @@ const ItemManagement = (props:Props) => {
             delete (itemsInUse[id]);
         }
 
-        dispatch(storeItemsInUse(itemsInUse, key));
+        dispatch(storeItemsInUse({value:itemsInUse, gameType}));
     }
 
 
