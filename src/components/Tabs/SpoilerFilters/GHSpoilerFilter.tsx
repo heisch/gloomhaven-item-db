@@ -20,12 +20,13 @@ const GHSpoilerFilter = (props: Props) => {
     const dispatch = useDispatch();
 
     const toggleClassFilter = (key: SoloClassShorthand) => {
-        if (soloClass.includes(key)) {
-            soloClass.splice(soloClass.indexOf(key), 1);
+        const value = Object.assign([], soloClass);
+        if (value.includes(key)) {
+            value.splice(value.indexOf(key), 1);
         } else {
-            soloClass.push(key)
+            value.push(key)
         }
-        dispatch(storeSoloClass(soloClass, gameType));
+        dispatch(storeSoloClass({value, gameType}));
     }
 
     return (
@@ -37,7 +38,7 @@ const GHSpoilerFilter = (props: Props) => {
                         return (
                             <Form.Radio key={index} label={nextProsperity}
                                         checked={prosperity === nextProsperity}
-                                        onChange={() => dispatch(storeProsperity(nextProsperity, gameType))}/>
+                                        onChange={() => dispatch(storeProsperity({value:nextProsperity, gameType}))}/>
                     )})}
             </Form.Group>
 

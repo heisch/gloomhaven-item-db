@@ -2,7 +2,6 @@ import React from 'react'
 import { Form } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 import { storeItem, getSpoilerFilter } from '../../../State/SpoilerFilter';
-import { useGame } from '../../Game/GameProvider';
 import { GameType } from '../../../games';
 
 type Props = {
@@ -16,12 +15,13 @@ const FilterCheckbox = (props:Props) => {
     const dispatch = useDispatch();
 
     const toggleItemFilter = (key: number) => {
-        if (item.includes(key)) {
-            item.splice(item.indexOf(key), 1);
+        const value = Object.assign([], item);
+        if (value.includes(key)) {
+            value.splice(value.indexOf(key), 1);
         } else {
-            item.push(key)
+            value.push(key)
         }
-        dispatch(storeItem(item, gameType));
+        dispatch(storeItem({value, gameType}));
     }
 
     return (

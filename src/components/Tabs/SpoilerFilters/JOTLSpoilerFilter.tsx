@@ -22,7 +22,7 @@ const JOTLSpoilerFilter = (props:Props) => {
         } else {
             scenarioCompleted.push(key)
         }
-        dispatch(storeScenarioCompleted(scenarioCompleted, gameType));
+        dispatch(storeScenarioCompleted({value:scenarioCompleted, gameType}));
     }
 
     return (

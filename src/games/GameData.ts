@@ -1,7 +1,6 @@
 import { GloomhavenItem } from "../State/Types"
-import SpoilerFilter from "../State/SpoilerFilter";
+import {SpoilerFilter} from "../State/SpoilerFilter";
 import { Helpers } from "../helpers";
-import { RootState } from "../State/Reducer";
 import { GameType } from ".";
 
 const deSpoilerItemSource = (source:string): string => {

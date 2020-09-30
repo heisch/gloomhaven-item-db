@@ -5,28 +5,8 @@ import { RootState } from "./Reducer";
 import memoize from 'lodash.memoize'
 import { useGame } from "../components/Game/GameProvider";
 import { useSelector } from "react-redux";
-
-export const STORE_FILTER_SLOTS = 'STORE_FILTER_SLOTS';
-export const STORE_FILTER_SEARCH = 'STORE_FILTER_SEARCH';
-export const STORE_SORTING_PROPERTY = 'STORE_SORTING_PROPERTY'
-export const STORE_SORTING_DIRECTION = 'STORE_SORTING_DIRECTION'
-
-export function storeFilterSlots(slots: Array<GloomhavenItemSlot> | undefined, gameType:GameType) {
-    return { type: STORE_FILTER_SLOTS, slots, gameType}
-}
-
-export function storeFilterSearch(search: string, gameType:GameType) {
-    return { type: STORE_FILTER_SEARCH, search, gameType}
-}
-
-export function storeSortingProperty(property: SortProperty, gameType:GameType) {
-    return { type: STORE_SORTING_PROPERTY, property, gameType}
-}
-
-export function storeSortingDirection(direction: SortDirection, gameType:GameType) {
-    return { type: STORE_SORTING_DIRECTION, direction, gameType}
-}
-
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { GameTypeAction } from "./GameTypeAction";
 
 export interface ItemViewState {
     slots?: Array<GloomhavenItemSlot>;
@@ -54,31 +34,53 @@ const initialItemViewStateMapState = Object.values(GameType).reduce(
     {} as ItemViewStateMap,
   );
 
-export function itemViewState(state = initialItemViewStateMapState, action:any) {
-    switch (action.type)
-    {
-        case STORE_FILTER_SLOTS:
-            return { ...state, [action.gameType] : {...state[action.gameType as GameType], slots: action.slots}};
-        case STORE_FILTER_SEARCH:
-            return { ...state, [action.gameType] : {...state[action.gameType as GameType], search: action.search}};
-        case STORE_SORTING_PROPERTY:
-            return { ...state, [action.gameType] : {...state[action.gameType as GameType], property: action.property}};
-        case STORE_SORTING_DIRECTION:
-            return { ...state, [action.gameType] : {...state[action.gameType as GameType], direction: action.direction}};
-        default:
-            return state;
-    }
-}
+const itemViewStateSlice = createSlice({
+    name: "itemViewState",
+    initialState: initialItemViewStateMapState,
+    reducers: {
+      storeItemViewState(state, action: PayloadAction<GameTypeAction<ItemViewState>>)
+      {
+          state[action.payload.gameType] = action.payload.value;
+      },
+      storeFilterSearch(state, action: PayloadAction<GameTypeAction<string>>) {
+          const gameState = state[action.payload.gameType]; 
+          if (gameState) {
+              gameState.search = action.payload.value;
+          } 
+      },
+      storeSortingProperty(state, action: PayloadAction<GameTypeAction<SortProperty>>) {
+          const gameState = state[action.payload.gameType]; 
+          if (gameState) {
+              gameState.property = action.payload.value;
+          } 
+      },
+      storeSortingDirection(state, action: PayloadAction<GameTypeAction<SortDirection>>) {
+          const gameState = state[action.payload.gameType]; 
+          if (gameState) {
+              gameState.direction = action.payload.value;
+          } 
+      },
+      storeFilterSlots(state, action: PayloadAction<GameTypeAction<Array<GloomhavenItemSlot>|undefined>>) {
+        const gameState = state[action.payload.gameType]; 
+        if (gameState) {
+            gameState.slots = action.payload.value;
+        } 
+    },
+  }
+})
+
 
 export const itemViewStateSelector = createSelector(
     (state:RootState) => state.itemViewState,
     itemViewState => memoize(
       (type:GameType) => {
-          if (itemViewState[type] === undefined)
+          const state = itemViewState[type];
+
+          if (state === undefined)
           {
               throw new Error("Wrong type");
           }
-          return itemViewState[type] as ItemViewState;
+          return state as ItemViewState;
       }
     )
   )
@@ -88,5 +90,6 @@ export const itemViewStateSelector = createSelector(
     return useSelector(itemViewStateSelector)(key);
   }
 
+export const { storeFilterSearch, storeSortingDirection, storeFilterSlots, storeSortingProperty, storeItemViewState } = itemViewStateSlice.actions;
 
-export default ItemViewState;
+export default itemViewStateSlice.reducer;

@@ -6,7 +6,7 @@ import { useGame } from '../../Game/GameProvider';
 
 const SpoilerFilters = () => {
     const dispatch = useDispatch();
-    const { spoilerFilter, key} = useGame();
+    const { spoilerFilter, key:gameType} = useGame();
 
     const { enableStoreStockManagement, all } = getSpoilerFilter();
 
@@ -16,7 +16,7 @@ const SpoilerFilters = () => {
                 <label>Respecting Spoiler Settings:</label>
                 <Button
                     color={all ? 'red' : 'blue'}
-                    onClick={() => dispatch(storeAll(!all,key))}
+                    onClick={() => dispatch(storeAll({value:!all,gameType}))}
                 >
                     {all
                         ? <React.Fragment><Icon name={'eye'}/> disabled</React.Fragment>
@@ -31,7 +31,7 @@ const SpoilerFilters = () => {
                     toggle
                     checked={enableStoreStockManagement}
                     onClick={() => {
-                        dispatch(storeEnableStoreStockManagement(!enableStoreStockManagement, key));
+                        dispatch(storeEnableStoreStockManagement({value:!enableStoreStockManagement, gameType}));
                     }}/>
             </Form.Group>
 

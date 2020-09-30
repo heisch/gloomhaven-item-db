@@ -17,26 +17,27 @@ const SearchOptions = (props:Props) => {
     const { displayAs, discount } = getSpoilerFilter();
     const { property, search, slots } = getItemViewState();
     const dispatch = useDispatch();
-    const { key } = useGame();
+    const { key: gameType } = useGame();
 
     const setFilterSlot = (slot?: GloomhavenItemSlot) => {
         if (!slot)
         {
-            dispatch(storeFilterSlots(undefined, key));    
+            dispatch(storeFilterSlots({value:undefined, gameType}));    
             return;
         }
-        let newSlots: GloomhavenItemSlot[] | undefined = slots ? slots : [];
-        const index = newSlots.indexOf(slot);
+        let value = Object.assign([], slots);
+        const index = value.indexOf(slot);
         if (index !== -1) {
-            newSlots.splice(index, 1);
+            value.splice(index, 1);
         } else {
-            newSlots.push(slot);
+            value.push(slot);
         }
-        if (newSlots.length === 0)
+        if (value.length === 0)
         {
-            newSlots = undefined;
+            dispatch(storeFilterSlots({value:undefined, gameType}));
         }
-        dispatch(storeFilterSlots(newSlots, key));
+        else
+            dispatch(storeFilterSlots({value, gameType}));
     }
 
 
@@ -47,11 +48,11 @@ const SearchOptions = (props:Props) => {
                     <label>Render as:</label>
                     <Button.Group>
                         <Button color={displayAs === 'list' ? 'blue' : undefined} onClick={() => {
-                                dispatch(storeDisplayAs('list', key));
+                                dispatch(storeDisplayAs({value:'list', gameType}));
                             }}>List</Button>
                         <Button.Or/>
                         <Button color={displayAs === 'images' ? 'blue' : undefined} onClick={() => {
-                                dispatch(storeDisplayAs('images', key));
+                                dispatch(storeDisplayAs({value:'images', gameType}));
                             }}>Images</Button>
                     </Button.Group>
                 </Form.Group>
@@ -72,7 +73,7 @@ const SearchOptions = (props:Props) => {
                                 {value: 5, text: "+5 gold"}, // (-19 - -20)
                             ]}
                             onChange={(obj, e) => {
-                                dispatch(storeDiscount(typeof e.value === 'number' ? e.value : 0, key));
+                                dispatch(storeDiscount({value:typeof e.value === 'number' ? e.value : 0, gameType}));
                             }}
                     />
                 </Form.Group>}
@@ -105,8 +106,8 @@ const SearchOptions = (props:Props) => {
                     <label>Find Item:</label>
                     <Input
                         value={search}
-                        onChange={(e) => dispatch(storeFilterSearch(e.target.value, key))}
-                        icon={{name: 'close', link: true, onClick: () => dispatch(storeFilterSearch('', key))}}
+                        onChange={(e) => dispatch(storeFilterSearch({value:e.target.value, gameType}))}
+                        icon={{name: 'close', link: true, onClick: () => dispatch(storeFilterSearch({value:'', gameType}))}}
                         placeholder={'Search...'}
                     />
                 </Form.Group>
