@@ -29,14 +29,6 @@ const ItemTable = (props:Props) => {
     const { enableStoreStockManagement, discount } = getSpoilerFilter();
     const { property, direction } = getItemViewState();
 
-    if (items.length === 0) {
-        return <Message negative>
-            No items found matching your filters and/or search criteria
-        </Message>
-    }
-
-    // TODO: see what can be done as local state?
-    // TODO: Move this into a component!
     const renderSummon = (item: GloomhavenItem) => {
         return item.summon === undefined ? null : (
             <>
