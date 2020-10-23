@@ -8,6 +8,8 @@ import Share from '../Share';
 import useItems  from '../../../hooks/useItems'
 import {useGame } from '../../Game/GameProvider';
 import {store} from '../../../App'
+import { GameType } from '../../../games';
+import { LOCAL_STORAGE_PREFIX } from '../../../games/GameData';
 
 const MainView = () => {
     const { localStorageKey, convertSavedData, name, key:gameType } = useGame();
@@ -18,16 +20,20 @@ const MainView = () => {
 
     useEffect( () => {
         store.subscribe (() => {
-            console.log("writing", store.getState())
-            //localStorage.setItem(localStorageKey, JSON.stringify(store.getState().spoilerFilter[key]));
+            localStorage.setItem(localStorageKey, JSON.stringify(store.getState().spoilerReducer[gameType]));
         });
     }, [localStorageKey]);
     
+    const loadGamesFromStorage = () => {
+        Object.values(GameType).forEach( gt => {
+            const value = restoreFromLocalStorage(LOCAL_STORAGE_PREFIX + gt);
+            dispatch(storeSpoilerFilter({value, gameType:gt as GameType}));
+        })
+    }
 
     useEffect( () => {
         convertSavedData(localStorageKey);
-        const loadedSpoilerFilter = restoreFromLocalStorage(localStorageKey);
-        dispatch(storeSpoilerFilter({value:loadedSpoilerFilter, gameType}));
+        loadGamesFromStorage();
         setImportModalOpen(parseHash() != undefined);
     },[]);
 
@@ -48,7 +54,7 @@ const MainView = () => {
             setImportModalOpen(false);
             const loadedSpoilerFilter = restoreFromLocalStorage(localStorageKey);
             dispatch(storeSpoilerFilter({value:loadedSpoilerFilter, gameType}));
-        }
+          }
         location.hash = '';
     }
 

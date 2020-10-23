@@ -45,7 +45,7 @@ const GHSpoilerFilter = (props: Props) => {
             <SpoilerFilterItemList gameType={gameType} start={(prosperity + 1) * 7 + 1} end={70} title="Prosperity Items"/>
             <SpoilerFilterItemList gameType={gameType} start={71} end={95} title="Random Item Design"/>
             <SpoilerFilterItemList gameType={gameType} start={96} end={133} title="Other Items"/>
-            <SpoilerFilterItemList gameType={gameType} start={152} end={163} title="Fallen Circles Itmes"/>
+            <SpoilerFilterItemList gameType={gameType} start={152} end={163} title="Forgotten Circles Itmes"/>
 
             <Form.Group inline className={'inline-break'}>
                 <label>Solo Class Items:</label>

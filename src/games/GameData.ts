@@ -7,6 +7,8 @@ const deSpoilerItemSource = (source:string): string => {
     return source.replace(/{(.{2})}/, (m, m1) => '<img class="icon" src="'+require('../img/classes/'+m1+'.png')+'" alt="" />');
 }
 
+export const LOCAL_STORAGE_PREFIX:string = "ItemView:spoilerFilter_";
+
 export abstract class BaseGameData {
     name: string;
     key: GameType;
@@ -59,11 +61,7 @@ export abstract class BaseGameData {
     abstract get spoilerFilter () : JSX.Element | null;
 
     get localStorageKey() {
-        return "ItemView:spoilerFilter_" + this.key;
-    }
-
-    get localViewStateStorageKey() {
-        return "ItemView:viewState_" + this.key;
+        return LOCAL_STORAGE_PREFIX + this.key;
     }
 
     convertSavedData(storageKey: string) {

@@ -17,12 +17,13 @@ const JOTLSpoilerFilter = (props:Props) => {
     const dispatch = useDispatch();
 
     const toggleScenarioCompleted = (key: number) => {
-        if (scenarioCompleted.includes(key)) {
-            scenarioCompleted.splice(scenarioCompleted.indexOf(key), 1);
+        const value = Object.assign([], scenarioCompleted);
+        if (value.includes(key)) {
+            value.splice(value.indexOf(key), 1);
         } else {
-            scenarioCompleted.push(key)
+            value.push(key)
         }
-        dispatch(storeScenarioCompleted({value:scenarioCompleted, gameType}));
+        dispatch(storeScenarioCompleted({value, gameType}));
     }
 
     return (
