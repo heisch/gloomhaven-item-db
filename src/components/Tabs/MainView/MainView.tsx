@@ -7,23 +7,15 @@ import SpoilerFilters from '../SpoilerFilters/SpoilerFilters';
 import Share from '../Share';
 import useItems  from '../../../hooks/useItems'
 import {useGame } from '../../Game/GameProvider';
-import {store} from '../../../App'
 import { GameType } from '../../../games';
 import { LOCAL_STORAGE_PREFIX } from '../../../games/GameData';
 
 const MainView = () => {
-    const { localStorageKey, convertSavedData, key:gameType } = useGame();
+    const { localStorageKey, convertSavedData, key:gameType} = useGame();
     const {all, lockSpoilerPanel} = getSpoilerFilter();
     const dispatch = useDispatch();
     const items = useItems();
     const [importModalOpen, setImportModalOpen] = useState(false);
-
-    useEffect( () => {
-        store.subscribe (() => {
-            localStorage.setItem(localStorageKey, JSON.stringify(store.getState().spoilerReducer[gameType]));
-        });
-    }, [localStorageKey]);
-    
     const loadGamesFromStorage = () => {
         Object.values(GameType).forEach( gt => {
             const value = restoreFromLocalStorage(LOCAL_STORAGE_PREFIX + gt);
