@@ -38,7 +38,17 @@ const MainView = () => {
     },[]);
 
     const parseHash = (): SpoilerFilter | undefined => {
-        const hash = location.hash.substr(1);
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        let hash = urlParams.get('importHash') || undefined;
+        if (hash === undefined)
+        {
+            hash = location.hash.substr(1);
+        }
+        if (hash === undefined)
+        {
+            return undefined;
+        }
         const config = atob(hash);
         try {
             return JSON.parse(config).hasOwnProperty('prosperity') ? JSON.parse(config) : undefined;
@@ -56,6 +66,7 @@ const MainView = () => {
             dispatch(storeSpoilerFilter({value:loadedSpoilerFilter, gameType}));
           }
         location.hash = '';
+        location.search = '';
     }
 
     let panes = [
