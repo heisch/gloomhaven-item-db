@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import { Container, DropdownProps, Form } from 'semantic-ui-react'
@@ -7,7 +7,7 @@ import './App.css';
 import dbApp from "./State/Reducer";
 import MainView from './components/Tabs/MainView/MainView';
 import GameProvider from './components/Game/GameProvider'
-import { gameDataTypes, GameType } from './games';
+import { gameDataTypes, GameType, LOCAL_STORAGE_PREFIX } from './games';
 
 export const store = createStore(dbApp,  (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__());
 
@@ -39,6 +39,15 @@ const App = () => {
     const onGameTypeChanged = (obj:any, e:DropdownProps):void => {
         setGameType(e.value as GameType);
     }
+
+    useEffect( () => {
+        let unsubscribe = store.subscribe (() => {
+            localStorage.setItem(LOCAL_STORAGE_PREFIX + gameType, JSON.stringify(store.getState().spoilerReducer[gameType]));
+        });
+        return () => {
+            unsubscribe();
+        }
+    }, [gameType]);
 
     return (
         <Container>

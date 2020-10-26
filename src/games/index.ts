@@ -1,6 +1,6 @@
-import GHGameData from './gh/GHGameData';
+import GHGameData  from './gh/GHGameData';
 import JOTLGameData from './jotl/JOTlGameData';
-import BaseGameData from './GameData';
+import BaseGameData, {LOCAL_STORAGE_PREFIX} from './GameData';
 
 export enum GameType
 {
@@ -13,4 +13,4 @@ const gameDataTypes = {
     [GameType.JawsOfTheLion] : new JOTLGameData(),
 }
 
-export {gameDataTypes, BaseGameData};
+export {gameDataTypes, BaseGameData, LOCAL_STORAGE_PREFIX};
