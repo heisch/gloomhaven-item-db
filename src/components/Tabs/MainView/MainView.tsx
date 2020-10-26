@@ -12,7 +12,7 @@ import { GameType } from '../../../games';
 import { LOCAL_STORAGE_PREFIX } from '../../../games/GameData';
 
 const MainView = () => {
-    const { localStorageKey, convertSavedData, name, key:gameType } = useGame();
+    const { localStorageKey, convertSavedData, key:gameType } = useGame();
     const {all, lockSpoilerPanel} = getSpoilerFilter();
     const dispatch = useDispatch();
     const items = useItems();
@@ -81,7 +81,6 @@ const MainView = () => {
     
     return (
         <>
-            <Header size={'huge'} content={name}/>
             <Modal basic size='small' open={importModalOpen}>
                 <Header icon='cloud download' content='Apply Configuration from Link'/>
                 <Modal.Content>
