@@ -1,8 +1,6 @@
 import React from 'react'
 import { GloomhavenItem, SortProperty } from '../../../State/Types'
-import { Message, Table, Popup, Icon, Image } from 'semantic-ui-react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../../State/Reducer';
+import {  Table, Popup, Icon, Image } from 'semantic-ui-react';
 import ItemManagement from './ItemManagement';
 import { Helpers, getSlotImageSrc } from '../../../helpers';
 import { getSpoilerFilter } from '../../../State/SpoilerFilter';
