@@ -178,6 +178,17 @@ export const spoilerFilterSelector = createSelector(
     return useSelector(spoilerFilterSelector)(gameType);
   }
 
+  export const allSpoilerFiltersSelector = createSelector(
+    (state:RootState) => state.spoilerReducer,
+    spoilerFilter => spoilerFilter
+  )
+
+
+  export const getAllSpoilerFilters = () : SpoilerMap => {
+  return useSelector(allSpoilerFiltersSelector);
+}
+
+
 export const { storeAll, storeItem, storeItemsInUse, storeEnableStoreStockManagement, storeDiscount, storeDisplayAs, storeScenarioCompleted, storeSoloClass, storeProsperity, storeSpoilerFilter} = spoilerSlice.actions;
 
 export default spoilerSlice.reducer;

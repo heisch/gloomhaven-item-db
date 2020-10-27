@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 import { Form, Icon, Message } from 'semantic-ui-react';
-import { getSpoilerFilter } from '../../State/SpoilerFilter';
+import { getAllSpoilerFilters } from '../../State/SpoilerFilter';
 
 type Props = {
 }
 
 const Share = (props:Props) => {
     const {} = props;
-    const spoilerFilter = getSpoilerFilter();
+    const allSpoilerFilters = getAllSpoilerFilters();
     const [ shareLockSpoilerPanel, setShareLockSpoilerPanel] = useState(false);
 
     const shareUrl = location.origin + location.pathname + '#' + btoa(JSON.stringify({
-        ...spoilerFilter,
+        ...allSpoilerFilters,
         lockSpoilerPanel: shareLockSpoilerPanel
     }));
 
