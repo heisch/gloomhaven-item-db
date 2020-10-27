@@ -34,10 +34,11 @@ const GameSelector = (props:GameSelectorProps) => {
 
 
 const App = () => {
-    const [gameType, setGameType] = useState<GameType>(GameType.Gloomhaven);
+    const [gameType, setGameType] = useState<GameType>(localStorage.getItem("lastGame") as GameType || GameType.Gloomhaven);
 
     const onGameTypeChanged = (obj:any, e:DropdownProps):void => {
         setGameType(e.value as GameType);
+        localStorage.setItem("lastGame", e.value as GameType);
     }
 
     useEffect( () => {
