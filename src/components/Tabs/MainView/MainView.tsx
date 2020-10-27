@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Modal, Header, Button, Icon, Tab } from 'semantic-ui-react';
 import {  useDispatch } from 'react-redux';
-import { SpoilerFilter, storeSpoilerFilter, restoreFromLocalStorage, getSpoilerFilter } from '../../../State/SpoilerFilter';
+import { SpoilerFilter, storeSpoilerFilter, restoreFromLocalStorage, getSpoilerFilter, SpoilerMap } from '../../../State/SpoilerFilter';
 import ItemList from './ItemList';
 import SpoilerFilters from '../SpoilerFilters/SpoilerFilters';
 import Share from '../Share';
@@ -15,7 +15,7 @@ const MainView = () => {
     const {all, lockSpoilerPanel} = getSpoilerFilter();
     const dispatch = useDispatch();
     const items = useItems();
-    const [importModalOpen, setImportModalOpen] = useState(false);
+    const [importedSpoilerFilters, setImportedSpoilerFilters] = useState<SpoilerMap|undefined>(undefined);
     const loadGamesFromStorage = () => {
         Object.values(GameType).forEach( gt => {
             const value = restoreFromLocalStorage(LOCAL_STORAGE_PREFIX + gt);
@@ -26,39 +26,42 @@ const MainView = () => {
     useEffect( () => {
         convertSavedData(localStorageKey);
         loadGamesFromStorage();
-        setImportModalOpen(parseHash() != undefined);
+        setImportedSpoilerFilters(parseHash());
     },[]);
 
-    const parseHash = (): SpoilerFilter | undefined => {
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        let hash = urlParams.get('importHash') || undefined;
-        if (hash === undefined)
+    const parseHash = (): any | undefined => {
+        const importHash = location.hash.substr(1) || undefined;
+        if (importHash !== undefined)
         {
-            hash = location.hash.substr(1);
+            try {
+                return JSON.parse(atob(importHash));
+            } catch (e) {
+                return undefined;
+            }
         }
-        if (hash === undefined)
-        {
-            return undefined;
-        }
-        const config = atob(hash);
-        try {
-            return JSON.parse(config).hasOwnProperty('prosperity') ? JSON.parse(config) : undefined;
-        } catch (e) {
-            return undefined;
-        }
+        return undefined;
     }
 
     const importFromHash = () => {
-        const hashConfig = parseHash();
+        const hashConfig = importedSpoilerFilters;
         if (hashConfig !== undefined) {
-            localStorage.setItem(localStorageKey, JSON.stringify(hashConfig));
-            setImportModalOpen(false);
-            const loadedSpoilerFilter = restoreFromLocalStorage(localStorageKey);
-            dispatch(storeSpoilerFilter({value:loadedSpoilerFilter, gameType}));
+            if (hashConfig.hasOwnProperty(GameType.Gloomhaven)) {
+                   Object.values(GameType).forEach( (gt:GameType) => {
+                       const spoilerFilter = hashConfig[gt];
+                       if (spoilerFilter !== undefined) {
+                            localStorage.setItem(LOCAL_STORAGE_PREFIX + gt, JSON.stringify(spoilerFilter));
+                            dispatch(storeSpoilerFilter({value:spoilerFilter, gameType:gt}));
+                       }
+                })
+            }
+            else if (hashConfig.hasOwnProperty("prosperity")) {
+                const value = hashConfig as SpoilerFilter;
+                localStorage.setItem(localStorageKey, JSON.stringify(value));
+                dispatch(storeSpoilerFilter({value, gameType}));
+            }
+            setImportedSpoilerFilters(undefined);
           }
-        location.hash = '';
-        location.search = '';
+          location.hash = "";
     }
 
     let panes = [
@@ -73,7 +76,7 @@ const MainView = () => {
     
     return (
         <>
-            <Modal basic size='small' open={importModalOpen}>
+            <Modal basic size='small' open={importedSpoilerFilters !== undefined}>
                 <Header icon='cloud download' content='Apply Configuration from Link'/>
                 <Modal.Content>
                     <p>
@@ -83,7 +86,7 @@ const MainView = () => {
                 <Modal.Actions>
                     <Button basic color='red' inverted onClick={() => {
                         location.hash = '';
-                        setImportModalOpen(false);
+                        setImportedSpoilerFilters(undefined);
                     }}>
                         <Icon name='remove'/> No
                     </Button>
