@@ -1,7 +1,6 @@
 import React from 'react'
 import { GloomhavenItem, SortProperty, SortDirection } from '../../../State/Types';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../../State/Reducer';
+import { useDispatch } from 'react-redux';
 import SearchOptions from './SearchOptions';
 import { Message, Icon } from 'semantic-ui-react';
 import ItemTable from './ItemTable';

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Form } from 'semantic-ui-react';
 import FilterCheckbox from './FilterCheckbox';
-import { useGame } from '../../Game/GameProvider';
 import { GameType } from '../../../games';
 
 type Range = {

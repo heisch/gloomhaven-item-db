@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { storeProsperity, storeSoloClass, getSpoilerFilter } from '../../../State/SpoilerFilter';
 import SpoilerFilterItemList from './SpoilerFilterItemList';
 import { SoloClassShorthand } from '../../../State/Types';
-import { useGame } from '../../Game/GameProvider';
 import { GameType } from '../../../games';
 
 const GloomhavenSoloClassShorthands: Array<SoloClassShorthand> = ['BR', 'TI', 'SW', 'SC', 'CH', 'MT', 'SK', 'QM', 'SU', 'NS', 'PH', 'BE', 'SS', 'DS', 'SB', 'EL', 'BT', 'DR'];

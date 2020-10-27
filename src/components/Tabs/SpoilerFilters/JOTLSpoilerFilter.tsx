@@ -3,7 +3,6 @@ import SpoilerFilterItemList from './SpoilerFilterItemList';
 import { Form } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 import { storeScenarioCompleted, getSpoilerFilter } from '../../../State/SpoilerFilter';
-import { useGame } from '../../Game/GameProvider';
 import { GameType } from '../../../games';
 
 type Props = {
