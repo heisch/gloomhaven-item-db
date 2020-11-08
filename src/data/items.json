@@ -1625,7 +1625,7 @@
     "cost": 50,
     "slot": "Small Item",
     "source": "Reward from Scenario #??\nSection 62 \"Mechanical Splendor\"in book.",
-    "desc": "During your turn, Teleport to any unoccupied hex withing 4 hexes of you.",
+    "desc": "During your turn, Teleport to any unoccupied hex within 4 hexes of you.",
     "consumed": true
   },
   {
