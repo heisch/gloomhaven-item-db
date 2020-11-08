@@ -685,7 +685,7 @@
     "count": 2,
     "cost": 60,
     "slot": "Two Hands",
-    "source": "Prosperity 9\nScenario #?? (Treasure #92)\nSection 132 -> g106\"Strangler's Park\" in book",
+    "source": "Prosperity 9\nScenario #111 (Treasure #92)\nSection 132 -> g106\"Strangler's Park\" in book",
     "desc": "During your single target melee attack, you can attack and single enemy within 2 hexes."
   },
   {
@@ -1526,7 +1526,7 @@
     "count": 1,
     "cost": 50,
     "slot": "Small Item",
-    "source": "Reward from Scenario #??\nSection 125 \"A locked chest\" in book",
+    "source": "Reward from Scenario #97\nSection 125 \"A locked chest\" in book",
     "consumed": true,
     "desc": "After performing the top action of any ability card, you may immediately peform the bottom action of the same card. This item cannot be used if both actions trigger a lot card icon {consumed}."
   },
@@ -1574,7 +1574,7 @@
     "count": 2,
     "cost": 40,
     "slot": "Two Hands",
-    "source": "Scenario #?? (Treasure #78)\nSection 32\"Collapsed Atrium\" in book",
+    "source": "Scenario #107 (Treasure #78)\nSection 32\"Collapsed Atrium\" in book",
     "desc": "During your ranged attack, add +2 Attack, CURSE, and WOUND to a single attack.",
     "consumed": true
   },
@@ -1624,7 +1624,7 @@
     "count": 1,
     "cost": 50,
     "slot": "Small Item",
-    "source": "Reward from Scenario #??\nSection 62 \"Mechanical Splendor\"in book.",
+    "source": "Reward from Scenario #112\nSection 62 \"Mechanical Splendor\"in book.",
     "desc": "During your turn, Teleport to any unoccupied hex within 4 hexes of you.",
     "consumed": true
   },
