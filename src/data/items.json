@@ -1012,7 +1012,7 @@
     "cost": 50,
     "slot": "Body",
     "source": "City Event 40",
-    "consumed": true,
+    "spent": true,
     "desc": "During your ranged attack, suffer 3 damage to add +1 Attack to the entire Attack action."
   },
   {
