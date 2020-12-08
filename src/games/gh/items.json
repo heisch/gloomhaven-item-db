@@ -686,7 +686,7 @@
     "count": 2,
     "cost": 60,
     "slot": "Two Hands",
-    "source": "Prosperity 9\nScenario #?? (Treasure #92)\nSection 132 -> g106\"Strangler's Park\" in book",
+    "source": "Prosperity 9\nScenario #111 (Treasure #92)\nSection 132 -> g106\"Strangler's Park\" in book",
     "desc": "During your single target melee attack, you can attack and single enemy within 2 hexes."
   },
   {
@@ -704,7 +704,7 @@
     "count": 2,
     "cost": 75,
     "slot": "Small Item",
-    "source": "Prosperity 9\nScenario #?? (Treasure #89)\nSection 103 -> 84\"Gateway to the Firmament\" in book",
+    "source": "Prosperity 9\nFC Challenge Scenario, Rift Card 12 (Treasure #89)\nSection 103 -> 84\"Gateway to the Firmament\" in book",
     "desc": "At the end of your turn, play two cards from your hand and perform an additional turn this round based on your new leading initiative (which must be later than your previous initiative)."
   },
   {
@@ -1013,7 +1013,7 @@
     "cost": 50,
     "slot": "Body",
     "source": "City Event 40",
-    "consumed": true,
+    "spent": true,
     "desc": "During your ranged attack, suffer 3 damage to add +1 Attack to the entire Attack action."
   },
   {
@@ -1527,7 +1527,7 @@
     "count": 1,
     "cost": 50,
     "slot": "Small Item",
-    "source": "Reward from Scenario #??\nSection 125 \"A locked chest\" in book",
+    "source": "Reward from Scenario #97\nSection 125 \"A locked chest\" in book",
     "consumed": true,
     "desc": "After performing the top action of any ability card, you may immediately peform the bottom action of the same card. This item cannot be used if both actions trigger a lot card icon {consumed}."
   },
@@ -1575,7 +1575,7 @@
     "count": 2,
     "cost": 40,
     "slot": "Two Hands",
-    "source": "Scenario #?? (Treasure #78)\nSection 32\"Collapsed Atrium\" in book",
+    "source": "Scenario #107 (Treasure #78)\nSection 32\"Collapsed Atrium\" in book",
     "desc": "During your ranged attack, add +2 Attack, CURSE, and WOUND to a single attack.",
     "consumed": true
   },
@@ -1625,8 +1625,8 @@
     "count": 1,
     "cost": 50,
     "slot": "Small Item",
-    "source": "Reward from Scenario #??\nSection 62 \"Mechanical Splendor\"in book.",
-    "desc": "During your turn, Teleport to any unoccupied hex withing 4 hexes of you.",
+    "source": "Reward from Scenario #112\nSection 62 \"Mechanical Splendor\"in book.",
+    "desc": "During your turn, Teleport to any unoccupied hex within 4 hexes of you.",
     "consumed": true
   },
   {
