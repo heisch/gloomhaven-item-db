@@ -1,11 +1,10 @@
 import React from 'react'
-import { GloomhavenItem, SortProperty, SortDirection, GloomhavenItemSlot } from '../../../State/Types'
-import { Message, Table, Popup, Icon, Image } from 'semantic-ui-react';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../../State/Reducer';
-import { storeSortingProperty, storeSortingDirection } from '../../../State/ItemViewState';
+import { GloomhavenItem, SortProperty } from '../../../State/Types'
+import {  Table, Popup, Icon, Image } from 'semantic-ui-react';
 import ItemManagement from './ItemManagement';
 import { Helpers, getSlotImageSrc } from '../../../helpers';
+import { getSpoilerFilter } from '../../../State/SpoilerFilter';
+import { getItemViewState } from '../../../State/ItemViewState';
 
 type Props = {
     items : GloomhavenItem[];
@@ -25,17 +24,9 @@ const GHIcon = (props:IconProps) => {
 
 const ItemTable = (props:Props) => {
     const {items, setSorting} = props;
-    const { enableStoreStockManagement, discount } = useSelector<RootState>( state => state.spoilerFilter) as RootState['spoilerFilter'];
-    const { property, direction } = useSelector<RootState>( state => state.itemViewState) as RootState['itemViewState'];
+    const { enableStoreStockManagement, discount } = getSpoilerFilter();
+    const { property, direction } = getItemViewState();
 
-    if (items.length === 0) {
-        return <Message negative>
-            No items found matching your filters and/or search criteria
-        </Message>
-    }
-
-    // TODO: see what can be done as local state?
-    // TODO: Move this into a component!
     const renderSummon = (item: GloomhavenItem) => {
         return item.summon === undefined ? null : (
             <>

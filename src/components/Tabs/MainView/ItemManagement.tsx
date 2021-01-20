@@ -1,17 +1,18 @@
 import React from 'react';
 import { GloomhavenItem } from "../../../State/Types";
 import { Checkbox } from "semantic-ui-react";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../../../State/Reducer"
-import { storeItemsInUse } from "../../../State/SpoilerFilter";
+import { useDispatch } from "react-redux";
+import { storeItemsInUse, getSpoilerFilter } from "../../../State/SpoilerFilter";
+import { useGame } from '../../Game/GameProvider';
 
 type Props = {
     item : GloomhavenItem;
 }
 
 const ItemManagement = (props:Props) => {
+    const { key:gameType } = useGame();
     const {item} = props;
-    const { enableStoreStockManagement, lockSpoilerPanel, itemsInUse } = useSelector<RootState>( state => state.spoilerFilter) as RootState['spoilerFilter'];
+    const { enableStoreStockManagement, lockSpoilerPanel, itemsInUse } = getSpoilerFilter();
     const dispatch = useDispatch();
 
     if (!enableStoreStockManagement) {
@@ -28,7 +29,7 @@ const ItemManagement = (props:Props) => {
             delete (itemsInUse[id]);
         }
 
-        dispatch(storeItemsInUse(itemsInUse));
+        dispatch(storeItemsInUse({value:itemsInUse, gameType}));
     }
 
 

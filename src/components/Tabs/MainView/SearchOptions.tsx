@@ -1,11 +1,11 @@
 import React from 'react'
 import { Form, Button, Input } from 'semantic-ui-react';
-import { useDispatch, useSelector } from 'react-redux';
-import { storeDisplayAs, storeDiscount } from '../../../State/SpoilerFilter';
-import { RootState } from '../../../State/Reducer';
-import { storeFilterSearch, storeFilterSlots } from '../../../State/ItemViewState';
+import { useDispatch } from 'react-redux';
+import { storeDisplayAs, storeDiscount, getSpoilerFilter } from '../../../State/SpoilerFilter';
+import { storeFilterSearch, storeFilterSlots, getItemViewState } from '../../../State/ItemViewState';
 import { getSlotImageSrc } from '../../../helpers';
 import { GloomhavenItemSlot, SortProperty} from '../../../State/Types';
+import { useGame } from '../../Game/GameProvider';
 
 type Props = {
     setSorting : (newProperty: SortProperty) => void;
@@ -14,28 +14,30 @@ type Props = {
 const SearchOptions = (props:Props) => {
     const { setSorting } =  props;
     const gloomhavenItemSlots: Array<GloomhavenItemSlot> = ['Head', 'Body', 'Legs', 'One Hand', 'Two Hands', 'Small Item'];
-    const { displayAs, discount } = useSelector<RootState>( state => state.spoilerFilter) as RootState['spoilerFilter'];
-    const { property, search, slots } = useSelector<RootState>( state => state.itemViewState) as RootState['itemViewState'];
+    const { displayAs, discount } = getSpoilerFilter();
+    const { property, search, slots } = getItemViewState();
     const dispatch = useDispatch();
+    const { key: gameType } = useGame();
 
     const setFilterSlot = (slot?: GloomhavenItemSlot) => {
         if (!slot)
         {
-            dispatch(storeFilterSlots(undefined));    
+            dispatch(storeFilterSlots({value:undefined, gameType}));    
             return;
         }
-        let newSlots = slots ? slots : [];
-        const index = newSlots.indexOf(slot);
+        let value = Object.assign([], slots);
+        const index = value.indexOf(slot);
         if (index !== -1) {
-            newSlots.splice(index, 1);
+            value.splice(index, 1);
         } else {
-            newSlots.push(slot);
+            value.push(slot);
         }
-        if (newSlots.length === 0)
+        if (value.length === 0)
         {
-            newSlots = undefined;
+            dispatch(storeFilterSlots({value:undefined, gameType}));
         }
-        dispatch(storeFilterSlots(newSlots));
+        else
+            dispatch(storeFilterSlots({value, gameType}));
     }
 
 
@@ -46,11 +48,11 @@ const SearchOptions = (props:Props) => {
                     <label>Render as:</label>
                     <Button.Group>
                         <Button color={displayAs === 'list' ? 'blue' : undefined} onClick={() => {
-                                dispatch(storeDisplayAs('list'));
+                                dispatch(storeDisplayAs({value:'list', gameType}));
                             }}>List</Button>
                         <Button.Or/>
                         <Button color={displayAs === 'images' ? 'blue' : undefined} onClick={() => {
-                                dispatch(storeDisplayAs('images'));
+                                dispatch(storeDisplayAs({value:'images', gameType}));
                             }}>Images</Button>
                     </Button.Group>
                 </Form.Group>
@@ -71,7 +73,7 @@ const SearchOptions = (props:Props) => {
                                 {value: 5, text: "+5 gold"}, // (-19 - -20)
                             ]}
                             onChange={(obj, e) => {
-                                dispatch(storeDiscount(typeof e.value === 'number' ? e.value : 0));
+                                dispatch(storeDiscount({value:typeof e.value === 'number' ? e.value : 0, gameType}));
                             }}
                     />
                 </Form.Group>}
@@ -104,8 +106,8 @@ const SearchOptions = (props:Props) => {
                     <label>Find Item:</label>
                     <Input
                         value={search}
-                        onChange={(e) => dispatch(storeFilterSearch(e.target.value))}
-                        icon={{name: 'close', link: true, onClick: () => dispatch(storeFilterSearch(''))}}
+                        onChange={(e) => dispatch(storeFilterSearch({value:e.target.value, gameType}))}
+                        icon={{name: 'close', link: true, onClick: () => dispatch(storeFilterSearch({value:'', gameType}))}}
                         placeholder={'Search...'}
                     />
                 </Form.Group>

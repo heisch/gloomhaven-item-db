@@ -1,26 +1,20 @@
-import { GloomhavenItemSlot, GloomhavenItem, SortDirection, GloomhavenItemSourceType } from "../State/Types"
-import { useEffect, useState } from "react";
-import { Helpers } from "../helpers";
-import { useSelector } from "react-redux";
-import { RootState } from "../State/Reducer";
+import { GloomhavenItemSlot, GloomhavenItem, SortDirection } from "../State/Types"
+import { useGame } from "../components/Game/GameProvider"
+import { getSpoilerFilter } from "../State/SpoilerFilter";
+import { getItemViewState } from "../State/ItemViewState";
 
 const gloomhavenItemSlots: Array<GloomhavenItemSlot> = ['Head', 'Body', 'Legs', 'One Hand', 'Two Hands', 'Small Item'];
 
 const useItems = (): Array<GloomhavenItem> => {
 
-    const { all, prosperity, soloClass, item: spoilerFilterItem } = useSelector<RootState>( state => state.spoilerFilter) as RootState['spoilerFilter'];
-    const { property, direction, slots, search } = useSelector<RootState>( state => state.itemViewState) as RootState['itemViewState'];
-
-    const [initialItems, setInitialItems] = useState<Array<GloomhavenItem>>([]);
-
-    const deSpoilerItemSource = (source:string): string => {
-        return source.replace(/{(.{2})}/, (m, m1) => '<img class="icon" src="'+require('../img/classes/'+m1+'.png')+'" alt="" />');
-    }
+    const { isItemShown, initialItems} = useGame();
+    const spoilerFilter = getSpoilerFilter();
+    const { all, item: spoilerFilterItem } = spoilerFilter;
+    const { property, direction, slots, search } = getItemViewState();
 
     const getFilteredItems = () => {
         const spoilerFiltered = all ? initialItems : initialItems.filter(item => {
-            if (item.id <= (prosperity+1)*7) return true;
-            if (item.soloItem && soloClass.includes(item.soloItem)) return true;
+            if (isItemShown(item, spoilerFilter)) return true;
             return spoilerFilterItem.includes(item.id);
         });
         return spoilerFiltered.filter(item => {
@@ -68,58 +62,6 @@ const useItems = (): Array<GloomhavenItem> => {
             return direction === SortDirection.ascending ? value : value * -1;
         }));
     }
-
-
-    useEffect( () => {
-        const items: Array<GloomhavenItem> = require('../data/items.json');
-
-        let slots: Array<string> = [];
-        let sources: Array<string> = [];
-        let sourceTypes: Array<GloomhavenItemSourceType> = [];
-
-        items.forEach(item => {
-
-            item.descHTML = Helpers.parseEffectText(item.desc);
-
-            let sourceType: string = item.source;
-
-            item.sourceTypes = [];
-
-            item.source.split("\n").forEach(itemSource => {
-                if (itemSource.match(/^Prosperity Level \d/)) {
-                    item.sourceTypes.push("Prosperity");
-                } else if (itemSource.match(/^Reward from Solo Scenario /)) {
-                    item.sourceTypes.push("Solo Scenario");
-                } else if (itemSource.match(/^(Reward From )?Scenario #\d+/)) {
-                    item.sourceTypes.push("Scenario");
-                } else if (itemSource === "Random Item Design") {
-                    item.sourceTypes.push("Random Item Design");
-                } else if (itemSource.match(/^City Event \d+/)) {
-                    item.sourceTypes.push("City Event");
-                } else if (itemSource.match(/^Road Event \d+/)) {
-                    item.sourceTypes.push("Road Event");
-                }
-            });
-
-            item.source = item.source.replace(/Reward from /ig, '');
-            item.source = item.source.replace(/ ?\((Treasure #\d+)\)/ig, "\n$1");
-            item.source = item.source.replace(/Solo Scenario #\d+ — /i, 'Solo ');
-            item.source = deSpoilerItemSource(item.source);
-
-            slots.push(item.slot);
-            sources.push(item.source);
-
-            sourceTypes = [...sourceTypes, ...item.sourceTypes];
-
-            if (!sources.includes(sourceType)) sources.push(sourceType);
-        });
-
-        slots = Helpers.uniqueArray(slots);
-        sourceTypes = Helpers.uniqueArray(sourceTypes);
-        sources = Helpers.uniqueArray(sources);
-
-        setInitialItems(items);
-    },[]);
 
     return getSortedAndFilteredItems();
 }

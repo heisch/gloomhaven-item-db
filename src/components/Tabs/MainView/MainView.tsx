@@ -1,47 +1,67 @@
 import React, { useEffect, useState } from 'react';
-import { RootState } from '../../../State/Reducer';
 import { Modal, Header, Button, Icon, Tab } from 'semantic-ui-react';
-import { useSelector, useDispatch } from 'react-redux';
-import SpoilerFilter, { storeSpoilerFilter, restoreFromLocalStorage } from '../../../State/SpoilerFilter';
+import {  useDispatch } from 'react-redux';
+import { SpoilerFilter, storeSpoilerFilter, restoreFromLocalStorage, getSpoilerFilter, SpoilerMap } from '../../../State/SpoilerFilter';
 import ItemList from './ItemList';
 import SpoilerFilters from '../SpoilerFilters/SpoilerFilters';
 import Share from '../Share';
 import useItems  from '../../../hooks/useItems'
-
-const filterLocalStorageKey = 'ItemView:spoilerFilter';
+import {useGame } from '../../Game/GameProvider';
+import { GameType } from '../../../games';
+import { LOCAL_STORAGE_PREFIX } from '../../../games/GameData';
 
 const MainView = () => {
-    const { all, lockSpoilerPanel} = useSelector<RootState>( state => state.spoilerFilter) as RootState['spoilerFilter'];
+    const { localStorageKey, convertSavedData, key:gameType} = useGame();
+    const {all, lockSpoilerPanel} = getSpoilerFilter();
     const dispatch = useDispatch();
     const items = useItems();
-    const [importModalOpen, setImportModalOpen] = useState(false);
+    const [importedSpoilerFilters, setImportedSpoilerFilters] = useState<SpoilerMap|undefined>(undefined);
+    const loadGamesFromStorage = () => {
+        Object.values(GameType).forEach( gt => {
+            const value = restoreFromLocalStorage(LOCAL_STORAGE_PREFIX + gt);
+            dispatch(storeSpoilerFilter({value, gameType:gt as GameType}));
+        })
+    }
 
     useEffect( () => {
-        const loadedSpoilerFilter = restoreFromLocalStorage();
-        dispatch(storeSpoilerFilter(loadedSpoilerFilter));
-
-        setImportModalOpen(parseHash() != undefined);
+        convertSavedData(localStorageKey);
+        loadGamesFromStorage();
+        setImportedSpoilerFilters(parseHash());
     },[]);
 
-    const parseHash = (): SpoilerFilter | undefined => {
-        const hash = location.hash.substr(1);
-        const config = atob(hash);
-        try {
-            return JSON.parse(config).hasOwnProperty('prosperity') ? JSON.parse(config) : undefined;
-        } catch (e) {
-            return undefined;
+    const parseHash = (): any | undefined => {
+        const importHash = location.hash.substr(1) || undefined;
+        if (importHash !== undefined)
+        {
+            try {
+                return JSON.parse(atob(importHash));
+            } catch (e) {
+                return undefined;
+            }
         }
+        return undefined;
     }
 
     const importFromHash = () => {
-        const hashConfig = parseHash();
+        const hashConfig = importedSpoilerFilters;
         if (hashConfig !== undefined) {
-            localStorage.setItem(filterLocalStorageKey, JSON.stringify(hashConfig));
-            setImportModalOpen(false);
-            const loadedSpoilerFilter = restoreFromLocalStorage();
-            dispatch(storeSpoilerFilter(loadedSpoilerFilter));
+            if (hashConfig.hasOwnProperty(GameType.Gloomhaven)) {
+                   Object.values(GameType).forEach( (gt:GameType) => {
+                       const spoilerFilter = hashConfig[gt];
+                       if (spoilerFilter !== undefined) {
+                            localStorage.setItem(LOCAL_STORAGE_PREFIX + gt, JSON.stringify(spoilerFilter));
+                            dispatch(storeSpoilerFilter({value:spoilerFilter, gameType:gt}));
+                       }
+                })
             }
-        location.hash = '';
+            else if (hashConfig.hasOwnProperty("prosperity")) {
+                const value = hashConfig as SpoilerFilter;
+                localStorage.setItem(localStorageKey, JSON.stringify(value));
+                dispatch(storeSpoilerFilter({value, gameType}));
+            }
+            setImportedSpoilerFilters(undefined);
+          }
+          location.hash = "";
     }
 
     let panes = [
@@ -55,9 +75,8 @@ const MainView = () => {
     }
     
     return (
-        <React.Fragment>
-
-            <Modal basic size='small' open={importModalOpen}>
+        <>
+            <Modal basic size='small' open={importedSpoilerFilters !== undefined}>
                 <Header icon='cloud download' content='Apply Configuration from Link'/>
                 <Modal.Content>
                     <p>
@@ -67,7 +86,7 @@ const MainView = () => {
                 <Modal.Actions>
                     <Button basic color='red' inverted onClick={() => {
                         location.hash = '';
-                        setImportModalOpen(false);
+                        setImportedSpoilerFilters(undefined);
                     }}>
                         <Icon name='remove'/> No
                     </Button>
@@ -81,7 +100,7 @@ const MainView = () => {
                 <Tab panes={panes} defaultActiveIndex={0}/>
             </div>
             <em className={'pull-right ui text grey'}>Gloomhaven and all related properties, images and text are owned by <a href={'https://www.cephalofair.com/'} target={'_blank'} rel={'noopener'}>Cephalofair Games</a>.</em>
-        </React.Fragment>
+        </>
     );
 
 }

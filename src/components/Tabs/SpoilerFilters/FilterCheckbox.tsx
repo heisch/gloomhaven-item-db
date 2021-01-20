@@ -1,25 +1,27 @@
 import React from 'react'
 import { Form } from 'semantic-ui-react';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../../State/Reducer';
-import { storeItem } from '../../../State/SpoilerFilter';
+import { useDispatch } from 'react-redux';
+import { storeItem, getSpoilerFilter } from '../../../State/SpoilerFilter';
+import { GameType } from '../../../games';
 
 type Props = {
     id: number;
+    gameType:GameType;
 }
 
 const FilterCheckbox = (props:Props) => {
-    const { id } = props;
-    const { item } = useSelector<RootState>( state => state.spoilerFilter) as RootState['spoilerFilter'];
+    const { id, gameType } = props;
+    const { item } = getSpoilerFilter();
     const dispatch = useDispatch();
 
     const toggleItemFilter = (key: number) => {
-        if (item.includes(key)) {
-            item.splice(item.indexOf(key), 1);
+        const value = Object.assign([], item);
+        if (value.includes(key)) {
+            value.splice(value.indexOf(key), 1);
         } else {
-            item.push(key)
+            value.push(key)
         }
-        dispatch(storeItem(item));
+        dispatch(storeItem({value, gameType}));
     }
 
     return (
