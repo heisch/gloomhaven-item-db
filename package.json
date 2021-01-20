@@ -1,6 +1,6 @@
 {
   "name": "gloomhaven-item-db",
-  "homepage": "",
+  "homepage": "https://heisch.github.io/gloomhaven-item-db",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
