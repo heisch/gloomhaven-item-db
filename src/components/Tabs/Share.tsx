@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import { Form, Icon, Message } from 'semantic-ui-react';
 import { useFilterOptions } from '../Providers/FilterOptionsProvider';
-
+import UploadForm from './Share/UploadForm';
 
 const Share = () => {
     const { getShareHash } = useFilterOptions();
@@ -31,6 +31,7 @@ const Share = () => {
                         document.execCommand("copy");
                     }}>Copy</Form.Button>
                 </Form.Group>
+                <UploadForm/>
             </Form>
         </>
     );
