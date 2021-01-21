@@ -43,7 +43,7 @@
         "name": "Weathered Boots",
         "count": 2,
         "cost": 15,
-        "slot": "Body",
+        "slot": "Legs",
         "source": "Reward from Scenario #2",
         "spent": true,
         "desc": "During your movement add +1 Move to a single movement."
@@ -94,7 +94,7 @@
         "name": "Iron Spear",
         "count": 2,
         "cost": 20,
-        "slot": "Head",
+        "slot": "One Hand",
         "source": "Reward from Scenario #2",
         "desc": "During your single-target melee Attack ability, attack any one enemy wihin 2 hexes",
         "spent": true
