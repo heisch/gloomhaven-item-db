@@ -1,5 +1,5 @@
 import { BaseGameData } from '../GameData';
-import { GloomhavenItem } from '../../State/Types';
+import { GloomhavenItem, GloomhavenItemSlot } from '../../State/Types';
 import JOTLSpoilerFilter from '../../components/Tabs/SpoilerFilters/JOTLSpoilerFilter';
 import { SpoilerFilter } from '../../State/SpoilerFilter';
 import { GameType } from '..';
@@ -36,6 +36,10 @@ export class JOTLGameData extends BaseGameData {
         } else  {
             return '1-13';
         }
+    }
+
+    getItemFilterSlots(): GloomhavenItemSlot[] {
+        return ['Head', 'Body', 'Legs', 'One Hand', 'Small Item'];
     }
 }
 export default JOTLGameData;

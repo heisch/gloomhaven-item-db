@@ -5,6 +5,8 @@ import ItemManagement from './ItemManagement';
 import { Helpers, getSlotImageSrc } from '../../../helpers';
 import { getSpoilerFilter } from '../../../State/SpoilerFilter';
 import { getItemViewState } from '../../../State/ItemViewState';
+import { useGame } from '../../Game/GameProvider';
+import { GameType } from '../../../games';
 
 type Props = {
     items : GloomhavenItem[];
@@ -26,6 +28,7 @@ const ItemTable = (props:Props) => {
     const {items, setSorting} = props;
     const { enableStoreStockManagement, discount } = getSpoilerFilter();
     const { property, direction } = getItemViewState();
+    const { key: gameType } = useGame();
 
     const renderSummon = (item: GloomhavenItem) => {
         return item.summon === undefined ? null : (
@@ -58,7 +61,7 @@ const ItemTable = (props:Props) => {
                 </Table.Header>
                 <Table.Body>
                     {items.map(item => {
-                        const cost = discount !== 0
+                        const cost = gameType != GameType.JawsOfTheLion && discount !== 0
                             ? (<strong className={"ui text " + (item.cost > 0 ? 'blue' : 'orange')}>{item.cost + discount}g</strong>)
                             : (<strong>{item.cost}g</strong>);
                         return (

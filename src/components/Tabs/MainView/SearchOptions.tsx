@@ -6,6 +6,7 @@ import { storeFilterSearch, storeFilterSlots, getItemViewState } from '../../../
 import { getSlotImageSrc } from '../../../helpers';
 import { GloomhavenItemSlot, SortProperty} from '../../../State/Types';
 import { useGame } from '../../Game/GameProvider';
+import { GameType } from '../../../games';
 
 type Props = {
     setSorting : (newProperty: SortProperty) => void;
@@ -13,11 +14,10 @@ type Props = {
 
 const SearchOptions = (props:Props) => {
     const { setSorting } =  props;
-    const gloomhavenItemSlots: Array<GloomhavenItemSlot> = ['Head', 'Body', 'Legs', 'One Hand', 'Two Hands', 'Small Item'];
     const { displayAs, discount } = getSpoilerFilter();
     const { property, search, slots } = getItemViewState();
     const dispatch = useDispatch();
-    const { key: gameType } = useGame();
+    const { key: gameType, getItemFilterSlots } = useGame();
 
     const setFilterSlot = (slot?: GloomhavenItemSlot) => {
         if (!slot)
@@ -56,7 +56,7 @@ const SearchOptions = (props:Props) => {
                             }}>Images</Button>
                     </Button.Group>
                 </Form.Group>
-                {displayAs === 'list' && <Form.Group inline>
+                {gameType === GameType.Gloomhaven && displayAs === 'list' && <Form.Group inline>
                     <label>Reputation Discount:</label>
                     <Form.Select value={discount}
                             options={[
@@ -95,7 +95,7 @@ const SearchOptions = (props:Props) => {
                 <Form.Group inline>
                     <label>Filter Slot:</label>
                     <Form.Radio label={'all'} checked={slots === undefined} onChange={() => setFilterSlot(undefined)}/>
-                    {gloomhavenItemSlots.map(itemSlot => 
+                    {getItemFilterSlots().map(itemSlot => 
                         <Form.Checkbox key={itemSlot}
                                     label={<img className={'icon'} src={getSlotImageSrc(itemSlot)} alt={itemSlot}/>} 
                                     checked={slots === undefined ? false : slots && slots.includes(itemSlot)} 

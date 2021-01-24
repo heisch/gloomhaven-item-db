@@ -1,4 +1,4 @@
-import { GloomhavenItem } from "../State/Types"
+import { GloomhavenItem, GloomhavenItemSlot } from "../State/Types"
 import {SpoilerFilter} from "../State/SpoilerFilter";
 import { Helpers } from "../helpers";
 import { GameType } from ".";
@@ -74,6 +74,10 @@ export abstract class BaseGameData {
         let folder = this.getItemSubfolder(item);
         let name = item.name.toLowerCase().replace(/\s/g, '-').replace(/'/, '');
         return require(`../../vendor/${this.key}/images/items/${folder}/${name}.png`);
+    }
+
+    getItemFilterSlots() : GloomhavenItemSlot[] {
+        return ['Head', 'Body', 'Legs', 'One Hand', 'Two Hands', 'Small Item'];
     }
     
 }
