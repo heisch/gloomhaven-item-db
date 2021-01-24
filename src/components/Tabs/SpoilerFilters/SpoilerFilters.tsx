@@ -6,7 +6,7 @@ import { useGame } from '../../Game/GameProvider';
 
 const SpoilerFilters = () => {
     const dispatch = useDispatch();
-    const { spoilerFilter, key:gameType} = useGame();
+    const { spoilerFilter, gameType} = useGame();
 
     const { enableStoreStockManagement, all } = getSpoilerFilter();
 

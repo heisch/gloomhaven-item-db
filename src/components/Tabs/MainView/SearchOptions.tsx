@@ -17,7 +17,7 @@ const SearchOptions = (props:Props) => {
     const { displayAs, discount } = getSpoilerFilter();
     const { property, search, slots } = getItemViewState();
     const dispatch = useDispatch();
-    const { key: gameType, getItemFilterSlots } = useGame();
+    const { gameType, getItemFilterSlots } = useGame();
 
     const setFilterSlot = (slot?: GloomhavenItemSlot) => {
         if (!slot)

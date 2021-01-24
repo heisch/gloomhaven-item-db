@@ -28,7 +28,7 @@ const ItemTable = (props:Props) => {
     const {items, setSorting} = props;
     const { enableStoreStockManagement, discount } = getSpoilerFilter();
     const { property, direction } = getItemViewState();
-    const { key: gameType } = useGame();
+    const { gameType } = useGame();
 
     const renderSummon = (item: GloomhavenItem) => {
         return item.summon === undefined ? null : (

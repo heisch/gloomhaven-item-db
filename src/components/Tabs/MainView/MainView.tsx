@@ -11,7 +11,7 @@ import { GameType } from '../../../games';
 import { LOCAL_STORAGE_PREFIX } from '../../../games/GameData';
 
 const MainView = () => {
-    const { localStorageKey, convertSavedData, key:gameType} = useGame();
+    const { localStorageKey, convertSavedData, gameType} = useGame();
     const {all, lockSpoilerPanel} = getSpoilerFilter();
     const dispatch = useDispatch();
     const items = useItems();

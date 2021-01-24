@@ -11,11 +11,11 @@ export const LOCAL_STORAGE_PREFIX:string = "ItemView:spoilerFilter_";
 
 export abstract class BaseGameData {
     name: string;
-    key: GameType;
+    gameType: GameType;
     initItems: Array<GloomhavenItem> | undefined;
-    constructor(name:string, key:GameType){
+    constructor(name:string, gameType:GameType){
         this.name = name;
-        this.key = key;
+        this.gameType = gameType;
         this.initItems = undefined;
     }
 
@@ -23,7 +23,7 @@ export abstract class BaseGameData {
         if (this.initItems) {
             return this.initItems;
         }
-        const items: Array<GloomhavenItem> = require(`./${this.key}/items.json`);
+        const items: Array<GloomhavenItem> = require(`./${this.gameType}/items.json`);
 
         items.forEach(item => {
 
@@ -61,7 +61,7 @@ export abstract class BaseGameData {
     abstract get spoilerFilter () : JSX.Element | null;
 
     get localStorageKey() {
-        return LOCAL_STORAGE_PREFIX + this.key;
+        return LOCAL_STORAGE_PREFIX + this.gameType;
     }
 
     convertSavedData(storageKey: string) {
@@ -73,7 +73,7 @@ export abstract class BaseGameData {
     getItemPath(item:GloomhavenItem) {
         let folder = this.getItemSubfolder(item);
         let name = item.name.toLowerCase().replace(/\s/g, '-').replace(/'/, '');
-        return require(`../../vendor/${this.key}/images/items/${folder}/${name}.png`);
+        return require(`../../vendor/${this.gameType}/images/items/${folder}/${name}.png`);
     }
 
     getItemFilterSlots() : GloomhavenItemSlot[] {

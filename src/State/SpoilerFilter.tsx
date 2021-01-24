@@ -174,7 +174,7 @@ export const spoilerFilterSelector = createSelector(
   )
 
   export const getSpoilerFilter = () : SpoilerFilter => {
-      const {key:gameType} = useGame();
+      const {gameType} = useGame();
     return useSelector(spoilerFilterSelector)(gameType);
   }
 

@@ -15,7 +15,7 @@ type Props = {
 
 const ItemList = (props:Props) => {
     const {items} = props;
-    const { key: gameType } = useGame();
+    const { gameType } = useGame();
     const { displayAs, all } = getSpoilerFilter();
     const { property, direction } = getItemViewState();
     const dispatch = useDispatch();

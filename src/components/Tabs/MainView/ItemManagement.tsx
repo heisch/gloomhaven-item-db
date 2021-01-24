@@ -10,7 +10,7 @@ type Props = {
 }
 
 const ItemManagement = (props:Props) => {
-    const { key:gameType } = useGame();
+    const { gameType } = useGame();
     const {item} = props;
     const { enableStoreStockManagement, lockSpoilerPanel, itemsInUse } = getSpoilerFilter();
     const dispatch = useDispatch();

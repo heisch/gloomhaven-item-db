@@ -86,8 +86,8 @@ export const itemViewStateSelector = createSelector(
   )
 
   export const getItemViewState = () : ItemViewState => {
-      const {key} = useGame();
-    return useSelector(itemViewStateSelector)(key);
+      const {gameType} = useGame();
+    return useSelector(itemViewStateSelector)(gameType);
   }
 
 export const { storeFilterSearch, storeSortingDirection, storeFilterSlots, storeSortingProperty, storeItemViewState } = itemViewStateSlice.actions;
