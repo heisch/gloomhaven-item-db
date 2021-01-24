@@ -7,8 +7,9 @@ const Share = () => {
     const { getShareHash } = useFilterOptions();
     const [ lockSpoilerPanel, setLockSpoilerPanel] = useState(false);
 
-    const shareUrl = useCallback(() => location.origin + location.pathname + '#' + btoa(getShareHash(lockSpoilerPanel)), [lockSpoilerPanel]);
+    const configHash = getShareHash(lockSpoilerPanel);
 
+    const shareUrl = location.origin + location.pathname + '#' + configHash;
     return (
         <>
             <p>Here you can generate a link to this app with your current spoiler configuration.</p>
@@ -25,13 +26,13 @@ const Share = () => {
                     change any settings anymore
                 </Message>}
                 <Form.Group>
-                    <Form.Input id={'share-url-input'} width={14} value={shareUrl()}/>
+                    <Form.Input id={'share-url-input'} width={14} value={shareUrl}/>
                     <Form.Button width={2} onClick={() => {
                         (document.getElementById('share-url-input') as HTMLInputElement).select();
                         document.execCommand("copy");
                     }}>Copy</Form.Button>
                 </Form.Group>
-                <UploadForm/>
+                <UploadForm configHash={configHash}/>
             </Form>
         </>
     );

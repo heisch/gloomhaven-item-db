@@ -187,7 +187,7 @@ const FilterProvider = (props:Props) => {
 
     const getShareHash = (lockSpoilerPanel: boolean) => {
         gameFilterOptions["lockSpoilerPanel"] = lockSpoilerPanel;
-        return JSON.stringify(gameFilterOptions);
+        return btoa(JSON.stringify(gameFilterOptions));
     }
 
     return <Provider value={{ filterOptions:gameFilterOptions[gameType], 
