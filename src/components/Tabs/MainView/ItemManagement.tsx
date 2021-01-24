@@ -23,13 +23,14 @@ const ItemManagement = (props:Props) => {
 
     const toggleItemInUse = (id: number, bit: number) => {
 
-        itemsInUse[id] = itemsInUse[id] & bit ? itemsInUse[id] ^ bit : itemsInUse[id] | bit;
+        const value = Object.assign({}, itemsInUse);
+        value[id] = value[id] & bit ? value[id] ^ bit : value[id] | bit;
 
-        if (itemsInUse[id] === 0) {
-            delete (itemsInUse[id]);
+        if (value[id] === 0) {
+            delete (value[id]);
         }
 
-        dispatch(storeItemsInUse({value:itemsInUse, gameType}));
+        dispatch(storeItemsInUse({value, gameType}));
     }
 
 
