@@ -55,9 +55,10 @@ const MainView = () => {
                 })
             }
             else if (hashConfig.hasOwnProperty("prosperity")) {
+                // This is the old version of the data before other games were added.  Just add it to gloomhaven.
                 const value = hashConfig as SpoilerFilter;
-                localStorage.setItem(localStorageKey, JSON.stringify(value));
-                dispatch(storeSpoilerFilter({value, gameType}));
+                localStorage.setItem(LOCAL_STORAGE_PREFIX + GameType.Gloomhaven, JSON.stringify(value));
+                dispatch(storeSpoilerFilter({value, gameType: GameType.Gloomhaven}));
             }
             setImportedSpoilerFilters(undefined);
           }
