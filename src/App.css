@@ -185,6 +185,15 @@ img.item-card {
     position: absolute;
 }
 
+.item-card-wrapper .ui.label.itemCost {
+    position: absolute;
+    right: 7px;
+    top: 0px;
+    color: white;
+    border-radius: 5px;
+    background: black;
+}
+
 .item-card-wrapper .ui.toggle.checkbox.i0 {
     left: 7px;
     top: 50px;

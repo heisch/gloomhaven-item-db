@@ -43,6 +43,12 @@ const ItemTable = (props:Props) => {
         );
     }
 
+    const getCostTitle = () => {
+        return (gameType != GameType.JawsOfTheLion && discount !== 0)
+        ? (<strong className={"ui text " + (discount < 0 ? 'blue' : 'red')}> Cost ({discount}g)</strong>)
+        : (<strong>Cost</strong>);
+    }
+
     return (
         <>
             <Table basic sortable celled className={'items-table'} unstackable>
@@ -51,7 +57,7 @@ const ItemTable = (props:Props) => {
                         <Table.HeaderCell className={'id-col'} textAlign={'right'} onClick={() => setSorting('id')} sorted={property === 'id' ? direction : undefined}>#</Table.HeaderCell>
                         <Table.HeaderCell className={'name-col'} selectable={false} onClick={() => setSorting('name')} sorted={property === 'name' ? direction : undefined}>Name</Table.HeaderCell>
                         <Table.HeaderCell className={'slot-col'} textAlign={'center'} onClick={() => setSorting('slot')} sorted={property === 'slot' ? direction : undefined}>Slot</Table.HeaderCell>
-                        <Table.HeaderCell className={'cost-col'} textAlign={'right'} onClick={() => setSorting('cost')} sorted={property === 'cost' ? direction : undefined}>Cost</Table.HeaderCell>
+                        <Table.HeaderCell className={'cost-col'} textAlign={'right'} onClick={() => setSorting('cost')} sorted={property === 'cost' ? direction : undefined}>{getCostTitle()}</Table.HeaderCell>
                         <Table.HeaderCell className={'use-col'} onClick={() => setSorting('use')} sorted={property === 'use' ? direction : undefined}>Use</Table.HeaderCell>
                         <Table.HeaderCell className={'text-col'}>Effect</Table.HeaderCell>
                         <Table.HeaderCell className={'source-col'}>Source</Table.HeaderCell>
@@ -62,7 +68,7 @@ const ItemTable = (props:Props) => {
                 <Table.Body>
                     {items.map(item => {
                         const cost = gameType != GameType.JawsOfTheLion && discount !== 0
-                            ? (<strong className={"ui text " + (item.cost > 0 ? 'blue' : 'orange')}>{item.cost + discount}g</strong>)
+                            ? (<strong className={"ui text " + (discount < 0 ? 'blue' : 'red')}>{item.cost + discount}g</strong>)
                             : (<strong>{item.cost}g</strong>);
                         return (
                             <Table.Row key={item.id}>

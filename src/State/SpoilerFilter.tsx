@@ -5,8 +5,8 @@ import memoize from 'lodash.memoize'
 import { GameType } from "../games";
 import { useGame } from "../components/Game/GameProvider";
 import { useSelector } from "react-redux";
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { GameTypeAction } from "./GameTypeAction";
+import { createSlice } from '@reduxjs/toolkit'
+import { PayloadGameTypeAction } from "./GameTypeAction";
 
 export type ItemsInUse = {
     [key:number]: number;
@@ -62,59 +62,59 @@ const initialSpoilerMapState = Object.values(GameType).reduce(
       name: "spoilerFilter",
       initialState: initialSpoilerMapState,
       reducers: {
-        storeSpoilerFilter(state, action: PayloadAction<GameTypeAction<SpoilerFilter>>)
+        storeSpoilerFilter(state, action: PayloadGameTypeAction<SpoilerFilter>)
         {
             state[action.payload.gameType] = action.payload.value;
         },
-        storeProsperity(state, action: PayloadAction<GameTypeAction<number>>) {
+        storeProsperity(state, action: PayloadGameTypeAction<number>) {
             const gameState = state[action.payload.gameType]; 
             if (gameState) {
                 gameState.prosperity = action.payload.value;
             } 
         },
-        storeSoloClass(state, action: PayloadAction<GameTypeAction<Array<SoloClassShorthand>>>) {
+        storeSoloClass(state, action: PayloadGameTypeAction<Array<SoloClassShorthand>>) {
             const gameState = state[action.payload.gameType]; 
             if (gameState) {
                 gameState.soloClass = action.payload.value;
             } 
         },
-        storeScenarioCompleted(state, action: PayloadAction<GameTypeAction<Array<number>>>) {
+        storeScenarioCompleted(state, action: PayloadGameTypeAction<Array<number>>) {
             const gameState = state[action.payload.gameType]; 
             if (gameState) {
                 gameState.scenarioCompleted = action.payload.value;
             } 
         },
-        storeItem(state, action: PayloadAction<GameTypeAction<Array<number>>>) {
+        storeItem(state, action: PayloadGameTypeAction<Array<number>>) {
             const gameState = state[action.payload.gameType]; 
             if (gameState) {
                 gameState.item = action.payload.value;
             } 
         },
-        storeItemsInUse(state, action: PayloadAction<GameTypeAction<ItemsInUse>>) {
+        storeItemsInUse(state, action: PayloadGameTypeAction<ItemsInUse>) {
             const gameState = state[action.payload.gameType]; 
             if (gameState) {
                 gameState.itemsInUse = action.payload.value;
             } 
         },
-        storeAll(state, action: PayloadAction<GameTypeAction<boolean>>) {
+        storeAll(state, action: PayloadGameTypeAction<boolean>) {
             const gameState = state[action.payload.gameType]; 
             if (gameState) {
                 gameState.all = action.payload.value;
             } 
         },
-        storeEnableStoreStockManagement(state, action: PayloadAction<GameTypeAction<boolean>>) {
+        storeEnableStoreStockManagement(state, action: PayloadGameTypeAction<boolean>) {
             const gameState = state[action.payload.gameType]; 
             if (gameState) {
                 gameState.enableStoreStockManagement = action.payload.value;
             } 
         },        
-        storeDisplayAs(state, action: PayloadAction<GameTypeAction<ItemViewDisplayType>>) {
+        storeDisplayAs(state, action: PayloadGameTypeAction<ItemViewDisplayType>) {
             const gameState = state[action.payload.gameType]; 
             if (gameState) {
                 gameState.displayAs = action.payload.value;
             } 
         },
-        storeDiscount(state, action: PayloadAction<GameTypeAction<number>>) {
+        storeDiscount(state, action: PayloadGameTypeAction<number>) {
             const gameState = state[action.payload.gameType]; 
             if (gameState) {
                 gameState.discount = action.payload.value;

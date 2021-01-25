@@ -5,8 +5,8 @@ import { RootState } from "./Reducer";
 import memoize from 'lodash.memoize'
 import { useGame } from "../components/Game/GameProvider";
 import { useSelector } from "react-redux";
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { GameTypeAction } from "./GameTypeAction";
+import { createSlice } from "@reduxjs/toolkit";
+import { PayloadGameTypeAction } from "./GameTypeAction";
 
 export interface ItemViewState {
     slots?: Array<GloomhavenItemSlot>;
@@ -38,33 +38,33 @@ const itemViewStateSlice = createSlice({
     name: "itemViewState",
     initialState: initialItemViewStateMapState,
     reducers: {
-      storeItemViewState(state, action: PayloadAction<GameTypeAction<ItemViewState>>)
+      storeItemViewState(state, action: PayloadGameTypeAction<ItemViewState>)
       {
           state[action.payload.gameType] = action.payload.value;
       },
-      storeFilterSearch(state, action: PayloadAction<GameTypeAction<string>>) {
+      storeFilterSearch(state, action: PayloadGameTypeAction<string>){
           const gameState = state[action.payload.gameType]; 
           if (gameState) {
               gameState.search = action.payload.value;
-          } 
+         } 
       },
-      storeSortingProperty(state, action: PayloadAction<GameTypeAction<SortProperty>>) {
+      storeSortingProperty(state, action: PayloadGameTypeAction<SortProperty>){
           const gameState = state[action.payload.gameType]; 
           if (gameState) {
               gameState.property = action.payload.value;
-          } 
+         } 
       },
-      storeSortingDirection(state, action: PayloadAction<GameTypeAction<SortDirection>>) {
+      storeSortingDirection(state, action: PayloadGameTypeAction<SortDirection>){
           const gameState = state[action.payload.gameType]; 
           if (gameState) {
               gameState.direction = action.payload.value;
-          } 
+         } 
       },
-      storeFilterSlots(state, action: PayloadAction<GameTypeAction<Array<GloomhavenItemSlot>|undefined>>) {
+      storeFilterSlots(state, action: PayloadGameTypeAction<Array<GloomhavenItemSlot>|undefined>){
         const gameState = state[action.payload.gameType]; 
         if (gameState) {
             gameState.slots = action.payload.value;
-        } 
+       } 
     },
   }
 })
