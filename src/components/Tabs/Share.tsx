@@ -1,19 +1,24 @@
 import React, { useState } from 'react'
 import { Form, Icon, Message } from 'semantic-ui-react';
-import { getAllSpoilerFilters } from '../../State/SpoilerFilter';
+import { GameType } from '../../games';
+import { getAllSpoilerFilters, SpoilerMap } from '../../State/SpoilerFilter';
 
 type Props = {
 }
 
 const Share = (props:Props) => {
     const {} = props;
-    const allSpoilerFilters = getAllSpoilerFilters();
+    let allSpoilerFilters = getAllSpoilerFilters();
     const [ shareLockSpoilerPanel, setShareLockSpoilerPanel] = useState(false);
 
-    const shareUrl = location.origin + location.pathname + '#' + btoa(JSON.stringify({
-        ...allSpoilerFilters,
-        lockSpoilerPanel: shareLockSpoilerPanel
-    }));
+    const newObj:SpoilerMap = {};
+    Object.values(GameType).forEach( gt => {
+        const newGame = Object.assign({}, allSpoilerFilters[gt]);
+        newGame.lockSpoilerPanel = shareLockSpoilerPanel;
+        newObj[gt] = newGame;
+    });
+
+    const shareUrl = location.origin + location.pathname + '#' + btoa(JSON.stringify(newObj));
 
     return (
         <>
@@ -26,7 +31,7 @@ const Share = (props:Props) => {
                                     checked={shareLockSpoilerPanel}
                                     onChange={() => setShareLockSpoilerPanel(!shareLockSpoilerPanel)}/>
                 </Form.Group>
-                {shareLockSpoilerPanel && false && <Message negative>
+                {shareLockSpoilerPanel && <Message negative>
                     <Icon name="exclamation triangle"/>Do not open the link yourself or you will not be able to
                     change any settings anymore
                 </Message>}
