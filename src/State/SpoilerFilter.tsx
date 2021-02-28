@@ -1,5 +1,5 @@
 import { createSelector } from "reselect";
-import { SoloClassShorthand, ItemViewDisplayType, ClassesInUse } from "./Types";
+import { SoloClassShorthand, ItemViewDisplayType, ClassesInUse, PullDownOptions } from "./Types";
 import { RootState } from "./Reducer";
 import memoize from 'lodash.memoize'
 import { GameType } from "../games";
@@ -12,6 +12,9 @@ export type ItemsInUse = {
     [key:number]: number;
   };
 
+  export type ItemsOwnedBy = {
+    [key:number] : PullDownOptions[]
+  }
 
 export interface SpoilerFilter {
     all: boolean;
@@ -25,6 +28,7 @@ export interface SpoilerFilter {
     lockSpoilerPanel: boolean;
     scenarioCompleted: Array<number>;
     classesInUse: ClassesInUse[];
+    itemsOwnedBy: ItemsOwnedBy;
 }
 
 // todo: only keep during migration
@@ -46,7 +50,13 @@ const initialSpoilerFilterState:SpoilerFilter = {
     lockSpoilerPanel: false,
     scenarioCompleted: [],
     classesInUse: [],
+    itemsOwnedBy: {}
 };
+
+export type ItemOwnerData = {
+    itemId: number;
+    owner:PullDownOptions;
+}
 
 export type SpoilerMap = {
     [K in GameType]?: SpoilerFilter;
@@ -132,12 +142,32 @@ const initialSpoilerMapState = Object.values(GameType).reduce(
             const gameState = state[action.payload.gameType]; 
             if (gameState) {
                 const index = gameState.classesInUse.findIndex( c => c === action.payload.value);
-                console.log(index);
                 if (index != -1) {
                     gameState.classesInUse.splice(index, 1);
                 }
             } 
         },
+        addItemOwner(state, action: PayloadGameTypeAction<ItemOwnerData>) {
+            const gameState = state[action.payload.gameType]; 
+            if (gameState) {
+                if (!gameState.itemsOwnedBy[action.payload.value.itemId]) {
+                    gameState.itemsOwnedBy[action.payload.value.itemId] = [];
+                }
+                gameState.itemsOwnedBy[action.payload.value.itemId].push(action.payload.value.owner);
+            } 
+        },
+        removeItemOwner(state, action: PayloadGameTypeAction<ItemOwnerData>) {
+            const gameState = state[action.payload.gameType]; 
+            if (gameState) {
+                if (!gameState.itemsOwnedBy[action.payload.value.itemId]) {
+                    gameState.itemsOwnedBy[action.payload.value.itemId] = [];
+                }
+                const index = gameState.itemsOwnedBy[action.payload.value.itemId].findIndex( c => c === action.payload.value.owner);
+                if (index != -1) {
+                    gameState.itemsOwnedBy[action.payload.value.itemId].splice(index, 1);
+                }
+            } 
+        }
       }
   })
 
@@ -207,6 +237,6 @@ export const spoilerFilterSelector = createSelector(
 }
 
 
-export const { addClass, removeClass, storeAll, storeItem, storeItemsInUse, storeEnableStoreStockManagement, storeDiscount, storeDisplayAs, storeScenarioCompleted, storeSoloClass, storeProsperity, storeSpoilerFilter} = spoilerSlice.actions;
+export const { addItemOwner, removeItemOwner, addClass, removeClass, storeAll, storeItem, storeItemsInUse, storeEnableStoreStockManagement, storeDiscount, storeDisplayAs, storeScenarioCompleted, storeSoloClass, storeProsperity, storeSpoilerFilter} = spoilerSlice.actions;
 
 export default spoilerSlice.reducer;
