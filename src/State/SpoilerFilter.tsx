@@ -1,5 +1,5 @@
 import { createSelector } from "reselect";
-import { SoloClassShorthand, ItemViewDisplayType } from "./Types";
+import { SoloClassShorthand, ItemViewDisplayType, ClassesInUse } from "./Types";
 import { RootState } from "./Reducer";
 import memoize from 'lodash.memoize'
 import { GameType } from "../games";
@@ -14,22 +14,23 @@ export type ItemsInUse = {
 
 
 export interface SpoilerFilter {
-    all: boolean
-    prosperity: number
-    item: Array<number>
+    all: boolean;
+    prosperity: number;
+    item: Array<number>;
     itemsInUse: ItemsInUse;
-    soloClass: Array<SoloClassShorthand>
-    discount: number
-    displayAs: ItemViewDisplayType
-    enableStoreStockManagement: boolean
-    lockSpoilerPanel: boolean
-    scenarioCompleted: Array<number>
+    soloClass: Array<SoloClassShorthand>;
+    discount: number;
+    displayAs: ItemViewDisplayType;
+    enableStoreStockManagement: boolean;
+    lockSpoilerPanel: boolean;
+    scenarioCompleted: Array<number>;
+    classesInUse: ClassesInUse[];
 }
 
 // todo: only keep during migration
 export interface OldSpoilerFilter extends SpoilerFilter {
-    item: Array<number> | any
-    soloClass: Array<SoloClassShorthand> | any
+    item: Array<number> | any;
+    soloClass: Array<SoloClassShorthand> | any;
 }
 
 
@@ -44,6 +45,7 @@ const initialSpoilerFilterState:SpoilerFilter = {
     enableStoreStockManagement: false,
     lockSpoilerPanel: false,
     scenarioCompleted: [],
+    classesInUse: [],
 };
 
 export type SpoilerMap = {
@@ -120,6 +122,22 @@ const initialSpoilerMapState = Object.values(GameType).reduce(
                 gameState.discount = action.payload.value;
             } 
         },
+        addClass(state, action: PayloadGameTypeAction<ClassesInUse>) {
+            const gameState = state[action.payload.gameType]; 
+            if (gameState) {
+                gameState.classesInUse.push(action.payload.value);
+            } 
+        },
+        removeClass(state, action: PayloadGameTypeAction<ClassesInUse>) {
+            const gameState = state[action.payload.gameType]; 
+            if (gameState) {
+                const index = gameState.classesInUse.findIndex( c => c === action.payload.value);
+                console.log(index);
+                if (index != -1) {
+                    gameState.classesInUse.splice(index, 1);
+                }
+            } 
+        },
       }
   })
 
@@ -189,6 +207,6 @@ export const spoilerFilterSelector = createSelector(
 }
 
 
-export const { storeAll, storeItem, storeItemsInUse, storeEnableStoreStockManagement, storeDiscount, storeDisplayAs, storeScenarioCompleted, storeSoloClass, storeProsperity, storeSpoilerFilter} = spoilerSlice.actions;
+export const { addClass, removeClass, storeAll, storeItem, storeItemsInUse, storeEnableStoreStockManagement, storeDiscount, storeDisplayAs, storeScenarioCompleted, storeSoloClass, storeProsperity, storeSpoilerFilter} = spoilerSlice.actions;
 
 export default spoilerSlice.reducer;

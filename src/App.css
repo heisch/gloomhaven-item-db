@@ -426,3 +426,17 @@ img.item-card {
     }
 
 }
+
+img.ui.image.soloClass {
+    width: auto;
+    height: 30px;
+    background-color: white;
+    border: 1px solid black;
+    opacity: 1;
+}
+
+button.ui.deleteUser {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
