@@ -9,6 +9,7 @@ import useItems  from '../../../hooks/useItems'
 import {useGame } from '../../Game/GameProvider';
 import { GameType } from '../../../games';
 import { LOCAL_STORAGE_PREFIX } from '../../../games/GameData';
+import PurchaseItem from "./PurchaseItem"
 
 const MainView = () => {
     const { localStorageKey, convertSavedData, gameType} = useGame();
@@ -96,6 +97,8 @@ const MainView = () => {
                     </Button>
                 </Modal.Actions>
             </Modal>
+
+            <PurchaseItem/>
 
             <div className={all ? 'spoiler' : ''}>
                 <Tab panes={panes} defaultActiveIndex={0}/>

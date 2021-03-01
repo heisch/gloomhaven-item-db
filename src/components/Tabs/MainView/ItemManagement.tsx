@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { ClassesInUse, GloomhavenItem } from "../../../State/Types";
-import { Button, Checkbox, Form } from "semantic-ui-react";
+import React from 'react';
+import { GloomhavenItem } from "../../../State/Types";
+import { Button, Checkbox } from "semantic-ui-react";
 import { useDispatch } from "react-redux";
-import { storeItemsInUse, getSpoilerFilter, addItemOwner, removeItemOwner } from "../../../State/SpoilerFilter";
+import { storeItemsInUse, getSpoilerFilter, removeItemOwner } from "../../../State/SpoilerFilter";
 import { useGame } from '../../Game/GameProvider';
-import ClassDropdown, { createClassImage } from './ClassDropdown';
+import { createClassImage } from './ClassDropdown';
+import { storeSelectedItem } from '../../../State/ItemViewState';
 
 type Props = {
     item : GloomhavenItem;
@@ -16,7 +17,6 @@ const ItemManagement = (props:Props) => {
     const { enableStoreStockManagement, lockSpoilerPanel, itemsInUse, itemsOwnedBy, classesInUse } = getSpoilerFilter();
     const owners = itemsOwnedBy[item.id];
     const classesAvailable = owners && owners.length > 0 ? classesInUse.filter(c => !owners.includes(c)) : classesInUse;
-    const [buyer, setBuyer] = useState<ClassesInUse>(classesAvailable[0] || classesInUse[0]);
 
     const dispatch = useDispatch();
 
@@ -36,10 +36,6 @@ const ItemManagement = (props:Props) => {
         }
 
         dispatch(storeItemsInUse({value, gameType}));
-    }
-
-    const onChange = (newClass: ClassesInUse) => {
-        setBuyer(newClass);
     }
 
     const ownersLength = (owners ? owners.length : 0);
@@ -68,15 +64,12 @@ const ItemManagement = (props:Props) => {
                         onChange={() => toggleItemInUse(item.id, Math.pow(2, index))}/>
             )} */}
             {showAddButton &&
-                <Form.Group inline>
                 <Button
                             className={`i${ownersLength} addClass`}
                             color={'black'}
-                            onClick={() => dispatch(addItemOwner({value:{itemId:item.id, owner:buyer},gameType}))}
+                            onClick={() => dispatch(storeSelectedItem({value:item,gameType}))}
                             content={"+"}
                 />
-                <ClassDropdown optionsList={classesAvailable} onChange={onChange}/>
-                </Form.Group>
             }
         </>
         );

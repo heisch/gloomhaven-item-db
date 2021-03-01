@@ -1,4 +1,4 @@
-import { GloomhavenItemSlot, SortDirection, SortProperty } from "./Types";
+import { GloomhavenItem, GloomhavenItemSlot, SortDirection, SortProperty } from "./Types";
 import { GameType } from "../games";
 import { createSelector } from "reselect";
 import { RootState } from "./Reducer";
@@ -13,13 +13,15 @@ export interface ItemViewState {
     search: string;
     direction: SortDirection;
     property: SortProperty;
+    selectedItem: GloomhavenItem | undefined;
 }
 
 const initialItemViewState : ItemViewState = {
     slots: undefined,
     search: '',
     direction: SortDirection.ascending,
-    property: 'id'
+    property: 'id',
+    selectedItem: undefined,
 };
 
 export type ItemViewStateMap = {
@@ -66,6 +68,12 @@ const itemViewStateSlice = createSlice({
             gameState.slots = action.payload.value;
        } 
     },
+    storeSelectedItem(state, action: PayloadGameTypeAction<GloomhavenItem|undefined>){
+      const gameState = state[action.payload.gameType]; 
+      if (gameState) {
+          gameState.selectedItem = action.payload.value;
+     } 
+  },
   }
 })
 
@@ -90,6 +98,6 @@ export const itemViewStateSelector = createSelector(
     return useSelector(itemViewStateSelector)(gameType);
   }
 
-export const { storeFilterSearch, storeSortingDirection, storeFilterSlots, storeSortingProperty, storeItemViewState } = itemViewStateSlice.actions;
+export const { storeSelectedItem, storeFilterSearch, storeSortingDirection, storeFilterSlots, storeSortingProperty, storeItemViewState } = itemViewStateSlice.actions;
 
 export default itemViewStateSlice.reducer;
