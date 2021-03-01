@@ -465,5 +465,14 @@ img.ui.image.soloClass {
 button.ui.deleteUser {
     display: flex;
     align-items: center;
-    padding: 5px;
+    padding: 0px;
+}
+
+button.ui.deleteUser .delete.icon{
+    left: 3px;
+    position: relative
+}
+
+.ui.button.addUser {
+    padding: 8px;
 }

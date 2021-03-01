@@ -59,7 +59,7 @@ const SpoilerFilters = () => {
 
             <Form.Group inline>
                 <label> Add Member: </label>
-                <Button icon='add user' basic color='black' onClick={onAddClass}/>
+                <Button className="addUser" icon='add user' basic color='black' onClick={onAddClass}/>
                 <ClassDropdown optionsList={classesAvailable} onChange={onChange}/>
             </Form.Group>
             <Form.Group inline>
@@ -70,7 +70,7 @@ const SpoilerFilters = () => {
                                  basic
                                  color='black'
                                  content={createClassImage(className)} 
-                                 icon='delete user' 
+                                 icon='delete' 
                                  onClick={() => onRemoveClass(className)}/>
                       )}                    
             </Form.Group>
