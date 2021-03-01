@@ -43,7 +43,7 @@ const ItemManagement = (props:Props) => {
 
     return (
         <>
-            {`${owners && owners.length || 0} / ${item.count}`}
+            {`${(owners && owners.length) || 0} / ${item.count}`}
             {owners&&owners.map((owner, index) => {
                 return <Button
                     className={'i'+index}

@@ -60,7 +60,7 @@ const SpoilerFilters = () => {
             <Form.Group inline>
                 <label> Add Member: </label>
                 <Button className="addUser" icon='add user' basic color='black' onClick={onAddClass}/>
-                <ClassDropdown optionsList={classesAvailable} onChange={onChange}/>
+                <ClassDropdown className="classdropdown" optionsList={classesAvailable} onChange={onChange}/>
             </Form.Group>
             <Form.Group inline>
                 <label> Current Members: </label>

@@ -476,3 +476,7 @@ button.ui.deleteUser .delete.icon{
 .ui.button.addUser {
     padding: 8px;
 }
+
+.classdropdown .item{
+    width: 60px;
+}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { GloomhavenItem } from "../../../State/Types"
 import { Label} from "semantic-ui-react";
 import ItemManagement from "./ItemManagement";
@@ -15,15 +15,16 @@ const ItemId = ({cost: id}:{cost: number}) => {
 const ItemCard = (props:Props) => {
     const { item } = props;
     const game = useGame();
-
+    const [draw, setDraw] = useState(false);
     return (
         <div className={'item-card-wrapper'}>
             <img
                 src={game.getItemPath(item)}
                 alt={item.name}
+                onLoad={() => setDraw(true)}
                 className={'item-card'}/>
-            <ItemId cost={item.id}/>
-            <ItemManagement item={item}/>
+            {draw && <ItemId cost={item.id}/>}
+            {draw && <ItemManagement item={item}/>}
         </div>
     )
 }

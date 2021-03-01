@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import React, {useEffect, useState } from "react";
 import { Button, List, Modal } from "semantic-ui-react";
 import { ClassesInUse } from "../../../State/Types";
 import ClassDropdown from "./ClassDropdown";
@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { getItemViewState, storeSelectedItem } from "../../../State/ItemViewState";
 
 const PurchaseItem = () => {
-    const {gameType} = useGame();
+  const {gameType} = useGame();
   const { selectedItem } = getItemViewState();
   const { itemsOwnedBy, classesInUse, discount } = getSpoilerFilter();
   const owners = selectedItem ? itemsOwnedBy[selectedItem.id] : undefined;
@@ -19,6 +19,10 @@ const PurchaseItem = () => {
   const onClose = () => {
       dispatch(storeSelectedItem({value: undefined, gameType}));
   };
+
+  useEffect(() => {
+    setBuyer(classesAvailable[0]);
+  }, [selectedItem])
 
   const onApply = () => {
       if (selectedItem) {
@@ -39,7 +43,7 @@ const PurchaseItem = () => {
             <List.Item>Name: {selectedItem && selectedItem.name}</List.Item>
             <List.Item>Cost: {selectedItem && selectedItem.cost + discount}</List.Item>
             <List.Item>
-              <ClassDropdown optionsList={classesAvailable} onChange={onChange}/>
+              <ClassDropdown className="classdropdown" optionsList={classesAvailable} onChange={onChange}/>
             </List.Item>
           </List>
         </Modal.Content>
