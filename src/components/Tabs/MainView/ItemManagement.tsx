@@ -42,11 +42,15 @@ const ItemManagement = (props:Props) => {
         setBuyer(newClass);
     }
 
+    const ownersLength = (owners ? owners.length : 0);
+    const showAddButton = (ownersLength !== item.count) && classesAvailable.length;
+
     return (
         <>
             {`${owners && owners.length || 0} / ${item.count}`}
-            {owners&&owners.map(owner => {
+            {owners&&owners.map((owner, index) => {
                 return <Button
+                    className={'i'+index}
                     key={`${item.id}-${owner}`}
                     basic
                     color='black'
@@ -63,10 +67,11 @@ const ItemManagement = (props:Props) => {
                         checked={!!(itemsInUse[item.id] & Math.pow(2, index))}
                         onChange={() => toggleItemInUse(item.id, Math.pow(2, index))}/>
             )} */}
-            {(owners && owners.length) != item.count && classesAvailable.length &&
+            {showAddButton &&
                 <Form.Group inline>
                 <Button
-                              color={'green'}
+                            className={`i${ownersLength} addClass`}
+                            color={'black'}
                             onClick={() => dispatch(addItemOwner({value:{itemId:item.id, owner:buyer},gameType}))}
                             content={"+"}
                 />

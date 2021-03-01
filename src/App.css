@@ -194,22 +194,49 @@ img.item-card {
     background: black;
 }
 
+.item-card-wrapper .ui.black.button.i0,
 .item-card-wrapper .ui.toggle.checkbox.i0 {
     left: 7px;
     top: 50px;
 }
+.item-card-wrapper .ui.black.button.i1,
 .item-card-wrapper .ui.toggle.checkbox.i1 {
     left: 7px;
     top: 85px;
 }
 
+.item-card-wrapper .ui.black.button.i2,
 .item-card-wrapper .ui.toggle.checkbox.i2 {
     right: 7px;
     top: 50px;
 }
+
+.item-card-wrapper .ui.black.button.i3,
 .item-card-wrapper .ui.toggle.checkbox.i3 {
     right: 7px;
     top: 85px;
+}
+
+.item-card-wrapper .ui.black.button {
+    padding: 0;
+    z-index: 10;
+    position: absolute;
+}
+
+.item-card-wrapper .addClass {
+    width: 30px;
+    height: 30px;
+}
+
+.ui.black.button.i0 .delete.icon,
+.ui.black.button.i1 .delete.icon, 
+.ui.black.button.i2 .delete.icon,
+.ui.black.button.i3 .delete.icon{
+    padding: 0;
+    z-index: 9;
+    position: absolute;
+    left: 3px;
+    top: 0px;
 }
 
 .ui.form .fields.inline-break {
