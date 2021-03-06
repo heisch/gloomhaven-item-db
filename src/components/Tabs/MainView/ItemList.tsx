@@ -1,14 +1,12 @@
 import React from 'react'
 import { GloomhavenItem, SortProperty, SortDirection, ItemManagementType } from '../../../State/Types';
-import { useDispatch } from 'react-redux';
 import SearchOptions from './SearchOptions';
 import { Message, Icon } from 'semantic-ui-react';
 import ItemTable from './ItemTable';
 import ItemGrid from './ItemGrid';
-import { storeSortingProperty, storeSortingDirection, getItemViewState } from '../../../State/ItemViewState';
 import { getSpoilerFilter } from '../../../State/SpoilerFilter';
-import { useGame } from '../../Game/GameProvider';
 import PurchaseItem from './PurchaseItem';
+import { useSearchOptions } from '../../Providers/SearchOptionsProvider';
 
 type Props = {
     items : GloomhavenItem[];
@@ -16,10 +14,8 @@ type Props = {
 
 const ItemList = (props:Props) => {
     const {items} = props;
-    const { gameType } = useGame();
     const { displayAs, all, itemManagementType } = getSpoilerFilter();
-    const { property, direction } = getItemViewState();
-    const dispatch = useDispatch();
+    const { searchOptions: { property, direction}, setSearchOptions} = useSearchOptions();
 
         const setSorting = (newProperty: SortProperty) => {
             let newDirection:SortDirection;
@@ -29,8 +25,7 @@ const ItemList = (props:Props) => {
                 newDirection = SortDirection.ascending;
             }
 
-            dispatch(storeSortingProperty({value:newProperty, gameType}));
-            dispatch(storeSortingDirection({value:newDirection, gameType}));
+            setSearchOptions({property: newProperty, direction: newDirection})
         }
         
     return (

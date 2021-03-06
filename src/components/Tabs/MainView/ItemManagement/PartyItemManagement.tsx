@@ -1,10 +1,10 @@
 import React from "react"
 import { useDispatch } from "react-redux";
 import { Button } from "semantic-ui-react";
-import { storeSelectedItem } from "../../../../State/ItemViewState";
 import { getSpoilerFilter, removeItemOwner } from "../../../../State/SpoilerFilter";
 import { GloomhavenItem, ItemManagementType } from "../../../../State/Types";
 import { useGame } from "../../../Game/GameProvider";
+import { useSearchOptions } from "../../../Providers/SearchOptionsProvider";
 import { createClassImage } from "../ClassDropdown";
 
 type Props = {
@@ -16,6 +16,7 @@ const PartyItemManagement = (props: Props) => {
     const {item} = props;
     const { itemManagementType, itemsOwnedBy, classesInUse } = getSpoilerFilter();
     const dispatch = useDispatch();
+    const { searchOptions } = useSearchOptions();
 
     if (itemManagementType !== ItemManagementType.Party) { 
         return null;
@@ -42,7 +43,7 @@ const PartyItemManagement = (props: Props) => {
                 <Button
                             className={`i${ownersLength} addClass`}
                             color={'black'}
-                            onClick={() => dispatch(storeSelectedItem({value:item,gameType}))}
+                            onClick={() => { searchOptions.selectedItem }}
                             content={"+"}
                 />
             }

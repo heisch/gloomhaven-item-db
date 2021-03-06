@@ -5,11 +5,11 @@ import ClassDropdown from "./ClassDropdown";
 import { getSpoilerFilter, addItemOwner } from "../../../State/SpoilerFilter";
 import { useGame } from "../../Game/GameProvider";
 import { useDispatch } from "react-redux";
-import { getItemViewState, storeSelectedItem } from "../../../State/ItemViewState";
+import { useSearchOptions } from "../../Providers/SearchOptionsProvider";
 
 const PurchaseItem = () => {
   const {gameType} = useGame();
-  const { selectedItem } = getItemViewState();
+  const { searchOptions: { selectedItem }, setSearchOptions}  = useSearchOptions();
   const { itemsOwnedBy, classesInUse, discount } = getSpoilerFilter();
   const owners = itemsOwnedBy && selectedItem ? itemsOwnedBy[selectedItem.id] : undefined;
   const classesAvailable = owners && owners.length > 0 ? classesInUse.filter(c => !owners.includes(c)) : classesInUse;
@@ -17,7 +17,7 @@ const PurchaseItem = () => {
   const dispatch = useDispatch();
 
   const onClose = () => {
-      dispatch(storeSelectedItem({value: undefined, gameType}));
+    setSearchOptions({selectedItem: undefined})
   };
 
   useEffect(() => {

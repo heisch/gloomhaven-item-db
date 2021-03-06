@@ -4,9 +4,9 @@ import {  Table, Popup, Icon, Image } from 'semantic-ui-react';
 import ItemManagement from './ItemManagement';
 import { Helpers, getSlotImageSrc } from '../../../helpers';
 import { getSpoilerFilter } from '../../../State/SpoilerFilter';
-import { getItemViewState } from '../../../State/ItemViewState';
 import { useGame } from '../../Game/GameProvider';
 import { GameType } from '../../../games';
+import { useSearchOptions } from '../../Providers/SearchOptionsProvider';
 
 type Props = {
     items : GloomhavenItem[];
@@ -27,7 +27,7 @@ const GHIcon = (props:IconProps) => {
 const ItemTable = (props:Props) => {
     const {items, setSorting} = props;
     const { itemManagementType, discount } = getSpoilerFilter();
-    const { property, direction } = getItemViewState();
+    const { searchOptions: { property, direction} } = useSearchOptions();
     const { gameType } = useGame();
 
     const renderSummon = (item: GloomhavenItem) => {
@@ -44,7 +44,7 @@ const ItemTable = (props:Props) => {
     }
 
     const getCostTitle = () => {
-        return (gameType != GameType.JawsOfTheLion && discount !== 0)
+        return (gameType !== GameType.JawsOfTheLion && discount !== 0)
         ? (<strong className={"ui text " + (discount < 0 ? 'blue' : 'red')}> Cost ({discount}g)</strong>)
         : (<strong>Cost</strong>);
     }
@@ -67,7 +67,7 @@ const ItemTable = (props:Props) => {
                 </Table.Header>
                 <Table.Body>
                     {items.map(item => {
-                        const cost = gameType != GameType.JawsOfTheLion && discount !== 0
+                        const cost = gameType !== GameType.JawsOfTheLion && discount !== 0
                             ? (<strong className={"ui text " + (discount < 0 ? 'blue' : 'red')}>{item.cost + discount}g</strong>)
                             : (<strong>{item.cost}g</strong>);
                         return (

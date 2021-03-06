@@ -2,11 +2,11 @@ import React from 'react'
 import { Form, Button, Input } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 import { storeDisplayAs, storeDiscount, getSpoilerFilter } from '../../../State/SpoilerFilter';
-import { storeFilterSearch, storeFilterSlots, getItemViewState } from '../../../State/ItemViewState';
 import { getSlotImageSrc } from '../../../helpers';
 import { GloomhavenItemSlot, SortProperty} from '../../../State/Types';
 import { useGame } from '../../Game/GameProvider';
 import { GameType } from '../../../games';
+import { useSearchOptions } from '../../Providers/SearchOptionsProvider';
 
 type Props = {
     setSorting : (newProperty: SortProperty) => void;
@@ -15,14 +15,14 @@ type Props = {
 const SearchOptions = (props:Props) => {
     const { setSorting } =  props;
     const { displayAs, discount } = getSpoilerFilter();
-    const { property, search, slots } = getItemViewState();
+    const { searchOptions:{ property, search, slots }, setSearchOptions} = useSearchOptions();
     const dispatch = useDispatch();
     const { gameType, getItemFilterSlots } = useGame();
 
     const setFilterSlot = (slot?: GloomhavenItemSlot) => {
         if (!slot)
         {
-            dispatch(storeFilterSlots({value:undefined, gameType}));    
+            setSearchOptions({slots: undefined});
             return;
         }
         let value = Object.assign([], slots);
@@ -34,10 +34,10 @@ const SearchOptions = (props:Props) => {
         }
         if (value.length === 0)
         {
-            dispatch(storeFilterSlots({value:undefined, gameType}));
+            setSearchOptions({slots: undefined});
         }
         else
-            dispatch(storeFilterSlots({value, gameType}));
+            setSearchOptions({slots: value});
     }
 
 
@@ -106,8 +106,8 @@ const SearchOptions = (props:Props) => {
                     <label>Find Item:</label>
                     <Input
                         value={search}
-                        onChange={(e) => dispatch(storeFilterSearch({value:e.target.value, gameType}))}
-                        icon={{name: 'close', link: true, onClick: () => dispatch(storeFilterSearch({value:'', gameType}))}}
+                        onChange={(e) => { setSearchOptions({search:e.target.value})}}
+                        icon={{name: 'close', link: true, onClick: () => setSearchOptions({search:''})}}
                         placeholder={'Search...'}
                     />
                 </Form.Group>
