@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Form, Button, Icon, Dropdown, DropdownProps } from 'semantic-ui-react';
+import { Form, Button, Icon, Dropdown, DropdownProps, Label } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 import { storeEnableStoreStockManagement, storeAll, getSpoilerFilter, addClass, removeClass } from '../../../State/SpoilerFilter';
 import { useGame } from '../../Game/GameProvider';
@@ -70,20 +70,28 @@ const SpoilerFilters = () => {
             <>
                 <Form.Group inline>
                     <label> Add Member: </label>
-                    <Button className="addUser" icon='add user' basic color='black' onClick={onAddClass}/>
-                    <ClassDropdown className="classdropdown" optionsList={classesAvailable} onChange={onChange}/>
+                    <Button as='div' labelPosition='right' onClick={onAddClass}>
+                                    <div style={{marginRight: "10px"}}>
+                                        <Label as='a' basic pointing='right'>
+                                        Add
+                                        </Label>
+                                    </div>
+                                    <ClassDropdown className="classdropdown" optionsList={classesAvailable} onChange={onChange}/>
+                                </Button>
                 </Form.Group>
                 <Form.Group inline>
                     <label> Current Members: </label>
-                    {classesInUse.map(className =>
-                            <Button key={className}
-                                    className={"deleteUser"}
-                                    basic
-                                    color='black'
-                                    content={createClassImage(className)} 
-                                    icon='delete' 
-                                    onClick={() => onRemoveClass(className)}/>
+                    {classesInUse.map(className => 
+                                <Button as='div' labelPosition='right' onClick={() => onRemoveClass(className)}>
+                                    <div style={{marginRight: "10px"}}>
+                                        {createClassImage(className)}
+                                    </div>
+                                    <Label as='a' basic pointing='left'>
+                                        Remove
+                                    </Label>
+                                </Button>
                         )}                    
+                    {classesInUse.length === 0 ? "None" : ""}
                 </Form.Group>
             </>}
 
