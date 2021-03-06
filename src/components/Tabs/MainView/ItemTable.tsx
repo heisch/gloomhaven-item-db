@@ -26,7 +26,7 @@ const GHIcon = (props:IconProps) => {
 
 const ItemTable = (props:Props) => {
     const {items, setSorting} = props;
-    const { itemMangementType, discount } = getSpoilerFilter();
+    const { itemManagementType, discount } = getSpoilerFilter();
     const { property, direction } = getItemViewState();
     const { gameType } = useGame();
 
@@ -62,7 +62,7 @@ const ItemTable = (props:Props) => {
                         <Table.HeaderCell className={'text-col'}>Effect</Table.HeaderCell>
                         <Table.HeaderCell className={'source-col'}>Source</Table.HeaderCell>
                         <Table.HeaderCell
-                            className={'store-inventory-col'}>{itemMangementType !== ItemManagementType.None ? 'In Use' : 'Stock'}</Table.HeaderCell>
+                            className={'store-inventory-col'}>{itemManagementType !== ItemManagementType.None ? 'In Use' : 'Stock'}</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>

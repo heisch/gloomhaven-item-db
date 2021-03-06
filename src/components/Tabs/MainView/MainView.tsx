@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Modal, Header, Button, Icon, Tab } from 'semantic-ui-react';
 import {  useDispatch } from 'react-redux';
-import { SpoilerFilter, storeSpoilerFilter, restoreFromLocalStorage, getSpoilerFilter, SpoilerMap } from '../../../State/SpoilerFilter';
+import { SpoilerFilter, storeSpoilerFilter, restoreFromLocalStorage, getSpoilerFilter, SpoilerMap, initialSpoilerFilterState } from '../../../State/SpoilerFilter';
 import ItemList from './ItemList';
 import SpoilerFilters from '../SpoilerFilters/SpoilerFilters';
 import Share from '../Share';
@@ -9,11 +9,10 @@ import useItems  from '../../../hooks/useItems'
 import {useGame } from '../../Game/GameProvider';
 import { GameType } from '../../../games';
 import { LOCAL_STORAGE_PREFIX } from '../../../games/GameData';
-import PurchaseItem from "./PurchaseItem"
 import { ItemManagementType } from '../../../State/Types';
 
 const MainView = () => {
-    const { localStorageKey, convertSavedData, gameType} = useGame();
+    const { localStorageKey, convertSavedData} = useGame();
     const {all, lockSpoilerPanel} = getSpoilerFilter();
     const dispatch = useDispatch();
     const items = useItems();
@@ -50,28 +49,36 @@ const MainView = () => {
             if (hashConfig.hasOwnProperty(GameType.Gloomhaven)) {
                    Object.values(GameType).forEach( (gt:GameType) => {
                        const spoilerFilter = hashConfig[gt];
-                       if (spoilerFilter !== undefined) {
+                       if (spoilerFilter) {
                            if (spoilerFilter.hasOwnProperty("enableStoreStockManagement")) { 
                                // @ts-ignore
                                 if (spoilerFilter.enableStoreStockManagement)  {
-                                    spoilerFilter.itemMangementType = ItemManagementType.Simple;
+                                    spoilerFilter.itemManagementType = ItemManagementType.Simple;
                                 }
                                 else {
-                                    spoilerFilter.itemMangementType = ItemManagementType.None;
+                                    spoilerFilter.itemManagementType = ItemManagementType.None;
                                 }
                                 // @ts-ignore
                                 delete spoilerFilter.enableStoreStockManagement
                            }
-                            localStorage.setItem(LOCAL_STORAGE_PREFIX + gt, JSON.stringify(spoilerFilter));
-                            dispatch(storeSpoilerFilter({value:spoilerFilter, gameType:gt}));
+                           const newSpoilerFilter = Object.assign({}, initialSpoilerFilterState, spoilerFilter);
+                           console.log(newSpoilerFilter, gt);
+                            localStorage.setItem(LOCAL_STORAGE_PREFIX + gt, JSON.stringify(newSpoilerFilter));
+                            dispatch(storeSpoilerFilter({value:newSpoilerFilter, gameType:gt}));
                        }
-                })
+                       else {
+                        localStorage.setItem(LOCAL_STORAGE_PREFIX + gt, JSON.stringify(initialSpoilerFilterState));
+                        dispatch(storeSpoilerFilter({value:initialSpoilerFilterState, gameType:gt}));
+                       }
+                    })
             }
             else if (hashConfig.hasOwnProperty("prosperity")) {
                 // This is the old version of the data before other games were added.  Just add it to gloomhaven.
                 const value = hashConfig as SpoilerFilter;
                 localStorage.setItem(LOCAL_STORAGE_PREFIX + GameType.Gloomhaven, JSON.stringify(value));
                 dispatch(storeSpoilerFilter({value, gameType: GameType.Gloomhaven}));
+                localStorage.setItem(LOCAL_STORAGE_PREFIX + GameType.JawsOfTheLion, JSON.stringify(initialSpoilerFilterState));
+                dispatch(storeSpoilerFilter({value:initialSpoilerFilterState, gameType:GameType.JawsOfTheLion}));
             }
             setImportedSpoilerFilters(undefined);
           }
@@ -109,8 +116,6 @@ const MainView = () => {
                     </Button>
                 </Modal.Actions>
             </Modal>
-
-            <PurchaseItem/>
 
             <div className={all ? 'spoiler' : ''}>
                 <Tab panes={panes} defaultActiveIndex={0}/>

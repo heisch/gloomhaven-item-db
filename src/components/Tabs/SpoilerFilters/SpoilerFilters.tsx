@@ -1,35 +1,15 @@
-import React, { useState } from 'react'
-import { Form, Button, Icon, Dropdown, DropdownProps, Label } from 'semantic-ui-react';
+import React from 'react'
+import { Form, Button, Icon, Dropdown, DropdownProps } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
-import { storeEnableStoreStockManagement, storeAll, getSpoilerFilter, addClass, removeClass } from '../../../State/SpoilerFilter';
+import { storeEnableStoreStockManagement, storeAll, getSpoilerFilter } from '../../../State/SpoilerFilter';
 import { useGame } from '../../Game/GameProvider';
-import ClassDropdown, {createClassImage} from '../MainView/ClassDropdown';
-import { ClassesInUse, ItemManagementType } from '../../../State/Types';
-
-const classList: Array<ClassesInUse> = ['BR', 'TI', 'SW', 'SC', 'CH', 'MT', 'SK', 'QM', 'SU', 'NS', 'PH', 'BE', 'SS', 'DS', 'SB', 'EL', 'BT', 'DR'];
-
+import { ItemManagementType } from '../../../State/Types';
+import PartySpoilerFilter from './PartySpoilerFilter';
 
 const SpoilerFilters = () => {
     const dispatch = useDispatch();
     const { spoilerFilter, gameType} = useGame();
-    const { itemMangementType, all, classesInUse } = getSpoilerFilter();
-    const classesAvailable = classList.filter(c => !classesInUse.includes(c));
-    const [selectedClass, setSelectedClass] =  useState<ClassesInUse>(classesAvailable[0] || classesInUse[0]);
-
-    const onChange = (newClass: ClassesInUse) => {
-        setSelectedClass(newClass);
-    }
-
-    const onAddClass = () => {
-        if (selectedClass) {
-            dispatch(addClass({value: selectedClass, gameType}));
-        }
-    }
-
-    const onRemoveClass = (classToRemove: ClassesInUse) => {
-        console.log(classToRemove);
-        dispatch(removeClass({value: classToRemove, gameType}))
-    }
+    const { itemManagementType, all } = getSpoilerFilter();
 
     const options = Object.keys(ItemManagementType).map( key => {
         return {value: key, text:key}
@@ -61,39 +41,12 @@ const SpoilerFilters = () => {
             <Form.Group inline>
                 <label>Enable Store Stock Management:</label>
                 <Dropdown
-                defaultValue={itemMangementType}
+                defaultValue={itemManagementType}
                 onChange={onChangeItemManagement}
                 options={options}/>
             </Form.Group>
 
-            {itemMangementType === ItemManagementType.Party && 
-            <>
-                <Form.Group inline>
-                    <label> Add Member: </label>
-                    <Button as='div' labelPosition='right' onClick={onAddClass}>
-                                    <div style={{marginRight: "10px"}}>
-                                        <Label as='a' basic pointing='right'>
-                                        Add
-                                        </Label>
-                                    </div>
-                                    <ClassDropdown className="classdropdown" optionsList={classesAvailable} onChange={onChange}/>
-                                </Button>
-                </Form.Group>
-                <Form.Group inline>
-                    <label> Current Members: </label>
-                    {classesInUse.map(className => 
-                                <Button as='div' labelPosition='right' onClick={() => onRemoveClass(className)}>
-                                    <div style={{marginRight: "10px"}}>
-                                        {createClassImage(className)}
-                                    </div>
-                                    <Label as='a' basic pointing='left'>
-                                        Remove
-                                    </Label>
-                                </Button>
-                        )}                    
-                    {classesInUse.length === 0 ? "None" : ""}
-                </Form.Group>
-            </>}
+            <PartySpoilerFilter/>
 
            {spoilerFilter}
       

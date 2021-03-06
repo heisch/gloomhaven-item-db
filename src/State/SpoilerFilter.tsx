@@ -24,7 +24,7 @@ export interface SpoilerFilter {
     soloClass: Array<SoloClassShorthand>;
     discount: number;
     displayAs: ItemViewDisplayType;
-    itemMangementType: ItemManagementType;
+    itemManagementType: ItemManagementType;
     lockSpoilerPanel: boolean;
     scenarioCompleted: Array<number>;
     classesInUse: ClassesInUse[];
@@ -38,7 +38,7 @@ export interface OldSpoilerFilter extends SpoilerFilter {
 }
 
 
-const initialSpoilerFilterState:SpoilerFilter = {
+export const initialSpoilerFilterState:SpoilerFilter = {
     all: false,
     prosperity: 1,
     item: [],
@@ -46,7 +46,7 @@ const initialSpoilerFilterState:SpoilerFilter = {
     soloClass: [],
     discount: 0,
     displayAs: 'list',
-    itemMangementType: ItemManagementType.None,
+    itemManagementType: ItemManagementType.None,
     lockSpoilerPanel: false,
     scenarioCompleted: [],
     classesInUse: [],
@@ -117,7 +117,7 @@ const initialSpoilerMapState = Object.values(GameType).reduce(
         storeEnableStoreStockManagement(state, action: PayloadGameTypeAction<ItemManagementType>) {
             const gameState = state[action.payload.gameType]; 
             if (gameState) {
-                gameState.itemMangementType = action.payload.value;
+                gameState.itemManagementType = action.payload.value;
             } 
         },        
         storeDisplayAs(state, action: PayloadGameTypeAction<ItemViewDisplayType>) {
