@@ -1,5 +1,5 @@
 import { createSelector } from "reselect";
-import { SoloClassShorthand, ItemViewDisplayType, ClassesInUse, PullDownOptions } from "./Types";
+import { SoloClassShorthand, ItemViewDisplayType, ClassesInUse, PullDownOptions, ItemManagementType } from "./Types";
 import { RootState } from "./Reducer";
 import memoize from 'lodash.memoize'
 import { GameType } from "../games";
@@ -24,7 +24,7 @@ export interface SpoilerFilter {
     soloClass: Array<SoloClassShorthand>;
     discount: number;
     displayAs: ItemViewDisplayType;
-    enableStoreStockManagement: boolean;
+    itemMangementType: ItemManagementType;
     lockSpoilerPanel: boolean;
     scenarioCompleted: Array<number>;
     classesInUse: ClassesInUse[];
@@ -46,7 +46,7 @@ const initialSpoilerFilterState:SpoilerFilter = {
     soloClass: [],
     discount: 0,
     displayAs: 'list',
-    enableStoreStockManagement: false,
+    itemMangementType: ItemManagementType.None,
     lockSpoilerPanel: false,
     scenarioCompleted: [],
     classesInUse: [],
@@ -114,10 +114,10 @@ const initialSpoilerMapState = Object.values(GameType).reduce(
                 gameState.all = action.payload.value;
             } 
         },
-        storeEnableStoreStockManagement(state, action: PayloadGameTypeAction<boolean>) {
+        storeEnableStoreStockManagement(state, action: PayloadGameTypeAction<ItemManagementType>) {
             const gameState = state[action.payload.gameType]; 
             if (gameState) {
-                gameState.enableStoreStockManagement = action.payload.value;
+                gameState.itemMangementType = action.payload.value;
             } 
         },        
         storeDisplayAs(state, action: PayloadGameTypeAction<ItemViewDisplayType>) {

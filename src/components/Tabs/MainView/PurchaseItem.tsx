@@ -11,7 +11,7 @@ const PurchaseItem = () => {
   const {gameType} = useGame();
   const { selectedItem } = getItemViewState();
   const { itemsOwnedBy, classesInUse, discount } = getSpoilerFilter();
-  const owners = selectedItem ? itemsOwnedBy[selectedItem.id] : undefined;
+  const owners = itemsOwnedBy && selectedItem ? itemsOwnedBy[selectedItem.id] : undefined;
   const classesAvailable = owners && owners.length > 0 ? classesInUse.filter(c => !owners.includes(c)) : classesInUse;
   const [buyer, setBuyer] = useState<ClassesInUse>(classesAvailable[0] || classesInUse[0]);
   const dispatch = useDispatch();

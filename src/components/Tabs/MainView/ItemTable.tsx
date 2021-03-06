@@ -1,5 +1,5 @@
 import React from 'react'
-import { GloomhavenItem, SortProperty } from '../../../State/Types'
+import { GloomhavenItem, ItemManagementType, SortProperty } from '../../../State/Types'
 import {  Table, Popup, Icon, Image } from 'semantic-ui-react';
 import ItemManagement from './ItemManagement';
 import { Helpers, getSlotImageSrc } from '../../../helpers';
@@ -26,7 +26,7 @@ const GHIcon = (props:IconProps) => {
 
 const ItemTable = (props:Props) => {
     const {items, setSorting} = props;
-    const { enableStoreStockManagement, discount } = getSpoilerFilter();
+    const { itemMangementType, discount } = getSpoilerFilter();
     const { property, direction } = getItemViewState();
     const { gameType } = useGame();
 
@@ -62,7 +62,7 @@ const ItemTable = (props:Props) => {
                         <Table.HeaderCell className={'text-col'}>Effect</Table.HeaderCell>
                         <Table.HeaderCell className={'source-col'}>Source</Table.HeaderCell>
                         <Table.HeaderCell
-                            className={'store-inventory-col'}>{enableStoreStockManagement ? 'In Use' : 'Stock'}</Table.HeaderCell>
+                            className={'store-inventory-col'}>{itemMangementType !== ItemManagementType.None ? 'In Use' : 'Stock'}</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>

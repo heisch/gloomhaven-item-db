@@ -10,6 +10,7 @@ import {useGame } from '../../Game/GameProvider';
 import { GameType } from '../../../games';
 import { LOCAL_STORAGE_PREFIX } from '../../../games/GameData';
 import PurchaseItem from "./PurchaseItem"
+import { ItemManagementType } from '../../../State/Types';
 
 const MainView = () => {
     const { localStorageKey, convertSavedData, gameType} = useGame();
@@ -50,6 +51,17 @@ const MainView = () => {
                    Object.values(GameType).forEach( (gt:GameType) => {
                        const spoilerFilter = hashConfig[gt];
                        if (spoilerFilter !== undefined) {
+                           if (spoilerFilter.hasOwnProperty("enableStoreStockManagement")) { 
+                               // @ts-ignore
+                                if (spoilerFilter.enableStoreStockManagement)  {
+                                    spoilerFilter.itemMangementType = ItemManagementType.Simple;
+                                }
+                                else {
+                                    spoilerFilter.itemMangementType = ItemManagementType.None;
+                                }
+                                // @ts-ignore
+                                delete spoilerFilter.enableStoreStockManagement
+                           }
                             localStorage.setItem(LOCAL_STORAGE_PREFIX + gt, JSON.stringify(spoilerFilter));
                             dispatch(storeSpoilerFilter({value:spoilerFilter, gameType:gt}));
                        }

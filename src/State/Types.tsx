@@ -3,6 +3,12 @@ export enum SortDirection {
     descending = 'descending'
 }
 
+export enum ItemManagementType {
+    None = 'None',
+    Simple = 'Simple',
+    Party = 'Party'
+}
+
 export type SortProperty = 'id' | 'slot' | 'cost' | 'name' | 'use';
 
 export type ItemViewDisplayType = 'list' | 'images';
