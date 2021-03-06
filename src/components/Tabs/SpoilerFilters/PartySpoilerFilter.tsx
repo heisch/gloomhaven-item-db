@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { useDispatch } from "react-redux";
 import { Button, Form, Label } from "semantic-ui-react";
 import { getSpoilerFilter, addClass, removeClass } from "../../../State/SpoilerFilter";
-import { ClassesInUse, ItemManagementType } from "../../../State/Types";
+import { ClassesInUse, ItemManagementType, PullDownOptions } from "../../../State/Types";
 import { useGame } from "../../Game/GameProvider";
 import ClassDropdown, { createClassImage } from "../MainView/ClassDropdown";
 
@@ -22,10 +22,10 @@ const PartySpoilerFilter = () => {
 
     const classesAvailable = classList.filter(isClassAvailable);
 
-    const [selectedClass, setSelectedClass] =  useState<ClassesInUse>(classesAvailable[0]);
+    const [selectedClass, setSelectedClass] =  useState<PullDownOptions>(classesAvailable[0]);
 
 
-    const onChange = (newClass: ClassesInUse) => {
+    const onChange = (newClass: PullDownOptions) => {
         setSelectedClass(newClass);
     }
 
@@ -43,7 +43,6 @@ const PartySpoilerFilter = () => {
         return null;
     }
 
-
     return <>
             <Form.Group inline>
                 <label> Add Member: </label>
@@ -53,7 +52,7 @@ const PartySpoilerFilter = () => {
                                     Add
                                     </Label>
                                 </div>
-                                <ClassDropdown className="classdropdown" optionsList={classesAvailable} onChange={onChange}/>
+                                <ClassDropdown className="classdropdown" optionsList={[undefined, ...classesAvailable]} onChange={onChange}/>
                             </Button>
             </Form.Group>
             <Form.Group inline>

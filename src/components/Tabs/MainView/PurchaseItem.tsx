@@ -1,6 +1,6 @@
 import React, {useEffect, useState } from "react";
 import { Button, List, Modal } from "semantic-ui-react";
-import { ClassesInUse } from "../../../State/Types";
+import { ClassesInUse, PullDownOptions } from "../../../State/Types";
 import ClassDropdown from "./ClassDropdown";
 import { getSpoilerFilter, addItemOwner } from "../../../State/SpoilerFilter";
 import { useGame } from "../../Game/GameProvider";
@@ -13,7 +13,7 @@ const PurchaseItem = () => {
   const { itemsOwnedBy, classesInUse, discount } = getSpoilerFilter();
   const owners = itemsOwnedBy && selectedItem ? itemsOwnedBy[selectedItem.id] : undefined;
   const classesAvailable = owners && owners.length > 0 ? classesInUse.filter(c => !owners.includes(c)) : classesInUse;
-  const [buyer, setBuyer] = useState<ClassesInUse>(classesAvailable[0] || classesInUse[0]);
+  const [buyer, setBuyer] = useState<PullDownOptions>(classesAvailable[0] || classesInUse[0]);
   const dispatch = useDispatch();
 
   const onClose = () => {
@@ -31,7 +31,7 @@ const PurchaseItem = () => {
     onClose();
   };
 
-  const onChange = (newClass: ClassesInUse) => {
+  const onChange = (newClass: PullDownOptions) => {
     setBuyer(newClass);
   }
 
@@ -43,7 +43,7 @@ const PurchaseItem = () => {
             <List.Item>Name: {selectedItem && selectedItem.name}</List.Item>
             <List.Item>Cost: {selectedItem && selectedItem.cost + discount}</List.Item>
             <List.Item>
-              <ClassDropdown className="classdropdown" optionsList={classesAvailable} onChange={onChange}/>
+              <ClassDropdown className="classdropdown" optionsList={[undefined, ...classesAvailable]} onChange={onChange}/>
             </List.Item>
           </List>
         </Modal.Content>

@@ -1,6 +1,6 @@
 import React, { useContext, createContext, ReactNode, useState } from 'react'
-import {BaseGameData, GameType, gameDataTypes} from '../../games'
-import { GloomhavenItem, GloomhavenItemSlot, SortDirection, SortProperty } from '../../State/Types';
+import { GameType } from '../../games'
+import { ClassesInUse, GloomhavenItem, GloomhavenItemSlot, SortDirection, SortProperty } from '../../State/Types';
 import { useGame } from '../Game/GameProvider';
 
 export interface SearchOptions {
@@ -9,6 +9,8 @@ export interface SearchOptions {
     direction: SortDirection;
     property: SortProperty;
     selectedItem: GloomhavenItem | undefined;
+    selectedClass: ClassesInUse | undefined;
+    availableOnly: boolean;
 }
 
 const initialSearchOptions : SearchOptions = {
@@ -17,6 +19,8 @@ const initialSearchOptions : SearchOptions = {
     direction: SortDirection.ascending,
     property: 'id',
     selectedItem: undefined,
+    selectedClass: undefined,
+    availableOnly: false
 };
 
 const initialGameSearchOptions = {
@@ -34,8 +38,6 @@ type Props = {
     children: ReactNode;
 }
 
-
-
 const SearchOptionsProvider = (props:Props) => {
     const { children} = props;
     const {gameType} = useGame();
@@ -47,8 +49,6 @@ const SearchOptionsProvider = (props:Props) => {
         setGameSearchOptions(Object.assign({}, gameSearchOptions))
     }
     
-    console.log("rendering");
-
     return <Provider value={{searchOptions:gameSearchOptions[gameType], setSearchOptions}}>{children}</Provider>
 }
  

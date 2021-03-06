@@ -1,12 +1,13 @@
 import React from 'react'
-import { Form, Button, Input } from 'semantic-ui-react';
+import { Form, Button, Input, DropdownProps } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 import { storeDisplayAs, storeDiscount, getSpoilerFilter } from '../../../State/SpoilerFilter';
 import { getSlotImageSrc } from '../../../helpers';
-import { GloomhavenItemSlot, SortProperty} from '../../../State/Types';
+import { ClassesInUse, GloomhavenItemSlot, PullDownOptions, SortProperty} from '../../../State/Types';
 import { useGame } from '../../Game/GameProvider';
 import { GameType } from '../../../games';
 import { useSearchOptions } from '../../Providers/SearchOptionsProvider';
+import ClassDropdown from './ClassDropdown';
 
 type Props = {
     setSorting : (newProperty: SortProperty) => void;
@@ -14,8 +15,8 @@ type Props = {
 
 const SearchOptions = (props:Props) => {
     const { setSorting } =  props;
-    const { displayAs, discount } = getSpoilerFilter();
-    const { searchOptions:{ property, search, slots }, setSearchOptions} = useSearchOptions();
+    const { displayAs, discount, classesInUse } = getSpoilerFilter();
+    const { searchOptions:{ property, search, slots, availableOnly }, setSearchOptions} = useSearchOptions();
     const dispatch = useDispatch();
     const { gameType, getItemFilterSlots } = useGame();
 
@@ -111,6 +112,23 @@ const SearchOptions = (props:Props) => {
                         placeholder={'Search...'}
                     />
                 </Form.Group>
+                <Form.Group inline> 
+                    <label>Owner:</label>
+                    <ClassDropdown  optionsList={[undefined, ...classesInUse]}  onChange={ (option:PullDownOptions) => setSearchOptions({selectedClass:option})} />
+                </Form.Group>
+                <Form.Group inline>
+                    <label>Availability</label>
+                    <Button.Group>
+                        <Button color={availableOnly? 'blue' : undefined} onClick={() => {
+                                setSearchOptions({availableOnly:true})
+                            }}>Available</Button>
+                        <Button.Or/>
+                        <Button color={!availableOnly ? 'blue' : undefined} onClick={() => {
+                                setSearchOptions({availableOnly:false})
+                            }}>All</Button>
+                    </Button.Group>
+                </Form.Group>
+
             </Form>
         </React.Fragment>
     );

@@ -43,20 +43,28 @@ const ClassDropdown = (props: Props) => {
     const opts: any = [];
     return opts.concat(
       optionsList.map((option) => {
-        return {
-          onClick: () => {
-            onSelectOption(option);
-          },
-          key: option,
-          image: createClassImage(option),
-        };
+        if (option) {
+          return {
+            onClick: () => {
+              onSelectOption(option);
+            },
+            key: option,
+            image: createClassImage(option),
+          };
+        }
+        else {
+          return {
+            onClick: () => {
+              onSelectOption(option);
+            },
+            key: "none",
+            text: "Select Class"
+          };
+
+        }
       })
     );
   };
-
-  if (!selectedOption) {
-    return null;
-  }
 
   return (
     <Dropdown
@@ -66,7 +74,7 @@ const ClassDropdown = (props: Props) => {
       className={`${className} button`}
       trigger={
         <>
-          {createClassImage(selectedOption)}
+          {!selectedOption ? "Select Class" : createClassImage(selectedOption)}
           <Icon name="dropdown" />
         </>
       }

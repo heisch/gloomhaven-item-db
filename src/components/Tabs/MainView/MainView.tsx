@@ -11,6 +11,17 @@ import { GameType } from '../../../games';
 import { LOCAL_STORAGE_PREFIX } from '../../../games/GameData';
 import { ItemManagementType } from '../../../State/Types';
 
+
+// .git ignore vscode file
+// TODO: When removing a player, remove what they owned.
+// Add Feature flag to turn off Party Mode
+// Fix the styling of the pulldowns
+// Fix the inventory management on the list view
+// Fix z-order of the in use icons on the items.
+// Fix the key error in the party spoiler
+// Add JOTL to list of classes.
+// Convert the state over to provider.
+
 const MainView = () => {
     const { localStorageKey, convertSavedData} = useGame();
     const {all, lockSpoilerPanel} = getSpoilerFilter();
@@ -62,7 +73,6 @@ const MainView = () => {
                                 delete spoilerFilter.enableStoreStockManagement
                            }
                            const newSpoilerFilter = Object.assign({}, initialSpoilerFilterState, spoilerFilter);
-                           console.log(newSpoilerFilter, gt);
                             localStorage.setItem(LOCAL_STORAGE_PREFIX + gt, JSON.stringify(newSpoilerFilter));
                             dispatch(storeSpoilerFilter({value:newSpoilerFilter, gameType:gt}));
                        }

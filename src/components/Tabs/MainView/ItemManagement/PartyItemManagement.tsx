@@ -16,7 +16,7 @@ const PartyItemManagement = (props: Props) => {
     const {item} = props;
     const { itemManagementType, itemsOwnedBy, classesInUse } = getSpoilerFilter();
     const dispatch = useDispatch();
-    const { searchOptions } = useSearchOptions();
+    const { setSearchOptions } = useSearchOptions();
 
     if (itemManagementType !== ItemManagementType.Party) { 
         return null;
@@ -43,7 +43,7 @@ const PartyItemManagement = (props: Props) => {
                 <Button
                             className={`i${ownersLength} addClass`}
                             color={'black'}
-                            onClick={() => { searchOptions.selectedItem }}
+                            onClick={() => { setSearchOptions({selectedItem:item})}}
                             content={"+"}
                 />
             }

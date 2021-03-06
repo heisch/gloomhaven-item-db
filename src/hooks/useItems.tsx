@@ -9,10 +9,8 @@ const useItems = (): Array<GloomhavenItem> => {
 
     const { isItemShown, initialItems} = useGame();
     const spoilerFilter = getSpoilerFilter();
-    const { all, item: spoilerFilterItem } = spoilerFilter;
-    const { searchOptions: { property, direction, slots, search }} = useSearchOptions();
-
-    console.log(slots);
+    const { all, item: spoilerFilterItem, itemsOwnedBy } = spoilerFilter;
+    const { searchOptions: { property, direction, slots, search, selectedClass, availableOnly }} = useSearchOptions();
 
     const getFilteredItems = () => {
         const spoilerFiltered = all ? initialItems : initialItems.filter(item => {
@@ -26,6 +24,21 @@ const useItems = (): Array<GloomhavenItem> => {
             }
             if (search.length > 2 && hit) { 
                 hit = (!!item.name.match(new RegExp(search, 'i')) || !!item.desc.match(new RegExp(search, 'i')));
+            }
+            if (selectedClass && hit) {
+                const owners = itemsOwnedBy[item.id];
+                if (owners) {
+                    hit = owners.includes(selectedClass);
+                }
+                else {
+                    hit = false;
+                }
+            }
+            if (availableOnly && hit) {
+                const owners = itemsOwnedBy[item.id];
+                if (owners) {
+                    hit = item.count != owners.length;
+                }
             }
             return hit;
         });
