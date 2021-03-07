@@ -7,6 +7,7 @@ import { getSpoilerFilter } from '../../../State/SpoilerFilter';
 import { useGame } from '../../Game/GameProvider';
 import { GameType } from '../../../games';
 import { useSearchOptions } from '../../Providers/SearchOptionsProvider';
+import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
 
 type Props = {
     items : GloomhavenItem[];
@@ -26,8 +27,9 @@ const GHIcon = (props:IconProps) => {
 
 const ItemTable = (props:Props) => {
     const {items, setSorting} = props;
-    const { itemManagementType, discount } = getSpoilerFilter();
+    const { itemManagementType } = getSpoilerFilter();
     const { searchOptions: { property, direction} } = useSearchOptions();
+    const { filterOptions: { discount} } = useFilterOptions();
     const { gameType } = useGame();
 
     const renderSummon = (item: GloomhavenItem) => {

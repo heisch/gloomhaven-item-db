@@ -1,13 +1,14 @@
 import React from 'react'
-import { Form, Button, Input, DropdownProps } from 'semantic-ui-react';
+import { Form, Button, Input} from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
-import { storeDisplayAs, storeDiscount, getSpoilerFilter } from '../../../State/SpoilerFilter';
+import { storeDisplayAs, getSpoilerFilter } from '../../../State/SpoilerFilter';
 import { getSlotImageSrc } from '../../../helpers';
-import { ClassesInUse, GloomhavenItemSlot, PullDownOptions, SortProperty} from '../../../State/Types';
+import { GloomhavenItemSlot, PullDownOptions, SortProperty} from '../../../State/Types';
 import { useGame } from '../../Game/GameProvider';
 import { GameType } from '../../../games';
 import { useSearchOptions } from '../../Providers/SearchOptionsProvider';
 import ClassDropdown from './ClassDropdown';
+import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
 
 type Props = {
     setSorting : (newProperty: SortProperty) => void;
@@ -15,8 +16,9 @@ type Props = {
 
 const SearchOptions = (props:Props) => {
     const { setSorting } =  props;
-    const { displayAs, discount, classesInUse } = getSpoilerFilter();
+    const { displayAs, classesInUse } = getSpoilerFilter();
     const { searchOptions:{ property, search, slots, availableOnly }, setSearchOptions} = useSearchOptions();
+    const { filterOptions: { discount }, updateFilterOptions} = useFilterOptions();
     const dispatch = useDispatch();
     const { gameType, getItemFilterSlots } = useGame();
 
@@ -74,7 +76,7 @@ const SearchOptions = (props:Props) => {
                                 {value: 5, text: "+5 gold"}, // (-19 - -20)
                             ]}
                             onChange={(obj, e) => {
-                                dispatch(storeDiscount({value:typeof e.value === 'number' ? e.value : 0, gameType}));
+                                updateFilterOptions({discount:parseInt(e.value as string)});
                             }}
                     />
                 </Form.Group>}

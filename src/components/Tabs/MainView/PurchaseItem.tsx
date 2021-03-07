@@ -6,11 +6,13 @@ import { getSpoilerFilter, addItemOwner } from "../../../State/SpoilerFilter";
 import { useGame } from "../../Game/GameProvider";
 import { useDispatch } from "react-redux";
 import { useSearchOptions } from "../../Providers/SearchOptionsProvider";
+import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 
 const PurchaseItem = () => {
   const {gameType} = useGame();
   const { searchOptions: { selectedItem }, setSearchOptions}  = useSearchOptions();
-  const { itemsOwnedBy, classesInUse, discount } = getSpoilerFilter();
+  const { itemsOwnedBy, classesInUse } = getSpoilerFilter();
+  const { filterOptions: { discount} } = useFilterOptions();
   const owners = itemsOwnedBy && selectedItem ? itemsOwnedBy[selectedItem.id] : undefined;
   const classesAvailable = owners && owners.length > 0 ? classesInUse.filter(c => !owners.includes(c)) : classesInUse;
   const [buyer, setBuyer] = useState<PullDownOptions>(classesAvailable[0] || classesInUse[0]);
