@@ -2,6 +2,7 @@ import { BaseGameData } from '../GameData'
 import { GloomhavenItem } from '../../State/Types';
 import {SpoilerFilter} from '../../State/SpoilerFilter';
 import { GameType } from '..';
+import { FilterOptions } from '../../components/Providers/FilterOptions';
 
 const oldFilterLocalStorageKey = 'ItemView:spoilerFilter';
 
@@ -10,7 +11,7 @@ class GHGameData extends BaseGameData  {
     {
         super("Gloomhaven", GameType.Gloomhaven);
     }
-    isItemShown(item:GloomhavenItem, {prosperity, soloClass} : SpoilerFilter) {
+    isItemShown(item:GloomhavenItem, {soloClass} : SpoilerFilter, {prosperity}: FilterOptions) {
         if (item.id <= (prosperity+1)*7)
         {
             return true;

@@ -12,11 +12,11 @@ const useItems = (): Array<GloomhavenItem> => {
     const spoilerFilter = getSpoilerFilter();
     const { item: spoilerFilterItem, itemsOwnedBy } = spoilerFilter;
     const { searchOptions: { property, direction, slots, search, selectedClass, availableOnly }} = useSearchOptions();
-    const { filterOptions: { all } } = useFilterOptions();
+    const { filterOptions: { all }, filterOptions } = useFilterOptions();
 
     const getFilteredItems = () => {
         const spoilerFiltered = all ? initialItems : initialItems.filter(item => {
-            if (isItemShown(item, spoilerFilter)) return true;
+            if (isItemShown(item, spoilerFilter, filterOptions)) return true;
             return spoilerFilterItem.includes(item.id);
         });
         return spoilerFiltered.filter(item => {

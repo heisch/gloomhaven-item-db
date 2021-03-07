@@ -1,25 +1,7 @@
 import React, { useContext, createContext, ReactNode, useState } from 'react'
 import { GameType } from '../../games'
-import { PullDownOptions, GloomhavenItem, GloomhavenItemSlot, SortDirection, SortProperty } from '../../State/Types';
 import { useGame } from '../Game/GameProvider';
-
-export interface FilterOptions {
-    all: boolean;
-    // prosperity: number;
-    // item: Array<number>;
-    // itemsInUse: ItemsInUse;
-    // soloClass: Array<SoloClassShorthand>;
-    // discount: number;
-    // displayAs: ItemViewDisplayType;
-    // itemManagementType: ItemManagementType;
-    // lockSpoilerPanel: boolean;
-    // scenarioCompleted: Array<number>;
-    // classesInUse: ClassesInUse[];
-    // itemsOwnedBy: ItemsOwnedBy;
-}
-const initialFilterOptions : FilterOptions = {
-    all: false,
-};
+import {initialFilterOptions} from "./FilterOptions"
 
 const initialGameFilterOptions = {
     [GameType.Gloomhaven] : initialFilterOptions,

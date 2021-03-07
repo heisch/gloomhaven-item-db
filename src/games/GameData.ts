@@ -2,6 +2,7 @@ import { GloomhavenItem, GloomhavenItemSlot } from "../State/Types"
 import {SpoilerFilter} from "../State/SpoilerFilter";
 import { Helpers } from "../helpers";
 import { GameType } from ".";
+import { FilterOptions } from "../components/Providers/FilterOptions";
 
 const deSpoilerItemSource = (source:string): string => {
     return source.replace(/{(.{2})}/, (m, m1) => '<img class="icon" src="'+require('../img/classes/'+m1+'.png')+'" alt="" />');
@@ -56,7 +57,7 @@ export abstract class BaseGameData {
         return this.initItems;
     }
 
-    abstract isItemShown(item: GloomhavenItem, spoilerFilter:SpoilerFilter) : boolean;
+    abstract isItemShown(item: GloomhavenItem, spoilerFilter:SpoilerFilter, FilterOptions: FilterOptions) : boolean;
 
     get localStorageKey() {
         return LOCAL_STORAGE_PREFIX + this.gameType;

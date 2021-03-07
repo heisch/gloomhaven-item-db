@@ -1,17 +1,19 @@
 import React from 'react'
 import { Form, Image } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
-import { storeProsperity, storeSoloClass, getSpoilerFilter } from '../../../State/SpoilerFilter';
+import { storeSoloClass, getSpoilerFilter } from '../../../State/SpoilerFilter';
 import SpoilerFilterItemList from './SpoilerFilterItemList';
 import { SoloClassShorthand } from '../../../State/Types';
 import { useGame } from '../../Game/GameProvider';
 import { GameType } from '../../../games';
+import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
 
 const GloomhavenSoloClassShorthands: Array<SoloClassShorthand> = ['BR', 'TI', 'SW', 'SC', 'CH', 'MT', 'SK', 'QM', 'SU', 'NS', 'PH', 'BE', 'SS', 'DS', 'SB', 'EL', 'BT', 'DR'];
 
 const GHSpoilerFilter = () => {
     const { gameType } = useGame();
-    const { soloClass, prosperity } = getSpoilerFilter();
+    const { soloClass } = getSpoilerFilter();
+    const { filterOptions: {prosperity}, updateFilterOptions}  = useFilterOptions();
     const dispatch = useDispatch();
 
     if (gameType !== GameType.Gloomhaven) {
@@ -37,7 +39,7 @@ const GHSpoilerFilter = () => {
                         return (
                             <Form.Radio key={index} label={nextProsperity}
                                         checked={prosperity === nextProsperity}
-                                        onChange={() => dispatch(storeProsperity({value:nextProsperity, gameType}))}/>
+                                        onChange={() => updateFilterOptions({prosperity: nextProsperity})}/>
                     )})}
             </Form.Group>
 
