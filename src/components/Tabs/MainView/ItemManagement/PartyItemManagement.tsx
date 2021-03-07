@@ -4,6 +4,7 @@ import { Button } from "semantic-ui-react";
 import { getSpoilerFilter, removeItemOwner } from "../../../../State/SpoilerFilter";
 import { GloomhavenItem, ItemManagementType } from "../../../../State/Types";
 import { useGame } from "../../../Game/GameProvider";
+import { useFilterOptions } from "../../../Providers/FilterOptionsProvider";
 import { useSearchOptions } from "../../../Providers/SearchOptionsProvider";
 import { createClassImage } from "../ClassDropdown";
 
@@ -14,9 +15,10 @@ type Props = {
 const PartyItemManagement = (props: Props) => {
     const { gameType } = useGame();
     const {item} = props;
-    const { itemManagementType, itemsOwnedBy, classesInUse } = getSpoilerFilter();
+    const { itemsOwnedBy, classesInUse } = getSpoilerFilter();
     const dispatch = useDispatch();
     const { setSearchOptions } = useSearchOptions();
+    const { filterOptions: {itemManagementType} }  = useFilterOptions();
 
     if (itemManagementType !== ItemManagementType.Party) { 
         return null;

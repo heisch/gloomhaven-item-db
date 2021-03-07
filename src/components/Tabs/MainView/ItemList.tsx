@@ -15,9 +15,8 @@ type Props = {
 
 const ItemList = (props:Props) => {
     const {items} = props;
-    const { itemManagementType } = getSpoilerFilter();
     const { searchOptions: { property, direction}, setSearchOptions} = useSearchOptions();
-    const { filterOptions: { all, displayAs } } = useFilterOptions();
+    const { filterOptions: { all, displayAs, itemManagementType } } = useFilterOptions();
 
         const setSorting = (newProperty: SortProperty) => {
             let newDirection:SortDirection;

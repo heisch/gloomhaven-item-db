@@ -1,13 +1,13 @@
 import React from "react"
-import { getSpoilerFilter } from "../../../../State/SpoilerFilter";
 import { GloomhavenItem, ItemManagementType } from "../../../../State/Types";
+import { useFilterOptions } from "../../../Providers/FilterOptionsProvider";
 
 type Props = {
     item: GloomhavenItem;
 }
 
 const NoItemManagement = (props: Props) => {
-    const { itemManagementType }  = getSpoilerFilter();
+    const { filterOptions: {itemManagementType} }  = useFilterOptions();
     const { item } = props;
     if (itemManagementType !== ItemManagementType.None) {
         return null;

@@ -7,13 +7,15 @@ import { useGame } from "../../Game/GameProvider";
 import ClassDropdown, { createClassImage } from "../MainView/ClassDropdown";
 import {useSearchOptions} from "../../Providers/SearchOptionsProvider";
 import ConfirmClassDelete from "./ConfirmClassDelete";
+import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 
 const classList: Array<ClassesInUse> = ['BR', 'TI', 'SW', 'SC', 'CH', 'MT', 'SK', 'QM', 'SU', 'NS', 'PH', 'BE', 'SS', 'DS', 'SB', 'EL', 'BT', 'DR'];
 
 const PartySpoilerFilter = () => {
     const { gameType } = useGame();
-    const { itemManagementType, classesInUse, itemsOwnedBy } = getSpoilerFilter();
+    const { classesInUse } = getSpoilerFilter();
     const { setSearchOptions } = useSearchOptions();
+    const { filterOptions: { itemManagementType}} = useFilterOptions();
     const dispatch = useDispatch();
 
     const isClassAvailable = (className:ClassesInUse) => {

@@ -17,6 +17,8 @@ import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
 // Add Feature flag to turn off Party Mode
 // Add JOTL to list of classes.
 // Convert the state over to provider.
+// Fix saving and loading
+// Fix importing (and backwards compatible with ItemManagementType)
 
 const MainView = () => {
     const { localStorageKey, convertSavedData} = useGame();
@@ -60,12 +62,12 @@ const MainView = () => {
                        if (spoilerFilter) {
                            if (spoilerFilter.hasOwnProperty("enableStoreStockManagement")) { 
                                // @ts-ignore
-                                if (spoilerFilter.enableStoreStockManagement)  {
-                                    spoilerFilter.itemManagementType = ItemManagementType.Simple;
-                                }
-                                else {
-                                    spoilerFilter.itemManagementType = ItemManagementType.None;
-                                }
+                                // if (spoilerFilter.enableStoreStockManagement)  {
+                                //     spoilerFilter.itemManagementType = ItemManagementType.Simple;
+                                // }
+                                // else {
+                                //     spoilerFilter.itemManagementType = ItemManagementType.None;
+                                // }
                                 // @ts-ignore
                                 delete spoilerFilter.enableStoreStockManagement
                            }

@@ -9,8 +9,8 @@ type Props = {
 }
 
 const SimpleItemManagement = (props: Props) => {
-    const { itemManagementType, lockSpoilerPanel }  = getSpoilerFilter();
-    const { filterOptions: { itemsInUse}, updateFilterOptions} = useFilterOptions();
+    const { lockSpoilerPanel }  = getSpoilerFilter();
+    const { filterOptions: { itemsInUse, itemManagementType}, updateFilterOptions} = useFilterOptions();
     const { item } = props;
 
     if (itemManagementType !== ItemManagementType.Simple) {

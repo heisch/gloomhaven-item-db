@@ -13,7 +13,6 @@ import { PayloadGameTypeAction } from "./GameTypeAction";
   }
 
 export interface SpoilerFilter {
-    itemManagementType: ItemManagementType;
     lockSpoilerPanel: boolean;
     scenarioCompleted: Array<number>;
     classesInUse: ClassesInUse[];
@@ -28,7 +27,6 @@ export interface OldSpoilerFilter extends SpoilerFilter {
 
 
 export const initialSpoilerFilterState:SpoilerFilter = {
-    itemManagementType: ItemManagementType.None,
     lockSpoilerPanel: false,
     scenarioCompleted: [],
     classesInUse: [],
@@ -66,12 +64,6 @@ const initialSpoilerMapState = Object.values(GameType).reduce(
                 gameState.scenarioCompleted = action.payload.value;
             } 
         },
-        storeEnableStoreStockManagement(state, action: PayloadGameTypeAction<ItemManagementType>) {
-            const gameState = state[action.payload.gameType]; 
-            if (gameState) {
-                gameState.itemManagementType = action.payload.value;
-            } 
-        },        
         addClass(state, action: PayloadGameTypeAction<ClassesInUse>) {
             const gameState = state[action.payload.gameType]; 
             if (gameState) {
@@ -177,6 +169,6 @@ export const spoilerFilterSelector = createSelector(
 }
 
 
-export const { addItemOwner, removeItemOwner, addClass, removeClass, storeEnableStoreStockManagement, storeScenarioCompleted, storeSpoilerFilter} = spoilerSlice.actions;
+export const { addItemOwner, removeItemOwner, addClass, removeClass, storeScenarioCompleted, storeSpoilerFilter} = spoilerSlice.actions;
 
 export default spoilerSlice.reducer;

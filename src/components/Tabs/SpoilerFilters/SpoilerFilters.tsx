@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form, Button, Icon, Dropdown, DropdownProps } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
-import { storeEnableStoreStockManagement, getSpoilerFilter } from '../../../State/SpoilerFilter';
+import { getSpoilerFilter } from '../../../State/SpoilerFilter';
 import { useGame } from '../../Game/GameProvider';
 import { ItemManagementType } from '../../../State/Types';
 import PartySpoilerFilter from './PartySpoilerFilter';
@@ -12,8 +12,7 @@ import JOTLSpoilerFilter from './JOTLSpoilerFilter';
 const SpoilerFilters = () => {
     const dispatch = useDispatch();
     const { gameType} = useGame();
-    const { itemManagementType } = getSpoilerFilter();
-    const { filterOptions: {all}, updateFilterOptions } = useFilterOptions();
+    const { filterOptions: {all, itemManagementType}, updateFilterOptions } = useFilterOptions();
 
     const options = Object.keys(ItemManagementType).map( key => {
         return {value: key, text:key}
@@ -23,7 +22,7 @@ const SpoilerFilters = () => {
         const { value } = data;
         if (value) {
             const type =  value as ItemManagementType;
-            dispatch(storeEnableStoreStockManagement({value: type, gameType}));
+            updateFilterOptions({itemManagementType:value})
         }
     }
 
