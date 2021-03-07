@@ -9,6 +9,7 @@ import MainView from './components/Tabs/MainView/MainView';
 import GameProvider from './components/Game/GameProvider'
 import { gameDataTypes, GameType, LOCAL_STORAGE_PREFIX } from './games';
 import SearchOptionsProvider from './components/Providers/SearchOptionsProvider';
+import FilterOptionsProvider from './components/Providers/FilterOptionsProvider';
 
 export const store = createStore(dbApp,  (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__());
 
@@ -56,9 +57,11 @@ const App = () => {
             <GameSelector defaultGameType={gameType} onChange={onGameTypeChanged}/>
             <Provider store={store}>
                 <GameProvider gameType={gameType}>
-                    <SearchOptionsProvider>
-                        <MainView/>
-                    </SearchOptionsProvider>
+                    <FilterOptionsProvider>
+                        <SearchOptionsProvider>
+                            <MainView/>
+                        </SearchOptionsProvider>
+                    </FilterOptionsProvider>
                 </GameProvider>
             </Provider>
         </Container>

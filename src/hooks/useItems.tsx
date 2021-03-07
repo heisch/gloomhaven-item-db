@@ -2,6 +2,7 @@ import { GloomhavenItemSlot, GloomhavenItem, SortDirection } from "../State/Type
 import { useGame } from "../components/Game/GameProvider"
 import { getSpoilerFilter } from "../State/SpoilerFilter";
 import { useSearchOptions } from "../components/Providers/SearchOptionsProvider";
+import { useFilterOptions } from "../components/Providers/FilterOptionsProvider";
 
 const gloomhavenItemSlots: Array<GloomhavenItemSlot> = ['Head', 'Body', 'Legs', 'One Hand', 'Two Hands', 'Small Item'];
 
@@ -9,8 +10,9 @@ const useItems = (): Array<GloomhavenItem> => {
 
     const { isItemShown, initialItems} = useGame();
     const spoilerFilter = getSpoilerFilter();
-    const { all, item: spoilerFilterItem, itemsOwnedBy } = spoilerFilter;
+    const { item: spoilerFilterItem, itemsOwnedBy } = spoilerFilter;
     const { searchOptions: { property, direction, slots, search, selectedClass, availableOnly }} = useSearchOptions();
+    const { filterOptions: { all } } = useFilterOptions();
 
     const getFilteredItems = () => {
         const spoilerFiltered = all ? initialItems : initialItems.filter(item => {

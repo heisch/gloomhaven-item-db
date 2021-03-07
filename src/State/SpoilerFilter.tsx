@@ -17,7 +17,6 @@ export type ItemsInUse = {
   }
 
 export interface SpoilerFilter {
-    all: boolean;
     prosperity: number;
     item: Array<number>;
     itemsInUse: ItemsInUse;
@@ -39,7 +38,6 @@ export interface OldSpoilerFilter extends SpoilerFilter {
 
 
 export const initialSpoilerFilterState:SpoilerFilter = {
-    all: false,
     prosperity: 1,
     item: [],
     itemsInUse: {},
@@ -106,12 +104,6 @@ const initialSpoilerMapState = Object.values(GameType).reduce(
             const gameState = state[action.payload.gameType]; 
             if (gameState) {
                 gameState.itemsInUse = action.payload.value;
-            } 
-        },
-        storeAll(state, action: PayloadGameTypeAction<boolean>) {
-            const gameState = state[action.payload.gameType]; 
-            if (gameState) {
-                gameState.all = action.payload.value;
             } 
         },
         storeEnableStoreStockManagement(state, action: PayloadGameTypeAction<ItemManagementType>) {
@@ -237,6 +229,6 @@ export const spoilerFilterSelector = createSelector(
 }
 
 
-export const { addItemOwner, removeItemOwner, addClass, removeClass, storeAll, storeItem, storeItemsInUse, storeEnableStoreStockManagement, storeDiscount, storeDisplayAs, storeScenarioCompleted, storeSoloClass, storeProsperity, storeSpoilerFilter} = spoilerSlice.actions;
+export const { addItemOwner, removeItemOwner, addClass, removeClass, storeItem, storeItemsInUse, storeEnableStoreStockManagement, storeDiscount, storeDisplayAs, storeScenarioCompleted, storeSoloClass, storeProsperity, storeSpoilerFilter} = spoilerSlice.actions;
 
 export default spoilerSlice.reducer;

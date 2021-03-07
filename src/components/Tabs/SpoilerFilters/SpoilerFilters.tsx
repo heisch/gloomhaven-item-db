@@ -1,15 +1,17 @@
 import React from 'react'
 import { Form, Button, Icon, Dropdown, DropdownProps } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
-import { storeEnableStoreStockManagement, storeAll, getSpoilerFilter } from '../../../State/SpoilerFilter';
+import { storeEnableStoreStockManagement, getSpoilerFilter } from '../../../State/SpoilerFilter';
 import { useGame } from '../../Game/GameProvider';
 import { ItemManagementType } from '../../../State/Types';
 import PartySpoilerFilter from './PartySpoilerFilter';
+import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
 
 const SpoilerFilters = () => {
     const dispatch = useDispatch();
     const { spoilerFilter, gameType} = useGame();
-    const { itemManagementType, all } = getSpoilerFilter();
+    const { itemManagementType } = getSpoilerFilter();
+    const { filterOptions: {all}, updateFilterOptions } = useFilterOptions();
 
     const options = Object.keys(ItemManagementType).map( key => {
         return {value: key, text:key}
@@ -29,7 +31,7 @@ const SpoilerFilters = () => {
                 <label>Respecting Spoiler Settings:</label>
                 <Button
                     color={all ? 'red' : 'blue'}
-                    onClick={() => dispatch(storeAll({value:!all,gameType}))}
+                    onClick={() => updateFilterOptions({all:!all})}
                 >
                     {all
                         ? <React.Fragment><Icon name={'eye'}/> disabled</React.Fragment>

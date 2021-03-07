@@ -10,6 +10,7 @@ import {useGame } from '../../Game/GameProvider';
 import { GameType } from '../../../games';
 import { LOCAL_STORAGE_PREFIX } from '../../../games/GameData';
 import { ItemManagementType } from '../../../State/Types';
+import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
 
 
 // .git ignore vscode file
@@ -19,7 +20,8 @@ import { ItemManagementType } from '../../../State/Types';
 
 const MainView = () => {
     const { localStorageKey, convertSavedData} = useGame();
-    const {all, lockSpoilerPanel} = getSpoilerFilter();
+    const { lockSpoilerPanel} = getSpoilerFilter();
+    const { filterOptions: { all } } = useFilterOptions();
     const dispatch = useDispatch();
     const items = useItems();
     const [importedSpoilerFilters, setImportedSpoilerFilters] = useState<SpoilerMap|undefined>(undefined);

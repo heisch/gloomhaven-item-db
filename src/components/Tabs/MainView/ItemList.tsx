@@ -7,6 +7,7 @@ import ItemGrid from './ItemGrid';
 import { getSpoilerFilter } from '../../../State/SpoilerFilter';
 import PurchaseItem from './PurchaseItem';
 import { useSearchOptions } from '../../Providers/SearchOptionsProvider';
+import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
 
 type Props = {
     items : GloomhavenItem[];
@@ -14,8 +15,9 @@ type Props = {
 
 const ItemList = (props:Props) => {
     const {items} = props;
-    const { displayAs, all, itemManagementType } = getSpoilerFilter();
+    const { displayAs, itemManagementType } = getSpoilerFilter();
     const { searchOptions: { property, direction}, setSearchOptions} = useSearchOptions();
+    const { filterOptions: { all } } = useFilterOptions();
 
         const setSorting = (newProperty: SortProperty) => {
             let newDirection:SortDirection;
