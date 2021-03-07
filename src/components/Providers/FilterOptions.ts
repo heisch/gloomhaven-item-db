@@ -1,3 +1,5 @@
+import { SoloClassShorthand } from "../../State/Types";
+
 export type ItemsInUse = {
     [key:number]: number;
   };
@@ -6,7 +8,7 @@ export interface FilterOptions {
     prosperity: number;
     item: number [];
     itemsInUse: ItemsInUse;
-    // soloClass: Array<SoloClassShorthand>;
+    soloClass: SoloClassShorthand[];
     discount: number;
     // displayAs: ItemViewDisplayType;
     // itemManagementType: ItemManagementType;
@@ -20,7 +22,7 @@ export const initialFilterOptions : FilterOptions = {
     prosperity: 1,
     item: [],
     itemsInUse: {},
-    // soloClass: Array<SoloClassShorthand>,
+    soloClass: [],
     discount: 0,
     // displayAs: ItemViewDisplayType,
     // itemManagementType: ItemManagementType,

@@ -1,7 +1,5 @@
 import React from 'react'
 import { Form, Image } from 'semantic-ui-react';
-import { useDispatch } from 'react-redux';
-import { storeSoloClass, getSpoilerFilter } from '../../../State/SpoilerFilter';
 import SpoilerFilterItemList from './SpoilerFilterItemList';
 import { SoloClassShorthand } from '../../../State/Types';
 import { useGame } from '../../Game/GameProvider';
@@ -12,9 +10,7 @@ const GloomhavenSoloClassShorthands: Array<SoloClassShorthand> = ['BR', 'TI', 'S
 
 const GHSpoilerFilter = () => {
     const { gameType } = useGame();
-    const { soloClass } = getSpoilerFilter();
-    const { filterOptions: {prosperity}, updateFilterOptions}  = useFilterOptions();
-    const dispatch = useDispatch();
+    const { filterOptions: {prosperity, soloClass}, updateFilterOptions}  = useFilterOptions();
 
     if (gameType !== GameType.Gloomhaven) {
         return null;
@@ -27,7 +23,7 @@ const GHSpoilerFilter = () => {
         } else {
             value.push(key)
         }
-        dispatch(storeSoloClass({value, gameType}));
+        updateFilterOptions({soloClass: value})
     }
 
     return (
