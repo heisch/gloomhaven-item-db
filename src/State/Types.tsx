@@ -9,9 +9,12 @@ export enum ItemManagementType {
     Party = 'Party'
 }
 
-export type SortProperty = 'id' | 'slot' | 'cost' | 'name' | 'use';
+export enum ItemViewDisplayType {
+    List = 'list',
+    Images = 'images'
+}
 
-export type ItemViewDisplayType = 'list' | 'images';
+export type SortProperty = 'id' | 'slot' | 'cost' | 'name' | 'use';
 
 export type PullDownOptions = ClassesInUse | undefined;
 export type GHClassesShorthand = 'BR' | 'TI' | 'SW' | 'SC' | 'CH' | 'MT' | 'SK' | 'QM' | 'SU' | 'NS' | 'PH' | 'BE' | 'SS' | 'DS' | 'SB' | 'EL' | 'BT'| 'DR';

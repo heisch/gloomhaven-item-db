@@ -1,9 +1,9 @@
 import React from 'react'
 import { Form, Button, Input} from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
-import { storeDisplayAs, getSpoilerFilter } from '../../../State/SpoilerFilter';
+import { getSpoilerFilter } from '../../../State/SpoilerFilter';
 import { getSlotImageSrc } from '../../../helpers';
-import { GloomhavenItemSlot, PullDownOptions, SortProperty} from '../../../State/Types';
+import { GloomhavenItemSlot, ItemViewDisplayType, PullDownOptions, SortProperty} from '../../../State/Types';
 import { useGame } from '../../Game/GameProvider';
 import { GameType } from '../../../games';
 import { useSearchOptions } from '../../Providers/SearchOptionsProvider';
@@ -16,9 +16,9 @@ type Props = {
 
 const SearchOptions = (props:Props) => {
     const { setSorting } =  props;
-    const { displayAs, classesInUse } = getSpoilerFilter();
+    const { classesInUse } = getSpoilerFilter();
     const { searchOptions:{ property, search, slots, availableOnly }, setSearchOptions} = useSearchOptions();
-    const { filterOptions: { discount }, updateFilterOptions} = useFilterOptions();
+    const { filterOptions: { discount, displayAs }, updateFilterOptions} = useFilterOptions();
     const dispatch = useDispatch();
     const { gameType, getItemFilterSlots } = useGame();
 
@@ -50,16 +50,16 @@ const SearchOptions = (props:Props) => {
                 <Form.Group inline>
                     <label>Render as:</label>
                     <Button.Group>
-                        <Button color={displayAs === 'list' ? 'blue' : undefined} onClick={() => {
-                                dispatch(storeDisplayAs({value:'list', gameType}));
+                        <Button color={displayAs === ItemViewDisplayType.List ? 'blue' : undefined} onClick={() => {
+                                updateFilterOptions({displayAs: ItemViewDisplayType.List})
                             }}>List</Button>
                         <Button.Or/>
-                        <Button color={displayAs === 'images' ? 'blue' : undefined} onClick={() => {
-                                dispatch(storeDisplayAs({value:'images', gameType}));
+                        <Button color={displayAs === ItemViewDisplayType.Images ? 'blue' : undefined} onClick={() => {
+                                updateFilterOptions({displayAs: ItemViewDisplayType.Images})
                             }}>Images</Button>
                     </Button.Group>
                 </Form.Group>
-                {gameType === GameType.Gloomhaven && displayAs === 'list' && <Form.Group inline>
+                {gameType === GameType.Gloomhaven && displayAs === ItemViewDisplayType.List && <Form.Group inline>
                     <label>Reputation Discount:</label>
                     <Form.Select value={discount}
                             options={[
@@ -80,7 +80,7 @@ const SearchOptions = (props:Props) => {
                             }}
                     />
                 </Form.Group>}
-                {displayAs === 'images' && <Form.Group inline>
+                {displayAs === ItemViewDisplayType.Images && <Form.Group inline>
                     <label>Sort By:</label>
                     <Form.Select
                         value={property}

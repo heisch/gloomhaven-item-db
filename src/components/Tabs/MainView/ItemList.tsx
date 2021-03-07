@@ -1,5 +1,5 @@
 import React from 'react'
-import { GloomhavenItem, SortProperty, SortDirection, ItemManagementType } from '../../../State/Types';
+import { GloomhavenItem, SortProperty, SortDirection, ItemManagementType, ItemViewDisplayType } from '../../../State/Types';
 import SearchOptions from './SearchOptions';
 import { Message, Icon } from 'semantic-ui-react';
 import ItemTable from './ItemTable';
@@ -15,9 +15,9 @@ type Props = {
 
 const ItemList = (props:Props) => {
     const {items} = props;
-    const { displayAs, itemManagementType } = getSpoilerFilter();
+    const { itemManagementType } = getSpoilerFilter();
     const { searchOptions: { property, direction}, setSearchOptions} = useSearchOptions();
-    const { filterOptions: { all } } = useFilterOptions();
+    const { filterOptions: { all, displayAs } } = useFilterOptions();
 
         const setSorting = (newProperty: SortProperty) => {
             let newDirection:SortDirection;
@@ -45,7 +45,7 @@ const ItemList = (props:Props) => {
                 </Message>
             }
 
-            {displayAs === 'list' ? <ItemTable items={items} setSorting={setSorting}/> : <ItemGrid items={items}/>}
+            {displayAs === ItemViewDisplayType.List ? <ItemTable items={items} setSorting={setSorting}/> : <ItemGrid items={items}/>}
             
             { itemManagementType === ItemManagementType.Party && <PurchaseItem/>}
 
