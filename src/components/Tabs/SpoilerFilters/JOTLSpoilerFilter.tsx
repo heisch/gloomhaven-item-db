@@ -1,16 +1,14 @@
 import React from 'react'
 import SpoilerFilterItemList from './SpoilerFilterItemList';
 import { Form } from 'semantic-ui-react';
-import { useDispatch } from 'react-redux';
-import { storeScenarioCompleted, getSpoilerFilter } from '../../../State/SpoilerFilter';
 import { useGame } from '../../Game/GameProvider';
 import { GameType } from '../../../games';
+import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
 
 const JOTLSpoilerFilter = () => {
     const { gameType } = useGame();
     const scenariosOfImportance = [2, 9, 15];
-    const { scenarioCompleted } = getSpoilerFilter();
-    const dispatch = useDispatch();
+    const { filterOptions: {scenarioCompleted}, updateFilterOptions } = useFilterOptions();
 
     if (gameType !== GameType.JawsOfTheLion) {
         return null;
@@ -23,7 +21,7 @@ const JOTLSpoilerFilter = () => {
         } else {
             value.push(key)
         }
-        dispatch(storeScenarioCompleted({value, gameType}));
+        updateFilterOptions({scenarioCompleted: value});
     }
 
     return (

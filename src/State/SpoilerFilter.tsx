@@ -13,7 +13,6 @@ import { PayloadGameTypeAction } from "./GameTypeAction";
   }
 
 export interface SpoilerFilter {
-    scenarioCompleted: Array<number>;
     classesInUse: ClassesInUse[];
     itemsOwnedBy: ItemsOwnedBy;
 }
@@ -26,7 +25,6 @@ export interface OldSpoilerFilter extends SpoilerFilter {
 
 
 export const initialSpoilerFilterState:SpoilerFilter = {
-    scenarioCompleted: [],
     classesInUse: [],
     itemsOwnedBy: {}
 };
@@ -55,12 +53,6 @@ const initialSpoilerMapState = Object.values(GameType).reduce(
         storeSpoilerFilter(state, action: PayloadGameTypeAction<SpoilerFilter>)
         {
             state[action.payload.gameType] = action.payload.value;
-        },
-        storeScenarioCompleted(state, action: PayloadGameTypeAction<Array<number>>) {
-            const gameState = state[action.payload.gameType]; 
-            if (gameState) {
-                gameState.scenarioCompleted = action.payload.value;
-            } 
         },
         addClass(state, action: PayloadGameTypeAction<ClassesInUse>) {
             const gameState = state[action.payload.gameType]; 
@@ -167,6 +159,6 @@ export const spoilerFilterSelector = createSelector(
 }
 
 
-export const { addItemOwner, removeItemOwner, addClass, removeClass, storeScenarioCompleted, storeSpoilerFilter} = spoilerSlice.actions;
+export const { addItemOwner, removeItemOwner, addClass, removeClass, storeSpoilerFilter} = spoilerSlice.actions;
 
 export default spoilerSlice.reducer;

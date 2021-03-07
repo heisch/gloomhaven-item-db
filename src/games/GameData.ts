@@ -57,7 +57,7 @@ export abstract class BaseGameData {
         return this.initItems;
     }
 
-    abstract isItemShown(item: GloomhavenItem, spoilerFilter:SpoilerFilter, FilterOptions: FilterOptions) : boolean;
+    abstract isItemShown(item: GloomhavenItem, FilterOptions: FilterOptions) : boolean;
 
     get localStorageKey() {
         return LOCAL_STORAGE_PREFIX + this.gameType;

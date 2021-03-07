@@ -1,15 +1,14 @@
 import { BaseGameData } from '../GameData';
 import { GloomhavenItem, GloomhavenItemSlot } from '../../State/Types';
-import JOTLSpoilerFilter from '../../components/Tabs/SpoilerFilters/JOTLSpoilerFilter';
-import { SpoilerFilter } from '../../State/SpoilerFilter';
 import { GameType } from '..';
+import { FilterOptions } from '../../components/Providers/FilterOptions';
 
 export class JOTLGameData extends BaseGameData {
     constructor()
     {
         super("Gloomhaven: Jaws of the Lion", GameType.JawsOfTheLion);
     }
-    isItemShown(item:GloomhavenItem, {scenarioCompleted}:SpoilerFilter) {
+    isItemShown(item:GloomhavenItem, {scenarioCompleted}:FilterOptions) {
         if (item.id <=13 && scenarioCompleted.includes(2)) {
             return true;
         }

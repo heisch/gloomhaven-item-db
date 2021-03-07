@@ -13,7 +13,7 @@ export interface FilterOptions {
     displayAs: ItemViewDisplayType;
     itemManagementType: ItemManagementType;
     lockSpoilerPanel: boolean;
-    // scenarioCompleted: Array<number>;
+    scenarioCompleted: number[]
     // classesInUse: ClassesInUse[];
     // itemsOwnedBy: ItemsOwnedBy;
 }
@@ -27,7 +27,7 @@ export const initialFilterOptions : FilterOptions = {
     displayAs: ItemViewDisplayType.List,
     itemManagementType: ItemManagementType.None,
     lockSpoilerPanel: false,
-    // scenarioCompleted: Array<number>,
+    scenarioCompleted: [],
     // classesInUse: ClassesInUse[],
     // itemsOwnedBy: ItemsOwnedBy,
 

@@ -16,7 +16,7 @@ const useItems = (): Array<GloomhavenItem> => {
 
     const getFilteredItems = () => {
         const spoilerFiltered = all ? initialItems : initialItems.filter(item => {
-            if (isItemShown(item, spoilerFilter, filterOptions)) return true;
+            if (isItemShown(item, filterOptions)) return true;
             return spoilerFilterItem.includes(item.id);
         });
         return spoilerFiltered.filter(item => {

@@ -9,7 +9,6 @@ import useItems  from '../../../hooks/useItems'
 import {useGame } from '../../Game/GameProvider';
 import { GameType } from '../../../games';
 import { LOCAL_STORAGE_PREFIX } from '../../../games/GameData';
-import { ItemManagementType } from '../../../State/Types';
 import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
 
 
