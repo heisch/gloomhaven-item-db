@@ -10,9 +10,9 @@ const useItems = (): Array<GloomhavenItem> => {
 
     const { isItemShown, initialItems} = useGame();
     const spoilerFilter = getSpoilerFilter();
-    const { item: spoilerFilterItem, itemsOwnedBy } = spoilerFilter;
+    const { itemsOwnedBy } = spoilerFilter;
     const { searchOptions: { property, direction, slots, search, selectedClass, availableOnly }} = useSearchOptions();
-    const { filterOptions: { all }, filterOptions } = useFilterOptions();
+    const { filterOptions: { all, item:spoilerFilterItem }, filterOptions } = useFilterOptions();
 
     const getFilteredItems = () => {
         const spoilerFiltered = all ? initialItems : initialItems.filter(item => {

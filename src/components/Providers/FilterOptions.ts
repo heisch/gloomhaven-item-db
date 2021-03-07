@@ -1,7 +1,7 @@
 export interface FilterOptions {
     all: boolean;
     prosperity: number;
-    // item: Array<number>;
+    item: number [];
     // itemsInUse: ItemsInUse;
     // soloClass: Array<SoloClassShorthand>;
     discount: number;
@@ -15,7 +15,7 @@ export interface FilterOptions {
 export const initialFilterOptions : FilterOptions = {
     all: false,
     prosperity: 1,
-    // item: Array<number>,
+    item: [],
     // itemsInUse: ItemsInUse,
     // soloClass: Array<SoloClassShorthand>,
     discount: 0,

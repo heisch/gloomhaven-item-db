@@ -17,7 +17,6 @@ export type ItemsInUse = {
   }
 
 export interface SpoilerFilter {
-    item: Array<number>;
     itemsInUse: ItemsInUse;
     soloClass: Array<SoloClassShorthand>;
     displayAs: ItemViewDisplayType;
@@ -36,7 +35,6 @@ export interface OldSpoilerFilter extends SpoilerFilter {
 
 
 export const initialSpoilerFilterState:SpoilerFilter = {
-    item: [],
     itemsInUse: {},
     soloClass: [],
     displayAs: 'list',
@@ -59,7 +57,7 @@ export type SpoilerMap = {
 const initialSpoilerMapState = Object.values(GameType).reduce(
     (acc, value: GameType) => {
       acc[value] = initialSpoilerFilterState;
-      return acc;
+     return acc;
     },
     {} as SpoilerMap,
   );
@@ -82,12 +80,6 @@ const initialSpoilerMapState = Object.values(GameType).reduce(
             const gameState = state[action.payload.gameType]; 
             if (gameState) {
                 gameState.scenarioCompleted = action.payload.value;
-            } 
-        },
-        storeItem(state, action: PayloadGameTypeAction<Array<number>>) {
-            const gameState = state[action.payload.gameType]; 
-            if (gameState) {
-                gameState.item = action.payload.value;
             } 
         },
         storeItemsInUse(state, action: PayloadGameTypeAction<ItemsInUse>) {
@@ -213,6 +205,6 @@ export const spoilerFilterSelector = createSelector(
 }
 
 
-export const { addItemOwner, removeItemOwner, addClass, removeClass, storeItem, storeItemsInUse, storeEnableStoreStockManagement, storeDisplayAs, storeScenarioCompleted, storeSoloClass, storeSpoilerFilter} = spoilerSlice.actions;
+export const { addItemOwner, removeItemOwner, addClass, removeClass, storeItemsInUse, storeEnableStoreStockManagement, storeDisplayAs, storeScenarioCompleted, storeSoloClass, storeSpoilerFilter} = spoilerSlice.actions;
 
 export default spoilerSlice.reducer;
