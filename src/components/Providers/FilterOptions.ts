@@ -12,7 +12,7 @@ export interface FilterOptions {
     discount: number;
     displayAs: ItemViewDisplayType;
     itemManagementType: ItemManagementType;
-    // lockSpoilerPanel: boolean;
+    lockSpoilerPanel: boolean;
     // scenarioCompleted: Array<number>;
     // classesInUse: ClassesInUse[];
     // itemsOwnedBy: ItemsOwnedBy;
@@ -26,7 +26,7 @@ export const initialFilterOptions : FilterOptions = {
     discount: 0,
     displayAs: ItemViewDisplayType.List,
     itemManagementType: ItemManagementType.None,
-    // lockSpoilerPanel: boolean,
+    lockSpoilerPanel: false,
     // scenarioCompleted: Array<number>,
     // classesInUse: ClassesInUse[],
     // itemsOwnedBy: ItemsOwnedBy,

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Modal, Header, Button, Icon, Tab } from 'semantic-ui-react';
 import {  useDispatch } from 'react-redux';
-import { SpoilerFilter, storeSpoilerFilter, restoreFromLocalStorage, getSpoilerFilter, SpoilerMap, initialSpoilerFilterState } from '../../../State/SpoilerFilter';
+import { SpoilerFilter, storeSpoilerFilter, restoreFromLocalStorage, SpoilerMap, initialSpoilerFilterState } from '../../../State/SpoilerFilter';
 import ItemList from './ItemList';
 import SpoilerFilters from '../SpoilerFilters/SpoilerFilters';
 import Share from '../Share';
@@ -19,11 +19,12 @@ import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
 // Convert the state over to provider.
 // Fix saving and loading
 // Fix importing (and backwards compatible with ItemManagementType)
+// Make sure lockspoilerfilter still works
+// Lock Item Management when lock spoiler filter is on
 
 const MainView = () => {
     const { localStorageKey, convertSavedData} = useGame();
-    const { lockSpoilerPanel} = getSpoilerFilter();
-    const { filterOptions: { all } } = useFilterOptions();
+    const { filterOptions: { all, lockSpoilerPanel } } = useFilterOptions();
     const dispatch = useDispatch();
     const items = useItems();
     const [importedSpoilerFilters, setImportedSpoilerFilters] = useState<SpoilerMap|undefined>(undefined);

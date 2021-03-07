@@ -13,7 +13,6 @@ import { PayloadGameTypeAction } from "./GameTypeAction";
   }
 
 export interface SpoilerFilter {
-    lockSpoilerPanel: boolean;
     scenarioCompleted: Array<number>;
     classesInUse: ClassesInUse[];
     itemsOwnedBy: ItemsOwnedBy;
@@ -27,7 +26,6 @@ export interface OldSpoilerFilter extends SpoilerFilter {
 
 
 export const initialSpoilerFilterState:SpoilerFilter = {
-    lockSpoilerPanel: false,
     scenarioCompleted: [],
     classesInUse: [],
     itemsOwnedBy: {}

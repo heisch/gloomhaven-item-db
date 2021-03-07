@@ -14,7 +14,7 @@ const Share = (props:Props) => {
     const newObj:SpoilerMap = {};
     Object.values(GameType).forEach( gt => {
         const newGame = Object.assign({}, allSpoilerFilters[gt]);
-        newGame.lockSpoilerPanel = shareLockSpoilerPanel;
+        // newGame.lockSpoilerPanel = shareLockSpoilerPanel;
         newObj[gt] = newGame;
     });
 

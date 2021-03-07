@@ -1,6 +1,5 @@
 import React from "react"
 import { Checkbox } from "semantic-ui-react";
-import { getSpoilerFilter } from "../../../../State/SpoilerFilter";
 import { GloomhavenItem, ItemManagementType } from "../../../../State/Types";
 import { useFilterOptions } from "../../../Providers/FilterOptionsProvider";
 
@@ -9,8 +8,7 @@ type Props = {
 }
 
 const SimpleItemManagement = (props: Props) => {
-    const { lockSpoilerPanel }  = getSpoilerFilter();
-    const { filterOptions: { itemsInUse, itemManagementType}, updateFilterOptions} = useFilterOptions();
+    const { filterOptions: { itemsInUse, itemManagementType, lockSpoilerPanel}, updateFilterOptions} = useFilterOptions();
     const { item } = props;
 
     if (itemManagementType !== ItemManagementType.Simple) {
