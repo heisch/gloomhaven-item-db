@@ -1,11 +1,9 @@
 import React from 'react'
 import { Form } from 'semantic-ui-react';
-import { GameType } from '../../../games';
 import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
 
 type Props = {
     id: number;
-    gameType:GameType;
 }
 
 const FilterCheckbox = (props:Props) => {

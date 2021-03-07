@@ -1,19 +1,11 @@
 import { createSelector } from "reselect";
-import { SoloClassShorthand, ItemViewDisplayType, ClassesInUse, PullDownOptions, ItemManagementType } from "./Types";
+import { SoloClassShorthand } from "./Types";
 import { RootState } from "./Reducer";
-import memoize from 'lodash.memoize'
 import { GameType } from "../games";
-import { useGame } from "../components/Game/GameProvider";
 import { useSelector } from "react-redux";
 import { createSlice } from '@reduxjs/toolkit'
 import { PayloadGameTypeAction } from "./GameTypeAction";
-
-  export type ItemsOwnedBy = {
-    [key:number] : PullDownOptions[]
-  }
-
 export interface SpoilerFilter {
-    itemsOwnedBy: ItemsOwnedBy;
 }
 
 // todo: only keep during migration
@@ -24,13 +16,7 @@ export interface OldSpoilerFilter extends SpoilerFilter {
 
 
 export const initialSpoilerFilterState:SpoilerFilter = {
-    itemsOwnedBy: {}
 };
-
-export type ItemOwnerData = {
-    itemId: number;
-    owner:PullDownOptions;
-}
 
 export type SpoilerMap = {
     [K in GameType]?: SpoilerFilter;
@@ -52,27 +38,6 @@ const initialSpoilerMapState = Object.values(GameType).reduce(
         {
             state[action.payload.gameType] = action.payload.value;
         },
-        addItemOwner(state, action: PayloadGameTypeAction<ItemOwnerData>) {
-            const gameState = state[action.payload.gameType]; 
-            if (gameState) {
-                if (!gameState.itemsOwnedBy[action.payload.value.itemId]) {
-                    gameState.itemsOwnedBy[action.payload.value.itemId] = [];
-                }
-                gameState.itemsOwnedBy[action.payload.value.itemId].push(action.payload.value.owner);
-            } 
-        },
-        removeItemOwner(state, action: PayloadGameTypeAction<ItemOwnerData>) {
-            const gameState = state[action.payload.gameType]; 
-            if (gameState) {
-                if (!gameState.itemsOwnedBy[action.payload.value.itemId]) {
-                    gameState.itemsOwnedBy[action.payload.value.itemId] = [];
-                }
-                const index = gameState.itemsOwnedBy[action.payload.value.itemId].findIndex( c => c === action.payload.value.owner);
-                if (index != -1) {
-                    gameState.itemsOwnedBy[action.payload.value.itemId].splice(index, 1);
-                }
-            } 
-        }
       }
   })
 
@@ -112,25 +77,6 @@ export const restoreFromLocalStorage = (filterLocalStorageKey:string) => {
     return spoilerFilter;
 }
 
-export const spoilerFilterSelector = createSelector(
-    (state:RootState) => state.spoilerReducer,
-    spoilerFilter => memoize(
-      (type:GameType) => {
-        const state = spoilerFilter[type];
-        if (state === undefined)
-          {
-              throw new Error("Wrong type");
-          }
-          return state as SpoilerFilter;
-      }
-    )
-  )
-
-  export const getSpoilerFilter = () : SpoilerFilter => {
-      const {gameType} = useGame();
-    return useSelector(spoilerFilterSelector)(gameType);
-  }
-
   export const allSpoilerFiltersSelector = createSelector(
     (state:RootState) => state.spoilerReducer,
     spoilerFilter => spoilerFilter
@@ -142,6 +88,6 @@ export const spoilerFilterSelector = createSelector(
 }
 
 
-export const { addItemOwner, removeItemOwner, storeSpoilerFilter} = spoilerSlice.actions;
+export const { storeSpoilerFilter} = spoilerSlice.actions;
 
 export default spoilerSlice.reducer;

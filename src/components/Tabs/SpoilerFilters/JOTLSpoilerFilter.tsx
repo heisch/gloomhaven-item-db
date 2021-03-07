@@ -34,7 +34,7 @@ const JOTLSpoilerFilter = () => {
                         onChange={() => toggleScenarioCompleted(id)}/> 
                 })}
             </Form.Group>
-            <SpoilerFilterItemList gameType={gameType} ranges={[{start:14, end:14}, {start:27, end:36}]} title="Items"/>
+            <SpoilerFilterItemList ranges={[{start:14, end:14}, {start:27, end:36}]} title="Items"/>
         </>
     )
 }

@@ -1,17 +1,12 @@
 import React from "react";
 import { Button, List, Modal } from "semantic-ui-react";
-import { getSpoilerFilter, removeItemOwner } from "../../../State/SpoilerFilter";
-import { useGame } from "../../Game/GameProvider";
-import { useDispatch } from "react-redux";
 import { useSearchOptions } from "../../Providers/SearchOptionsProvider";
 import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
+import { ItemsOwnedBy } from "../../Providers/FilterOptions";
 
 const ConfirmClassDelete = () => {
-  const {gameType} = useGame();
   const { searchOptions: { removingClass }, setSearchOptions}  = useSearchOptions();
-  const { filterOptions: { classesInUse }, updateFilterOptions} = useFilterOptions();
-  const { itemsOwnedBy } = getSpoilerFilter();
-  const dispatch = useDispatch();
+  const { filterOptions: { classesInUse, itemsOwnedBy }, updateFilterOptions} = useFilterOptions();
 
   const onClose = () => {
     setSearchOptions({removingClass: undefined})
@@ -21,7 +16,12 @@ const ConfirmClassDelete = () => {
       if (removingClass) {
         Object.keys(itemsOwnedBy).forEach( key => {
             if (itemsOwnedBy[parseInt(key)].includes(removingClass)) {
-                dispatch(removeItemOwner({value:{itemId:parseInt(key), owner:removingClass}, gameType}));
+                const newItemsOwnedBy: ItemsOwnedBy = Object.assign([], itemsOwnedBy);
+                const index = newItemsOwnedBy[parseInt(key)].findIndex( c => c === removingClass);
+                if (index != -1) {
+                    newItemsOwnedBy[parseInt(key)].splice(index, 1);
+                }
+                updateFilterOptions({itemsOwnedBy: newItemsOwnedBy})
             }
         })
 

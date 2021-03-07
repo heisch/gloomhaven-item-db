@@ -2,21 +2,16 @@ import React, {useEffect, useState } from "react";
 import { Button, List, Modal } from "semantic-ui-react";
 import { PullDownOptions } from "../../../State/Types";
 import ClassDropdown from "./ClassDropdown";
-import { getSpoilerFilter, addItemOwner } from "../../../State/SpoilerFilter";
-import { useGame } from "../../Game/GameProvider";
-import { useDispatch } from "react-redux";
 import { useSearchOptions } from "../../Providers/SearchOptionsProvider";
 import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
+import { ItemsOwnedBy } from "../../Providers/FilterOptions";
 
 const PurchaseItem = () => {
-  const {gameType} = useGame();
   const { searchOptions: { selectedItem }, setSearchOptions}  = useSearchOptions();
-  const { itemsOwnedBy } = getSpoilerFilter();
-  const { filterOptions: { discount, classesInUse} } = useFilterOptions();
+  const { filterOptions: { discount, classesInUse, itemsOwnedBy}, updateFilterOptions } = useFilterOptions();
   const owners = itemsOwnedBy && selectedItem ? itemsOwnedBy[selectedItem.id] : undefined;
   const classesAvailable = owners && owners.length > 0 ? classesInUse.filter(c => !owners.includes(c)) : classesInUse;
   const [buyer, setBuyer] = useState<PullDownOptions>(classesAvailable[0] || classesInUse[0]);
-  const dispatch = useDispatch();
 
   const onClose = () => {
     setSearchOptions({selectedItem: undefined})
@@ -28,7 +23,12 @@ const PurchaseItem = () => {
 
   const onApply = () => {
       if (selectedItem) {
-        dispatch(addItemOwner({value: { itemId: selectedItem.id, owner:buyer}, gameType}))
+        const newItemsOwnedBy: ItemsOwnedBy = Object.assign([], itemsOwnedBy);
+        if (!newItemsOwnedBy[selectedItem.id]) {
+          newItemsOwnedBy[selectedItem.id] = [];
+        }
+        newItemsOwnedBy[selectedItem.id].push(buyer);
+        updateFilterOptions({itemsOwnedBy: newItemsOwnedBy})
       }
     onClose();
   };

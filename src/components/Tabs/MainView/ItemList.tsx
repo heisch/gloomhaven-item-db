@@ -4,7 +4,6 @@ import SearchOptions from './SearchOptions';
 import { Message, Icon } from 'semantic-ui-react';
 import ItemTable from './ItemTable';
 import ItemGrid from './ItemGrid';
-import { getSpoilerFilter } from '../../../State/SpoilerFilter';
 import PurchaseItem from './PurchaseItem';
 import { useSearchOptions } from '../../Providers/SearchOptionsProvider';
 import { useFilterOptions } from '../../Providers/FilterOptionsProvider';

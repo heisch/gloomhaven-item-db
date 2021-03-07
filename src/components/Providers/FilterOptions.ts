@@ -1,5 +1,9 @@
-import { ClassesInUse, ItemManagementType, ItemViewDisplayType, SoloClassShorthand } from "../../State/Types";
+import { ClassesInUse, ItemManagementType, ItemViewDisplayType, PullDownOptions, SoloClassShorthand } from "../../State/Types";
 
+export type ItemsOwnedBy = {
+    [key:number] : PullDownOptions[]
+  }
+  
 export type ItemsInUse = {
     [key:number]: number;
   };
@@ -15,7 +19,7 @@ export interface FilterOptions {
     lockSpoilerPanel: boolean;
     scenarioCompleted: number[]
     classesInUse: ClassesInUse[];
-    // itemsOwnedBy: ItemsOwnedBy;
+    itemsOwnedBy: ItemsOwnedBy;
 }
 export const initialFilterOptions : FilterOptions = {
     all: false,
@@ -29,6 +33,5 @@ export const initialFilterOptions : FilterOptions = {
     lockSpoilerPanel: false,
     scenarioCompleted: [],
     classesInUse: [],
-    // itemsOwnedBy: ItemsOwnedBy,
-
+    itemsOwnedBy: {},
 };

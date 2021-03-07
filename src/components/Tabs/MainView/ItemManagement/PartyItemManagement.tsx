@@ -1,9 +1,7 @@
 import React from "react"
-import { useDispatch } from "react-redux";
 import { Button } from "semantic-ui-react";
-import { getSpoilerFilter, removeItemOwner } from "../../../../State/SpoilerFilter";
 import { GloomhavenItem, ItemManagementType } from "../../../../State/Types";
-import { useGame } from "../../../Game/GameProvider";
+import { ItemsOwnedBy } from "../../../Providers/FilterOptions";
 import { useFilterOptions } from "../../../Providers/FilterOptionsProvider";
 import { useSearchOptions } from "../../../Providers/SearchOptionsProvider";
 import { createClassImage } from "../ClassDropdown";
@@ -13,12 +11,9 @@ type Props = {
 }
 
 const PartyItemManagement = (props: Props) => {
-    const { gameType } = useGame();
     const {item} = props;
-    const { itemsOwnedBy } = getSpoilerFilter();
-    const dispatch = useDispatch();
     const { setSearchOptions } = useSearchOptions();
-    const { filterOptions: {itemManagementType, classesInUse} }  = useFilterOptions();
+    const { filterOptions: {itemManagementType, classesInUse, itemsOwnedBy}, updateFilterOptions }  = useFilterOptions();
 
     if (itemManagementType !== ItemManagementType.Party) { 
         return null;
@@ -37,7 +32,15 @@ const PartyItemManagement = (props: Props) => {
                     basic
                     color='black'
                     icon='delete' 
-                onClick={() => dispatch(removeItemOwner({value:{itemId:item.id, owner},gameType}))}
+                onClick={() => { 
+                    const newItemsOwnedBy: ItemsOwnedBy = Object.assign([], itemsOwnedBy);
+                    const index = newItemsOwnedBy[item.id].findIndex( c => c === owner);
+                    if (index != -1) {
+                        newItemsOwnedBy[item.id].splice(index, 1);
+                    }
+                    updateFilterOptions({itemsOwnedBy: newItemsOwnedBy})
+                }}
+            
                 content={createClassImage(owner)}
             />
             })}

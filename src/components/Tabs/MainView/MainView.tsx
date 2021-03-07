@@ -20,6 +20,9 @@ import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
 // Fix importing (and backwards compatible with ItemManagementType)
 // Make sure lockspoilerfilter still works
 // Lock Item Management when lock spoiler filter is on
+// Look at Object.assign calls
+// Rename the SetSearchOptions to update
+// Make smarter contols for gameType
 
 const MainView = () => {
     const { localStorageKey, convertSavedData} = useGame();

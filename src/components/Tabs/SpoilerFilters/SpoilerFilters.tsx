@@ -1,8 +1,5 @@
 import React from 'react'
 import { Form, Button, Icon, Dropdown, DropdownProps } from 'semantic-ui-react';
-import { useDispatch } from 'react-redux';
-import { getSpoilerFilter } from '../../../State/SpoilerFilter';
-import { useGame } from '../../Game/GameProvider';
 import { ItemManagementType } from '../../../State/Types';
 import PartySpoilerFilter from './PartySpoilerFilter';
 import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
@@ -10,8 +7,6 @@ import GHSpoilerFilter from './GHSpoilerFilter';
 import JOTLSpoilerFilter from './JOTLSpoilerFilter';
 
 const SpoilerFilters = () => {
-    const dispatch = useDispatch();
-    const { gameType} = useGame();
     const { filterOptions: {all, itemManagementType}, updateFilterOptions } = useFilterOptions();
 
     const options = Object.keys(ItemManagementType).map( key => {
