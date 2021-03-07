@@ -1,6 +1,6 @@
 import React, {useEffect, useState } from "react";
 import { Button, List, Modal } from "semantic-ui-react";
-import { ClassesInUse, PullDownOptions } from "../../../State/Types";
+import { PullDownOptions } from "../../../State/Types";
 import ClassDropdown from "./ClassDropdown";
 import { getSpoilerFilter, addItemOwner } from "../../../State/SpoilerFilter";
 import { useGame } from "../../Game/GameProvider";

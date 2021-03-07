@@ -1,16 +1,19 @@
 import React, { useState } from "react"
 import { useDispatch } from "react-redux";
 import { Button, Form, Label } from "semantic-ui-react";
-import { getSpoilerFilter, addClass, removeClass } from "../../../State/SpoilerFilter";
+import { getSpoilerFilter, addClass} from "../../../State/SpoilerFilter";
 import { ClassesInUse, ItemManagementType, PullDownOptions } from "../../../State/Types";
 import { useGame } from "../../Game/GameProvider";
 import ClassDropdown, { createClassImage } from "../MainView/ClassDropdown";
+import {useSearchOptions} from "../../Providers/SearchOptionsProvider";
+import ConfirmClassDelete from "./ConfirmClassDelete";
 
 const classList: Array<ClassesInUse> = ['BR', 'TI', 'SW', 'SC', 'CH', 'MT', 'SK', 'QM', 'SU', 'NS', 'PH', 'BE', 'SS', 'DS', 'SB', 'EL', 'BT', 'DR'];
 
 const PartySpoilerFilter = () => {
     const { gameType } = useGame();
-    const { itemManagementType, classesInUse } = getSpoilerFilter();
+    const { itemManagementType, classesInUse, itemsOwnedBy } = getSpoilerFilter();
+    const { setSearchOptions } = useSearchOptions();
     const dispatch = useDispatch();
 
     const isClassAvailable = (className:ClassesInUse) => {
@@ -24,7 +27,6 @@ const PartySpoilerFilter = () => {
 
     const [selectedClass, setSelectedClass] =  useState<PullDownOptions>(classesAvailable[0]);
 
-
     const onChange = (newClass: PullDownOptions) => {
         setSelectedClass(newClass);
     }
@@ -35,8 +37,8 @@ const PartySpoilerFilter = () => {
         }
     }
 
-    const onRemoveClass = (classToRemove: ClassesInUse) => {
-        dispatch(removeClass({value: classToRemove, gameType}))
+    const onRemoveClass = (removingClass: ClassesInUse) => {
+        setSearchOptions({removingClass})
     }
 
     if (itemManagementType !== ItemManagementType.Party) {
@@ -68,6 +70,7 @@ const PartySpoilerFilter = () => {
                             </Button>
                     ) : "None" }                    
             </Form.Group>
+            <ConfirmClassDelete/>
         </>
 }
 
