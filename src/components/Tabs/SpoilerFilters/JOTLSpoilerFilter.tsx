@@ -3,17 +3,18 @@ import SpoilerFilterItemList from './SpoilerFilterItemList';
 import { Form } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 import { storeScenarioCompleted, getSpoilerFilter } from '../../../State/SpoilerFilter';
+import { useGame } from '../../Game/GameProvider';
 import { GameType } from '../../../games';
 
-type Props = {
-    gameType: GameType;
-}
-
-const JOTLSpoilerFilter = (props:Props) => {
-    const { gameType } = props;
+const JOTLSpoilerFilter = () => {
+    const { gameType } = useGame();
     const scenariosOfImportance = [2, 9, 15];
     const { scenarioCompleted } = getSpoilerFilter();
     const dispatch = useDispatch();
+
+    if (gameType !== GameType.JawsOfTheLion) {
+        return null;
+    }
 
     const toggleScenarioCompleted = (key: number) => {
         const value = Object.assign([], scenarioCompleted);

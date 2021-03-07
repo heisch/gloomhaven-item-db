@@ -6,10 +6,12 @@ import { useGame } from '../../Game/GameProvider';
 import { ItemManagementType } from '../../../State/Types';
 import PartySpoilerFilter from './PartySpoilerFilter';
 import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
+import GHSpoilerFilter from './GHSpoilerFilter';
+import JOTLSpoilerFilter from './JOTLSpoilerFilter';
 
 const SpoilerFilters = () => {
     const dispatch = useDispatch();
-    const { spoilerFilter, gameType} = useGame();
+    const { gameType} = useGame();
     const { itemManagementType } = getSpoilerFilter();
     const { filterOptions: {all}, updateFilterOptions } = useFilterOptions();
 
@@ -50,8 +52,9 @@ const SpoilerFilters = () => {
 
             <PartySpoilerFilter/>
 
-           {spoilerFilter}
-      
+            <GHSpoilerFilter/>
+            <JOTLSpoilerFilter/>
+     
         </Form>
     );
 }

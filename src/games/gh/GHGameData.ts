@@ -1,6 +1,5 @@
 import { BaseGameData } from '../GameData'
 import { GloomhavenItem } from '../../State/Types';
-import GHSpoilerFilter from '../../components/Tabs/SpoilerFilters/GHSpoilerFilter';
 import {SpoilerFilter} from '../../State/SpoilerFilter';
 import { GameType } from '..';
 
@@ -21,9 +20,7 @@ class GHGameData extends BaseGameData  {
         };
         return false;
     }
-    get spoilerFilter()  {
-        return GHSpoilerFilter({gameType:this.gameType});
-    } 
+
     convertSavedData(storageKey:string) {
         const loadedSpoilerFilterString = localStorage.getItem(oldFilterLocalStorageKey)
 

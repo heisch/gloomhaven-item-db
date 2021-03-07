@@ -21,9 +21,6 @@ export class JOTLGameData extends BaseGameData {
         }
         return false;
     }
-    get spoilerFilter() {
-        return JOTLSpoilerFilter({gameType: this.gameType});
-    }
     getItemSubfolder (item: GloomhavenItem) {
         if (item.id >= 27) {
             return '27-36';

@@ -4,19 +4,19 @@ import { useDispatch } from 'react-redux';
 import { storeProsperity, storeSoloClass, getSpoilerFilter } from '../../../State/SpoilerFilter';
 import SpoilerFilterItemList from './SpoilerFilterItemList';
 import { SoloClassShorthand } from '../../../State/Types';
+import { useGame } from '../../Game/GameProvider';
 import { GameType } from '../../../games';
 
 const GloomhavenSoloClassShorthands: Array<SoloClassShorthand> = ['BR', 'TI', 'SW', 'SC', 'CH', 'MT', 'SK', 'QM', 'SU', 'NS', 'PH', 'BE', 'SS', 'DS', 'SB', 'EL', 'BT', 'DR'];
 
-type Props = {
-    gameType: GameType;
-}
-
-
-const GHSpoilerFilter = (props: Props) => {
-    const { gameType } = props;
+const GHSpoilerFilter = () => {
+    const { gameType } = useGame();
     const { soloClass, prosperity } = getSpoilerFilter();
     const dispatch = useDispatch();
+
+    if (gameType !== GameType.Gloomhaven) {
+        return null;
+    }
 
     const toggleClassFilter = (key: SoloClassShorthand) => {
         const value = Object.assign([], soloClass);

@@ -58,8 +58,6 @@ export abstract class BaseGameData {
 
     abstract isItemShown(item: GloomhavenItem, spoilerFilter:SpoilerFilter) : boolean;
 
-    abstract get spoilerFilter () : JSX.Element | null;
-
     get localStorageKey() {
         return LOCAL_STORAGE_PREFIX + this.gameType;
     }
