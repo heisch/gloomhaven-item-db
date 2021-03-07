@@ -194,6 +194,13 @@ img.item-card {
     background: black;
 }
 
+.store-inventory-col .ui.black.button.i0,
+.store-inventory-col .ui.black.button.i1,
+.store-inventory-col .ui.black.button.i2,
+.store-inventory-col .ui.black.button.i3 {
+    padding: 0;
+}
+
 .item-card-wrapper .ui.black.button.i0,
 .item-card-wrapper .ui.toggle.checkbox.i0 {
     left: 7px;
@@ -223,21 +230,21 @@ img.item-card {
     position: absolute;
 }
 
-.item-card-wrapper .addClass {
+.addClass {
     width: 30px;
     height: 30px;
 }
 
-.ui.black.button.i0 .delete.icon,
-.ui.black.button.i1 .delete.icon, 
-.ui.black.button.i2 .delete.icon,
-.ui.black.button.i3 .delete.icon{
+.item-card-wrapper .black.button.i0 .delete.icon,
+.item-card-wrapper .ui.black.button.i1 .delete.icon, 
+.item-card-wrapper .ui.black.button.i2 .delete.icon,
+.item-card-wrapper .ui.black.button.i3 .delete.icon{
     padding: 0;
     z-index: 1;
     position: absolute;
     left: 3px;
     top: 0px;
-}
+} 
 
 .ui.form .fields.inline-break {
     display: initial;

@@ -14,7 +14,6 @@ import { ItemManagementType } from '../../../State/Types';
 
 // .git ignore vscode file
 // Add Feature flag to turn off Party Mode
-// Fix the inventory management on the list view
 // Add JOTL to list of classes.
 // Convert the state over to provider.
 
