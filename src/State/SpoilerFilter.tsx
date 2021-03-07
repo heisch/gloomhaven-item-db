@@ -8,16 +8,11 @@ import { useSelector } from "react-redux";
 import { createSlice } from '@reduxjs/toolkit'
 import { PayloadGameTypeAction } from "./GameTypeAction";
 
-export type ItemsInUse = {
-    [key:number]: number;
-  };
-
   export type ItemsOwnedBy = {
     [key:number] : PullDownOptions[]
   }
 
 export interface SpoilerFilter {
-    itemsInUse: ItemsInUse;
     soloClass: Array<SoloClassShorthand>;
     displayAs: ItemViewDisplayType;
     itemManagementType: ItemManagementType;
@@ -35,7 +30,6 @@ export interface OldSpoilerFilter extends SpoilerFilter {
 
 
 export const initialSpoilerFilterState:SpoilerFilter = {
-    itemsInUse: {},
     soloClass: [],
     displayAs: 'list',
     itemManagementType: ItemManagementType.None,
@@ -80,12 +74,6 @@ const initialSpoilerMapState = Object.values(GameType).reduce(
             const gameState = state[action.payload.gameType]; 
             if (gameState) {
                 gameState.scenarioCompleted = action.payload.value;
-            } 
-        },
-        storeItemsInUse(state, action: PayloadGameTypeAction<ItemsInUse>) {
-            const gameState = state[action.payload.gameType]; 
-            if (gameState) {
-                gameState.itemsInUse = action.payload.value;
             } 
         },
         storeEnableStoreStockManagement(state, action: PayloadGameTypeAction<ItemManagementType>) {
@@ -205,6 +193,6 @@ export const spoilerFilterSelector = createSelector(
 }
 
 
-export const { addItemOwner, removeItemOwner, addClass, removeClass, storeItemsInUse, storeEnableStoreStockManagement, storeDisplayAs, storeScenarioCompleted, storeSoloClass, storeSpoilerFilter} = spoilerSlice.actions;
+export const { addItemOwner, removeItemOwner, addClass, removeClass, storeEnableStoreStockManagement, storeDisplayAs, storeScenarioCompleted, storeSoloClass, storeSpoilerFilter} = spoilerSlice.actions;
 
 export default spoilerSlice.reducer;

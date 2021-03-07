@@ -1,8 +1,11 @@
+export type ItemsInUse = {
+    [key:number]: number;
+  };
 export interface FilterOptions {
     all: boolean;
     prosperity: number;
     item: number [];
-    // itemsInUse: ItemsInUse;
+    itemsInUse: ItemsInUse;
     // soloClass: Array<SoloClassShorthand>;
     discount: number;
     // displayAs: ItemViewDisplayType;
@@ -16,7 +19,7 @@ export const initialFilterOptions : FilterOptions = {
     all: false,
     prosperity: 1,
     item: [],
-    // itemsInUse: ItemsInUse,
+    itemsInUse: {},
     // soloClass: Array<SoloClassShorthand>,
     discount: 0,
     // displayAs: ItemViewDisplayType,

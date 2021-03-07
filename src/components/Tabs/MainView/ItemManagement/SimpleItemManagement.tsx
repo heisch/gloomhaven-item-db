@@ -1,19 +1,17 @@
 import React from "react"
-import { useDispatch } from "react-redux";
 import { Checkbox } from "semantic-ui-react";
-import { getSpoilerFilter, storeItemsInUse } from "../../../../State/SpoilerFilter";
+import { getSpoilerFilter } from "../../../../State/SpoilerFilter";
 import { GloomhavenItem, ItemManagementType } from "../../../../State/Types";
-import { useGame } from "../../../Game/GameProvider";
+import { useFilterOptions } from "../../../Providers/FilterOptionsProvider";
 
 type Props = {
     item: GloomhavenItem;
 }
 
 const SimpleItemManagement = (props: Props) => {
-    const {gameType} = useGame();
-    const { itemManagementType, itemsInUse, lockSpoilerPanel }  = getSpoilerFilter();
+    const { itemManagementType, lockSpoilerPanel }  = getSpoilerFilter();
+    const { filterOptions: { itemsInUse}, updateFilterOptions} = useFilterOptions();
     const { item } = props;
-    const dispatch = useDispatch();
 
     if (itemManagementType !== ItemManagementType.Simple) {
         return null;
@@ -27,7 +25,7 @@ const SimpleItemManagement = (props: Props) => {
             delete (value[id]);
         }
 
-        dispatch(storeItemsInUse({value, gameType}));
+        updateFilterOptions({itemsInUse: value})
     }
 
 
