@@ -13,12 +13,10 @@ import { ItemManagementType } from '../../../State/Types';
 
 
 // .git ignore vscode file
-// TODO: When removing a player, remove what they owned.
 // Add Feature flag to turn off Party Mode
 // Fix the styling of the pulldowns
 // Fix the inventory management on the list view
 // Fix z-order of the in use icons on the items.
-// Fix the key error in the party spoiler
 // Add JOTL to list of classes.
 // Convert the state over to provider.
 

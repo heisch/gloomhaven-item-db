@@ -60,7 +60,7 @@ const PartySpoilerFilter = () => {
             <Form.Group inline>
                 <label> Current Members: </label>
                 {classesInUse ? classesInUse.map(className => 
-                            <Button as='div' labelPosition='right' onClick={() => onRemoveClass(className)}>
+                            <Button key={`classinue-${className}`} as='div' labelPosition='right' onClick={() => onRemoveClass(className)}>
                                 <div style={{marginRight: "10px"}}>
                                     {createClassImage(className)}
                                 </div>

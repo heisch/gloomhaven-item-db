@@ -27,8 +27,6 @@ const ConfirmClassDelete = () => {
     onClose();
   };
 
-  console.log(removingClass);
-
   return (
     <Modal size="tiny" open={removingClass !== undefined} onClose={onClose}>
         <Modal.Header>Buy Item</Modal.Header>
