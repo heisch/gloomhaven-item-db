@@ -43,7 +43,7 @@ const PurchaseItem = () => {
             <List.Item>Name: {selectedItem && selectedItem.name}</List.Item>
             <List.Item>Cost: {selectedItem && selectedItem.cost + discount}</List.Item>
             <List.Item>
-              <ClassDropdown className="classdropdown" optionsList={[undefined, ...classesAvailable]} onChange={onChange}/>
+              <ClassDropdown className="classdropdown" optionsList={classesAvailable} onChange={onChange}/>
             </List.Item>
           </List>
         </Modal.Content>

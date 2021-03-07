@@ -219,7 +219,7 @@ img.item-card {
 
 .item-card-wrapper .ui.black.button {
     padding: 0;
-    z-index: 10;
+    z-index: 2;
     position: absolute;
 }
 
@@ -233,7 +233,7 @@ img.item-card {
 .ui.black.button.i2 .delete.icon,
 .ui.black.button.i3 .delete.icon{
     padding: 0;
-    z-index: 9;
+    z-index: 1;
     position: absolute;
     left: 3px;
     top: 0px;
@@ -478,5 +478,5 @@ button.ui.deleteUser .delete.icon{
 }
 
 .classdropdown .item{
-    width: 60px;
+    width: 120px;
 }

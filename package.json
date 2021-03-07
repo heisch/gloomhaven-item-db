@@ -24,7 +24,7 @@
     "redux-devtools-extension": "^2.13.8",
     "reselect": "^4.0.0",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.86.0",
+    "semantic-ui-react": "^2.0.3",
     "typescript": "^3.3.4000",
     "watch": "^1.0.2"
   },

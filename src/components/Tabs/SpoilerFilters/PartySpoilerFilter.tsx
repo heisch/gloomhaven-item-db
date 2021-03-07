@@ -25,7 +25,7 @@ const PartySpoilerFilter = () => {
 
     const classesAvailable = classList.filter(isClassAvailable);
 
-    const [selectedClass, setSelectedClass] =  useState<PullDownOptions>(classesAvailable[0]);
+    const [selectedClass, setSelectedClass] =  useState<PullDownOptions>(undefined);
 
     const onChange = (newClass: PullDownOptions) => {
         setSelectedClass(newClass);
@@ -34,6 +34,7 @@ const PartySpoilerFilter = () => {
     const onAddClass = () => {
         if (selectedClass) {
             dispatch(addClass({value: selectedClass, gameType}));
+            setSelectedClass(undefined);
         }
     }
 
@@ -54,7 +55,7 @@ const PartySpoilerFilter = () => {
                                     Add
                                     </Label>
                                 </div>
-                                <ClassDropdown className="classdropdown" optionsList={[undefined, ...classesAvailable]} onChange={onChange}/>
+                                <ClassDropdown className="classdropdown" optionsList={classesAvailable} onChange={onChange}/>
                             </Button>
             </Form.Group>
             <Form.Group inline>

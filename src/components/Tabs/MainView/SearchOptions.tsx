@@ -114,7 +114,7 @@ const SearchOptions = (props:Props) => {
                 </Form.Group>
                 <Form.Group inline> 
                     <label>Owner:</label>
-                    <ClassDropdown  optionsList={[undefined, ...classesInUse]}  onChange={ (option:PullDownOptions) => setSearchOptions({selectedClass:option})} />
+                    <ClassDropdown  optionsList={classesInUse}  onChange={ (option:PullDownOptions) => setSearchOptions({selectedClass:option})} />
                 </Form.Group>
                 <Form.Group inline>
                     <label>Availability</label>
