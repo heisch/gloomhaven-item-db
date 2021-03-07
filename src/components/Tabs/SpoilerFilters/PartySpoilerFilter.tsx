@@ -1,9 +1,6 @@
 import React, { useState } from "react"
-import { useDispatch } from "react-redux";
 import { Button, Form, Label } from "semantic-ui-react";
-import { getSpoilerFilter, addClass} from "../../../State/SpoilerFilter";
 import { ClassesInUse, ItemManagementType, PullDownOptions } from "../../../State/Types";
-import { useGame } from "../../Game/GameProvider";
 import ClassDropdown, { createClassImage } from "../MainView/ClassDropdown";
 import {useSearchOptions} from "../../Providers/SearchOptionsProvider";
 import ConfirmClassDelete from "./ConfirmClassDelete";
@@ -12,11 +9,8 @@ import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 const classList: Array<ClassesInUse> = ['BR', 'TI', 'SW', 'SC', 'CH', 'MT', 'SK', 'QM', 'SU', 'NS', 'PH', 'BE', 'SS', 'DS', 'SB', 'EL', 'BT', 'DR'];
 
 const PartySpoilerFilter = () => {
-    const { gameType } = useGame();
-    const { classesInUse } = getSpoilerFilter();
     const { setSearchOptions } = useSearchOptions();
-    const { filterOptions: { itemManagementType}} = useFilterOptions();
-    const dispatch = useDispatch();
+    const { filterOptions: { itemManagementType, classesInUse}, updateFilterOptions} = useFilterOptions();
 
     const isClassAvailable = (className:ClassesInUse) => {
         if (classesInUse) {
@@ -35,7 +29,9 @@ const PartySpoilerFilter = () => {
 
     const onAddClass = () => {
         if (selectedClass) {
-            dispatch(addClass({value: selectedClass, gameType}));
+            const newClassesInUse = Object.assign([], classesInUse);
+            newClassesInUse.push(selectedClass);
+            updateFilterOptions({classesInUse: newClassesInUse});
             setSelectedClass(undefined);
         }
     }

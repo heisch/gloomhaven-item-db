@@ -1,4 +1,4 @@
-import { ItemManagementType, ItemViewDisplayType, SoloClassShorthand } from "../../State/Types";
+import { ClassesInUse, ItemManagementType, ItemViewDisplayType, SoloClassShorthand } from "../../State/Types";
 
 export type ItemsInUse = {
     [key:number]: number;
@@ -14,7 +14,7 @@ export interface FilterOptions {
     itemManagementType: ItemManagementType;
     lockSpoilerPanel: boolean;
     scenarioCompleted: number[]
-    // classesInUse: ClassesInUse[];
+    classesInUse: ClassesInUse[];
     // itemsOwnedBy: ItemsOwnedBy;
 }
 export const initialFilterOptions : FilterOptions = {
@@ -28,7 +28,7 @@ export const initialFilterOptions : FilterOptions = {
     itemManagementType: ItemManagementType.None,
     lockSpoilerPanel: false,
     scenarioCompleted: [],
-    // classesInUse: ClassesInUse[],
+    classesInUse: [],
     // itemsOwnedBy: ItemsOwnedBy,
 
 };

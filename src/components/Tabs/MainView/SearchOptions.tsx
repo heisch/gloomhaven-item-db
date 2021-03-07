@@ -1,6 +1,5 @@
 import React from 'react'
 import { Form, Button, Input} from 'semantic-ui-react';
-import { getSpoilerFilter } from '../../../State/SpoilerFilter';
 import { getSlotImageSrc } from '../../../helpers';
 import { GloomhavenItemSlot, ItemViewDisplayType, PullDownOptions, SortProperty} from '../../../State/Types';
 import { useGame } from '../../Game/GameProvider';
@@ -15,9 +14,8 @@ type Props = {
 
 const SearchOptions = (props:Props) => {
     const { setSorting } =  props;
-    const { classesInUse } = getSpoilerFilter();
     const { searchOptions:{ property, search, slots, availableOnly }, setSearchOptions} = useSearchOptions();
-    const { filterOptions: { discount, displayAs }, updateFilterOptions} = useFilterOptions();
+    const { filterOptions: { discount, displayAs, classesInUse }, updateFilterOptions} = useFilterOptions();
     const { gameType, getItemFilterSlots } = useGame();
 
     const setFilterSlot = (slot?: GloomhavenItemSlot) => {

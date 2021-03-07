@@ -15,10 +15,10 @@ type Props = {
 const PartyItemManagement = (props: Props) => {
     const { gameType } = useGame();
     const {item} = props;
-    const { itemsOwnedBy, classesInUse } = getSpoilerFilter();
+    const { itemsOwnedBy } = getSpoilerFilter();
     const dispatch = useDispatch();
     const { setSearchOptions } = useSearchOptions();
-    const { filterOptions: {itemManagementType} }  = useFilterOptions();
+    const { filterOptions: {itemManagementType, classesInUse} }  = useFilterOptions();
 
     if (itemManagementType !== ItemManagementType.Party) { 
         return null;

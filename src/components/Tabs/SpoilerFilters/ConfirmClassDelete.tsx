@@ -1,13 +1,15 @@
 import React from "react";
 import { Button, List, Modal } from "semantic-ui-react";
-import { getSpoilerFilter, removeClass, removeItemOwner } from "../../../State/SpoilerFilter";
+import { getSpoilerFilter, removeItemOwner } from "../../../State/SpoilerFilter";
 import { useGame } from "../../Game/GameProvider";
 import { useDispatch } from "react-redux";
 import { useSearchOptions } from "../../Providers/SearchOptionsProvider";
+import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 
 const ConfirmClassDelete = () => {
   const {gameType} = useGame();
   const { searchOptions: { removingClass }, setSearchOptions}  = useSearchOptions();
+  const { filterOptions: { classesInUse }, updateFilterOptions} = useFilterOptions();
   const { itemsOwnedBy } = getSpoilerFilter();
   const dispatch = useDispatch();
 
@@ -22,7 +24,14 @@ const ConfirmClassDelete = () => {
                 dispatch(removeItemOwner({value:{itemId:parseInt(key), owner:removingClass}, gameType}));
             }
         })
-        dispatch(removeClass({value: removingClass, gameType}))
+
+        const newClassesInUse = Object.assign([], classesInUse);
+        const index = newClassesInUse.findIndex( c => c === removingClass);
+        if (index != -1) {
+            newClassesInUse.splice(index, 1);
+        }
+
+        updateFilterOptions({classesInUse: newClassesInUse})
     }          
     onClose();
   };

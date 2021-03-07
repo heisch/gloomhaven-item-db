@@ -11,8 +11,8 @@ import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 const PurchaseItem = () => {
   const {gameType} = useGame();
   const { searchOptions: { selectedItem }, setSearchOptions}  = useSearchOptions();
-  const { itemsOwnedBy, classesInUse } = getSpoilerFilter();
-  const { filterOptions: { discount} } = useFilterOptions();
+  const { itemsOwnedBy } = getSpoilerFilter();
+  const { filterOptions: { discount, classesInUse} } = useFilterOptions();
   const owners = itemsOwnedBy && selectedItem ? itemsOwnedBy[selectedItem.id] : undefined;
   const classesAvailable = owners && owners.length > 0 ? classesInUse.filter(c => !owners.includes(c)) : classesInUse;
   const [buyer, setBuyer] = useState<PullDownOptions>(classesAvailable[0] || classesInUse[0]);
