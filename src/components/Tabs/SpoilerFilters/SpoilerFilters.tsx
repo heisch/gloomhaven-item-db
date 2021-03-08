@@ -1,25 +1,13 @@
 import React from 'react'
-import { Form, Button, Icon, Dropdown, DropdownProps } from 'semantic-ui-react';
-import { ItemManagementType } from '../../../State/Types';
+import { Form, Button, Icon} from 'semantic-ui-react';
 import PartySpoilerFilter from './PartySpoilerFilter';
 import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
 import GHSpoilerFilter from './GHSpoilerFilter';
 import JOTLSpoilerFilter from './JOTLSpoilerFilter';
+import PartyManagementFilter from './PartyManagementFilter';
 
 const SpoilerFilters = () => {
-    const { filterOptions: {all, itemManagementType}, updateFilterOptions } = useFilterOptions();
-
-    const options = Object.keys(ItemManagementType).map( key => {
-        return {value: key, text:key}
-    })
-
-    const onChangeItemManagement= (_d:any, data:DropdownProps) => {
-        const { value } = data;
-        if (value) {
-            const type =  value as ItemManagementType;
-            updateFilterOptions({itemManagementType:value})
-        }
-    }
+    const { filterOptions: {all}, updateFilterOptions } = useFilterOptions();
 
     return (
         <Form>
@@ -36,16 +24,8 @@ const SpoilerFilters = () => {
                 </Button>
             </Form.Group>
 
-            <Form.Group inline>
-                <label>Enable Store Stock Management:</label>
-                <Dropdown
-                defaultValue={itemManagementType}
-                onChange={onChangeItemManagement}
-                options={options}/>
-            </Form.Group>
-
+            <PartyManagementFilter/>
             <PartySpoilerFilter/>
-
             <GHSpoilerFilter/>
             <JOTLSpoilerFilter/>
      

@@ -1,4 +1,5 @@
 import { GloomhavenItemSlot } from "./State/Types";
+import qs from "qs"
 
 export class Helpers {
     static uniqueArray(arr: Array<any>, sort: boolean = true) {
@@ -133,4 +134,25 @@ export const getSlotImageSrc = (slot: GloomhavenItemSlot):string => {
             throw new Error(`item slot unrecognized: ${slot}`);
     }
     return require('./img/icons/equipment_slot/'+src+'.png');
+}
+
+export function isFlagEnabled(flagName: string) {
+    if (!window) {
+        return false;
+    }
+    const urlParams = qs.parse(window.location.search.substr(1));
+
+    const paramValue = urlParams[flagName];
+
+    const localStorageFlagKey = flagName;
+
+    if (paramValue === "false" || paramValue === "0") {
+        window.localStorage.removeItem(localStorageFlagKey);
+    }
+
+    if (paramValue === "true" || paramValue === "1") {
+        window.localStorage.setItem(localStorageFlagKey, "true");
+    }
+
+    return window.localStorage.getItem(localStorageFlagKey) === "true";
 }

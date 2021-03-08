@@ -9,8 +9,8 @@ import ImportData from './ImportData';
 
 
 // .git ignore vscode file
-// Add Feature flag to turn off Party Mode
 // Add JOTL to list of classes.
+// Envelope X
 // Look at Object.assign calls
 // Rename the SetSearchOptions to update
 // Make smarter contols for gameType
