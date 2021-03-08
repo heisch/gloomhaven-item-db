@@ -12,7 +12,7 @@ type Props = {
 
 const PartyItemManagement = (props: Props) => {
     const {item} = props;
-    const { setSearchOptions } = useSearchOptions();
+    const { updateSearchOptions } = useSearchOptions();
     const { filterOptions: {itemManagementType, classesInUse, itemsOwnedBy}, updateFilterOptions, lockSpoilerPanel }  = useFilterOptions();
 
     if (itemManagementType !== ItemManagementType.Party) { 
@@ -50,7 +50,7 @@ const PartyItemManagement = (props: Props) => {
                         disabled={lockSpoilerPanel}
                         className={`i${ownersLength} addClass`}
                         color={'black'}
-                        onClick={() => { setSearchOptions({selectedItem:item})}}
+                        onClick={() => { updateSearchOptions({selectedItem:item})}}
                         content={"+"}
             />
             }

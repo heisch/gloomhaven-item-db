@@ -14,14 +14,14 @@ type Props = {
 
 const SearchOptions = (props:Props) => {
     const { setSorting } =  props;
-    const { searchOptions:{ property, search, slots, availableOnly }, setSearchOptions} = useSearchOptions();
+    const { searchOptions:{ property, search, slots, availableOnly }, updateSearchOptions} = useSearchOptions();
     const { filterOptions: { discount, displayAs, classesInUse }, updateFilterOptions} = useFilterOptions();
     const { gameType, getItemFilterSlots } = useGame();
 
     const setFilterSlot = (slot?: GloomhavenItemSlot) => {
         if (!slot)
         {
-            setSearchOptions({slots: undefined});
+            updateSearchOptions({slots: undefined});
             return;
         }
         let value = Object.assign([], slots);
@@ -33,10 +33,10 @@ const SearchOptions = (props:Props) => {
         }
         if (value.length === 0)
         {
-            setSearchOptions({slots: undefined});
+            updateSearchOptions({slots: undefined});
         }
         else
-            setSearchOptions({slots: value});
+            updateSearchOptions({slots: value});
     }
 
 
@@ -105,24 +105,24 @@ const SearchOptions = (props:Props) => {
                     <label>Find Item:</label>
                     <Input
                         value={search}
-                        onChange={(e) => { setSearchOptions({search:e.target.value})}}
-                        icon={{name: 'close', link: true, onClick: () => setSearchOptions({search:''})}}
+                        onChange={(e) => { updateSearchOptions({search:e.target.value})}}
+                        icon={{name: 'close', link: true, onClick: () => updateSearchOptions({search:''})}}
                         placeholder={'Search...'}
                     />
                 </Form.Group>
                 <Form.Group inline> 
                     <label>Owner:</label>
-                    <ClassDropdown  optionsList={classesInUse}  onChange={ (option:PullDownOptions) => setSearchOptions({selectedClass:option})} />
+                    <ClassDropdown  optionsList={classesInUse}  onChange={ (option:PullDownOptions) => updateSearchOptions({selectedClass:option})} />
                 </Form.Group>
                 <Form.Group inline>
                     <label>Availability</label>
                     <Button.Group>
                         <Button color={availableOnly? 'blue' : undefined} onClick={() => {
-                                setSearchOptions({availableOnly:true})
+                                updateSearchOptions({availableOnly:true})
                             }}>Available</Button>
                         <Button.Or/>
                         <Button color={!availableOnly ? 'blue' : undefined} onClick={() => {
-                                setSearchOptions({availableOnly:false})
+                                updateSearchOptions({availableOnly:false})
                             }}>All</Button>
                     </Button.Group>
                 </Form.Group>

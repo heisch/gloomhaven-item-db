@@ -5,11 +5,11 @@ import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 import { ItemsOwnedBy } from "../../Providers/FilterOptions";
 
 const ConfirmClassDelete = () => {
-  const { searchOptions: { removingClass }, setSearchOptions}  = useSearchOptions();
+  const { searchOptions: { removingClass }, updateSearchOptions}  = useSearchOptions();
   const { filterOptions: { classesInUse, itemsOwnedBy }, updateFilterOptions} = useFilterOptions();
 
   const onClose = () => {
-    setSearchOptions({removingClass: undefined})
+    updateSearchOptions({removingClass: undefined})
   };
 
   const onApply = () => {

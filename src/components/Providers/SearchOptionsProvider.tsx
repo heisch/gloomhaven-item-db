@@ -30,7 +30,7 @@ const initialGameSearchOptions = {
     [GameType.JawsOfTheLion] : initialSearchOptions,
 };
 
-export const Context = createContext({searchOptions: initialSearchOptions, setSearchOptions: (options: any) => {}});
+export const Context = createContext({searchOptions: initialSearchOptions, updateSearchOptions: (options: any) => {}});
 
 export function useSearchOptions() {
     return useContext(Context);
@@ -46,12 +46,12 @@ const SearchOptionsProvider = (props:Props) => {
     const [ gameSearchOptions, setGameSearchOptions] = useState(initialGameSearchOptions);
     const { Provider } = Context;
 
-    const setSearchOptions = ( options : any ) => {
+    const updateSearchOptions = ( options : any ) => {
         gameSearchOptions[gameType] = {...gameSearchOptions[gameType], ...options};
         setGameSearchOptions(Object.assign({}, gameSearchOptions))
     }
     
-    return <Provider value={{searchOptions:gameSearchOptions[gameType], setSearchOptions}}>{children}</Provider>
+    return <Provider value={{searchOptions:gameSearchOptions[gameType], updateSearchOptions}}>{children}</Provider>
 }
  
 export default SearchOptionsProvider;

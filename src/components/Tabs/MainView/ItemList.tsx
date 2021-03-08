@@ -14,7 +14,7 @@ type Props = {
 
 const ItemList = (props:Props) => {
     const {items} = props;
-    const { searchOptions: { property, direction}, setSearchOptions} = useSearchOptions();
+    const { searchOptions: { property, direction}, updateSearchOptions} = useSearchOptions();
     const { filterOptions: { all, displayAs, itemManagementType } } = useFilterOptions();
 
         const setSorting = (newProperty: SortProperty) => {
@@ -25,7 +25,7 @@ const ItemList = (props:Props) => {
                 newDirection = SortDirection.ascending;
             }
 
-            setSearchOptions({property: newProperty, direction: newDirection})
+            updateSearchOptions({property: newProperty, direction: newDirection})
         }
         
     return (

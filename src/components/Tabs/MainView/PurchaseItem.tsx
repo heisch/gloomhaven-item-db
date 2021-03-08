@@ -7,14 +7,14 @@ import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 import { ItemsOwnedBy } from "../../Providers/FilterOptions";
 
 const PurchaseItem = () => {
-  const { searchOptions: { selectedItem }, setSearchOptions}  = useSearchOptions();
+  const { searchOptions: { selectedItem }, updateSearchOptions}  = useSearchOptions();
   const { filterOptions: { discount, classesInUse, itemsOwnedBy}, updateFilterOptions } = useFilterOptions();
   const owners = itemsOwnedBy && selectedItem ? itemsOwnedBy[selectedItem.id] : undefined;
   const classesAvailable = owners && owners.length > 0 ? classesInUse.filter(c => !owners.includes(c)) : classesInUse;
   const [buyer, setBuyer] = useState<PullDownOptions>(classesAvailable[0] || classesInUse[0]);
 
   const onClose = () => {
-    setSearchOptions({selectedItem: undefined})
+    updateSearchOptions({selectedItem: undefined})
   };
 
   useEffect(() => {

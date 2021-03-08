@@ -10,7 +10,7 @@ import { isFlagEnabled } from "../../../helpers";
 const classList: Array<ClassesInUse> = ['BR', 'TI', 'SW', 'SC', 'CH', 'MT', 'SK', 'QM', 'SU', 'NS', 'PH', 'BE', 'SS', 'DS', 'SB', 'EL', 'BT', 'DR'];
 
 const PartySpoilerFilter = () => {
-    const { setSearchOptions } = useSearchOptions();
+    const { updateSearchOptions } = useSearchOptions();
     const { filterOptions: { itemManagementType, classesInUse}, updateFilterOptions} = useFilterOptions();
     const partyModeEnabled = isFlagEnabled("partyMode");
 
@@ -39,7 +39,7 @@ const PartySpoilerFilter = () => {
     }
 
     const onRemoveClass = (removingClass: ClassesInUse) => {
-        setSearchOptions({removingClass})
+        updateSearchOptions({removingClass})
     }
 
     if (!partyModeEnabled || itemManagementType !== ItemManagementType.Party) {
