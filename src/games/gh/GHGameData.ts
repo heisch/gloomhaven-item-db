@@ -1,10 +1,7 @@
 import { BaseGameData } from '../GameData'
 import { GloomhavenItem } from '../../State/Types';
-import {SpoilerFilter} from '../../State/SpoilerFilter';
 import { GameType } from '..';
 import { FilterOptions } from '../../components/Providers/FilterOptions';
-
-const oldFilterLocalStorageKey = 'ItemView:spoilerFilter';
 
 class GHGameData extends BaseGameData  {
     constructor()
@@ -22,15 +19,6 @@ class GHGameData extends BaseGameData  {
         return false;
     }
 
-    convertSavedData(storageKey:string) {
-        const loadedSpoilerFilterString = localStorage.getItem(oldFilterLocalStorageKey)
-
-        // if it exists then it's a gloomhaven storage. Set it tot he new one
-        if (loadedSpoilerFilterString) {
-            localStorage.removeItem(oldFilterLocalStorageKey);
-            localStorage.setItem(storageKey, loadedSpoilerFilterString);
-        }
-    }
     getItemSubfolder(item:GloomhavenItem) {
         if (item.id >= 152 && item.id <= 165) {
             return '152-165';

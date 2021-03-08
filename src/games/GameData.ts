@@ -1,5 +1,4 @@
 import { GloomhavenItem, GloomhavenItemSlot } from "../State/Types"
-import {SpoilerFilter} from "../State/SpoilerFilter";
 import { Helpers } from "../helpers";
 import { GameType } from ".";
 import { FilterOptions } from "../components/Providers/FilterOptions";
@@ -58,14 +57,6 @@ export abstract class BaseGameData {
     }
 
     abstract isItemShown(item: GloomhavenItem, FilterOptions: FilterOptions) : boolean;
-
-    get localStorageKey() {
-        return LOCAL_STORAGE_PREFIX + this.gameType;
-    }
-
-    convertSavedData(storageKey: string) {
-        // base function does nothing
-    }
 
     abstract getItemSubfolder(item:GloomhavenItem): string;
 

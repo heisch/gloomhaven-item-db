@@ -35,3 +35,8 @@ export const initialFilterOptions : FilterOptions = {
     classesInUse: [],
     itemsOwnedBy: {},
 };
+
+export interface OldFilterOptions extends FilterOptions {
+    item: Array<number> | any;
+    soloClass: Array<SoloClassShorthand> | any;
+}
