@@ -4,17 +4,36 @@ import { ItemManagementType, SoloClassShorthand } from '../../State/Types';
 import { useGame } from '../Game/GameProvider';
 import {initialFilterOptions, OldFilterOptions, FilterOptions} from "./FilterOptions"
 
-type GameFilterOpions = {
+type GameFilterOptions = {
     [GameType.Gloomhaven]: FilterOptions;
     [GameType.JawsOfTheLion]: FilterOptions;
+    lockSpoilerPanel: boolean;
 }
 
-const initialGameFilterOptions: GameFilterOpions = {
+const initialGameFilterOptions: GameFilterOptions = {
     [GameType.Gloomhaven] : initialFilterOptions,
     [GameType.JawsOfTheLion] : initialFilterOptions,
+    lockSpoilerPanel: false
 };
 
-export const Context = createContext({loadFromHash: () => {}, filterOptions: initialFilterOptions, updateFilterOptions: (options: any) => {}});
+type ContextData = {
+    loadFromHash: () => void,
+    filterOptions: FilterOptions, 
+    updateFilterOptions: (options: any) => void,
+    lockSpoilerPanel: boolean,
+    getShareHash: (lockSpoilerPanel:boolean) => string,
+
+}
+
+const initialContextData = {
+    loadFromHash: () => {}, 
+    filterOptions: initialFilterOptions, 
+    updateFilterOptions: (options: any) => {},
+    lockSpoilerPanel: false,
+    getShareHash: (lockSpoilerPanel:boolean) => ""
+}
+
+export const Context = createContext<ContextData>(initialContextData);
 
 export function useFilterOptions() {
     return useContext(Context);
@@ -61,6 +80,8 @@ const loadFromStorage = (filterLocalStorageKey:string) => {
          spoilerFilter.itemManagementType = spoilerFilter.enableStoreStockManagement ? ItemManagementType.Simple:  ItemManagementType.None;
          // @ts-ignore
          delete spoilerFilter.enableStoreStockManagement
+         // @ts-ignore
+         delete spoilerFilter.lockSpoilerPanel;
     }
 
 
@@ -86,6 +107,7 @@ const FilterProvider = (props:Props) => {
     const { children} = props;
     const {gameType} = useGame();
     const [ gameFilterOptions, setGameFilterOptions] = useState(initialGameFilterOptions);
+    const [ lockSpoilerPanel, setLockSpoilerPanel] = useState(localStorage.getItem("lockSpoilerPanel") === "true" || false);
     const { Provider } = Context;
 
     useEffect( () => {
@@ -96,7 +118,7 @@ const FilterProvider = (props:Props) => {
             localStorage.removeItem(oldFilterLocalStorageKey);
             localStorage.setItem(LOCAL_STORAGE_PREFIX + GameType.Gloomhaven, loadedSpoilerFilterString);
         }
-        const newGameFilterOptions:GameFilterOpions = Object.assign({}, gameFilterOptions);
+        const newGameFilterOptions:GameFilterOptions = Object.assign({}, gameFilterOptions);
         Object.values(GameType).forEach( gt => {
             const value = loadFromStorage(LOCAL_STORAGE_PREFIX + gt);
             newGameFilterOptions[gt] = value;
@@ -113,7 +135,8 @@ const FilterProvider = (props:Props) => {
 
     const loadFromHash = () => {
         const hashConfig = parseHash();
-        const newGameFilterOptions:GameFilterOpions = Object.assign({}, gameFilterOptions);
+        const newGameFilterOptions:GameFilterOptions = Object.assign({}, gameFilterOptions);
+        let oldLockSpoilerPanel = false;
         if (hashConfig !== undefined) {
             if (hashConfig.hasOwnProperty(GameType.Gloomhaven)) {
                    Object.values(GameType).forEach( (gt:GameType) => {
@@ -122,6 +145,7 @@ const FilterProvider = (props:Props) => {
                            const newFilterOpions = Object.assign({}, initialFilterOptions, filterOptions);
                             localStorage.setItem(LOCAL_STORAGE_PREFIX + gt, JSON.stringify(newFilterOpions));
                             newGameFilterOptions[gt] = newFilterOpions;
+                            oldLockSpoilerPanel = newFilterOpions.lockSpoilerPanel;
                        }
                     })
             }
@@ -135,10 +159,28 @@ const FilterProvider = (props:Props) => {
             }
             setGameFilterOptions(newGameFilterOptions);
           }
+          if (hashConfig.hasOwnProperty("lockSpoilerPanel")) {
+              setLockSpoilerPanel(hashConfig.lockSpoilerPanel);
+              localStorage.setItem("lockSpoilerPanel", hashConfig.lockSpoilerPanel.toString());
+          }
+          else {
+            setLockSpoilerPanel(oldLockSpoilerPanel);
+            localStorage.setItem("lockSpoilerPanel", oldLockSpoilerPanel.toString());
+          }
           location.hash = "";
     }
 
-    return <Provider value={{filterOptions:gameFilterOptions[gameType], updateFilterOptions, loadFromHash}}>{children}</Provider>
+    const getShareHash = (lockSpoilerPanel: boolean) => {
+        gameFilterOptions["lockSpoilerPanel"] = lockSpoilerPanel;
+        return JSON.stringify(gameFilterOptions);
+    }
+
+    return <Provider value={{ filterOptions:gameFilterOptions[gameType], 
+                                updateFilterOptions, 
+                                loadFromHash, 
+                                lockSpoilerPanel, 
+                                getShareHash
+                            }}>{children}</Provider>
 }
  
 export default FilterProvider;

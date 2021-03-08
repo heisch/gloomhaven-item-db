@@ -11,17 +11,12 @@ import ImportData from './ImportData';
 // .git ignore vscode file
 // Add Feature flag to turn off Party Mode
 // Add JOTL to list of classes.
-// Convert the state over to provider.
-// Fix saving and loading
-// Fix importing (and backwards compatible with ItemManagementType)
-// Make sure lockspoilerfilter still works
-// Lock Item Management when lock spoiler filter is on
 // Look at Object.assign calls
 // Rename the SetSearchOptions to update
 // Make smarter contols for gameType
 
 const MainView = () => {
-    const { filterOptions: { all, lockSpoilerPanel } } = useFilterOptions();
+    const { filterOptions: { all}, lockSpoilerPanel } = useFilterOptions();
     const items = useItems();
 
     let panes = [

@@ -13,7 +13,7 @@ type Props = {
 const PartyItemManagement = (props: Props) => {
     const {item} = props;
     const { setSearchOptions } = useSearchOptions();
-    const { filterOptions: {itemManagementType, classesInUse, itemsOwnedBy}, updateFilterOptions }  = useFilterOptions();
+    const { filterOptions: {itemManagementType, classesInUse, itemsOwnedBy}, updateFilterOptions, lockSpoilerPanel }  = useFilterOptions();
 
     if (itemManagementType !== ItemManagementType.Party) { 
         return null;
@@ -27,30 +27,32 @@ const PartyItemManagement = (props: Props) => {
             {`${ownersLength} / ${item.count}`}
             {owners&&owners.map((owner, index) => {
                 return <Button
+                    disabled={lockSpoilerPanel}
                     className={'i'+index}
                     key={`${item.id}-${owner}`}
                     basic
                     color='black'
                     icon='delete' 
-                onClick={() => { 
-                    const newItemsOwnedBy: ItemsOwnedBy = Object.assign([], itemsOwnedBy);
-                    const index = newItemsOwnedBy[item.id].findIndex( c => c === owner);
-                    if (index != -1) {
-                        newItemsOwnedBy[item.id].splice(index, 1);
-                    }
-                    updateFilterOptions({itemsOwnedBy: newItemsOwnedBy})
-                }}
+                    onClick={() => { 
+                        const newItemsOwnedBy: ItemsOwnedBy = Object.assign([], itemsOwnedBy);
+                        const index = newItemsOwnedBy[item.id].findIndex( c => c === owner);
+                        if (index != -1) {
+                            newItemsOwnedBy[item.id].splice(index, 1);
+                        }
+                        updateFilterOptions({itemsOwnedBy: newItemsOwnedBy})
+                    }}
             
                 content={createClassImage(owner)}
             />
             })}
             {showAddButton &&
                 <Button
-                            className={`i${ownersLength} addClass`}
-                            color={'black'}
-                            onClick={() => { setSearchOptions({selectedItem:item})}}
-                            content={"+"}
-                />
+                        disabled={lockSpoilerPanel}
+                        className={`i${ownersLength} addClass`}
+                        color={'black'}
+                        onClick={() => { setSearchOptions({selectedItem:item})}}
+                        content={"+"}
+            />
             }
         </>);
 }
