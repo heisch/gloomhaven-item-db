@@ -17,10 +17,16 @@ export enum ItemViewDisplayType {
 export type SortProperty = 'id' | 'slot' | 'cost' | 'name' | 'use';
 
 export type PullDownOptions = ClassesInUse | undefined;
-export type GHClassesShorthand = 'BR' | 'TI' | 'SW' | 'SC' | 'CH' | 'MT' | 'SK' | 'QM' | 'SU' | 'NS' | 'PH' | 'BE' | 'SS' | 'DS' | 'SB' | 'EL' | 'BT'| 'DR';
-export type SoloClassShorthand = GHClassesShorthand;
+export type GHClassesShorthand = 'BR' | 'TI' | 'SW' | 'SC' | 'CH' | 'MT' | 'SK' | 'QM' | 'SU' | 'NS' | 'PH' | 'BE' | 'SS' | 'DS' | 'SB' | 'EL' | 'BT';
+export type FCClassesShorthand = 'DR'
+export type SoloClassShorthand = GHClassesShorthand | FCClassesShorthand;
 export type JOTLClassesShorthand = 'DM' | 'HT' | 'RG' | 'VW';
-export type ClassesInUse = GHClassesShorthand | JOTLClassesShorthand;
+export type ClassesInUse = GHClassesShorthand | JOTLClassesShorthand | FCClassesShorthand;
+
+export const ghClassList: Array<GHClassesShorthand> = ['BR', 'TI', 'SW', 'SC', 'CH', 'MT', 'SK', 'QM', 'SU', 'NS', 'PH', 'BE', 'SS', 'DS', 'SB', 'EL', 'BT'];
+export const fcClassList: Array<FCClassesShorthand> = ['DR'];
+export const jotlClassList: Array<JOTLClassesShorthand> = ['DM','HT', 'RG', 'VW'];
+
 
 export type GloomhavenItemSlot = 'Head' | 'Body' | 'Legs' | 'One Hand' | 'Two Hands' | 'Small Item';
 export type GloomhavenItemSourceType = 'Prosperity' | 'Random Item Design' | 'Scenario' | 'Treasure' | 'Solo Scenario' | 'Road Event' | 'City Event';

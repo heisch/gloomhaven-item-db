@@ -1,6 +1,6 @@
 import React, { useContext, createContext, ReactNode, useState } from 'react'
 import { GameType } from '../../games'
-import { PullDownOptions, GloomhavenItem, GloomhavenItemSlot, SortDirection, SortProperty } from '../../State/Types';
+import { PullDownOptions, GloomhavenItem, GloomhavenItemSlot, SortDirection, SortProperty, ClassesInUse } from '../../State/Types';
 import { useGame } from '../Game/GameProvider';
 
 export interface SearchOptions {
@@ -11,7 +11,7 @@ export interface SearchOptions {
     selectedItem: GloomhavenItem | undefined;
     selectedClass: PullDownOptions;
     availableOnly: boolean;
-    removingClass: PullDownOptions
+    classToRemove: PullDownOptions
 }
 
 const initialSearchOptions : SearchOptions = {
@@ -22,7 +22,7 @@ const initialSearchOptions : SearchOptions = {
     selectedItem: undefined,
     selectedClass: undefined,
     availableOnly: false,
-    removingClass: undefined
+    classToRemove: undefined,
 };
 
 const initialGameSearchOptions = {

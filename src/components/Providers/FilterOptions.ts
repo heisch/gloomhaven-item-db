@@ -12,7 +12,7 @@ export interface FilterOptions {
     prosperity: number;
     item: number [];
     itemsInUse: ItemsInUse;
-    soloClass: SoloClassShorthand[];
+    soloClass: ClassesInUse[];
     discount: number;
     displayAs: ItemViewDisplayType;
     itemManagementType: ItemManagementType;

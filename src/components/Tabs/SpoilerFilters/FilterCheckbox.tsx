@@ -20,13 +20,9 @@ const FilterCheckbox = (props:Props) => {
         updateFilterOptions({item:value});
     }
 
-    return (
-        <>
-            <Form.Checkbox key={id} label={'#' + (id + '').padStart(3, '0')}
+    return <Form.Checkbox key={id} label={'#' + (id + '').padStart(3, '0')}
                     checked={item.includes(id)}
-                    onChange={() => toggleItemFilter(id)}/>        
-        </>
-    );
+                    onChange={() => toggleItemFilter(id)}/>;
 }
 
 export default FilterCheckbox;

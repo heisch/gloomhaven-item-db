@@ -1,10 +1,11 @@
 import React from 'react'
 import { Form, Button, Icon} from 'semantic-ui-react';
-import PartySpoilerFilter from './PartySpoilerFilter';
 import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
 import GHSpoilerFilter from './GHSpoilerFilter';
 import JOTLSpoilerFilter from './JOTLSpoilerFilter';
 import PartyManagementFilter from './PartyManagementFilter';
+import ConfirmClassDelete from './ConfirmClassDelete';
+import { PartySpoiler } from './PartySpoiler';
 
 const SpoilerFilters = () => {
     const { filterOptions: {all}, updateFilterOptions } = useFilterOptions();
@@ -25,10 +26,10 @@ const SpoilerFilters = () => {
             </Form.Group>
 
             <PartyManagementFilter/>
-            <PartySpoilerFilter/>
             <GHSpoilerFilter/>
             <JOTLSpoilerFilter/>
-     
+            <PartySpoiler/>
+            <ConfirmClassDelete/>
         </Form>
     );
 }
