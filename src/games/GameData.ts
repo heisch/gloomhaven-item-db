@@ -58,14 +58,6 @@ export abstract class BaseGameData {
 
     abstract isItemShown(item: GloomhavenItem, FilterOptions: FilterOptions) : boolean;
 
-    abstract getItemSubfolder(item:GloomhavenItem): string;
-
-    getItemPath(item:GloomhavenItem) {
-        let folder = this.getItemSubfolder(item);
-        let name = item.name.toLowerCase().replace(/\s/g, '-').replace(/'/, '');
-        return require(`../../vendor/${this.gameType}/images/items/${folder}/${name}.png`);
-    }
-
     getItemFilterSlots() : GloomhavenItemSlot[] {
         return ['Head', 'Body', 'Legs', 'One Hand', 'Two Hands', 'Small Item'];
     }

@@ -17,6 +17,11 @@ const useItems = (): Array<GloomhavenItem> => {
             return spoilerFilterItem.includes(item.id);
         });
         return spoilerFiltered.filter(item => {
+            // Special item don't show it ever!
+            if (item.id === 151) {
+                return false;
+            }
+
             let hit = true;
             if (slots) { 
                 hit = slots.includes(item.slot);

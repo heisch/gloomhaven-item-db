@@ -20,19 +20,6 @@ export class JOTLGameData extends BaseGameData {
         }
         return false;
     }
-    getItemSubfolder (item: GloomhavenItem) {
-        if (item.id >= 27) {
-            return '27-36';
-        } else if (item.id >= 21) {
-            return '21-26';
-        } else if (item.id >= 15) {
-            return '15-20';
-        } else if (item.id == 14) {
-            return '14';
-        } else  {
-            return '1-13';
-        }
-    }
 
     getItemFilterSlots(): GloomhavenItemSlot[] {
         return ['Head', 'Body', 'Legs', 'One Hand', 'Small Item'];

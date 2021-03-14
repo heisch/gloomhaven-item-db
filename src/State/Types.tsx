@@ -53,5 +53,6 @@ export interface GloomhavenItem {
         range: number
     }
     soloItem?: SoloClassShorthand;
+    folder: string,
 }
 

@@ -14,12 +14,19 @@ const ItemId = ({cost: id}:{cost: number}) => {
 
 const ItemCard = (props:Props) => {
     const { item } = props;
-    const game = useGame();
+    const {gameType} = useGame();
     const [draw, setDraw] = useState(false);
+
+    const getItemPath = () => {
+        const { folder, name } = item;
+        const filename = name.toLowerCase().replace(/\s/g, '-').replace(/'/, '');
+        return require(`../../../../vendor/${gameType}/images/items/${folder}/${filename}.png`);
+    }
+
     return (
         <div className={'item-card-wrapper'}>
             <img
-                src={game.getItemPath(item)}
+                src={getItemPath()}
                 alt={item.name}
                 onLoad={() => setDraw(true)}
                 className={'item-card'}/>
