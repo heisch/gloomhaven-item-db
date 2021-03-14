@@ -1,9 +1,7 @@
-import { GloomhavenItemSlot, GloomhavenItem, SortDirection } from "../State/Types"
+import { gloomhavenItemSlots, GloomhavenItem, SortDirection } from "../State/Types"
 import { useGame } from "../components/Game/GameProvider"
 import { useSearchOptions } from "../components/Providers/SearchOptionsProvider";
 import { useFilterOptions } from "../components/Providers/FilterOptionsProvider";
-
-const gloomhavenItemSlots: Array<GloomhavenItemSlot> = ['Head', 'Body', 'Legs', 'One Hand', 'Two Hands', 'Small Item'];
 
 const useItems = (): Array<GloomhavenItem> => {
 

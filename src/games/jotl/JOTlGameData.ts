@@ -23,9 +23,5 @@ export class JOTLGameData extends BaseGameData {
         }
         return false;
     }
-
-    getItemFilterSlots(): GloomhavenItemSlot[] {
-        return ['Head', 'Body', 'Legs', 'One Hand', 'Small Item'];
-    }
 }
 export default JOTLGameData;

@@ -33,6 +33,7 @@ export const envelopeXClassList: EnvelopeXClassShorthand[] = ["XX"];
 export type GloomhavenItemSlot = 'Head' | 'Body' | 'Legs' | 'One Hand' | 'Two Hands' | 'Small Item';
 export type GloomhavenItemSourceType = 'Prosperity' | 'Random Item Design' | 'Scenario' | 'Treasure' | 'Solo Scenario' | 'Road Event' | 'City Event';
 
+export const gloomhavenItemSlots: Array<GloomhavenItemSlot> = ['Head', 'Body', 'Legs', 'One Hand', 'Two Hands', 'Small Item'];
 export interface GloomhavenItem {
     id: number
     name: string
@@ -40,7 +41,6 @@ export interface GloomhavenItem {
     cost: number
     slot: GloomhavenItemSlot
     source: string,
-    sourceTypes: Array<GloomhavenItemSourceType>
     spent?: boolean
     consumed?: boolean
     minusOneCardsAdded?: number
