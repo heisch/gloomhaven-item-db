@@ -18,14 +18,16 @@ export type SortProperty = 'id' | 'slot' | 'cost' | 'name' | 'use';
 
 export type PullDownOptions = ClassesInUse | undefined;
 export type GHClassesShorthand = 'BR' | 'TI' | 'SW' | 'SC' | 'CH' | 'MT' | 'SK' | 'QM' | 'SU' | 'NS' | 'PH' | 'BE' | 'SS' | 'DS' | 'SB' | 'EL' | 'BT';
+export type EnvelopeXClassShorthand = 'XX';
 export type FCClassesShorthand = 'DR'
 export type SoloClassShorthand = GHClassesShorthand | FCClassesShorthand;
 export type JOTLClassesShorthand = 'DM' | 'HT' | 'RG' | 'VW';
-export type ClassesInUse = GHClassesShorthand | JOTLClassesShorthand | FCClassesShorthand;
+export type ClassesInUse = GHClassesShorthand | JOTLClassesShorthand | FCClassesShorthand | EnvelopeXClassShorthand;
 
 export const ghClassList: Array<GHClassesShorthand> = ['BR', 'TI', 'SW', 'SC', 'CH', 'MT', 'SK', 'QM', 'SU', 'NS', 'PH', 'BE', 'SS', 'DS', 'SB', 'EL', 'BT'];
 export const fcClassList: Array<FCClassesShorthand> = ['DR'];
 export const jotlClassList: Array<JOTLClassesShorthand> = ['DM','HT', 'RG', 'VW'];
+export const envelopeXClassList: EnvelopeXClassShorthand[] = ["XX"];
 
 
 export type GloomhavenItemSlot = 'Head' | 'Body' | 'Legs' | 'One Hand' | 'Two Hands' | 'Small Item';

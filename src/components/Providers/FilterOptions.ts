@@ -20,6 +20,7 @@ export interface FilterOptions {
     scenarioCompleted: number[]
     classesInUse: ClassesInUse[];
     itemsOwnedBy: ItemsOwnedBy;
+    envelopeX: boolean;
 }
 export const initialFilterOptions : FilterOptions = {
     all: false,
@@ -33,6 +34,7 @@ export const initialFilterOptions : FilterOptions = {
     scenarioCompleted: [],
     classesInUse: [],
     itemsOwnedBy: {},
+    envelopeX: false
 };
 
 export interface OldFilterOptions extends FilterOptions {

@@ -27,12 +27,9 @@ const ConfirmClassDelete = () => {
 
           const newClassesInUse = Object.assign([], classesInUse);
           const index = newClassesInUse.findIndex( c => c === classToRemove);
-          console.log(index);
           if (index != -1) {
               newClassesInUse.splice(index, 1);
           }
-
-          console.log(newClassesInUse);
 
           updateFilterOptions({classesInUse: newClassesInUse})
           updateSearchOptions({classToRemove: undefined});

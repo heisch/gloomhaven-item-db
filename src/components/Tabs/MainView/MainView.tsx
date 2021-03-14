@@ -9,8 +9,6 @@ import ImportData from './ImportData';
 
 
 // .git ignore vscode file
-// Add JOTL to list of classes.
-// Envelope X
 // Look at Object.assign calls
 // Make smarter contols for gameType
 

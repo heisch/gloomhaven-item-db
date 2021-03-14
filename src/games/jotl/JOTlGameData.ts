@@ -8,7 +8,10 @@ export class JOTLGameData extends BaseGameData {
     {
         super("Gloomhaven: Jaws of the Lion", GameType.JawsOfTheLion);
     }
-    isItemShown(item:GloomhavenItem, {scenarioCompleted}:FilterOptions) {
+    isItemShown(item:GloomhavenItem, {all, scenarioCompleted}:FilterOptions) {
+        if (all) {
+            return true;
+        }
         if (item.id <=13 && scenarioCompleted.includes(2)) {
             return true;
         }

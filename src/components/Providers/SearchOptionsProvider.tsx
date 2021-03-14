@@ -11,7 +11,8 @@ export interface SearchOptions {
     selectedItem: GloomhavenItem | undefined;
     selectedClass: PullDownOptions;
     availableOnly: boolean;
-    classToRemove: PullDownOptions
+    classToRemove: PullDownOptions;
+    confirmEnvelopeX: boolean;
 }
 
 const initialSearchOptions : SearchOptions = {
@@ -23,6 +24,7 @@ const initialSearchOptions : SearchOptions = {
     selectedClass: undefined,
     availableOnly: false,
     classToRemove: undefined,
+    confirmEnvelopeX: false,
 };
 
 const initialGameSearchOptions = {

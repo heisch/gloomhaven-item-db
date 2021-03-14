@@ -8,7 +8,15 @@ class GHGameData extends BaseGameData  {
     {
         super("Gloomhaven", GameType.Gloomhaven);
     }
-    isItemShown(item:GloomhavenItem, {prosperity, soloClass}: FilterOptions) {
+    isItemShown(item:GloomhavenItem, {all, envelopeX, prosperity, soloClass}: FilterOptions) {
+        // Special case for item 151
+        if (item.id === 151 && !envelopeX) {
+            return false;
+        }
+    
+        if (all) {
+            return true;
+        }
         if (item.id <= (prosperity+1)*7)
         {
             return true;

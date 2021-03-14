@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
-import { Form, Image } from 'semantic-ui-react';
+import React from 'react'
+import { Form } from 'semantic-ui-react';
 import SpoilerFilterItemList from './SpoilerFilterItemList';
-import { ClassesInUse, fcClassList, ghClassList, SoloClassShorthand } from '../../../State/Types';
+import { ClassesInUse, envelopeXClassList, fcClassList, ghClassList } from '../../../State/Types';
 import { useGame } from '../../Game/GameProvider';
 import { GameType } from '../../../games';
 import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
@@ -9,7 +9,7 @@ import { ClassList } from './ClassList';
 
 const GHSpoilerFilter = () => {
     const { gameType } = useGame();
-    const { filterOptions: {prosperity, soloClass}, updateFilterOptions}  = useFilterOptions();
+    const { filterOptions: {prosperity, soloClass, envelopeX}, updateFilterOptions}  = useFilterOptions();
 
 
     if (gameType !== GameType.Gloomhaven) {
@@ -26,7 +26,11 @@ const GHSpoilerFilter = () => {
         updateFilterOptions({soloClass: value})
     }
 
-    let classList:ClassesInUse[] = [...ghClassList, ...fcClassList];
+    let classList:ClassesInUse[] = [...ghClassList];
+    if (envelopeX) {
+        classList = classList.concat(envelopeXClassList);
+    }
+    classList = classList.concat(fcClassList);
 
     return (
         <>

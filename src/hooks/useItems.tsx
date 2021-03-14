@@ -9,19 +9,15 @@ const useItems = (): Array<GloomhavenItem> => {
 
     const { isItemShown, initialItems} = useGame();
     const { searchOptions: { property, direction, slots, search, selectedClass, availableOnly }} = useSearchOptions();
-    const { filterOptions: { all, item:spoilerFilterItem, itemsOwnedBy }, filterOptions } = useFilterOptions();
+    const { filterOptions: { item:spoilerFilterItem, itemsOwnedBy }, filterOptions } = useFilterOptions();
 
     const getFilteredItems = () => {
-        const spoilerFiltered = all ? initialItems : initialItems.filter(item => {
-            if (isItemShown(item, filterOptions)) return true;
+        const spoilerFiltered = initialItems.filter(item => {
+            if (isItemShown(item, filterOptions)) 
+                return true;
             return spoilerFilterItem.includes(item.id);
         });
         return spoilerFiltered.filter(item => {
-            // Special item don't show it ever!
-            if (item.id === 151) {
-                return false;
-            }
-
             let hit = true;
             if (slots) { 
                 hit = slots.includes(item.slot);

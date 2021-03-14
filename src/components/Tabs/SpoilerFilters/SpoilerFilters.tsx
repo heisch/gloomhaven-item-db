@@ -6,9 +6,14 @@ import JOTLSpoilerFilter from './JOTLSpoilerFilter';
 import PartyManagementFilter from './PartyManagementFilter';
 import ConfirmClassDelete from './ConfirmClassDelete';
 import { PartySpoiler } from './PartySpoiler';
+import ConfirmEnvelopeX from './ConfirmEnvelopeX';
+import { useSearchOptions } from '../../Providers/SearchOptionsProvider';
+import { isFlagEnabled } from '../../../helpers';
 
 const SpoilerFilters = () => {
-    const { filterOptions: {all}, updateFilterOptions } = useFilterOptions();
+    const { filterOptions: {all, envelopeX}, updateFilterOptions } = useFilterOptions();
+    const { updateSearchOptions } = useSearchOptions();
+    const partyModeEnabled = isFlagEnabled("partyMode");
 
     return (
         <Form>
@@ -26,10 +31,14 @@ const SpoilerFilters = () => {
             </Form.Group>
 
             <PartyManagementFilter/>
+            {partyModeEnabled && !envelopeX && <Button onClick={() => updateSearchOptions({confirmEnvelopeX: true})}>
+                Envelope X
+            </Button>}
             <GHSpoilerFilter/>
             <JOTLSpoilerFilter/>
             <PartySpoiler/>
             <ConfirmClassDelete/>
+            <ConfirmEnvelopeX/>
         </Form>
     );
 }
