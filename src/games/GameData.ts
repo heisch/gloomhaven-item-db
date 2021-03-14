@@ -1,53 +1,34 @@
-import { GloomhavenItem, GloomhavenItemSlot, gloomhavenItemSlots } from "../State/Types"
-import { Helpers } from "../helpers";
-import { GameType } from ".";
 import { FilterOptions } from "../components/Providers/FilterOptions";
+import { Helpers } from "../helpers";
+import { GloomhavenItem, GloomhavenItemSlot } from "../State/Types";
+import { GameType } from "./GameType";
+
+export type GameData = {
+    gameType: GameType;
+    gameName: string
+    items: GloomhavenItem[];
+    filterSlots: GloomhavenItemSlot[];
+    isItemShown: (item:GloomhavenItem, filterOptions: FilterOptions) => boolean;
+}
 
 const deSpoilerItemSource = (source:string): string => {
     return source.replace(/{(.{2})}/, (m, m1) => '<img class="icon" src="'+require('../img/classes/'+m1+'.png')+'" alt="" />');
 }
 
-export const LOCAL_STORAGE_PREFIX:string = "ItemView:spoilerFilter_";
+export const getInitialItems = (gameType: GameType) => {
+    const items: GloomhavenItem[] = require(`./${gameType}/items.json`);
+    const filterSlots: GloomhavenItemSlot[] = [];
 
-export abstract class BaseGameData {
-    name: string;
-    gameType: GameType;
-    initItems: Array<GloomhavenItem> | undefined;
-    filterSlots: GloomhavenItemSlot[];
-    constructor(name:string, gameType:GameType){
-        this.name = name;
-        this.gameType = gameType;
-        this.initItems = undefined;
-        this.filterSlots = [];
-    }
+    items.forEach(item => {
 
-    get initialItems() : Array<GloomhavenItem> {
-        if (this.initItems) {
-            return this.initItems;
+        item.descHTML = Helpers.parseEffectText(item.desc);
+        const source = item.source.replace(/Reward from /ig, '')
+                        .replace(/ ?\((Treasure #\d+)\)/ig, "\n$1")
+                        .replace(/Solo Scenario #\d+ — /i, 'Solo ');
+        item.source = deSpoilerItemSource(source);
+        if (!filterSlots.includes(item.slot)) {
+            filterSlots.push(item.slot);
         }
-        const items: Array<GloomhavenItem> = require(`./${this.gameType}/items.json`);
-
-        items.forEach(item => {
-
-            item.descHTML = Helpers.parseEffectText(item.desc);
-            const source = item.source.replace(/Reward from /ig, '')
-                            .replace(/ ?\((Treasure #\d+)\)/ig, "\n$1")
-                            .replace(/Solo Scenario #\d+ — /i, 'Solo ');
-            item.source = deSpoilerItemSource(source);
-            if (!this.filterSlots.includes(item.slot)) {
-                this.filterSlots.push(item.slot);
-            }
-        });
-        this.initItems = items;
-        return this.initItems;
-    }
-
-    abstract isItemShown(item: GloomhavenItem, FilterOptions: FilterOptions) : boolean;
-
-    get ItemFilterSlots() : GloomhavenItemSlot[] {
-        return gloomhavenItemSlots.filter( slot => this.filterSlots.includes(slot));
-    }
-    
+    });
+    return {items, filterSlots};
 }
-
-export default BaseGameData;

@@ -16,7 +16,7 @@ const SearchOptions = (props:Props) => {
     const { setSorting } =  props;
     const { searchOptions:{ property, search, slots, availableOnly }, updateSearchOptions} = useSearchOptions();
     const { filterOptions: { discount, displayAs, classesInUse }, updateFilterOptions} = useFilterOptions();
-    const { gameType, ItemFilterSlots } = useGame();
+    const { gameType, filterSlots } = useGame();
 
     const setFilterSlot = (slot?: GloomhavenItemSlot) => {
         if (!slot)
@@ -94,7 +94,7 @@ const SearchOptions = (props:Props) => {
                 <Form.Group inline>
                     <label>Filter Slot:</label>
                     <Form.Radio label={'all'} checked={slots === undefined} onChange={() => setFilterSlot(undefined)}/>
-                    {ItemFilterSlots.map(itemSlot => 
+                    {filterSlots.map(itemSlot => 
                         <Form.Checkbox key={itemSlot}
                                     label={<img className={'icon'} src={getSlotImageSrc(itemSlot)} alt={itemSlot}/>} 
                                     checked={slots === undefined ? false : slots && slots.includes(itemSlot)} 

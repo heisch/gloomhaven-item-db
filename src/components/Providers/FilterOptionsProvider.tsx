@@ -1,8 +1,10 @@
 import React, { useContext, createContext, ReactNode, useState, useEffect } from 'react'
-import { GameType, LOCAL_STORAGE_PREFIX } from '../../games'
+import { GameType } from '../../games'
 import { ItemManagementType, SoloClassShorthand } from '../../State/Types';
 import { useGame } from '../Game/GameProvider';
 import {initialFilterOptions, OldFilterOptions, FilterOptions} from "./FilterOptions"
+
+const LOCAL_STORAGE_PREFIX:string = "ItemView:spoilerFilter_";
 
 type GameFilterOptions = {
     [GameType.Gloomhaven]: FilterOptions;

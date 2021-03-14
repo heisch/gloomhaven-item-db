@@ -5,17 +5,17 @@ import { useFilterOptions } from "../components/Providers/FilterOptionsProvider"
 
 const useItems = (): Array<GloomhavenItem> => {
 
-    const { isItemShown, initialItems} = useGame();
+    const { isItemShown, items} = useGame();
     const { searchOptions: { property, direction, slots, search, selectedClass, availableOnly }} = useSearchOptions();
     const { filterOptions: { item:spoilerFilterItem, itemsOwnedBy }, filterOptions } = useFilterOptions();
 
     const getFilteredItems = () => {
-        const spoilerFiltered = initialItems.filter(item => {
+        const spoilerFiltered = items.filter((item:GloomhavenItem) => {
             if (isItemShown(item, filterOptions)) 
                 return true;
             return spoilerFilterItem.includes(item.id);
         });
-        return spoilerFiltered.filter(item => {
+        return spoilerFiltered.filter((item:GloomhavenItem) => {
             let hit = true;
             if (slots) { 
                 hit = slots.includes(item.slot);
@@ -44,7 +44,7 @@ const useItems = (): Array<GloomhavenItem> => {
 
     const getSortedAndFilteredItems = () => {
         const items = getFilteredItems();
-        return (items.sort((itemA, itemB) => {
+        return (items.sort((itemA:GloomhavenItem, itemB:GloomhavenItem) => {
             let value = 0;
             switch (property) {
                 case "name":

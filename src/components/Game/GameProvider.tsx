@@ -1,7 +1,8 @@
 import React, { useContext, createContext, ReactNode } from 'react'
-import {BaseGameData, GameType, gameDataTypes} from '../../games'
+import {GameType, gameDataTypes} from '../../games'
+import { GameData } from '../../games/GameData';
 
-export const GameContext = createContext<BaseGameData>(gameDataTypes[GameType.Gloomhaven]);
+export const GameContext = createContext<GameData>(gameDataTypes[GameType.Gloomhaven]);
 
 export function useGame() {
     return useContext(GameContext);

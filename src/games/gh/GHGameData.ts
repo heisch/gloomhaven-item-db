@@ -1,31 +1,34 @@
-import { BaseGameData } from '../GameData'
-import { GloomhavenItem } from '../../State/Types';
-import { GameType } from '..';
-import { FilterOptions } from '../../components/Providers/FilterOptions';
+import { FilterOptions } from "../../components/Providers/FilterOptions";
+import { GloomhavenItem, gloomhavenItemSlots } from "../../State/Types";
+import { GameData, getInitialItems } from "../GameData";
+import { GameType } from "../GameType";
 
-class GHGameData extends BaseGameData  {
-    constructor()
-    {
-        super("Gloomhaven", GameType.Gloomhaven);
-    }
-    isItemShown(item:GloomhavenItem, {all, envelopeX, prosperity, soloClass}: FilterOptions) {
-        // Special case for item 151
-        if (item.id === 151 && !envelopeX) {
-            return false;
-        }
-    
-        if (all) {
-            return true;
-        }
-        if (item.id <= (prosperity+1)*7)
-        {
-            return true;
-        }
-        if (item.soloItem && soloClass.includes(item.soloItem)) {
-            return true
-        };
+export const isItemShown = ({id, soloItem}:GloomhavenItem, {all, envelopeX, prosperity, soloClass}: FilterOptions) => {
+    // Special case for item 151
+    if (id === 151 && !envelopeX) {
         return false;
     }
+
+    if (all) {
+        return true;
+    }
+    if (id <= (prosperity+1)*7)
+    {
+        return true;
+    }
+    if (soloItem && soloClass.includes(soloItem)) {
+        return true
+    };
+    return false;
 }
 
-export default GHGameData;
+const { items, filterSlots} = getInitialItems(GameType.Gloomhaven);
+
+export const GHGameData: GameData = {
+    gameType: GameType.Gloomhaven,
+    gameName: "Gloomhaven",
+    items,
+    filterSlots: gloomhavenItemSlots.filter( slot => filterSlots.includes(slot)),
+    isItemShown
+}
+
