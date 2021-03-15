@@ -8,8 +8,8 @@ type Props = {
     item : GloomhavenItem
 }
 
-const ItemId = ({cost: id}:{cost: number}) => {
-    return (<Label className="itemCost"> #{id} </Label>); 
+const ItemId = ({id}:{id: number}) => {
+    return (<Label className="itemId"> #{id} </Label>); 
 }
 
 const ItemCard = (props:Props) => {
@@ -30,7 +30,7 @@ const ItemCard = (props:Props) => {
                 alt={item.name}
                 onLoad={() => setDraw(true)}
                 className={'item-card'}/>
-            {draw && <ItemId cost={item.id}/>}
+            {draw && <ItemId id={item.id}/>}
             {draw && <ItemManagement item={item}/>}
         </div>
     )

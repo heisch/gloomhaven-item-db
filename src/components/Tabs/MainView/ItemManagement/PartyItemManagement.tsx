@@ -22,7 +22,7 @@ const PartyItemManagement = (props: Props) => {
     const ownersLength = (owners ? owners.length : 0);
     const classesAvailable = ownersLength ? classesInUse.filter(c => !owners.includes(c)) : classesInUse;
 
-    const showAddButton = (ownersLength !== item.count) && classesAvailable.length;
+    const showAddButton = (ownersLength !== item.count) && classesAvailable.length > 0;
     return ( <>
             {`${ownersLength} / ${item.count}`}
             {owners&&owners.map((owner, index) => {

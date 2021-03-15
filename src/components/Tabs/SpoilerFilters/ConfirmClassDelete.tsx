@@ -15,7 +15,7 @@ const ConfirmClassDelete = () => {
   const onApply = () => {
       if (classToRemove) {
           Object.keys(itemsOwnedBy).forEach( key => {
-              if (itemsOwnedBy[parseInt(key)].includes(classToRemove)) {
+              if (itemsOwnedBy[parseInt(key)] && itemsOwnedBy[parseInt(key)].includes(classToRemove)) {
                   const newItemsOwnedBy: ItemsOwnedBy = Object.assign([], itemsOwnedBy);
                   const index = newItemsOwnedBy[parseInt(key)].findIndex( c => c === classToRemove);
                   if (index != -1) {

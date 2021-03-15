@@ -28,7 +28,6 @@ const ItemTable = (props:Props) => {
     const {items, setSorting} = props;
     const { searchOptions: { property, direction} } = useSearchOptions();
     const { filterOptions: { discount, itemManagementType} } = useFilterOptions();
-    const { gameType } = useGame();
 
     const renderSummon = (item: GloomhavenItem) => {
         return item.summon === undefined ? null : (
@@ -43,10 +42,15 @@ const ItemTable = (props:Props) => {
         );
     }
 
+    const costClass = discount < 0 ? 'blue' : discount > 0 ? 'red' : ''
+
     const getCostTitle = () => {
-        return (gameType !== GameType.JawsOfTheLion && discount !== 0)
-        ? (<strong className={"ui text " + (discount < 0 ? 'blue' : 'red')}> Cost ({discount}g)</strong>)
-        : (<strong>Cost</strong>);
+        let cost = "Cost";
+         if (discount !== 0) {
+             cost += ` (${discount}g)`
+         }
+
+        return (<strong className={"ui text " + costClass}>{cost}</strong>);
     }
 
     return (
@@ -67,9 +71,7 @@ const ItemTable = (props:Props) => {
                 </Table.Header>
                 <Table.Body>
                     {items.map(item => {
-                        const cost = gameType !== GameType.JawsOfTheLion && discount !== 0
-                            ? (<strong className={"ui text " + (discount < 0 ? 'blue' : 'red')}>{item.cost + discount}g</strong>)
-                            : (<strong>{item.cost}g</strong>);
+                        const cost = <strong className={"ui text " + costClass}>{item.cost + discount}g</strong>;
                         return (
                             <Table.Row key={item.id}>
                                 <Table.Cell className={'id-col'} textAlign={'right'}>#{(item.id + '').padStart(3, '0')}</Table.Cell>

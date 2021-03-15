@@ -1,5 +1,6 @@
 import React, { useContext, createContext, ReactNode, useState, useEffect } from 'react'
 import { GameType } from '../../games'
+import { isFlagEnabled } from '../../helpers';
 import { ItemManagementType, SoloClassShorthand } from '../../State/Types';
 import { useGame } from '../Game/GameProvider';
 import {initialFilterOptions, OldFilterOptions, FilterOptions} from "./FilterOptions"
@@ -82,11 +83,18 @@ const loadFromStorage = (filterLocalStorageKey:string) => {
          spoilerFilter.itemManagementType = spoilerFilter.enableStoreStockManagement ? ItemManagementType.Simple:  ItemManagementType.None;
          // @ts-ignore
          delete spoilerFilter.enableStoreStockManagement
+    }
+
+    if (!isFlagEnabled("partyMode") && spoilerFilter.itemManagementType === ItemManagementType.Party) {
+        spoilerFilter.itemManagementType = ItemManagementType.None;    
+    }
+
+    if (spoilerFilter.hasOwnProperty("lockSpoilerPanel")) { 
          // @ts-ignore
          delete spoilerFilter.lockSpoilerPanel;
     }
 
-
+    localStorage.setItem(filterLocalStorageKey, JSON.stringify(spoilerFilter));
     return spoilerFilter;
 }
 

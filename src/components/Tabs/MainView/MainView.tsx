@@ -7,10 +7,8 @@ import useItems  from '../../../hooks/useItems'
 import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
 import ImportData from './ImportData';
 
-
 // .git ignore vscode file
 // Look at Object.assign calls
-// Make smarter contols for gameType
 
 const MainView = () => {
     const { filterOptions: { all}, lockSpoilerPanel } = useFilterOptions();

@@ -185,7 +185,7 @@ img.item-card {
     position: absolute;
 }
 
-.item-card-wrapper .ui.label.itemCost {
+.item-card-wrapper .ui.label.itemId {
     position: absolute;
     right: 7px;
     top: 0px;
