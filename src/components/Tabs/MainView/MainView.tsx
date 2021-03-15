@@ -8,6 +8,8 @@ import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
 import ImportData from './ImportData';
 
 // .git ignore vscode file
+// List mode looks crappy
+// Buying uses the first element even if nothing is selected
 // Look at Object.assign calls
 
 const MainView = () => {

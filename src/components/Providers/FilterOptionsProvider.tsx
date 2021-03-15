@@ -46,6 +46,25 @@ type Props = {
     children: ReactNode;
 }
 
+const fixFilterOptions = (filterOptions: FilterOptions) => {
+    if (filterOptions.hasOwnProperty("enableStoreStockManagement")) { 
+        //@ts-ignore
+        filterOptions.itemManagementType = filterOptions.enableStoreStockManagement ? ItemManagementType.Simple:  ItemManagementType.None;
+         // @ts-ignore
+         delete filterOptions.enableStoreStockManagement
+    }
+
+    if (!isFlagEnabled("partyMode") && filterOptions.itemManagementType === ItemManagementType.Party) {
+        filterOptions.itemManagementType = ItemManagementType.None;    
+    }
+
+    if (filterOptions.hasOwnProperty("lockSpoilerPanel")) { 
+         // @ts-ignore
+         delete filterOptions.lockSpoilerPanel;
+    }
+    return filterOptions;
+}
+
 const loadFromStorage = (filterLocalStorageKey:string) => {
     const storage = localStorage.getItem(filterLocalStorageKey);
 
@@ -78,21 +97,7 @@ const loadFromStorage = (filterLocalStorageKey:string) => {
         spoilerFilter = Object.assign({}, initialFilterOptions, configFromStorage);
     }
 
-    if (spoilerFilter.hasOwnProperty("enableStoreStockManagement")) { 
-        //@ts-ignore
-         spoilerFilter.itemManagementType = spoilerFilter.enableStoreStockManagement ? ItemManagementType.Simple:  ItemManagementType.None;
-         // @ts-ignore
-         delete spoilerFilter.enableStoreStockManagement
-    }
-
-    if (!isFlagEnabled("partyMode") && spoilerFilter.itemManagementType === ItemManagementType.Party) {
-        spoilerFilter.itemManagementType = ItemManagementType.None;    
-    }
-
-    if (spoilerFilter.hasOwnProperty("lockSpoilerPanel")) { 
-         // @ts-ignore
-         delete spoilerFilter.lockSpoilerPanel;
-    }
+    spoilerFilter = fixFilterOptions(spoilerFilter);
 
     localStorage.setItem(filterLocalStorageKey, JSON.stringify(spoilerFilter));
     return spoilerFilter;
@@ -152,23 +157,22 @@ const FilterProvider = (props:Props) => {
                    Object.values(GameType).forEach( (gt:GameType) => {
                        const filterOptions = hashConfig[gt] || initialFilterOptions;
                        if (filterOptions) {
-                           const newFilterOpions = Object.assign({}, initialFilterOptions, filterOptions);
+                           oldLockSpoilerPanel = filterOptions.lockSpoilerPanel;
+                           const newFilterOpions = fixFilterOptions(Object.assign({}, initialFilterOptions, filterOptions));
                             localStorage.setItem(LOCAL_STORAGE_PREFIX + gt, JSON.stringify(newFilterOpions));
                             newGameFilterOptions[gt] = newFilterOpions;
-                            oldLockSpoilerPanel = newFilterOpions.lockSpoilerPanel;
                        }
                     })
             }
             else if (hashConfig.hasOwnProperty("prosperity")) {
                 // This is the old version of the data before other games were added.  Just add it to gloomhaven.
-                const value = hashConfig as FilterOptions;
+                const value = fixFilterOptions(hashConfig as FilterOptions);
                 localStorage.setItem(LOCAL_STORAGE_PREFIX + GameType.Gloomhaven, JSON.stringify(value));
                 newGameFilterOptions[GameType.Gloomhaven] = value;
                 localStorage.setItem(LOCAL_STORAGE_PREFIX + GameType.JawsOfTheLion, JSON.stringify(initialFilterOptions));
                 newGameFilterOptions[GameType.JawsOfTheLion] = initialFilterOptions;
             }
             setGameFilterOptions(newGameFilterOptions);
-          }
           if (hashConfig.hasOwnProperty("lockSpoilerPanel")) {
               setLockSpoilerPanel(hashConfig.lockSpoilerPanel);
               localStorage.setItem("lockSpoilerPanel", hashConfig.lockSpoilerPanel.toString());
@@ -177,7 +181,8 @@ const FilterProvider = (props:Props) => {
             setLockSpoilerPanel(oldLockSpoilerPanel);
             localStorage.setItem("lockSpoilerPanel", oldLockSpoilerPanel.toString());
           }
-          location.hash = "";
+        }
+        location.hash = "";
     }
 
     const getShareHash = (lockSpoilerPanel: boolean) => {
