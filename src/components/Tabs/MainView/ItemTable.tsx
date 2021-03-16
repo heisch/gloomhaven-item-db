@@ -3,8 +3,6 @@ import { GloomhavenItem, ItemManagementType, SortProperty } from '../../../State
 import {  Table, Popup, Icon, Image } from 'semantic-ui-react';
 import ItemManagement from './ItemManagement';
 import { Helpers, getSlotImageSrc } from '../../../helpers';
-import { useGame } from '../../Game/GameProvider';
-import { GameType } from '../../../games';
 import { useSearchOptions } from '../../Providers/SearchOptionsProvider';
 import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
 

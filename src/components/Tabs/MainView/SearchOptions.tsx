@@ -1,7 +1,7 @@
 import React from 'react'
-import { Form, Button, Input, FormInput, Label} from 'semantic-ui-react';
+import { Form, Button, Input, FormInput, Label, Icon} from 'semantic-ui-react';
 import { getSlotImageSrc } from '../../../helpers';
-import { GloomhavenItemSlot, ItemViewDisplayType, PullDownOptions, SortProperty} from '../../../State/Types';
+import { GloomhavenItemSlot, ItemViewDisplayType, PullDownOptions, SortDirection, SortProperty} from '../../../State/Types';
 import { useGame } from '../../Game/GameProvider';
 import { GameType } from '../../../games';
 import { useSearchOptions } from '../../Providers/SearchOptionsProvider';
@@ -14,8 +14,8 @@ type Props = {
 
 const SearchOptions = (props:Props) => {
     const { setSorting } =  props;
-    const { searchOptions:{ property, search, slots, availableOnly }, updateSearchOptions} = useSearchOptions();
-    const { filterOptions: { displayAs, classesInUse }, updateFilterOptions} = useFilterOptions();
+    const { searchOptions:{ property, search, slots, availableOnly, direction }, updateSearchOptions} = useSearchOptions();
+    const { filterOptions: { displayAs, classesInUse, discount }, updateFilterOptions} = useFilterOptions();
     const { filterSlots } = useGame();
 ``
     const setFilterSlot = (slot?: GloomhavenItemSlot) => {
@@ -39,6 +39,10 @@ const SearchOptions = (props:Props) => {
             updateSearchOptions({slots: value});
     }
 
+    const toggleSortDirection = () => {
+        updateSearchOptions({direction: direction === SortDirection.ascending ? SortDirection.descending : SortDirection.ascending});
+    }
+
 
     return (
         <React.Fragment>
@@ -55,21 +59,6 @@ const SearchOptions = (props:Props) => {
                             }}>Images</Button>
                     </Button.Group>
                 </Form.Group>
-                {displayAs === ItemViewDisplayType.Images && <Form.Group inline>
-                    <label>Sort By:</label>
-                    <Form.Select
-                        value={property}
-                        options={[
-                            {value: 'id', text: 'Item Number'},
-                            {value: 'slot', text: 'Equipment Slot'},
-                            {value: 'cost', text: 'Cost'},
-                            {value: 'name', text: 'Name'},
-                            {value: 'source', text: 'Source'},
-                            {value: 'use', text: 'Use'}
-                        ]}
-                        onChange={(obj, e) => setSorting(e.value as SortProperty)}
-                    />
-                </Form.Group>}
                 <Form.Group inline>
                     <label>Filter Slot:</label>
                     <Form.Radio label={'all'} checked={slots === undefined} onChange={() => setFilterSlot(undefined)}/>
@@ -105,7 +94,32 @@ const SearchOptions = (props:Props) => {
                             }}>All</Button>
                     </Button.Group>
                 </Form.Group>
-
+                {displayAs === ItemViewDisplayType.Images &&
+                <>
+                 <Form.Group inline>
+                    <label>Sort By:</label>
+                    <Form.Select
+                        value={property}
+                        options={[
+                            {value: 'id', text: 'Item Number'},
+                            {value: 'slot', text: 'Equipment Slot'},
+                            {value: 'cost', text: 'Cost'},
+                            {value: 'name', text: 'Name'},
+                            {value: 'source', text: 'Source'},
+                            {value: 'use', text: 'Use'}
+                        ]}
+                        onChange={(obj, e) => setSorting(e.value as SortProperty)}
+                    />
+                    <Button 
+                        icon={<Icon name={direction === SortDirection.ascending ? `angle up` : `angle down`}/>}
+                        checked={direction === SortDirection.ascending}
+                        onClick={() => toggleSortDirection()}/>                   
+                </Form.Group> 
+                <Form.Group inline>
+                    <label>Store Discount:</label>
+                    {`${discount}g`}
+                </Form.Group>
+                </>}
             </Form>
         </React.Fragment>
     );

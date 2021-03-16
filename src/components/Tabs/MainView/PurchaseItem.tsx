@@ -11,14 +11,14 @@ const PurchaseItem = () => {
   const { filterOptions: { discount, classesInUse, itemsOwnedBy}, updateFilterOptions } = useFilterOptions();
   const owners = itemsOwnedBy && selectedItem ? itemsOwnedBy[selectedItem.id] : undefined;
   const classesAvailable = owners && owners.length > 0 ? classesInUse.filter(c => !owners.includes(c)) : classesInUse;
-  const [buyer, setBuyer] = useState<PullDownOptions>(classesAvailable[0] || classesInUse[0]);
+  const [buyer, setBuyer] = useState<PullDownOptions>(undefined);
 
   const onClose = () => {
     updateSearchOptions({selectedItem: undefined})
   };
 
   useEffect(() => {
-    setBuyer(classesAvailable[0]);
+    setBuyer(undefined);
   }, [selectedItem])
 
   const onApply = () => {
@@ -54,6 +54,7 @@ const PurchaseItem = () => {
             Close{" "}
           </Button>
           <Button
+            disabled={!buyer}
             positive
             icon="checkmark"
             labelPosition="right"
