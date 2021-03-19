@@ -1,10 +1,12 @@
 import React, { useCallback, useState } from 'react'
 import { Form, Icon, Message } from 'semantic-ui-react';
+import { isFlagEnabled } from '../../helpers';
 import { useFilterOptions } from '../Providers/FilterOptionsProvider';
 import UploadForm from './Share/UploadForm';
 
 const Share = () => {
     const { getShareHash } = useFilterOptions();
+    const shareEnabled = isFlagEnabled("sharing");
     const [ lockSpoilerPanel, setLockSpoilerPanel] = useState(false);
 
     const configHash = getShareHash(lockSpoilerPanel);
@@ -32,7 +34,7 @@ const Share = () => {
                         document.execCommand("copy");
                     }}>Copy</Form.Button>
                 </Form.Group>
-                <UploadForm configHash={configHash}/>
+                {shareEnabled && <UploadForm configHash={configHash}/>}
             </Form>
         </>
     );

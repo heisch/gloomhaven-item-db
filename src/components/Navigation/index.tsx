@@ -2,11 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
  
 import * as ROUTES from '../../constants/routes';
+import { isFlagEnabled } from '../../helpers';
 import { useFirebase } from '../Firebase';
 import SignOutButton from '../Tabs/Share/Account/SignOut';
  
 const Navigation = () => {
   const {authUser} = useFirebase();
+
+  const shareEnabled = isFlagEnabled("sharing");
+
+  if (!shareEnabled) {
+    return null;
+  }
 
   const NavigationAuth = () => (
     <ul>
