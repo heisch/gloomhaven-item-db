@@ -5,16 +5,9 @@ import './App.css';
 import MainView from './components/Tabs/MainView/MainView';
 import GameProvider from './components/Game/GameProvider'
 import { GameType } from './games';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import SearchOptionsProvider from './components/Providers/SearchOptionsProvider';
 import FilterOptionsProvider from './components/Providers/FilterOptionsProvider';
 import { GameSelector } from './components/GameSelector';
-import Navigation from './components/Navigation';
-import SignInPage from './components/Tabs/Share/Account/SignIn';
-import SignUpPage from './components/Tabs/Share/Account/SignUp';
-import PasswordForgetPage from './components/Tabs/Share/Account/PasswordForgotten';
-import AccountPage from './components/Tabs/Share/Account/Account';
-import * as ROUTES from './constants/routes';
 
 const App = () => {
   const [gameType, setGameType] = useState<GameType>(
@@ -29,32 +22,13 @@ const App = () => {
   return (
     <Container>
       <GameSelector defaultGameType={gameType} onChange={onGameTypeChanged} />
-        <Router>
-          <Navigation />
-          <Switch>
-            <Route exact path={ROUTES.HOME}>
-              <GameProvider gameType={gameType}>
-              <FilterOptionsProvider>
-                    <SearchOptionsProvider>
-                      <MainView />
-                    </SearchOptionsProvider>
-                </FilterOptionsProvider>
-              </GameProvider>
-            </Route>
-            <Route exact path={ROUTES.SIGN_IN}>
-              <SignInPage />
-            </Route>
-            <Route exact path={ROUTES.SIGN_UP}>
-              <SignUpPage />
-            </Route>
-            <Route exact path={ROUTES.PASSWORD_FORGET}>
-              <PasswordForgetPage />
-            </Route>
-            <Route exact path={ROUTES.ACCOUNT}>
-              <AccountPage />
-            </Route>
-          </Switch>
-        </Router>
+          <GameProvider gameType={gameType}>
+          <FilterOptionsProvider>
+                <SearchOptionsProvider>
+                  <MainView />
+                </SearchOptionsProvider>
+            </FilterOptionsProvider>
+          </GameProvider>
     </Container>
   );
 };

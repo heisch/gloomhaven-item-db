@@ -1,13 +1,14 @@
-import React, { useCallback, useState } from 'react'
-import { Form, Icon, Message } from 'semantic-ui-react';
+import React, { useState } from 'react'
+import { Form } from 'semantic-ui-react';
 import { isFlagEnabled } from '../../helpers';
 import { useFilterOptions } from '../Providers/FilterOptionsProvider';
+import { LockSpoilerToggle } from './Share/LockSpoilerToggle';
 import UploadForm from './Share/UploadForm';
 
 const Share = () => {
     const { getShareHash } = useFilterOptions();
     const shareEnabled = isFlagEnabled("sharing");
-    const [ lockSpoilerPanel, setLockSpoilerPanel] = useState(false);
+    const [ lockSpoilerPanel] = useState(false);
 
     const configHash = getShareHash(lockSpoilerPanel);
 
@@ -15,18 +16,8 @@ const Share = () => {
     return (
         <>
             <p>Here you can generate a link to this app with your current spoiler configuration.</p>
+            <LockSpoilerToggle/>
             <Form>
-                <Form.Group inline>
-                    <label htmlFor={'share-spoiler-toggle'}>Deactivate spoiler configuration panel for people
-                        following your shared link.</label>
-                    <Form.Checkbox id={'share-spoiler-toggle'} toggle className={'share-spoiler-toggle'}
-                                    checked={lockSpoilerPanel}
-                                    onChange={() => setLockSpoilerPanel(!lockSpoilerPanel)}/>
-                </Form.Group>
-                {lockSpoilerPanel && <Message negative>
-                    <Icon name="exclamation triangle"/>Do not open the link yourself or you will not be able to
-                    change any settings anymore
-                </Message>}
                 <Form.Group>
                     <Form.Input id={'share-url-input'} width={14} value={shareUrl}/>
                     <Form.Button width={2} onClick={() => {
