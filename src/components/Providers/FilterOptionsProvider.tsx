@@ -1,4 +1,4 @@
-import React, { useContext, createContext, ReactNode, useState, useEffect } from 'react'
+import React, { useContext, createContext, ReactNode, useState, useEffect, useCallback } from 'react'
 import { GameType } from '../../games'
 import { isFlagEnabled } from '../../helpers';
 import { ItemManagementType, SoloClassShorthand } from '../../State/Types';
@@ -21,6 +21,7 @@ const initialGameFilterOptions: GameFilterOptions = {
 
 type ContextData = {
     loadFromHash: () => void,
+    getImportHash: () => string | undefined,
     filterOptions: FilterOptions, 
     updateFilterOptions: (options: any) => void,
     lockSpoilerPanel: boolean,
@@ -30,6 +31,7 @@ type ContextData = {
 
 const initialContextData = {
     loadFromHash: () => {}, 
+    getImportHash: () => undefined, 
     filterOptions: initialFilterOptions, 
     updateFilterOptions: (options: any) => {},
     lockSpoilerPanel: false,
@@ -105,22 +107,18 @@ const loadFromStorage = (filterLocalStorageKey:string) => {
 
 const oldFilterLocalStorageKey = 'ItemView:spoilerFilter';
 
-const parseHash = (): any | undefined => {
-    const importHash = location.hash.substr(1) || undefined;
-    if (importHash !== undefined)
-    {
-        try {
-            return JSON.parse(atob(importHash));
-        } catch (e) {
-            return undefined;
-        }
+const parseHash = (importHash: string): any | undefined => {
+    try {
+        return JSON.parse(atob(importHash));
+    } catch (e) {
+        return undefined;
     }
-    return undefined;
 }
 
 const FilterProvider = (props:Props) => {
     const { children} = props;
     const {gameType} = useGame();
+    const [dataLoaded, setDataLoaded] = useState(false);
     const [ gameFilterOptions, setGameFilterOptions] = useState(initialGameFilterOptions);
     const [ lockSpoilerPanel, setLockSpoilerPanel] = useState(localStorage.getItem("lockSpoilerPanel") === "true" || false);
     const { Provider } = Context;
@@ -140,6 +138,7 @@ const FilterProvider = (props:Props) => {
         })
 
         setGameFilterOptions(newGameFilterOptions);
+        setDataLoaded(true);
     },[]);
 
     const updateFilterOptions = ( options : any ) => {
@@ -148,8 +147,27 @@ const FilterProvider = (props:Props) => {
         localStorage.setItem(LOCAL_STORAGE_PREFIX + gameType, JSON.stringify(gameFilterOptions[gameType]) );
     }
 
+    const getShareHash = (lockSpoilerPanel: boolean) => {
+        gameFilterOptions["lockSpoilerPanel"] = lockSpoilerPanel;
+        return btoa(JSON.stringify(gameFilterOptions));
+    };
+
+    const getImportHash = useCallback(() => {
+        if (!dataLoaded) {
+            return undefined;
+        }
+        const currentHash = getShareHash(localStorage.getItem("lockSpoilerPanel") === "true");
+        const importHash  = location.hash && location.hash.substr(1);
+        if (importHash.length > 0 && currentHash !== importHash) {
+            return importHash;
+        }
+        location.hash = "";
+        return undefined;
+    }, [dataLoaded]);
+
     const loadFromHash = () => {
-        const hashConfig = parseHash();
+        const importHash = getImportHash()!;
+        const hashConfig = parseHash(importHash);
         const newGameFilterOptions:GameFilterOptions = Object.assign({}, gameFilterOptions);
         let oldLockSpoilerPanel = false;
         if (hashConfig !== undefined) {
@@ -185,14 +203,10 @@ const FilterProvider = (props:Props) => {
         location.hash = "";
     }
 
-    const getShareHash = (lockSpoilerPanel: boolean) => {
-        gameFilterOptions["lockSpoilerPanel"] = lockSpoilerPanel;
-        return btoa(JSON.stringify(gameFilterOptions));
-    }
-
     return <Provider value={{ filterOptions:gameFilterOptions[gameType], 
                                 updateFilterOptions, 
                                 loadFromHash, 
+                                getImportHash, 
                                 lockSpoilerPanel, 
                                 getShareHash
                             }}>{children}</Provider>

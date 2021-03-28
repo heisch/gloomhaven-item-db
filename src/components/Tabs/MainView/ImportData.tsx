@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Header, Icon, Modal } from "semantic-ui-react";
 import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 
 const ImportData = () => {
-    const [isOpen, setIsOpen] = useState(location.hash && location.hash.substr(1).length > 0 || false);
-    const { loadFromHash } = useFilterOptions();
+    const { loadFromHash, getImportHash } = useFilterOptions();
+    const importHash = getImportHash();
+    const [isOpen, setIsOpen] = useState(importHash && importHash.length > 0 || false);
+
+    useEffect(() => {
+      setIsOpen(importHash && importHash.length > 0 || false);
+    }, [importHash])
 
   return (
     <Modal basic size="small" open={isOpen}>
