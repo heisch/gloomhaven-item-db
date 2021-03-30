@@ -1,14 +1,57 @@
 import React, { useEffect, useState } from "react";
+import qs from "qs";
 import { Button, Header, Icon, Modal } from "semantic-ui-react";
 import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
+import { useFirebase } from "../../Firebase";
 
 const ImportData = () => {
-    const { loadFromHash, getImportHash } = useFilterOptions();
-    const importHash = getImportHash();
+    const { loadFromHash, getImportHash, getShareHash } = useFilterOptions();
+    const { firebase } = useFirebase();
+    const qsImportHash = getImportHash();
+    const [importHash, setImportHash] = useState(qsImportHash);
     const [isOpen, setIsOpen] = useState(importHash && importHash.length > 0 || false);
+    const currentHash = getShareHash(localStorage.getItem("lockSpoilerPanel") === "true");
+
+    useEffect( () => {
+      if (qsImportHash) {
+        setImportHash(qsImportHash);
+      }
+
+    }, [qsImportHash])
 
     useEffect(() => {
-      setIsOpen(importHash && importHash.length > 0 || false);
+      if (!firebase) {
+        return;
+      }
+      
+      if (importHash || qsImportHash) {
+        return;
+      }
+      
+        const urlParams = qs.parse(window.location.search.substr(1));
+        const importUserId = urlParams["importFrom"] as string;
+        if (!importUserId) { 
+            return;
+        }
+  
+        firebase
+            .spoilerFilter(importUserId).on("value", (snapshot) => {
+                if (snapshot.val())
+                {
+                  setImportHash(snapshot.val()["configHash"]);
+                }
+                return;
+            },
+            (error: any)=>  {
+              console.log(error)
+            })
+    }, [firebase])
+
+    useEffect(() => {
+      if (importHash && importHash !== currentHash) {
+        console.log(importHash, currentHash);
+        setIsOpen(importHash && importHash.length > 0 || false);
+      }
     }, [importHash])
 
   return (
@@ -30,7 +73,7 @@ const ImportData = () => {
           <Icon name="remove" /> No
         </Button>
         <Button color="green" inverted onClick={() => {
-            loadFromHash()
+            loadFromHash(importHash)
             setIsOpen(false);
         }}>
           <Icon name="checkmark" /> Yes

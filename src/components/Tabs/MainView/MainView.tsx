@@ -21,23 +21,24 @@ const MainView = () => {
 
     const panes = [];
     
-    if (sharingEnabled) {
-        panes.push(
-            { menuItem: 'Account',                    render: () => <Tab.Pane className={all ? 'spoiler' : ''}>{<Account/>}</Tab.Pane>},
-        );
-    }
     panes.push({ menuItem: 'Item List',                render: () => <Tab.Pane className={all ? 'spoiler' : ''}>{<ItemList items={items}/>}</Tab.Pane> });
-
+    
     if (!lockSpoilerPanel) {
         panes.push(
             { menuItem: 'Spoiler Configuration',    render: () => <Tab.Pane className={all ? 'spoiler' : ''}>{<SpoilerFilters/>}</Tab.Pane>},
             { menuItem: 'Share',                    render: () => <Tab.Pane className={all ? 'spoiler' : ''}>{<Share/>}</Tab.Pane>},
-        );
-    }
+            );
+            if (sharingEnabled) {
+                panes.push(
+                    { menuItem: 'Account',                    render: () => <Tab.Pane className={all ? 'spoiler' : ''}>{<Account/>}</Tab.Pane>},
+                );
+            }
+        }
+        
 
-    panes.push(
-        { menuItem: 'About',                    render: () => <Tab.Pane className={all ? 'spoiler' : ''}>{<></>}</Tab.Pane>},
-    );
+        panes.push(
+            { menuItem: 'About',                    render: () => <Tab.Pane className={all ? 'spoiler' : ''}>{<></>}</Tab.Pane>},
+        );  
 
     return (
         <>

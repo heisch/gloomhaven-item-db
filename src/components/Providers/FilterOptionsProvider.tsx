@@ -20,7 +20,7 @@ const initialGameFilterOptions: GameFilterOptions = {
 };
 
 type ContextData = {
-    loadFromHash: () => void,
+    loadFromHash: (importHash:string | undefined) => void,
     getImportHash: () => string | undefined,
     filterOptions: FilterOptions, 
     updateFilterOptions: (options: any) => void,
@@ -30,7 +30,7 @@ type ContextData = {
 }
 
 const initialContextData = {
-    loadFromHash: () => {}, 
+    loadFromHash: (importHash:string| undefined) => {}, 
     getImportHash: () => undefined, 
     filterOptions: initialFilterOptions, 
     updateFilterOptions: (options: any) => {},
@@ -156,49 +156,49 @@ const FilterProvider = (props:Props) => {
         if (!dataLoaded) {
             return undefined;
         }
-        const currentHash = getShareHash(localStorage.getItem("lockSpoilerPanel") === "true");
         const importHash  = location.hash && location.hash.substr(1);
-        if (importHash.length > 0 && currentHash !== importHash) {
+        if (importHash.length > 0) {
             return importHash;
         }
         location.hash = "";
         return undefined;
     }, [dataLoaded]);
 
-    const loadFromHash = () => {
-        const importHash = getImportHash()!;
-        const hashConfig = parseHash(importHash);
-        const newGameFilterOptions:GameFilterOptions = Object.assign({}, gameFilterOptions);
-        let oldLockSpoilerPanel = false;
-        if (hashConfig !== undefined) {
-            if (hashConfig.hasOwnProperty(GameType.Gloomhaven)) {
-                   Object.values(GameType).forEach( (gt:GameType) => {
-                       const filterOptions = hashConfig[gt] || initialFilterOptions;
-                       if (filterOptions) {
-                           oldLockSpoilerPanel = filterOptions.lockSpoilerPanel;
-                           const newFilterOpions = fixFilterOptions(Object.assign({}, initialFilterOptions, filterOptions));
-                            localStorage.setItem(LOCAL_STORAGE_PREFIX + gt, JSON.stringify(newFilterOpions));
-                            newGameFilterOptions[gt] = newFilterOpions;
-                       }
-                    })
+    const loadFromHash = (importHash:string| undefined) => {
+        if (importHash) {
+            const hashConfig = parseHash(importHash);
+            const newGameFilterOptions:GameFilterOptions = Object.assign({}, gameFilterOptions);
+            let oldLockSpoilerPanel = false;
+            if (hashConfig !== undefined) {
+                if (hashConfig.hasOwnProperty(GameType.Gloomhaven)) {
+                    Object.values(GameType).forEach( (gt:GameType) => {
+                        const filterOptions = hashConfig[gt] || initialFilterOptions;
+                        if (filterOptions) {
+                            oldLockSpoilerPanel = filterOptions.lockSpoilerPanel;
+                            const newFilterOpions = fixFilterOptions(Object.assign({}, initialFilterOptions, filterOptions));
+                                localStorage.setItem(LOCAL_STORAGE_PREFIX + gt, JSON.stringify(newFilterOpions));
+                                newGameFilterOptions[gt] = newFilterOpions;
+                        }
+                        })
+                }
+                else if (hashConfig.hasOwnProperty("prosperity")) {
+                    // This is the old version of the data before other games were added.  Just add it to gloomhaven.
+                    const value = fixFilterOptions(hashConfig as FilterOptions);
+                    localStorage.setItem(LOCAL_STORAGE_PREFIX + GameType.Gloomhaven, JSON.stringify(value));
+                    newGameFilterOptions[GameType.Gloomhaven] = value;
+                    localStorage.setItem(LOCAL_STORAGE_PREFIX + GameType.JawsOfTheLion, JSON.stringify(initialFilterOptions));
+                    newGameFilterOptions[GameType.JawsOfTheLion] = initialFilterOptions;
+                }
+                setGameFilterOptions(newGameFilterOptions);
+            if (hashConfig.hasOwnProperty("lockSpoilerPanel")) {
+                setLockSpoilerPanel(hashConfig.lockSpoilerPanel);
+                localStorage.setItem("lockSpoilerPanel", hashConfig.lockSpoilerPanel.toString());
             }
-            else if (hashConfig.hasOwnProperty("prosperity")) {
-                // This is the old version of the data before other games were added.  Just add it to gloomhaven.
-                const value = fixFilterOptions(hashConfig as FilterOptions);
-                localStorage.setItem(LOCAL_STORAGE_PREFIX + GameType.Gloomhaven, JSON.stringify(value));
-                newGameFilterOptions[GameType.Gloomhaven] = value;
-                localStorage.setItem(LOCAL_STORAGE_PREFIX + GameType.JawsOfTheLion, JSON.stringify(initialFilterOptions));
-                newGameFilterOptions[GameType.JawsOfTheLion] = initialFilterOptions;
+            else {
+                setLockSpoilerPanel(oldLockSpoilerPanel);
+                localStorage.setItem("lockSpoilerPanel", oldLockSpoilerPanel.toString());
             }
-            setGameFilterOptions(newGameFilterOptions);
-          if (hashConfig.hasOwnProperty("lockSpoilerPanel")) {
-              setLockSpoilerPanel(hashConfig.lockSpoilerPanel);
-              localStorage.setItem("lockSpoilerPanel", hashConfig.lockSpoilerPanel.toString());
-          }
-          else {
-            setLockSpoilerPanel(oldLockSpoilerPanel);
-            localStorage.setItem("lockSpoilerPanel", oldLockSpoilerPanel.toString());
-          }
+            }
         }
         location.hash = "";
     }

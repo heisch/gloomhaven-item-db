@@ -1,8 +1,6 @@
-import React, { useState, ChangeEvent } from 'react'
+import React, { useState} from 'react'
 import { Form } from 'semantic-ui-react';
 import { useFirebase } from '../../Firebase';
-import { useHistory } from 'react-router';
-import * as ROUTES from '../../../constants/routes';
 
 type Props = {
     configHash: string;
@@ -11,36 +9,10 @@ type Props = {
 const UploadForm = (props:Props) => {
     const { configHash } = props;
     const [error, setError] = useState<Error| null>(null);
-    const [ importUserId, setImportUserId] = useState<string|undefined>();
     const { firebase, authUser} = useFirebase();
-    const history = useHistory();
 
-    const importData = () => {
-        if (!firebase) {
-            setError(new Error("No firebase"));
-            return;
-        }
-
-        const userId = importUserId || authUser && authUser.uid;
-        if (!userId){
-            setError(new Error("No user id to fetch"));
-            return;
-        }
-
-        firebase
-            .spoilerFilter(userId).on("value", (snapshot) => {
-                if (snapshot.val())
-                {
-                    console.log(snapshot);
-                    history.push(ROUTES.HOME + "#" + snapshot.val()["configHash"]);
-                    history.go(0);
-                    setError(null);
-                }
-                else {
-                    setError(new Error(`Cannot find data for user ${userId}`))
-                }
-            },
-            (error: any)=> setError(error))
+    if (!authUser || authUser.isAnonymous) {
+        return null
     }
 
     const exportData = () => {
@@ -57,16 +29,21 @@ const UploadForm = (props:Props) => {
             setError(e);
         }
     }
-    
+
+    const authUserId = authUser && !authUser.isAnonymous && authUser.uid;
+
+    const shareUrl = location.origin + location.pathname + '?importFrom=' + authUserId;
+
     return (
         <>
+            <p>Here you can generate a link to your account that others can export the data at any time. All you need to do is export the data below.</p>
+            <Form.Input id={'export-url-input'} width={14} value={shareUrl}/>
+                <Form.Button width={2} onClick={() => {
+                    (document.getElementById('export-url-input') as HTMLInputElement).select();
+                    document.execCommand("copy");
+                }}>Copy</Form.Button>
             <Form.Group>
-                <Form.Button onClick={() => importData()}>Import</Form.Button>
-                <Form.Input value={importUserId} onChange={(e:ChangeEvent<HTMLInputElement>) => setImportUserId(e.target.value)}/>
-            </Form.Group>
-            <Form.Group>
-                { authUser && !authUser.isAnonymous && <Form.Button onClick={() => exportData()}>Export</Form.Button> }
-                { authUser && !authUser.isAnonymous && authUser.uid }
+            { authUser && !authUser.isAnonymous && <Form.Button onClick={() => exportData()}>Export</Form.Button> }
             </Form.Group>
             {error && <Form.Field>{error.message}</Form.Field>} 
         </>
