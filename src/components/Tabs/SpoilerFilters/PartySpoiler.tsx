@@ -33,9 +33,9 @@ export const PartySpoiler = () => {
 
     return <Form.Group inline className={'inline-break'}>
                 <label>Party Members:</label>
-                <ClassList classes={ghList} label="Gloomhaven:" onClick={toggleClassFilter} isEnabled={(className: ClassesInUse) => classesInUse.includes(className)} />
-                <ClassList classes={fcClassList} label="Forgotten Circles:" onClick={toggleClassFilter} isEnabled={(className: ClassesInUse) => classesInUse.includes(className)} />
-                <ClassList classes={jotlClassList} label="Jaws of the Lion:" onClick={toggleClassFilter} isEnabled={(className: ClassesInUse) => classesInUse.includes(className)} />
+                <ClassList classes={ghList} label="Gloomhaven:" onClick={toggleClassFilter} isUsed={(className: ClassesInUse) => classesInUse.includes(className)} />
+                <ClassList classes={fcClassList} label="Forgotten Circles:" onClick={toggleClassFilter} isUsed={(className: ClassesInUse) => classesInUse.includes(className)} />
+                <ClassList classes={jotlClassList} label="Jaws of the Lion:" onClick={toggleClassFilter} isUsed={(className: ClassesInUse) => classesInUse.includes(className)} />
             </Form.Group>
         
 }

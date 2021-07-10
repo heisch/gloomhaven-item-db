@@ -79,8 +79,12 @@ img.ui.image.icon {
     border-radius: 100%;
 }
 
-img.ui.image.icon.disabled {
+img.ui.image.icon.unused {
     border: 1px solid transparent;
+}
+
+img.ui.image.icon.disabled {
+    cursor:not-allowed;
 }
 
 .pull-right {

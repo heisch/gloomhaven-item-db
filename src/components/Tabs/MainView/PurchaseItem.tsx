@@ -1,40 +1,59 @@
 import React, {useEffect, useState } from "react";
 import { Button, List, Modal } from "semantic-ui-react";
-import { PullDownOptions } from "../../../State/Types";
-import ClassDropdown from "./ClassDropdown";
+import { ClassesInUse, PullDownOptions } from "../../../State/Types";
 import { useSearchOptions } from "../../Providers/SearchOptionsProvider";
 import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 import { ItemsOwnedBy } from "../../Providers/FilterOptions";
+import { ClassList } from '../SpoilerFilters/ClassList';
 
 const PurchaseItem = () => {
   const { searchOptions: { selectedItem }, updateSearchOptions}  = useSearchOptions();
   const { filterOptions: { discount, classesInUse, itemsOwnedBy}, updateFilterOptions } = useFilterOptions();
-  const owners = itemsOwnedBy && selectedItem ? itemsOwnedBy[selectedItem.id] : undefined;
-  const classesAvailable = owners && owners.length > 0 ? classesInUse.filter(c => !owners.includes(c)) : classesInUse;
-  const [buyer, setBuyer] = useState<PullDownOptions>(undefined);
+  const [owners, setOwners] = useState<PullDownOptions[]>([]);
+
+  useEffect(() => {
+    if (!selectedItem || !itemsOwnedBy) {
+      return;
+    }
+    setOwners(itemsOwnedBy[selectedItem.id] || []);
+  }, [selectedItem,  itemsOwnedBy])
 
   const onClose = () => {
     updateSearchOptions({selectedItem: undefined})
   };
 
-  useEffect(() => {
-    setBuyer(undefined);
-  }, [selectedItem])
-
   const onApply = () => {
       if (selectedItem) {
         const newItemsOwnedBy: ItemsOwnedBy = Object.assign([], itemsOwnedBy);
-        if (!newItemsOwnedBy[selectedItem.id]) {
-          newItemsOwnedBy[selectedItem.id] = [];
+        if (owners) {
+          newItemsOwnedBy[selectedItem.id] = owners;
         }
-        newItemsOwnedBy[selectedItem.id].push(buyer);
         updateFilterOptions({itemsOwnedBy: newItemsOwnedBy})
       }
     onClose();
   };
 
-  const onChange = (newClass: PullDownOptions) => {
-    setBuyer(newClass);
+  const toggleOwnership = (className: ClassesInUse) => {
+    if (!owners || !selectedItem) {
+      return;
+    }
+    const value = Object.assign([], owners);
+    if (value.includes(className)) {
+        value.splice(value.indexOf(className), 1);
+    } else if (owners.length < selectedItem.count) {
+       value.push(className)
+    }
+    setOwners(value);
+  }
+
+  const isItemEnabled = (key:PullDownOptions) => {
+    if (!selectedItem || !owners) {
+      return false;
+    }
+    if (owners.includes(key)) {
+      return true;
+    }
+    return owners.length < selectedItem.count;
   }
 
   return (
@@ -45,7 +64,14 @@ const PurchaseItem = () => {
             <List.Item>Name: {selectedItem && selectedItem.name}</List.Item>
             <List.Item>Cost: {selectedItem && selectedItem.cost + discount}</List.Item>
             <List.Item>
-              <ClassDropdown className="classdropdown" optionsList={classesAvailable} onChange={onChange}/>
+              <ClassList 
+                classes={classesInUse} 
+                label="Party Members" 
+                onClick={toggleOwnership} 
+                isEnabled={(className:ClassesInUse) => isItemEnabled(className)}
+                isUsed={
+                  (className:ClassesInUse) => owners ? owners.includes(className) : false
+                }/>
             </List.Item>
           </List>
         </Modal.Content>
@@ -54,7 +80,6 @@ const PurchaseItem = () => {
             Close{" "}
           </Button>
           <Button
-            disabled={!buyer}
             positive
             icon="checkmark"
             labelPosition="right"

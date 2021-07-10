@@ -77,7 +77,7 @@ const GHSpoilerFilter = () => {
             <Form.Field>
                 <Form.Group inline className={'inline-break'}>
                     <ClassList 
-                        isEnabled={(className: ClassesInUse) => soloClass.includes(className)}  
+                        isUsed={(className: ClassesInUse) => soloClass.includes(className)}  
                         label={"Solo Class Items:"} 
                         classes={classList} 
                         onClick={toggleClassFilter}/>

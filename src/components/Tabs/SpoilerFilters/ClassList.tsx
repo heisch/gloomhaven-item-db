@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Form, Image } from "semantic-ui-react";
 import { ClassesInUse } from "../../../State/Types";
 
@@ -6,11 +6,12 @@ type Props = {
     label: string;
     classes: ClassesInUse[];
     onClick: (className: ClassesInUse) => void;
-    isEnabled : (className:ClassesInUse) => boolean;
+    isEnabled? : (className:ClassesInUse) => boolean;
+    isUsed : (className:ClassesInUse) => boolean;
 }
 
 export const ClassList = (props: Props) => {
-    const { label, classes, onClick, isEnabled} = props;
+    const { label, classes, onClick, isEnabled, isUsed} = props;
   return (
     <Form.Group inline className={"inline-break"}>
       <label>{label}</label>
@@ -18,7 +19,7 @@ export const ClassList = (props: Props) => {
         <Image
           key={className}
           src={require(`../../../img/classes/${className}.png`)}
-          className={"icon" + (isEnabled(className) ? "" : " disabled")}
+          className={`icon ${!isUsed(className)?"unused":""} ${isEnabled && !isEnabled(className) ? "disabled" : ""}`}
           onClick={() => onClick(className)}
         />
       ))}
