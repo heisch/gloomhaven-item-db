@@ -1,5 +1,5 @@
 import React, {useEffect, useState } from "react";
-import { Button, List, Modal } from "semantic-ui-react";
+import { Button, Form, List, Modal } from "semantic-ui-react";
 import { ClassesInUse, PullDownOptions } from "../../../State/Types";
 import { useSearchOptions } from "../../Providers/SearchOptionsProvider";
 import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
@@ -56,28 +56,39 @@ const PurchaseItem = () => {
     return owners.length < selectedItem.count;
   }
 
+  if (!selectedItem) {
+    return null;
+  }
+
+  const {name, cost, count} = selectedItem;
+
   return (
-    <Modal size="tiny" open={selectedItem !== undefined} onClose={onClose}>
+    <Modal size="tiny" open={true} onClose={onClose}>
         <Modal.Header>Buy Item</Modal.Header>
         <Modal.Content>
-          <List>
-            <List.Item>Name: {selectedItem && selectedItem.name}</List.Item>
-            <List.Item>Cost: {selectedItem && selectedItem.cost + discount}</List.Item>
-            <List.Item>
-              <ClassList 
-                classes={classesInUse} 
-                label="Party Members" 
-                onClick={toggleOwnership} 
-                isEnabled={(className:ClassesInUse) => isItemEnabled(className)}
-                isUsed={
-                  (className:ClassesInUse) => owners ? owners.includes(className) : false
-                }/>
-            </List.Item>
-          </List>
+          <Form>
+            <Form.Group inline>
+              <label>Name:</label> {name}
+            </Form.Group>
+            <Form.Group inline>
+              <label>Cost:</label> {cost + discount}
+            </Form.Group>
+            <Form.Group inline>
+              <label>Items Available:</label> {`${count - owners.length} of ${count}`}
+            </Form.Group>
+            <ClassList 
+              classes={classesInUse} 
+              label="Party Members:" 
+              onClick={toggleOwnership} 
+              isEnabled={(className:ClassesInUse) => isItemEnabled(className)}
+              isUsed={
+                (className:ClassesInUse) => owners ? owners.includes(className) : false
+              }/>
+          </Form>
         </Modal.Content>
         <Modal.Actions>
           <Button negative onClick={onClose}>
-            Close{" "}
+            Close
           </Button>
           <Button
             positive

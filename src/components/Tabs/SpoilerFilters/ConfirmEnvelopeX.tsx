@@ -26,7 +26,7 @@ const ConfirmEnvelopeX = () => {
 
   return (
     <Modal size="tiny" open={confirmEnvelopeX} onClose={onClose}>
-        <Modal.Header>Remove Class</Modal.Header>
+        <Modal.Header>Envelope X</Modal.Header>
         <Modal.Content>
           <List>
             <ListItem>

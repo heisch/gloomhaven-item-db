@@ -9,7 +9,7 @@ const ConfirmClassDelete = () => {
   const { filterOptions: { classesInUse, itemsOwnedBy }, updateFilterOptions} = useFilterOptions();
 
   const onClose = () => {
-    updateSearchOptions({removingClasses: undefined})
+    updateSearchOptions({classToRemove: undefined})
   };
 
   const onApply = () => {
@@ -41,7 +41,7 @@ const ConfirmClassDelete = () => {
     <Modal size="tiny" open={classToRemove !== undefined} onClose={onClose}>
         <Modal.Header>Remove Class</Modal.Header>
         <Modal.Content>
-          Remove this class from the party?
+          Remove this class from the party? This will remove all the items assigned to this character. 
         </Modal.Content>
         <Modal.Actions>
           <Button negative onClick={onClose}>
