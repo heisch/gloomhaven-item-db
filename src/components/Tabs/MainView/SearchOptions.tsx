@@ -1,12 +1,11 @@
 import React from 'react'
-import { Form, Button, Input, FormInput, Label, Icon} from 'semantic-ui-react';
+import { Form, Button, Input, Icon} from 'semantic-ui-react';
 import { getSlotImageSrc } from '../../../helpers';
-import { GloomhavenItemSlot, ItemViewDisplayType, PullDownOptions, SortDirection, SortProperty} from '../../../State/Types';
+import { GloomhavenItemSlot, ItemManagementType, ItemViewDisplayType, PullDownOptions, SortDirection, SortProperty} from '../../../State/Types';
 import { useGame } from '../../Game/GameProvider';
-import { GameType } from '../../../games';
 import { useSearchOptions } from '../../Providers/SearchOptionsProvider';
-import ClassDropdown from './ClassDropdown';
 import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
+import { ClassList } from '../SpoilerFilters/ClassList';
 
 type Props = {
     setSorting : (newProperty: SortProperty) => void;
@@ -14,8 +13,8 @@ type Props = {
 
 const SearchOptions = (props:Props) => {
     const { setSorting } =  props;
-    const { searchOptions:{ property, search, slots, availableOnly, direction }, updateSearchOptions} = useSearchOptions();
-    const { filterOptions: { displayAs, classesInUse, discount }, updateFilterOptions} = useFilterOptions();
+    const { searchOptions:{ property, search, slots, availableOnly, direction, selectedClass }, updateSearchOptions} = useSearchOptions();
+    const { filterOptions: { displayAs, classesInUse, discount, itemManagementType }, updateFilterOptions} = useFilterOptions();
     const { filterSlots } = useGame();
 ``
     const setFilterSlot = (slot?: GloomhavenItemSlot) => {
@@ -78,10 +77,24 @@ const SearchOptions = (props:Props) => {
                         placeholder={'Search...'}
                     />
                 </Form.Group>
-                <Form.Group inline> 
-                    <label>Owner:</label>
-                    <ClassDropdown  optionsList={classesInUse}  onChange={ (option:PullDownOptions) => updateSearchOptions({selectedClass:option})} />
-                </Form.Group>
+                {itemManagementType === ItemManagementType.Party &&
+                    <Form.Group inline> 
+                        <ClassList 
+                            label={"Filter Owner:"} 
+                            classes={classesInUse} 
+                            onClick={ (option:PullDownOptions) => {
+                                if (selectedClass === option) {
+                                    updateSearchOptions({selectedClass:undefined});
+                                }
+                                else {
+                                    updateSearchOptions({selectedClass:option})
+                                }
+                            }
+                            }
+                            isUsed={ (options:PullDownOptions) => selectedClass === options}
+                            />
+                    </Form.Group>
+                }
                 <Form.Group inline>
                     <label>Availability</label>
                     <Button.Group>
