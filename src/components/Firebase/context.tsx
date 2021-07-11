@@ -1,4 +1,4 @@
-import React, { useState, useContext, createContext, useEffect } from 'react';
+import React, { useState, useContext, createContext, useEffect, FC } from 'react';
 import Firebase from './firebase';
 
 type FirebaseContextData = {
@@ -14,7 +14,7 @@ export function useFirebase() {
 
 const { Provider } = FirebaseContext;
 
-const FirebaseProvider: React.FC<{}> = ({ children }) => {
+const FirebaseProvider: FC = ({ children }) => {
     const [firebase, setFirebase] = useState<Firebase>();
     const [authUser, setAuthUser] = useState<firebase.default.User | null>();
     useEffect( () => {

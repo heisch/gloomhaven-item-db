@@ -1,4 +1,4 @@
-import React, { useContext, createContext, ReactNode, useState } from 'react'
+import React, { useContext, createContext, useState, FC } from 'react'
 import { GameType } from '../../games'
 import { PullDownOptions, GloomhavenItem, GloomhavenItemSlot, SortDirection, SortProperty, ClassesInUse } from '../../State/Types';
 import { useGame } from '../Game/GameProvider';
@@ -32,17 +32,22 @@ const initialGameSearchOptions = {
     [GameType.JawsOfTheLion] : initialSearchOptions,
 };
 
-export const Context = createContext({searchOptions: initialSearchOptions, updateSearchOptions: (options: any) => {}});
+type ContextData = {
+    searchOptions: SearchOptions;
+    updateSearchOptions: (options: any) => void;
+}
+
+export const Context = createContext<ContextData|undefined> (undefined);
 
 export function useSearchOptions() {
-    return useContext(Context);
+    const result = useContext(Context);
+    if (!result) {
+        throw Error("No Context Found");
+    }
+    return result;
 }
 
-type Props = {
-    children: ReactNode;
-}
-
-const SearchOptionsProvider = (props:Props) => {
+const SearchOptionsProvider:FC = (props) => {
     const { children} = props;
     const {gameType} = useGame();
     const [ gameSearchOptions, setGameSearchOptions] = useState(initialGameSearchOptions);

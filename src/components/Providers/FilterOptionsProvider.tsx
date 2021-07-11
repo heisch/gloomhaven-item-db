@@ -1,4 +1,4 @@
-import React, { useContext, createContext, ReactNode, useState, useEffect, useCallback } from 'react'
+import React, { useContext, createContext, useState, useEffect, useCallback, FC } from 'react'
 import { GameType } from '../../games'
 import { isFlagEnabled } from '../../helpers';
 import { ItemManagementType, SoloClassShorthand } from '../../State/Types';
@@ -29,23 +29,14 @@ type ContextData = {
 
 }
 
-const initialContextData = {
-    loadFromHash: (importHash:string| undefined) => {}, 
-    getImportHash: () => undefined, 
-    filterOptions: initialFilterOptions, 
-    updateFilterOptions: (options: any) => {},
-    lockSpoilerPanel: false,
-    getShareHash: (lockSpoilerPanel:boolean) => ""
-}
-
-export const Context = createContext<ContextData>(initialContextData);
+export const Context = createContext<ContextData | undefined>(undefined);
 
 export function useFilterOptions() {
-    return useContext(Context);
-}
-
-type Props = {
-    children: ReactNode;
+    const result = useContext(Context);
+    if (!result) {
+        throw Error("No Context Found");
+    }
+    return result;
 }
 
 const fixFilterOptions = (filterOptions: FilterOptions) => {
@@ -115,7 +106,7 @@ const parseHash = (importHash: string): any | undefined => {
     }
 }
 
-const FilterProvider = (props:Props) => {
+const FilterProvider:FC = (props) => {
     const { children} = props;
     const {gameType} = useGame();
     const [dataLoaded, setDataLoaded] = useState(false);

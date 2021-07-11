@@ -1,4 +1,4 @@
-import React, { useContext, createContext, ReactNode } from 'react'
+import React, { useContext, createContext, FC } from 'react'
 import {GameType, gameDataTypes} from '../../games'
 import { GameData } from '../../games/GameData';
 
@@ -10,10 +10,9 @@ export function useGame() {
 
 type Props = {
     gameType:GameType;
-    children: ReactNode;
 }
 
-const GameProvider = (props:Props) => {
+const GameProvider:FC<Props> = (props) => {
     const {gameType, children} = props;
     return <GameContext.Provider value={gameDataTypes[gameType]}>{children}</GameContext.Provider>
 }
