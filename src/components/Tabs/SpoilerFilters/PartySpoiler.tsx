@@ -1,5 +1,5 @@
 import React from "react"
-import { Form } from "semantic-ui-react"
+import { Form, Popup, Icon } from "semantic-ui-react"
 import { isFlagEnabled } from "../../../helpers";
 import { ClassesInUse, envelopeXClassList, fcClassList, ghClassList, ItemManagementType, jotlClassList } from "../../../State/Types";
 import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
@@ -32,7 +32,11 @@ export const PartySpoiler = () => {
     }
 
     return <Form.Group inline className={'inline-break'}>
-                <label>Party Members:</label>
+                <div>
+                    <label>Party Members:</label>
+                    {<Popup closeOnDocumentClick hideOnScroll trigger={<Icon name={'question circle'} className={'blue'}/>} header={'Party Members'} 
+                    content={"Click on a class icon to add that class to you party.  You can then assign items to any members in a party. Clicking a second time will remove all items."}/>}
+                </div>
                 <ClassList classes={ghList} label="Gloomhaven:" onClick={toggleClassFilter} isUsed={(className: ClassesInUse) => classesInUse.includes(className)} />
                 <ClassList classes={fcClassList} label="Forgotten Circles:" onClick={toggleClassFilter} isUsed={(className: ClassesInUse) => classesInUse.includes(className)} />
                 <ClassList classes={jotlClassList} label="Jaws of the Lion:" onClick={toggleClassFilter} isUsed={(className: ClassesInUse) => classesInUse.includes(className)} />
