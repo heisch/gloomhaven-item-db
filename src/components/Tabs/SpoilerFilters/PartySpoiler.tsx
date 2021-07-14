@@ -32,11 +32,11 @@ export const PartySpoiler = () => {
     }
 
     return <Form.Group inline className={'inline-break'}>
-                <div>
+                <Form.Group inline>
                     <label>Party Members:</label>
                     {<Popup closeOnDocumentClick hideOnScroll trigger={<Icon name={'question circle'} className={'blue'}/>} header={'Party Members'} 
-                    content={"Click on a class icon to add that class to you party.  You can then assign items to any members in a party. Clicking a second time will remove all items."}/>}
-                </div>
+                    content={"Click on a class icon to add that class to you party.  You can then assign items to any members in a party. Clicking on member a second time will remove all items."}/>}
+                </Form.Group>
                 <ClassList classes={ghList} label="Gloomhaven:" onClick={toggleClassFilter} isUsed={(className: ClassesInUse) => classesInUse.includes(className)} />
                 <ClassList classes={fcClassList} label="Forgotten Circles:" onClick={toggleClassFilter} isUsed={(className: ClassesInUse) => classesInUse.includes(className)} />
                 <ClassList classes={jotlClassList} label="Jaws of the Lion:" onClick={toggleClassFilter} isUsed={(className: ClassesInUse) => classesInUse.includes(className)} />

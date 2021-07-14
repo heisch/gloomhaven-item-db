@@ -5,7 +5,7 @@ import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 import { ItemsOwnedBy } from "../../Providers/FilterOptions";
 
 const ConfirmClassDelete = () => {
-  const { searchOptions: { classToRemove }, updateSearchOptions}  = useSearchOptions();
+  const { searchOptions: { classToRemove, selectedClass }, updateSearchOptions}  = useSearchOptions();
   const { filterOptions: { classesInUse, itemsOwnedBy }, updateFilterOptions} = useFilterOptions();
 
   const onClose = () => {
@@ -30,9 +30,13 @@ const ConfirmClassDelete = () => {
           if (index != -1) {
               newClassesInUse.splice(index, 1);
           }
-
+          
+          let newSelectedClass = selectedClass;
+          if (newSelectedClass === classToRemove) {
+            newSelectedClass = undefined;
+          }
           updateFilterOptions({classesInUse: newClassesInUse})
-          updateSearchOptions({classToRemove: undefined});
+          updateSearchOptions({classToRemove: undefined, selectedClass: newSelectedClass });
     }          
     onClose();
   };

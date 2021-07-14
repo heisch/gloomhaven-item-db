@@ -42,10 +42,10 @@ const PartyManagementFilter = () => {
             />
             <Popup closeOnDocumentClick hideOnScroll trigger={<Icon name={'question circle'} className={'blue'}/>} header={'Stock Management'} 
                     content={<Form.Group>
-                              Choose From three types<br/>
-                              <label>None:</label>No management<br/>
-                              Simple - Indicate that an item has been purchased.<br/>
-                              Party - Indicate which member of your party has the item
+                              <b>Choose From three types</b><br/>
+                              <b>None:</b> No management<br/>
+                              <b>Simple:</b> Indicate that an item has been purchased.<br/>
+                              <b>Party:</b> Indicate which member of your party has the item
                             </Form.Group>}
                     />
         </Form.Group>
