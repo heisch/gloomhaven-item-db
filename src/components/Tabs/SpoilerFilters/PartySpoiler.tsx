@@ -1,13 +1,11 @@
 import React from "react"
 import { Form, Popup, Icon } from "semantic-ui-react"
-import { isFlagEnabled } from "../../../helpers";
 import { ClassesInUse, envelopeXClassList, fcClassList, ghClassList, ItemManagementType, jotlClassList } from "../../../State/Types";
 import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 import { useSearchOptions } from "../../Providers/SearchOptionsProvider";
 import { ClassList } from "./ClassList";
 
 export const PartySpoiler = () => {
-    const partyModeEnabled = isFlagEnabled("partyMode");
     const { updateSearchOptions } = useSearchOptions();
     const { filterOptions: { classesInUse, envelopeX, itemManagementType}, updateFilterOptions} = useFilterOptions();
 
@@ -22,7 +20,7 @@ export const PartySpoiler = () => {
         }
     }
 
-    if (!partyModeEnabled || itemManagementType !== ItemManagementType.Party) {
+    if (itemManagementType !== ItemManagementType.Party) {
         return null;
     }
 

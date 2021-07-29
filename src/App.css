@@ -239,6 +239,13 @@ img.item-card {
     height: 30px;
 }
 
+.noClass {
+    width: 30px;
+    height: 30px;
+    background-color: black;
+    opacity: 50%;
+}
+
 .item-card-wrapper .black.button.i0 .delete.icon,
 .item-card-wrapper .ui.black.button.i1 .delete.icon, 
 .item-card-wrapper .ui.black.button.i2 .delete.icon,
@@ -490,4 +497,15 @@ button.ui.deleteUser .delete.icon{
 
 .classdropdown .item{
     width: 120px;
+}
+
+
+.purchase-card {
+    width: 200px;
+    margin-left: 50px;
+}
+
+.purchase-content {
+    display: flex; 
+    flex-direction: row;
 }

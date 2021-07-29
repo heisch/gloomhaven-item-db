@@ -3,6 +3,7 @@ import { GloomhavenItem } from "../../../State/Types"
 import { Label} from "semantic-ui-react";
 import ItemManagement from "./ItemManagement";
 import { useGame } from '../../Game/GameProvider';
+import { getItemPath } from '../../../games/GameData';
 
 type Props = {
     item : GloomhavenItem
@@ -17,16 +18,10 @@ const ItemCard = (props:Props) => {
     const {gameType} = useGame();
     const [draw, setDraw] = useState(false);
 
-    const getItemPath = () => {
-        const { folder, name } = item;
-        const filename = name.toLowerCase().replace(/\s/g, '-').replace(/'/, '');
-        return require(`../../../../vendor/${gameType}/images/items/${folder}/${filename}.png`);
-    }
-
     return (
         <div className={'item-card-wrapper'}>
             <img
-                src={getItemPath()}
+                src={getItemPath(item, gameType)}
                 alt={item.name}
                 onLoad={() => setDraw(true)}
                 className={'item-card'}/>

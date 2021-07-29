@@ -46,11 +46,7 @@ const fixFilterOptions = (filterOptions: FilterOptions) => {
          // @ts-ignore
          delete filterOptions.enableStoreStockManagement
     }
-
-    if (!isFlagEnabled("partyMode") && filterOptions.itemManagementType === ItemManagementType.Party) {
-        filterOptions.itemManagementType = ItemManagementType.None;    
-    }
-
+    
     if (filterOptions.hasOwnProperty("lockSpoilerPanel")) { 
          // @ts-ignore
          delete filterOptions.lockSpoilerPanel;

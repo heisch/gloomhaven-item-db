@@ -22,9 +22,8 @@ const PartyItemManagement = (props: Props) => {
     const ownersLength = (owners ? owners.length : 0);
     const classesAvailable = ownersLength ? classesInUse.filter(c => !owners.includes(c)) : classesInUse;
 
-    const showAddButton = (ownersLength < item.count) && classesAvailable.length > 0;
+    const addButtonsToShow = classesAvailable.length > 0 ? Math.min(item.count - ownersLength, 4) : 0;
     return ( <>
-            {`${ownersLength} / ${item.count}`}
             {owners&&owners.map((owner, index) => {
                 return <Button
                     disabled={lockSpoilerPanel}
@@ -45,15 +44,17 @@ const PartyItemManagement = (props: Props) => {
                 content={createClassImage(owner)}
             />
             })}
-            {showAddButton &&
-                <Button
-                        disabled={lockSpoilerPanel}
-                        className={`i${ownersLength} addClass`}
-                        color={'black'}
-                        onClick={() => { updateSearchOptions({selectedItem:item})}}
-                        content={"+"}
-            />
-            }
+            {addButtonsToShow > 0 && 
+            [...Array(addButtonsToShow).keys()].map((i) => {
+                return                 <Button
+                disabled={lockSpoilerPanel}
+                className={`i${ownersLength + i} noClass`}
+                color={'black'}
+                onClick={() => { updateSearchOptions({selectedItem:item})}}
+                content="+"
+
+                />
+            })}
         </>);
 }
 

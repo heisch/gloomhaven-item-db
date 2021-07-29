@@ -28,17 +28,15 @@ const PartyManagementFilter = () => {
     }
   };
 
-  const partyModeEnabled = isFlagEnabled("partyMode");
 
   return (
     <Form.Group inline>
-      {partyModeEnabled ? (
           <Form.Group inline>
             <label>Store Stock Management Type:</label>
             <Dropdown
-            value={managementType}
-            onChange={onChangeItemManagement}
-            options={options}
+              value={managementType}
+              onChange={onChangeItemManagement}
+              options={options}
             />
             <Popup closeOnDocumentClick hideOnScroll trigger={<Icon name={'question circle'} className={'blue'}/>} header={'Stock Management'} 
                     content={<Form.Group>
@@ -49,23 +47,6 @@ const PartyManagementFilter = () => {
                             </Form.Group>}
                     />
         </Form.Group>
-      ) : (
-          <>
-        <label>Enable Store Stock Management:</label>
-        <Form.Checkbox
-          toggle
-          checked={managementType === ItemManagementType.Simple}
-          onClick={() => {
-            updateFilterOptions({
-              itemManagementType:
-              managementType === ItemManagementType.Simple
-                  ? ItemManagementType.None
-                  : ItemManagementType.Simple,
-            });
-          }}
-        />
-        </>
-      )}
     </Form.Group>
   );
 };

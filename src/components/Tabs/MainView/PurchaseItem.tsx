@@ -5,11 +5,14 @@ import { useSearchOptions } from "../../Providers/SearchOptionsProvider";
 import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 import { ItemsOwnedBy } from "../../Providers/FilterOptions";
 import { ClassList } from '../SpoilerFilters/ClassList';
+import { getItemPath } from "../../../games/GameData";
+import { useGame } from "../../Game/GameProvider";
 
 const PurchaseItem = () => {
   const { searchOptions: { selectedItem }, updateSearchOptions}  = useSearchOptions();
   const { filterOptions: { discount, classesInUse, itemsOwnedBy}, updateFilterOptions } = useFilterOptions();
   const [owners, setOwners] = useState<PullDownOptions[]>([]);
+  const { gameType} = useGame();
 
   useEffect(() => {
     if (!selectedItem || !itemsOwnedBy) {
@@ -64,14 +67,15 @@ const PurchaseItem = () => {
 
   return (
     <Modal size="tiny" open={true} onClose={onClose}>
-        <Modal.Header>Buy Item</Modal.Header>
+        <Modal.Header>Change Owners</Modal.Header>
         <Modal.Content>
+          <div className="purchase-content">
           <Form>
             <Form.Group inline>
               <label>Name:</label> {name}
             </Form.Group>
             <Form.Group inline>
-              <label>Cost:</label> {cost + discount}
+              <label>Cost:</label> {`${cost + discount} (${discount}g)`}
             </Form.Group>
             <Form.Group inline>
               <label>Items Available:</label> {`${count - owners.length} of ${count}`}
@@ -85,16 +89,16 @@ const PurchaseItem = () => {
                 (className:ClassesInUse) => owners ? owners.includes(className) : false
               }/>
           </Form>
+            <img src={getItemPath(selectedItem, gameType)} className={'purchase-card'}/>
+            </div>
         </Modal.Content>
         <Modal.Actions>
-          <Button negative onClick={onClose}>
-            Close
-          </Button>
+          <Button negative content="Close" onClick={onClose}/>
           <Button
             positive
             icon="checkmark"
             labelPosition="right"
-            content="Buy"
+            content="Modify"
             onClick={onApply}
           />
         </Modal.Actions>
