@@ -1737,7 +1737,7 @@
     "count": 2,
     "cost": 50,
     "slot": "Two Hands",
-    "source": "Unknown",
+    "source": "Rift Event #5",
     "desc": "During your melee attack, {anyX} to add +2 Attack to a single attack.",
     "folder": "152-165"
   },
@@ -1780,7 +1780,7 @@
     "count": 1,
     "cost": 45,
     "slot": "One Hand",
-    "source": "Unknown",
+    "source": "City Event #86",
     "desc": "When you kill a monster during your turn, gain one money token.",
     "spent": true,
     "folder": "152-165"
