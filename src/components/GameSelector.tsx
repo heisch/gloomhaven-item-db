@@ -1,22 +1,18 @@
 import React from "react";
 import { DropdownProps, Form } from "semantic-ui-react";
 import { gameDataTypes, GameType } from "../games";
+import { useGame } from "./Game/GameProvider";
 
-type GameSelectorProps = {
-    onChange:(obj:any,e:DropdownProps) => void;
-    defaultGameType:GameType;
-}
-
-export const GameSelector = (props:GameSelectorProps) => {
-    const {onChange, defaultGameType} = props;
+export const GameSelector = () => {
+    const {onGameTypeChanged: onChange, gameData: {gameType}} = useGame();
     const options:any[] = [];
-    Object.values(GameType).forEach( (gameType) =>{
-        const gameData = gameDataTypes[gameType as GameType];
-        options.push({text:gameData.gameName, value:gameType});
+    Object.values(gameDataTypes).forEach( (gameData) =>{
+        const {gameName:text, gameType: value} = gameData;
+        options.push({text, value});
     } )
 
     return <Form.Select 
-            value={defaultGameType}
+            value={gameType}
             options={options}
-            onChange={onChange}/>;
+            onChange={(obj: any, e: DropdownProps) => {onChange(e.value as GameType)}}/>;
 }

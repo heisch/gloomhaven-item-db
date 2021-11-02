@@ -15,7 +15,8 @@ const ItemId = ({id}:{id: number}) => {
 
 const ItemCard = (props:Props) => {
     const { item } = props;
-    const {gameType} = useGame();
+    const {gameData: {gameType}} = useGame();
+
     const [draw, setDraw] = useState(false);
 
     return (

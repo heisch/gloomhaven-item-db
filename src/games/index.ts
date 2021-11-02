@@ -4,7 +4,7 @@ import { JOTLGameData } from './jotl/JOTlGameData';
 
 const gameDataTypes = {
     [GameType.Gloomhaven] : GHGameData,
-    [GameType.JawsOfTheLion] : JOTLGameData,
+    [GameType.JawsOfTheLion] : JOTLGameData
 }
 
 export {gameDataTypes, GameType};

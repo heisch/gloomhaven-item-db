@@ -5,7 +5,7 @@ import { useFilterOptions } from "../components/Providers/FilterOptionsProvider"
 
 const useItems = (): Array<GloomhavenItem> => {
 
-    const { isItemShown, items} = useGame();
+    const {gameData: { isItemShown, items}} = useGame();
     const { searchOptions: { property, direction, slots, search, selectedClass, availableOnly }} = useSearchOptions();
     const { filterOptions: { item:spoilerFilterItem, itemsOwnedBy }, filterOptions } = useFilterOptions();
 

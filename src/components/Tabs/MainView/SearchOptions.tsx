@@ -15,7 +15,7 @@ const SearchOptions = (props:Props) => {
     const { setSorting } =  props;
     const { searchOptions:{ property, search, slots, availableOnly, direction, selectedClass }, updateSearchOptions} = useSearchOptions();
     const { filterOptions: { displayAs, classesInUse, discount, itemManagementType }, updateFilterOptions} = useFilterOptions();
-    const { filterSlots } = useGame();
+    const { gameData:{filterSlots} } = useGame();
 ``
     const setFilterSlot = (slot?: GloomhavenItemSlot) => {
         if (!slot)

@@ -8,7 +8,8 @@ import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
 import { ClassList } from './ClassList';
 
 const GHSpoilerFilter = () => {
-    const { gameType } = useGame();
+    const {gameData: {gameType}} = useGame();
+
     const { filterOptions: {prosperity, soloClass, envelopeX, discount}, updateFilterOptions}  = useFilterOptions();
 
     if (gameType !== GameType.Gloomhaven) {

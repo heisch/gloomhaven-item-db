@@ -1,6 +1,5 @@
 import React, { useContext, createContext, useState, useEffect, useCallback, FC } from 'react'
 import { GameType } from '../../games'
-import { isFlagEnabled } from '../../helpers';
 import { ItemManagementType, SoloClassShorthand } from '../../State/Types';
 import { useGame } from '../Game/GameProvider';
 import {initialFilterOptions, OldFilterOptions, FilterOptions} from "./FilterOptions"
@@ -104,7 +103,7 @@ const parseHash = (importHash: string): any | undefined => {
 
 const FilterProvider:FC = (props) => {
     const { children} = props;
-    const {gameType} = useGame();
+    const {gameData: {gameType}} = useGame();
     const [dataLoaded, setDataLoaded] = useState(false);
     const [ gameFilterOptions, setGameFilterOptions] = useState(initialGameFilterOptions);
     const [ lockSpoilerPanel, setLockSpoilerPanel] = useState(localStorage.getItem("lockSpoilerPanel") === "true" || false);

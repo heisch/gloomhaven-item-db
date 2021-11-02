@@ -1,20 +1,39 @@
-import React, { useContext, createContext, FC } from 'react'
+import React, { useContext, createContext, FC, useState, useMemo, useCallback } from 'react'
 import {GameType, gameDataTypes} from '../../games'
 import { GameData } from '../../games/GameData';
 
-export const GameContext = createContext<GameData>(gameDataTypes[GameType.Gloomhaven]);
+type Data = {
+    gameData:GameData;
+    onGameTypeChanged: (gt:GameType) => void;
+}
+
+export const GameContext = createContext<Data | undefined>(undefined);
 
 export function useGame() {
-    return useContext(GameContext);
+    const result =  useContext(GameContext);
+    if (!result) {
+        throw Error("No Context");
+    }
+    return result;
 }
 
-type Props = {
-    gameType:GameType;
-}
+const GameProvider:FC = (props) => {
+    const {children} = props;
+    const [gameType, setGameType] = useState<GameType>(
+        (localStorage.getItem("lastGame") as GameType) || GameType.Gloomhaven
+      );
 
-const GameProvider:FC<Props> = (props) => {
-    const {gameType, children} = props;
-    return <GameContext.Provider value={gameDataTypes[gameType]}>{children}</GameContext.Provider>
+      const onGameTypeChanged = useCallback((gameType: GameType) => {
+          setGameType(gameType);
+          localStorage.setItem("lastGame", gameType);   
+      }, [])
+        const value = useMemo(() => {
+            return {gameData: gameDataTypes[gameType], onGameTypeChanged}
+        }, [gameType]
+        )
+
+
+    return <GameContext.Provider value={value}>{children}</GameContext.Provider>
 }
  
 export default GameProvider;

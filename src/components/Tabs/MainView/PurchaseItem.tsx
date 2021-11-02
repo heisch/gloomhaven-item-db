@@ -12,7 +12,8 @@ const PurchaseItem = () => {
   const { searchOptions: { selectedItem }, updateSearchOptions}  = useSearchOptions();
   const { filterOptions: { discount, classesInUse, itemsOwnedBy}, updateFilterOptions } = useFilterOptions();
   const [owners, setOwners] = useState<PullDownOptions[]>([]);
-  const { gameType} = useGame();
+  const {gameData: {gameType}} = useGame();
+
 
   useEffect(() => {
     if (!selectedItem || !itemsOwnedBy) {

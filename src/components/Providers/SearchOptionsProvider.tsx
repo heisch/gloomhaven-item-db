@@ -29,7 +29,7 @@ const initialSearchOptions : SearchOptions = {
 
 const initialGameSearchOptions = {
     [GameType.Gloomhaven] : initialSearchOptions,
-    [GameType.JawsOfTheLion] : initialSearchOptions,
+    [GameType.JawsOfTheLion] : initialSearchOptions
 };
 
 type ContextData = {
@@ -49,7 +49,8 @@ export function useSearchOptions() {
 
 const SearchOptionsProvider:FC = (props) => {
     const { children} = props;
-    const {gameType} = useGame();
+    const {gameData: {gameType}} = useGame();
+
     const [ gameSearchOptions, setGameSearchOptions] = useState(initialGameSearchOptions);
     const { Provider } = Context;
 

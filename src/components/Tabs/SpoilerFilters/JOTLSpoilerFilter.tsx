@@ -6,7 +6,8 @@ import { GameType } from '../../../games';
 import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
 
 const JOTLSpoilerFilter = () => {
-    const { gameType } = useGame();
+    const {gameData: {gameType}} = useGame();
+
     const scenariosOfImportance = [2, 9, 15];
     const { filterOptions: {scenarioCompleted}, updateFilterOptions } = useFilterOptions();
 
