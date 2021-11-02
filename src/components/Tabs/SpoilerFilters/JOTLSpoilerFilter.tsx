@@ -1,19 +1,12 @@
 import React from 'react'
 import SpoilerFilterItemList from './SpoilerFilterItemList';
 import { Form } from 'semantic-ui-react';
-import { useGame } from '../../Game/GameProvider';
-import { GameType } from '../../../games';
 import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
 
 const JOTLSpoilerFilter = () => {
-    const {gameData: {gameType}} = useGame();
 
     const scenariosOfImportance = [2, 9, 15];
     const { filterOptions: {scenarioCompleted}, updateFilterOptions } = useFilterOptions();
-
-    if (gameType !== GameType.JawsOfTheLion) {
-        return null;
-    }
 
     const toggleScenarioCompleted = (key: number) => {
         const value = Object.assign([], scenarioCompleted);

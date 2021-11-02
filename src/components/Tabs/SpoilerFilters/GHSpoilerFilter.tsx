@@ -2,19 +2,11 @@ import React from 'react'
 import { Form } from 'semantic-ui-react';
 import SpoilerFilterItemList from './SpoilerFilterItemList';
 import { ClassesInUse, envelopeXClassList, fcClassList, ghClassList } from '../../../State/Types';
-import { useGame } from '../../Game/GameProvider';
-import { GameType } from '../../../games';
 import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
 import { ClassList } from './ClassList';
 
 const GHSpoilerFilter = () => {
-    const {gameData: {gameType}} = useGame();
-
     const { filterOptions: {prosperity, soloClass, envelopeX, discount}, updateFilterOptions}  = useFilterOptions();
-
-    if (gameType !== GameType.Gloomhaven) {
-        return null;
-    }
 
     const toggleClassFilter = (key: ClassesInUse) => {
         const value = Object.assign([], soloClass);

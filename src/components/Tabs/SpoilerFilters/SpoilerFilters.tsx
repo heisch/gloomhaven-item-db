@@ -8,10 +8,18 @@ import ConfirmClassDelete from './ConfirmClassDelete';
 import { PartySpoiler } from './PartySpoiler';
 import ConfirmEnvelopeX from './ConfirmEnvelopeX';
 import { useSearchOptions } from '../../Providers/SearchOptionsProvider';
+import { GameType } from '../../../games';
+import { useGame } from '../../Game/GameProvider';
+
+const filters = {
+    [GameType.Gloomhaven] : <GHSpoilerFilter/>, 
+    [GameType.JawsOfTheLion] : <JOTLSpoilerFilter/>
+}
 
 const SpoilerFilters = () => {
     const { filterOptions: {all, envelopeX}, updateFilterOptions } = useFilterOptions();
     const { updateSearchOptions } = useSearchOptions();
+    const { gameData: {gameType}} = useGame();
 
     return (
         <Form>
@@ -32,8 +40,7 @@ const SpoilerFilters = () => {
             {!envelopeX && <Button onClick={() => updateSearchOptions({confirmEnvelopeX: true})}>
                 Envelope X
             </Button>}
-            <GHSpoilerFilter/>
-            <JOTLSpoilerFilter/>
+            {filters[gameType]}
             <PartySpoiler/>
             <ConfirmClassDelete/>
             <ConfirmEnvelopeX/>
