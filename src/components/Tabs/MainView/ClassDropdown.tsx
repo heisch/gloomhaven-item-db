@@ -1,15 +1,15 @@
 import React from "react";
 import { Image, Dropdown, DropdownProps } from "semantic-ui-react";
-import { PullDownOptions } from "../../../State/Types";
+import { ClassesInUse } from "../../../State/Types";
 
 type Props = {
   className?: string;
-  optionsList: PullDownOptions[];
-  onChange: (option: PullDownOptions) => void;
+  optionsList: ClassesInUse[];
+  onChange: (option: ClassesInUse) => void;
   disabled?: boolean;
 };
 
-export const createClassImage = (option: PullDownOptions) => {
+export const createClassImage = (option: ClassesInUse) => {
   return (
     <Image
       key={option}
@@ -22,7 +22,7 @@ export const createClassImage = (option: PullDownOptions) => {
 const ClassDropdown = (props:Props) => {
   const { optionsList, onChange } = props;
     return <Dropdown
-      onChange={(_e:Object, data:DropdownProps) => onChange(data.value as PullDownOptions)}
+      onChange={(_e:Object, data:DropdownProps) => onChange(data.value as ClassesInUse)}
       placeholder="Choose Class"
       clearable
       selection

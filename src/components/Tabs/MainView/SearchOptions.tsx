@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form, Button, Input, Icon} from 'semantic-ui-react';
 import { getSlotImageSrc } from '../../../helpers';
-import { GloomhavenItemSlot, ItemManagementType, ItemViewDisplayType, PullDownOptions, SortDirection, SortProperty} from '../../../State/Types';
+import { ClassesInUse, GloomhavenItemSlot, ItemManagementType, ItemViewDisplayType, SortDirection, SortProperty} from '../../../State/Types';
 import { useGame } from '../../Game/GameProvider';
 import { useSearchOptions } from '../../Providers/SearchOptionsProvider';
 import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
@@ -82,7 +82,7 @@ const SearchOptions = (props:Props) => {
                         <ClassList 
                             label={"Filter Owner:"} 
                             classes={classesInUse} 
-                            onClick={ (option:PullDownOptions) => {
+                            onClick={ (option:ClassesInUse) => {
                                 if (selectedClass === option) {
                                     updateSearchOptions({selectedClass:undefined});
                                 }
@@ -91,7 +91,7 @@ const SearchOptions = (props:Props) => {
                                 }
                             }
                             }
-                            isUsed={ (options:PullDownOptions) => selectedClass === options}
+                            isUsed={ (options:ClassesInUse) => selectedClass === options}
                             />
                     </Form.Group>
                 }

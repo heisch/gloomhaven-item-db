@@ -1,6 +1,6 @@
 import React, {useEffect, useState } from "react";
-import { Button, Form, List, Modal } from "semantic-ui-react";
-import { ClassesInUse, PullDownOptions } from "../../../State/Types";
+import { Button, Form, Modal } from "semantic-ui-react";
+import { ClassesInUse } from "../../../State/Types";
 import { useSearchOptions } from "../../Providers/SearchOptionsProvider";
 import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 import { ItemsOwnedBy } from "../../Providers/FilterOptions";
@@ -11,7 +11,7 @@ import { useGame } from "../../Game/GameProvider";
 const PurchaseItem = () => {
   const { searchOptions: { selectedItem }, updateSearchOptions}  = useSearchOptions();
   const { filterOptions: { discount, classesInUse, itemsOwnedBy}, updateFilterOptions } = useFilterOptions();
-  const [owners, setOwners] = useState<PullDownOptions[]>([]);
+  const [owners, setOwners] = useState<ClassesInUse[]>([]);
   const {gameData: {gameType}} = useGame();
 
 
@@ -50,7 +50,7 @@ const PurchaseItem = () => {
     setOwners(value);
   }
 
-  const isItemEnabled = (key:PullDownOptions) => {
+  const isItemEnabled = (key:ClassesInUse) => {
     if (!selectedItem || !owners) {
       return false;
     }

@@ -1,8 +1,8 @@
-import { ClassesInUse, ItemManagementType, ItemViewDisplayType, PullDownOptions, SoloClassShorthand } from "../../State/Types";
+import { ClassesInUse, ItemManagementType, ItemViewDisplayType, SoloClassShorthand } from "../../State/Types";
 
 
 export type ItemsOwnedBy = {
-    [key:number] : PullDownOptions[]
+    [key:number] : ClassesInUse[]
   }
   
 export type ItemsInUse = {

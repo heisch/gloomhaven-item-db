@@ -16,7 +16,6 @@ export enum ItemViewDisplayType {
 
 export type SortProperty = 'id' | 'slot' | 'cost' | 'name' | 'use';
 
-export type PullDownOptions = ClassesInUse | undefined;
 export type GHClassesShorthand = 'BR' | 'TI' | 'SW' | 'SC' | 'CH' | 'MT' | 'SK' | 'QM' | 'SU' | 'NS' | 'PH' | 'BE' | 'SS' | 'DS' | 'SB' | 'EL' | 'BT';
 export type EnvelopeXClassShorthand = 'XX';
 export type FCClassesShorthand = 'DR'
