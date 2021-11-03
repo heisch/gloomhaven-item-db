@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from 'react'
 import { Form, Message, Icon } from 'semantic-ui-react';
-import { isFlagEnabled } from '../../helpers';
-import { useFilterOptions } from '../Providers/FilterOptionsProvider';
-import UploadForm from './Share/UploadForm';
+import { isFlagEnabled } from '../../../helpers';
+import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
+import UploadForm from './UploadForm';
 
 const Share = () => {
     const [ lockSpoilerPanel, setLockSpoilerPanel] = useState(false);

@@ -7,13 +7,10 @@ import ItemGrid from './ItemGrid';
 import PurchaseItem from './PurchaseItem';
 import { useSearchOptions } from '../../Providers/SearchOptionsProvider';
 import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
+import useItems from '../../../hooks/useItems';
 
-type Props = {
-    items : GloomhavenItem[];
-}
-
-const ItemList = (props:Props) => {
-    const {items} = props;
+const ItemList = () => {
+    const items = useItems();
     const { searchOptions: { property, direction}, updateSearchOptions} = useSearchOptions();
     const { filterOptions: { all, displayAs, itemManagementType } } = useFilterOptions();
 
