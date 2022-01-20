@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Tab } from 'semantic-ui-react';
 import ItemList from './ItemList';
 import SpoilerFilters from '../SpoilerFilters/SpoilerFilters';
@@ -22,7 +22,7 @@ type TabItem = {
 
 
 const MainView = () => {
-    const { filterOptions: { all}, lockSpoilerPanel } = useFilterOptions();
+    const { filterOptions: { all}, lockSpoilerPanel, dataChanged } = useFilterOptions();
     const sharingEnabled = isFlagEnabled("sharing");
     
     const tabData: TabItem[] = [
@@ -30,7 +30,7 @@ const MainView = () => {
         { menuItem: "Spoiler Configuration", component: <SpoilerFilters/>, shouldShow:  !lockSpoilerPanel},
         { menuItem: "Share", component: <Share/>, shouldShow:  !lockSpoilerPanel},
         { menuItem: 'Account', component: <Account/>, shouldShow:  !lockSpoilerPanel && sharingEnabled},
-        { menuItem: 'About', component: <Account/>, shouldShow:  true},
+        { menuItem: 'About', component: <About/>, shouldShow:  true},
     ];
     const panes = tabData.map(({shouldShow, component, menuItem}) => {
        if (shouldShow) {
@@ -39,10 +39,20 @@ const MainView = () => {
        return {};
     }).filter( pane => pane.menuItem !== undefined);
 
+    const getOutlineClass = useCallback(() => {
+        if (all) {
+            return 'spoiler';
+        }
+        if (dataChanged) {
+            return 'dataChanged'
+        }
+        return '';
+    }, [all, dataChanged]);
+
     return (
         <>
             <ImportData/>
-            <div className={all ? 'spoiler' : ''}>
+            <div className={getOutlineClass()}>
                 <Tab panes={panes} defaultActiveIndex={0}/>
             </div>
             <em className={'pull-right ui text grey'}>Gloomhaven and all related properties, images and text are owned by <a href={'https://www.cephalofair.com/'} target={'_blank'} rel={'noopener'}>Cephalofair Games</a>.</em>

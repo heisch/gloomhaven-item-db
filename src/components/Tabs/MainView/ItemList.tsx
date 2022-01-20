@@ -8,11 +8,12 @@ import PurchaseItem from './PurchaseItem';
 import { useSearchOptions } from '../../Providers/SearchOptionsProvider';
 import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
 import useItems from '../../../hooks/useItems';
+import { useFirebase } from '../../Firebase';
 
 const ItemList = () => {
     const items = useItems();
     const { searchOptions: { property, direction}, updateSearchOptions} = useSearchOptions();
-    const { filterOptions: { all, displayAs, itemManagementType } } = useFilterOptions();
+    const { filterOptions: { all, displayAs, itemManagementType }, dataChanged } = useFilterOptions();
 
         const setSorting = (newProperty: SortProperty) => {
             let newDirection:SortDirection;
@@ -27,6 +28,12 @@ const ItemList = () => {
         
     return (
         <>
+            {dataChanged &&  (
+                <Message negative>
+                    <Message.Header><Icon name="exclamation triangle"/>Data out of sync</Message.Header>
+                    Spoiler configuration differs from cloud storage. Remember to export your data.
+                </Message>
+            )}
             <SearchOptions setSorting={setSorting}/>
             {all &&  (
                 <Message negative>

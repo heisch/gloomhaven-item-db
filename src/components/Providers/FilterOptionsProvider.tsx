@@ -1,6 +1,7 @@
 import React, { useContext, createContext, useState, useEffect, useCallback, FC } from 'react'
 import { GameType } from '../../games'
 import { ItemManagementType, SoloClassShorthand } from '../../State/Types';
+import { useFirebase } from '../Firebase';
 import { useGame } from '../Game/GameProvider';
 import {initialFilterOptions, OldFilterOptions, FilterOptions} from "./FilterOptions"
 
@@ -25,7 +26,7 @@ type ContextData = {
     updateFilterOptions: (options: any) => void,
     lockSpoilerPanel: boolean,
     getShareHash: (lockSpoilerPanel:boolean) => string,
-
+    dataChanged: boolean,
 }
 
 export const Context = createContext<ContextData | undefined>(undefined);
@@ -62,7 +63,7 @@ const loadFromStorage = (filterLocalStorageKey:string) => {
         const configFromStorage: OldFilterOptions = JSON.parse(storage);
 
         // convert from old object style to array
-        if (!configFromStorage.soloClass.hasOwnProperty('length')) {
+        if (configFromStorage.soloClass && !configFromStorage.soloClass.hasOwnProperty('length')) {
             const soloClass: Array<SoloClassShorthand> = [];
             Object.keys(configFromStorage.soloClass).forEach(k => {
                 if (configFromStorage.soloClass[k] === true) {
@@ -107,7 +108,11 @@ const FilterProvider:FC = (props) => {
     const [dataLoaded, setDataLoaded] = useState(false);
     const [ gameFilterOptions, setGameFilterOptions] = useState(initialGameFilterOptions);
     const [ lockSpoilerPanel, setLockSpoilerPanel] = useState(localStorage.getItem("lockSpoilerPanel") === "true" || false);
+    const [ dataChanged, setDataChanged] = useState(false);
+    const [ dataDirty, setDataDirty] = useState(false);
     const { Provider } = Context;
+    const { firebase, authUser} = useFirebase();
+
 
     useEffect( () => {
         const loadedSpoilerFilterString = localStorage.getItem(oldFilterLocalStorageKey)
@@ -129,6 +134,7 @@ const FilterProvider:FC = (props) => {
 
     const updateFilterOptions = ( options : any ) => {
         gameFilterOptions[gameType] = {...gameFilterOptions[gameType], ...options};
+        setDataDirty(true);
         setGameFilterOptions(Object.assign({}, gameFilterOptions))
         localStorage.setItem(LOCAL_STORAGE_PREFIX + gameType, JSON.stringify(gameFilterOptions[gameType]) );
     }
@@ -189,12 +195,44 @@ const FilterProvider:FC = (props) => {
         location.hash = "";
     }
 
+    useEffect(() => {
+        if (!firebase || !authUser || !dataDirty) {
+          return;
+        }
+
+        
+        const configHash = getShareHash(lockSpoilerPanel);
+        
+        if (!configHash) {
+            return;
+        }
+        if (dataDirty) {
+            setDataDirty(false);
+        }
+        
+          firebase
+              .spoilerFilter(authUser.uid).on("value", (snapshot) => {
+                    console.log("Hello 2");
+                  if (snapshot.val())
+                  {
+                      const serverHash = snapshot.val()["configHash"];
+                      console.log("Hello");
+                    setDataChanged(serverHash !== configHash);
+                  }
+                  return;
+              },
+              (error: any)=>  {
+                console.log(error)
+              })
+      }, [firebase, dataDirty])
+
     return <Provider value={{ filterOptions:gameFilterOptions[gameType], 
                                 updateFilterOptions, 
                                 loadFromHash, 
                                 getImportHash, 
                                 lockSpoilerPanel, 
-                                getShareHash
+                                getShareHash,
+                                dataChanged
                             }}>{children}</Provider>
 }
  

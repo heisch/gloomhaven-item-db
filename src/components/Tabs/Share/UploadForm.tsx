@@ -1,6 +1,7 @@
 import React, { useState} from 'react'
 import { Form } from 'semantic-ui-react';
 import { useFirebase } from '../../Firebase';
+import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
 
 type Props = {
     configHash: string;
@@ -8,8 +9,9 @@ type Props = {
 
 const UploadForm = (props:Props) => {
     const { configHash } = props;
-    const [error, setError] = useState<Error| null>(null);
+    const [error, setError] = useState<Error| undefined>(undefined);
     const { firebase, authUser} = useFirebase();
+    const { dataChanged} = useFilterOptions();
 
     if (!authUser || authUser.isAnonymous) {
         return null
@@ -36,14 +38,17 @@ const UploadForm = (props:Props) => {
 
     return (
         <>
-            <p>Here you can generate a link to your account that others can export the data at any time. All you need to do is export the data below.</p>
-            <Form.Input id={'export-url-input'} width={14} value={shareUrl}/>
-                <Form.Button width={2} onClick={() => {
-                    (document.getElementById('export-url-input') as HTMLInputElement).select();
-                    document.execCommand("copy");
-                }}>Copy</Form.Button>
+            <p>Here you can generate a link to your account that others can export the data at any time.</p>
+            <Form.Group>
+                <Form.Input id={'export-url-input'} width={14} value={shareUrl}/>
+                    <Form.Button width={2} onClick={() => {
+                        (document.getElementById('export-url-input') as HTMLInputElement).select();
+                        document.execCommand("copy");
+                    }}>Copy</Form.Button>
+            </Form.Group>
             <Form.Group>
             { authUser && !authUser.isAnonymous && <Form.Button onClick={() => exportData()}>Export</Form.Button> }
+            {dataChanged && <p>Spoiler configuration differs from cloud storage. Remember to export your data.</p>}
             </Form.Group>
             {error && <Form.Field>{error.message}</Form.Field>} 
         </>

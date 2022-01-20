@@ -1,15 +1,19 @@
-import React, { useState, useContext, createContext, useEffect, FC } from 'react';
+import React, { useState, useContext, createContext, useEffect, FC, useMemo } from 'react';
 import Firebase from './firebase';
 
-type FirebaseContextData = {
+type Data = {
     firebase: Firebase | null | undefined;
     authUser: firebase.default.User | null | undefined;
 }
 
-const FirebaseContext = createContext<FirebaseContextData>({firebase:null, authUser: null});
+const FirebaseContext = createContext<Data | undefined>(undefined);
 
 export function useFirebase() {
-    return useContext(FirebaseContext);
+    const result = useContext(FirebaseContext);
+    if (!result) {
+        throw Error("whoops");
+    }
+    return result;
 }
 
 const { Provider } = FirebaseContext;
@@ -28,7 +32,11 @@ const FirebaseProvider: FC = ({ children }) => {
             });
     }, [firebase])
 
-    return <Provider value={{firebase,authUser}}>{children}</Provider>
+    const value = useMemo(() => (
+        {firebase, authUser}
+    ), [firebase, authUser]);
+
+    return <Provider value={value}>{children}</Provider>
 }
  
 export default FirebaseProvider;

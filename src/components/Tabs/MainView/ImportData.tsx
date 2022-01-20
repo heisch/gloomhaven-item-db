@@ -49,7 +49,6 @@ const ImportData = () => {
 
     useEffect(() => {
       if (importHash && importHash !== currentHash) {
-        console.log(importHash, currentHash);
         setIsOpen(importHash && importHash.length > 0 || false);
       }
     }, [importHash])
