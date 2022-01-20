@@ -26,19 +26,31 @@ const FirebaseProvider: FC = ({ children }) => {
     useEffect( () => {
         setFirebase(new Firebase());
     }, [])
+
+    const updateRemoteData = (snapshot: any) => {
+        setRemoteData(snapshot.val()["configHash"]);
+    }
+
     useEffect( () => {
         if (!firebase)
             return;
         firebase.auth.onAuthStateChanged(authUser => {
             setAuthUser( authUser )
             if (authUser) {
-                firebase.spoilerFilter(authUser.uid).get().then(snapshot => setRemoteData(snapshot.val()["configHash"]));
+                firebase.spoilerFilter(authUser.uid).get().then(updateRemoteData);
             }
             else {
                 setRemoteData(undefined);
             }
             });
     }, [firebase])
+
+    useEffect(() => {
+        if (!firebase || !authUser) {
+            return;
+        }
+        firebase.spoilerFilter(authUser.uid).on("value", updateRemoteData);
+    },[firebase, authUser]);
 
     const value = useMemo(() => (
         {firebase, authUser, remoteData}

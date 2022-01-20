@@ -198,17 +198,12 @@ const FilterProvider:FC = (props) => {
     }
 
     useEffect(() => {
-        if (!dataDirty) {
-          return;
-        }
-
         const configHash = getShareHash(lockSpoilerPanel);
         
         if (!configHash || !remoteData) {
             return;
         }
         setDataDirty(false);
-        console.log({remoteData, configHash}, remoteData !== configHash);
         setDataChanged(remoteData !== configHash);
         
       }, [dataDirty, remoteData])
