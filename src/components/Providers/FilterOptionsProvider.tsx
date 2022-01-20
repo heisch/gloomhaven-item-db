@@ -111,7 +111,7 @@ const FilterProvider:FC = (props) => {
     const [ dataChanged, setDataChanged] = useState(false);
     const [ dataDirty, setDataDirty] = useState(false);
     const { Provider } = Context;
-    const { firebase, authUser} = useFirebase();
+    const { remoteData} = useFirebase();
 
 
     useEffect( () => {
@@ -196,35 +196,19 @@ const FilterProvider:FC = (props) => {
     }
 
     useEffect(() => {
-        if (!firebase || !authUser || !dataDirty) {
+        if (!dataDirty) {
           return;
         }
 
-        
         const configHash = getShareHash(lockSpoilerPanel);
         
         if (!configHash) {
             return;
         }
-        if (dataDirty) {
-            setDataDirty(false);
-        }
+        setDataDirty(false);
+        setDataChanged(remoteData !== configHash);
         
-          firebase
-              .spoilerFilter(authUser.uid).on("value", (snapshot) => {
-                    console.log("Hello 2");
-                  if (snapshot.val())
-                  {
-                      const serverHash = snapshot.val()["configHash"];
-                      console.log("Hello");
-                    setDataChanged(serverHash !== configHash);
-                  }
-                  return;
-              },
-              (error: any)=>  {
-                console.log(error)
-              })
-      }, [firebase, dataDirty])
+      }, [dataDirty, remoteData])
 
     return <Provider value={{ filterOptions:gameFilterOptions[gameType], 
                                 updateFilterOptions, 
