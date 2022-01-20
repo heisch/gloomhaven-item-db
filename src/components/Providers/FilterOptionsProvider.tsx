@@ -128,6 +128,7 @@ const FilterProvider:FC = (props) => {
             newGameFilterOptions[gt] = value;
         })
 
+        setDataDirty(true);
         setGameFilterOptions(newGameFilterOptions);
         setDataLoaded(true);
     },[]);
@@ -181,6 +182,7 @@ const FilterProvider:FC = (props) => {
                     localStorage.setItem(LOCAL_STORAGE_PREFIX + GameType.JawsOfTheLion, JSON.stringify(initialFilterOptions));
                     newGameFilterOptions[GameType.JawsOfTheLion] = initialFilterOptions;
                 }
+                setDataDirty(true);
                 setGameFilterOptions(newGameFilterOptions);
             if (hashConfig.hasOwnProperty("lockSpoilerPanel")) {
                 setLockSpoilerPanel(hashConfig.lockSpoilerPanel);
@@ -202,10 +204,11 @@ const FilterProvider:FC = (props) => {
 
         const configHash = getShareHash(lockSpoilerPanel);
         
-        if (!configHash) {
+        if (!configHash || !remoteData) {
             return;
         }
         setDataDirty(false);
+        console.log({remoteData, configHash}, remoteData !== configHash);
         setDataChanged(remoteData !== configHash);
         
       }, [dataDirty, remoteData])

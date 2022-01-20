@@ -40,11 +40,8 @@ const MainView = () => {
     }).filter( pane => pane.menuItem !== undefined);
 
     const getOutlineClass = useCallback(() => {
-        if (all) {
+        if (all || dataChanged) {
             return 'spoiler';
-        }
-        if (dataChanged) {
-            return 'dataChanged'
         }
         return '';
     }, [all, dataChanged]);

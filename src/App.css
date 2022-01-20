@@ -156,7 +156,6 @@ img.ui.image.icon.disabled {
 }
 
 :root {--spoiler-color: 1px dashed #db2828 }
-:root {--data-changed-color: 1px dashed #00ff00 }
 
 div.spoiler .ui.attached.segment {
     border: var(--spoiler-color);
@@ -170,20 +169,6 @@ div.spoiler .ui.tabular.menu .item.active {
 
 div.spoiler .ui.tabular.menu {
     border-bottom: var(--spoiler-color);
-}
-
-div.dataChanged .ui.attached.segment {
-    border: var(--data-changed-color);
-}
-
-div.dataChanged .ui.tabular.menu .item.active {
-    border-left: var(--data-changed-color);
-    border-top: var(--data-changed-color);
-    border-right: var(--data-changed-color);
-}
-
-div.dataChanged .ui.tabular.menu {
-    border-bottom: var(--data-changed-color);
 }
 
 .item-card-wrapper {
