@@ -236,16 +236,10 @@ img.item-card {
     position: absolute;
 }
 
-.addClass {
-    width: 30px;
-    height: 30px;
-}
-
 .noClass {
     width: 30px;
     height: 30px;
     background-color: black;
-    opacity: 50%;
 }
 
 .item-card-wrapper .black.button.i0 .delete.icon,
