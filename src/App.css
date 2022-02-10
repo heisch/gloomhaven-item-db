@@ -31,6 +31,13 @@ img.icon {
     vertical-align: top;
 }
 
+img.ui.image.confirmDeleteIcon {
+    left: 5px;
+    display: inline-block;
+    width: auto;
+    height: 30px;
+}
+
 .items-table img.icon.double-height {
     height: 36px;
     vertical-align: middle;

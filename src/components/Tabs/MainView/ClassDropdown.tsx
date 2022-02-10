@@ -1,22 +1,13 @@
 import React from "react";
-import { Image, Dropdown, DropdownProps } from "semantic-ui-react";
+import { Dropdown, DropdownProps } from "semantic-ui-react";
 import { ClassesInUse } from "../../../State/Types";
+import ClassIcon from "./ClassIcon";
 
 type Props = {
   className?: string;
   optionsList: ClassesInUse[];
   onChange: (option: ClassesInUse) => void;
   disabled?: boolean;
-};
-
-export const createClassImage = (option: ClassesInUse) => {
-  return (
-    <Image
-      key={option}
-      src={require(`../../../img/classes/${option}.png`)}
-      className={"soloClass"}
-    />
-  );
 };
 
 const ClassDropdown = (props:Props) => {
@@ -26,7 +17,7 @@ const ClassDropdown = (props:Props) => {
       placeholder="Choose Class"
       clearable
       selection
-      options={optionsList.map( option => {return { key: option, value: option, image: createClassImage(option) }})}
+      options={optionsList.map( option => {return { key: option, value: option, image: <ClassIcon name={option}/>}})}
     />
 }
 

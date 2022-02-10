@@ -4,7 +4,7 @@ import { GloomhavenItem, ItemManagementType } from "../../../../State/Types";
 import { ItemsOwnedBy } from "../../../Providers/FilterOptions";
 import { useFilterOptions } from "../../../Providers/FilterOptionsProvider";
 import { useSearchOptions } from "../../../Providers/SearchOptionsProvider";
-import { createClassImage } from "../ClassDropdown";
+import ClassIcon from "../ClassIcon";
 
 type Props = {
     item: GloomhavenItem;    
@@ -41,7 +41,7 @@ const PartyItemManagement = (props: Props) => {
                         updateFilterOptions({itemsOwnedBy: newItemsOwnedBy})
                     }}
             
-                content={createClassImage(owner)}
+                content={<ClassIcon name={owner}/>}
             />
             })}
             {addButtonsToShow > 0 && 
