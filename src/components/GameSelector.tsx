@@ -1,10 +1,12 @@
 import React from "react";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { DropdownProps, Form } from "semantic-ui-react";
 import { gameDataTypes, GameType } from "../games";
-import { useGame } from "./Game/GameProvider";
+import { gameTypeState } from "../State/GameTypeState";
 
 export const GameSelector = () => {
-    const {onGameTypeChanged: onChange, gameData: {gameType}} = useGame();
+    const gameType = useRecoilValue(gameTypeState);
+    const setGameType = useSetRecoilState(gameTypeState);
     const options:any[] = [];
     Object.values(gameDataTypes).forEach( (gameData) =>{
         const {gameName:text, gameType: value} = gameData;
@@ -14,5 +16,5 @@ export const GameSelector = () => {
     return <Form.Select 
             value={gameType}
             options={options}
-            onChange={(obj: any, e: DropdownProps) => {onChange(e.value as GameType)}}/>;
+            onChange={(obj: any, e: DropdownProps) => {setGameType(e.value as GameType)}}/>;
 }

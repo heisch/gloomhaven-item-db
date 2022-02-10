@@ -9,7 +9,8 @@ import { PartySpoiler } from './PartySpoiler';
 import ConfirmEnvelopeX from './ConfirmEnvelopeX';
 import { useSearchOptions } from '../../Providers/SearchOptionsProvider';
 import { GameType } from '../../../games';
-import { useGame } from '../../Game/GameProvider';
+import { useRecoilValue } from 'recoil';
+import { gameDataState } from '../../../State/GameTypeState';
 
 const filters = {
     [GameType.Gloomhaven] : <GHSpoilerFilter/>, 
@@ -19,7 +20,7 @@ const filters = {
 const SpoilerFilters = () => {
     const { filterOptions: {all, envelopeX}, updateFilterOptions } = useFilterOptions();
     const { updateSearchOptions } = useSearchOptions();
-    const { gameData: {gameType}} = useGame();
+    const {gameType} = useRecoilValue(gameDataState)
 
     return (
         <Form>

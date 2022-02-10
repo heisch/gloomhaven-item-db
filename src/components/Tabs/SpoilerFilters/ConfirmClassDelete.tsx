@@ -3,13 +3,14 @@ import { Button, Modal, Form, Image } from "semantic-ui-react";
 import { useSearchOptions } from "../../Providers/SearchOptionsProvider";
 import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 import { ItemsOwnedBy } from "../../Providers/FilterOptions";
-import { useGame } from "../../Game/GameProvider";
 import ClassIcon from "../MainView/ClassIcon";
+import { useRecoilValue } from "recoil";
+import { gameDataState } from "../../../State/GameTypeState";
 
 const ConfirmClassDelete = () => {
   const { searchOptions: { classToRemove, selectedClass }, updateSearchOptions}  = useSearchOptions();
   const { filterOptions: { classesInUse, itemsOwnedBy }, updateFilterOptions} = useFilterOptions();
-  const {gameData: { items}} = useGame();
+  const {items} = useRecoilValue(gameDataState)
 
   const onClose = () => {
     updateSearchOptions({classToRemove: undefined})

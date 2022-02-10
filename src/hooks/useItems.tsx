@@ -1,11 +1,13 @@
 import { gloomhavenItemSlots, GloomhavenItem, SortDirection } from "../State/Types"
-import { useGame } from "../components/Game/GameProvider"
 import { useSearchOptions } from "../components/Providers/SearchOptionsProvider";
 import { useFilterOptions } from "../components/Providers/FilterOptionsProvider";
+import { useRecoilValue } from "recoil";
+import { gameDataState } from "../State/GameTypeState";
 
 const useItems = (): Array<GloomhavenItem> => {
 
-    const {gameData: { isItemShown, items}} = useGame();
+      const {isItemShown, items} = useRecoilValue(gameDataState)
+
     const { searchOptions: { property, direction, slots, search, selectedClass, availableOnly }} = useSearchOptions();
     const { filterOptions: { item:spoilerFilterItem, itemsOwnedBy }, filterOptions } = useFilterOptions();
 

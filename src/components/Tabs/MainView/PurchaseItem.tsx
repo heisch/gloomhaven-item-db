@@ -6,14 +6,14 @@ import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 import { ItemsOwnedBy } from "../../Providers/FilterOptions";
 import { ClassList } from '../SpoilerFilters/ClassList';
 import { getItemPath } from "../../../games/GameData";
-import { useGame } from "../../Game/GameProvider";
+import { useRecoilValue } from "recoil";
+import { gameDataState } from "../../../State/GameTypeState";
 
 const PurchaseItem = () => {
   const { searchOptions: { selectedItem }, updateSearchOptions}  = useSearchOptions();
   const { filterOptions: { discount, classesInUse, itemsOwnedBy}, updateFilterOptions } = useFilterOptions();
   const [owners, setOwners] = useState<ClassesInUse[]>([]);
-  const {gameData: {gameType}} = useGame();
-
+  const {gameType} = useRecoilValue(gameDataState)
 
   useEffect(() => {
     if (!selectedItem || !itemsOwnedBy) {

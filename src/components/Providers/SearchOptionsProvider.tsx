@@ -1,7 +1,8 @@
 import React, { useContext, createContext, useState, FC } from 'react'
+import { useRecoilValue } from 'recoil';
 import { GameType } from '../../games'
+import { gameDataState } from '../../State/GameTypeState';
 import { GloomhavenItem, GloomhavenItemSlot, SortDirection, SortProperty, ClassesInUse } from '../../State/Types';
-import { useGame } from '../Game/GameProvider';
 
 export interface SearchOptions {
     slots?: Array<GloomhavenItemSlot>;
@@ -49,7 +50,7 @@ export function useSearchOptions() {
 
 const SearchOptionsProvider:FC = (props) => {
     const { children} = props;
-    const {gameData: {gameType}} = useGame();
+    const {gameType} = useRecoilValue(gameDataState)
 
     const [ gameSearchOptions, setGameSearchOptions] = useState(initialGameSearchOptions);
     const { Provider } = Context;

@@ -2,10 +2,11 @@ import React from 'react'
 import { Form, Button, Input, Icon} from 'semantic-ui-react';
 import { getSlotImageSrc } from '../../../helpers';
 import { ClassesInUse, GloomhavenItemSlot, ItemManagementType, ItemViewDisplayType, SortDirection, SortProperty} from '../../../State/Types';
-import { useGame } from '../../Game/GameProvider';
 import { useSearchOptions } from '../../Providers/SearchOptionsProvider';
 import { useFilterOptions } from '../../Providers/FilterOptionsProvider';
 import { ClassList } from '../SpoilerFilters/ClassList';
+import { useRecoilValue } from 'recoil';
+import { gameDataState } from '../../../State/GameTypeState';
 
 type Props = {
     setSorting : (newProperty: SortProperty) => void;
@@ -15,8 +16,8 @@ const SearchOptions = (props:Props) => {
     const { setSorting } =  props;
     const { searchOptions:{ property, search, slots, availableOnly, direction, selectedClass }, updateSearchOptions} = useSearchOptions();
     const { filterOptions: { displayAs, classesInUse, discount, itemManagementType }, updateFilterOptions} = useFilterOptions();
-    const { gameData:{filterSlots} } = useGame();
-``
+    const {filterSlots} = useRecoilValue(gameDataState)
+
     const setFilterSlot = (slot?: GloomhavenItemSlot) => {
         if (!slot)
         {
