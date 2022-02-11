@@ -7,10 +7,9 @@ import PartyManagementFilter from "./PartyManagementFilter";
 import ConfirmClassDelete from "./ConfirmClassDelete";
 import { PartySpoiler } from "./PartySpoiler";
 import ConfirmEnvelopeX from "./ConfirmEnvelopeX";
-import { useSearchOptions } from "../../Providers/SearchOptionsProvider";
 import { GameType } from "../../../games";
-import { useRecoilValue } from "recoil";
-import { gameDataState } from "../../../State";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { confirmEnvelopeXState, gameDataState } from "../../../State";
 
 const filters = {
 	[GameType.Gloomhaven]: <GHSpoilerFilter />,
@@ -22,8 +21,8 @@ const SpoilerFilters = () => {
 		filterOptions: { all, envelopeX },
 		updateFilterOptions,
 	} = useFilterOptions();
-	const { updateSearchOptions } = useSearchOptions();
 	const { gameType } = useRecoilValue(gameDataState);
+	const setConfirmEnvelopeX = useSetRecoilState(confirmEnvelopeXState);
 
 	return (
 		<Form>
@@ -47,11 +46,7 @@ const SpoilerFilters = () => {
 
 			<PartyManagementFilter />
 			{!envelopeX && (
-				<Button
-					onClick={() =>
-						updateSearchOptions({ confirmEnvelopeX: true })
-					}
-				>
+				<Button onClick={() => setConfirmEnvelopeX(true)}>
 					Envelope X
 				</Button>
 			)}

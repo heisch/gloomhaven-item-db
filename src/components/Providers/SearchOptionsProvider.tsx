@@ -6,12 +6,10 @@ import { GloomhavenItem, ClassesInUse } from "../../State/Types";
 
 export interface SearchOptions {
 	selectedItem: GloomhavenItem | undefined;
-	confirmEnvelopeX: boolean;
 }
 
 const initialSearchOptions: SearchOptions = {
 	selectedItem: undefined,
-	confirmEnvelopeX: false,
 };
 
 const initialGameSearchOptions = {
