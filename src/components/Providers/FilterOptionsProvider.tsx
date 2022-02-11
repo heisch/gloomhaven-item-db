@@ -1,7 +1,7 @@
 import React, { useContext, createContext, useState, useEffect, useCallback, FC } from 'react'
 import { useRecoilValue } from 'recoil';
 import { GameType } from '../../games'
-import { gameDataState } from '../../State/GameTypeState';
+import { gameDataState } from '../../State';
 import { ItemManagementType, SoloClassShorthand } from '../../State/Types';
 import { useFirebase } from '../Firebase';
 import {initialFilterOptions, OldFilterOptions, FilterOptions} from "./FilterOptions"
