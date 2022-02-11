@@ -14,7 +14,7 @@ import { confirmEnvelopeXState } from "../../../State";
 const ConfirmEnvelopeX = () => {
 	const [solutionCorrect, setSolutionCorrect] = useState(false);
 	const [confirmEnvelopeX, setConfirmEnvelopeX] = useRecoilState(
-		confirmEnvelopeXState
+		confirmEnvelopeXState.stateSelector
 	);
 	const { updateFilterOptions } = useFilterOptions();
 

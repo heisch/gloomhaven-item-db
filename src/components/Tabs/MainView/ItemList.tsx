@@ -16,9 +16,12 @@ import { useRecoilState } from "recoil";
 import { sortPropertyState, sortDirectionState } from "../../../State";
 
 const ItemList = () => {
-	const [sortProperty, setSortProperty] = useRecoilState(sortPropertyState);
-	const [sortDirection, setSortDirection] =
-		useRecoilState(sortDirectionState);
+	const [sortProperty, setSortProperty] = useRecoilState(
+		sortPropertyState.stateSelector
+	);
+	const [sortDirection, setSortDirection] = useRecoilState(
+		sortDirectionState.stateSelector
+	);
 	const items = useItems();
 	const {
 		filterOptions: { all, displayAs, itemManagementType },

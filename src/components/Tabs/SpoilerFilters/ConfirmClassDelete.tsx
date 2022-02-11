@@ -11,10 +11,12 @@ import {
 } from "../../../State";
 
 const ConfirmClassDelete = () => {
-	const [selectedClass, setSelectedClass] =
-		useRecoilState(selectedClassState);
-	const [classToDelete, setClassToDelete] =
-		useRecoilState(classToDeleteState);
+	const [selectedClass, setSelectedClass] = useRecoilState(
+		selectedClassState.stateSelector
+	);
+	const [classToDelete, setClassToDelete] = useRecoilState(
+		classToDeleteState.stateSelector
+	);
 	const {
 		filterOptions: { classesInUse, itemsOwnedBy },
 		updateFilterOptions,

@@ -12,7 +12,7 @@ type Props = {
 };
 
 const PartyItemManagement = (props: Props) => {
-	const setSelectedItem = useSetRecoilState(selectedItemState);
+	const setSelectedItem = useSetRecoilState(selectedItemState.stateSelector);
 	const { item } = props;
 	const {
 		filterOptions: { itemManagementType, classesInUse, itemsOwnedBy },

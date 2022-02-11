@@ -14,7 +14,9 @@ import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 import { ClassList } from "./ClassList";
 
 export const PartySpoiler = () => {
-	const setClassToDelete = useSetRecoilState(classToDeleteState);
+	const setClassToDelete = useSetRecoilState(
+		classToDeleteState.stateSelector
+	);
 	const {
 		filterOptions: { classesInUse, envelopeX, itemManagementType },
 		updateFilterOptions,

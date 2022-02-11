@@ -32,8 +32,8 @@ const GHIcon = (props: IconProps) => {
 };
 
 const ItemTable = (props: Props) => {
-	const sortProperty = useRecoilValue(sortPropertyState);
-	const sortDirection = useRecoilValue(sortDirectionState);
+	const sortProperty = useRecoilValue(sortPropertyState.stateSelector);
+	const sortDirection = useRecoilValue(sortDirectionState.stateSelector);
 	const { items, setSorting } = props;
 	const {
 		filterOptions: { discount, itemManagementType },

@@ -27,5 +27,5 @@ export function createState<T>(name: string, defaultValue: T) {
 		},
 	});
 
-	return stateSelector;
+	return { stateSelector, atoms };
 }

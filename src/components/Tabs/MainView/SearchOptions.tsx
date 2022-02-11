@@ -38,15 +38,20 @@ const SearchOptions = (props: Props) => {
 		updateFilterOptions,
 	} = useFilterOptions();
 	const { filterSlots } = useRecoilValue(gameDataState);
-	const [slots, setSlotsState] = useRecoilState(slotsState);
-	const sortProperty = useRecoilValue(sortPropertyState);
-	const [sortDirection, setSortDirection] =
-		useRecoilState(sortDirectionState);
-	const [searchString, setSearchString] = useRecoilState(searchState);
-	const [availableOnly, setAvailableOnly] =
-		useRecoilState(availableOnlyState);
-	const [selectedClass, setSelectedClass] =
-		useRecoilState(selectedClassState);
+	const [slots, setSlotsState] = useRecoilState(slotsState.stateSelector);
+	const sortProperty = useRecoilValue(sortPropertyState.stateSelector);
+	const [sortDirection, setSortDirection] = useRecoilState(
+		sortDirectionState.stateSelector
+	);
+	const [searchString, setSearchString] = useRecoilState(
+		searchState.stateSelector
+	);
+	const [availableOnly, setAvailableOnly] = useRecoilState(
+		availableOnlyState.stateSelector
+	);
+	const [selectedClass, setSelectedClass] = useRecoilState(
+		selectedClassState.stateSelector
+	);
 
 	const setFilterSlot = (slot?: GloomhavenItemSlot) => {
 		if (!slot) {

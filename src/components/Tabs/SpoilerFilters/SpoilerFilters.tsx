@@ -22,7 +22,9 @@ const SpoilerFilters = () => {
 		updateFilterOptions,
 	} = useFilterOptions();
 	const { gameType } = useRecoilValue(gameDataState);
-	const setConfirmEnvelopeX = useSetRecoilState(confirmEnvelopeXState);
+	const setConfirmEnvelopeX = useSetRecoilState(
+		confirmEnvelopeXState.stateSelector
+	);
 
 	return (
 		<Form>

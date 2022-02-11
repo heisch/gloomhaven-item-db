@@ -17,12 +17,12 @@ import {
 
 const useItems = (): Array<GloomhavenItem> => {
 	const { isItemShown, items } = useRecoilValue(gameDataState);
-	const slots = useRecoilValue(slotsState);
-	const sortProperty = useRecoilValue(sortPropertyState);
-	const sortDirection = useRecoilValue(sortDirectionState);
-	const searchString = useRecoilValue(searchState);
-	const availableOnly = useRecoilValue(availableOnlyState);
-	const selectedClass = useRecoilValue(selectedClassState);
+	const slots = useRecoilValue(slotsState.stateSelector);
+	const sortProperty = useRecoilValue(sortPropertyState.stateSelector);
+	const sortDirection = useRecoilValue(sortDirectionState.stateSelector);
+	const searchString = useRecoilValue(searchState.stateSelector);
+	const availableOnly = useRecoilValue(availableOnlyState.stateSelector);
+	const selectedClass = useRecoilValue(selectedClassState.stateSelector);
 
 	const {
 		filterOptions: { item: spoilerFilterItem, itemsOwnedBy },

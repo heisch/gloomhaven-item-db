@@ -9,7 +9,9 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { gameDataState, selectedItemState } from "../../../State";
 
 const PurchaseItem = () => {
-	const [selectedItem, setSelectedItem] = useRecoilState(selectedItemState);
+	const [selectedItem, setSelectedItem] = useRecoilState(
+		selectedItemState.stateSelector
+	);
 	const {
 		filterOptions: { discount, classesInUse, itemsOwnedBy },
 		updateFilterOptions,
