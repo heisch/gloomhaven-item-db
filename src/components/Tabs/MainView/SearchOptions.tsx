@@ -18,8 +18,9 @@ import {
 	searchState,
 	slotsState,
 	sortPropertyState,
+	sortDirectionState,
+	availableOnlyState,
 } from "../../../State";
-import { sortDirectionState } from "../../../State/Search/SortDirection";
 
 type Props = {
 	setSorting: (newProperty: SortProperty) => void;
@@ -28,7 +29,7 @@ type Props = {
 const SearchOptions = (props: Props) => {
 	const { setSorting } = props;
 	const {
-		searchOptions: { availableOnly, selectedClass },
+		searchOptions: { selectedClass },
 		updateSearchOptions,
 	} = useSearchOptions();
 	const {
@@ -46,6 +47,8 @@ const SearchOptions = (props: Props) => {
 	const [sortDirection, setSortDirection] =
 		useRecoilState(sortDirectionState);
 	const [searchString, setSearchString] = useRecoilState(searchState);
+	const [availableOnly, setAvailableOnly] =
+		useRecoilState(availableOnlyState);
 
 	const setFilterSlot = (slot?: GloomhavenItemSlot) => {
 		if (!slot) {
@@ -173,7 +176,7 @@ const SearchOptions = (props: Props) => {
 						<Button
 							color={availableOnly ? "blue" : undefined}
 							onClick={() => {
-								updateSearchOptions({ availableOnly: true });
+								setAvailableOnly(true);
 							}}
 						>
 							Available
@@ -182,7 +185,7 @@ const SearchOptions = (props: Props) => {
 						<Button
 							color={!availableOnly ? "blue" : undefined}
 							onClick={() => {
-								updateSearchOptions({ availableOnly: false });
+								setAvailableOnly(false);
 							}}
 						>
 							All

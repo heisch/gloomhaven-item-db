@@ -11,8 +11,9 @@ import {
 	searchState,
 	slotsState,
 	sortPropertyState,
+	sortDirectionState,
+	availableOnlyState,
 } from "../State";
-import { sortDirectionState } from "../State/Search/SortDirection";
 
 const useItems = (): Array<GloomhavenItem> => {
 	const { isItemShown, items } = useRecoilValue(gameDataState);
@@ -20,9 +21,10 @@ const useItems = (): Array<GloomhavenItem> => {
 	const sortProperty = useRecoilValue(sortPropertyState);
 	const sortDirection = useRecoilValue(sortDirectionState);
 	const searchString = useRecoilValue(searchState);
+	const availableOnly = useRecoilValue(availableOnlyState);
 
 	const {
-		searchOptions: { selectedClass, availableOnly },
+		searchOptions: { selectedClass },
 	} = useSearchOptions();
 	const {
 		filterOptions: { item: spoilerFilterItem, itemsOwnedBy },

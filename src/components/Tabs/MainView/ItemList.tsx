@@ -13,8 +13,7 @@ import PurchaseItem from "./PurchaseItem";
 import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 import useItems from "../../../hooks/useItems";
 import { useRecoilState } from "recoil";
-import { sortPropertyState } from "../../../State";
-import { sortDirectionState } from "../../../State/Search/SortDirection";
+import { sortPropertyState, sortDirectionState } from "../../../State";
 
 const ItemList = () => {
 	const [sortProperty, setSortProperty] = useRecoilState(sortPropertyState);

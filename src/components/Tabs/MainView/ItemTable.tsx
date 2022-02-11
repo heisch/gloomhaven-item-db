@@ -7,11 +7,9 @@ import {
 import { Table, Popup, Icon, Image } from "semantic-ui-react";
 import ItemManagement from "./ItemManagement";
 import { Helpers, getSlotImageSrc } from "../../../helpers";
-import { useSearchOptions } from "../../Providers/SearchOptionsProvider";
 import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 import { useRecoilValue } from "recoil";
-import { sortPropertyState } from "../../../State";
-import { sortDirectionState } from "../../../State/Search/SortDirection";
+import { sortPropertyState, sortDirectionState } from "../../../State";
 
 type Props = {
 	items: GloomhavenItem[];
