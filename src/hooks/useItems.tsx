@@ -6,7 +6,12 @@ import {
 import { useSearchOptions } from "../components/Providers/SearchOptionsProvider";
 import { useFilterOptions } from "../components/Providers/FilterOptionsProvider";
 import { useRecoilValue } from "recoil";
-import { gameDataState, slotsState, sortPropertyState } from "../State";
+import {
+	gameDataState,
+	searchState,
+	slotsState,
+	sortPropertyState,
+} from "../State";
 import { sortDirectionState } from "../State/Search/SortDirection";
 
 const useItems = (): Array<GloomhavenItem> => {
@@ -14,9 +19,10 @@ const useItems = (): Array<GloomhavenItem> => {
 	const slots = useRecoilValue(slotsState);
 	const sortProperty = useRecoilValue(sortPropertyState);
 	const sortDirection = useRecoilValue(sortDirectionState);
+	const searchString = useRecoilValue(searchState);
 
 	const {
-		searchOptions: { search, selectedClass, availableOnly },
+		searchOptions: { selectedClass, availableOnly },
 	} = useSearchOptions();
 	const {
 		filterOptions: { item: spoilerFilterItem, itemsOwnedBy },
@@ -33,10 +39,10 @@ const useItems = (): Array<GloomhavenItem> => {
 			if (slots.length > 0) {
 				hit = slots.includes(item.slot);
 			}
-			if (search.length > 2 && hit) {
+			if (searchString.length > 2 && hit) {
 				hit =
-					!!item.name.match(new RegExp(search, "i")) ||
-					!!item.desc.match(new RegExp(search, "i"));
+					!!item.name.match(new RegExp(searchString, "i")) ||
+					!!item.desc.match(new RegExp(searchString, "i"));
 			}
 			if (selectedClass && hit) {
 				const owners = itemsOwnedBy[item.id];

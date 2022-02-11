@@ -13,7 +13,12 @@ import { useSearchOptions } from "../../Providers/SearchOptionsProvider";
 import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 import { ClassList } from "../SpoilerFilters/ClassList";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { gameDataState, slotsState, sortPropertyState } from "../../../State";
+import {
+	gameDataState,
+	searchState,
+	slotsState,
+	sortPropertyState,
+} from "../../../State";
 import { sortDirectionState } from "../../../State/Search/SortDirection";
 
 type Props = {
@@ -23,7 +28,7 @@ type Props = {
 const SearchOptions = (props: Props) => {
 	const { setSorting } = props;
 	const {
-		searchOptions: { search, availableOnly, selectedClass },
+		searchOptions: { availableOnly, selectedClass },
 		updateSearchOptions,
 	} = useSearchOptions();
 	const {
@@ -40,6 +45,7 @@ const SearchOptions = (props: Props) => {
 	const sortProperty = useRecoilValue(sortPropertyState);
 	const [sortDirection, setSortDirection] =
 		useRecoilState(sortDirectionState);
+	const [searchString, setSearchString] = useRecoilState(searchState);
 
 	const setFilterSlot = (slot?: GloomhavenItemSlot) => {
 		if (!slot) {
@@ -127,14 +133,14 @@ const SearchOptions = (props: Props) => {
 				<Form.Group inline>
 					<label>Find Item:</label>
 					<Input
-						value={search}
+						value={searchString}
 						onChange={(e) => {
-							updateSearchOptions({ search: e.target.value });
+							setSearchString(e.target.value);
 						}}
 						icon={{
 							name: "close",
 							link: true,
-							onClick: () => updateSearchOptions({ search: "" }),
+							onClick: () => setSearchString(""),
 						}}
 						placeholder={"Search..."}
 					/>

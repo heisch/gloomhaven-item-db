@@ -5,7 +5,6 @@ import { gameDataState } from "../../State";
 import { GloomhavenItem, ClassesInUse } from "../../State/Types";
 
 export interface SearchOptions {
-	search: string;
 	selectedItem: GloomhavenItem | undefined;
 	selectedClass: ClassesInUse | undefined;
 	availableOnly: boolean;
@@ -14,7 +13,6 @@ export interface SearchOptions {
 }
 
 const initialSearchOptions: SearchOptions = {
-	search: "",
 	selectedItem: undefined,
 	selectedClass: undefined,
 	availableOnly: false,
