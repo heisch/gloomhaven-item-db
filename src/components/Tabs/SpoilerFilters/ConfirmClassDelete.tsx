@@ -1,17 +1,20 @@
 import React from "react";
-import { Button, Modal, Form, Image } from "semantic-ui-react";
-import { useSearchOptions } from "../../Providers/SearchOptionsProvider";
+import { Button, Modal, Form } from "semantic-ui-react";
 import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 import { ItemsOwnedBy } from "../../Providers/FilterOptions";
 import ClassIcon from "../MainView/ClassIcon";
-import { useRecoilValue } from "recoil";
-import { gameDataState } from "../../../State";
+import { useRecoilState, useRecoilValue } from "recoil";
+import {
+	classToDeleteState,
+	gameDataState,
+	selectedClassState,
+} from "../../../State";
 
 const ConfirmClassDelete = () => {
-	const {
-		searchOptions: { classToRemove, selectedClass },
-		updateSearchOptions,
-	} = useSearchOptions();
+	const [selectedClass, setSelectedClass] =
+		useRecoilState(selectedClassState);
+	const [classToDelete, setClassToDelete] =
+		useRecoilState(classToDeleteState);
 	const {
 		filterOptions: { classesInUse, itemsOwnedBy },
 		updateFilterOptions,
@@ -19,16 +22,16 @@ const ConfirmClassDelete = () => {
 	const { items } = useRecoilValue(gameDataState);
 
 	const onClose = () => {
-		updateSearchOptions({ classToRemove: undefined });
+		setClassToDelete(undefined);
 	};
 
 	const itemsOwnedByClass = () => {
-		if (!classToRemove) {
+		if (!classToDelete) {
 			return [];
 		}
 		const itemIds: number[] = [];
 		Object.entries(itemsOwnedBy).forEach(([itemId, owners]) => {
-			if (owners && owners.includes(classToRemove)) {
+			if (owners && owners.includes(classToDelete)) {
 				itemIds.push(parseInt(itemId));
 			}
 		});
@@ -41,7 +44,7 @@ const ConfirmClassDelete = () => {
 		const newItemsOwnedBy: ItemsOwnedBy = Object.assign([], itemsOwnedBy);
 		itemsOwned.forEach((itemId) => {
 			const index = newItemsOwnedBy[itemId].findIndex(
-				(c) => c === classToRemove
+				(c) => c === classToDelete
 			);
 			if (index != -1) {
 				newItemsOwnedBy[itemId].splice(index, 1);
@@ -59,34 +62,32 @@ const ConfirmClassDelete = () => {
 	};
 
 	const onApply = () => {
-		if (classToRemove) {
+		if (classToDelete) {
 			removeItems();
 			const newClassesInUse = Object.assign([], classesInUse);
-			const index = newClassesInUse.findIndex((c) => c === classToRemove);
+			const index = newClassesInUse.findIndex((c) => c === classToDelete);
 			if (index != -1) {
 				newClassesInUse.splice(index, 1);
 			}
 
 			let newSelectedClass = selectedClass;
-			if (newSelectedClass === classToRemove) {
+			if (newSelectedClass === classToDelete) {
 				newSelectedClass = undefined;
 			}
 			updateFilterOptions({ classesInUse: newClassesInUse });
-			updateSearchOptions({
-				classToRemove: undefined,
-				selectedClass: newSelectedClass,
-			});
+			setSelectedClass(newSelectedClass);
+			setClassToDelete(undefined);
 		}
 		onClose();
 	};
 
 	return (
-		<Modal size="tiny" open={classToRemove !== undefined} onClose={onClose}>
+		<Modal size="tiny" open={classToDelete !== undefined} onClose={onClose}>
 			<Modal.Header>
-				Remove Class{" "}
-				{classToRemove && (
+				Remove Class
+				{classToDelete && (
 					<ClassIcon
-						name={classToRemove}
+						name={classToDelete}
 						className="confirmDeleteIcon"
 					/>
 				)}

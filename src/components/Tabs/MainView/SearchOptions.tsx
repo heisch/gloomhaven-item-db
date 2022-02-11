@@ -9,7 +9,6 @@ import {
 	SortDirection,
 	SortProperty,
 } from "../../../State/Types";
-import { useSearchOptions } from "../../Providers/SearchOptionsProvider";
 import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 import { ClassList } from "../SpoilerFilters/ClassList";
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -20,6 +19,7 @@ import {
 	sortPropertyState,
 	sortDirectionState,
 	availableOnlyState,
+	selectedClassState,
 } from "../../../State";
 
 type Props = {
@@ -28,10 +28,6 @@ type Props = {
 
 const SearchOptions = (props: Props) => {
 	const { setSorting } = props;
-	const {
-		searchOptions: { selectedClass },
-		updateSearchOptions,
-	} = useSearchOptions();
 	const {
 		filterOptions: {
 			displayAs,
@@ -49,6 +45,8 @@ const SearchOptions = (props: Props) => {
 	const [searchString, setSearchString] = useRecoilState(searchState);
 	const [availableOnly, setAvailableOnly] =
 		useRecoilState(availableOnlyState);
+	const [selectedClass, setSelectedClass] =
+		useRecoilState(selectedClassState);
 
 	const setFilterSlot = (slot?: GloomhavenItemSlot) => {
 		if (!slot) {
@@ -155,13 +153,9 @@ const SearchOptions = (props: Props) => {
 							classes={classesInUse}
 							onClick={(option: ClassesInUse) => {
 								if (selectedClass === option) {
-									updateSearchOptions({
-										selectedClass: undefined,
-									});
+									setSelectedClass(undefined);
 								} else {
-									updateSearchOptions({
-										selectedClass: option,
-									});
+									setSelectedClass(option);
 								}
 							}}
 							isUsed={(options: ClassesInUse) =>

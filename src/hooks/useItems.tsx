@@ -3,7 +3,6 @@ import {
 	GloomhavenItem,
 	SortDirection,
 } from "../State/Types";
-import { useSearchOptions } from "../components/Providers/SearchOptionsProvider";
 import { useFilterOptions } from "../components/Providers/FilterOptionsProvider";
 import { useRecoilValue } from "recoil";
 import {
@@ -13,6 +12,7 @@ import {
 	sortPropertyState,
 	sortDirectionState,
 	availableOnlyState,
+	selectedClassState,
 } from "../State";
 
 const useItems = (): Array<GloomhavenItem> => {
@@ -22,10 +22,8 @@ const useItems = (): Array<GloomhavenItem> => {
 	const sortDirection = useRecoilValue(sortDirectionState);
 	const searchString = useRecoilValue(searchState);
 	const availableOnly = useRecoilValue(availableOnlyState);
+	const selectedClass = useRecoilValue(selectedClassState);
 
-	const {
-		searchOptions: { selectedClass },
-	} = useSearchOptions();
 	const {
 		filterOptions: { item: spoilerFilterItem, itemsOwnedBy },
 		filterOptions,

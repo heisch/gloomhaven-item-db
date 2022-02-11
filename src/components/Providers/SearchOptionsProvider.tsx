@@ -6,15 +6,11 @@ import { GloomhavenItem, ClassesInUse } from "../../State/Types";
 
 export interface SearchOptions {
 	selectedItem: GloomhavenItem | undefined;
-	selectedClass: ClassesInUse | undefined;
-	classToRemove: ClassesInUse | undefined;
 	confirmEnvelopeX: boolean;
 }
 
 const initialSearchOptions: SearchOptions = {
 	selectedItem: undefined,
-	selectedClass: undefined,
-	classToRemove: undefined,
 	confirmEnvelopeX: false,
 };
 
