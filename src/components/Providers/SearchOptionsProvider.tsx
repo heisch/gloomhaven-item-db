@@ -2,17 +2,10 @@ import React, { useContext, createContext, useState, FC } from "react";
 import { useRecoilValue } from "recoil";
 import { GameType } from "../../games";
 import { gameDataState } from "../../State";
-import {
-	GloomhavenItem,
-	SortDirection,
-	SortProperty,
-	ClassesInUse,
-} from "../../State/Types";
+import { GloomhavenItem, ClassesInUse } from "../../State/Types";
 
 export interface SearchOptions {
 	search: string;
-	direction: SortDirection;
-	property: SortProperty;
 	selectedItem: GloomhavenItem | undefined;
 	selectedClass: ClassesInUse | undefined;
 	availableOnly: boolean;
@@ -22,8 +15,6 @@ export interface SearchOptions {
 
 const initialSearchOptions: SearchOptions = {
 	search: "",
-	direction: SortDirection.ascending,
-	property: "id",
 	selectedItem: undefined,
 	selectedClass: undefined,
 	availableOnly: false,

@@ -12,8 +12,9 @@ import {
 import { useSearchOptions } from "../../Providers/SearchOptionsProvider";
 import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 import { ClassList } from "../SpoilerFilters/ClassList";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { gameDataState, slotsState } from "../../../State";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { gameDataState, slotsState, sortPropertyState } from "../../../State";
+import { sortDirectionState } from "../../../State/Search/SortDirection";
 
 type Props = {
 	setSorting: (newProperty: SortProperty) => void;
@@ -22,13 +23,7 @@ type Props = {
 const SearchOptions = (props: Props) => {
 	const { setSorting } = props;
 	const {
-		searchOptions: {
-			property,
-			search,
-			availableOnly,
-			direction,
-			selectedClass,
-		},
+		searchOptions: { search, availableOnly, selectedClass },
 		updateSearchOptions,
 	} = useSearchOptions();
 	const {
@@ -41,8 +36,10 @@ const SearchOptions = (props: Props) => {
 		updateFilterOptions,
 	} = useFilterOptions();
 	const { filterSlots } = useRecoilValue(gameDataState);
-	const setSlotsState = useSetRecoilState(slotsState);
-	const slots = useRecoilValue(slotsState);
+	const [slots, setSlotsState] = useRecoilState(slotsState);
+	const sortProperty = useRecoilValue(sortPropertyState);
+	const [sortDirection, setSortDirection] =
+		useRecoilState(sortDirectionState);
 
 	const setFilterSlot = (slot?: GloomhavenItemSlot) => {
 		if (!slot) {
@@ -60,12 +57,11 @@ const SearchOptions = (props: Props) => {
 	};
 
 	const toggleSortDirection = () => {
-		updateSearchOptions({
-			direction:
-				direction === SortDirection.ascending
-					? SortDirection.descending
-					: SortDirection.ascending,
-		});
+		setSortDirection(
+			sortDirection === SortDirection.ascending
+				? SortDirection.descending
+				: SortDirection.ascending
+		);
 	};
 
 	return (
@@ -192,7 +188,7 @@ const SearchOptions = (props: Props) => {
 						<Form.Group inline>
 							<label>Sort By:</label>
 							<Form.Select
-								value={property}
+								value={sortProperty}
 								options={[
 									{ value: "id", text: "Item Number" },
 									{ value: "slot", text: "Equipment Slot" },
@@ -209,14 +205,16 @@ const SearchOptions = (props: Props) => {
 								icon={
 									<Icon
 										name={
-											direction ===
+											sortDirection ===
 											SortDirection.ascending
 												? `angle up`
 												: `angle down`
 										}
 									/>
 								}
-								checked={direction === SortDirection.ascending}
+								checked={
+									sortDirection === SortDirection.ascending
+								}
 								onClick={() => toggleSortDirection()}
 							/>
 						</Form.Group>

@@ -6,20 +6,17 @@ import {
 import { useSearchOptions } from "../components/Providers/SearchOptionsProvider";
 import { useFilterOptions } from "../components/Providers/FilterOptionsProvider";
 import { useRecoilValue } from "recoil";
-import { gameDataState, slotsState } from "../State";
+import { gameDataState, slotsState, sortPropertyState } from "../State";
+import { sortDirectionState } from "../State/Search/SortDirection";
 
 const useItems = (): Array<GloomhavenItem> => {
 	const { isItemShown, items } = useRecoilValue(gameDataState);
 	const slots = useRecoilValue(slotsState);
+	const sortProperty = useRecoilValue(sortPropertyState);
+	const sortDirection = useRecoilValue(sortDirectionState);
 
 	const {
-		searchOptions: {
-			property,
-			direction,
-			search,
-			selectedClass,
-			availableOnly,
-		},
+		searchOptions: { search, selectedClass, availableOnly },
 	} = useSearchOptions();
 	const {
 		filterOptions: { item: spoilerFilterItem, itemsOwnedBy },
@@ -63,7 +60,7 @@ const useItems = (): Array<GloomhavenItem> => {
 		const items = getFilteredItems();
 		return items.sort((itemA: GloomhavenItem, itemB: GloomhavenItem) => {
 			let value = 0;
-			switch (property) {
+			switch (sortProperty) {
 				case "name":
 					value = itemA["name"].localeCompare(itemB["name"]);
 					break;
@@ -104,7 +101,9 @@ const useItems = (): Array<GloomhavenItem> => {
 					value = itemAuse.localeCompare(itemBuse);
 					break;
 			}
-			return direction === SortDirection.ascending ? value : value * -1;
+			return sortDirection === SortDirection.ascending
+				? value
+				: value * -1;
 		});
 	};
 
