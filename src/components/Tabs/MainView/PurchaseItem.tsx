@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, Modal } from "semantic-ui-react";
 import { ClassesInUse } from "../../../State/Types";
-import { useSearchOptions } from "../../Providers/SearchOptionsProvider";
 import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 import { ItemsOwnedBy } from "../../Providers/FilterOptions";
 import { ClassList } from "../SpoilerFilters/ClassList";
 import { getItemPath } from "../../../games/GameData";
-import { useRecoilValue } from "recoil";
-import { gameDataState } from "../../../State";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { gameDataState, selectedItemState } from "../../../State";
 
 const PurchaseItem = () => {
-	const {
-		searchOptions: { selectedItem },
-		updateSearchOptions,
-	} = useSearchOptions();
+	const [selectedItem, setSelectedItem] = useRecoilState(selectedItemState);
 	const {
 		filterOptions: { discount, classesInUse, itemsOwnedBy },
 		updateFilterOptions,
@@ -29,7 +25,7 @@ const PurchaseItem = () => {
 	}, [selectedItem, itemsOwnedBy]);
 
 	const onClose = () => {
-		updateSearchOptions({ selectedItem: undefined });
+		setSelectedItem(undefined);
 	};
 
 	const onApply = () => {
