@@ -12,10 +12,15 @@ import ItemGrid from "./ItemGrid";
 import PurchaseItem from "./PurchaseItem";
 import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 import useItems from "../../../hooks/useItems";
-import { useRecoilState } from "recoil";
-import { sortPropertyState, sortDirectionState } from "../../../State";
+import { useRecoilState, useRecoilValue } from "recoil";
+import {
+	sortPropertyState,
+	sortDirectionState,
+	allState,
+} from "../../../State";
 
 const ItemList = () => {
+	const all = useRecoilValue(allState.stateSelector);
 	const [sortProperty, setSortProperty] = useRecoilState(
 		sortPropertyState.stateSelector
 	);
@@ -24,12 +29,11 @@ const ItemList = () => {
 	);
 	const items = useItems();
 	const {
-		filterOptions: { all, displayAs, itemManagementType },
+		filterOptions: { displayAs, itemManagementType },
 		dataChanged,
 	} = useFilterOptions();
 
 	const setSorting = (newProperty: SortProperty) => {
-		console.log("setting sorting");
 		let newDirection: SortDirection;
 		if (sortProperty === newProperty) {
 			newDirection =
@@ -41,7 +45,6 @@ const ItemList = () => {
 		}
 
 		setSortProperty(newProperty);
-		console.log(newDirection);
 		setSortDirection(newDirection);
 	};
 

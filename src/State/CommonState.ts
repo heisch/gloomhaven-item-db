@@ -2,8 +2,13 @@ import { atom, RecoilState, selector } from "recoil";
 import { gameTypeState } from ".";
 import { gameDataTypes, GameType } from "../games";
 
-type AtomObject<T> = {
+export type AtomObject<T> = {
 	[key: string]: RecoilState<T>;
+};
+
+export type Foo<T> = {
+	gameType: GameType;
+	value: T;
 };
 
 export function createState<T>(name: string, defaultValue: T) {
@@ -27,5 +32,21 @@ export function createState<T>(name: string, defaultValue: T) {
 		},
 	});
 
-	return { stateSelector, atoms };
+	const gameStateSelector = selector<Foo<T>>({
+		key: `${name}-gstate`,
+		get: () => {
+			const foo: Foo<T> = {
+				gameType: GameType.Gloomhaven,
+				value: defaultValue,
+			};
+			return foo;
+		},
+		set: ({ set }, newValue) => {
+			const { gameType, value } = newValue as Foo<T>;
+			const a = atoms[gameType];
+			set(a, value);
+		},
+	});
+
+	return { stateSelector, gameStateSelector };
 }

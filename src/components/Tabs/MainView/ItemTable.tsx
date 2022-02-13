@@ -9,7 +9,11 @@ import ItemManagement from "./ItemManagement";
 import { Helpers, getSlotImageSrc } from "../../../helpers";
 import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 import { useRecoilValue } from "recoil";
-import { sortPropertyState, sortDirectionState } from "../../../State";
+import {
+	sortPropertyState,
+	sortDirectionState,
+	discountState,
+} from "../../../State";
 
 type Props = {
 	items: GloomhavenItem[];
@@ -36,8 +40,9 @@ const ItemTable = (props: Props) => {
 	const sortDirection = useRecoilValue(sortDirectionState.stateSelector);
 	const { items, setSorting } = props;
 	const {
-		filterOptions: { discount, itemManagementType },
+		filterOptions: { itemManagementType },
 	} = useFilterOptions();
+	const discount = useRecoilValue(discountState.stateSelector);
 
 	const renderSummon = (item: GloomhavenItem) => {
 		return item.summon === undefined ? null : (

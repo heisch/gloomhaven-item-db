@@ -1,30 +1,35 @@
-import { FilterOptions } from "../../components/Providers/FilterOptions";
+import { Spoiler } from "../../components/Providers/FilterOptions";
 import { GloomhavenItem, gloomhavenItemSlots } from "../../State/Types";
 import { GameData, getInitialItems } from "../GameData";
 import { GameType } from "../GameType";
 
-export const isItemShown = ({id}:GloomhavenItem, {all, scenarioCompleted}:FilterOptions) => {
-    if (all) {
-        return true;
-    }
-    if (id <=13 && scenarioCompleted.includes(2)) {
-        return true;
-    }
-    if (id >=15 && id <= 20 && scenarioCompleted.includes(9)) {
-        return true;
-    }
-    if (id >=21 && id <= 26 && scenarioCompleted.includes(15)) {
-        return true;
-    }
-    return false;
-}
+export const isItemShown = (
+	{ id }: GloomhavenItem,
+	{ all, scenarioCompleted }: Spoiler
+) => {
+	if (all) {
+		return true;
+	}
+	if (id <= 13 && scenarioCompleted.includes(2)) {
+		return true;
+	}
+	if (id >= 15 && id <= 20 && scenarioCompleted.includes(9)) {
+		return true;
+	}
+	if (id >= 21 && id <= 26 && scenarioCompleted.includes(15)) {
+		return true;
+	}
+	return false;
+};
 
-const { items, filterSlots} = getInitialItems(GameType.JawsOfTheLion);
+const { items, filterSlots } = getInitialItems(GameType.JawsOfTheLion);
 
 export const JOTLGameData: GameData = {
-    gameType: GameType.JawsOfTheLion,
-    gameName: "Gloomhaven: Jaws of the Lion",
-    items,
-    filterSlots: gloomhavenItemSlots.filter( slot => filterSlots.includes(slot)),
-    isItemShown
-}
+	gameType: GameType.JawsOfTheLion,
+	gameName: "Gloomhaven: Jaws of the Lion",
+	items,
+	filterSlots: gloomhavenItemSlots.filter((slot) =>
+		filterSlots.includes(slot)
+	),
+	isItemShown,
+};

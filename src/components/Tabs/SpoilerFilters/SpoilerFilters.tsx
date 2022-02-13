@@ -8,8 +8,8 @@ import ConfirmClassDelete from "./ConfirmClassDelete";
 import { PartySpoiler } from "./PartySpoiler";
 import ConfirmEnvelopeX from "./ConfirmEnvelopeX";
 import { GameType } from "../../../games";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { confirmEnvelopeXState, gameDataState } from "../../../State";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { allState, confirmEnvelopeXState, gameDataState } from "../../../State";
 
 const filters = {
 	[GameType.Gloomhaven]: <GHSpoilerFilter />,
@@ -17,9 +17,9 @@ const filters = {
 };
 
 const SpoilerFilters = () => {
+	const [all, setAll] = useRecoilState(allState.stateSelector);
 	const {
-		filterOptions: { all, envelopeX },
-		updateFilterOptions,
+		filterOptions: { envelopeX },
 	} = useFilterOptions();
 	const { gameType } = useRecoilValue(gameDataState);
 	const setConfirmEnvelopeX = useSetRecoilState(
@@ -32,7 +32,9 @@ const SpoilerFilters = () => {
 				<label>Respecting Spoiler Settings:</label>
 				<Button
 					color={all ? "red" : "blue"}
-					onClick={() => updateFilterOptions({ all: !all })}
+					onClick={() => {
+						setAll(!all);
+					}}
 				>
 					{all ? (
 						<React.Fragment>

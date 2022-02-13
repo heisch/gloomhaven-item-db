@@ -20,6 +20,7 @@ import {
 	sortDirectionState,
 	availableOnlyState,
 	selectedClassState,
+	discountState,
 } from "../../../State";
 
 type Props = {
@@ -29,12 +30,7 @@ type Props = {
 const SearchOptions = (props: Props) => {
 	const { setSorting } = props;
 	const {
-		filterOptions: {
-			displayAs,
-			classesInUse,
-			discount,
-			itemManagementType,
-		},
+		filterOptions: { displayAs, classesInUse, itemManagementType },
 		updateFilterOptions,
 	} = useFilterOptions();
 	const { filterSlots } = useRecoilValue(gameDataState);
@@ -52,6 +48,7 @@ const SearchOptions = (props: Props) => {
 	const [selectedClass, setSelectedClass] = useRecoilState(
 		selectedClassState.stateSelector
 	);
+	const discount = useRecoilValue(discountState.stateSelector);
 
 	const setFilterSlot = (slot?: GloomhavenItemSlot) => {
 		if (!slot) {

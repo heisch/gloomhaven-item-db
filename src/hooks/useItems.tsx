@@ -13,7 +13,12 @@ import {
 	sortDirectionState,
 	availableOnlyState,
 	selectedClassState,
+	allState,
+	discountState,
+	prosperityState,
+	itemState,
 } from "../State";
+import { Spoiler } from "../components/Providers/FilterOptions";
 
 const useItems = (): Array<GloomhavenItem> => {
 	const { isItemShown, items } = useRecoilValue(gameDataState);
@@ -23,16 +28,27 @@ const useItems = (): Array<GloomhavenItem> => {
 	const searchString = useRecoilValue(searchState.stateSelector);
 	const availableOnly = useRecoilValue(availableOnlyState.stateSelector);
 	const selectedClass = useRecoilValue(selectedClassState.stateSelector);
+	const all = useRecoilValue(allState.stateSelector);
+	const discount = useRecoilValue(discountState.stateSelector);
+	const prosperity = useRecoilValue(prosperityState.stateSelector);
+	const item = useRecoilValue(itemState.stateSelector);
 
 	const {
-		filterOptions: { item: spoilerFilterItem, itemsOwnedBy },
+		filterOptions: { itemsOwnedBy },
 		filterOptions,
 	} = useFilterOptions();
+	const spoiler: Spoiler = {
+		all,
+		discount,
+		prosperity,
+		item,
+		...filterOptions,
+	};
 
 	const getFilteredItems = () => {
-		const spoilerFiltered = items.filter((item: GloomhavenItem) => {
-			if (isItemShown(item, filterOptions)) return true;
-			return spoilerFilterItem.includes(item.id);
+		const spoilerFiltered = items.filter((i: GloomhavenItem) => {
+			if (isItemShown(i, spoiler)) return true;
+			return item.includes(i.id);
 		});
 		return spoilerFiltered.filter((item: GloomhavenItem) => {
 			let hit = true;
