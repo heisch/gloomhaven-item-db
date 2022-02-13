@@ -18,6 +18,8 @@ import {
 	prosperityState,
 	itemState,
 	displayItemAsState,
+	itemsInUseState,
+	itemManagementTypeState,
 } from "../State";
 import { Spoiler } from "../components/Providers/FilterOptions";
 
@@ -34,6 +36,10 @@ const useItems = (): Array<GloomhavenItem> => {
 	const prosperity = useRecoilValue(prosperityState.stateSelector);
 	const item = useRecoilValue(itemState.stateSelector);
 	const displayAs = useRecoilValue(displayItemAsState.stateSelector);
+	const itemsInUse = useRecoilValue(itemsInUseState.stateSelector);
+	const itemManagementType = useRecoilValue(
+		itemManagementTypeState.stateSelector
+	);
 
 	const {
 		filterOptions: { itemsOwnedBy },
@@ -45,6 +51,8 @@ const useItems = (): Array<GloomhavenItem> => {
 		prosperity,
 		item,
 		displayAs,
+		itemsInUse,
+		itemManagementType,
 		...filterOptions,
 	};
 

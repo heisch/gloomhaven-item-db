@@ -1,20 +1,22 @@
-import React from "react"
+import React from "react";
+import { useRecoilValue } from "recoil";
+import { itemManagementTypeState } from "../../../../State";
 import { GloomhavenItem, ItemManagementType } from "../../../../State/Types";
-import { useFilterOptions } from "../../../Providers/FilterOptionsProvider";
 
 type Props = {
-    item: GloomhavenItem;
-}
+	item: GloomhavenItem;
+};
 
 const NoItemManagement = (props: Props) => {
-    const { filterOptions: {itemManagementType} }  = useFilterOptions();
-    const { item } = props;
-    if (itemManagementType !== ItemManagementType.None) {
-        return null;
-    }
+	const { item } = props;
+	const itemManagementType = useRecoilValue(
+		itemManagementTypeState.stateSelector
+	);
+	if (itemManagementType !== ItemManagementType.None) {
+		return null;
+	}
 
-    return <>{item.count}</>
-
-}
+	return <>{item.count}</>;
+};
 
 export default NoItemManagement;

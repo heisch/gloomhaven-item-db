@@ -1,7 +1,7 @@
 import React from "react";
-import { useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { Form, Popup, Icon } from "semantic-ui-react";
-import { classToDeleteState } from "../../../State";
+import { classToDeleteState, itemManagementTypeState } from "../../../State";
 import {
 	ClassesInUse,
 	envelopeXClassList,
@@ -17,8 +17,11 @@ export const PartySpoiler = () => {
 	const setClassToDelete = useSetRecoilState(
 		classToDeleteState.stateSelector
 	);
+	const itemManagementType = useRecoilValue(
+		itemManagementTypeState.stateSelector
+	);
 	const {
-		filterOptions: { classesInUse, envelopeX, itemManagementType },
+		filterOptions: { classesInUse, envelopeX },
 		updateFilterOptions,
 	} = useFilterOptions();
 

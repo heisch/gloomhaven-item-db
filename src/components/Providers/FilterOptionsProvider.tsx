@@ -13,6 +13,8 @@ import {
 	discountState,
 	displayItemAsState,
 	gameDataState,
+	itemManagementTypeState,
+	itemsInUseState,
 	itemState,
 	prosperityState,
 } from "../../State";
@@ -60,6 +62,7 @@ export function useFilterOptions() {
 
 const fixFilterOptions = (filterOptions: FilterOptions) => {
 	if (filterOptions.hasOwnProperty("enableStoreStockManagement")) {
+		//@ts-ignore
 		filterOptions.itemManagementType =
 			//@ts-ignore
 			filterOptions.enableStoreStockManagement
@@ -98,7 +101,10 @@ const loadFromStorage = (filterLocalStorageKey: string) => {
 			configFromStorage.soloClass = soloClass;
 		}
 		// convert from old object style to array
-		if (!configFromStorage.item.hasOwnProperty("length")) {
+		if (
+			configFromStorage.item &&
+			!configFromStorage.item.hasOwnProperty("length")
+		) {
 			const items: Array<number> = [];
 			Object.keys(configFromStorage.item).forEach((k) => {
 				if (configFromStorage.item[k] === true) {
@@ -106,6 +112,8 @@ const loadFromStorage = (filterLocalStorageKey: string) => {
 				}
 			});
 			configFromStorage.item = items;
+		} else {
+			configFromStorage.item = [];
 		}
 
 		spoilerFilter = Object.assign(
@@ -154,6 +162,12 @@ const FilterProvider: FC = (props) => {
 	const setGameDisplayAs = useSetRecoilState(
 		displayItemAsState.gameStateSelector
 	);
+	const setGameItemsInUse = useSetRecoilState(
+		itemsInUseState.gameStateSelector
+	);
+	const setGameItemManagementType = useSetRecoilState(
+		itemManagementTypeState.gameStateSelector
+	);
 
 	useEffect(() => {
 		const loadedSpoilerFilterString = localStorage.getItem(
@@ -175,14 +189,33 @@ const FilterProvider: FC = (props) => {
 		Object.values(GameType).forEach((gt) => {
 			const value = loadFromStorage(LOCAL_STORAGE_PREFIX + gt);
 			console.log(value);
-			//@ts-ignore
-			const { all, discount, prosperity, item, displayAs, ...rest } =
-				value;
+			const {
+				//@ts-ignore
+				all,
+				//@ts-ignore
+				discount,
+				//@ts-ignore
+				prosperity,
+				//@ts-ignore
+				item,
+				//@ts-ignore
+				displayAs,
+				//@ts-ignore
+				itemsInUse,
+				//@ts-ignore
+				itemManagementType,
+				...rest
+			} = value;
 			setGameAll({ gameType: gt, value: all });
 			setGameDiscount({ gameType: gt, value: discount || 0 });
 			setGameProsperity({ gameType: gt, value: prosperity });
 			setGameItem({ gameType: gt, value: item });
 			setGameDisplayAs({ gameType: gt, value: displayAs });
+			setGameItemsInUse({ gameType: gt, value: itemsInUse });
+			setGameItemManagementType({
+				gameType: gt,
+				value: itemManagementType,
+			});
 			newGameFilterOptions[gt] = rest;
 		});
 

@@ -1,7 +1,10 @@
+import { create } from "domain";
+import { ItemsInUse } from "../components/Providers/FilterOptions";
 import { createState } from "./CommonState";
 import {
 	ClassesInUse,
 	GloomhavenItemSlot,
+	ItemManagementType,
 	ItemViewDisplayType,
 	SortDirection,
 	SortProperty,
@@ -30,4 +33,9 @@ export const itemState = createState<number[]>("item", []);
 export const displayItemAsState = createState<ItemViewDisplayType>(
 	"displayItemAs",
 	ItemViewDisplayType.List
+);
+export const itemsInUseState = createState<ItemsInUse>("itemsInUse", {});
+export const itemManagementTypeState = createState<ItemManagementType>(
+	"itemManagementType",
+	ItemManagementType.None
 );

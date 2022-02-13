@@ -1,7 +1,7 @@
 import React from "react";
-import { useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { Button } from "semantic-ui-react";
-import { selectedItemState } from "../../../../State";
+import { itemManagementTypeState, selectedItemState } from "../../../../State";
 import { GloomhavenItem, ItemManagementType } from "../../../../State/Types";
 import { ItemsOwnedBy } from "../../../Providers/FilterOptions";
 import { useFilterOptions } from "../../../Providers/FilterOptionsProvider";
@@ -13,9 +13,12 @@ type Props = {
 
 const PartyItemManagement = (props: Props) => {
 	const setSelectedItem = useSetRecoilState(selectedItemState.stateSelector);
+	const itemManagementType = useRecoilValue(
+		itemManagementTypeState.stateSelector
+	);
 	const { item } = props;
 	const {
-		filterOptions: { itemManagementType, classesInUse, itemsOwnedBy },
+		filterOptions: { classesInUse, itemsOwnedBy },
 		updateFilterOptions,
 		lockSpoilerPanel,
 	} = useFilterOptions();

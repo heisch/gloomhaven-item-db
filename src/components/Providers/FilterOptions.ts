@@ -13,9 +13,7 @@ export type ItemsInUse = {
 	[key: number]: number;
 };
 export interface FilterOptions {
-	itemsInUse: ItemsInUse;
 	soloClass: ClassesInUse[];
-	itemManagementType: ItemManagementType;
 	scenarioCompleted: number[];
 	classesInUse: ClassesInUse[];
 	itemsOwnedBy: ItemsOwnedBy;
@@ -27,13 +25,13 @@ export interface Spoiler extends FilterOptions {
 	displayAs: ItemViewDisplayType;
 	discount: number;
 	item: number[];
+	itemManagementType: ItemManagementType;
+	itemsInUse: ItemsInUse;
 	prosperity: number;
 }
 
 export const initialFilterOptions: FilterOptions = {
-	itemsInUse: {},
 	soloClass: [],
-	itemManagementType: ItemManagementType.None,
 	scenarioCompleted: [],
 	classesInUse: [],
 	itemsOwnedBy: {},

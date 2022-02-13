@@ -7,12 +7,12 @@ import {
 import { Table, Popup, Icon, Image } from "semantic-ui-react";
 import ItemManagement from "./ItemManagement";
 import { Helpers, getSlotImageSrc } from "../../../helpers";
-import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 import { useRecoilValue } from "recoil";
 import {
 	sortPropertyState,
 	sortDirectionState,
 	discountState,
+	itemManagementTypeState,
 } from "../../../State";
 
 type Props = {
@@ -38,10 +38,10 @@ const GHIcon = (props: IconProps) => {
 const ItemTable = (props: Props) => {
 	const sortProperty = useRecoilValue(sortPropertyState.stateSelector);
 	const sortDirection = useRecoilValue(sortDirectionState.stateSelector);
+	const itemManagementType = useRecoilValue(
+		itemManagementTypeState.stateSelector
+	);
 	const { items, setSorting } = props;
-	const {
-		filterOptions: { itemManagementType },
-	} = useFilterOptions();
 	const discount = useRecoilValue(discountState.stateSelector);
 
 	const renderSummon = (item: GloomhavenItem) => {

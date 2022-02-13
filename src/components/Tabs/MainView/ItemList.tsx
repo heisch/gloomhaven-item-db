@@ -18,11 +18,15 @@ import {
 	sortDirectionState,
 	allState,
 	displayItemAsState,
+	itemManagementTypeState,
 } from "../../../State";
 
 const ItemList = () => {
 	const all = useRecoilValue(allState.stateSelector);
 	const displayAs = useRecoilValue(displayItemAsState.stateSelector);
+	const itemManagementType = useRecoilValue(
+		itemManagementTypeState.stateSelector
+	);
 	const [sortProperty, setSortProperty] = useRecoilState(
 		sortPropertyState.stateSelector
 	);
@@ -30,10 +34,7 @@ const ItemList = () => {
 		sortDirectionState.stateSelector
 	);
 	const items = useItems();
-	const {
-		filterOptions: { itemManagementType },
-		dataChanged,
-	} = useFilterOptions();
+	const { dataChanged } = useFilterOptions();
 
 	const setSorting = (newProperty: SortProperty) => {
 		let newDirection: SortDirection;
