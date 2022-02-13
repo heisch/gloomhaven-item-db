@@ -2,6 +2,7 @@ import { createState } from "./CommonState";
 import {
 	ClassesInUse,
 	GloomhavenItemSlot,
+	ItemViewDisplayType,
 	SortDirection,
 	SortProperty,
 } from "./Types";
@@ -26,3 +27,7 @@ export const allState = createState<boolean>("all", false);
 export const discountState = createState<number>("discount", 0);
 export const prosperityState = createState<number>("prosperity", 1);
 export const itemState = createState<number[]>("item", []);
+export const displayItemAsState = createState<ItemViewDisplayType>(
+	"displayItemAs",
+	ItemViewDisplayType.List
+);

@@ -17,6 +17,7 @@ import {
 	discountState,
 	prosperityState,
 	itemState,
+	displayItemAsState,
 } from "../State";
 import { Spoiler } from "../components/Providers/FilterOptions";
 
@@ -32,6 +33,7 @@ const useItems = (): Array<GloomhavenItem> => {
 	const discount = useRecoilValue(discountState.stateSelector);
 	const prosperity = useRecoilValue(prosperityState.stateSelector);
 	const item = useRecoilValue(itemState.stateSelector);
+	const displayAs = useRecoilValue(displayItemAsState.stateSelector);
 
 	const {
 		filterOptions: { itemsOwnedBy },
@@ -42,6 +44,7 @@ const useItems = (): Array<GloomhavenItem> => {
 		discount,
 		prosperity,
 		item,
+		displayAs,
 		...filterOptions,
 	};
 

@@ -11,6 +11,7 @@ import { GameType } from "../../games";
 import {
 	allState,
 	discountState,
+	displayItemAsState,
 	gameDataState,
 	itemState,
 	prosperityState,
@@ -150,6 +151,9 @@ const FilterProvider: FC = (props) => {
 		prosperityState.gameStateSelector
 	);
 	const setGameItem = useSetRecoilState(itemState.gameStateSelector);
+	const setGameDisplayAs = useSetRecoilState(
+		displayItemAsState.gameStateSelector
+	);
 
 	useEffect(() => {
 		const loadedSpoilerFilterString = localStorage.getItem(
@@ -172,11 +176,13 @@ const FilterProvider: FC = (props) => {
 			const value = loadFromStorage(LOCAL_STORAGE_PREFIX + gt);
 			console.log(value);
 			//@ts-ignore
-			const { all, discount, prosperity, item, ...rest } = value;
+			const { all, discount, prosperity, item, displayAs, ...rest } =
+				value;
 			setGameAll({ gameType: gt, value: all });
 			setGameDiscount({ gameType: gt, value: discount || 0 });
 			setGameProsperity({ gameType: gt, value: prosperity });
 			setGameItem({ gameType: gt, value: item });
+			setGameDisplayAs({ gameType: gt, value: displayAs });
 			newGameFilterOptions[gt] = rest;
 		});
 

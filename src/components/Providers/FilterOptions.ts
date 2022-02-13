@@ -15,7 +15,6 @@ export type ItemsInUse = {
 export interface FilterOptions {
 	itemsInUse: ItemsInUse;
 	soloClass: ClassesInUse[];
-	displayAs: ItemViewDisplayType;
 	itemManagementType: ItemManagementType;
 	scenarioCompleted: number[];
 	classesInUse: ClassesInUse[];
@@ -25,15 +24,15 @@ export interface FilterOptions {
 
 export interface Spoiler extends FilterOptions {
 	all: boolean;
+	displayAs: ItemViewDisplayType;
 	discount: number;
-	prosperity: number;
 	item: number[];
+	prosperity: number;
 }
 
 export const initialFilterOptions: FilterOptions = {
 	itemsInUse: {},
 	soloClass: [],
-	displayAs: ItemViewDisplayType.List,
 	itemManagementType: ItemManagementType.None,
 	scenarioCompleted: [],
 	classesInUse: [],
