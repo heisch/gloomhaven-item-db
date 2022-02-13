@@ -7,18 +7,22 @@ import {
 	fcClassList,
 	ghClassList,
 } from "../../../State/Types";
-import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 import { ClassList } from "./ClassList";
-import { useRecoilState } from "recoil";
-import { discountState, prosperityState } from "../../../State";
+import { useRecoilState, useRecoilValue } from "recoil";
+import {
+	discountState,
+	envelopeXState,
+	prosperityState,
+	soloClassState,
+} from "../../../State";
 
 const GHSpoilerFilter = () => {
-	const {
-		filterOptions: { soloClass, envelopeX },
-		updateFilterOptions,
-	} = useFilterOptions();
+	const [soloClass, setSoloClass] = useRecoilState(
+		soloClassState.stateSelector
+	);
+
+	const envelopeX = useRecoilValue(envelopeXState.stateSelector);
 	const [discount, setDiscount] = useRecoilState(discountState.stateSelector);
-	console.log(discount);
 	const [prosperity, setProsperity] = useRecoilState(
 		prosperityState.stateSelector
 	);
@@ -30,7 +34,7 @@ const GHSpoilerFilter = () => {
 		} else {
 			value.push(key);
 		}
-		updateFilterOptions({ soloClass: value });
+		setSoloClass(value);
 	};
 
 	let classList: ClassesInUse[] = [...ghClassList];

@@ -1,7 +1,12 @@
 import React from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { Button } from "semantic-ui-react";
-import { itemManagementTypeState, selectedItemState } from "../../../../State";
+import {
+	classesInUseState,
+	itemManagementTypeState,
+	itemsOwnedByState,
+	selectedItemState,
+} from "../../../../State";
 import { GloomhavenItem, ItemManagementType } from "../../../../State/Types";
 import { ItemsOwnedBy } from "../../../Providers/FilterOptions";
 import { useFilterOptions } from "../../../Providers/FilterOptionsProvider";
@@ -13,15 +18,15 @@ type Props = {
 
 const PartyItemManagement = (props: Props) => {
 	const setSelectedItem = useSetRecoilState(selectedItemState.stateSelector);
+	const classesInUse = useRecoilValue(classesInUseState.stateSelector);
+	const [itemsOwnedBy, setItemsOwnedBy] = useRecoilState(
+		itemsOwnedByState.stateSelector
+	);
 	const itemManagementType = useRecoilValue(
 		itemManagementTypeState.stateSelector
 	);
 	const { item } = props;
-	const {
-		filterOptions: { classesInUse, itemsOwnedBy },
-		updateFilterOptions,
-		lockSpoilerPanel,
-	} = useFilterOptions();
+	const { lockSpoilerPanel } = useFilterOptions();
 
 	if (itemManagementType !== ItemManagementType.Party) {
 		return null;
@@ -57,9 +62,7 @@ const PartyItemManagement = (props: Props) => {
 								if (index != -1) {
 									newItemsOwnedBy[item.id].splice(index, 1);
 								}
-								updateFilterOptions({
-									itemsOwnedBy: newItemsOwnedBy,
-								});
+								setItemsOwnedBy(newItemsOwnedBy);
 							}}
 							content={<ClassIcon name={owner} />}
 						/>

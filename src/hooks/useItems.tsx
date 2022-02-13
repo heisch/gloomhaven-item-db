@@ -20,6 +20,11 @@ import {
 	displayItemAsState,
 	itemsInUseState,
 	itemManagementTypeState,
+	envelopeXState,
+	itemsOwnedByState,
+	classesInUseState,
+	soloClassState,
+	scenarioCompletedState,
 } from "../State";
 import { Spoiler } from "../components/Providers/FilterOptions";
 
@@ -40,11 +45,15 @@ const useItems = (): Array<GloomhavenItem> => {
 	const itemManagementType = useRecoilValue(
 		itemManagementTypeState.stateSelector
 	);
+	const envelopeX = useRecoilValue(envelopeXState.stateSelector);
+	const itemsOwnedBy = useRecoilValue(itemsOwnedByState.stateSelector);
+	const classesInUse = useRecoilValue(classesInUseState.stateSelector);
+	const soloClass = useRecoilValue(soloClassState.stateSelector);
+	const scenarioCompleted = useRecoilValue(
+		scenarioCompletedState.stateSelector
+	);
 
-	const {
-		filterOptions: { itemsOwnedBy },
-		filterOptions,
-	} = useFilterOptions();
+	const { filterOptions } = useFilterOptions();
 	const spoiler: Spoiler = {
 		all,
 		discount,
@@ -53,8 +62,15 @@ const useItems = (): Array<GloomhavenItem> => {
 		displayAs,
 		itemsInUse,
 		itemManagementType,
+		envelopeX,
+		itemsOwnedBy,
+		classesInUse,
+		soloClass,
+		scenarioCompleted,
 		...filterOptions,
 	};
+
+	console.log(soloClass);
 
 	const getFilteredItems = () => {
 		const spoilerFiltered = items.filter((i: GloomhavenItem) => {

@@ -1,12 +1,13 @@
 import React from "react";
 import { Button, Modal, Form } from "semantic-ui-react";
-import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 import { ItemsOwnedBy } from "../../Providers/FilterOptions";
 import ClassIcon from "../MainView/ClassIcon";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
+	classesInUseState,
 	classToDeleteState,
 	gameDataState,
+	itemsOwnedByState,
 	selectedClassState,
 } from "../../../State";
 
@@ -17,10 +18,13 @@ const ConfirmClassDelete = () => {
 	const [classToDelete, setClassToDelete] = useRecoilState(
 		classToDeleteState.stateSelector
 	);
-	const {
-		filterOptions: { classesInUse, itemsOwnedBy },
-		updateFilterOptions,
-	} = useFilterOptions();
+	const [classesInUse, setClassesInUseBy] = useRecoilState(
+		classesInUseState.stateSelector
+	);
+	const [itemsOwnedBy, setItemsOwnedBy] = useRecoilState(
+		itemsOwnedByState.stateSelector
+	);
+
 	const { items } = useRecoilValue(gameDataState);
 
 	const onClose = () => {
@@ -52,7 +56,7 @@ const ConfirmClassDelete = () => {
 				newItemsOwnedBy[itemId].splice(index, 1);
 			}
 		});
-		updateFilterOptions({ itemsOwnedBy: newItemsOwnedBy });
+		setItemsOwnedBy(newItemsOwnedBy);
 	};
 	const goldAmount = () => {
 		let totalGold = 0;
@@ -76,7 +80,7 @@ const ConfirmClassDelete = () => {
 			if (newSelectedClass === classToDelete) {
 				newSelectedClass = undefined;
 			}
-			updateFilterOptions({ classesInUse: newClassesInUse });
+			setClassesInUseBy(newClassesInUse);
 			setSelectedClass(newSelectedClass);
 			setClassToDelete(undefined);
 		}

@@ -1,6 +1,5 @@
 import React from "react";
 import { Form, Button, Icon } from "semantic-ui-react";
-import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 import GHSpoilerFilter from "./GHSpoilerFilter";
 import JOTLSpoilerFilter from "./JOTLSpoilerFilter";
 import PartyManagementFilter from "./PartyManagementFilter";
@@ -9,7 +8,12 @@ import { PartySpoiler } from "./PartySpoiler";
 import ConfirmEnvelopeX from "./ConfirmEnvelopeX";
 import { GameType } from "../../../games";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { allState, confirmEnvelopeXState, gameDataState } from "../../../State";
+import {
+	allState,
+	confirmEnvelopeXState,
+	envelopeXState,
+	gameDataState,
+} from "../../../State";
 
 const filters = {
 	[GameType.Gloomhaven]: <GHSpoilerFilter />,
@@ -18,9 +22,7 @@ const filters = {
 
 const SpoilerFilters = () => {
 	const [all, setAll] = useRecoilState(allState.stateSelector);
-	const {
-		filterOptions: { envelopeX },
-	} = useFilterOptions();
+	const envelopeX = useRecoilValue(envelopeXState.stateSelector);
 	const { gameType } = useRecoilValue(gameDataState);
 	const setConfirmEnvelopeX = useSetRecoilState(
 		confirmEnvelopeXState.stateSelector

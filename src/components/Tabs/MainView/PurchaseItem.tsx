@@ -1,25 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, Modal } from "semantic-ui-react";
 import { ClassesInUse } from "../../../State/Types";
-import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
-import { ItemsOwnedBy } from "../../Providers/FilterOptions";
 import { ClassList } from "../SpoilerFilters/ClassList";
 import { getItemPath } from "../../../games/GameData";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
+	classesInUseState,
 	discountState,
 	gameDataState,
+	itemsOwnedByState,
 	selectedItemState,
 } from "../../../State";
+import { ItemsOwnedBy } from "../../Providers/FilterOptions";
 
 const PurchaseItem = () => {
+	const classesInUse = useRecoilValue(classesInUseState.stateSelector);
+	const [itemsOwnedBy, setItemsOwnedBy] = useRecoilState(
+		itemsOwnedByState.stateSelector
+	);
 	const [selectedItem, setSelectedItem] = useRecoilState(
 		selectedItemState.stateSelector
 	);
-	const {
-		filterOptions: { classesInUse, itemsOwnedBy },
-		updateFilterOptions,
-	} = useFilterOptions();
 	const [owners, setOwners] = useState<ClassesInUse[]>([]);
 	const { gameType } = useRecoilValue(gameDataState);
 	const discount = useRecoilValue(discountState.stateSelector);
@@ -44,7 +45,7 @@ const PurchaseItem = () => {
 			if (owners) {
 				newItemsOwnedBy[selectedItem.id] = owners;
 			}
-			updateFilterOptions({ itemsOwnedBy: newItemsOwnedBy });
+			setItemsOwnedBy(newItemsOwnedBy);
 		}
 		onClose();
 	};

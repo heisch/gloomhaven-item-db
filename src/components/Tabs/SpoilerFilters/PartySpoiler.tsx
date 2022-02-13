@@ -1,7 +1,12 @@
 import React from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { Form, Popup, Icon } from "semantic-ui-react";
-import { classToDeleteState, itemManagementTypeState } from "../../../State";
+import {
+	classesInUseState,
+	classToDeleteState,
+	envelopeXState,
+	itemManagementTypeState,
+} from "../../../State";
 import {
 	ClassesInUse,
 	envelopeXClassList,
@@ -14,24 +19,23 @@ import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 import { ClassList } from "./ClassList";
 
 export const PartySpoiler = () => {
+	const envelopeX = useRecoilValue(envelopeXState.stateSelector);
+	const [classesInUse, setClassesInUse] = useRecoilState(
+		classesInUseState.stateSelector
+	);
 	const setClassToDelete = useSetRecoilState(
 		classToDeleteState.stateSelector
 	);
 	const itemManagementType = useRecoilValue(
 		itemManagementTypeState.stateSelector
 	);
-	const {
-		filterOptions: { classesInUse, envelopeX },
-		updateFilterOptions,
-	} = useFilterOptions();
-
 	const toggleClassFilter = (key: ClassesInUse) => {
 		if (classesInUse.includes(key)) {
 			setClassToDelete(key);
 		} else {
 			const newClassesInUse = Object.assign([], classesInUse);
 			newClassesInUse.push(key);
-			updateFilterOptions({ classesInUse: newClassesInUse });
+			setClassesInUse(newClassesInUse);
 		}
 	};
 

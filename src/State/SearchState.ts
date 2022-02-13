@@ -1,5 +1,8 @@
 import { create } from "domain";
-import { ItemsInUse } from "../components/Providers/FilterOptions";
+import {
+	ItemsInUse,
+	ItemsOwnedBy,
+} from "../components/Providers/FilterOptions";
 import { createState } from "./CommonState";
 import {
 	ClassesInUse,
@@ -39,3 +42,15 @@ export const itemManagementTypeState = createState<ItemManagementType>(
 	"itemManagementType",
 	ItemManagementType.None
 );
+export const envelopeXState = createState<boolean>("envelopeX", false);
+
+export const soloClassState = createState<ClassesInUse[]>("soloClass", []);
+export const scenarioCompletedState = createState<number[]>(
+	"scenarioCompleted",
+	[]
+);
+export const classesInUseState = createState<ClassesInUse[]>(
+	"classesInUse",
+	[]
+);
+export const itemsOwnedByState = createState<ItemsOwnedBy>("itemsOwnedBy", {});

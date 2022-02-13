@@ -7,16 +7,15 @@ import {
 	Input,
 	InputProps,
 } from "semantic-ui-react";
-import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
-import { useRecoilState } from "recoil";
-import { confirmEnvelopeXState } from "../../../State";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { confirmEnvelopeXState, envelopeXState } from "../../../State";
 
 const ConfirmEnvelopeX = () => {
 	const [solutionCorrect, setSolutionCorrect] = useState(false);
 	const [confirmEnvelopeX, setConfirmEnvelopeX] = useRecoilState(
 		confirmEnvelopeXState.stateSelector
 	);
-	const { updateFilterOptions } = useFilterOptions();
+	const setEnvelopeX = useSetRecoilState(envelopeXState.stateSelector);
 
 	const onClose = () => {
 		setConfirmEnvelopeX(false);
@@ -29,7 +28,7 @@ const ConfirmEnvelopeX = () => {
 
 	const onApply = () => {
 		if (solutionCorrect) {
-			updateFilterOptions({ envelopeX: true });
+			setEnvelopeX(true);
 		}
 		onClose();
 	};

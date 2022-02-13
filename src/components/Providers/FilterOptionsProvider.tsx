@@ -10,13 +10,18 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { GameType } from "../../games";
 import {
 	allState,
+	classesInUseState,
 	discountState,
 	displayItemAsState,
+	envelopeXState,
 	gameDataState,
 	itemManagementTypeState,
 	itemsInUseState,
+	itemsOwnedByState,
 	itemState,
 	prosperityState,
+	scenarioCompletedState,
+	soloClassState,
 } from "../../State";
 import { ItemManagementType, SoloClassShorthand } from "../../State/Types";
 import { useFirebase } from "../Firebase";
@@ -81,6 +86,7 @@ const fixFilterOptions = (filterOptions: FilterOptions) => {
 
 const loadFromStorage = (filterLocalStorageKey: string) => {
 	const storage = localStorage.getItem(filterLocalStorageKey);
+	console.log(storage);
 
 	let spoilerFilter = initialFilterOptions;
 
@@ -99,6 +105,8 @@ const loadFromStorage = (filterLocalStorageKey: string) => {
 				}
 			});
 			configFromStorage.soloClass = soloClass;
+		} else if (!configFromStorage.soloClass) {
+			configFromStorage.soloClass = [];
 		}
 		// convert from old object style to array
 		if (
@@ -112,7 +120,7 @@ const loadFromStorage = (filterLocalStorageKey: string) => {
 				}
 			});
 			configFromStorage.item = items;
-		} else {
+		} else if (!configFromStorage.item) {
 			configFromStorage.item = [];
 		}
 
@@ -168,6 +176,21 @@ const FilterProvider: FC = (props) => {
 	const setGameItemManagementType = useSetRecoilState(
 		itemManagementTypeState.gameStateSelector
 	);
+	const setGameEnvelopeX = useSetRecoilState(
+		envelopeXState.gameStateSelector
+	);
+	const setGameItemsOwnedBy = useSetRecoilState(
+		itemsOwnedByState.gameStateSelector
+	);
+	const setGameClassesInUse = useSetRecoilState(
+		classesInUseState.gameStateSelector
+	);
+	const setGameSoloClass = useSetRecoilState(
+		soloClassState.gameStateSelector
+	);
+	const setGameScenarioCompleted = useSetRecoilState(
+		scenarioCompletedState.gameStateSelector
+	);
 
 	useEffect(() => {
 		const loadedSpoilerFilterString = localStorage.getItem(
@@ -204,17 +227,36 @@ const FilterProvider: FC = (props) => {
 				itemsInUse,
 				//@ts-ignore
 				itemManagementType,
+				//@ts-ignore
+				envelopeX,
+				//@ts-ignore
+				itemsOwnedBy,
+				//@ts-ignore
+				classesInUse,
+				//@ts-ignore
+				soloClass,
+				//@ts-ignore
+				scenarioCompleted,
 				...rest
 			} = value;
 			setGameAll({ gameType: gt, value: all });
 			setGameDiscount({ gameType: gt, value: discount || 0 });
 			setGameProsperity({ gameType: gt, value: prosperity });
+			console.log(item);
 			setGameItem({ gameType: gt, value: item });
 			setGameDisplayAs({ gameType: gt, value: displayAs });
 			setGameItemsInUse({ gameType: gt, value: itemsInUse });
 			setGameItemManagementType({
 				gameType: gt,
 				value: itemManagementType,
+			});
+			setGameEnvelopeX({ gameType: gt, value: envelopeX });
+			setGameItemsOwnedBy({ gameType: gt, value: itemsOwnedBy });
+			setGameClassesInUse({ gameType: gt, value: classesInUse });
+			setGameSoloClass({ gameType: gt, value: soloClass });
+			setGameScenarioCompleted({
+				gameType: gt,
+				value: scenarioCompleted,
 			});
 			newGameFilterOptions[gt] = rest;
 		});
