@@ -17,14 +17,10 @@ type Props = {
 };
 
 const PartyItemManagement = (props: Props) => {
-	const setSelectedItem = useSetRecoilState(selectedItemState.stateSelector);
-	const classesInUse = useRecoilValue(classesInUseState.stateSelector);
-	const [itemsOwnedBy, setItemsOwnedBy] = useRecoilState(
-		itemsOwnedByState.stateSelector
-	);
-	const itemManagementType = useRecoilValue(
-		itemManagementTypeState.stateSelector
-	);
+	const setSelectedItem = useSetRecoilState(selectedItemState);
+	const classesInUse = useRecoilValue(classesInUseState);
+	const [itemsOwnedBy, setItemsOwnedBy] = useRecoilState(itemsOwnedByState);
+	const itemManagementType = useRecoilValue(itemManagementTypeState);
 	const { item } = props;
 	const { lockSpoilerPanel } = useFilterOptions();
 
@@ -54,14 +50,14 @@ const PartyItemManagement = (props: Props) => {
 							color="black"
 							icon="delete"
 							onClick={() => {
+								const owners = itemsOwnedBy[item.id];
+								const value = Object.assign([], owners);
+								if (value.includes(owner)) {
+									value.splice(value.indexOf(owner), 1);
+								}
 								const newItemsOwnedBy: ItemsOwnedBy =
 									Object.assign([], itemsOwnedBy);
-								const index = newItemsOwnedBy[
-									item.id
-								].findIndex((c) => c === owner);
-								if (index != -1) {
-									newItemsOwnedBy[item.id].splice(index, 1);
-								}
+								newItemsOwnedBy[item.id] = value;
 								setItemsOwnedBy(newItemsOwnedBy);
 							}}
 							content={<ClassIcon name={owner} />}

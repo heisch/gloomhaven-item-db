@@ -33,28 +33,19 @@ const SearchOptions = (props: Props) => {
 	const { setSorting } = props;
 
 	const { filterSlots } = useRecoilValue(gameDataState);
-	const [slots, setSlotsState] = useRecoilState(slotsState.stateSelector);
-	const sortProperty = useRecoilValue(sortPropertyState.stateSelector);
-	const [sortDirection, setSortDirection] = useRecoilState(
-		sortDirectionState.stateSelector
-	);
-	const [searchString, setSearchString] = useRecoilState(
-		searchState.stateSelector
-	);
-	const [availableOnly, setAvailableOnly] = useRecoilState(
-		availableOnlyState.stateSelector
-	);
-	const [selectedClass, setSelectedClass] = useRecoilState(
-		selectedClassState.stateSelector
-	);
-	const discount = useRecoilValue(discountState.stateSelector);
-	const [displayAs, setDisplayAs] = useRecoilState(
-		displayItemAsState.stateSelector
-	);
-	const itemManagementType = useRecoilValue(
-		itemManagementTypeState.stateSelector
-	);
-	const classesInUse = useRecoilValue(classesInUseState.stateSelector);
+	const [slots, setSlotsState] = useRecoilState(slotsState);
+	const sortProperty = useRecoilValue(sortPropertyState);
+	const [sortDirection, setSortDirection] =
+		useRecoilState(sortDirectionState);
+	const [searchString, setSearchString] = useRecoilState(searchState);
+	const [availableOnly, setAvailableOnly] =
+		useRecoilState(availableOnlyState);
+	const [selectedClass, setSelectedClass] =
+		useRecoilState(selectedClassState);
+	const discount = useRecoilValue(discountState);
+	const [displayAs, setDisplayAs] = useRecoilState(displayItemAsState);
+	const itemManagementType = useRecoilValue(itemManagementTypeState);
+	const classesInUse = useRecoilValue(classesInUseState);
 
 	const setFilterSlot = (slot?: GloomhavenItemSlot) => {
 		if (!slot) {

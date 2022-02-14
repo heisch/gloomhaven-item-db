@@ -9,7 +9,6 @@ import React, {
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { GameType } from "../../games";
 import {
-	allState,
 	classesInUseState,
 	discountState,
 	displayItemAsState,
@@ -31,7 +30,7 @@ import {
 	FilterOptions,
 } from "./FilterOptions";
 
-const LOCAL_STORAGE_PREFIX: string = "ItemView:spoilerFilter_";
+export const LOCAL_STORAGE_PREFIX: string = "ItemView:spoilerFilter_";
 
 type GameFilterOptions = {
 	[GameType.Gloomhaven]: FilterOptions;
@@ -86,7 +85,6 @@ const fixFilterOptions = (filterOptions: FilterOptions) => {
 
 const loadFromStorage = (filterLocalStorageKey: string) => {
 	const storage = localStorage.getItem(filterLocalStorageKey);
-	console.log(storage);
 
 	let spoilerFilter = initialFilterOptions;
 
@@ -161,36 +159,6 @@ const FilterProvider: FC = (props) => {
 	const [dataDirty, setDataDirty] = useState(false);
 	const { Provider } = Context;
 	const { remoteData } = useFirebase();
-	const setGameAll = useSetRecoilState(allState.gameStateSelector);
-	const setGameDiscount = useSetRecoilState(discountState.gameStateSelector);
-	const setGameProsperity = useSetRecoilState(
-		prosperityState.gameStateSelector
-	);
-	const setGameItem = useSetRecoilState(itemState.gameStateSelector);
-	const setGameDisplayAs = useSetRecoilState(
-		displayItemAsState.gameStateSelector
-	);
-	const setGameItemsInUse = useSetRecoilState(
-		itemsInUseState.gameStateSelector
-	);
-	const setGameItemManagementType = useSetRecoilState(
-		itemManagementTypeState.gameStateSelector
-	);
-	const setGameEnvelopeX = useSetRecoilState(
-		envelopeXState.gameStateSelector
-	);
-	const setGameItemsOwnedBy = useSetRecoilState(
-		itemsOwnedByState.gameStateSelector
-	);
-	const setGameClassesInUse = useSetRecoilState(
-		classesInUseState.gameStateSelector
-	);
-	const setGameSoloClass = useSetRecoilState(
-		soloClassState.gameStateSelector
-	);
-	const setGameScenarioCompleted = useSetRecoilState(
-		scenarioCompletedState.gameStateSelector
-	);
 
 	useEffect(() => {
 		const loadedSpoilerFilterString = localStorage.getItem(
@@ -211,7 +179,6 @@ const FilterProvider: FC = (props) => {
 		);
 		Object.values(GameType).forEach((gt) => {
 			const value = loadFromStorage(LOCAL_STORAGE_PREFIX + gt);
-			console.log(value);
 			const {
 				//@ts-ignore
 				all,
@@ -239,25 +206,6 @@ const FilterProvider: FC = (props) => {
 				scenarioCompleted,
 				...rest
 			} = value;
-			setGameAll({ gameType: gt, value: all });
-			setGameDiscount({ gameType: gt, value: discount || 0 });
-			setGameProsperity({ gameType: gt, value: prosperity });
-			console.log(item);
-			setGameItem({ gameType: gt, value: item });
-			setGameDisplayAs({ gameType: gt, value: displayAs });
-			setGameItemsInUse({ gameType: gt, value: itemsInUse });
-			setGameItemManagementType({
-				gameType: gt,
-				value: itemManagementType,
-			});
-			setGameEnvelopeX({ gameType: gt, value: envelopeX });
-			setGameItemsOwnedBy({ gameType: gt, value: itemsOwnedBy });
-			setGameClassesInUse({ gameType: gt, value: classesInUse });
-			setGameSoloClass({ gameType: gt, value: soloClass });
-			setGameScenarioCompleted({
-				gameType: gt,
-				value: scenarioCompleted,
-			});
 			newGameFilterOptions[gt] = rest;
 		});
 

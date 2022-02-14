@@ -30,28 +30,24 @@ import { Spoiler } from "../components/Providers/FilterOptions";
 
 const useItems = (): Array<GloomhavenItem> => {
 	const { isItemShown, items } = useRecoilValue(gameDataState);
-	const slots = useRecoilValue(slotsState.stateSelector);
-	const sortProperty = useRecoilValue(sortPropertyState.stateSelector);
-	const sortDirection = useRecoilValue(sortDirectionState.stateSelector);
-	const searchString = useRecoilValue(searchState.stateSelector);
-	const availableOnly = useRecoilValue(availableOnlyState.stateSelector);
-	const selectedClass = useRecoilValue(selectedClassState.stateSelector);
-	const all = useRecoilValue(allState.stateSelector);
-	const discount = useRecoilValue(discountState.stateSelector);
-	const prosperity = useRecoilValue(prosperityState.stateSelector);
-	const item = useRecoilValue(itemState.stateSelector);
-	const displayAs = useRecoilValue(displayItemAsState.stateSelector);
-	const itemsInUse = useRecoilValue(itemsInUseState.stateSelector);
-	const itemManagementType = useRecoilValue(
-		itemManagementTypeState.stateSelector
-	);
-	const envelopeX = useRecoilValue(envelopeXState.stateSelector);
-	const itemsOwnedBy = useRecoilValue(itemsOwnedByState.stateSelector);
-	const classesInUse = useRecoilValue(classesInUseState.stateSelector);
-	const soloClass = useRecoilValue(soloClassState.stateSelector);
-	const scenarioCompleted = useRecoilValue(
-		scenarioCompletedState.stateSelector
-	);
+	const slots = useRecoilValue(slotsState);
+	const sortProperty = useRecoilValue(sortPropertyState);
+	const sortDirection = useRecoilValue(sortDirectionState);
+	const searchString = useRecoilValue(searchState);
+	const availableOnly = useRecoilValue(availableOnlyState);
+	const selectedClass = useRecoilValue(selectedClassState);
+	const all = useRecoilValue(allState);
+	const discount = useRecoilValue(discountState);
+	const prosperity = useRecoilValue(prosperityState);
+	const item = useRecoilValue(itemState);
+	const displayAs = useRecoilValue(displayItemAsState);
+	const itemsInUse = useRecoilValue(itemsInUseState);
+	const itemManagementType = useRecoilValue(itemManagementTypeState);
+	const envelopeX = useRecoilValue(envelopeXState);
+	const itemsOwnedBy = useRecoilValue(itemsOwnedByState);
+	const classesInUse = useRecoilValue(classesInUseState);
+	const soloClass = useRecoilValue(soloClassState);
+	const scenarioCompleted = useRecoilValue(scenarioCompletedState);
 
 	const { filterOptions } = useFilterOptions();
 	const spoiler: Spoiler = {
@@ -69,8 +65,6 @@ const useItems = (): Array<GloomhavenItem> => {
 		scenarioCompleted,
 		...filterOptions,
 	};
-
-	console.log(soloClass);
 
 	const getFilteredItems = () => {
 		const spoilerFiltered = items.filter((i: GloomhavenItem) => {

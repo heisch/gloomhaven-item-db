@@ -9,9 +9,7 @@ type Props = {
 
 const NoItemManagement = (props: Props) => {
 	const { item } = props;
-	const itemManagementType = useRecoilValue(
-		itemManagementTypeState.stateSelector
-	);
+	const itemManagementType = useRecoilValue(itemManagementTypeState);
 	if (itemManagementType !== ItemManagementType.None) {
 		return null;
 	}

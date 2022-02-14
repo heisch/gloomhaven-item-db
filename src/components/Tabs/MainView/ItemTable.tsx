@@ -36,13 +36,11 @@ const GHIcon = (props: IconProps) => {
 };
 
 const ItemTable = (props: Props) => {
-	const sortProperty = useRecoilValue(sortPropertyState.stateSelector);
-	const sortDirection = useRecoilValue(sortDirectionState.stateSelector);
-	const itemManagementType = useRecoilValue(
-		itemManagementTypeState.stateSelector
-	);
+	const sortProperty = useRecoilValue(sortPropertyState);
+	const sortDirection = useRecoilValue(sortDirectionState);
+	const itemManagementType = useRecoilValue(itemManagementTypeState);
 	const { items, setSorting } = props;
-	const discount = useRecoilValue(discountState.stateSelector);
+	const discount = useRecoilValue(discountState);
 
 	const renderSummon = (item: GloomhavenItem) => {
 		return item.summon === undefined ? null : (

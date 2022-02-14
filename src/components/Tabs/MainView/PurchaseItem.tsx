@@ -14,16 +14,12 @@ import {
 import { ItemsOwnedBy } from "../../Providers/FilterOptions";
 
 const PurchaseItem = () => {
-	const classesInUse = useRecoilValue(classesInUseState.stateSelector);
-	const [itemsOwnedBy, setItemsOwnedBy] = useRecoilState(
-		itemsOwnedByState.stateSelector
-	);
-	const [selectedItem, setSelectedItem] = useRecoilState(
-		selectedItemState.stateSelector
-	);
+	const classesInUse = useRecoilValue(classesInUseState);
+	const [itemsOwnedBy, setItemsOwnedBy] = useRecoilState(itemsOwnedByState);
+	const [selectedItem, setSelectedItem] = useRecoilState(selectedItemState);
 	const [owners, setOwners] = useState<ClassesInUse[]>([]);
 	const { gameType } = useRecoilValue(gameDataState);
-	const discount = useRecoilValue(discountState.stateSelector);
+	const discount = useRecoilValue(discountState);
 
 	useEffect(() => {
 		if (!selectedItem || !itemsOwnedBy) {

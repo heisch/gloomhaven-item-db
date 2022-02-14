@@ -12,7 +12,6 @@ type Props = {
 };
 
 export const ClassList = (props: Props) => {
-	console.log(props);
 	const { label, classes, onClick, isEnabled, isUsed } = props;
 
 	return (

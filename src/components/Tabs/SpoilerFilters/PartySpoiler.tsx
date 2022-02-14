@@ -15,20 +15,13 @@ import {
 	ItemManagementType,
 	jotlClassList,
 } from "../../../State/Types";
-import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 import { ClassList } from "./ClassList";
 
 export const PartySpoiler = () => {
-	const envelopeX = useRecoilValue(envelopeXState.stateSelector);
-	const [classesInUse, setClassesInUse] = useRecoilState(
-		classesInUseState.stateSelector
-	);
-	const setClassToDelete = useSetRecoilState(
-		classToDeleteState.stateSelector
-	);
-	const itemManagementType = useRecoilValue(
-		itemManagementTypeState.stateSelector
-	);
+	const envelopeX = useRecoilValue(envelopeXState);
+	const [classesInUse, setClassesInUse] = useRecoilState(classesInUseState);
+	const setClassToDelete = useSetRecoilState(classToDeleteState);
+	const itemManagementType = useRecoilValue(itemManagementTypeState);
 	const toggleClassFilter = (key: ClassesInUse) => {
 		if (classesInUse.includes(key)) {
 			setClassToDelete(key);

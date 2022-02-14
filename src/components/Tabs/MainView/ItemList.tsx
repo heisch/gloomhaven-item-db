@@ -22,17 +22,12 @@ import {
 } from "../../../State";
 
 const ItemList = () => {
-	const all = useRecoilValue(allState.stateSelector);
-	const displayAs = useRecoilValue(displayItemAsState.stateSelector);
-	const itemManagementType = useRecoilValue(
-		itemManagementTypeState.stateSelector
-	);
-	const [sortProperty, setSortProperty] = useRecoilState(
-		sortPropertyState.stateSelector
-	);
-	const [sortDirection, setSortDirection] = useRecoilState(
-		sortDirectionState.stateSelector
-	);
+	const all = useRecoilValue(allState);
+	const displayAs = useRecoilValue(displayItemAsState);
+	const itemManagementType = useRecoilValue(itemManagementTypeState);
+	const [sortProperty, setSortProperty] = useRecoilState(sortPropertyState);
+	const [sortDirection, setSortDirection] =
+		useRecoilState(sortDirectionState);
 	const items = useItems();
 	const { dataChanged } = useFilterOptions();
 

@@ -21,12 +21,10 @@ const filters = {
 };
 
 const SpoilerFilters = () => {
-	const [all, setAll] = useRecoilState(allState.stateSelector);
-	const envelopeX = useRecoilValue(envelopeXState.stateSelector);
+	const [all, setAll] = useRecoilState(allState);
+	const envelopeX = useRecoilValue(envelopeXState);
 	const { gameType } = useRecoilValue(gameDataState);
-	const setConfirmEnvelopeX = useSetRecoilState(
-		confirmEnvelopeXState.stateSelector
-	);
+	const setConfirmEnvelopeX = useSetRecoilState(confirmEnvelopeXState);
 
 	return (
 		<Form>

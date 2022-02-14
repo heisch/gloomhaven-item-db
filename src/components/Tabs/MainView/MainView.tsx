@@ -23,7 +23,7 @@ type TabItem = {
 };
 
 const MainView = () => {
-	const all = useRecoilValue(allState.stateSelector);
+	const all = useRecoilValue(allState);
 
 	const { lockSpoilerPanel, dataChanged } = useFilterOptions();
 	const sharingEnabled = isFlagEnabled("sharing");

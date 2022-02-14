@@ -13,9 +13,9 @@ import { confirmEnvelopeXState, envelopeXState } from "../../../State";
 const ConfirmEnvelopeX = () => {
 	const [solutionCorrect, setSolutionCorrect] = useState(false);
 	const [confirmEnvelopeX, setConfirmEnvelopeX] = useRecoilState(
-		confirmEnvelopeXState.stateSelector
+		confirmEnvelopeXState
 	);
-	const setEnvelopeX = useSetRecoilState(envelopeXState.stateSelector);
+	const setEnvelopeX = useSetRecoilState(envelopeXState);
 
 	const onClose = () => {
 		setConfirmEnvelopeX(false);

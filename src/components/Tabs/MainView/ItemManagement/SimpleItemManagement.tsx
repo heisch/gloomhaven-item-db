@@ -12,12 +12,8 @@ type Props = {
 const SimpleItemManagement = (props: Props) => {
 	const { lockSpoilerPanel } = useFilterOptions();
 	const { item } = props;
-	const [itemsInUse, setItemsInUse] = useRecoilState(
-		itemsInUseState.stateSelector
-	);
-	const itemManagementType = useRecoilValue(
-		itemManagementTypeState.stateSelector
-	);
+	const [itemsInUse, setItemsInUse] = useRecoilState(itemsInUseState);
+	const itemManagementType = useRecoilValue(itemManagementTypeState);
 
 	if (itemManagementType !== ItemManagementType.Simple) {
 		return null;

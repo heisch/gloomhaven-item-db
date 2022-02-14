@@ -9,7 +9,7 @@ type Props = {
 
 const FilterCheckbox = (props: Props) => {
 	const { id } = props;
-	const [item, setItem] = useRecoilState(itemState.stateSelector);
+	const [item, setItem] = useRecoilState(itemState);
 
 	const toggleItemFilter = (key: number) => {
 		const value = Object.assign([], item);

@@ -7,7 +7,7 @@ import { scenarioCompletedState } from "../../../State";
 const JOTLSpoilerFilter = () => {
 	const scenariosOfImportance = [2, 9, 15];
 	const [scenarioCompleted, setScenarioComplete] = useRecoilState(
-		scenarioCompletedState.stateSelector
+		scenarioCompletedState
 	);
 
 	const toggleScenarioCompleted = (key: number) => {

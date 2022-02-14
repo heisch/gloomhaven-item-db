@@ -12,18 +12,12 @@ import {
 } from "../../../State";
 
 const ConfirmClassDelete = () => {
-	const [selectedClass, setSelectedClass] = useRecoilState(
-		selectedClassState.stateSelector
-	);
-	const [classToDelete, setClassToDelete] = useRecoilState(
-		classToDeleteState.stateSelector
-	);
-	const [classesInUse, setClassesInUseBy] = useRecoilState(
-		classesInUseState.stateSelector
-	);
-	const [itemsOwnedBy, setItemsOwnedBy] = useRecoilState(
-		itemsOwnedByState.stateSelector
-	);
+	const [selectedClass, setSelectedClass] =
+		useRecoilState(selectedClassState);
+	const [classToDelete, setClassToDelete] =
+		useRecoilState(classToDeleteState);
+	const [classesInUse, setClassesInUseBy] = useRecoilState(classesInUseState);
+	const [itemsOwnedBy, setItemsOwnedBy] = useRecoilState(itemsOwnedByState);
 
 	const { items } = useRecoilValue(gameDataState);
 

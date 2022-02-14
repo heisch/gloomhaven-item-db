@@ -6,7 +6,7 @@ import { ItemManagementType } from "../../../State/Types";
 
 const PartyManagementFilter = () => {
 	const [itemManagementType, setItemManagementType] = useRecoilState(
-		itemManagementTypeState.stateSelector
+		itemManagementTypeState
 	);
 
 	const [managementType, setManagmentType] = useState(itemManagementType);

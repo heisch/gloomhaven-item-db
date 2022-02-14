@@ -17,15 +17,11 @@ import {
 } from "../../../State";
 
 const GHSpoilerFilter = () => {
-	const [soloClass, setSoloClass] = useRecoilState(
-		soloClassState.stateSelector
-	);
+	const [soloClass, setSoloClass] = useRecoilState(soloClassState);
 
-	const envelopeX = useRecoilValue(envelopeXState.stateSelector);
-	const [discount, setDiscount] = useRecoilState(discountState.stateSelector);
-	const [prosperity, setProsperity] = useRecoilState(
-		prosperityState.stateSelector
-	);
+	const envelopeX = useRecoilValue(envelopeXState);
+	const [discount, setDiscount] = useRecoilState(discountState);
+	const [prosperity, setProsperity] = useRecoilState(prosperityState);
 
 	const toggleClassFilter = (key: ClassesInUse) => {
 		const value = Object.assign([], soloClass);
