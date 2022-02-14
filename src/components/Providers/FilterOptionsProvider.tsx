@@ -5,7 +5,9 @@ import React, {
 	useEffect,
 	FC,
 } from "react";
+import { useRecoilState } from "recoil";
 import { GameType } from "../../games";
+import { dataDirtyState } from "../../State/CommonState";
 import { useFirebase } from "../Firebase";
 import { getShareHash } from "./FilterOptions";
 
@@ -41,7 +43,7 @@ const FilterProvider: FC = (props) => {
 		localStorage.getItem("lockSpoilerPanel") === "true" || false
 	);
 	const [dataChanged, setDataChanged] = useState(false);
-	const [dataDirty, setDataDirty] = useState(false);
+	const [dataDirty, setDataDirty] = useRecoilState(dataDirtyState);
 	const { Provider } = Context;
 	const { remoteData } = useFirebase();
 

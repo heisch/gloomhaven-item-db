@@ -7,6 +7,11 @@ export type AtomObject<T> = {
 	[key: string]: RecoilState<T>;
 };
 
+export const dataDirtyState = atom({
+	key: "data-dirty-state",
+	default: false,
+});
+
 function getDefaultValue<T>(gameType: GameType, name: string, defaultValue: T) {
 	const key = LOCAL_STORAGE_PREFIX + gameType;
 	const spoilerStorage = localStorage.getItem(key);
@@ -68,6 +73,7 @@ export function createSpoilerState<T>(name: string, defaultValue: T) {
 			return atoms[gameType];
 		},
 		set: ({ set, get }, newValue) => {
+			set(dataDirtyState, true);
 			const gameType: GameType = get(gameTypeState);
 			return set(atoms[gameType], newValue);
 		},
