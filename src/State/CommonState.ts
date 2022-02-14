@@ -11,9 +11,6 @@ function getDefaultValue<T>(gameType: GameType, name: string, defaultValue: T) {
 	const key = LOCAL_STORAGE_PREFIX + gameType;
 	const spoilerStorage = localStorage.getItem(key);
 	const spoilerObj = spoilerStorage ? JSON.parse(spoilerStorage) : {};
-	if (gameType === GameType.Gloomhaven && name === "itemsOwnedBy") {
-		console.log(`getting ${name} for ${gameType} from `, spoilerObj[name]);
-	}
 	return spoilerObj[name] || defaultValue;
 }
 
@@ -22,9 +19,6 @@ function storeValue<T>(gameType: GameType, name: string, value: T) {
 	const spoilerStorage = localStorage.getItem(key);
 	const spoilerObj = spoilerStorage ? JSON.parse(spoilerStorage) : {};
 	spoilerObj[name] = value;
-	if (gameType === GameType.Gloomhaven && name === "itemsOwnedBy") {
-		console.log(`storing ${name} for ${gameType}`, value);
-	}
 	localStorage.setItem(key, JSON.stringify(spoilerObj));
 }
 

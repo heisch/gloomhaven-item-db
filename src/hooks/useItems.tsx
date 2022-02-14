@@ -3,7 +3,6 @@ import {
 	GloomhavenItem,
 	SortDirection,
 } from "../State/Types";
-import { useFilterOptions } from "../components/Providers/FilterOptionsProvider";
 import { useRecoilValue } from "recoil";
 import {
 	gameDataState,
@@ -49,7 +48,6 @@ const useItems = (): Array<GloomhavenItem> => {
 	const soloClass = useRecoilValue(soloClassState);
 	const scenarioCompleted = useRecoilValue(scenarioCompletedState);
 
-	const { filterOptions } = useFilterOptions();
 	const spoiler: Spoiler = {
 		all,
 		discount,
@@ -63,7 +61,6 @@ const useItems = (): Array<GloomhavenItem> => {
 		classesInUse,
 		soloClass,
 		scenarioCompleted,
-		...filterOptions,
 	};
 
 	const getFilteredItems = () => {

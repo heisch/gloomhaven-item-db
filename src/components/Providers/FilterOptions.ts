@@ -1,9 +1,11 @@
+import { GameType } from "../../games";
 import {
 	ClassesInUse,
 	ItemManagementType,
 	ItemViewDisplayType,
 	SoloClassShorthand,
 } from "../../State/Types";
+import { LOCAL_STORAGE_PREFIX } from "./FilterOptionsProvider";
 
 export type ItemsOwnedBy = {
 	[key: number]: ClassesInUse[];
@@ -12,9 +14,7 @@ export type ItemsOwnedBy = {
 export type ItemsInUse = {
 	[key: number]: number;
 };
-export interface FilterOptions {}
-
-export interface Spoiler extends FilterOptions {
+export interface Spoiler {
 	all: boolean;
 	displayAs: ItemViewDisplayType;
 	discount: number;
@@ -30,9 +30,21 @@ export interface Spoiler extends FilterOptions {
 	itemsOwnedBy: ItemsOwnedBy;
 }
 
-export const initialFilterOptions: FilterOptions = {};
+type GameFilterOptions = {
+	[GameType.Gloomhaven]: Spoiler;
+	[GameType.JawsOfTheLion]: Spoiler;
+	lockSpoilerPanel: boolean;
+};
 
-export interface OldFilterOptions extends FilterOptions {
-	item: Array<number> | any;
-	soloClass: Array<SoloClassShorthand> | any;
-}
+export const getShareHash = (lockSpoilerPanel: boolean) => {
+	// @ts-ignore
+	const obj: GameFilterOptions = {};
+	Object.values(GameType).forEach((gt: GameType) => {
+		const gameStorageString = localStorage.getItem(
+			LOCAL_STORAGE_PREFIX + gt
+		);
+		obj[gt] = gameStorageString ? JSON.parse(gameStorageString) : {};
+	});
+	obj["lockSpoilerPanel"] = lockSpoilerPanel;
+	return btoa(JSON.stringify(obj));
+};

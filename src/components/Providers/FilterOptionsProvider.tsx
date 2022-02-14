@@ -3,54 +3,17 @@ import React, {
 	createContext,
 	useState,
 	useEffect,
-	useCallback,
 	FC,
 } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
 import { GameType } from "../../games";
-import {
-	classesInUseState,
-	discountState,
-	displayItemAsState,
-	envelopeXState,
-	gameDataState,
-	itemManagementTypeState,
-	itemsInUseState,
-	itemsOwnedByState,
-	itemState,
-	prosperityState,
-	scenarioCompletedState,
-	soloClassState,
-} from "../../State";
-import { ItemManagementType, SoloClassShorthand } from "../../State/Types";
 import { useFirebase } from "../Firebase";
-import {
-	initialFilterOptions,
-	OldFilterOptions,
-	FilterOptions,
-} from "./FilterOptions";
+import { getShareHash } from "./FilterOptions";
 
 export const LOCAL_STORAGE_PREFIX: string = "ItemView:spoilerFilter_";
 
-type GameFilterOptions = {
-	[GameType.Gloomhaven]: FilterOptions;
-	[GameType.JawsOfTheLion]: FilterOptions;
-	lockSpoilerPanel: boolean;
-};
-
-const initialGameFilterOptions: GameFilterOptions = {
-	[GameType.Gloomhaven]: initialFilterOptions,
-	[GameType.JawsOfTheLion]: initialFilterOptions,
-	lockSpoilerPanel: false,
-};
-
 type ContextData = {
 	loadFromHash: (importHash: string | undefined) => void;
-	getImportHash: () => string | undefined;
-	filterOptions: FilterOptions;
-	updateFilterOptions: (options: any) => void;
 	lockSpoilerPanel: boolean;
-	getShareHash: (lockSpoilerPanel: boolean) => string;
 	dataChanged: boolean;
 };
 
@@ -64,79 +27,6 @@ export function useFilterOptions() {
 	return result;
 }
 
-const fixFilterOptions = (filterOptions: FilterOptions) => {
-	if (filterOptions.hasOwnProperty("enableStoreStockManagement")) {
-		//@ts-ignore
-		filterOptions.itemManagementType =
-			//@ts-ignore
-			filterOptions.enableStoreStockManagement
-				? ItemManagementType.Simple
-				: ItemManagementType.None;
-		// @ts-ignore
-		delete filterOptions.enableStoreStockManagement;
-	}
-
-	if (filterOptions.hasOwnProperty("lockSpoilerPanel")) {
-		// @ts-ignore
-		delete filterOptions.lockSpoilerPanel;
-	}
-	return filterOptions;
-};
-
-const loadFromStorage = (filterLocalStorageKey: string) => {
-	const storage = localStorage.getItem(filterLocalStorageKey);
-
-	let spoilerFilter = initialFilterOptions;
-
-	if (typeof storage === "string") {
-		const configFromStorage: OldFilterOptions = JSON.parse(storage);
-
-		// convert from old object style to array
-		if (
-			configFromStorage.soloClass &&
-			!configFromStorage.soloClass.hasOwnProperty("length")
-		) {
-			const soloClass: Array<SoloClassShorthand> = [];
-			Object.keys(configFromStorage.soloClass).forEach((k) => {
-				if (configFromStorage.soloClass[k] === true) {
-					soloClass.push(k as SoloClassShorthand);
-				}
-			});
-			configFromStorage.soloClass = soloClass;
-		} else if (!configFromStorage.soloClass) {
-			configFromStorage.soloClass = [];
-		}
-		// convert from old object style to array
-		if (
-			configFromStorage.item &&
-			!configFromStorage.item.hasOwnProperty("length")
-		) {
-			const items: Array<number> = [];
-			Object.keys(configFromStorage.item).forEach((k) => {
-				if (configFromStorage.item[k] === true) {
-					items.push(parseInt(k));
-				}
-			});
-			configFromStorage.item = items;
-		} else if (!configFromStorage.item) {
-			configFromStorage.item = [];
-		}
-
-		spoilerFilter = Object.assign(
-			{},
-			initialFilterOptions,
-			configFromStorage
-		);
-	}
-
-	spoilerFilter = fixFilterOptions(spoilerFilter);
-
-	localStorage.setItem(filterLocalStorageKey, JSON.stringify(spoilerFilter));
-	return spoilerFilter;
-};
-
-const oldFilterLocalStorageKey = "ItemView:spoilerFilter";
-
 const parseHash = (importHash: string): any | undefined => {
 	try {
 		return JSON.parse(atob(importHash));
@@ -147,11 +37,6 @@ const parseHash = (importHash: string): any | undefined => {
 
 const FilterProvider: FC = (props) => {
 	const { children } = props;
-	const { gameType } = useRecoilValue(gameDataState);
-	const [dataLoaded, setDataLoaded] = useState(false);
-	const [gameFilterOptions, setGameFilterOptions] = useState(
-		initialGameFilterOptions
-	);
 	const [lockSpoilerPanel, setLockSpoilerPanel] = useState(
 		localStorage.getItem("lockSpoilerPanel") === "true" || false
 	);
@@ -160,148 +45,27 @@ const FilterProvider: FC = (props) => {
 	const { Provider } = Context;
 	const { remoteData } = useFirebase();
 
-	useEffect(() => {
-		const loadedSpoilerFilterString = localStorage.getItem(
-			oldFilterLocalStorageKey
-		);
-
-		// if it exists then it's a gloomhaven storage. Set it tot he new one
-		if (loadedSpoilerFilterString) {
-			localStorage.removeItem(oldFilterLocalStorageKey);
-			localStorage.setItem(
-				LOCAL_STORAGE_PREFIX + GameType.Gloomhaven,
-				loadedSpoilerFilterString
-			);
-		}
-		const newGameFilterOptions: GameFilterOptions = Object.assign(
-			{},
-			gameFilterOptions
-		);
-		Object.values(GameType).forEach((gt) => {
-			const value = loadFromStorage(LOCAL_STORAGE_PREFIX + gt);
-			const {
-				//@ts-ignore
-				all,
-				//@ts-ignore
-				discount,
-				//@ts-ignore
-				prosperity,
-				//@ts-ignore
-				item,
-				//@ts-ignore
-				displayAs,
-				//@ts-ignore
-				itemsInUse,
-				//@ts-ignore
-				itemManagementType,
-				//@ts-ignore
-				envelopeX,
-				//@ts-ignore
-				itemsOwnedBy,
-				//@ts-ignore
-				classesInUse,
-				//@ts-ignore
-				soloClass,
-				//@ts-ignore
-				scenarioCompleted,
-				...rest
-			} = value;
-			newGameFilterOptions[gt] = rest;
-		});
-
-		setDataDirty(true);
-		setGameFilterOptions(newGameFilterOptions);
-		setDataLoaded(true);
-	}, []);
-
-	const updateFilterOptions = (options: any) => {
-		gameFilterOptions[gameType] = {
-			...gameFilterOptions[gameType],
-			...options,
-		};
-		setDataDirty(true);
-		setGameFilterOptions(Object.assign({}, gameFilterOptions));
-		localStorage.setItem(
-			LOCAL_STORAGE_PREFIX + gameType,
-			JSON.stringify(gameFilterOptions[gameType])
-		);
-	};
-
-	const getShareHash = (lockSpoilerPanel: boolean) => {
-		gameFilterOptions["lockSpoilerPanel"] = lockSpoilerPanel;
-		return btoa(JSON.stringify(gameFilterOptions));
-	};
-
-	const getImportHash = useCallback(() => {
-		if (!dataLoaded) {
-			return undefined;
-		}
-		const importHash = location.hash && location.hash.substr(1);
-		if (importHash.length > 0) {
-			return importHash;
-		}
-		location.hash = "";
-		return undefined;
-	}, [dataLoaded]);
-
 	const loadFromHash = (importHash: string | undefined) => {
 		if (importHash) {
 			const hashConfig = parseHash(importHash);
-			const newGameFilterOptions: GameFilterOptions = Object.assign(
-				{},
-				gameFilterOptions
-			);
-			let oldLockSpoilerPanel = false;
 			if (hashConfig !== undefined) {
 				if (hashConfig.hasOwnProperty(GameType.Gloomhaven)) {
 					Object.values(GameType).forEach((gt: GameType) => {
-						const filterOptions =
-							hashConfig[gt] || initialFilterOptions;
+						const filterOptions = hashConfig[gt] || {};
 						if (filterOptions) {
-							oldLockSpoilerPanel =
-								filterOptions.lockSpoilerPanel;
-							const newFilterOpions = fixFilterOptions(
-								Object.assign(
-									{},
-									initialFilterOptions,
-									filterOptions
-								)
-							);
 							localStorage.setItem(
 								LOCAL_STORAGE_PREFIX + gt,
-								JSON.stringify(newFilterOpions)
+								JSON.stringify(filterOptions)
 							);
-							newGameFilterOptions[gt] = newFilterOpions;
 						}
 					});
-				} else if (hashConfig.hasOwnProperty("prosperity")) {
-					// This is the old version of the data before other games were added.  Just add it to gloomhaven.
-					const value = fixFilterOptions(hashConfig as FilterOptions);
-					localStorage.setItem(
-						LOCAL_STORAGE_PREFIX + GameType.Gloomhaven,
-						JSON.stringify(value)
-					);
-					newGameFilterOptions[GameType.Gloomhaven] = value;
-					localStorage.setItem(
-						LOCAL_STORAGE_PREFIX + GameType.JawsOfTheLion,
-						JSON.stringify(initialFilterOptions)
-					);
-					newGameFilterOptions[GameType.JawsOfTheLion] =
-						initialFilterOptions;
 				}
 				setDataDirty(true);
-				setGameFilterOptions(newGameFilterOptions);
 				if (hashConfig.hasOwnProperty("lockSpoilerPanel")) {
 					setLockSpoilerPanel(hashConfig.lockSpoilerPanel);
 					localStorage.setItem(
 						"lockSpoilerPanel",
 						hashConfig.lockSpoilerPanel.toString()
-					);
-				} else {
-					setLockSpoilerPanel(oldLockSpoilerPanel);
-					localStorage.setItem(
-						"lockSpoilerPanel",
-						oldLockSpoilerPanel.toString()
 					);
 				}
 			}
@@ -322,12 +86,8 @@ const FilterProvider: FC = (props) => {
 	return (
 		<Provider
 			value={{
-				filterOptions: gameFilterOptions[gameType],
-				updateFilterOptions,
 				loadFromHash,
-				getImportHash,
 				lockSpoilerPanel,
-				getShareHash,
 				dataChanged,
 			}}
 		>
@@ -337,3 +97,7 @@ const FilterProvider: FC = (props) => {
 };
 
 export default FilterProvider;
+
+/*
+http://localhost:3000/studio/five/en-ca/#eyJnaCI6eyJhbGwiOmZhbHNlLCJwcm9zcGVyaXR5Ijo5LCJpdGVtIjpbNzEsNzgsODYsOTAsOTIsOTgsMTAxLDEwNSwxMDcsMTA4LDExMSwxMTYsMTI1LDEyNiwxMzIsMTE1LDExMCwxMjMsNzYsODEsODcsMTAyLDEzMyw1Myw4NCwxMDAsNzQsODIsOTEsOTMsOTQsOTUsOTcsMTEyLDc3LDgwLDg4LDEwNCwxMDksMTE0LDgzLDc5LDExMywxMzEsMTE4LDEzMCw4NSw3NSw3MiwxMjgsMTI0LDk2LDk5LDczLDg5LDE1MiwxMTcsMTU2LDE1MywxNTQsMTYwLDE1OSwxNTgsMTYzLDE1NSwxNjFdLCJpdGVtc0luVXNlIjp7IjEiOjEsIjYiOjEsIjkiOjEsIjEyIjoxLCIxMyI6MTUsIjIwIjoxLCIyNyI6MywiMzEiOjEsIjMzIjoxLCIzNCI6MywiMzciOjEsIjQxIjozLCI0MiI6MSwiNDQiOjEsIjQ4IjoxLCI0OSI6MSwiNzEiOjEsIjgxIjoxLCI4NiI6MSwiOTgiOjEsIjEwNyI6MSwiMTM4IjoxLCIxNDAiOjEsIjE1MCI6MX0sInNvbG9DbGFzcyI6WyJCUiIsIlNDIiwiUU0iLCJTUyIsIkVMIiwiQ0giLCJTSyIsIkJUIiwiUEgiLCJEUyIsIlNCIiwiU1UiLCJNVCIsIk5TIiwiQkUiLCJYWCIsIlNXIl0sImRpc2NvdW50IjotNSwiZGlzcGxheUFzIjoiaW1hZ2VzIiwiaXRlbU1hbmFnZW1lbnRUeXBlIjoiUGFydHkiLCJzY2VuYXJpb0NvbXBsZXRlZCI6W10sImNsYXNzZXNJblVzZSI6WyJQSCIsIkJUIiwiRFIiLCJDSCIsIlRJIl0sIml0ZW1zT3duZWRCeSI6W251bGwsW10sbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxbIkRSIl0sWyJDSCIsIkRSIiwiVEkiXSxudWxsLG51bGwsWyJEUiJdLG51bGwsbnVsbCxudWxsLFsiRFIiLCJQSCJdLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLFsiVEkiXSxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsWyJQSCJdLFsiUEgiLCJUSSJdLFsiQlQiXSxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsWyJQSCJdLG51bGwsWyJUSSJdLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxbIlRJIl0sbnVsbCxudWxsLG51bGwsWyJDSCJdLG51bGwsbnVsbCxbIlBIIl0sWyJQSCIsIkNIIl0sbnVsbCxudWxsLG51bGwsbnVsbCxbXSxudWxsLG51bGwsbnVsbCxudWxsLFsiQlQiXSxbIkJUIl0sbnVsbCxbIlRJIl0sbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsWyJDSCJdLFsiRFIiXSxbIkRSIl0sbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxbIkNIIl0sbnVsbCxudWxsLFtdLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxbIlBIIl0sbnVsbCxbXSxudWxsLG51bGwsbnVsbCxudWxsLFtdLFtdLG51bGwsbnVsbCxudWxsLFtdLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsbnVsbCxbXSxudWxsLG51bGwsbnVsbCxudWxsLG51bGwsW10sbnVsbCxudWxsLG51bGwsbnVsbCxudWxsLFsiQlQiXSxudWxsLFsiRFIiXSxudWxsLG51bGwsWyJDSCJdLFtdLG51bGwsbnVsbCxbIkRSIiwiUEgiXSxudWxsLFtdLG51bGwsWyJDSCJdXSwiZW52ZWxvcGVYIjp0cnVlfSwiam90bCI6eyJhbGwiOnRydWUsInByb3NwZXJpdHkiOjgsIml0ZW0iOls3MSw3OCw4Niw5MCw5Miw5OCwxMDEsMTA1LDEwNywxMDgsMTExLDExNiwxMjUsMTI2LDEzMiwxMTUsMTEwLDEyMyw3Niw4MSw4NywxMDIsMTMzLDUzLDg0LDEwMCw3NCw4Miw5MSw5Myw5NCw5NSw5NywxMTIsNzcsODAsODgsMTA0LDEwOSwxMTQsODMsNzksMTEzXSwiaXRlbXNJblVzZSI6eyIxIjoxLCI2IjoxLCI5IjoxLCIxMiI6MSwiMjAiOjEsIjI3IjozLCIzMSI6MSwiMzMiOjEsIjM0IjozLCIzNyI6MSwiNDEiOjMsIjQyIjoxLCI0NCI6MSwiNDgiOjEsIjQ5IjoxLCI3MSI6MSwiODEiOjEsIjg2IjoxLCI5OCI6MSwiMTA3IjoxLCIxMzgiOjEsIjE0MCI6MSwiMTUwIjoxfSwic29sb0NsYXNzIjpbIkJSIiwiU0MiLCJRTSIsIlNTIiwiRUwiLCJDSCIsIlNLIiwiQlQiLCJQSCIsIkRTIiwiU0IiLCJTVSJdLCJkaXNjb3VudCI6LTUsImRpc3BsYXlBcyI6ImltYWdlcyIsIml0ZW1NYW5hZ2VtZW50VHlwZSI6IlNpbXBsZSIsInNjZW5hcmlvQ29tcGxldGVkIjpbXSwiY2xhc3Nlc0luVXNlIjpbXSwiaXRlbXNPd25lZEJ5Ijp7fSwiZW52ZWxvcGVYIjpmYWxzZX0sImxvY2tTcG9pbGVyUGFuZWwiOmZhbHNlfQ==
+*/
