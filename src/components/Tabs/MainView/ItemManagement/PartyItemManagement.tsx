@@ -5,11 +5,11 @@ import {
 	classesInUseState,
 	itemManagementTypeState,
 	itemsOwnedByState,
+	lockSpoilerPanelState,
 	selectedItemState,
 } from "../../../../State";
 import { GloomhavenItem, ItemManagementType } from "../../../../State/Types";
 import { ItemsOwnedBy } from "../../../Providers/FilterOptions";
-import { useFilterOptions } from "../../../Providers/FilterOptionsProvider";
 import ClassIcon from "../ClassIcon";
 
 type Props = {
@@ -22,7 +22,7 @@ const PartyItemManagement = (props: Props) => {
 	const [itemsOwnedBy, setItemsOwnedBy] = useRecoilState(itemsOwnedByState);
 	const itemManagementType = useRecoilValue(itemManagementTypeState);
 	const { item } = props;
-	const { lockSpoilerPanel } = useFilterOptions();
+	const lockSpoilerPanel = useRecoilValue(lockSpoilerPanelState);
 
 	if (itemManagementType !== ItemManagementType.Party) {
 		return null;

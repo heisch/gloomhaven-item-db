@@ -8,12 +8,12 @@ import React, {
 } from "react";
 import Firebase from "./firebase";
 import qs from "qs";
+import { useSetRecoilState } from "recoil";
+import { importHashState, remoteDataState } from "../../State";
 
 type Data = {
 	firebase: Firebase | null | undefined;
 	authUser: firebase.default.User | null | undefined;
-	remoteData: string | undefined;
-	importData: string | undefined;
 };
 
 const FirebaseContext = createContext<Data | undefined>(undefined);
@@ -31,8 +31,8 @@ const { Provider } = FirebaseContext;
 const FirebaseProvider: FC = ({ children }) => {
 	const [firebase, setFirebase] = useState<Firebase>();
 	const [authUser, setAuthUser] = useState<firebase.default.User | null>();
-	const [remoteData, setRemoteData] = useState<string | undefined>();
-	const [importData, setImportData] = useState<string | undefined>();
+	const setRemoteData = useSetRecoilState(remoteDataState);
+	const setImportHash = useSetRecoilState(importHashState);
 	useEffect(() => {
 		setFirebase(new Firebase());
 	}, []);
@@ -73,7 +73,7 @@ const FirebaseProvider: FC = ({ children }) => {
 			"value",
 			(snapshot) => {
 				if (snapshot.val()) {
-					setImportData(snapshot.val()["configHash"]);
+					setImportHash(snapshot.val()["configHash"]);
 				}
 				return;
 			},
@@ -90,10 +90,7 @@ const FirebaseProvider: FC = ({ children }) => {
 		firebase.spoilerFilter(authUser.uid).on("value", updateRemoteData);
 	}, [firebase, authUser]);
 
-	const value = useMemo(
-		() => ({ firebase, authUser, remoteData, importData }),
-		[firebase, authUser, remoteData, importData]
-	);
+	const value = useMemo(() => ({ firebase, authUser }), [firebase, authUser]);
 
 	return <Provider value={value}>{children}</Provider>;
 };

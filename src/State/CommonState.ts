@@ -1,7 +1,8 @@
 import { atom, RecoilState, selector } from "recoil";
 import { gameTypeState } from ".";
-import { LOCAL_STORAGE_PREFIX } from "../components/Providers/FilterOptionsProvider";
 import { gameDataTypes, GameType } from "../games";
+
+export const LOCAL_STORAGE_PREFIX: string = "ItemView:spoilerFilter_";
 
 export type AtomObject<T> = {
 	[key: string]: RecoilState<T>;

@@ -10,7 +10,6 @@ import { Message, Icon } from "semantic-ui-react";
 import ItemTable from "./ItemTable";
 import ItemGrid from "./ItemGrid";
 import PurchaseItem from "./PurchaseItem";
-import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 import useItems from "../../../hooks/useItems";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
@@ -19,6 +18,7 @@ import {
 	allState,
 	displayItemAsState,
 	itemManagementTypeState,
+	dataMismatchState,
 } from "../../../State";
 
 const ItemList = () => {
@@ -29,7 +29,7 @@ const ItemList = () => {
 	const [sortDirection, setSortDirection] =
 		useRecoilState(sortDirectionState);
 	const items = useItems();
-	const { dataChanged } = useFilterOptions();
+	const dataMismatch = useRecoilValue(dataMismatchState);
 
 	const setSorting = (newProperty: SortProperty) => {
 		let newDirection: SortDirection;
@@ -48,7 +48,7 @@ const ItemList = () => {
 
 	return (
 		<>
-			{dataChanged && (
+			{dataMismatch && (
 				<Message negative>
 					<Message.Header>
 						<Icon name="exclamation triangle" />

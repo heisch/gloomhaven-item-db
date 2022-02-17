@@ -1,11 +1,10 @@
 import { GameType } from "../../games";
+import { LOCAL_STORAGE_PREFIX } from "../../State/CommonState";
 import {
 	ClassesInUse,
 	ItemManagementType,
 	ItemViewDisplayType,
-	SoloClassShorthand,
 } from "../../State/Types";
-import { LOCAL_STORAGE_PREFIX } from "./FilterOptionsProvider";
 
 export type ItemsOwnedBy = {
 	[key: number]: ClassesInUse[];

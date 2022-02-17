@@ -1,3 +1,4 @@
+import { atom } from "recoil";
 import {
 	ItemsInUse,
 	ItemsOwnedBy,
@@ -35,3 +36,23 @@ export const soloClassState = createSpoilerState<ClassesInUse[]>(
 	"soloClass",
 	[]
 );
+
+export const dataMismatchState = atom({
+	key: "data-mistmatch-state",
+	default: false,
+});
+
+export const remoteDataState = atom<string | undefined>({
+	key: "remote-data-state",
+	default: undefined,
+});
+
+export const importHashState = atom<string | undefined>({
+	key: "import-hash-state",
+	default: undefined,
+});
+
+export const lockSpoilerPanelState = atom({
+	key: "lock-spoiler-panel-state",
+	default: localStorage.getItem("lockSpoilerPanel") === "true",
+});

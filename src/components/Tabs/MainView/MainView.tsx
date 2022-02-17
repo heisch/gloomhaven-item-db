@@ -3,13 +3,16 @@ import { Tab } from "semantic-ui-react";
 import ItemList from "./ItemList";
 import SpoilerFilters from "../SpoilerFilters/SpoilerFilters";
 import Share from "../Share/Share";
-import { useFilterOptions } from "../../Providers/FilterOptionsProvider";
 import ImportData from "./ImportData";
 import { isFlagEnabled } from "../../../helpers";
 import { Account } from "../Account/Account";
 import { About } from "../About";
 import { useRecoilValue } from "recoil";
-import { allState } from "../../../State";
+import {
+	allState,
+	dataMismatchState,
+	lockSpoilerPanelState,
+} from "../../../State";
 
 // .git ignore vscode file
 // List mode looks crappy
@@ -24,8 +27,9 @@ type TabItem = {
 
 const MainView = () => {
 	const all = useRecoilValue(allState);
+	const lockSpoilerPanel = useRecoilValue(lockSpoilerPanelState);
+	const dataMismatch = useRecoilValue(dataMismatchState);
 
-	const { lockSpoilerPanel, dataChanged } = useFilterOptions();
 	const sharingEnabled = isFlagEnabled("sharing");
 
 	const tabData: TabItem[] = [
@@ -60,11 +64,11 @@ const MainView = () => {
 		.filter((pane) => pane.menuItem !== undefined);
 
 	const getOutlineClass = useCallback(() => {
-		if (all || dataChanged) {
+		if (all || dataMismatch) {
 			return "spoiler";
 		}
 		return "";
-	}, [all, dataChanged]);
+	}, [all, dataMismatch]);
 
 	return (
 		<>
