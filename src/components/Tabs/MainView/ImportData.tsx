@@ -62,11 +62,6 @@ const ImportData = () => {
 	}, [dataDirty, remoteData]);
 
 	useEffect(() => {
-		console.log({
-			importHash,
-			currentHash,
-			equal: importHash === currentHash,
-		});
 		if (importHash && importHash !== currentHash) {
 			setIsOpen((importHash && importHash.length > 0) || false);
 		}

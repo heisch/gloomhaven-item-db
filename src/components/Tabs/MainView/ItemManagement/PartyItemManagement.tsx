@@ -68,6 +68,7 @@ const PartyItemManagement = (props: Props) => {
 				[...Array(addButtonsToShow).keys()].map((i) => {
 					return (
 						<Button
+							key={`${item.id}-${i}`}
 							disabled={lockSpoilerPanel}
 							className={`i${ownersLength + i} noClass`}
 							color={"black"}

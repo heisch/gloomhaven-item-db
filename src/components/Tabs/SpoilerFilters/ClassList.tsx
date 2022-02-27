@@ -20,6 +20,7 @@ export const ClassList = (props: Props) => {
 			{classes.map((name) => {
 				return (
 					<ClassIcon
+						key={name}
 						name={name}
 						className={`icon ${!isUsed(name) ? "unused" : ""} ${
 							isEnabled && !isEnabled(name) ? "disabled" : ""
