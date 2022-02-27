@@ -5,10 +5,11 @@ import { itemState } from "../../../State";
 
 type Props = {
 	id: number;
+	offset: number;
 };
 
 const FilterCheckbox = (props: Props) => {
-	const { id } = props;
+	const { id, offset } = props;
 	const [item, setItem] = useRecoilState(itemState);
 
 	const toggleItemFilter = (key: number) => {
@@ -25,8 +26,8 @@ const FilterCheckbox = (props: Props) => {
 		<Form.Checkbox
 			key={id}
 			label={"#" + (id + "").padStart(3, "0")}
-			checked={item.includes(id)}
-			onChange={() => toggleItemFilter(id)}
+			checked={item.includes(id + offset)}
+			onChange={() => toggleItemFilter(id + offset)}
 		/>
 	);
 };

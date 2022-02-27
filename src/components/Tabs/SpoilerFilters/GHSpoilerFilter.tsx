@@ -81,23 +81,19 @@ const GHSpoilerFilter = () => {
 				</Form.Group>
 
 				<SpoilerFilterItemList
-					start={(prosperity + 1) * 7 + 1}
-					end={70}
+					ranges={[{ start: (prosperity + 1) * 7 + 1, end: 70 }]}
 					title="Prosperity Items"
 				/>
 				<SpoilerFilterItemList
-					start={71}
-					end={95}
+					ranges={[{ start: 71, end: 95 }]}
 					title="Random Item Design"
 				/>
 				<SpoilerFilterItemList
-					start={96}
-					end={133}
+					ranges={[{ start: 96, end: 133 }]}
 					title="Other Items"
 				/>
 				<SpoilerFilterItemList
-					start={152}
-					end={163}
+					ranges={[{ start: 152, end: 163 }]}
 					title="Forgotten Circles Items"
 				/>
 			</Form.Field>

@@ -36,10 +36,7 @@ const JOTLSpoilerFilter = () => {
 				})}
 			</Form.Group>
 			<SpoilerFilterItemList
-				ranges={[
-					{ start: 14, end: 14 },
-					{ start: 27, end: 36 },
-				]}
+				ranges={[14, { start: 27, end: 36 }]}
 				title="Items"
 			/>
 		</>

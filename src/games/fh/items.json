@@ -1,0 +1,14 @@
+[
+	{
+		"id": 1,
+		"name": "Boots of Striding",
+		"cost": 20,
+		"count": 2,
+		"slot": "Legs",
+		"source": "Prosperity 1",
+		"spent": true,
+		"desc": "During your movement, add +2 Move to the movement.",
+		"faq": "Boots of Striding only add to the numerical value of an existing single movement ability. They do not give you a free movement action.",
+		"folder": "1-14"
+	}
+]

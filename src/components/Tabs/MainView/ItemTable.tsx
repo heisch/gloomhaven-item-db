@@ -14,6 +14,7 @@ import {
 	discountState,
 	itemManagementTypeState,
 } from "../../../State";
+import { GameType } from "../../../games";
 
 type Props = {
 	items: GloomhavenItem[];
@@ -33,6 +34,17 @@ const GHIcon = (props: IconProps) => {
 			alt={name}
 		/>
 	);
+};
+
+const formatId = (id: number) => {
+	return `#${(id + "").padStart(3, "0")}`;
+};
+
+const getItemIdString = (item: GloomhavenItem) => {
+	const { displayId, id, gameType } = item;
+	return `${gameType ? gameType.toUpperCase() : ""} ${formatId(
+		displayId || id
+	)}`;
 };
 
 const ItemTable = (props: Props) => {
@@ -165,7 +177,7 @@ const ItemTable = (props: Props) => {
 									className={"id-col"}
 									textAlign={"right"}
 								>
-									#{(item.id + "").padStart(3, "0")}
+									{getItemIdString(item)}
 								</Table.Cell>
 								<Table.Cell className={"name-col"}>
 									{item.name}

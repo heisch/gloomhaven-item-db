@@ -32,6 +32,7 @@ export interface Spoiler {
 type GameFilterOptions = {
 	[GameType.Gloomhaven]: Spoiler;
 	[GameType.JawsOfTheLion]: Spoiler;
+	[GameType.Frosthaven]: Spoiler;
 	lockSpoilerPanel: boolean;
 };
 

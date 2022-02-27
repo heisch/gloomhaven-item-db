@@ -14,10 +14,12 @@ import {
 	envelopeXState,
 	gameDataState,
 } from "../../../State";
+import FHSpoilerFilter from "./FHSpoilerFilter";
 
 const filters = {
 	[GameType.Gloomhaven]: <GHSpoilerFilter />,
 	[GameType.JawsOfTheLion]: <JOTLSpoilerFilter />,
+	[GameType.Frosthaven]: <FHSpoilerFilter />,
 };
 
 const SpoilerFilters = () => {

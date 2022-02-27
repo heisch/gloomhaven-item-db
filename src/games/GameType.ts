@@ -1,5 +1,5 @@
-export enum GameType
-{
-    Gloomhaven = "gh",
-    JawsOfTheLion= "jotl"
+export enum GameType {
+	Gloomhaven = "gh",
+	JawsOfTheLion = "jotl",
+	Frosthaven = "fh",
 }
