@@ -110,21 +110,23 @@ const SearchOptions = (props: Props) => {
 						checked={slots.length === 0}
 						onChange={() => setFilterSlot(undefined)}
 					/>
-					{filterSlots.map((itemSlot) => (
-						<Form.Checkbox
-							key={itemSlot}
-							label={
-								<img
-									className={"icon"}
-									src={getSlotImageSrc(itemSlot)}
-									alt={itemSlot}
-								/>
-							}
-							checked={slots.includes(itemSlot)}
-							onChange={() => setFilterSlot(itemSlot)}
-							alt={itemSlot}
-						/>
-					))}
+					{Object.values(GloomhavenItemSlot)
+						.filter((slot) => filterSlots.includes(slot))
+						.map((itemSlot) => (
+							<Form.Checkbox
+								key={itemSlot}
+								label={
+									<img
+										className={"icon"}
+										src={getSlotImageSrc(itemSlot)}
+										alt={itemSlot}
+									/>
+								}
+								checked={slots.includes(itemSlot)}
+								onChange={() => setFilterSlot(itemSlot)}
+								alt={itemSlot}
+							/>
+						))}
 				</Form.Group>
 				<Form.Group inline>
 					<label>Find Item:</label>

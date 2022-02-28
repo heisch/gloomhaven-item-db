@@ -1,5 +1,5 @@
 import { Spoiler } from "../../components/Providers/FilterOptions";
-import { GloomhavenItem, gloomhavenItemSlots } from "../../State/Types";
+import { GloomhavenItem } from "../../State/Types";
 import { GameData, getInitialItems } from "../GameData";
 import { GameType } from "../GameType";
 
@@ -30,8 +30,6 @@ export const GHGameData: GameData = {
 	gameType: GameType.Gloomhaven,
 	gameName: "Gloomhaven",
 	items,
-	filterSlots: gloomhavenItemSlots.filter((slot) =>
-		filterSlots.includes(slot)
-	),
+	filterSlots,
 	isItemShown,
 };

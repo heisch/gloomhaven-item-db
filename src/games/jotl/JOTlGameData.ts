@@ -1,5 +1,5 @@
 import { Spoiler } from "../../components/Providers/FilterOptions";
-import { GloomhavenItem, gloomhavenItemSlots } from "../../State/Types";
+import { GloomhavenItem } from "../../State/Types";
 import { GameData, getInitialItems } from "../GameData";
 import { GameType } from "../GameType";
 
@@ -28,8 +28,6 @@ export const JOTLGameData: GameData = {
 	gameType: GameType.JawsOfTheLion,
 	gameName: "Gloomhaven: Jaws of the Lion",
 	items,
-	filterSlots: gloomhavenItemSlots.filter((slot) =>
-		filterSlots.includes(slot)
-	),
+	filterSlots,
 	isItemShown,
 };

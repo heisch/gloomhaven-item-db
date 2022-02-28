@@ -1,12 +1,7 @@
 import React from "react";
 import { Form } from "semantic-ui-react";
 import SpoilerFilterItemList from "./SpoilerFilterItemList";
-import {
-	ClassesInUse,
-	envelopeXClassList,
-	fcClassList,
-	ghClassList,
-} from "../../../State/Types";
+import { ClassesInUse, getGHClassList } from "../../../State/Types";
 import { ClassList } from "./ClassList";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
@@ -33,11 +28,7 @@ const GHSpoilerFilter = () => {
 		setSoloClass(value);
 	};
 
-	let classList: ClassesInUse[] = [...ghClassList];
-	if (envelopeX) {
-		classList = classList.concat(envelopeXClassList);
-	}
-	classList = classList.concat(fcClassList);
+	const soloClasses = getGHClassList(envelopeX, true);
 
 	return (
 		<>
@@ -105,7 +96,7 @@ const GHSpoilerFilter = () => {
 							soloClass.includes(className)
 						}
 						label={"Solo Class Items:"}
-						classes={classList}
+						classes={soloClasses}
 						onClick={toggleClassFilter}
 					/>
 				</Form.Group>

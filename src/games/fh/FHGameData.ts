@@ -1,5 +1,6 @@
 import { Spoiler } from "../../components/Providers/FilterOptions";
-import { GloomhavenItem, gloomhavenItemSlots } from "../../State/Types";
+import { Helpers } from "../../helpers";
+import { GloomhavenItem } from "../../State/Types";
 import { GameData, getInitialItems } from "../GameData";
 import { GameType } from "../GameType";
 
@@ -20,7 +21,7 @@ ghItems = ghItems.map((item: GloomhavenItem, index: number) => ({
 ghItems = ghItems.filter((item) => ghItemToImport.includes(item.id - 1));
 items = items.concat(ghItems);
 
-filterSlots = filterSlots.concat(ghFilterSlots);
+filterSlots = Helpers.uniqueArray(filterSlots.concat(ghFilterSlots));
 
 export const isItemShown = ({}: GloomhavenItem, { all }: Spoiler) => {
 	if (all) {
@@ -34,8 +35,6 @@ export const FHGameData: GameData = {
 	gameType: GameType.Frosthaven,
 	gameName: "Frosthaven",
 	items,
-	filterSlots: gloomhavenItemSlots.filter((slot) =>
-		filterSlots.includes(slot)
-	),
+	filterSlots,
 	isItemShown,
 };

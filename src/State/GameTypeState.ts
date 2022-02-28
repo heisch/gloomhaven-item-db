@@ -1,11 +1,25 @@
 import { atom, selector } from "recoil";
 import { gameDataTypes, GameType } from "../games";
 import { GameData } from "../games/GameData";
+import { isFlagEnabled } from "../helpers";
+
+const getStartingGameType = () => {
+	const frosthavenEnabled = isFlagEnabled("frosthaven");
+
+	const lastGame = localStorage.getItem("lastGame") as GameType;
+	if (!lastGame) {
+		return GameType.Gloomhaven;
+	}
+
+	if (lastGame === GameType.Frosthaven && !frosthavenEnabled) {
+		return GameType.Gloomhaven;
+	}
+	return lastGame;
+};
 
 export const gameTypeState = atom<GameType>({
 	key: "gameTypeState",
-	default:
-		(localStorage.getItem("lastGame") as GameType) || GameType.Gloomhaven,
+	default: getStartingGameType(),
 	effects: [
 		({ onSet }) => {
 			onSet((gameType) => {

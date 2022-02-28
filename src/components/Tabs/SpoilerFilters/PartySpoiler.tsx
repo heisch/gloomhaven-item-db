@@ -9,11 +9,10 @@ import {
 } from "../../../State";
 import {
 	ClassesInUse,
-	envelopeXClassList,
-	fcClassList,
-	ghClassList,
+	FCClasses,
+	getGHClassList,
 	ItemManagementType,
-	jotlClassList,
+	JOTLClasses,
 } from "../../../State/Types";
 import { ClassList } from "./ClassList";
 
@@ -36,11 +35,7 @@ export const PartySpoiler = () => {
 		return null;
 	}
 
-	let ghList: ClassesInUse[] = [...ghClassList];
-	if (envelopeX) {
-		ghList = ghList.concat(envelopeXClassList);
-	}
-
+	const ghList = getGHClassList(envelopeX);
 	return (
 		<Form.Group inline className={"inline-break"}>
 			<Form.Group inline>
@@ -68,7 +63,7 @@ export const PartySpoiler = () => {
 				}
 			/>
 			<ClassList
-				classes={fcClassList}
+				classes={Object.values(FCClasses)}
 				label="Forgotten Circles:"
 				onClick={toggleClassFilter}
 				isUsed={(className: ClassesInUse) =>
@@ -76,7 +71,7 @@ export const PartySpoiler = () => {
 				}
 			/>
 			<ClassList
-				classes={jotlClassList}
+				classes={Object.values(JOTLClasses)}
 				label="Jaws of the Lion:"
 				onClick={toggleClassFilter}
 				isUsed={(className: ClassesInUse) =>

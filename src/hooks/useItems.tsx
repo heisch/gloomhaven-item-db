@@ -1,8 +1,4 @@
-import {
-	gloomhavenItemSlots,
-	GloomhavenItem,
-	SortDirection,
-} from "../State/Types";
+import { GloomhavenItem, SortDirection } from "../State/Types";
 import { useRecoilValue } from "recoil";
 import {
 	gameDataState,
@@ -105,17 +101,10 @@ const useItems = (): Array<GloomhavenItem> => {
 					value = itemA["name"].localeCompare(itemB["name"]);
 					break;
 				case "slot":
-					if (
-						gloomhavenItemSlots.indexOf(itemA.slot) ===
-						gloomhavenItemSlots.indexOf(itemB.slot)
-					) {
+					if (itemA.slot === itemB.slot) {
 						value = 0;
 					} else {
-						value =
-							gloomhavenItemSlots.indexOf(itemA.slot) >
-							gloomhavenItemSlots.indexOf(itemB.slot)
-								? 1
-								: -1;
+						value = itemA.slot > itemB.slot ? 1 : -1;
 					}
 					break;
 				case "cost":

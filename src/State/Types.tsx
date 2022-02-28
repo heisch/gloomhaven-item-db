@@ -18,69 +18,49 @@ export enum ItemViewDisplayType {
 
 export type SortProperty = "id" | "slot" | "cost" | "name" | "use";
 
-export type GHClassesShorthand =
-	| "BR"
-	| "TI"
-	| "SW"
-	| "SC"
-	| "CH"
-	| "MT"
-	| "SK"
-	| "QM"
-	| "SU"
-	| "NS"
-	| "PH"
-	| "BE"
-	| "SS"
-	| "DS"
-	| "SB"
-	| "EL"
-	| "BT";
-export type EnvelopeXClassShorthand = "XX";
-export type FCClassesShorthand = "DR";
-export type SoloClassShorthand = GHClassesShorthand | FCClassesShorthand;
-export type JOTLClassesShorthand = "DM" | "HT" | "RG" | "VW";
-export type ClassesInUse =
-	| GHClassesShorthand
-	| JOTLClassesShorthand
-	| FCClassesShorthand
-	| EnvelopeXClassShorthand;
+export enum GHClasses {
+	BR = "BR",
+	TI = "TI",
+	SW = "SW",
+	SC = "SC",
+	CH = "CH",
+	MT = "MT",
+	SK = "SK",
+	QM = "QM",
+	SU = "SU",
+	NS = "NS",
+	PH = "PH",
+	BE = "BE",
+	SS = "SS",
+	DS = "DS",
+	SB = "SB",
+	EL = "EL",
+	BT = "BT",
+	XX = "XX",
+}
 
-export const ghClassList: Array<GHClassesShorthand> = [
-	"BR",
-	"TI",
-	"SW",
-	"SC",
-	"CH",
-	"MT",
-	"SK",
-	"QM",
-	"SU",
-	"NS",
-	"PH",
-	"BE",
-	"SS",
-	"DS",
-	"SB",
-	"EL",
-	"BT",
-];
-export const fcClassList: Array<FCClassesShorthand> = ["DR"];
-export const jotlClassList: Array<JOTLClassesShorthand> = [
-	"DM",
-	"HT",
-	"RG",
-	"VW",
-];
-export const envelopeXClassList: EnvelopeXClassShorthand[] = ["XX"];
+export enum FCClasses {
+	DR = "DR",
+}
 
-export type GloomhavenItemSlot =
-	| "Head"
-	| "Body"
-	| "Legs"
-	| "One Hand"
-	| "Two Hands"
-	| "Small Item";
+export enum JOTLClasses {
+	DM = "DM",
+	HT = "HT",
+	RG = "RG",
+	VW = "VW",
+}
+export type SoloClassShorthand = GHClasses | FCClasses;
+
+export type ClassesInUse = GHClasses | FCClasses | JOTLClasses;
+
+export enum GloomhavenItemSlot {
+	Head = "Head",
+	Body = "Body",
+	Legs = "Legs",
+	OneHand = "One Hand",
+	TwoHands = "Two Hands",
+	SmallItem = "Small Item",
+}
 export type GloomhavenItemSourceType =
 	| "Prosperity"
 	| "Random Item Design"
@@ -90,14 +70,6 @@ export type GloomhavenItemSourceType =
 	| "Road Event"
 	| "City Event";
 
-export const gloomhavenItemSlots: Array<GloomhavenItemSlot> = [
-	"Head",
-	"Body",
-	"Legs",
-	"One Hand",
-	"Two Hands",
-	"Small Item",
-];
 export interface GloomhavenItem {
 	id: number;
 	displayId: number;
@@ -123,3 +95,13 @@ export interface GloomhavenItem {
 	soloItem?: SoloClassShorthand;
 	folder: string;
 }
+export const getGHClassList = (envelopeX: boolean, fc: boolean = false) => {
+	let ghList: ClassesInUse[] = Object.values(GHClasses);
+	if (!envelopeX) {
+		ghList = ghList.filter((c) => c !== GHClasses.XX);
+	}
+	if (fc) {
+		ghList = ghList.concat(FCClasses.DR);
+	}
+	return ghList;
+};
