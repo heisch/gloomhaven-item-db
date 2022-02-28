@@ -1,4 +1,4 @@
-import { GloomhavenItem, SortDirection } from "../State/Types";
+import { GloomhavenItem, SortDirection, SortProperty } from "../State/Types";
 import { useRecoilValue } from "recoil";
 import {
 	gameDataState,
@@ -97,25 +97,25 @@ const useItems = (): Array<GloomhavenItem> => {
 		return items.sort((itemA: GloomhavenItem, itemB: GloomhavenItem) => {
 			let value = 0;
 			switch (sortProperty) {
-				case "name":
+				case SortProperty.Name:
 					value = itemA["name"].localeCompare(itemB["name"]);
 					break;
-				case "slot":
+				case SortProperty.Slot:
 					if (itemA.slot === itemB.slot) {
 						value = 0;
 					} else {
 						value = itemA.slot > itemB.slot ? 1 : -1;
 					}
 					break;
-				case "cost":
+				case SortProperty.Cost:
 					if (itemA["cost"] === itemB["cost"]) return 0;
 					value = itemA["cost"] > itemB["cost"] ? 1 : -1;
 					break;
-				case "id":
+				case SortProperty.Id:
 					if (itemA["id"] === itemB["id"]) return 0;
 					value = itemA["id"] > itemB["id"] ? 1 : -1;
 					break;
-				case "use":
+				case SortProperty.Use:
 					// assign a dummy value to sort by
 					const itemAuse = itemA.spent
 						? "c"

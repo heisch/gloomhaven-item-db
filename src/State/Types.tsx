@@ -16,7 +16,13 @@ export enum ItemViewDisplayType {
 	Images = "images",
 }
 
-export type SortProperty = "id" | "slot" | "cost" | "name" | "use";
+export enum SortProperty {
+	Id,
+	Slot,
+	Cost,
+	Name,
+	Use,
+}
 
 export enum GHClasses {
 	BR = "BR",
@@ -61,14 +67,6 @@ export enum GloomhavenItemSlot {
 	TwoHands = "Two Hands",
 	SmallItem = "Small Item",
 }
-export type GloomhavenItemSourceType =
-	| "Prosperity"
-	| "Random Item Design"
-	| "Scenario"
-	| "Treasure"
-	| "Solo Scenario"
-	| "Road Event"
-	| "City Event";
 
 export interface GloomhavenItem {
 	id: number;

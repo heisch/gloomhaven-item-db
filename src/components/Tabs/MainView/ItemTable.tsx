@@ -95,9 +95,9 @@ const ItemTable = (props: Props) => {
 						<Table.HeaderCell
 							className={"id-col"}
 							textAlign={"right"}
-							onClick={() => setSorting("id")}
+							onClick={() => setSorting(SortProperty.Id)}
 							sorted={
-								sortProperty === "id"
+								sortProperty === SortProperty.Id
 									? sortDirection
 									: undefined
 							}
@@ -107,9 +107,9 @@ const ItemTable = (props: Props) => {
 						<Table.HeaderCell
 							className={"name-col"}
 							selectable={false}
-							onClick={() => setSorting("name")}
+							onClick={() => setSorting(SortProperty.Name)}
 							sorted={
-								sortProperty === "name"
+								sortProperty === SortProperty.Name
 									? sortDirection
 									: undefined
 							}
@@ -119,9 +119,9 @@ const ItemTable = (props: Props) => {
 						<Table.HeaderCell
 							className={"slot-col"}
 							textAlign={"center"}
-							onClick={() => setSorting("slot")}
+							onClick={() => setSorting(SortProperty.Slot)}
 							sorted={
-								sortProperty === "slot"
+								sortProperty === SortProperty.Slot
 									? sortDirection
 									: undefined
 							}
@@ -131,9 +131,9 @@ const ItemTable = (props: Props) => {
 						<Table.HeaderCell
 							className={"cost-col"}
 							textAlign={"right"}
-							onClick={() => setSorting("cost")}
+							onClick={() => setSorting(SortProperty.Cost)}
 							sorted={
-								sortProperty === "cost"
+								sortProperty === SortProperty.Cost
 									? sortDirection
 									: undefined
 							}
@@ -142,9 +142,9 @@ const ItemTable = (props: Props) => {
 						</Table.HeaderCell>
 						<Table.HeaderCell
 							className={"use-col"}
-							onClick={() => setSorting("use")}
+							onClick={() => setSorting(SortProperty.Use)}
 							sorted={
-								sortProperty === "use"
+								sortProperty === SortProperty.Use
 									? sortDirection
 									: undefined
 							}

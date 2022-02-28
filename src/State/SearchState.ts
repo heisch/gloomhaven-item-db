@@ -26,5 +26,5 @@ export const sortDirectionState = createState<SortDirection>(
 );
 export const sortPropertyState = createState<SortProperty>(
 	"sortProperty",
-	"id"
+	SortProperty.Id
 );
