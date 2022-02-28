@@ -55,9 +55,30 @@ export enum JOTLClasses {
 	RG = "RG",
 	VW = "VW",
 }
-export type SoloClassShorthand = GHClasses | FCClasses;
 
-export type ClassesInUse = GHClasses | FCClasses | JOTLClasses;
+export enum FHClasses {
+	BB = "BB",
+	BN = "BN",
+	BO = "BO",
+	DF = "DF",
+	DW = "DW",
+	GE = "GE",
+	FH7 = "FH7",
+	FH8 = "FH8",
+	FH9 = "FH9",
+	FH10 = "FH10",
+	FH11 = "FH11",
+	FH12 = "FH12",
+	FH13 = "FH13",
+	FH14 = "FH14",
+	FH15 = "FH15",
+	FH16 = "FH16",
+	FH17 = "FH17",
+}
+
+export type SoloClasses = GHClasses | FCClasses | FHClasses;
+
+export type ClassesInUse = GHClasses | FCClasses | JOTLClasses | FHClasses;
 
 export enum GloomhavenItemSlot {
 	Head = "Head",
@@ -90,7 +111,7 @@ export interface GloomhavenItem {
 		attack: number;
 		range: number;
 	};
-	soloItem?: SoloClassShorthand;
+	soloItem?: SoloClasses;
 	folder: string;
 }
 export const getGHClassList = (envelopeX: boolean, fc: boolean = false) => {

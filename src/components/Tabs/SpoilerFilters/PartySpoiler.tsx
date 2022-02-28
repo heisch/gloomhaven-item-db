@@ -10,6 +10,7 @@ import {
 import {
 	ClassesInUse,
 	FCClasses,
+	FHClasses,
 	getGHClassList,
 	ItemManagementType,
 	JOTLClasses,
@@ -73,6 +74,14 @@ export const PartySpoiler = () => {
 			<ClassList
 				classes={Object.values(JOTLClasses)}
 				label="Jaws of the Lion:"
+				onClick={toggleClassFilter}
+				isUsed={(className: ClassesInUse) =>
+					classesInUse.includes(className)
+				}
+			/>
+			<ClassList
+				classes={Object.values(FHClasses)}
+				label="Frosthaven:"
 				onClick={toggleClassFilter}
 				isUsed={(className: ClassesInUse) =>
 					classesInUse.includes(className)

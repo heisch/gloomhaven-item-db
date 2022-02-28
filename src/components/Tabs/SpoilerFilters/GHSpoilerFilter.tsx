@@ -1,32 +1,15 @@
 import React from "react";
 import { Form } from "semantic-ui-react";
 import SpoilerFilterItemList from "./SpoilerFilterItemList";
-import { ClassesInUse, getGHClassList } from "../../../State/Types";
-import { ClassList } from "./ClassList";
+import { getGHClassList } from "../../../State/Types";
 import { useRecoilState, useRecoilValue } from "recoil";
-import {
-	discountState,
-	envelopeXState,
-	prosperityState,
-	soloClassState,
-} from "../../../State";
+import { discountState, envelopeXState, prosperityState } from "../../../State";
+import { SoloClassFilter } from "./SoloClassFilter";
 
 const GHSpoilerFilter = () => {
-	const [soloClass, setSoloClass] = useRecoilState(soloClassState);
-
 	const envelopeX = useRecoilValue(envelopeXState);
 	const [discount, setDiscount] = useRecoilState(discountState);
 	const [prosperity, setProsperity] = useRecoilState(prosperityState);
-
-	const toggleClassFilter = (key: ClassesInUse) => {
-		const value = Object.assign([], soloClass);
-		if (value.includes(key)) {
-			value.splice(value.indexOf(key), 1);
-		} else {
-			value.push(key);
-		}
-		setSoloClass(value);
-	};
 
 	const soloClasses = getGHClassList(envelopeX, true);
 
@@ -88,19 +71,7 @@ const GHSpoilerFilter = () => {
 					title="Forgotten Circles Items"
 				/>
 			</Form.Field>
-
-			<Form.Field>
-				<Form.Group inline className={"inline-break"}>
-					<ClassList
-						isUsed={(className: ClassesInUse) =>
-							soloClass.includes(className)
-						}
-						label={"Solo Class Items:"}
-						classes={soloClasses}
-						onClick={toggleClassFilter}
-					/>
-				</Form.Group>
-			</Form.Field>
+			<SoloClassFilter classes={soloClasses} />
 		</>
 	);
 };
