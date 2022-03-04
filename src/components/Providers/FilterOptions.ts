@@ -27,6 +27,7 @@ export interface Spoiler {
 	scenarioCompleted: number[];
 	classesInUse: ClassesInUse[];
 	itemsOwnedBy: ItemsOwnedBy;
+	includeGloomhavenItems: boolean;
 }
 
 type GameFilterOptions = {

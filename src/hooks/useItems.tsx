@@ -20,6 +20,7 @@ import {
 	classesInUseState,
 	soloClassState,
 	scenarioCompletedState,
+	includeGloomhavenItemsState,
 } from "../State";
 import { Spoiler } from "../components/Providers/FilterOptions";
 
@@ -43,6 +44,7 @@ const useItems = (): Array<GloomhavenItem> => {
 	const classesInUse = useRecoilValue(classesInUseState);
 	const soloClass = useRecoilValue(soloClassState);
 	const scenarioCompleted = useRecoilValue(scenarioCompletedState);
+	const includeGloomhavenItems = useRecoilValue(includeGloomhavenItemsState);
 
 	const spoiler: Spoiler = {
 		all,
@@ -57,6 +59,7 @@ const useItems = (): Array<GloomhavenItem> => {
 		classesInUse,
 		soloClass,
 		scenarioCompleted,
+		includeGloomhavenItems,
 	};
 
 	const getFilteredItems = () => {

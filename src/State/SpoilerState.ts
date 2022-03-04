@@ -37,6 +37,11 @@ export const soloClassState = createSpoilerState<ClassesInUse[]>(
 	[]
 );
 
+export const includeGloomhavenItemsState = createSpoilerState<boolean>(
+	"includeGloomhavenItems",
+	false
+);
+
 export const dataMismatchState = atom({
 	key: "data-mistmatch-state",
 	default: false,
