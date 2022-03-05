@@ -1,6 +1,5 @@
 import React from "react";
 import { Button, Modal, Form } from "semantic-ui-react";
-import { ItemsOwnedBy } from "../../Providers/FilterOptions";
 import ClassIcon from "../MainView/ClassIcon";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
@@ -10,6 +9,7 @@ import {
 	itemsOwnedByState,
 	selectedClassState,
 } from "../../../State";
+import { ItemsOwnedBy } from "../../../State/Types";
 
 const ConfirmClassDelete = () => {
 	const [selectedClass, setSelectedClass] =

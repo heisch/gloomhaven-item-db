@@ -1,14 +1,7 @@
-import { create } from "domain";
-import {
-	ItemsInUse,
-	ItemsOwnedBy,
-} from "../components/Providers/FilterOptions";
 import { createState } from "./CommonState";
 import {
 	ClassesInUse,
 	GloomhavenItemSlot,
-	ItemManagementType,
-	ItemViewDisplayType,
 	SortDirection,
 	SortProperty,
 } from "./Types";

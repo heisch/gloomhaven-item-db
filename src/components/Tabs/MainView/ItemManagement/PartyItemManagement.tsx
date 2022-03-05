@@ -8,8 +8,11 @@ import {
 	lockSpoilerPanelState,
 	selectedItemState,
 } from "../../../../State";
-import { GloomhavenItem, ItemManagementType } from "../../../../State/Types";
-import { ItemsOwnedBy } from "../../../Providers/FilterOptions";
+import {
+	GloomhavenItem,
+	ItemManagementType,
+	ItemsOwnedBy,
+} from "../../../../State/Types";
 import ClassIcon from "../ClassIcon";
 
 type Props = {

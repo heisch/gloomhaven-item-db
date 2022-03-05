@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 import { Form, Message, Icon } from "semantic-ui-react";
 import { isFlagEnabled } from "../../../helpers";
-import { getShareHash } from "../../Providers/FilterOptions";
+import { getShareHash } from "../MainView/ImportData";
 import UploadForm from "./UploadForm";
 
 const Share = () => {

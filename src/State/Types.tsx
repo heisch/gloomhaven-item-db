@@ -1,5 +1,9 @@
 import { GameType } from "../games";
 
+export type ItemsOwnedBy = Record<number, ClassesInUse[]>;
+
+export type ItemsInUse = Record<number, number>;
+
 export enum SortDirection {
 	ascending = "ascending",
 	descending = "descending",

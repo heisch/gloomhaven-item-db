@@ -1,10 +1,12 @@
 import { atom } from "recoil";
+import { createSpoilerState } from "./CommonState";
 import {
+	ClassesInUse,
+	ItemManagementType,
 	ItemsInUse,
 	ItemsOwnedBy,
-} from "../components/Providers/FilterOptions";
-import { createSpoilerState } from "./CommonState";
-import { ClassesInUse, ItemManagementType, ItemViewDisplayType } from "./Types";
+	ItemViewDisplayType,
+} from "./Types";
 
 export const allState = createSpoilerState<boolean>("all", false);
 export const classesInUseState = createSpoilerState<ClassesInUse[]>(

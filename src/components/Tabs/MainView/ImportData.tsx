@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Button, Header, Icon, Modal } from "semantic-ui-react";
-import { getShareHash } from "../../Providers/FilterOptions";
 import { GameType } from "../../../games";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import {
@@ -29,6 +28,24 @@ const parseHash = (importHash: string): any | undefined => {
 	} catch (e) {
 		return undefined;
 	}
+};
+
+export const getShareHash = (lockSpoilerPanel: boolean) => {
+	// @ts-ignore
+	const obj = {};
+	Object.values(GameType).forEach((gt: GameType) => {
+		const gameStorageString = localStorage.getItem(
+			LOCAL_STORAGE_PREFIX + gt
+		);
+		if (gameStorageString) {
+			//@ts-ignore
+			obj[gt] = JSON.parse(gameStorageString);
+		}
+	});
+	//@ts-ignore
+	obj["lockSpoilerPanel"] = lockSpoilerPanel;
+	console.log(obj);
+	return btoa(JSON.stringify(obj));
 };
 
 const ImportData = () => {
