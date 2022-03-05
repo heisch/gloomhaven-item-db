@@ -1,12 +1,12 @@
-import { Spoiler } from "../../components/Providers/FilterOptions";
+import { getRecoil } from "recoil-nexus";
+import { allState, scenarioCompletedState } from "../../State";
 import { GloomhavenItem } from "../../State/Types";
 import { GameData, getInitialItems } from "../GameData";
 import { GameType } from "../GameType";
 
-export const isItemShown = (
-	{ id }: GloomhavenItem,
-	{ all, scenarioCompleted }: Spoiler
-) => {
+export const isItemShown = ({ id }: GloomhavenItem) => {
+	const all = getRecoil(allState);
+	const scenarioCompleted = getRecoil(scenarioCompletedState);
 	if (all) {
 		return true;
 	}

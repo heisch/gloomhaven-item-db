@@ -13,7 +13,8 @@ export type ItemsOwnedBy = {
 export type ItemsInUse = {
 	[key: number]: number;
 };
-export interface Spoiler {
+
+interface Spoiler {
 	all: boolean;
 	displayAs: ItemViewDisplayType;
 	discount: number;

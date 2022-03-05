@@ -24,6 +24,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^2.1.8",
     "recoil": "^0.6.1",
+    "recoil-nexus": "^0.3.15",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "reselect": "^4.0.0",

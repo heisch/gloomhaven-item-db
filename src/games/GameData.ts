@@ -1,4 +1,3 @@
-import { Spoiler } from "../components/Providers/FilterOptions";
 import { Helpers } from "../helpers";
 import { GloomhavenItem, GloomhavenItemSlot } from "../State/Types";
 import { GameType } from "./GameType";
@@ -8,7 +7,7 @@ export type GameData = {
 	gameName: string;
 	items: GloomhavenItem[];
 	filterSlots: GloomhavenItemSlot[];
-	isItemShown: (item: GloomhavenItem, filterOptions: Spoiler) => boolean;
+	isItemShown: (item: GloomhavenItem) => boolean;
 };
 
 const deSpoilerItemSource = (source: string): string => {

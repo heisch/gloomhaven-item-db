@@ -1,12 +1,20 @@
-import { Spoiler } from "../../components/Providers/FilterOptions";
+import { getRecoil } from "recoil-nexus";
+import {
+	allState,
+	envelopeXState,
+	prosperityState,
+	soloClassState,
+} from "../../State";
 import { GloomhavenItem } from "../../State/Types";
 import { GameData, getInitialItems } from "../GameData";
 import { GameType } from "../GameType";
 
-export const isItemShown = (
-	{ id, soloItem }: GloomhavenItem,
-	{ all, envelopeX, prosperity, soloClass }: Spoiler
-) => {
+export const isItemShown = ({ id, soloItem }: GloomhavenItem) => {
+	const all = getRecoil(allState);
+	const envelopeX = getRecoil(envelopeXState);
+	const prosperity = getRecoil(prosperityState);
+	const soloClass = getRecoil(soloClassState);
+
 	// Special case for item 151
 	if (id === 151 && !envelopeX) {
 		return false;

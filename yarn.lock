@@ -9281,6 +9281,11 @@ realpath-native@^1.0.0:
   dependencies:
     util.promisify "^1.0.0"
 
+recoil-nexus@^0.3.15:
+  version "0.3.15"
+  resolved "https://registry.yarnpkg.com/recoil-nexus/-/recoil-nexus-0.3.15.tgz#82e9b916409aef53cf2b2cc2dbae26b331f1a893"
+  integrity sha512-UrV1VWZskAa/bvLmLc/W/DN11GkL9WGrB5heAtgiz8XLWvyUFfJr20uM4c7YIsssO7g1zDfM4MfbAldbGYWMYQ==
+
 recoil@^0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/recoil/-/recoil-0.6.1.tgz#6fdf1ba6cb20b5a2e54ec4abcbdaa287e8a03fa2"

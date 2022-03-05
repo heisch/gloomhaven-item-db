@@ -8,21 +8,9 @@ import {
 	sortDirectionState,
 	availableOnlyState,
 	selectedClassState,
-	allState,
-	discountState,
-	prosperityState,
 	itemState,
-	displayItemAsState,
-	itemsInUseState,
-	itemManagementTypeState,
-	envelopeXState,
 	itemsOwnedByState,
-	classesInUseState,
-	soloClassState,
-	scenarioCompletedState,
-	includeGloomhavenItemsState,
 } from "../State";
-import { Spoiler } from "../components/Providers/FilterOptions";
 
 const useItems = (): Array<GloomhavenItem> => {
 	const { isItemShown, items } = useRecoilValue(gameDataState);
@@ -32,39 +20,12 @@ const useItems = (): Array<GloomhavenItem> => {
 	const searchString = useRecoilValue(searchState);
 	const availableOnly = useRecoilValue(availableOnlyState);
 	const selectedClass = useRecoilValue(selectedClassState);
-	const all = useRecoilValue(allState);
-	const discount = useRecoilValue(discountState);
-	const prosperity = useRecoilValue(prosperityState);
 	const item = useRecoilValue(itemState);
-	const displayAs = useRecoilValue(displayItemAsState);
-	const itemsInUse = useRecoilValue(itemsInUseState);
-	const itemManagementType = useRecoilValue(itemManagementTypeState);
-	const envelopeX = useRecoilValue(envelopeXState);
 	const itemsOwnedBy = useRecoilValue(itemsOwnedByState);
-	const classesInUse = useRecoilValue(classesInUseState);
-	const soloClass = useRecoilValue(soloClassState);
-	const scenarioCompleted = useRecoilValue(scenarioCompletedState);
-	const includeGloomhavenItems = useRecoilValue(includeGloomhavenItemsState);
-
-	const spoiler: Spoiler = {
-		all,
-		discount,
-		prosperity,
-		item,
-		displayAs,
-		itemsInUse,
-		itemManagementType,
-		envelopeX,
-		itemsOwnedBy,
-		classesInUse,
-		soloClass,
-		scenarioCompleted,
-		includeGloomhavenItems,
-	};
 
 	const getFilteredItems = () => {
 		const spoilerFiltered = items.filter((i: GloomhavenItem) => {
-			if (isItemShown(i, spoiler)) return true;
+			if (isItemShown(i)) return true;
 			return item.includes(i.id);
 		});
 		return spoilerFiltered.filter((item: GloomhavenItem) => {
