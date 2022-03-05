@@ -1,10 +1,6 @@
 import { GameType } from "../../games";
 import { LOCAL_STORAGE_PREFIX } from "../../State/CommonState";
-import {
-	ClassesInUse,
-	ItemManagementType,
-	ItemViewDisplayType,
-} from "../../State/Types";
+import { ClassesInUse } from "../../State/Types";
 
 export type ItemsOwnedBy = {
 	[key: number]: ClassesInUse[];
@@ -14,39 +10,20 @@ export type ItemsInUse = {
 	[key: number]: number;
 };
 
-interface Spoiler {
-	all: boolean;
-	displayAs: ItemViewDisplayType;
-	discount: number;
-	envelopeX: boolean;
-	item: number[];
-	itemManagementType: ItemManagementType;
-	itemsInUse: ItemsInUse;
-	prosperity: number;
-
-	soloClass: ClassesInUse[];
-	scenarioCompleted: number[];
-	classesInUse: ClassesInUse[];
-	itemsOwnedBy: ItemsOwnedBy;
-	includeGloomhavenItems: boolean;
-}
-
-type GameFilterOptions = {
-	[GameType.Gloomhaven]: Spoiler;
-	[GameType.JawsOfTheLion]: Spoiler;
-	[GameType.Frosthaven]: Spoiler;
-	lockSpoilerPanel: boolean;
-};
-
 export const getShareHash = (lockSpoilerPanel: boolean) => {
 	// @ts-ignore
-	const obj: GameFilterOptions = {};
+	const obj = {};
 	Object.values(GameType).forEach((gt: GameType) => {
 		const gameStorageString = localStorage.getItem(
 			LOCAL_STORAGE_PREFIX + gt
 		);
-		obj[gt] = gameStorageString ? JSON.parse(gameStorageString) : {};
+		if (gameStorageString) {
+			//@ts-ignore
+			obj[gt] = JSON.parse(gameStorageString);
+		}
 	});
+	//@ts-ignore
 	obj["lockSpoilerPanel"] = lockSpoilerPanel;
+	console.log(obj);
 	return btoa(JSON.stringify(obj));
 };

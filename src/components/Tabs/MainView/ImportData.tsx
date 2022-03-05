@@ -73,12 +73,14 @@ const ImportData = () => {
 			if (hashConfig !== undefined) {
 				if (hashConfig.hasOwnProperty(GameType.Gloomhaven)) {
 					Object.values(GameType).forEach((gt: GameType) => {
-						const filterOptions = hashConfig[gt] || {};
+						const filterOptions = hashConfig[gt];
 						if (filterOptions) {
 							localStorage.setItem(
 								LOCAL_STORAGE_PREFIX + gt,
 								JSON.stringify(filterOptions)
 							);
+						} else {
+							localStorage.removeItem(LOCAL_STORAGE_PREFIX + gt);
 						}
 					});
 				}
