@@ -38,7 +38,13 @@ export const getInitialItems = (gameType: GameType) => {
 	return { items, filterSlots };
 };
 export const getItemPath = (item: GloomhavenItem, gameType: GameType) => {
-	const { folder, name } = item;
+	const { folder, name, gameType: itemGametype } = item;
+	let gameFolder = gameType;
+	if (itemGametype) {
+		gameFolder = itemGametype;
+	} else if (gameType === GameType.Frosthaven) {
+		gameFolder = GameType.Gloomhaven;
+	}
 	const filename = name.toLowerCase().replace(/\s/g, "-").replace(/'/, "");
-	return require(`../../vendor/${gameType}/images/items/${folder}/${filename}.png`);
+	return require(`../../vendor/${gameFolder}/images/items/${folder}/${filename}.png`);
 };
