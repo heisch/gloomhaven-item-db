@@ -4,19 +4,13 @@ import { GloomhavenItem } from "../../State/Types";
 import { GameData, getInitialItems } from "../GameData";
 import { GameType } from "../GameType";
 
-export const isItemShown = ({ id }: GloomhavenItem) => {
+export const isItemShown = ({ unlockScenario }: GloomhavenItem) => {
 	const all = getRecoil(allState);
 	const scenarioCompleted = getRecoil(scenarioCompletedState);
 	if (all) {
 		return true;
 	}
-	if (id <= 13 && scenarioCompleted.includes(2)) {
-		return true;
-	}
-	if (id >= 15 && id <= 20 && scenarioCompleted.includes(9)) {
-		return true;
-	}
-	if (id >= 21 && id <= 26 && scenarioCompleted.includes(15)) {
+	if (scenarioCompleted.includes(unlockScenario)) {
 		return true;
 	}
 	return false;

@@ -1,8 +1,14 @@
 import React from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { Form } from "semantic-ui-react";
-import { fhItemsCount } from "../../../games/fh/FHGameData";
-import { includeGloomhavenItemsState } from "../../../State";
+import {
+	fhItemsCount,
+	initialGHItemsUnlocked,
+} from "../../../games/fh/FHGameData";
+import {
+	includeGloomhavenItemsState,
+	scenarioCompletedState,
+} from "../../../State";
 import { FHClasses } from "../../../State/Types";
 import { ScenarioCompletedFilter } from "./ScenarioCompletedFilter";
 import { SoloClassFilter } from "./SoloClassFilter";
@@ -14,6 +20,21 @@ const FHSpoilerFilter = () => {
 	const [includeGloomhavenItems, setIncludeGloomhavenItems] = useRecoilState(
 		includeGloomhavenItemsState
 	);
+	const scenariosComplete = useRecoilValue(scenarioCompletedState);
+
+	const fhRanges = [];
+	if (!scenariosComplete.includes(1)) {
+		fhRanges.push({ start: 1, end: 10 });
+	}
+	fhRanges.push({ start: 11, end: fhItemsCount });
+
+	const ghRanges = [];
+	if (includeGloomhavenItems) {
+		if (!scenariosComplete.includes(1)) {
+			ghRanges.push(...initialGHItemsUnlocked);
+		}
+	}
+
 	return (
 		<>
 			<Form.Group inline>
@@ -29,9 +50,12 @@ const FHSpoilerFilter = () => {
 
 			<ScenarioCompletedFilter scenarios={scenariosOfImportance} />
 			<Form.Field>
+				<SpoilerFilterItemList ranges={fhRanges} title="Items" />
+			</Form.Field>
+			<Form.Field>
 				<SpoilerFilterItemList
-					ranges={[{ start: 11, end: fhItemsCount }]}
-					title="Items"
+					ranges={ghRanges}
+					title="Gloomhaven Items"
 				/>
 			</Form.Field>
 			<SoloClassFilter classes={Object.values(FHClasses)} />

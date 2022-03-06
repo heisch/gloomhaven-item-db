@@ -9,7 +9,8 @@
 		"spent": true,
 		"desc": "During your movement, add +2 Move to the movement.",
 		"faq": "Boots of Striding only add to the numerical value of an existing single movement ability. They do not give you a free movement action.",
-		"folder": "1-14"
+		"folder": "1-14",
+		"unlockScenario": 1
 	},
 	{
 		"id": 2,
@@ -21,7 +22,8 @@
 		"spent": true,
 		"desc": "During your movement, add Jump to the movement.",
 		"faq": "Winged Shoes may be used for only a single movement ability, not for multiple movement abilities of an action (ex: Action with Move, Attack, Move).",
-		"folder": "1-14"
+		"folder": "1-14",
+		"unlockScenario": 1
 	},
 	{
 		"id": 3,
@@ -35,7 +37,8 @@
 		"useSlots": 2,
 		"desc": "On the next two sources of damage to you from attacks, gain Shield 1.",
 		"faq": "Hide Armor only grants the shield for the attack, not until the end of the round.",
-		"folder": "1-14"
+		"folder": "1-14",
+		"unlockScenario": 1
 	},
 	{
 		"id": 4,
@@ -47,7 +50,8 @@
 		"spent": true,
 		"desc": "When attacked, the attacker gains Disadvantage on the attack.",
 		"faq": "The Leather Armor must be used before the enemy draws an attack modifier card.",
-		"folder": "1-14"
+		"folder": "1-14",
+		"unlockScenario": 1
 	},
 	{
 		"id": 5,
@@ -58,7 +62,8 @@
 		"source": "Prosperity 1",
 		"consumed": true,
 		"desc": "During your turn, gain INVISIBLE.",
-		"folder": "1-14"
+		"folder": "1-14",
+		"unlockScenario": 1
 	},
 	{
 		"id": 6,
@@ -69,7 +74,8 @@
 		"source": "Prosperity 1",
 		"spent": true,
 		"desc": "During your attack, gain Advantage on the entire Attack action.",
-		"folder": "1-14"
+		"folder": "1-14",
+		"unlockScenario": 1
 	},
 	{
 		"id": 7,
@@ -79,7 +85,8 @@
 		"slot": "Head",
 		"source": "Prosperity 1",
 		"desc": "When attacked, consider any 2x attack modifier card the enemy draws to be a +0 instead.",
-		"folder": "1-14"
+		"folder": "1-14",
+		"unlockScenario": 1
 	},
 	{
 		"id": 8,
@@ -90,7 +97,8 @@
 		"source": "Prosperity 1",
 		"spent": true,
 		"desc": "When damaged by an attack, gain Shield 1 for the attack.",
-		"folder": "1-14"
+		"folder": "1-14",
+		"unlockScenario": 1
 	},
 	{
 		"id": 9,
@@ -101,7 +109,8 @@
 		"source": "Prosperity 1",
 		"consumed": true,
 		"desc": "During your ranged attack, ignore all Shield values for the entire Attack action.",
-		"folder": "1-14"
+		"folder": "1-14",
+		"unlockScenario": 1
 	},
 	{
 		"id": 10,
@@ -112,7 +121,8 @@
 		"source": "Prosperity 1",
 		"consumed": true,
 		"desc": "During your melee attack, add STUN to the entire Attack action.",
-		"folder": "1-14"
+		"folder": "1-14",
+		"unlockScenario": 1
 	},
 	{
 		"id": 11,

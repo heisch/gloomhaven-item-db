@@ -9,7 +9,7 @@ import {
 	scenarioCompletedState,
 } from "../../State";
 
-const initialGHItemsUnlocked = [10, 25, 72, 105, 109, 116];
+export const initialGHItemsUnlocked = [10, 25, 72, 105, 109, 116];
 const ghItemToImport = [...initialGHItemsUnlocked];
 
 let { items, filterSlots } = getInitialItems(GameType.Frosthaven);
@@ -18,9 +18,17 @@ export const fhItemsCount: number = items.length;
 let { items: ghItems, filterSlots: ghFilterSlots } = getInitialItems(
 	GameType.Gloomhaven
 );
+
+const getUnlockScenario = (id: number) => {
+	if (initialGHItemsUnlocked.includes(id)) {
+		return 1;
+	}
+	return -1;
+};
 ghItems = ghItems.map((item: GloomhavenItem, index: number) => ({
 	...item,
 	displayId: item.id,
+	unlockScenario: getUnlockScenario(item.id),
 	gameType: GameType.Gloomhaven,
 	id: fhItemsCount + index + 1,
 }));
@@ -29,14 +37,10 @@ items = items.concat(ghItems);
 
 filterSlots = Helpers.uniqueArray(filterSlots.concat(ghFilterSlots));
 
-export const isItemShown = ({ gameType, id, displayId }: GloomhavenItem) => {
+export const isItemShown = ({ gameType, unlockScenario }: GloomhavenItem) => {
 	const all = getRecoil(allState);
 	const includeGloomhavenItems = getRecoil(includeGloomhavenItemsState);
 	const scenarioCompleted = getRecoil(scenarioCompletedState);
-	if (all) {
-		return true;
-	}
-
 	if (
 		gameType &&
 		gameType === GameType.Gloomhaven &&
@@ -44,14 +48,12 @@ export const isItemShown = ({ gameType, id, displayId }: GloomhavenItem) => {
 	) {
 		return false;
 	}
+	if (all) {
+		return true;
+	}
 
-	if (scenarioCompleted.includes(1)) {
-		if (id >= 1 && id <= 10) {
-			return true;
-		}
-		if (initialGHItemsUnlocked.includes(displayId)) {
-			return true;
-		}
+	if (scenarioCompleted.includes(unlockScenario)) {
+		return true;
 	}
 
 	return false;
