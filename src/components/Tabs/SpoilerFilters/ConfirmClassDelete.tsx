@@ -9,7 +9,25 @@ import {
 	itemsOwnedByState,
 	selectedClassState,
 } from "../../../State";
-import { ItemsOwnedBy } from "../../../State/Types";
+import { ClassesInUse, ItemsOwnedBy } from "../../../State/Types";
+
+export const removeItemsFromOwner = (
+	oldItems: ItemsOwnedBy,
+	itemsId: number[] | number,
+	owner: ClassesInUse
+) => {
+	const newItemsOwnedBy: ItemsOwnedBy = Object.assign([], oldItems);
+	const items = !Array.isArray(itemsId) ? [itemsId] : itemsId;
+	items.forEach((itemId) => {
+		const owners = newItemsOwnedBy[itemId];
+		const copyOwners = Object.assign([], owners);
+		if (copyOwners.includes(owner)) {
+			copyOwners.splice(copyOwners.indexOf(owner), 1);
+		}
+		newItemsOwnedBy[itemId] = copyOwners;
+	});
+	return newItemsOwnedBy;
+};
 
 const ConfirmClassDelete = () => {
 	const [selectedClass, setSelectedClass] =
@@ -41,16 +59,14 @@ const ConfirmClassDelete = () => {
 	const itemsOwned = itemsOwnedByClass();
 
 	const removeItems = () => {
-		const newItemsOwnedBy: ItemsOwnedBy = Object.assign([], itemsOwnedBy);
-		itemsOwned.forEach((itemId) => {
-			const index = newItemsOwnedBy[itemId].findIndex(
-				(c) => c === classToDelete
+		if (classToDelete) {
+			const newItemsOwnedBy = removeItemsFromOwner(
+				itemsOwnedBy,
+				itemsOwned,
+				classToDelete
 			);
-			if (index != -1) {
-				newItemsOwnedBy[itemId].splice(index, 1);
-			}
-		});
-		setItemsOwnedBy(newItemsOwnedBy);
+			setItemsOwnedBy(newItemsOwnedBy);
+		}
 	};
 	const goldAmount = () => {
 		let totalGold = 0;

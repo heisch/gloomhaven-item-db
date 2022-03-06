@@ -13,6 +13,7 @@ import {
 	ItemManagementType,
 	ItemsOwnedBy,
 } from "../../../../State/Types";
+import { removeItemsFromOwner } from "../../SpoilerFilters/ConfirmClassDelete";
 import ClassIcon from "../ClassIcon";
 
 type Props = {
@@ -53,14 +54,11 @@ const PartyItemManagement = (props: Props) => {
 							color="black"
 							icon="delete"
 							onClick={() => {
-								const owners = itemsOwnedBy[item.id];
-								const value = Object.assign([], owners);
-								if (value.includes(owner)) {
-									value.splice(value.indexOf(owner), 1);
-								}
-								const newItemsOwnedBy: ItemsOwnedBy =
-									Object.assign([], itemsOwnedBy);
-								newItemsOwnedBy[item.id] = value;
+								const newItemsOwnedBy = removeItemsFromOwner(
+									itemsOwnedBy,
+									item.id,
+									owner
+								);
 								setItemsOwnedBy(newItemsOwnedBy);
 							}}
 							content={<ClassIcon name={owner} />}

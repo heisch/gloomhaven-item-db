@@ -44,7 +44,6 @@ export const getShareHash = (lockSpoilerPanel: boolean) => {
 	});
 	//@ts-ignore
 	obj["lockSpoilerPanel"] = lockSpoilerPanel;
-	console.log(obj);
 	return btoa(JSON.stringify(obj));
 };
 
