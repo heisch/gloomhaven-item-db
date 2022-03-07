@@ -9,21 +9,21 @@ import { GloomhavenItem } from "../../State/Types";
 import { GameData, getInitialItems } from "../GameData";
 import { GameType } from "../GameType";
 
-export const isItemShown = ({ id, soloItem }: GloomhavenItem) => {
+export const isItemShown = ({ soloItem, unlockProsperity }: GloomhavenItem) => {
 	const all = getRecoil(allState);
 	const envelopeX = getRecoil(envelopeXState);
 	const prosperity = getRecoil(prosperityState);
 	const soloClass = getRecoil(soloClassState);
 
-	// Special case for item 151
-	if (id === 151 && !envelopeX) {
+	// Special case for item XX Solo item.
+	if (soloItem && soloItem == "XX" && !envelopeX) {
 		return false;
 	}
 
 	if (all) {
 		return true;
 	}
-	if (id <= (prosperity + 1) * 7) {
+	if (prosperity >= unlockProsperity) {
 		return true;
 	}
 	if (soloItem && soloClass.includes(soloItem)) {

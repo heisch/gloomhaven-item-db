@@ -118,6 +118,7 @@ export interface GloomhavenItem {
 	soloItem?: SoloClasses;
 	folder: string;
 	unlockScenario: number;
+	unlockProsperity: number;
 }
 export const getGHClassList = (envelopeX: boolean, fc: boolean = false) => {
 	let ghList: ClassesInUse[] = Object.values(GHClasses);
