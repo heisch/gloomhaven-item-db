@@ -6,11 +6,9 @@ import * as serviceWorker from "./serviceWorker";
 import { FirebaseProvider } from "./components/Firebase";
 import { BrowserRouter as Router } from "react-router-dom";
 import { RecoilRoot } from "recoil";
-import RecoilNexus from "recoil-nexus";
 
 ReactDOM.render(
 	<RecoilRoot>
-		<RecoilNexus />
 		<FirebaseProvider>
 			<Router>
 				<App />

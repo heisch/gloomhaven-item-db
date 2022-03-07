@@ -7,7 +7,6 @@ export type GameData = {
 	gameName: string;
 	items: GloomhavenItem[];
 	filterSlots: GloomhavenItemSlot[];
-	isItemShown: (item: GloomhavenItem) => boolean;
 };
 
 const deSpoilerItemSource = (source: string): string => {

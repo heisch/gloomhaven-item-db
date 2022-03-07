@@ -10,10 +10,17 @@ import {
 	selectedClassState,
 	itemState,
 	itemsOwnedByState,
+	allState,
+	envelopeXState,
+	prosperityState,
+	soloClassState,
+	scenarioCompletedState,
+	includeGloomhavenItemsState,
 } from "../State";
+import { GameType } from "../games";
 
 const useItems = (): Array<GloomhavenItem> => {
-	const { isItemShown, items } = useRecoilValue(gameDataState);
+	const { items } = useRecoilValue(gameDataState);
 	const slots = useRecoilValue(slotsState);
 	const sortProperty = useRecoilValue(sortPropertyState);
 	const sortDirection = useRecoilValue(sortDirectionState);
@@ -22,12 +29,50 @@ const useItems = (): Array<GloomhavenItem> => {
 	const selectedClass = useRecoilValue(selectedClassState);
 	const item = useRecoilValue(itemState);
 	const itemsOwnedBy = useRecoilValue(itemsOwnedByState);
+	const all = useRecoilValue(allState);
+	const envelopeX = useRecoilValue(envelopeXState);
+	const prosperity = useRecoilValue(prosperityState);
+	const soloClass = useRecoilValue(soloClassState);
+	const scenarioCompleted = useRecoilValue(scenarioCompletedState);
+	const includeGloomhavenItems = useRecoilValue(includeGloomhavenItemsState);
 
+	const isItemShown = ({
+		id,
+		soloItem,
+		unlockProsperity,
+		unlockScenario,
+		gameType,
+	}: GloomhavenItem) => {
+		if (
+			gameType &&
+			gameType === GameType.Gloomhaven &&
+			!includeGloomhavenItems
+		) {
+			return false;
+		}
+
+		// Special case for item XX Solo item.
+		if (soloItem && soloItem == "XX" && !envelopeX) {
+			return false;
+		}
+
+		if (all) {
+			return true;
+		}
+		if (prosperity >= unlockProsperity) {
+			return true;
+		}
+		if (scenarioCompleted.includes(unlockScenario)) {
+			return true;
+		}
+
+		if (soloItem && soloClass.includes(soloItem)) {
+			return true;
+		}
+		return item.includes(id);
+	};
 	const getFilteredItems = () => {
-		const spoilerFiltered = items.filter((i: GloomhavenItem) => {
-			if (isItemShown(i)) return true;
-			return item.includes(i.id);
-		});
+		const spoilerFiltered = items.filter(isItemShown);
 		return spoilerFiltered.filter((item: GloomhavenItem) => {
 			let hit = true;
 			if (slots.length > 0) {

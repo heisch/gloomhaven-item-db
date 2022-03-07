@@ -1,52 +1,51 @@
 {
-  "name": "gloomhaven-item-db",
-  "homepage": "https://heisch.github.io/gloomhaven-item-db",
-  "version": "1.0.0",
-  "private": true,
-  "dependencies": {
-    "@reduxjs/toolkit": "^1.4.0",
-    "@types/jest": "^24.0.11",
-    "@types/lodash.memoize": "^4.1.6",
-    "@types/node": "^11.12.1",
-    "@types/qs": "^6.9.6",
-    "@types/react": "^16.8.10",
-    "@types/react-dom": "^16.8.3",
-    "@types/react-redux": "^7.1.9",
-    "@types/react-router": "^5.1.8",
-    "@types/react-router-dom": "^5.1.5",
-    "firebase": "^8.2.3",
-    "gh-pages": "^2.0.1",
-    "qs": "^6.9.6",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-redux": "^7.2.0",
-    "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "^2.1.8",
-    "recoil": "^0.6.1",
-    "recoil-nexus": "^0.3.15",
-    "redux": "^4.0.5",
-    "redux-devtools-extension": "^2.13.8",
-    "reselect": "^4.0.0",
-    "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^2.0.3",
-    "typescript": "^3.3.4000",
-    "watch": "^1.0.2"
-  },
-  "scripts": {
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start && npm run watch",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+	"name": "gloomhaven-item-db",
+	"homepage": "https://heisch.github.io/gloomhaven-item-db",
+	"version": "1.0.0",
+	"private": true,
+	"dependencies": {
+		"@reduxjs/toolkit": "^1.4.0",
+		"@types/jest": "^24.0.11",
+		"@types/lodash.memoize": "^4.1.6",
+		"@types/node": "^11.12.1",
+		"@types/qs": "^6.9.6",
+		"@types/react": "^16.8.10",
+		"@types/react-dom": "^16.8.3",
+		"@types/react-redux": "^7.1.9",
+		"@types/react-router": "^5.1.8",
+		"@types/react-router-dom": "^5.1.5",
+		"firebase": "^8.2.3",
+		"gh-pages": "^2.0.1",
+		"qs": "^6.9.6",
+		"react": "^16.8.6",
+		"react-dom": "^16.8.6",
+		"react-redux": "^7.2.0",
+		"react-router": "^5.2.0",
+		"react-router-dom": "^5.2.0",
+		"react-scripts": "^2.1.8",
+		"recoil": "^0.6.1",
+		"redux": "^4.0.5",
+		"redux-devtools-extension": "^2.13.8",
+		"reselect": "^4.0.0",
+		"semantic-ui-css": "^2.4.1",
+		"semantic-ui-react": "^2.0.3",
+		"typescript": "^3.3.4000",
+		"watch": "^1.0.2"
+	},
+	"scripts": {
+		"deploy": "gh-pages -d build",
+		"start": "react-scripts start && npm run watch",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject"
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": [
+		">0.2%",
+		"not dead",
+		"not ie <= 11",
+		"not op_mini all"
+	]
 }
