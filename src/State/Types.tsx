@@ -85,14 +85,25 @@ export type SoloClasses = GHClasses | FCClasses | FHClasses;
 export type ClassesInUse = GHClasses | FCClasses | JOTLClasses | FHClasses;
 
 export enum GloomhavenItemSlot {
-	Head = "Head",
-	Body = "Body",
-	Legs = "Legs",
-	OneHand = "One Hand",
-	TwoHands = "Two Hands",
-	SmallItem = "Small Item",
+	Head = "head",
+	Body = "nody",
+	Legs = "legs",
+	OneHand = "1h",
+	TwoHands = "2h",
+	SmallItem = "small",
 }
 
+export enum ResourceTypes {
+	Arrowvine = "arrowvine",
+	Axenut = "axenut",
+	Corpsecap = "corpsecap",
+	Flamefruit = "flamefruit",
+	Rockroot = "rockroot",
+	Snowthistle = "snowthistle",
+	Hide = "hide",
+	Lumber = "lumber",
+	Metal = "metal",
+}
 export interface GloomhavenItem {
 	id: number;
 	displayId: number;
@@ -119,6 +130,7 @@ export interface GloomhavenItem {
 	folder: string;
 	unlockScenario: number;
 	unlockProsperity: number;
+	resources: Record<string, string>;
 }
 export const getGHClassList = (envelopeX: boolean, fc: boolean = false) => {
 	let ghList: ClassesInUse[] = Object.values(GHClasses);

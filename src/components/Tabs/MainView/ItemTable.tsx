@@ -6,34 +6,21 @@ import {
 } from "../../../State/Types";
 import { Table, Popup, Icon, Image } from "semantic-ui-react";
 import ItemManagement from "./ItemManagement";
-import { Helpers, getSlotImageSrc } from "../../../helpers";
+import { Helpers } from "../../../helpers";
 import { useRecoilValue } from "recoil";
 import {
 	sortPropertyState,
 	sortDirectionState,
 	discountState,
 	itemManagementTypeState,
+	gameTypeState,
 } from "../../../State";
 import { GameType } from "../../../games";
+import { GHIcon } from "./GHIcon";
 
 type Props = {
 	items: GloomhavenItem[];
 	setSorting: (newProperty: SortProperty) => void;
-};
-
-type IconProps = {
-	name: string;
-};
-
-const GHIcon = (props: IconProps) => {
-	const { name } = props;
-	return (
-		<img
-			src={require(`../../../img/icons/general/${name}`)}
-			className={"icon"}
-			alt={name}
-		/>
-	);
 };
 
 const formatId = (id: number) => {
@@ -53,6 +40,7 @@ const ItemTable = (props: Props) => {
 	const itemManagementType = useRecoilValue(itemManagementTypeState);
 	const { items, setSorting } = props;
 	const discount = useRecoilValue(discountState);
+	const gameType = useRecoilValue(gameTypeState);
 
 	const renderSummon = (item: GloomhavenItem) => {
 		return item.summon === undefined ? null : (
@@ -140,6 +128,14 @@ const ItemTable = (props: Props) => {
 						>
 							{getCostTitle()}
 						</Table.HeaderCell>
+						{gameType === GameType.Frosthaven && (
+							<Table.HeaderCell
+								className={"resources-col"}
+								textAlign={"center"}
+							>
+								Resource
+							</Table.HeaderCell>
+						)}
 						<Table.HeaderCell
 							className={"use-col"}
 							onClick={() => setSorting(SortProperty.Use)}
@@ -186,7 +182,10 @@ const ItemTable = (props: Props) => {
 									className={"slot-col"}
 									textAlign={"center"}
 								>
-									<Image src={getSlotImageSrc(item.slot)} />
+									<GHIcon
+										name={`${item.slot}.png`}
+										folder={"equipment_slot"}
+									/>
 								</Table.Cell>
 								<Table.Cell
 									className={"cost-col"}
@@ -194,6 +193,29 @@ const ItemTable = (props: Props) => {
 								>
 									{cost}
 								</Table.Cell>
+								{gameType === GameType.Frosthaven && (
+									<Table.Cell
+										className={"resources-col"}
+										textAlign={"center"}
+									>
+										{item.resources &&
+											Object.entries(item.resources).map(
+												([resource, value]) => {
+													if (resource === "item") {
+														return `Item: ${value}`;
+													}
+													return (
+														<div key={resource}>
+															<GHIcon
+																name={`${resource}.png`}
+															/>
+															{` x ${value}`}
+														</div>
+													);
+												}
+											)}
+									</Table.Cell>
+								)}
 								<Table.Cell
 									className={"use-col"}
 									textAlign={"center"}

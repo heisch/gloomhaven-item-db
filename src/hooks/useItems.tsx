@@ -1,4 +1,9 @@
-import { GloomhavenItem, SortDirection, SortProperty } from "../State/Types";
+import {
+	GloomhavenItem,
+	ResourceTypes,
+	SortDirection,
+	SortProperty,
+} from "../State/Types";
 import { useRecoilValue } from "recoil";
 import {
 	gameDataState,
@@ -16,12 +21,14 @@ import {
 	soloClassState,
 	scenarioCompletedState,
 	includeGloomhavenItemsState,
+	resourcesState,
 } from "../State";
 import { GameType } from "../games";
 
 const useItems = (): Array<GloomhavenItem> => {
 	const { items } = useRecoilValue(gameDataState);
 	const slots = useRecoilValue(slotsState);
+	const resources = useRecoilValue(resourcesState);
 	const sortProperty = useRecoilValue(sortPropertyState);
 	const sortDirection = useRecoilValue(sortDirectionState);
 	const searchString = useRecoilValue(searchState);
@@ -77,6 +84,10 @@ const useItems = (): Array<GloomhavenItem> => {
 			let hit = true;
 			if (slots.length > 0) {
 				hit = slots.includes(item.slot);
+			}
+			if (resources.length > 0 && item.resources && hit) {
+				const itemResourceTypes = Object.keys(item.resources);
+				hit = resources.some((r) => itemResourceTypes.indexOf(r) >= 0);
 			}
 			if (searchString.length > 2 && hit) {
 				hit =

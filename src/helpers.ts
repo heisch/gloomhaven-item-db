@@ -1,4 +1,3 @@
-import { GloomhavenItemSlot } from "./State/Types";
 import qs from "qs";
 
 export class Helpers {
@@ -183,33 +182,6 @@ export class Helpers {
 		return text;
 	}
 }
-
-export const getSlotImageSrc = (slot: GloomhavenItemSlot): string => {
-	let src: string;
-	switch (slot) {
-		case GloomhavenItemSlot.Head:
-			src = "head";
-			break;
-		case GloomhavenItemSlot.Body:
-			src = "body";
-			break;
-		case GloomhavenItemSlot.Legs:
-			src = "legs";
-			break;
-		case GloomhavenItemSlot.OneHand:
-			src = "1h";
-			break;
-		case GloomhavenItemSlot.TwoHands:
-			src = "2h";
-			break;
-		case GloomhavenItemSlot.SmallItem:
-			src = "small";
-			break;
-		default:
-			throw new Error(`item slot unrecognized: ${slot}`);
-	}
-	return require("./img/icons/equipment_slot/" + src + ".png");
-};
 
 export function isFlagEnabled(flagName: string) {
 	if (!window) {

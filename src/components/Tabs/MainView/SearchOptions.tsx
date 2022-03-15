@@ -1,11 +1,11 @@
 import React from "react";
 import { Form, Button, Input, Icon } from "semantic-ui-react";
-import { getSlotImageSrc } from "../../../helpers";
 import {
 	ClassesInUse,
 	GloomhavenItemSlot,
 	ItemManagementType,
 	ItemViewDisplayType,
+	ResourceTypes,
 	SortDirection,
 	SortProperty,
 } from "../../../State/Types";
@@ -15,6 +15,7 @@ import {
 	gameDataState,
 	searchState,
 	slotsState,
+	resourcesState,
 	sortPropertyState,
 	sortDirectionState,
 	availableOnlyState,
@@ -23,7 +24,10 @@ import {
 	displayItemAsState,
 	itemManagementTypeState,
 	classesInUseState,
+	gameTypeState,
 } from "../../../State";
+import { GameType } from "../../../games";
+import { GHIcon } from "./GHIcon";
 
 type Props = {
 	setSorting: (newProperty: SortProperty) => void;
@@ -34,6 +38,7 @@ const SearchOptions = (props: Props) => {
 
 	const { filterSlots } = useRecoilValue(gameDataState);
 	const [slots, setSlotsState] = useRecoilState(slotsState);
+	const [resources, setResourcesState] = useRecoilState(resourcesState);
 	const sortProperty = useRecoilValue(sortPropertyState);
 	const [sortDirection, setSortDirection] =
 		useRecoilState(sortDirectionState);
@@ -46,6 +51,7 @@ const SearchOptions = (props: Props) => {
 	const [displayAs, setDisplayAs] = useRecoilState(displayItemAsState);
 	const itemManagementType = useRecoilValue(itemManagementTypeState);
 	const classesInUse = useRecoilValue(classesInUseState);
+	const gameType = useRecoilValue(gameTypeState);
 
 	const setFilterSlot = (slot?: GloomhavenItemSlot) => {
 		if (!slot) {
@@ -60,6 +66,21 @@ const SearchOptions = (props: Props) => {
 			value.push(slot);
 		}
 		setSlotsState(value);
+	};
+
+	const setFilterResource = (resource?: ResourceTypes) => {
+		if (!resource) {
+			setResourcesState([]);
+			return;
+		}
+		let value = Object.assign([], resources);
+		const index = value.indexOf(resource);
+		if (index !== -1) {
+			value.splice(index, 1);
+		} else {
+			value.push(resource);
+		}
+		setResourcesState(value);
 	};
 
 	const toggleSortDirection = () => {
@@ -116,10 +137,9 @@ const SearchOptions = (props: Props) => {
 							<Form.Checkbox
 								key={itemSlot}
 								label={
-									<img
-										className={"icon"}
-										src={getSlotImageSrc(itemSlot)}
-										alt={itemSlot}
+									<GHIcon
+										name={`${itemSlot}.png`}
+										folder={"equipment_slot"}
 									/>
 								}
 								checked={slots.includes(itemSlot)}
@@ -128,6 +148,25 @@ const SearchOptions = (props: Props) => {
 							/>
 						))}
 				</Form.Group>
+				{gameType === GameType.Frosthaven && (
+					<Form.Group inline>
+						<label>Resource:</label>
+						<Form.Radio
+							label={"all"}
+							checked={resources.length === 0}
+							onChange={() => setFilterResource(undefined)}
+						/>
+						{Object.values(ResourceTypes).map((resource) => (
+							<Form.Checkbox
+								key={resource}
+								label={<GHIcon name={`${resource}.png`} />}
+								checked={resources.includes(resource)}
+								onChange={() => setFilterResource(resource)}
+								alt={resource}
+							/>
+						))}
+					</Form.Group>
+				)}
 				<Form.Group inline>
 					<label>Find Item:</label>
 					<Input

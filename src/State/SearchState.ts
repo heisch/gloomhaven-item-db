@@ -2,11 +2,16 @@ import { createState } from "./CommonState";
 import {
 	ClassesInUse,
 	GloomhavenItemSlot,
+	ResourceTypes,
 	SortDirection,
 	SortProperty,
 } from "./Types";
 
 export const slotsState = createState<GloomhavenItemSlot[]>("slotState", []);
+export const resourcesState = createState<ResourceTypes[]>(
+	"resourcesState",
+	[]
+);
 export const availableOnlyState = createState<boolean>("availableOnly", false);
 export const searchState = createState<string>("search", "");
 export const selectedClassState = createState<ClassesInUse | undefined>(
