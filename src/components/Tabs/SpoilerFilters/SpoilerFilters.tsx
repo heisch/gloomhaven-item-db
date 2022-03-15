@@ -39,13 +39,13 @@ const SpoilerFilters = () => {
 					}}
 				>
 					{all ? (
-						<React.Fragment>
+						<>
 							<Icon name={"eye"} /> disabled
-						</React.Fragment>
+						</>
 					) : (
-						<React.Fragment>
+						<>
 							<Icon name={"eye slash"} /> enabled
-						</React.Fragment>
+						</>
 					)}
 				</Button>
 			</Form.Group>

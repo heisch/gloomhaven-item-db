@@ -104,6 +104,14 @@ export enum ResourceTypes {
 	Lumber = "lumber",
 	Metal = "metal",
 }
+
+export interface Summon {
+	hp: number;
+	move: number;
+	attack: number;
+	range: number;
+}
+
 export interface GloomhavenItem {
 	id: number;
 	displayId: number;
@@ -120,12 +128,7 @@ export interface GloomhavenItem {
 	desc: string;
 	descHTML: string;
 	faq?: string;
-	summon?: {
-		hp: number;
-		move: number;
-		attack: number;
-		range: number;
-	};
+	summon?: Summon;
 	soloItem?: SoloClasses;
 	folder: string;
 	unlockScenario: number;

@@ -92,179 +92,175 @@ const SearchOptions = (props: Props) => {
 	};
 
 	return (
-		<React.Fragment>
-			<Form>
-				<Form.Group inline>
-					<label>Render as:</label>
-					<Button.Group>
-						<Button
-							color={
-								displayAs === ItemViewDisplayType.List
-									? "blue"
-									: undefined
+		<Form>
+			<Form.Group inline>
+				<label>Render as:</label>
+				<Button.Group>
+					<Button
+						color={
+							displayAs === ItemViewDisplayType.List
+								? "blue"
+								: undefined
+						}
+						onClick={() => {
+							setDisplayAs(ItemViewDisplayType.List);
+						}}
+					>
+						List
+					</Button>
+					<Button.Or />
+					<Button
+						color={
+							displayAs === ItemViewDisplayType.Images
+								? "blue"
+								: undefined
+						}
+						onClick={() => {
+							setDisplayAs(ItemViewDisplayType.Images);
+						}}
+					>
+						Images
+					</Button>
+				</Button.Group>
+			</Form.Group>
+			<Form.Group inline>
+				<label>Filter Slot:</label>
+				<Form.Radio
+					label={"all"}
+					checked={slots.length === 0}
+					onChange={() => setFilterSlot(undefined)}
+				/>
+				{Object.values(GloomhavenItemSlot)
+					.filter((slot) => filterSlots.includes(slot))
+					.map((itemSlot) => (
+						<Form.Checkbox
+							key={itemSlot}
+							label={
+								<GHIcon
+									name={`${itemSlot}.png`}
+									folder={"equipment_slot"}
+								/>
 							}
-							onClick={() => {
-								setDisplayAs(ItemViewDisplayType.List);
-							}}
-						>
-							List
-						</Button>
-						<Button.Or />
-						<Button
-							color={
-								displayAs === ItemViewDisplayType.Images
-									? "blue"
-									: undefined
-							}
-							onClick={() => {
-								setDisplayAs(ItemViewDisplayType.Images);
-							}}
-						>
-							Images
-						</Button>
-					</Button.Group>
-				</Form.Group>
+							checked={slots.includes(itemSlot)}
+							onChange={() => setFilterSlot(itemSlot)}
+							alt={itemSlot}
+						/>
+					))}
+			</Form.Group>
+			{gameType === GameType.Frosthaven && (
 				<Form.Group inline>
-					<label>Filter Slot:</label>
+					<label>Resource:</label>
 					<Form.Radio
 						label={"all"}
-						checked={slots.length === 0}
-						onChange={() => setFilterSlot(undefined)}
+						checked={resources.length === 0}
+						onChange={() => setFilterResource(undefined)}
 					/>
-					{Object.values(GloomhavenItemSlot)
-						.filter((slot) => filterSlots.includes(slot))
-						.map((itemSlot) => (
-							<Form.Checkbox
-								key={itemSlot}
-								label={
-									<GHIcon
-										name={`${itemSlot}.png`}
-										folder={"equipment_slot"}
-									/>
-								}
-								checked={slots.includes(itemSlot)}
-								onChange={() => setFilterSlot(itemSlot)}
-								alt={itemSlot}
-							/>
-						))}
-				</Form.Group>
-				{gameType === GameType.Frosthaven && (
-					<Form.Group inline>
-						<label>Resource:</label>
-						<Form.Radio
-							label={"all"}
-							checked={resources.length === 0}
-							onChange={() => setFilterResource(undefined)}
+					{Object.values(ResourceTypes).map((resource) => (
+						<Form.Checkbox
+							key={resource}
+							label={<GHIcon name={`${resource}.png`} />}
+							checked={resources.includes(resource)}
+							onChange={() => setFilterResource(resource)}
+							alt={resource}
 						/>
-						{Object.values(ResourceTypes).map((resource) => (
-							<Form.Checkbox
-								key={resource}
-								label={<GHIcon name={`${resource}.png`} />}
-								checked={resources.includes(resource)}
-								onChange={() => setFilterResource(resource)}
-								alt={resource}
-							/>
-						))}
-					</Form.Group>
-				)}
+					))}
+				</Form.Group>
+			)}
+			<Form.Group inline>
+				<label>Find Item:</label>
+				<Input
+					value={searchString}
+					onChange={(e) => {
+						setSearchString(e.target.value);
+					}}
+					icon={{
+						name: "close",
+						link: true,
+						onClick: () => setSearchString(""),
+					}}
+					placeholder={"Search..."}
+				/>
+			</Form.Group>
+			{itemManagementType === ItemManagementType.Party && (
 				<Form.Group inline>
-					<label>Find Item:</label>
-					<Input
-						value={searchString}
-						onChange={(e) => {
-							setSearchString(e.target.value);
+					<ClassList
+						label={"Filter Owner:"}
+						classes={classesInUse}
+						onClick={(option: ClassesInUse) => {
+							if (selectedClass === option) {
+								setSelectedClass(undefined);
+							} else {
+								setSelectedClass(option);
+							}
 						}}
-						icon={{
-							name: "close",
-							link: true,
-							onClick: () => setSearchString(""),
-						}}
-						placeholder={"Search..."}
+						isUsed={(options: ClassesInUse) =>
+							selectedClass === options
+						}
 					/>
 				</Form.Group>
-				{itemManagementType === ItemManagementType.Party && (
+			)}
+			<Form.Group inline>
+				<label>Availability</label>
+				<Button.Group>
+					<Button
+						color={availableOnly ? "blue" : undefined}
+						onClick={() => {
+							setAvailableOnly(true);
+						}}
+					>
+						Available
+					</Button>
+					<Button.Or />
+					<Button
+						color={!availableOnly ? "blue" : undefined}
+						onClick={() => {
+							setAvailableOnly(false);
+						}}
+					>
+						All
+					</Button>
+				</Button.Group>
+			</Form.Group>
+			{displayAs === ItemViewDisplayType.Images && (
+				<>
 					<Form.Group inline>
-						<ClassList
-							label={"Filter Owner:"}
-							classes={classesInUse}
-							onClick={(option: ClassesInUse) => {
-								if (selectedClass === option) {
-									setSelectedClass(undefined);
-								} else {
-									setSelectedClass(option);
-								}
-							}}
-							isUsed={(options: ClassesInUse) =>
-								selectedClass === options
+						<label>Sort By:</label>
+						<Form.Select
+							value={sortProperty}
+							options={[
+								{ value: "id", text: "Item Number" },
+								{ value: "slot", text: "Equipment Slot" },
+								{ value: "cost", text: "Cost" },
+								{ value: "name", text: "Name" },
+								{ value: "source", text: "Source" },
+								{ value: "use", text: "Use" },
+							]}
+							onChange={(obj, e) =>
+								setSorting(e.value as SortProperty)
 							}
 						/>
+						<Button
+							icon={
+								<Icon
+									name={
+										sortDirection ===
+										SortDirection.ascending
+											? `angle up`
+											: `angle down`
+									}
+								/>
+							}
+							checked={sortDirection === SortDirection.ascending}
+							onClick={() => toggleSortDirection()}
+						/>
 					</Form.Group>
-				)}
-				<Form.Group inline>
-					<label>Availability</label>
-					<Button.Group>
-						<Button
-							color={availableOnly ? "blue" : undefined}
-							onClick={() => {
-								setAvailableOnly(true);
-							}}
-						>
-							Available
-						</Button>
-						<Button.Or />
-						<Button
-							color={!availableOnly ? "blue" : undefined}
-							onClick={() => {
-								setAvailableOnly(false);
-							}}
-						>
-							All
-						</Button>
-					</Button.Group>
-				</Form.Group>
-				{displayAs === ItemViewDisplayType.Images && (
-					<>
-						<Form.Group inline>
-							<label>Sort By:</label>
-							<Form.Select
-								value={sortProperty}
-								options={[
-									{ value: "id", text: "Item Number" },
-									{ value: "slot", text: "Equipment Slot" },
-									{ value: "cost", text: "Cost" },
-									{ value: "name", text: "Name" },
-									{ value: "source", text: "Source" },
-									{ value: "use", text: "Use" },
-								]}
-								onChange={(obj, e) =>
-									setSorting(e.value as SortProperty)
-								}
-							/>
-							<Button
-								icon={
-									<Icon
-										name={
-											sortDirection ===
-											SortDirection.ascending
-												? `angle up`
-												: `angle down`
-										}
-									/>
-								}
-								checked={
-									sortDirection === SortDirection.ascending
-								}
-								onClick={() => toggleSortDirection()}
-							/>
-						</Form.Group>
-						<Form.Group inline>
-							<label>Store Discount:</label>
-							{`${discount}g`}
-						</Form.Group>
-					</>
-				)}
-			</Form>
-		</React.Fragment>
+					<Form.Group inline>
+						<label>Store Discount:</label>
+						{`${discount}g`}
+					</Form.Group>
+				</>
+			)}
+		</Form>
 	);
 };
 
