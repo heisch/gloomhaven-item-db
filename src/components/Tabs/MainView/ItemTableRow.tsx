@@ -24,6 +24,8 @@ const getItemIdString = (item: GloomhavenItem) => {
 	)}`;
 };
 
+const numberAmountToText = ["zero", "one", "two", "three", "four", "five"];
+
 export const ItemTableRow = (props: Props) => {
 	const {
 		item,
@@ -92,9 +94,13 @@ export const ItemTableRow = (props: Props) => {
 					<>
 						<br />
 						<span>
-							Add {Helpers.numberAmountToText(minusOneCardsAdded)}
+							{`Add ${
+								minusOneCardsAdded < numberAmountToText.length
+									? numberAmountToText[minusOneCardsAdded]
+									: minusOneCardsAdded
+							} `}
 							<GHIcon name={"modifier_minus_one.png"} />
-							to your attack modifier deck.
+							{` to your attack modifier deck.`}
 						</span>
 					</>
 				)}

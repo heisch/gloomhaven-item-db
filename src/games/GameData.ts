@@ -24,7 +24,7 @@ export const getInitialItems = (gameType: GameType) => {
 	const filterSlots: GloomhavenItemSlot[] = [];
 
 	items.forEach((item) => {
-		item.descHTML = Helpers.parseEffectText(item.desc);
+		item.descHTML = Helpers.parseEffectText(item.desc, gameType);
 		const source = item.source
 			.replace(/Reward from /gi, "")
 			.replace(/ ?\((Treasure #\d+)\)/gi, "\n$1")

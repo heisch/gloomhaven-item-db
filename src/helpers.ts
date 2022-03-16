@@ -1,4 +1,5 @@
 import qs from "qs";
+import { GameType } from "./games";
 
 export class Helpers {
 	static uniqueArray(arr: Array<any>, sort: boolean = true) {
@@ -11,31 +12,15 @@ export class Helpers {
 		return sort ? result.sort() : result;
 	}
 
-	static numberAmountToText(number: number) {
-		switch (number) {
-			case 0:
-				return "zero";
-			case 1:
-				return "one";
-			case 2:
-				return "two";
-			case 3:
-				return "three";
-			case 4:
-				return "four";
-			case 5:
-				return "five";
-			default:
-				return number;
-		}
-	}
-
-	static parseEffectText(text: string) {
+	static parseEffectText(text: string, gameType: GameType) {
 		[
+			"BANE",
 			"BLESS",
+			"BRITTLE",
 			"CURSE",
 			"DISARM",
 			"IMMOBILIZE",
+			"IMPAIR",
 			"INVISIBLE",
 			"MUDDLE",
 			"PIERCE",
@@ -48,16 +33,21 @@ export class Helpers {
 			"STUN",
 			"TARGET",
 			"WOUND",
+			"WARD",
 		].forEach((status) => {
+			let filename = status.toLowerCase();
+			if (status === "WOUND" && gameType === GameType.Frosthaven) {
+				filename = "FH-WOUND".toLowerCase();
+			}
 			const reg = new RegExp(`\\b${status}\\b`, "g");
 			text = text.replace(
 				reg,
-				status +
-					'<img class="icon" src="' +
-					require("./img/icons/status/" +
-						status.toLowerCase() +
-						".png") +
-					'" alt=""/>'
+				`${status} 
+					${
+						'<img class="icon" src="' +
+						require("./img/icons/status/" + filename + ".png") +
+						'" alt=""/>'
+					}`
 			);
 		});
 
@@ -65,12 +55,14 @@ export class Helpers {
 			const reg = new RegExp(`(\\+\\d+ ${find}\\b)`, "g");
 			text = text.replace(
 				reg,
-				"$1" +
-					'<img class="icon" src="' +
-					require("./img/icons/general/" +
-						find.toLowerCase() +
-						".png") +
-					'" alt=""/>'
+				`${"$1"} 
+					${
+						'<img class="icon" src="' +
+						require("./img/icons/general/" +
+							find.toLowerCase() +
+							".png") +
+						'" alt=""/>'
+					}`
 			);
 		});
 
@@ -86,13 +78,15 @@ export class Helpers {
 			const reg = new RegExp(`\\b(${find})\\b (\\d+)`, "g");
 			text = text.replace(
 				reg,
-				"$1" +
-					'<img class="icon" src="' +
-					require("./img/icons/general/" +
-						find.toLowerCase() +
-						".png") +
-					'" alt=""/>' +
-					"$2"
+				`${"$1"}
+					${
+						'<img class="icon" src="' +
+						require("./img/icons/general/" +
+							find.toLowerCase() +
+							".png") +
+						'" alt=""/>'
+					} 
+					${"$2"}`
 			);
 		});
 
