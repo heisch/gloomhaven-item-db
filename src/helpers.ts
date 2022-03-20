@@ -98,31 +98,31 @@ export class Helpers {
 		);
 		text = text.replace(
 			/\bRefresh\b/g,
-			'Refresh<img class="icon" src="' +
+			'Refresh <img class="icon" src="' +
 				require("./img/icons/general/refresh.png") +
 				'" alt=""/>'
 		);
 		text = text.replace(
 			/\bRecover\b/g,
-			'Recover<img class="icon" src="' +
+			'Recover <img class="icon" src="' +
 				require("./img/icons/general/recover.png") +
 				'" alt=""/>'
 		);
 		text = text.replace(
 			/\bJump\b/g,
-			'Jump<img class="icon" src="' +
+			'Jump <img class="icon" src="' +
 				require("./img/icons/general/jump.png") +
 				'" alt=""/>'
 		);
 		text = text.replace(
 			/\bFlying\b/g,
-			'Flying<img class="icon" src="' +
+			'Flying <img class="icon" src="' +
 				require("./img/icons/general/flying.png") +
 				'" alt=""/>'
 		);
 		text = text.replace(
 			/\bTeleport\b/g,
-			'Teleport<img class="icon" src="' +
+			'Teleport <img class="icon" src="' +
 				require("./img/icons/general/teleport.png") +
 				'" alt=""/>'
 		);

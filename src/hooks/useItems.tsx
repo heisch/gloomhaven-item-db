@@ -25,6 +25,24 @@ import {
 } from "../State";
 import { GameType } from "../games";
 
+function compareItems<T>(a: T, b: T) {
+	if (a === b) {
+		return 0;
+	} else {
+		return a > b ? 1 : -1;
+	}
+}
+
+const getItemUse = ({ consumed, spent }: GloomhavenItem) => {
+	if (spent) {
+		return "a";
+	}
+	if (consumed) {
+		return "b";
+	}
+	return "c";
+};
+
 const useItems = (): Array<GloomhavenItem> => {
 	const { items } = useRecoilValue(gameDataState);
 	const slots = useRecoilValue(slotsState);
@@ -118,36 +136,19 @@ const useItems = (): Array<GloomhavenItem> => {
 			let value = 0;
 			switch (sortProperty) {
 				case SortProperty.Name:
-					value = itemA["name"].localeCompare(itemB["name"]);
+					value = compareItems(itemA.name, itemB.name);
 					break;
 				case SortProperty.Slot:
-					if (itemA.slot === itemB.slot) {
-						value = 0;
-					} else {
-						value = itemA.slot > itemB.slot ? 1 : -1;
-					}
+					value = compareItems(itemA.slot, itemB.slot);
 					break;
 				case SortProperty.Cost:
-					if (itemA["cost"] === itemB["cost"]) return 0;
-					value = itemA["cost"] > itemB["cost"] ? 1 : -1;
+					value = compareItems(itemA.cost, itemB.cost);
 					break;
 				case SortProperty.Id:
-					if (itemA["id"] === itemB["id"]) return 0;
-					value = itemA["id"] > itemB["id"] ? 1 : -1;
+					value = compareItems(itemA.id, itemB.id);
 					break;
 				case SortProperty.Use:
-					// assign a dummy value to sort by
-					const itemAuse = itemA.spent
-						? "c"
-						: itemA.consumed
-						? "b"
-						: "a";
-					const itemBuse = itemB.spent
-						? "c"
-						: itemB.consumed
-						? "b"
-						: "a";
-					value = itemAuse.localeCompare(itemBuse);
+					value = compareItems(getItemUse(itemA), getItemUse(itemB));
 					break;
 			}
 			return sortDirection === SortDirection.ascending
