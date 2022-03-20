@@ -90,60 +90,47 @@ export class Helpers {
 			);
 		});
 
+		["Refresh", "Recover", "Jump", "Teleport", "Flying"].forEach((find) => {
+			const reg = new RegExp(`\\b(${find})\\b`, "g");
+			text = text.replace(
+				reg,
+				`${"$1"}
+					${
+						'<img class="icon" src="' +
+						require("./img/icons/general/" +
+							find.toLowerCase() +
+							".png") +
+						'" alt=""/>'
+					} 
+					`
+			);
+		});
+
+		["modifier_minus_one", "consumed", "experience_1"].forEach((find) => {
+			const reg = new RegExp(`{${find}}`, "g");
+			text = text.replace(
+				reg,
+				'<img class="icon" src="' +
+					require("./img/icons/general/" +
+						find.toLowerCase() +
+						".png") +
+					'" alt=""/>'
+			);
+		});
+
+		["Doom", "Command", "song", "Augment"].forEach((find) => {
+			const reg = new RegExp(`{${find}}`, "g");
+			text = text.replace(
+				reg,
+				`<span class="${find.toLowerCase()}">${find}</span>`
+			);
+		});
+
 		text = text.replace(
 			/\bsmall items\b/g,
 			'<img class="icon" src="' +
 				require("./img/icons/equipment_slot/small.png") +
 				'" alt=""/> items'
-		);
-		text = text.replace(
-			/\bRefresh\b/g,
-			'Refresh <img class="icon" src="' +
-				require("./img/icons/general/refresh.png") +
-				'" alt=""/>'
-		);
-		text = text.replace(
-			/\bRecover\b/g,
-			'Recover <img class="icon" src="' +
-				require("./img/icons/general/recover.png") +
-				'" alt=""/>'
-		);
-		text = text.replace(
-			/\bJump\b/g,
-			'Jump <img class="icon" src="' +
-				require("./img/icons/general/jump.png") +
-				'" alt=""/>'
-		);
-		text = text.replace(
-			/\bFlying\b/g,
-			'Flying <img class="icon" src="' +
-				require("./img/icons/general/flying.png") +
-				'" alt=""/>'
-		);
-		text = text.replace(
-			/\bTeleport\b/g,
-			'Teleport <img class="icon" src="' +
-				require("./img/icons/general/teleport.png") +
-				'" alt=""/>'
-		);
-		text = text.replace(
-			/{exp1}/g,
-			'<img class="icon" src="' +
-				require("./img/icons/general/experience_1.png") +
-				'" alt=""/>'
-		);
-		text = text.replace(/{Doom}/g, '<span class="doom">Doom</span>');
-		text = text.replace(
-			/{modifier_minus_one}/g,
-			'<img class="icon" src="' +
-				require("./img/icons/general/modifier_minus_one.png") +
-				'" alt=""/>'
-		);
-		text = text.replace(
-			/{consumed}/g,
-			'<img class="icon" src="' +
-				require("./img/icons/general/consumed.png") +
-				'" alt=""/>'
 		);
 		["any", "earth", "fire", "ice", "light", "dark", "wind"].forEach(
 			(element) => {

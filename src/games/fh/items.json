@@ -816,7 +816,7 @@
 		"cost": 50,
 		"slot": "legs",
 		"source": "Random Item",
-		"desc": "If you move 6 or more hexes on your turn, gain {exp1}.",
+		"desc": "If you move 6 or more hexes on your turn, gain {experience_1}.",
 		"folder": "64-151"
 	},
 	{
@@ -1564,7 +1564,7 @@
 		"cost": 50,
 		"slot": "1h",
 		"source": "Reward from Solo Scenario #06 — {MT}",
-		"desc": "Any time you perform an Augment action, add +1 Attack to the entire action.",
+		"desc": "Any time you perform an {Augment} action, add +1 Attack to the entire action.",
 		"soloItem": "MT",
 		"folder": "64-151"
 	},
@@ -1646,7 +1646,7 @@
 		"cost": 50,
 		"slot": "2h",
 		"source": "Reward from Solo Scenario #13 — {SS}",
-		"desc": "After performing any song action, immediately perform an Attack 2 or Move 2 action.",
+		"desc": "After performing any {song} action, immediately perform an Attack 2 or Move 2 action.",
 		"soloItem": "SS",
 		"folder": "64-151"
 	},
@@ -1692,7 +1692,7 @@
 		"slot": "2h",
 		"source": "Reward from Solo Scenario #17 — {BT}",
 		"spent": true,
-		"desc": "After performing a Command action, play one card from your hand and immediately perform the same side of the card (top or bottom) as the Command action.",
+		"desc": "After performing a {Command} action, play one card from your hand and immediately perform the same side of the card (top or bottom) as the {Command} action.",
 		"soloItem": "BT",
 		"folder": "64-151"
 	},
@@ -1716,7 +1716,7 @@
 		"slot": "small",
 		"source": "Reward from Scenario #97\nSection 125\n\"A locked chest\"",
 		"consumed": true,
-		"desc": "After performing the top action of any ability card, you may immediately peform the bottom action of the same card. This item cannot be used if both actions trigger a lot card icon {consumed}.",
+		"desc": "After performing the top action of any ability card, you may immediately peform the bottom action of the same card. This item cannot be used if both actions trigger a lost card icon {consumed}.",
 		"folder": "152-165"
 	},
 	{
