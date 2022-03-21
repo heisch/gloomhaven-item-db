@@ -123,6 +123,7 @@ export interface GloomhavenItem {
 	source: string;
 	spent?: boolean;
 	consumed?: boolean;
+	lost?: boolean;
 	minusOneCardsAdded?: number;
 	useSlots?: number;
 	desc: string;

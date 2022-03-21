@@ -65,7 +65,7 @@ export class Helpers {
 			);
 		});
 
-		["Attack", "Move", "Range"].forEach((find) => {
+		["Attack", "Move", "Range", "Heal"].forEach((find) => {
 			const reg = new RegExp(`(\\+\\d+ ${find}\\b)`, "g");
 			text = text.replace(
 				reg,
@@ -120,7 +120,6 @@ export class Helpers {
 		["any", "earth", "fire", "ice", "light", "dark", "wind"].forEach(
 			(element) => {
 				const reg = new RegExp(`{${element}(X?)}`, "g");
-				// text = text.replace(reg, '<img class="icon" src="'+require('./img/icons/element/'+element.toLowerCase()+'.png')+'" alt=""/>' );
 				text = text.replace(reg, (m, m1) =>
 					createImageString({
 						filename: element.toLowerCase() + m1,

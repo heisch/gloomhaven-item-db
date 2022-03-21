@@ -1640,7 +1640,8 @@
 		"desc": "During your turn, you or any one ally may Refresh one of your spent or consumed items.",
 		"faq": "This item cannot be refreshed.",
 		"soloItem": "QM",
-		"folder": "64-151"
+		"folder": "64-151",
+		"lost": true
 	},
 	{
 		"id": 142,

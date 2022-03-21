@@ -33,14 +33,17 @@ function compareItems<T>(a: T, b: T) {
 	}
 }
 
-const getItemUse = ({ consumed, spent }: GloomhavenItem) => {
+const getItemUse = ({ consumed, spent, lost }: GloomhavenItem) => {
 	if (spent) {
 		return "a";
 	}
 	if (consumed) {
 		return "b";
 	}
-	return "c";
+	if (lost) {
+		return "c";
+	}
+	return "d";
 };
 
 const useItems = (): Array<GloomhavenItem> => {

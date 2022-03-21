@@ -37,6 +37,7 @@ export const ItemTableRow = (props: Props) => {
 			resources,
 			spent,
 			consumed,
+			lost,
 			descHTML,
 			minusOneCardsAdded,
 			faq,
@@ -83,6 +84,7 @@ export const ItemTableRow = (props: Props) => {
 			<Table.Cell className={"use-col"} textAlign={"center"}>
 				{spent && <GHIcon name={"spent.png"} />}
 				{consumed && <GHIcon name={"consumed.png"} />}
+				{lost && <GHIcon name={"lost.png"} />}
 			</Table.Cell>
 			<Table.Cell className={"text-col"}>
 				<span
