@@ -290,7 +290,7 @@
 		"slot": "head",
 		"source": "Prosperity 3",
 		"spent": true,
-		"desc": "During your turn, Heal 1 damage.",
+		"desc": "During your turn, peform \"Heal 1, Self\" action.",
 		"folder": "22-28",
 		"unlockProsperity": 3
 	},
@@ -349,7 +349,7 @@
 		"cost": 30,
 		"slot": "legs",
 		"source": "Prosperity 4",
-		"desc": "Whenever you use the default bottom of an ability card, perform a Move 3 action instead of a Move 2 action.",
+		"desc": "Whenever you use the default bottom of an ability card, perform a \"Move 3\" action instead of a \"Move 2\" action.",
 		"folder": "29-35",
 		"unlockProsperity": 4
 	},
@@ -488,7 +488,7 @@
 		"cost": 25,
 		"slot": "1h",
 		"source": "Prosperity 5",
-		"desc": "Whenever you use the default top of an ability card, perform an Attack 3 action instead of an Attack 2 action.",
+		"desc": "Whenever you use the default top of an ability card, perform an \"Attack 3\" action instead of an \"Attack 2\" action.",
 		"folder": "36-42",
 		"unlockProsperity": 5
 	},
@@ -597,7 +597,7 @@
 		"slot": "small",
 		"source": "Prosperity 6",
 		"consumed": true,
-		"desc": "During your turn, Refresh all of your spent items and Heal 3 damage.",
+		"desc": "During your turn, Refresh all of your spent items and \"Heal 3, Self\" action.",
 		"folder": "43-49",
 		"unlockProsperity": 6
 	},
@@ -691,7 +691,7 @@
 		"cost": 75,
 		"slot": "legs",
 		"source": "Prosperity 8",
-		"desc": "Whenever you use the default bottom of an ability card perform a Move 4 action instead of a Move 2 action.",
+		"desc": "Whenever you use the default bottom of an ability card perform a \"Move 4\" action instead of a \"Move 2\" action.",
 		"folder": "57-63",
 		"unlockProsperity": 8
 	},
@@ -702,7 +702,7 @@
 		"cost": 75,
 		"slot": "body",
 		"source": "Prosperity 8",
-		"desc": "Gain Flying. While occupying an obstacle hex, you are considered Invisible and cannot attack",
+		"desc": "Gain Flying. While occupying an obstacle hex, you are considered INVISIBLE and cannot attack",
 		"folder": "57-63",
 		"unlockProsperity": 8
 	},
@@ -810,7 +810,7 @@
 		"cost": 60,
 		"slot": "1h",
 		"source": "Prosperity 9",
-		"desc": "Whenever you use the default top of an ability card, perform an Attack 4 instead of an Attack 2 action.",
+		"desc": "Whenever you use the default top of an ability card, perform an \"Attack 4\" instead of an \"Attack 2\" action.",
 		"folder": "64-151",
 		"unlockProsperity": 9
 	},
@@ -832,7 +832,7 @@
 		"cost": 70,
 		"slot": "small",
 		"source": "Prosperity 9\nTreasure #56",
-		"desc": "During your turn, Refresh all of your spent items, Heal 3 damage, and Recover up to two of your discarded cards.",
+		"desc": "During your turn, Refresh all of your spent items, \"Heal 3, Self\" action, and Recover up to two of your discarded cards.",
 		"folder": "64-151",
 		"consumed": true,
 		"unlockProsperity": 9
@@ -1155,7 +1155,7 @@
 		"cost": 50,
 		"slot": "legs",
 		"source": "Scenario #63 (Treasure #12)",
-		"desc": "Ignore the damaging effects of hazardous terrain and perform a \"\"Heal 2, Self\"\" action on any turn in which you have entered a hazardous terrain hex.",
+		"desc": "Ignore the damaging effects of hazardous terrain and perform a \"Heal 2, Self\" action on any turn in which you have entered a hazardous terrain hex.",
 		"folder": "64-151"
 	},
 	{
@@ -1271,7 +1271,7 @@
 		"cost": 50,
 		"slot": "head",
 		"source": "Scenario #82 (Treasure #62)",
-		"desc": "When attacked, if {earth} is Strong, Immobilize the attacker.",
+		"desc": "When attacked, if {earth} is Strong, IMMOBILIZE the attacker.",
 		"folder": "64-151"
 	},
 	{
@@ -1482,7 +1482,7 @@
 		"slot": "small",
 		"source": "Reward From Scenario #90",
 		"consumed": true,
-		"desc": "During your turn, Muddle all enemies with Range 2.",
+		"desc": "During your turn, MUDDLE all enemies with Range 2.",
 		"folder": "64-151"
 	},
 	{

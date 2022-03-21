@@ -127,7 +127,7 @@
 		"slot": "small",
 		"source": "Reward from Scenario #2",
 		"consumed": true,
-		"desc": "During your turn, perform a \"Heal 3, self\" action.",
+		"desc": "During your turn, perform a \"Heal 3, Self\" action.",
 		"folder": "1-13",
 		"unlockScenario": 2
 	},
@@ -304,7 +304,7 @@
 		"slot": "small",
 		"source": "Reward from Scenario #15",
 		"consumed": true,
-		"desc": "During your turn, perform a BLESS, Range 5 action.",
+		"desc": "During your turn, perform a \"BLESS, Range 5\" action.",
 		"folder": "21-26",
 		"unlockScenario": 15
 	},

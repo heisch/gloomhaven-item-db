@@ -1,6 +1,25 @@
 import qs from "qs";
 import { GameType } from "./games";
 
+type CreateParams = {
+	filename: string;
+	folder?: string;
+	className?: string;
+	lowercaseName?: boolean;
+};
+
+const createImageString = (parms: CreateParams) => {
+	let {
+		filename,
+		folder = "general",
+		className = "icon",
+		lowercaseName = true,
+	} = parms;
+	filename = lowercaseName ? filename.toLowerCase() : filename;
+	const src = require(`./img/icons/${folder}/${filename}.png`);
+	return `<img class="${className}" src="${src}" alt="${filename}"/>`;
+};
+
 export class Helpers {
 	static uniqueArray(arr: Array<any>, sort: boolean = true) {
 		const result: Array<any> = [];
@@ -42,12 +61,7 @@ export class Helpers {
 			const reg = new RegExp(`\\b${status}\\b`, "g");
 			text = text.replace(
 				reg,
-				`${status} 
-					${
-						'<img class="icon" src="' +
-						require("./img/icons/status/" + filename + ".png") +
-						'" alt=""/>'
-					}`
+				`${status} ${createImageString({ filename, folder: "status" })}`
 			);
 		});
 
@@ -55,14 +69,7 @@ export class Helpers {
 			const reg = new RegExp(`(\\+\\d+ ${find}\\b)`, "g");
 			text = text.replace(
 				reg,
-				`${"$1"} 
-					${
-						'<img class="icon" src="' +
-						require("./img/icons/general/" +
-							find.toLowerCase() +
-							".png") +
-						'" alt=""/>'
-					}`
+				`${"$1"} ${createImageString({ filename: find })}`
 			);
 		});
 
@@ -78,15 +85,7 @@ export class Helpers {
 			const reg = new RegExp(`\\b(${find})\\b (\\d+)`, "g");
 			text = text.replace(
 				reg,
-				`${"$1"}
-					${
-						'<img class="icon" src="' +
-						require("./img/icons/general/" +
-							find.toLowerCase() +
-							".png") +
-						'" alt=""/>'
-					} 
-					${"$2"}`
+				`${"$1"} ${createImageString({ filename: find })} ${"$2"}`
 			);
 		});
 
@@ -94,28 +93,13 @@ export class Helpers {
 			const reg = new RegExp(`\\b(${find})\\b`, "g");
 			text = text.replace(
 				reg,
-				`${"$1"}
-					${
-						'<img class="icon" src="' +
-						require("./img/icons/general/" +
-							find.toLowerCase() +
-							".png") +
-						'" alt=""/>'
-					} 
-					`
+				`${"$1"} ${createImageString({ filename: find })}`
 			);
 		});
 
 		["modifier_minus_one", "consumed", "experience_1"].forEach((find) => {
 			const reg = new RegExp(`{${find}}`, "g");
-			text = text.replace(
-				reg,
-				'<img class="icon" src="' +
-					require("./img/icons/general/" +
-						find.toLowerCase() +
-						".png") +
-					'" alt=""/>'
-			);
+			text = text.replace(reg, createImageString({ filename: find }));
 		});
 
 		["Doom", "Command", "song", "Augment"].forEach((find) => {
@@ -128,23 +112,21 @@ export class Helpers {
 
 		text = text.replace(
 			/\bsmall items\b/g,
-			'<img class="icon" src="' +
-				require("./img/icons/equipment_slot/small.png") +
-				'" alt=""/> items'
+			`${createImageString({
+				filename: "small",
+				folder: "equipment_slot",
+			})} items`
 		);
 		["any", "earth", "fire", "ice", "light", "dark", "wind"].forEach(
 			(element) => {
 				const reg = new RegExp(`{${element}(X?)}`, "g");
 				// text = text.replace(reg, '<img class="icon" src="'+require('./img/icons/element/'+element.toLowerCase()+'.png')+'" alt=""/>' );
-				text = text.replace(
-					reg,
-					(m, m1) =>
-						'<img class="icon" src="' +
-						require("./img/icons/element/" +
-							element.toLowerCase() +
-							m1 +
-							".png") +
-						'" alt=""/>'
+				text = text.replace(reg, (m, m1) =>
+					createImageString({
+						filename: element.toLowerCase() + m1,
+						folder: "element",
+						lowercaseName: false,
+					})
 				);
 			}
 		);
@@ -155,9 +137,11 @@ export class Helpers {
 			if (["cleave", "cone", "cube"].includes(type)) {
 				className += " double-height";
 			}
-			return `<img class="${className}" src="${require("./img/icons/multi_attack/" +
-				m1 +
-				".png")}" alt=""/>`;
+			return createImageString({
+				filename: m1,
+				folder: "multi_attack",
+				className,
+			});
 		});
 
 		return text;
