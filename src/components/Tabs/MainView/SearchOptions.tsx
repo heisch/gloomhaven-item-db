@@ -158,7 +158,12 @@ const SearchOptions = (props: Props) => {
 					{Object.values(ResourceTypes).map((resource) => (
 						<Form.Checkbox
 							key={resource}
-							label={<GHIcon name={`${resource}.png`} />}
+							label={
+								<GHIcon
+									name={`${resource}.png`}
+									folder="resources"
+								/>
+							}
 							checked={resources.includes(resource)}
 							onChange={() => setFilterResource(resource)}
 							alt={resource}

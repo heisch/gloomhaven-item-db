@@ -74,7 +74,10 @@ export const ItemTableRow = (props: Props) => {
 							}
 							return (
 								<div key={resource}>
-									<GHIcon name={`${resource}.png`} />
+									<GHIcon
+										name={`${resource}.png`}
+										folder="resources"
+									/>
 									{` x ${value}`}
 								</div>
 							);
