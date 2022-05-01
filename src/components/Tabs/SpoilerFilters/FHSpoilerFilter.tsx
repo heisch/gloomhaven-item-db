@@ -56,6 +56,7 @@ const FHSpoilerFilter = () => {
 				<SpoilerFilterItemList
 					ranges={ghRanges}
 					title="Gloomhaven Items"
+					offset={fhItemsCount}
 				/>
 			</Form.Field>
 			<SoloClassFilter classes={Object.values(FHClasses)} />

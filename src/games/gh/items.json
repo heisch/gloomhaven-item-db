@@ -84,7 +84,7 @@
 		"cost": 10,
 		"slot": "head",
 		"source": "Prosperity 1",
-		"desc": "When attacked, consider any 2x attack modifier card the enemy draws to be a +0 instead.",
+		"desc": "When attacked, consider any {modifier_2x_circle} attack modifier card the enemy draws to be a {modifier_zero_circle} instead.",
 		"folder": "1-14",
 		"unlockProsperity": 1
 	},
@@ -1176,7 +1176,7 @@
 		"cost": 30,
 		"slot": "body",
 		"source": "Scenario #06 (Treasure #50)",
-		"desc": "Remove two {modifier_minus_one} from your attack modifier deck.",
+		"desc": "Remove two {modifier_minus_one_circle} from your attack modifier deck.",
 		"folder": "64-151"
 	},
 	{

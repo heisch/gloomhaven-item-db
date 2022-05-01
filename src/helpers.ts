@@ -97,7 +97,14 @@ export class Helpers {
 			);
 		});
 
-		["modifier_minus_one", "consumed", "experience_1"].forEach((find) => {
+		[
+			"modifier_minus_one",
+			"modifier_minus_one_circle",
+			"consumed",
+			"experience_1",
+			"modifier_2x_circle",
+			"modifier_zero_circle",
+		].forEach((find) => {
 			const reg = new RegExp(`{${find}}`, "g");
 			text = text.replace(reg, createImageString({ filename: find }));
 		});
