@@ -20,7 +20,7 @@ import {
 	prosperityState,
 	soloClassState,
 	scenarioCompletedState,
-	includeGloomhavenItemsState,
+	includeGameState,
 	resourcesState,
 } from "../State";
 import { GameType } from "../games";
@@ -62,7 +62,7 @@ const useItems = (): Array<GloomhavenItem> => {
 	const prosperity = useRecoilValue(prosperityState);
 	const soloClass = useRecoilValue(soloClassState);
 	const scenarioCompleted = useRecoilValue(scenarioCompletedState);
-	const includeGloomhavenItems = useRecoilValue(includeGloomhavenItemsState);
+	const includeGames = useRecoilValue(includeGameState);
 
 	const isItemShown = ({
 		id,
@@ -74,7 +74,7 @@ const useItems = (): Array<GloomhavenItem> => {
 		if (
 			gameType &&
 			gameType === GameType.Gloomhaven &&
-			!includeGloomhavenItems
+			!includeGames.includes(GameType.Gloomhaven)
 		) {
 			return false;
 		}

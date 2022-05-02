@@ -13,18 +13,20 @@ export const dataDirtyState = atom({
 	default: false,
 });
 
+type FixUpFunction<T> = (old: any, gameType: GameType, spoilerObj?: any) => T;
+
 function getDefaultValue<T>(
 	gameType: GameType,
 	name: string,
 	defaultValue: T,
-	fixUp?: (old: any) => T
+	fixUp?: FixUpFunction<T>
 ) {
 	const key = LOCAL_STORAGE_PREFIX + gameType;
 	const spoilerStorage = localStorage.getItem(key);
 	const spoilerObj = spoilerStorage ? JSON.parse(spoilerStorage) : {};
 	const value = spoilerObj[name] || defaultValue;
 	if (fixUp) {
-		const newValue = fixUp(value);
+		const newValue = fixUp(value, gameType, spoilerObj);
 		spoilerObj[name] = newValue;
 		localStorage.setItem(key, JSON.stringify(spoilerObj));
 		return newValue;
@@ -66,7 +68,7 @@ export function createState<T>(name: string, defaultValue: T) {
 export function createSpoilerState<T>(
 	name: string,
 	defaultValue: T,
-	fixUp?: (old: any) => T
+	fixUp?: FixUpFunction<T>
 ) {
 	const atoms: AtomObject<T> = {};
 	Object.values(gameDataTypes).forEach(({ gameName, gameType }) => {

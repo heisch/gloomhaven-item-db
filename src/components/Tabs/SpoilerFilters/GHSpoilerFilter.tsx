@@ -3,15 +3,22 @@ import { Form } from "semantic-ui-react";
 import SpoilerFilterItemList from "./SpoilerFilterItemList";
 import { getGHClassList } from "../../../State/Types";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { discountState, envelopeXState, prosperityState } from "../../../State";
+import {
+	discountState,
+	envelopeXState,
+	includeGameState,
+	prosperityState,
+} from "../../../State";
 import { SoloClassFilter } from "./SoloClassFilter";
+import { Expansions } from "../../../games/GameType";
 
 const GHSpoilerFilter = () => {
 	const envelopeX = useRecoilValue(envelopeXState);
+	const includeGames = useRecoilValue(includeGameState);
 	const [discount, setDiscount] = useRecoilState(discountState);
 	const [prosperity, setProsperity] = useRecoilState(prosperityState);
-
-	const soloClasses = getGHClassList(envelopeX, true);
+	const includeFC = includeGames.includes(Expansions.ForgottenCircles);
+	const soloClasses = getGHClassList(envelopeX, includeFC);
 
 	return (
 		<>
@@ -66,10 +73,12 @@ const GHSpoilerFilter = () => {
 					ranges={[{ start: 96, end: 133 }]}
 					title="Other Items"
 				/>
-				<SpoilerFilterItemList
-					ranges={[{ start: 152, end: 163 }]}
-					title="Forgotten Circles Items"
-				/>
+				{includeFC && (
+					<SpoilerFilterItemList
+						ranges={[{ start: 152, end: 163 }]}
+						title="Forgotten Circles Items"
+					/>
+				)}
 			</Form.Field>
 			<SoloClassFilter classes={soloClasses} />
 		</>

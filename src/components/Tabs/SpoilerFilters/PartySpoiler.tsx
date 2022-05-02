@@ -1,10 +1,14 @@
 import React from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { Form, Popup, Icon } from "semantic-ui-react";
+import { AllGames, Expansions, GameType } from "../../../games/GameType";
+import { isFlagEnabled } from "../../../helpers";
 import {
 	classesInUseState,
 	classToDeleteState,
 	envelopeXState,
+	gameTypeState,
+	includeGameState,
 	itemManagementTypeState,
 } from "../../../State";
 import {
@@ -18,6 +22,8 @@ import {
 import { ClassList } from "./ClassList";
 
 export const PartySpoiler = () => {
+	const includeGames = useRecoilValue(includeGameState);
+	const gameType = useRecoilValue(gameTypeState);
 	const envelopeX = useRecoilValue(envelopeXState);
 	const [classesInUse, setClassesInUse] = useRecoilState(classesInUseState);
 	const setClassToDelete = useSetRecoilState(classToDeleteState);
@@ -35,6 +41,15 @@ export const PartySpoiler = () => {
 	if (itemManagementType !== ItemManagementType.Party) {
 		return null;
 	}
+
+	const isGameIncluded = (type: AllGames) => {
+		const frosthavenEnabled = isFlagEnabled("frosthaven");
+		if (type === GameType.Frosthaven && !frosthavenEnabled) {
+			return false;
+		}
+
+		return gameType === type || includeGames.includes(type);
+	};
 
 	const ghList = getGHClassList(envelopeX);
 	return (
@@ -55,38 +70,46 @@ export const PartySpoiler = () => {
 					/>
 				}
 			</Form.Group>
-			<ClassList
-				classes={ghList}
-				label="Gloomhaven:"
-				onClick={toggleClassFilter}
-				isUsed={(className: ClassesInUse) =>
-					classesInUse.includes(className)
-				}
-			/>
-			<ClassList
-				classes={Object.values(FCClasses)}
-				label="Forgotten Circles:"
-				onClick={toggleClassFilter}
-				isUsed={(className: ClassesInUse) =>
-					classesInUse.includes(className)
-				}
-			/>
-			<ClassList
-				classes={Object.values(JOTLClasses)}
-				label="Jaws of the Lion:"
-				onClick={toggleClassFilter}
-				isUsed={(className: ClassesInUse) =>
-					classesInUse.includes(className)
-				}
-			/>
-			<ClassList
-				classes={Object.values(FHClasses)}
-				label="Frosthaven:"
-				onClick={toggleClassFilter}
-				isUsed={(className: ClassesInUse) =>
-					classesInUse.includes(className)
-				}
-			/>
+			{isGameIncluded(GameType.Gloomhaven) && (
+				<ClassList
+					classes={ghList}
+					label="Gloomhaven:"
+					onClick={toggleClassFilter}
+					isUsed={(className: ClassesInUse) =>
+						classesInUse.includes(className)
+					}
+				/>
+			)}
+			{isGameIncluded(Expansions.ForgottenCircles) && (
+				<ClassList
+					classes={Object.values(FCClasses)}
+					label="Forgotten Circles:"
+					onClick={toggleClassFilter}
+					isUsed={(className: ClassesInUse) =>
+						classesInUse.includes(className)
+					}
+				/>
+			)}
+			{isGameIncluded(GameType.JawsOfTheLion) && (
+				<ClassList
+					classes={Object.values(JOTLClasses)}
+					label="Jaws of the Lion:"
+					onClick={toggleClassFilter}
+					isUsed={(className: ClassesInUse) =>
+						classesInUse.includes(className)
+					}
+				/>
+			)}
+			{isGameIncluded(GameType.Frosthaven) && (
+				<ClassList
+					classes={Object.values(FHClasses)}
+					label="Frosthaven:"
+					onClick={toggleClassFilter}
+					isUsed={(className: ClassesInUse) =>
+						classesInUse.includes(className)
+					}
+				/>
+			)}
 		</Form.Group>
 	);
 };

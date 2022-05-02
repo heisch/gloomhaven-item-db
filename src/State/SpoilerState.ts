@@ -1,11 +1,15 @@
 import { atom } from "recoil";
+import { AllGames, Expansions, GameType } from "../games/GameType";
 import { createSpoilerState } from "./CommonState";
 import {
 	ClassesInUse,
+	FCClasses,
+	GHClasses,
 	ItemManagementType,
 	ItemsInUse,
 	ItemsOwnedBy,
 	ItemViewDisplayType,
+	JOTLClasses,
 } from "./Types";
 
 export const allState = createSpoilerState<boolean>("all", false);
@@ -53,9 +57,51 @@ export const soloClassState = createSpoilerState<ClassesInUse[]>(
 	[]
 );
 
-export const includeGloomhavenItemsState = createSpoilerState<boolean>(
-	"includeGloomhavenItems",
-	false
+function shouldAddGame<E>(classesInUse: ClassesInUse[], e: E): boolean {
+	console.log(e, classesInUse);
+	const value = Object.values(e).some((classType) => {
+		if (classesInUse.includes(classType)) {
+			return true;
+		}
+	});
+	return value;
+}
+
+const fixIncludedGames = (old: any, gameType: GameType, spoilerObj: any) => {
+	if (!old || old.length === 0) {
+		const newGames = [];
+		const classesInUse = spoilerObj["classesInUse"];
+		if (classesInUse) {
+			if (shouldAddGame(classesInUse, GHClasses)) {
+				newGames.push(GameType.Gloomhaven);
+			}
+			if (shouldAddGame(classesInUse, FCClasses)) {
+				newGames.push(Expansions.ForgottenCircles);
+			}
+			if (shouldAddGame(classesInUse, JOTLClasses)) {
+				newGames.push(GameType.JawsOfTheLion);
+			}
+		}
+		const items = spoilerObj["item"];
+		if (
+			items &&
+			gameType === GameType.Gloomhaven &&
+			!newGames.includes(Expansions.ForgottenCircles)
+		) {
+			const value = items.some((item: any) => item >= 153);
+			if (value) {
+				newGames.push(Expansions.ForgottenCircles);
+			}
+		}
+		return newGames;
+	}
+	return old;
+};
+
+export const includeGameState = createSpoilerState<AllGames[]>(
+	"includeGames",
+	[],
+	fixIncludedGames
 );
 
 export const dataMismatchState = atom({

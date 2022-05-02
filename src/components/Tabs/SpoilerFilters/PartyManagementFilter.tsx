@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
-import { Dropdown, DropdownProps, Form, Popup, Icon } from "semantic-ui-react";
+import {
+	Dropdown,
+	DropdownProps,
+	Form,
+	Popup,
+	Icon,
+	List,
+} from "semantic-ui-react";
 import { itemManagementTypeState } from "../../../State";
 import { ItemManagementType } from "../../../State/Types";
 
@@ -31,11 +38,7 @@ const PartyManagementFilter = () => {
 		<Form.Group inline>
 			<Form.Group inline>
 				<label>Store Stock Management Type:</label>
-				<Dropdown
-					value={managementType}
-					onChange={onChangeItemManagement}
-					options={options}
-				/>
+
 				<Popup
 					closeOnDocumentClick
 					hideOnScroll
@@ -44,18 +47,38 @@ const PartyManagementFilter = () => {
 					}
 					header={"Stock Management"}
 					content={
-						<Form.Group>
-							<b>Choose From three types</b>
-							<br />
-							<b>None:</b> No management
-							<br />
-							<b>Simple:</b> Indicate that an item has been
-							purchased.
-							<br />
-							<b>Party:</b> Indicate which member of your party
-							has the item
-						</Form.Group>
+						<List bulleted>
+							<List.Item>
+								None
+								<List.List>
+									<List.Item>No management</List.Item>
+								</List.List>
+							</List.Item>
+							<List.Item>
+								Simple
+								<List.List>
+									<List.Item>
+										Indicate that an item has been
+										purchased.
+									</List.Item>
+								</List.List>
+							</List.Item>
+							<List.Item>
+								Party
+								<List.List>
+									<List.Item>
+										Indicate which member of your party has
+										the item
+									</List.Item>
+								</List.List>
+							</List.Item>
+						</List>
 					}
+				/>
+				<Dropdown
+					value={managementType}
+					onChange={onChangeItemManagement}
+					options={options}
 				/>
 			</Form.Group>
 		</Form.Group>

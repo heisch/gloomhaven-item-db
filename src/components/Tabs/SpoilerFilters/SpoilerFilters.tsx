@@ -13,8 +13,11 @@ import {
 	confirmEnvelopeXState,
 	envelopeXState,
 	gameDataState,
+	includeGameState,
 } from "../../../State";
 import FHSpoilerFilter from "./FHSpoilerFilter";
+import { GameFilters } from "./GameFilters";
+import { AllGames } from "../../../games/GameType";
 
 const filters = {
 	[GameType.Gloomhaven]: <GHSpoilerFilter />,
@@ -24,6 +27,7 @@ const filters = {
 
 const SpoilerFilters = () => {
 	const [all, setAll] = useRecoilState(allState);
+	const includeGames = useRecoilValue(includeGameState);
 	const envelopeX = useRecoilValue(envelopeXState);
 	const { gameType } = useRecoilValue(gameDataState);
 	const setConfirmEnvelopeX = useSetRecoilState(confirmEnvelopeXState);
@@ -51,7 +55,8 @@ const SpoilerFilters = () => {
 			</Form.Group>
 
 			<PartyManagementFilter />
-			{!envelopeX && (
+			<GameFilters />
+			{!envelopeX && includeGames.includes(GameType.Gloomhaven) && (
 				<Button onClick={() => setConfirmEnvelopeX(true)}>
 					Envelope X
 				</Button>
