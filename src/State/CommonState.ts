@@ -24,7 +24,10 @@ function getDefaultValue<T>(
 	const spoilerObj = spoilerStorage ? JSON.parse(spoilerStorage) : {};
 	const value = spoilerObj[name] || defaultValue;
 	if (fixUp) {
-		return fixUp(value);
+		const newValue = fixUp(value);
+		spoilerObj[name] = newValue;
+		localStorage.setItem(key, JSON.stringify(spoilerObj));
+		return newValue;
 	}
 	return value;
 }
@@ -69,7 +72,7 @@ export function createSpoilerState<T>(
 	Object.values(gameDataTypes).forEach(({ gameName, gameType }) => {
 		atoms[gameType] = atom<T>({
 			key: `${gameName}-${name}-state`,
-			default: getDefaultValue(gameType, name, defaultValue),
+			default: getDefaultValue(gameType, name, defaultValue, fixUp),
 			effects: [
 				({ onSet }) => {
 					onSet((value) => {

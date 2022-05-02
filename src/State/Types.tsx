@@ -1,6 +1,7 @@
 import { GameType } from "../games";
 
-export type ItemsOwnedBy = Record<number, ClassesInUse[]>;
+export type ItemsOwnedBy = Record<string, ClassesInUse[]>;
+// export type ItemsOwnedBy = Array<ClassesInUse[]>;
 
 export type ItemsInUse = Record<number, number>;
 

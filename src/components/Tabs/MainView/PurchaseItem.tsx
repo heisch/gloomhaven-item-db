@@ -34,7 +34,7 @@ const PurchaseItem = () => {
 	const onApply = () => {
 		if (selectedItem) {
 			const newItemsOwnedBy: ItemsOwnedBy = Object.assign(
-				[],
+				{},
 				itemsOwnedBy
 			);
 			if (owners) {

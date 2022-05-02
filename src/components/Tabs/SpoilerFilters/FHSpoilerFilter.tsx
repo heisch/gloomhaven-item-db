@@ -2,7 +2,7 @@ import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { Form } from "semantic-ui-react";
 import {
-	fhItemsCount,
+	ghItemOffset,
 	initialGHItemsUnlocked,
 } from "../../../games/fh/FHGameData";
 import {
@@ -26,7 +26,7 @@ const FHSpoilerFilter = () => {
 	if (!scenariosComplete.includes(1)) {
 		fhRanges.push({ start: 1, end: 10 });
 	}
-	fhRanges.push({ start: 11, end: fhItemsCount });
+	fhRanges.push({ start: 11, end: 164 });
 
 	const ghRanges = [];
 	if (includeGloomhavenItems) {
@@ -56,7 +56,7 @@ const FHSpoilerFilter = () => {
 				<SpoilerFilterItemList
 					ranges={ghRanges}
 					title="Gloomhaven Items"
-					offset={fhItemsCount}
+					offset={ghItemOffset}
 				/>
 			</Form.Field>
 			<SoloClassFilter classes={Object.values(FHClasses)} />

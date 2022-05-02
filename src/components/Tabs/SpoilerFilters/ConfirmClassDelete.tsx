@@ -16,7 +16,7 @@ export const removeItemsFromOwner = (
 	itemsId: number[] | number,
 	owner: ClassesInUse
 ) => {
-	const newItemsOwnedBy: ItemsOwnedBy = Object.assign([], oldItems);
+	const newItemsOwnedBy: ItemsOwnedBy = Object.assign({}, oldItems);
 	const items = !Array.isArray(itemsId) ? [itemsId] : itemsId;
 	items.forEach((itemId) => {
 		const owners = newItemsOwnedBy[itemId];
@@ -24,7 +24,11 @@ export const removeItemsFromOwner = (
 		if (copyOwners.includes(owner)) {
 			copyOwners.splice(copyOwners.indexOf(owner), 1);
 		}
-		newItemsOwnedBy[itemId] = copyOwners;
+		if (copyOwners.length) {
+			newItemsOwnedBy[itemId] = copyOwners;
+		} else {
+			delete newItemsOwnedBy[itemId];
+		}
 	});
 	return newItemsOwnedBy;
 };

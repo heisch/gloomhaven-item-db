@@ -25,9 +25,23 @@ export const itemManagementTypeState = createSpoilerState<ItemManagementType>(
 	ItemManagementType.None
 );
 export const itemsInUseState = createSpoilerState<ItemsInUse>("itemsInUse", {});
+
+const fixItemsOwnedBy = (oldItemsOwnedBy: any) => {
+	if (Array.isArray(oldItemsOwnedBy)) {
+		const newItemsOwnedBy: ItemsOwnedBy = {};
+		oldItemsOwnedBy.forEach((value, index) => {
+			if (value && value.length) {
+				newItemsOwnedBy[index] = value;
+			}
+		});
+		return newItemsOwnedBy;
+	}
+	return oldItemsOwnedBy;
+};
 export const itemsOwnedByState = createSpoilerState<ItemsOwnedBy>(
 	"itemsOwnedBy",
-	{}
+	{},
+	fixItemsOwnedBy
 );
 export const prosperityState = createSpoilerState<number>("prosperity", 1);
 export const scenarioCompletedState = createSpoilerState<number[]>(
