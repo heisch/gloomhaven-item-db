@@ -11,7 +11,8 @@
 		"faq": "Boots of Striding only add to the numerical value of an existing single movement ability. They do not give you a free movement action.",
 		"folder": "1-14",
 		"unlockScenario": 1,
-		"resources": { "metal": 1, "hide": 1, "lumber": 1 }
+		"resources": { "metal": 1, "hide": 1, "lumber": 1 },
+		"gameType": "fh"
 	},
 	{
 		"id": 2,
@@ -25,7 +26,8 @@
 		"faq": "Winged Shoes may be used for only a single movement ability, not for multiple movement abilities of an action (ex: Action with Move, Attack, Move).",
 		"folder": "1-14",
 		"unlockScenario": 1,
-		"resources": { "metal": 1, "item": 10 }
+		"resources": { "metal": 1, "item": 10 },
+		"gameType": "fh"
 	},
 	{
 		"id": 3,
@@ -48,7 +50,8 @@
 			"flamefruit": 1,
 			"rockroot": 1,
 			"snowthistle": 1
-		}
+		},
+		"gameType": "fh"
 	},
 	{
 		"id": 4,
@@ -61,7 +64,8 @@
 		"desc": "When attacked, the attacker gains Disadvantage on the attack.",
 		"faq": "The Leather Armor must be used before the enemy draws an attack modifier card.",
 		"folder": "1-14",
-		"unlockScenario": 1
+		"unlockScenario": 1,
+		"gameType": "fh"
 	},
 	{
 		"id": 5,
@@ -73,7 +77,8 @@
 		"consumed": true,
 		"desc": "During your turn, gain INVISIBLE.",
 		"folder": "1-14",
-		"unlockScenario": 1
+		"unlockScenario": 1,
+		"gameType": "fh"
 	},
 	{
 		"id": 6,
@@ -85,7 +90,8 @@
 		"spent": true,
 		"desc": "During your attack, gain Advantage on the entire Attack action.",
 		"folder": "1-14",
-		"unlockScenario": 1
+		"unlockScenario": 1,
+		"gameType": "fh"
 	},
 	{
 		"id": 7,
@@ -96,7 +102,8 @@
 		"source": "Prosperity 1",
 		"desc": "When attacked, consider any 2x attack modifier card the enemy draws to be a +0 instead.",
 		"folder": "1-14",
-		"unlockScenario": 1
+		"unlockScenario": 1,
+		"gameType": "fh"
 	},
 	{
 		"id": 8,
@@ -108,7 +115,8 @@
 		"spent": true,
 		"desc": "When damaged by an attack, gain Shield 1 for the attack.",
 		"folder": "1-14",
-		"unlockScenario": 1
+		"unlockScenario": 1,
+		"gameType": "fh"
 	},
 	{
 		"id": 9,
@@ -120,7 +128,8 @@
 		"consumed": true,
 		"desc": "During your ranged attack, ignore all Shield values for the entire Attack action.",
 		"folder": "1-14",
-		"unlockScenario": 1
+		"unlockScenario": 1,
+		"gameType": "fh"
 	},
 	{
 		"id": 10,
@@ -132,7 +141,8 @@
 		"consumed": true,
 		"desc": "During your melee attack, add STUN to the entire Attack action.",
 		"folder": "1-14",
-		"unlockScenario": 1
+		"unlockScenario": 1,
+		"gameType": "fh"
 	},
 	{
 		"id": 11,
@@ -143,7 +153,8 @@
 		"source": "Prosperity 1",
 		"spent": true,
 		"desc": "During your melee attack, add POISON to a single attack.",
-		"folder": "1-14"
+		"folder": "1-14",
+		"gameType": "fh"
 	},
 	{
 		"id": 12,
@@ -154,7 +165,8 @@
 		"source": "Prosperity 1",
 		"consumed": true,
 		"desc": "During your turn, perform a \"Heal 3, self\" action.",
-		"folder": "1-14"
+		"folder": "1-14",
+		"gameType": "fh"
 	},
 	{
 		"id": 13,
@@ -166,7 +178,8 @@
 		"consumed": true,
 		"desc": "During your turn, Recover up to two of your discarded cards.",
 		"faq": "[Errata] The item should allow you to recover only one discarded card. This is change in an upcoming expansion but may be used for the base game.",
-		"folder": "1-14"
+		"folder": "1-14",
+		"gameType": "fh"
 	},
 	{
 		"id": 14,
@@ -177,7 +190,8 @@
 		"source": "Prosperity 1",
 		"consumed": true,
 		"desc": "During your attack, add +1 Attack to your entire Attack action.",
-		"folder": "1-14"
+		"folder": "1-14",
+		"gameType": "fh"
 	},
 	{
 		"id": 15,
@@ -188,7 +202,8 @@
 		"source": "Prosperity 2",
 		"spent": true,
 		"desc": "At the beginning of a round, after all ability cards have been revealed, increase or decrease your leading initiative value by 10.",
-		"folder": "15-21"
+		"folder": "15-21",
+		"gameType": "fh"
 	},
 	{
 		"id": 16,
@@ -198,7 +213,8 @@
 		"slot": "body",
 		"source": "Prosperity 2",
 		"desc": "You can carry two additional small items.",
-		"folder": "15-21"
+		"folder": "15-21",
+		"gameType": "fh"
 	},
 	{
 		"id": 17,
@@ -209,7 +225,8 @@
 		"source": "Prosperity 2",
 		"consumed": true,
 		"desc": "During your turn, Refresh one of your consumed small items.",
-		"folder": "15-21"
+		"folder": "15-21",
+		"gameType": "fh"
 	},
 	{
 		"id": 18,
@@ -220,7 +237,8 @@
 		"source": "Prosperity 2",
 		"consumed": true,
 		"desc": "During your single-target melee attack action, turn the attack into the following: {multi_attack.cone_0_1}",
-		"folder": "15-21"
+		"folder": "15-21",
+		"gameType": "fh"
 	},
 	{
 		"id": 19,
@@ -231,7 +249,8 @@
 		"source": "Prosperity 2",
 		"spent": true,
 		"desc": "During your ranged attack, add IMMOBILIZE to a single attack.",
-		"folder": "15-21"
+		"folder": "15-21",
+		"gameType": "fh"
 	},
 	{
 		"id": 20,
@@ -242,7 +261,8 @@
 		"source": "Prosperity 2",
 		"consumed": true,
 		"desc": "During your turn, create any element. {any}",
-		"folder": "15-21"
+		"folder": "15-21",
+		"gameType": "fh"
 	},
 	{
 		"id": 21,
@@ -253,7 +273,8 @@
 		"source": "Prosperity 2",
 		"consumed": true,
 		"desc": "During your attack, add STUN to a single attack.",
-		"folder": "15-21"
+		"folder": "15-21",
+		"gameType": "fh"
 	},
 	{
 		"id": 22,
@@ -264,7 +285,8 @@
 		"source": "Prosperity 3",
 		"minusOneCardsAdded": 1,
 		"desc": "You are immune to all forced movement caused by enemies or scenario effects.",
-		"folder": "22-28"
+		"folder": "22-28",
+		"gameType": "fh"
 	},
 	{
 		"id": 23,
@@ -277,7 +299,8 @@
 		"spent": true,
 		"desc": "On the next three sources of damage to you from attacks, gain Shield 1.",
 		"faq": "Chainmail only grants the shield for the attack, not until the end of the round.",
-		"folder": "22-28"
+		"folder": "22-28",
+		"gameType": "fh"
 	},
 	{
 		"id": 24,
@@ -288,7 +311,8 @@
 		"source": "Prosperity 3",
 		"spent": true,
 		"desc": "During your turn, peform \"Heal 1, Self\" action.",
-		"folder": "22-28"
+		"folder": "22-28",
+		"gameType": "fh"
 	},
 	{
 		"id": 25,
@@ -299,7 +323,8 @@
 		"source": "Prosperity 3",
 		"spent": true,
 		"desc": "During your melee attack, add WOUND to a single attack.",
-		"folder": "22-28"
+		"folder": "22-28",
+		"gameType": "fh"
 	},
 	{
 		"id": 26,
@@ -310,7 +335,8 @@
 		"source": "Prosperity 3",
 		"spent": true,
 		"desc": "Turn a single-target melee attack into the following: {multi_attack.line_0_1_1}",
-		"folder": "22-28"
+		"folder": "22-28",
+		"gameType": "fh"
 	},
 	{
 		"id": 27,
@@ -321,7 +347,8 @@
 		"source": "Prosperity 3",
 		"consumed": true,
 		"desc": "During your turn, perform a \"Heal 5, self\" action.",
-		"folder": "22-28"
+		"folder": "22-28",
+		"gameType": "fh"
 	},
 	{
 		"id": 28,
@@ -332,7 +359,8 @@
 		"source": "Prosperity 3",
 		"consumed": true,
 		"desc": "During your turn, Refresh all of your spent items.",
-		"folder": "22-28"
+		"folder": "22-28",
+		"gameType": "fh"
 	},
 	{
 		"id": 29,
@@ -342,7 +370,8 @@
 		"slot": "legs",
 		"source": "Prosperity 4",
 		"desc": "Whenever you use the default bottom of an ability card, perform a Move 3 action instead of a Move 2 action.",
-		"folder": "29-35"
+		"folder": "29-35",
+		"gameType": "fh"
 	},
 	{
 		"id": 30,
@@ -353,7 +382,8 @@
 		"source": "Prosperity 4",
 		"spent": true,
 		"desc": "When attacked, the attacker gains Disadvantage on the attack and you gain Shield 1 for the attack.",
-		"folder": "29-35"
+		"folder": "29-35",
+		"gameType": "fh"
 	},
 	{
 		"id": 31,
@@ -364,7 +394,8 @@
 		"source": "Prosperity 4",
 		"spent": true,
 		"desc": "During your ranged attack, add +1 Range to your entire Attack action.",
-		"folder": "29-35"
+		"folder": "29-35",
+		"gameType": "fh"
 	},
 	{
 		"id": 32,
@@ -375,7 +406,8 @@
 		"source": "Prosperity 4",
 		"spent": true,
 		"desc": "When damaged by an attack, gain Shield 2 for the attack.",
-		"folder": "29-35"
+		"folder": "29-35",
+		"gameType": "fh"
 	},
 	{
 		"id": 33,
@@ -386,7 +418,8 @@
 		"source": "Prosperity 4",
 		"consumed": true,
 		"desc": "During your single-target ranged attack action, turn the attack into the following: {multi_attack.cone_1_1}",
-		"folder": "29-35"
+		"folder": "29-35",
+		"gameType": "fh"
 	},
 	{
 		"id": 34,
@@ -398,7 +431,8 @@
 		"consumed": true,
 		"desc": "During your turn, Recover up to three of your discarded cards.",
 		"faq": "[Errata] The item should allow you to recover only two discarded cards. This is change in an upcoming expansion but may be used in the base game.",
-		"folder": "29-35"
+		"folder": "29-35",
+		"gameType": "fh"
 	},
 	{
 		"id": 35,
@@ -412,11 +446,13 @@
 			"hp": 2,
 			"move": 3,
 			"attack": 2,
-			"range": 0
+			"range": 0,
+			"gameType": "fh"
 		},
 		"desc": "Summon Jade Falcon (Flying)",
 		"faq": "The card is treated like a persistent bonus, going in the active area until the summon is killed or the card is removed (removing the summon and consuming the item). If the card is refreshed and there is an active summon from the card, the active summon disappears.",
-		"folder": "29-35"
+		"folder": "29-35",
+		"gameType": "fh"
 	},
 	{
 		"id": 36,
@@ -427,7 +463,8 @@
 		"source": "Prosperity 5",
 		"spent": true,
 		"desc": "During your movement, add +3 Move to the movement.",
-		"folder": "36-42"
+		"folder": "36-42",
+		"gameType": "fh"
 	},
 	{
 		"id": 37,
@@ -438,7 +475,8 @@
 		"source": "Prosperity 5",
 		"spent": true,
 		"desc": "During your attack, {anyX} to add +1 Attack to the entire Attack action.",
-		"folder": "36-42"
+		"folder": "36-42",
+		"gameType": "fh"
 	},
 	{
 		"id": 38,
@@ -449,7 +487,8 @@
 		"source": "Prosperity 5",
 		"minusOneCardsAdded": 2,
 		"desc": "You are immune to STUN and MUDDLE.",
-		"folder": "36-42"
+		"folder": "36-42",
+		"gameType": "fh"
 	},
 	{
 		"id": 39,
@@ -460,7 +499,8 @@
 		"source": "Prosperity 5",
 		"spent": true,
 		"desc": "During your ranged attack, add PULL 2 to the entire Attack action.",
-		"folder": "36-42"
+		"folder": "36-42",
+		"gameType": "fh"
 	},
 	{
 		"id": 40,
@@ -470,7 +510,8 @@
 		"slot": "1h",
 		"source": "Prosperity 5",
 		"desc": "Whenever you use the default top of an ability card, perform an Attack 3 action instead of an Attack 2 action.",
-		"folder": "36-42"
+		"folder": "36-42",
+		"gameType": "fh"
 	},
 	{
 		"id": 41,
@@ -481,7 +522,8 @@
 		"source": "Prosperity 5\nScenario #105 (Treasure #83)",
 		"consumed": true,
 		"desc": "During your attack, add +2 Attack to your entire Attack action.",
-		"folder": "36-42"
+		"folder": "36-42",
+		"gameType": "fh"
 	},
 	{
 		"id": 42,
@@ -492,7 +534,8 @@
 		"source": "Prosperity 5",
 		"consumed": true,
 		"desc": "At the end of your turn, play one card from your hand and immediately perform the bottom action of the card.",
-		"folder": "36-42"
+		"folder": "36-42",
+		"gameType": "fh"
 	},
 	{
 		"id": 43,
@@ -503,7 +546,8 @@
 		"source": "Prosperity 6",
 		"spent": true,
 		"desc": "At the beginning of a round, after all ability cards have been revealed, increase or decrease your leading initiative value by 20.",
-		"folder": "43-49"
+		"folder": "43-49",
+		"gameType": "fh"
 	},
 	{
 		"id": 44,
@@ -514,7 +558,8 @@
 		"source": "Prosperity 6",
 		"minusOneCardsAdded": 4,
 		"desc": "On the next four sources of damage to you from attacks, gain Shield 1.",
-		"folder": "43-49"
+		"folder": "43-49",
+		"gameType": "fh"
 	},
 	{
 		"id": 45,
@@ -526,7 +571,8 @@
 		"consumed": true,
 		"desc": "During your turn, Refresh two of your consumed small items. Gain CURSE.",
 		"faq": "The perk that ignores item effects does not prevent you from being cursed.",
-		"folder": "43-49"
+		"folder": "43-49",
+		"gameType": "fh"
 	},
 	{
 		"id": 46,
@@ -537,7 +583,8 @@
 		"source": "Prosperity 6",
 		"spent": true,
 		"desc": "When damaged by an attack, gain Shield 1 and Retaliate 2 for the attack.",
-		"folder": "43-49"
+		"folder": "43-49",
+		"gameType": "fh"
 	},
 	{
 		"id": 47,
@@ -548,7 +595,8 @@
 		"source": "Prosperity 6",
 		"consumed": true,
 		"desc": "During your single-target melee attack action, turn the attack into the following:  {multi_attack.cleave_0_1}",
-		"folder": "43-49"
+		"folder": "43-49",
+		"gameType": "fh"
 	},
 	{
 		"id": 48,
@@ -559,7 +607,8 @@
 		"source": "Prosperity 6\nReward from Scenario #104",
 		"consumed": true,
 		"desc": "During your turn, create any two elements. {any} {any}",
-		"folder": "43-49"
+		"folder": "43-49",
+		"gameType": "fh"
 	},
 	{
 		"id": 49,
@@ -570,7 +619,8 @@
 		"source": "Prosperity 6",
 		"consumed": true,
 		"desc": "During your turn, Refresh all of your spent items and Heal 3 damage.",
-		"folder": "43-49"
+		"folder": "43-49",
+		"gameType": "fh"
 	},
 	{
 		"id": 50,
@@ -581,7 +631,8 @@
 		"source": "Prosperity 7",
 		"minusOneCardsAdded": 2,
 		"desc": "If you move 1 or fewer hexes on your turn, gain Shield 1 for the round.",
-		"folder": "50-56"
+		"folder": "50-56",
+		"gameType": "fh"
 	},
 	{
 		"id": 51,
@@ -592,7 +643,8 @@
 		"source": "Prosperity 7",
 		"consumed": true,
 		"desc": "When you are damaged by an attack, suffer no damage instead.",
-		"folder": "50-56"
+		"folder": "50-56",
+		"gameType": "fh"
 	},
 	{
 		"id": 52,
@@ -602,7 +654,8 @@
 		"slot": "head",
 		"source": "Prosperity 7\nReward from Scenario #109",
 		"desc": "You are immune to POISON and WOUND.",
-		"folder": "50-56"
+		"folder": "50-56",
+		"gameType": "fh"
 	},
 	{
 		"id": 53,
@@ -613,7 +666,8 @@
 		"source": "Prosperity 7",
 		"spent": true,
 		"desc": "During your melee attack, add CURSE to a single attack.",
-		"folder": "50-56"
+		"folder": "50-56",
+		"gameType": "fh"
 	},
 	{
 		"id": 54,
@@ -624,7 +678,8 @@
 		"source": "Prosperity 7",
 		"spent": true,
 		"desc": "During your ranged attack, {anyX} to add +1 Attack to the entire Attack action.",
-		"folder": "50-56"
+		"folder": "50-56",
+		"gameType": "fh"
 	},
 	{
 		"id": 55,
@@ -635,7 +690,8 @@
 		"source": "Prosperity 7",
 		"consumed": true,
 		"desc": "During your turn, perform a \"Heal 7, self\" action.",
-		"folder": "50-56"
+		"folder": "50-56",
+		"gameType": "fh"
 	},
 	{
 		"id": 56,
@@ -646,7 +702,8 @@
 		"source": "Prosperity 7",
 		"consumed": true,
 		"desc": "At the end of your turn, play one card from your hand and immediately perform the top action of the card.",
-		"folder": "50-56"
+		"folder": "50-56",
+		"gameType": "fh"
 	},
 	{
 		"id": 57,
@@ -656,7 +713,8 @@
 		"slot": "legs",
 		"source": "Prosperity 8",
 		"desc": "Whenever you use the default bottom of an ability card perform a Move 4 action instead of a Move 2 action.",
-		"folder": "57-63"
+		"folder": "57-63",
+		"gameType": "fh"
 	},
 	{
 		"id": 58,
@@ -666,7 +724,8 @@
 		"slot": "body",
 		"source": "Prosperity 8",
 		"desc": "Gain Flying. While occupying an obstacle hex, you are considered Invisible and cannot attack",
-		"folder": "57-63"
+		"folder": "57-63",
+		"gameType": "fh"
 	},
 	{
 		"id": 59,
@@ -677,7 +736,8 @@
 		"source": "Prosperity 8\nOption from Scenario 100",
 		"spent": true,
 		"desc": "During your ranged attack, add +2 Range to your entire Attack action",
-		"folder": "57-63"
+		"folder": "57-63",
+		"gameType": "fh"
 	},
 	{
 		"id": 60,
@@ -688,7 +748,8 @@
 		"source": "Prosperity 8",
 		"consumed": true,
 		"desc": "Turn a single target ranged attack into the following: {multi_attack.cube_2_2}. All allies in the attack area suffer 3 damage.",
-		"folder": "57-63"
+		"folder": "57-63",
+		"gameType": "fh"
 	},
 	{
 		"id": 61,
@@ -699,7 +760,8 @@
 		"source": "Prosperity 8",
 		"spent": true,
 		"desc": "When damaged by an attack, gain Shield 4 for the attack.",
-		"folder": "57-63"
+		"folder": "57-63",
+		"gameType": "fh"
 	},
 	{
 		"id": 62,
@@ -710,7 +772,8 @@
 		"source": "Prosperity 8",
 		"consumed": true,
 		"desc": "During your attack, add STUN, POISON, and CURSE to a single attack.",
-		"folder": "57-63"
+		"folder": "57-63",
+		"gameType": "fh"
 	},
 	{
 		"id": 63,
@@ -721,7 +784,8 @@
 		"source": "Prosperity 8",
 		"consumed": true,
 		"desc": "During your turn, STRENGTHEN yourself and all adjacent allies.",
-		"folder": "57-63"
+		"folder": "57-63",
+		"gameType": "fh"
 	},
 	{
 		"id": 64,
@@ -732,7 +796,8 @@
 		"source": "Prosperity 9",
 		"spent": true,
 		"desc": "During your movement, add +4 Move to the movement.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 65,
@@ -745,7 +810,8 @@
 		"minusOneCardsAdded": 5,
 		"useSlots": 5,
 		"desc": "On the next five sources of damage to you from attacks, gain Shield 1.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 66,
@@ -755,7 +821,8 @@
 		"slot": "head",
 		"source": "Prosperity 9\nScenario #110 (Treasure #84)",
 		"desc": "During your melee attack, add PUSH 1.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 67,
@@ -765,7 +832,8 @@
 		"slot": "1h",
 		"source": "Prosperity 9",
 		"desc": "Whenever you use the default top of an ability card, perform an Attack 4 instead of an Attack 2 action.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 68,
@@ -775,7 +843,8 @@
 		"slot": "2h",
 		"source": "Prosperity 9\nScenario #111 (Treasure #92)\nSection 132 -> g106\n\"Strangler's Park\"",
 		"desc": "During your single target melee attack, you can attack any single enemy within 2 hexes.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 69,
@@ -786,7 +855,8 @@
 		"source": "Prosperity 9\nTreasure #56",
 		"desc": "During your turn, Refresh all of your spent items, Heal 3 damage, and Recover up to two of your discarded cards.",
 		"folder": "64-151",
-		"consumed": true
+		"consumed": true,
+		"gameType": "fh"
 	},
 	{
 		"id": 70,
@@ -797,7 +867,8 @@
 		"source": "Prosperity 9\nFC Challenge Scenario, Rift Card 12 (Treasure #89)\nSection 103 -> 84\n\"Gateway to the Firmament\"",
 		"desc": "At the end of your turn, play two cards from your hand and perform an additional turn this round based on your new leading initiative (which must be later than your previous initiative).",
 		"folder": "64-151",
-		"consumed": true
+		"consumed": true,
+		"gameType": "fh"
 	},
 	{
 		"id": 71,
@@ -807,7 +878,8 @@
 		"slot": "legs",
 		"source": "Random Item",
 		"desc": "Gain Flying",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 72,
@@ -817,7 +889,8 @@
 		"slot": "legs",
 		"source": "Random Item",
 		"desc": "If you move 6 or more hexes on your turn, gain {experience_1}.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 73,
@@ -828,7 +901,8 @@
 		"source": "Random Item",
 		"consumed": true,
 		"desc": "During your turn, perform a \"Move 4, Jump\" action",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 74,
@@ -840,7 +914,8 @@
 		"spent": true,
 		"minusOneCardsAdded": 4,
 		"desc": "On the next three sources of damage from attacks targeting you, gain Shield 1, Retaliate 1",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 75,
@@ -851,7 +926,8 @@
 		"source": "Random Item",
 		"spent": true,
 		"desc": "During your turn, {anyX} to create any element. {any}",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 76,
@@ -862,7 +938,8 @@
 		"source": "Random Item",
 		"minusOneCardsAdded": 1,
 		"desc": "While you are adjacent to three or more monsters, gain Shield 1",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 77,
@@ -872,7 +949,8 @@
 		"slot": "1h",
 		"source": "Random Item",
 		"desc": "During your melee attack, {iceX} to add +2 Attack to a single attack.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 78,
@@ -882,7 +960,8 @@
 		"slot": "1h",
 		"source": "Random Item",
 		"desc": "During your melee attack, {windX} to add +2 Attack to a single attack.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 79,
@@ -892,7 +971,8 @@
 		"slot": "1h",
 		"source": "Random Item",
 		"desc": "During your melee attack, {fireX} to add +2 Attack to a single attack.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 80,
@@ -902,7 +982,8 @@
 		"slot": "1h",
 		"source": "Random Item",
 		"desc": "During your melee attack, {earthX} to add +2 Attack to a single attack.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 81,
@@ -912,7 +993,8 @@
 		"slot": "1h",
 		"source": "Random Item",
 		"desc": "During your melee attack, {lightX} to add +2 Attack to a single attack.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 82,
@@ -922,7 +1004,8 @@
 		"slot": "1h",
 		"source": "Random Item",
 		"desc": "During your melee attack, {darkX} to add +2 Attack to a single attack.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 83,
@@ -933,7 +1016,8 @@
 		"source": "Random Item",
 		"spent": true,
 		"desc": "During your turn, create Ice. {ice}",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 84,
@@ -944,7 +1028,8 @@
 		"source": "Random Item",
 		"spent": true,
 		"desc": "During your turn, create Wind. {wind}",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 85,
@@ -955,7 +1040,8 @@
 		"source": "Random Item",
 		"spent": true,
 		"desc": "During your turn, create Fire. {fire}",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 86,
@@ -966,7 +1052,8 @@
 		"source": "Random Item",
 		"spent": true,
 		"desc": "During your turn, create Earth. {earth}",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 87,
@@ -977,7 +1064,8 @@
 		"source": "Random Item",
 		"spent": true,
 		"desc": "During your turn, create Light. {light}",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 88,
@@ -988,7 +1076,8 @@
 		"source": "Random Item",
 		"spent": true,
 		"desc": "During your turn, create Dark. {dark}",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 89,
@@ -999,7 +1088,8 @@
 		"source": "Random Item",
 		"consumed": true,
 		"desc": "During your turn, remove one negative condition on yourself. This can be used while you have STUN.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 90,
@@ -1010,7 +1100,8 @@
 		"source": "Random Item\nScenario #102 (Treasure #77)",
 		"consumed": true,
 		"desc": "During your turn, remove all negative conditions on yourself. This can be used while you have STUN.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 91,
@@ -1021,7 +1112,8 @@
 		"source": "Random Item",
 		"consumed": true,
 		"desc": "When damaged by an attack targeting you, gain Shield 4 for the attack.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 92,
@@ -1032,7 +1124,8 @@
 		"source": "Random Item",
 		"consumed": true,
 		"desc": "Before an enemy would consume an element, consume that element instead for no effect",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 93,
@@ -1043,7 +1136,8 @@
 		"source": "Random Item",
 		"consumed": true,
 		"desc": "During an ally's attack, add +1 Attack to their entire attack action",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 94,
@@ -1054,7 +1148,8 @@
 		"source": "Random Item",
 		"consumed": true,
 		"desc": "During your turn, perform a \"Heal 3, Range 5\" action",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 95,
@@ -1065,7 +1160,8 @@
 		"source": "Random Item",
 		"consumed": true,
 		"desc": "During your turn, an ally within Range 5 may Recover up to two of their discarded cards",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 96,
@@ -1076,7 +1172,8 @@
 		"source": "Scenario #66 (Treasure #36)",
 		"spent": true,
 		"desc": "During your movement, add +3 Move and Jump to a single movement",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 97,
@@ -1086,7 +1183,8 @@
 		"slot": "legs",
 		"source": "Scenario #38 (Treasure #29)",
 		"desc": "If you move 4 or more hexes on your turn, perform a \"\"Heal 1, Self\"\" action.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 98,
@@ -1096,7 +1194,8 @@
 		"slot": "legs",
 		"source": "Scenario #43 (Treasure #35)",
 		"desc": "You are unaffected by difficult and hazardous terrain.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 99,
@@ -1106,7 +1205,8 @@
 		"slot": "legs",
 		"source": "Scenario #63 (Treasure #12)",
 		"desc": "Ignore the damaging effects of hazardous terrain and perform a \"\"Heal 2, Self\"\" action on any turn in which you have entered a hazardous terrain hex.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 100,
@@ -1117,7 +1217,8 @@
 		"source": "Scenario #31 (Treasure #69)",
 		"spent": true,
 		"desc": "During your turn, perform a \"Heal 2, target any summoned ally\" action.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 101,
@@ -1127,7 +1228,8 @@
 		"slot": "body",
 		"source": "Scenario #06 (Treasure #50)",
 		"desc": "Remove two {modifier_minus_one} from your attack modifier deck.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 102,
@@ -1138,7 +1240,8 @@
 		"source": "City Event 40",
 		"spent": true,
 		"desc": "During your ranged attack, suffer 3 damage to add +1 Attack to the entire Attack action.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 103,
@@ -1148,7 +1251,8 @@
 		"slot": "body",
 		"source": "Scenario #34 (Treasure #23)",
 		"desc": "You are immune to POISON and WOUND.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 104,
@@ -1159,7 +1263,8 @@
 		"source": "Scenario #40 (Treasure #47)",
 		"consumed": true,
 		"desc": "On the next five sources of damage from attacks targeting you, gain Shield 1.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 105,
@@ -1170,7 +1275,8 @@
 		"source": "City Event 30",
 		"desc": "You are considered to have an initiative of 99 for the purpose of enemy focusing.",
 		"faq": "The item does not actually change a character's initiative so it doesn't affect their summons' initiative. It only changes how monster's treat the character during focus evaluation.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 106,
@@ -1180,7 +1286,8 @@
 		"slot": "head",
 		"source": "Road Event 05",
 		"desc": "Any time you kill an enemy during your turn, perform a \"Heal 1, Self\" action.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 107,
@@ -1191,7 +1298,8 @@
 		"source": "Scenario #03 (Treasure #65)",
 		"desc": "After moving 4 or more hexes on your turn, add +1 Attack to your next melee attack this turn.",
 		"faq": "This bonus must be used on the turn it is gained. It cannot be saved. If you perform multiple move abilities, you may use the item as long as you have moved a total of at least 4 hexes. The item can only be used once during your turn even if you move 4 hexes multiple times during your turn.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 108,
@@ -1201,7 +1309,8 @@
 		"slot": "head",
 		"source": "Scenario #25 (Treasure #58)",
 		"desc": "Whenever you gain MUDDLE, gain STRENGTHEN instead.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 109,
@@ -1212,7 +1321,8 @@
 		"source": "City Event 62",
 		"consumed": true,
 		"desc": "During your \"Loot 1\" ability, perform a \"Loot 2\" ability instead.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 110,
@@ -1222,7 +1332,8 @@
 		"slot": "head",
 		"source": "Scenario #82 (Treasure #62)",
 		"desc": "When attacked, if {earth} is Strong, Immobilize the attacker.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 111,
@@ -1232,7 +1343,8 @@
 		"slot": "head",
 		"source": "Scenario #64 (Treasure #09)",
 		"desc": "When attacked, if {ice} is Strong, perform a \"PUSH 2\" action targeting the attacker.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 112,
@@ -1243,7 +1355,8 @@
 		"source": "Reward From Scenario #65\nOption from Scenario 100",
 		"consumed": true,
 		"desc": "During your melee attack, add +2 Attack and PIERCE 2 to the entire Attack action",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 113,
@@ -1254,7 +1367,8 @@
 		"source": "Reward From Scenario #11\nReward From Scenario #12",
 		"spent": true,
 		"desc": "During your melee attack targeting a Living Corpse, Living Spirit, or Living Bones, add +5 Attack to a single attack.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 114,
@@ -1265,7 +1379,8 @@
 		"source": "Reward from Scenario #53",
 		"consumed": true,
 		"desc": "During your ranged attack, add POISON and MUDDLE to the entire Attack action",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 115,
@@ -1280,11 +1395,13 @@
 			"move": 1,
 			"attack": 3,
 			"range": 0,
-			"folder": "64-151"
+			"folder": "64-151",
+			"gameType": "fh"
 		},
 		"desc": "Summon Warrior Spirit",
 		"faq": "The card is treated like a persistent bonus, going in the active area until the summon is killed or the card is removed (removing the summon and consuming the item). If the card is refreshed and there is an active summon from the card, the active summon disappears.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 116,
@@ -1295,7 +1412,8 @@
 		"source": "Scenario #23 (Treasure #72)",
 		"consumed": true,
 		"desc": "During your single-target melee attack, the target and all enemies adjacent to the target suffer 1 damage",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 117,
@@ -1306,7 +1424,8 @@
 		"source": "City Event 53\nRoad Event 53",
 		"spent": true,
 		"desc": "During your melee attack, suffer 2 damage to add +1 Attack to the entire Attack action.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 118,
@@ -1317,7 +1436,8 @@
 		"source": "City Event 57",
 		"spent": true,
 		"desc": "During your turn, create any element. {any}",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 119,
@@ -1328,7 +1448,8 @@
 		"source": "Reward From Scenario #95",
 		"consumed": true,
 		"desc": "During your turn, CURSE all adjacent enemies.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 120,
@@ -1339,7 +1460,8 @@
 		"source": "Reward From Scenario #88",
 		"spent": true,
 		"desc": "During your turn, a summoned ally within Range 3 performs a \"Move 3\" action with you controlling the action.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 121,
@@ -1349,7 +1471,8 @@
 		"slot": "1h",
 		"source": "Reward From Scenario #85",
 		"desc": "During your turn, {darkX} to create Light. {light}",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 122,
@@ -1359,7 +1482,8 @@
 		"slot": "1h",
 		"source": "Scenario #89 (Treasure #27)",
 		"desc": "During your turn, {lightX} to create Dark. {dark}",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 123,
@@ -1374,11 +1498,13 @@
 			"move": 2,
 			"attack": 2,
 			"range": 0,
-			"folder": "64-151"
+			"folder": "64-151",
+			"gameType": "fh"
 		},
 		"desc": "Summon Skeleton",
 		"faq": "The card is treated like a persistent bonus, going in the active area until the summon is killed or the card is removed (removing the summon and consuming the item). If the card is refreshed and there is an active summon from the card, the active summon disappears.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 124,
@@ -1389,7 +1515,8 @@
 		"source": "Scenario #93 (Treasure #54)",
 		"consumed": true,
 		"desc": "During your turn, force an enemy within Range 5 to perform a \"Move 2\" action with you controlling the action.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 125,
@@ -1400,7 +1527,8 @@
 		"source": "City Event 03\nOption from Scenario 100",
 		"consumed": true,
 		"desc": "During your turn, disarm all traps within Range 2.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 126,
@@ -1411,7 +1539,8 @@
 		"source": "City Event 43\nOption from Scenario 100",
 		"consumed": true,
 		"desc": "During your turn, POISON all adjacent enemies.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 127,
@@ -1422,7 +1551,8 @@
 		"source": "City Event 61",
 		"consumed": true,
 		"desc": "During your turn, perform a \"Loot 1\" action.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 128,
@@ -1433,7 +1563,8 @@
 		"source": "Reward From Scenario #90",
 		"consumed": true,
 		"desc": "During your turn, Muddle all enemies with Range 2.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 129,
@@ -1444,7 +1575,8 @@
 		"source": "Road Event 51",
 		"consumed": true,
 		"desc": "During your turn, place a character token on an adjacent normal or elite enemy. You add +1 Attack to all your attacks targeting this enemy.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 130,
@@ -1455,7 +1587,8 @@
 		"source": "Scenario #81 (Treasure #68)",
 		"consumed": true,
 		"desc": "During your turn, {lightX} {darkX} to perform a \"Heal 25, Self\" action",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 131,
@@ -1467,7 +1600,8 @@
 		"consumed": true,
 		"desc": "When attacked by an adjacent normal enemy, force the enemy to attack one of its allies within its range instead.",
 		"faq": "This item cannot be used if there is no other enemy in range to be attacked.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 132,
@@ -1482,11 +1616,13 @@
 			"move": 2,
 			"attack": 3,
 			"range": 0,
-			"folder": "64-151"
+			"folder": "64-151",
+			"gameType": "fh"
 		},
 		"desc": "Summon Steel Construct.",
 		"faq": "The card is treated like a persistent bonus, going in the active area until the summon is killed or the card is removed (removing the summon and consuming the item). If the card is refreshed and there is an active summon from the card, the active summon disappears.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 133,
@@ -1497,7 +1633,8 @@
 		"source": "Scenario #84",
 		"consumed": true,
 		"desc": "During your turn, destroy an adjacent obstacle.",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 134,
@@ -1508,7 +1645,8 @@
 		"source": "Reward from Solo Scenario #01 — {BR}",
 		"desc": "Any time you kill an enemy during your turn, gain Shield 1 for the rest of the round.",
 		"soloItem": "BR",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 135,
@@ -1520,7 +1658,8 @@
 		"consumed": true,
 		"desc": "During your Heal action, double the value of the Heal.",
 		"soloItem": "TI",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 136,
@@ -1532,7 +1671,8 @@
 		"consumed": true,
 		"desc": "During your ranged attack, add +2 Attack and gain Advantage on the entire Attack action, but suffer 2 damage for each attack made.",
 		"soloItem": "SW",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 137,
@@ -1543,7 +1683,8 @@
 		"source": "Reward from Solo Scenario #04 — {SC}",
 		"desc": "Any time you perform a melee attack, add PIERCE 1 to the Attack.",
 		"soloItem": "SC",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 138,
@@ -1555,7 +1696,8 @@
 		"spent": true,
 		"desc": "During your action where an obstacle is created, create one additional obstacle and apply all effects of the action to it.",
 		"soloItem": "CH",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 139,
@@ -1566,7 +1708,8 @@
 		"source": "Reward from Solo Scenario #06 — {MT}",
 		"desc": "Any time you perform an {Augment} action, add +1 Attack to the entire action.",
 		"soloItem": "MT",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 140,
@@ -1577,7 +1720,8 @@
 		"source": "Reward from Solo Scenario #07 — {SK}",
 		"desc": "When damaged by an attack, you may {lightX} to gain Shield 3 for the attack.",
 		"soloItem": "SK",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 141,
@@ -1590,7 +1734,8 @@
 		"desc": "During your turn, you or any one ally may Refresh one of your spent or consumed items.",
 		"faq": "This item cannot be refreshed.",
 		"soloItem": "QM",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 142,
@@ -1602,7 +1747,8 @@
 		"consumed": true,
 		"desc": "When a summon you own is damaged by an attack, it suffers no damage instead.",
 		"soloItem": "SU",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 143,
@@ -1614,7 +1760,8 @@
 		"consumed": true,
 		"desc": "During your turn, gain INVISIBLE and create dark. {dark}",
 		"soloItem": "NS",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 144,
@@ -1626,7 +1773,8 @@
 		"spent": true,
 		"desc": "During your turn, POISON and CURSE one enemy within Range 3.",
 		"soloItem": "PH",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 145,
@@ -1637,7 +1785,8 @@
 		"source": "Reward from Solo Scenario #08 — {BE}",
 		"desc": "Any time you perform a melee attack and you have exactly 1 hit point, add +2 Attack to the Attack.",
 		"soloItem": "BE",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 146,
@@ -1648,7 +1797,8 @@
 		"source": "Reward from Solo Scenario #13 — {SS}",
 		"desc": "After performing any {song} action, immediately perform an Attack 2 or Move 2 action.",
 		"soloItem": "SS",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 147,
@@ -1659,7 +1809,8 @@
 		"source": "Reward from Solo Scenario #14 — {DS}",
 		"desc": "Any time you perform a {Doom} action, MUDDLE the target of the {Doom}.",
 		"soloItem": "DS",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 148,
@@ -1670,7 +1821,8 @@
 		"source": "Reward from Solo Scenario #15 — {SB}",
 		"desc": "Any time an ally performs a Medical Pack or Large Medical Pack action, they add +1 Heal to their Heal.",
 		"soloItem": "SB",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 149,
@@ -1682,7 +1834,8 @@
 		"spent": true,
 		"desc": "If you move 5 or more hexes on your turn, create any element. {any}",
 		"soloItem": "EL",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 150,
@@ -1694,7 +1847,8 @@
 		"spent": true,
 		"desc": "After performing a {Command} action, play one card from your hand and immediately perform the same side of the card (top or bottom) as the {Command} action.",
 		"soloItem": "BT",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 151,
@@ -1706,7 +1860,8 @@
 		"consumed": true,
 		"desc": "During your melee attack, add POISON and WOUND to the entire action.",
 		"soloItem": "XX",
-		"folder": "64-151"
+		"folder": "64-151",
+		"gameType": "fh"
 	},
 	{
 		"id": 152,
@@ -1717,7 +1872,8 @@
 		"source": "Reward from Scenario #97\nSection 125\n\"A locked chest\"",
 		"consumed": true,
 		"desc": "After performing the top action of any ability card, you may immediately peform the bottom action of the same card. This item cannot be used if both actions trigger a lost card icon {consumed}.",
-		"folder": "152-165"
+		"folder": "152-165",
+		"gameType": "fh"
 	},
 	{
 		"id": 153,
@@ -1727,7 +1883,8 @@
 		"slot": "small",
 		"source": "Reward From Scenario #99",
 		"desc": "The next three times you would gain POISON prevent the condition.",
-		"folder": "152-165"
+		"folder": "152-165",
+		"gameType": "fh"
 	},
 	{
 		"id": 154,
@@ -1737,7 +1894,8 @@
 		"slot": "small",
 		"source": "Reward from Scenario #105",
 		"desc": "The next five times you would gain POISON prevent the condition.",
-		"folder": "152-165"
+		"folder": "152-165",
+		"gameType": "fh"
 	},
 	{
 		"id": 155,
@@ -1749,7 +1907,8 @@
 		"desc": "You are immune to CURSE, even if the item is spent. On the next three sources of damage from attacks targeting you gain Shield 1.",
 		"spent": true,
 		"minusOneCardsAdded": 3,
-		"folder": "152-165"
+		"folder": "152-165",
+		"gameType": "fh"
 	},
 	{
 		"id": 156,
@@ -1759,7 +1918,8 @@
 		"slot": "2h",
 		"source": "Rift Event #5",
 		"desc": "During your melee attack, {anyX} to add +2 Attack to a single attack.",
-		"folder": "152-165"
+		"folder": "152-165",
+		"gameType": "fh"
 	},
 	{
 		"id": 157,
@@ -1770,7 +1930,8 @@
 		"source": "Scenario #107 (Treasure #78)\nSection 32\n\"Collapsed Atrium\"",
 		"desc": "During your ranged attack, add +2 Attack, CURSE, and WOUND to a single attack.",
 		"consumed": true,
-		"folder": "152-165"
+		"folder": "152-165",
+		"gameType": "fh"
 	},
 	{
 		"id": 158,
@@ -1781,7 +1942,8 @@
 		"source": "Scenario #111 (Treasure #82)",
 		"desc": "During your movement, add +2 Move to the movement and gain REGENERATE.",
 		"spent": true,
-		"folder": "152-165"
+		"folder": "152-165",
+		"gameType": "fh"
 	},
 	{
 		"id": 159,
@@ -1792,7 +1954,8 @@
 		"source": "Scenario #103 (Treasure #81)",
 		"desc": "During any one ally's movement, add +2 Move to the movement.",
 		"consumed": true,
-		"folder": "152-165"
+		"folder": "152-165",
+		"gameType": "fh"
 	},
 	{
 		"id": 160,
@@ -1803,7 +1966,8 @@
 		"source": "City Event #86",
 		"desc": "When you kill a monster during your turn, gain one money token.",
 		"spent": true,
-		"folder": "152-165"
+		"folder": "152-165",
+		"gameType": "fh"
 	},
 	{
 		"id": 161,
@@ -1814,7 +1978,8 @@
 		"source": "Reward from Scenario #108",
 		"desc": "During your single-target melee attack action, add Range 3 to the attack.",
 		"consumed": true,
-		"folder": "152-165"
+		"folder": "152-165",
+		"gameType": "fh"
 	},
 	{
 		"id": 162,
@@ -1825,7 +1990,8 @@
 		"source": "Reward from Scenario #112\nSection 62\n\"Mechanical Splendor\"",
 		"desc": "During your turn, Teleport to any unoccupied hex within 4 hexes of you.",
 		"consumed": true,
-		"folder": "152-165"
+		"folder": "152-165",
+		"gameType": "fh"
 	},
 	{
 		"id": 163,
@@ -1835,7 +2001,8 @@
 		"slot": "head",
 		"source": "Reward from Scenario #110",
 		"desc": "When you peform a long or short rest, gain STRENGTHEN.",
-		"folder": "152-165"
+		"folder": "152-165",
+		"gameType": "fh"
 	},
 	{
 		"id": 164,

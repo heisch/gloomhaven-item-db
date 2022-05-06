@@ -68,8 +68,8 @@ function shouldAddGame<E>(classesInUse: ClassesInUse[], e: E): boolean {
 }
 
 const fixIncludedGames = (old: any, gameType: GameType, spoilerObj: any) => {
-	if (!old || old.length === 0) {
-		const newGames = [];
+	const newGames = old;
+	if (!newGames || newGames.length === 0) {
 		const classesInUse = spoilerObj["classesInUse"];
 		if (classesInUse) {
 			if (shouldAddGame(classesInUse, GHClasses)) {
@@ -93,9 +93,11 @@ const fixIncludedGames = (old: any, gameType: GameType, spoilerObj: any) => {
 				newGames.push(Expansions.ForgottenCircles);
 			}
 		}
-		return newGames;
 	}
-	return old;
+	if (!newGames.includes(gameType)) {
+		newGames.push(gameType);
+	}
+	return newGames;
 };
 
 export const includeGameState = createSpoilerState<AllGames[]>(

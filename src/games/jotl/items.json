@@ -9,7 +9,8 @@
 		"spent": true,
 		"desc": "During your attack, gain Advantage on the entire Attack action.",
 		"folder": "1-13",
-		"unlockScenario": 2
+		"unlockScenario": 2,
+		"gameType": "jotl"
 	},
 	{
 		"id": 2,
@@ -20,7 +21,8 @@
 		"source": "Reward from Scenario #2",
 		"desc": "When attacked, consider any 2x attack modifier card the enemy draws to be a +0 instead.",
 		"folder": "1-13",
-		"unlockScenario": 2
+		"unlockScenario": 2,
+		"gameType": "jotl"
 	},
 	{
 		"id": 3,
@@ -32,7 +34,8 @@
 		"desc": "During your turn gain Shield 1 for the rest of the round",
 		"spent": true,
 		"folder": "1-13",
-		"unlockScenario": 2
+		"unlockScenario": 2,
+		"gameType": "jotl"
 	},
 	{
 		"id": 4,
@@ -44,7 +47,8 @@
 		"spent": true,
 		"desc": "When attacked, the attacker gains Disadvantage on the attack and you gain Shield 1 for the attack.",
 		"folder": "1-13",
-		"unlockScenario": 2
+		"unlockScenario": 2,
+		"gameType": "jotl"
 	},
 	{
 		"id": 5,
@@ -56,7 +60,8 @@
 		"spent": true,
 		"desc": "During your movement add +1 Move to a single movement.",
 		"folder": "1-13",
-		"unlockScenario": 2
+		"unlockScenario": 2,
+		"gameType": "jotl"
 	},
 	{
 		"id": 6,
@@ -69,7 +74,8 @@
 		"desc": "During your movement, add Jump to the entire Move Action.",
 		"faq": "Winged Shoes may be used for only a single movement ability, not for multiple movement abilities of an action (ex: Action with Move, Attack, Move).",
 		"folder": "1-13",
-		"unlockScenario": 2
+		"unlockScenario": 2,
+		"gameType": "jotl"
 	},
 	{
 		"id": 7,
@@ -81,7 +87,8 @@
 		"spent": true,
 		"desc": "When damaged by an attack, gain Shield 1 for the attack.",
 		"folder": "1-13",
-		"unlockScenario": 2
+		"unlockScenario": 2,
+		"gameType": "jotl"
 	},
 	{
 		"id": 8,
@@ -93,7 +100,8 @@
 		"desc": "During your ranged attack, add STUN to a single attack",
 		"consumed": true,
 		"folder": "1-13",
-		"unlockScenario": 2
+		"unlockScenario": 2,
+		"gameType": "jotl"
 	},
 	{
 		"id": 9,
@@ -105,7 +113,8 @@
 		"spent": true,
 		"desc": "During your melee attack, add POISON to a single attack.",
 		"folder": "1-13",
-		"unlockScenario": 2
+		"unlockScenario": 2,
+		"gameType": "jotl"
 	},
 	{
 		"id": 10,
@@ -117,7 +126,8 @@
 		"desc": "During your single-target melee Attack ability, attack any one enemy wihin 2 hexes",
 		"spent": true,
 		"folder": "1-13",
-		"unlockScenario": 2
+		"unlockScenario": 2,
+		"gameType": "jotl"
 	},
 	{
 		"id": 11,
@@ -129,7 +139,8 @@
 		"consumed": true,
 		"desc": "During your turn, perform a \"Heal 3, Self\" action.",
 		"folder": "1-13",
-		"unlockScenario": 2
+		"unlockScenario": 2,
+		"gameType": "jotl"
 	},
 	{
 		"id": 12,
@@ -141,7 +152,8 @@
 		"consumed": true,
 		"desc": "During your turn, return one of your discarded cards to your hand.",
 		"folder": "1-13",
-		"unlockScenario": 2
+		"unlockScenario": 2,
+		"gameType": "jotl"
 	},
 	{
 		"id": 13,
@@ -153,7 +165,8 @@
 		"consumed": true,
 		"desc": "During your attack, add +1 Attack to your entire Attack action.",
 		"folder": "1-13",
-		"unlockScenario": 2
+		"unlockScenario": 2,
+		"gameType": "jotl"
 	},
 	{
 		"id": 14,
@@ -164,7 +177,8 @@
 		"source": "Reward from Scenario #4\n Scenario #4 (Treasure #16)",
 		"consumed": true,
 		"desc": "During your turn, infuse any one element. {any}",
-		"folder": "14"
+		"folder": "14",
+		"gameType": "jotl"
 	},
 	{
 		"id": 15,
@@ -176,7 +190,8 @@
 		"spent": true,
 		"desc": "During your turn, \"Heal 1, Self\" action.",
 		"folder": "15-20",
-		"unlockScenario": 9
+		"unlockScenario": 9,
+		"gameType": "jotl"
 	},
 	{
 		"id": 16,
@@ -188,7 +203,8 @@
 		"spent": true,
 		"desc": "During your attack, {anyX} to add +1 Attack to the entire Attack action.",
 		"folder": "15-20",
-		"unlockScenario": 9
+		"unlockScenario": 9,
+		"gameType": "jotl"
 	},
 	{
 		"id": 17,
@@ -199,7 +215,8 @@
 		"source": "Reward from Scenario #9",
 		"desc": "Whenever you use the default bottom of an ability card, perform a \"Move 3\" action instead of a \"Move 2\" action.",
 		"folder": "15-20",
-		"unlockScenario": 9
+		"unlockScenario": 9,
+		"gameType": "jotl"
 	},
 	{
 		"id": 18,
@@ -211,7 +228,8 @@
 		"consumed": true,
 		"desc": "During your single-target melee attack action, turn the attack into the following: {multi_attack.cone_0_1}",
 		"folder": "15-20",
-		"unlockScenario": 9
+		"unlockScenario": 9,
+		"gameType": "jotl"
 	},
 	{
 		"id": 19,
@@ -223,7 +241,8 @@
 		"spent": true,
 		"desc": "During your ranged attack, add CURSE to a single attack.",
 		"folder": "15-20",
-		"unlockScenario": 9
+		"unlockScenario": 9,
+		"gameType": "jotl"
 	},
 	{
 		"id": 20,
@@ -235,7 +254,8 @@
 		"consumed": true,
 		"desc": "During your attack, add STUN to a single attack.",
 		"folder": "15-20",
-		"unlockScenario": 9
+		"unlockScenario": 9,
+		"gameType": "jotl"
 	},
 	{
 		"id": 21,
@@ -247,7 +267,8 @@
 		"spent": true,
 		"desc": "During your ranged attack, add +1 Range to your entire Attack action.",
 		"folder": "21-26",
-		"unlockScenario": 15
+		"unlockScenario": 15,
+		"gameType": "jotl"
 	},
 	{
 		"id": 22,
@@ -259,7 +280,8 @@
 		"spent": true,
 		"desc": "When damaged by an attack, gain Shield 2 for the attack and the attacker suffers 2 damage.",
 		"folder": "21-26",
-		"unlockScenario": 15
+		"unlockScenario": 15,
+		"gameType": "jotl"
 	},
 	{
 		"id": 23,
@@ -271,7 +293,8 @@
 		"spent": true,
 		"desc": "During your movement, add +2 Move to a single movement.",
 		"folder": "21-26",
-		"unlockScenario": 15
+		"unlockScenario": 15,
+		"gameType": "jotl"
 	},
 	{
 		"id": 24,
@@ -283,7 +306,8 @@
 		"consumed": true,
 		"desc": "During your single-target ranged attack action, turn the attack into the following: {multi_attack.cone_1_1}",
 		"folder": "21-26",
-		"unlockScenario": 15
+		"unlockScenario": 15,
+		"gameType": "jotl"
 	},
 	{
 		"id": 25,
@@ -294,7 +318,8 @@
 		"source": "Reward from Scenario #15",
 		"spent": true,
 		"desc": "During your ranged attack, add PULL 2 to a single attack.",
-		"folder": "21-26"
+		"folder": "21-26",
+		"gameType": "jotl"
 	},
 	{
 		"id": 26,
@@ -306,7 +331,8 @@
 		"consumed": true,
 		"desc": "During your turn, perform a \"BLESS, Range 5\" action.",
 		"folder": "21-26",
-		"unlockScenario": 15
+		"unlockScenario": 15,
+		"gameType": "jotl"
 	},
 	{
 		"id": 27,
@@ -317,7 +343,8 @@
 		"source": "Scenario #3 (Treasure #10)",
 		"consumed": true,
 		"desc": "During your turn, force one enemy within Range 3 to peform a \"Move 2\" action with you controlling the action.",
-		"folder": "27-36"
+		"folder": "27-36",
+		"gameType": "jotl"
 	},
 	{
 		"id": 28,
@@ -328,7 +355,8 @@
 		"source": "Reward from Scenario #8\nReward from Scenario #12",
 		"desc": "You are considered to have an initiative of 99 for the purpose of enemy focusing.",
 		"faq": "The item does not actually change a character's initiative so it doesn't affect their summons' initiative. It only changes how monster's treat the character during focus evaluation.",
-		"folder": "27-36"
+		"folder": "27-36",
+		"gameType": "jotl"
 	},
 	{
 		"id": 29,
@@ -339,7 +367,8 @@
 		"source": "Reward from Scenario #16",
 		"spent": true,
 		"desc": "When damaged by an attack, gain Shield 2 for the attack.",
-		"folder": "27-36"
+		"folder": "27-36",
+		"gameType": "jotl"
 	},
 	{
 		"id": 30,
@@ -350,7 +379,8 @@
 		"source": "Scenario #21 (Treasure #11)",
 		"consumed": true,
 		"desc": "At the end of your turn, play one card from your hand and immediately perform the bottom action of that card.",
-		"folder": "27-36"
+		"folder": "27-36",
+		"gameType": "jotl"
 	},
 	{
 		"id": 31,
@@ -361,7 +391,8 @@
 		"source": "Reward from Scenario #19\nScenario #18 (Treasure #2)",
 		"consumed": true,
 		"desc": "During your turn, gain STRENGTHEN.",
-		"folder": "27-36"
+		"folder": "27-36",
+		"gameType": "jotl"
 	},
 	{
 		"id": 32,
@@ -372,7 +403,8 @@
 		"source": "Misplaced Good #F",
 		"consumed": true,
 		"desc": "During your turn, perform a \"Heal 3, Range 5\" action.",
-		"folder": "27-36"
+		"folder": "27-36",
+		"gameType": "jotl"
 	},
 	{
 		"id": 33,
@@ -383,7 +415,8 @@
 		"source": "Reward from Scenario #22",
 		"consumed": true,
 		"desc": "When damaged by an attack, gain Shield 4 for the attack.",
-		"folder": "27-36"
+		"folder": "27-36",
+		"gameType": "jotl"
 	},
 	{
 		"id": 34,
@@ -394,7 +427,8 @@
 		"source": "Reward from Scenario #34",
 		"consumed": true,
 		"desc": "During your attack, add WOUND to the entire Attack Action.",
-		"folder": "27-36"
+		"folder": "27-36",
+		"gameType": "jotl"
 	},
 	{
 		"id": 35,
@@ -405,7 +439,8 @@
 		"source": "Reward from Scenario #24",
 		"spent": true,
 		"desc": "During your turn, one adjacent ally may perform and \"Attack 2\" Action.",
-		"folder": "27-36"
+		"folder": "27-36",
+		"gameType": "jotl"
 	},
 	{
 		"id": 36,

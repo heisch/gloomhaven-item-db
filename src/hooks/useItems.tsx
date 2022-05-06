@@ -71,11 +71,7 @@ const useItems = (): Array<GloomhavenItem> => {
 		unlockScenario,
 		gameType,
 	}: GloomhavenItem) => {
-		if (
-			gameType &&
-			gameType === GameType.Gloomhaven &&
-			!includeGames.includes(GameType.Gloomhaven)
-		) {
+		if (!includeGames.includes(gameType)) {
 			return false;
 		}
 

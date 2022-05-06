@@ -23,7 +23,6 @@ ghItems = ghItems.map((item: GloomhavenItem, index: number) => ({
 	...item,
 	displayId: item.id,
 	unlockScenario: getUnlockScenario(item.id),
-	gameType: GameType.Gloomhaven,
 	id: ghItemOffset + index + 1,
 	unlockProsperity: Number.MAX_VALUE,
 }));
