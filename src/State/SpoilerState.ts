@@ -68,7 +68,7 @@ function shouldAddGame<E>(classesInUse: ClassesInUse[], e: E): boolean {
 }
 
 const fixIncludedGames = (old: any, gameType: GameType, spoilerObj: any) => {
-	const newGames = old;
+	const newGames = Object.assign([], old);
 	if (!newGames || newGames.length === 0) {
 		const classesInUse = spoilerObj["classesInUse"];
 		if (classesInUse) {

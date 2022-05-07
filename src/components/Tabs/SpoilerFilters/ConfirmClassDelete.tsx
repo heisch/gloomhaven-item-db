@@ -2,44 +2,13 @@ import React from "react";
 import { Button, Modal, Form } from "semantic-ui-react";
 import ClassIcon from "../MainView/ClassIcon";
 import { useRecoilState, useRecoilValue } from "recoil";
-import {
-	classesInUseState,
-	classToDeleteState,
-	gameDataState,
-	itemsOwnedByState,
-	selectedClassState,
-} from "../../../State";
-import { ClassesInUse, ItemsOwnedBy } from "../../../State/Types";
-
-export const removeItemsFromOwner = (
-	oldItems: ItemsOwnedBy,
-	itemsId: number[] | number,
-	owner: ClassesInUse
-) => {
-	const newItemsOwnedBy: ItemsOwnedBy = Object.assign({}, oldItems);
-	const items = !Array.isArray(itemsId) ? [itemsId] : itemsId;
-	items.forEach((itemId) => {
-		const owners = newItemsOwnedBy[itemId];
-		const copyOwners = Object.assign([], owners);
-		if (copyOwners.includes(owner)) {
-			copyOwners.splice(copyOwners.indexOf(owner), 1);
-		}
-		if (copyOwners.length) {
-			newItemsOwnedBy[itemId] = copyOwners;
-		} else {
-			delete newItemsOwnedBy[itemId];
-		}
-	});
-	return newItemsOwnedBy;
-};
+import { classToDeleteState, gameDataState } from "../../../State";
+import { useRemovePlayerUtils } from "../../../hooks/useRemovePlayer";
 
 const ConfirmClassDelete = () => {
-	const [selectedClass, setSelectedClass] =
-		useRecoilState(selectedClassState);
+	const { removeClasses, itemsOwnedByClass } = useRemovePlayerUtils();
 	const [classToDelete, setClassToDelete] =
 		useRecoilState(classToDeleteState);
-	const [classesInUse, setClassesInUseBy] = useRecoilState(classesInUseState);
-	const [itemsOwnedBy, setItemsOwnedBy] = useRecoilState(itemsOwnedByState);
 
 	const { items } = useRecoilValue(gameDataState);
 
@@ -47,31 +16,7 @@ const ConfirmClassDelete = () => {
 		setClassToDelete(undefined);
 	};
 
-	const itemsOwnedByClass = () => {
-		if (!classToDelete) {
-			return [];
-		}
-		const itemIds: number[] = [];
-		Object.entries(itemsOwnedBy).forEach(([itemId, owners]) => {
-			if (owners && owners.includes(classToDelete)) {
-				itemIds.push(parseInt(itemId));
-			}
-		});
-		return itemIds;
-	};
-
-	const itemsOwned = itemsOwnedByClass();
-
-	const removeItems = () => {
-		if (classToDelete) {
-			const newItemsOwnedBy = removeItemsFromOwner(
-				itemsOwnedBy,
-				itemsOwned,
-				classToDelete
-			);
-			setItemsOwnedBy(newItemsOwnedBy);
-		}
-	};
+	const itemsOwned = itemsOwnedByClass(classToDelete);
 	const goldAmount = () => {
 		let totalGold = 0;
 		itemsOwned.forEach((itemId) => {
@@ -83,19 +28,7 @@ const ConfirmClassDelete = () => {
 
 	const onApply = () => {
 		if (classToDelete) {
-			removeItems();
-			const newClassesInUse = Object.assign([], classesInUse);
-			const index = newClassesInUse.findIndex((c) => c === classToDelete);
-			if (index != -1) {
-				newClassesInUse.splice(index, 1);
-			}
-
-			let newSelectedClass = selectedClass;
-			if (newSelectedClass === classToDelete) {
-				newSelectedClass = undefined;
-			}
-			setClassesInUseBy(newClassesInUse);
-			setSelectedClass(newSelectedClass);
+			removeClasses(classToDelete);
 			setClassToDelete(undefined);
 		}
 		onClose();

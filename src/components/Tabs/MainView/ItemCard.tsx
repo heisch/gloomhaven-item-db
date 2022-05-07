@@ -3,8 +3,6 @@ import { GloomhavenItem } from "../../../State/Types";
 import { Label } from "semantic-ui-react";
 import ItemManagement from "./ItemManagement";
 import { getItemPath } from "../../../games/GameData";
-import { useRecoilValue } from "recoil";
-import { gameDataState } from "../../../State";
 
 type Props = {
 	item: GloomhavenItem;
@@ -16,14 +14,13 @@ const ItemId = ({ id }: { id: number }) => {
 
 const ItemCard = (props: Props) => {
 	const { item } = props;
-	const { gameType } = useRecoilValue(gameDataState);
 
 	const [draw, setDraw] = useState(false);
 
 	return (
 		<div className={"item-card-wrapper"}>
 			<img
-				src={getItemPath(item, gameType)}
+				src={getItemPath(item)}
 				alt={item.name}
 				onLoad={() => setDraw(true)}
 				className={"item-card"}

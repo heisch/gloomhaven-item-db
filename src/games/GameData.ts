@@ -1,6 +1,6 @@
 import { Helpers } from "../helpers";
 import { GloomhavenItem, GloomhavenItemSlot } from "../State/Types";
-import { GameType } from "./GameType";
+import { AllGames, Expansions, GameType } from "./GameType";
 
 export type GameData = {
 	gameType: GameType;
@@ -36,12 +36,13 @@ export const getInitialItems = (gameType: GameType) => {
 	});
 	return { items, filterSlots };
 };
-export const getItemPath = (item: GloomhavenItem, gameType: GameType) => {
+export const getItemPath = (item: GloomhavenItem) => {
 	const { folder, name, gameType: itemGametype } = item;
-	let gameFolder = gameType;
-	if (itemGametype) {
-		gameFolder = itemGametype;
-	} else if (gameType === GameType.Frosthaven) {
+	let gameFolder = itemGametype;
+	if (
+		itemGametype === GameType.Frosthaven ||
+		itemGametype === Expansions.ForgottenCircles
+	) {
 		gameFolder = GameType.Gloomhaven;
 	}
 	const filename = name.toLowerCase().replace(/\s/g, "-").replace(/'/, "");

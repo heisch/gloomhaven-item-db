@@ -1,4 +1,5 @@
 import { GameType } from "../games";
+import { AllGames } from "../games/GameType";
 
 export type ItemsOwnedBy = Record<string, ClassesInUse[]>;
 // export type ItemsOwnedBy = Array<ClassesInUse[]>;
@@ -116,7 +117,7 @@ export interface Summon {
 export interface GloomhavenItem {
 	id: number;
 	displayId: number;
-	gameType: GameType;
+	gameType: AllGames;
 	name: string;
 	count: number;
 	cost: number;

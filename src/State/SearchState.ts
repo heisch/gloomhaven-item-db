@@ -1,3 +1,4 @@
+import { AllGames } from "../games/GameType";
 import { createState } from "./CommonState";
 import {
 	ClassesInUse,
@@ -25,4 +26,8 @@ export const sortDirectionState = createState<SortDirection>(
 export const sortPropertyState = createState<SortProperty>(
 	"sortProperty",
 	SortProperty.Id
+);
+export const removingGameState = createState<AllGames | undefined>(
+	"removingGame",
+	undefined
 );

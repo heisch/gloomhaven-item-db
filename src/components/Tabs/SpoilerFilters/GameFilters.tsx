@@ -12,7 +12,7 @@ export type AllFilterData = {
 	title: String;
 };
 
-const allFiltersData = [
+export const allFiltersData = [
 	{
 		allGameType: GameType.Gloomhaven,
 		gameToFilterOn: GameType.Gloomhaven,
@@ -95,7 +95,6 @@ const GameHelp = () => {
 
 export const GameFilters = () => {
 	const frosthavenEnabled = isFlagEnabled("frosthaven");
-	const gameType = useRecoilValue(gameTypeState);
 
 	return (
 		<Form.Group inline>

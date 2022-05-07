@@ -7,7 +7,6 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import {
 	classesInUseState,
 	discountState,
-	gameDataState,
 	itemsOwnedByState,
 	selectedItemState,
 } from "../../../State";
@@ -17,7 +16,6 @@ const PurchaseItem = () => {
 	const [itemsOwnedBy, setItemsOwnedBy] = useRecoilState(itemsOwnedByState);
 	const [selectedItem, setSelectedItem] = useRecoilState(selectedItemState);
 	const [owners, setOwners] = useState<ClassesInUse[]>([]);
-	const { gameType } = useRecoilValue(gameDataState);
 	const discount = useRecoilValue(discountState);
 
 	useEffect(() => {
@@ -104,7 +102,7 @@ const PurchaseItem = () => {
 						/>
 					</Form>
 					<img
-						src={getItemPath(selectedItem, gameType)}
+						src={getItemPath(selectedItem)}
 						className={"purchase-card"}
 					/>
 				</div>

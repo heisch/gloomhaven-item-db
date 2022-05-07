@@ -1,6 +1,7 @@
 import React from "react";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { Button } from "semantic-ui-react";
+import { useRemovePlayerUtils } from "../../../../hooks/useRemovePlayer";
 import {
 	classesInUseState,
 	itemManagementTypeState,
@@ -8,12 +9,7 @@ import {
 	lockSpoilerPanelState,
 	selectedItemState,
 } from "../../../../State";
-import {
-	GloomhavenItem,
-	ItemManagementType,
-	ItemsOwnedBy,
-} from "../../../../State/Types";
-import { removeItemsFromOwner } from "../../SpoilerFilters/ConfirmClassDelete";
+import { GloomhavenItem, ItemManagementType } from "../../../../State/Types";
 import ClassIcon from "../ClassIcon";
 
 type Props = {
@@ -21,9 +17,10 @@ type Props = {
 };
 
 const PartyItemManagement = (props: Props) => {
+	const { removeItemsFromOwner } = useRemovePlayerUtils();
 	const setSelectedItem = useSetRecoilState(selectedItemState);
 	const classesInUse = useRecoilValue(classesInUseState);
-	const [itemsOwnedBy, setItemsOwnedBy] = useRecoilState(itemsOwnedByState);
+	const itemsOwnedBy = useRecoilValue(itemsOwnedByState);
 	const itemManagementType = useRecoilValue(itemManagementTypeState);
 	const { item } = props;
 	const lockSpoilerPanel = useRecoilValue(lockSpoilerPanelState);
@@ -54,12 +51,7 @@ const PartyItemManagement = (props: Props) => {
 							color="black"
 							icon="delete"
 							onClick={() => {
-								const newItemsOwnedBy = removeItemsFromOwner(
-									itemsOwnedBy,
-									item.id,
-									owner
-								);
-								setItemsOwnedBy(newItemsOwnedBy);
+								removeItemsFromOwner(item.id, owner);
 							}}
 							content={<ClassIcon name={owner} />}
 						/>

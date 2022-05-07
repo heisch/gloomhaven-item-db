@@ -18,6 +18,7 @@ import {
 import FHSpoilerFilter from "./FHSpoilerFilter";
 import { GameFilters } from "./GameFilters";
 import { AllGames } from "../../../games/GameType";
+import { ConfirmGameRemoval } from "./ConfirmGameRemoval";
 
 const filters = {
 	[GameType.Gloomhaven]: <GHSpoilerFilter />,
@@ -63,6 +64,7 @@ const SpoilerFilters = () => {
 			)}
 			{filters[gameType]}
 			<PartySpoiler />
+			<ConfirmGameRemoval />
 			<ConfirmClassDelete />
 			<ConfirmEnvelopeX />
 		</Form>
