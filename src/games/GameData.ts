@@ -36,15 +36,52 @@ export const getInitialItems = (gameType: GameType) => {
 	});
 	return { items, filterSlots };
 };
-export const getItemPath = (item: GloomhavenItem) => {
-	const { folder, name, gameType: itemGametype } = item;
-	let gameFolder = itemGametype;
-	if (
-		itemGametype === GameType.Frosthaven ||
-		itemGametype === Expansions.ForgottenCircles
-	) {
-		gameFolder = GameType.Gloomhaven;
-	}
+
+type FolderData = {
+	folderName: string;
+	prefix: string;
+	leadingZeros: number;
+};
+
+const gameFolders: Record<AllGames, FolderData> = {
+	[GameType.Gloomhaven]: {
+		folderName: "gloomhaven",
+		prefix: "gh",
+		leadingZeros: 3,
+	},
+	[GameType.JawsOfTheLion]: {
+		folderName: "jaws-of-the-lion",
+		prefix: "jl",
+		leadingZeros: 2,
+	},
+	[GameType.Frosthaven]: {
+		folderName: "gloomhaven",
+		prefix: "gh",
+		leadingZeros: 3,
+	},
+	[Expansions.ForgottenCircles]: {
+		folderName: "forgotten-circles",
+		prefix: "fc",
+		leadingZeros: 3,
+	},
+};
+
+export const getItemFilename = (item: GloomhavenItem) => {
+	const { name, gameType, id } = item;
+	const { leadingZeros, prefix } = gameFolders[gameType];
 	const filename = name.toLowerCase().replace(/\s/g, "-").replace(/'/, "");
-	return require(`../../vendor/${gameFolder}/images/items/${folder}/${filename}.png`);
+	let itemNumber = `${(id + "").padStart(leadingZeros, "0")}`;
+	if (gameType === GameType.Gloomhaven) {
+		if (id >= 71 && id <= 95) {
+			itemNumber = itemNumber + "b";
+		}
+	}
+	return `${prefix}-${itemNumber}-${filename}`;
+};
+
+export const getItemPath = (item: GloomhavenItem) => {
+	const { folder, gameType } = item;
+	const { folderName } = gameFolders[gameType];
+	const fullName = getItemFilename(item);
+	return require(`../../worldhaven/images/items/${folderName}/${folder}/${fullName}.png`);
 };
