@@ -14,10 +14,10 @@ type Props = {
 };
 
 const formatId = (id: number) => {
-	return `#${(id + "").padStart(3, "0")}`;
+	return `#${id.toString().padStart(3, "0")}`;
 };
 
-const getItemIdString = (item: GloomhavenItem) => {
+export const getItemIdString = (item: GloomhavenItem) => {
 	const { displayId, id, gameType } = item;
 	return `${gameType ? gameType.toUpperCase() : ""} ${formatId(
 		displayId || id

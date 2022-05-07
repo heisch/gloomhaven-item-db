@@ -137,6 +137,8 @@ export interface GloomhavenItem {
 	unlockScenario: number;
 	unlockProsperity: number;
 	resources: Record<string, string>;
+	imagePrefix?: string;
+	imageSuffix?: string;
 }
 export const getGHClassList = (envelopeX: boolean, fc: boolean = false) => {
 	let ghList: ClassesInUse[] = Object.values(GHClasses);

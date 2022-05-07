@@ -879,7 +879,8 @@
 		"source": "Random Item",
 		"desc": "Gain Flying",
 		"folder": "64-151",
-		"gameType": "fh"
+		"gameType": "fh",
+		"imageSuffix": "b"
 	},
 	{
 		"id": 72,
@@ -890,7 +891,8 @@
 		"source": "Random Item",
 		"desc": "If you move 6 or more hexes on your turn, gain {experience_1}.",
 		"folder": "64-151",
-		"gameType": "fh"
+		"gameType": "fh",
+		"imageSuffix": "b"
 	},
 	{
 		"id": 73,
@@ -902,7 +904,8 @@
 		"consumed": true,
 		"desc": "During your turn, perform a \"Move 4, Jump\" action",
 		"folder": "64-151",
-		"gameType": "fh"
+		"gameType": "fh",
+		"imageSuffix": "b"
 	},
 	{
 		"id": 74,
@@ -915,7 +918,8 @@
 		"minusOneCardsAdded": 4,
 		"desc": "On the next three sources of damage from attacks targeting you, gain Shield 1, Retaliate 1",
 		"folder": "64-151",
-		"gameType": "fh"
+		"gameType": "fh",
+		"imageSuffix": "b"
 	},
 	{
 		"id": 75,
@@ -927,7 +931,8 @@
 		"spent": true,
 		"desc": "During your turn, {anyX} to create any element. {any}",
 		"folder": "64-151",
-		"gameType": "fh"
+		"gameType": "fh",
+		"imageSuffix": "b"
 	},
 	{
 		"id": 76,
@@ -939,7 +944,8 @@
 		"minusOneCardsAdded": 1,
 		"desc": "While you are adjacent to three or more monsters, gain Shield 1",
 		"folder": "64-151",
-		"gameType": "fh"
+		"gameType": "fh",
+		"imageSuffix": "b"
 	},
 	{
 		"id": 77,
@@ -950,7 +956,8 @@
 		"source": "Random Item",
 		"desc": "During your melee attack, {iceX} to add +2 Attack to a single attack.",
 		"folder": "64-151",
-		"gameType": "fh"
+		"gameType": "fh",
+		"imageSuffix": "b"
 	},
 	{
 		"id": 78,
@@ -961,7 +968,8 @@
 		"source": "Random Item",
 		"desc": "During your melee attack, {windX} to add +2 Attack to a single attack.",
 		"folder": "64-151",
-		"gameType": "fh"
+		"gameType": "fh",
+		"imageSuffix": "b"
 	},
 	{
 		"id": 79,
@@ -972,7 +980,8 @@
 		"source": "Random Item",
 		"desc": "During your melee attack, {fireX} to add +2 Attack to a single attack.",
 		"folder": "64-151",
-		"gameType": "fh"
+		"gameType": "fh",
+		"imageSuffix": "b"
 	},
 	{
 		"id": 80,
@@ -983,7 +992,8 @@
 		"source": "Random Item",
 		"desc": "During your melee attack, {earthX} to add +2 Attack to a single attack.",
 		"folder": "64-151",
-		"gameType": "fh"
+		"gameType": "fh",
+		"imageSuffix": "b"
 	},
 	{
 		"id": 81,
@@ -994,7 +1004,8 @@
 		"source": "Random Item",
 		"desc": "During your melee attack, {lightX} to add +2 Attack to a single attack.",
 		"folder": "64-151",
-		"gameType": "fh"
+		"gameType": "fh",
+		"imageSuffix": "b"
 	},
 	{
 		"id": 82,
@@ -1005,7 +1016,8 @@
 		"source": "Random Item",
 		"desc": "During your melee attack, {darkX} to add +2 Attack to a single attack.",
 		"folder": "64-151",
-		"gameType": "fh"
+		"gameType": "fh",
+		"imageSuffix": "b"
 	},
 	{
 		"id": 83,
@@ -1017,7 +1029,8 @@
 		"spent": true,
 		"desc": "During your turn, create Ice. {ice}",
 		"folder": "64-151",
-		"gameType": "fh"
+		"gameType": "fh",
+		"imageSuffix": "b"
 	},
 	{
 		"id": 84,
@@ -1029,7 +1042,8 @@
 		"spent": true,
 		"desc": "During your turn, create Wind. {wind}",
 		"folder": "64-151",
-		"gameType": "fh"
+		"gameType": "fh",
+		"imageSuffix": "b"
 	},
 	{
 		"id": 85,
@@ -1041,7 +1055,8 @@
 		"spent": true,
 		"desc": "During your turn, create Fire. {fire}",
 		"folder": "64-151",
-		"gameType": "fh"
+		"gameType": "fh",
+		"imageSuffix": "b"
 	},
 	{
 		"id": 86,
@@ -1053,7 +1068,8 @@
 		"spent": true,
 		"desc": "During your turn, create Earth. {earth}",
 		"folder": "64-151",
-		"gameType": "fh"
+		"gameType": "fh",
+		"imageSuffix": "b"
 	},
 	{
 		"id": 87,
@@ -1065,7 +1081,8 @@
 		"spent": true,
 		"desc": "During your turn, create Light. {light}",
 		"folder": "64-151",
-		"gameType": "fh"
+		"gameType": "fh",
+		"imageSuffix": "b"
 	},
 	{
 		"id": 88,
@@ -1077,7 +1094,8 @@
 		"spent": true,
 		"desc": "During your turn, create Dark. {dark}",
 		"folder": "64-151",
-		"gameType": "fh"
+		"gameType": "fh",
+		"imageSuffix": "b"
 	},
 	{
 		"id": 89,
@@ -1089,7 +1107,8 @@
 		"consumed": true,
 		"desc": "During your turn, remove one negative condition on yourself. This can be used while you have STUN.",
 		"folder": "64-151",
-		"gameType": "fh"
+		"gameType": "fh",
+		"imageSuffix": "b"
 	},
 	{
 		"id": 90,
@@ -1101,7 +1120,8 @@
 		"consumed": true,
 		"desc": "During your turn, remove all negative conditions on yourself. This can be used while you have STUN.",
 		"folder": "64-151",
-		"gameType": "fh"
+		"gameType": "fh",
+		"imageSuffix": "b"
 	},
 	{
 		"id": 91,
@@ -1113,7 +1133,8 @@
 		"consumed": true,
 		"desc": "When damaged by an attack targeting you, gain Shield 4 for the attack.",
 		"folder": "64-151",
-		"gameType": "fh"
+		"gameType": "fh",
+		"imageSuffix": "b"
 	},
 	{
 		"id": 92,
@@ -1125,7 +1146,8 @@
 		"consumed": true,
 		"desc": "Before an enemy would consume an element, consume that element instead for no effect",
 		"folder": "64-151",
-		"gameType": "fh"
+		"gameType": "fh",
+		"imageSuffix": "b"
 	},
 	{
 		"id": 93,
@@ -1137,7 +1159,8 @@
 		"consumed": true,
 		"desc": "During an ally's attack, add +1 Attack to their entire attack action",
 		"folder": "64-151",
-		"gameType": "fh"
+		"gameType": "fh",
+		"imageSuffix": "b"
 	},
 	{
 		"id": 94,
@@ -1149,7 +1172,8 @@
 		"consumed": true,
 		"desc": "During your turn, perform a \"Heal 3, Range 5\" action",
 		"folder": "64-151",
-		"gameType": "fh"
+		"gameType": "fh",
+		"imageSuffix": "b"
 	},
 	{
 		"id": 95,
@@ -1161,7 +1185,8 @@
 		"consumed": true,
 		"desc": "During your turn, an ally within Range 5 may Recover up to two of their discarded cards",
 		"folder": "64-151",
-		"gameType": "fh"
+		"gameType": "fh",
+		"imageSuffix": "b"
 	},
 	{
 		"id": 96,
@@ -1862,157 +1887,5 @@
 		"soloItem": "XX",
 		"folder": "64-151",
 		"gameType": "fh"
-	},
-	{
-		"id": 152,
-		"name": "Ring of Duality",
-		"count": 1,
-		"cost": 50,
-		"slot": "small",
-		"source": "Reward from Scenario #97\nSection 125\n\"A locked chest\"",
-		"consumed": true,
-		"desc": "After performing the top action of any ability card, you may immediately peform the bottom action of the same card. This item cannot be used if both actions trigger a lost card icon {consumed}.",
-		"folder": "152-165",
-		"gameType": "fh"
-	},
-	{
-		"id": 153,
-		"name": "Minor Antidote",
-		"count": 2,
-		"cost": 25,
-		"slot": "small",
-		"source": "Reward From Scenario #99",
-		"desc": "The next three times you would gain POISON prevent the condition.",
-		"folder": "152-165",
-		"gameType": "fh"
-	},
-	{
-		"id": 154,
-		"name": "Major Antidote",
-		"count": 2,
-		"cost": 50,
-		"slot": "small",
-		"source": "Reward from Scenario #105",
-		"desc": "The next five times you would gain POISON prevent the condition.",
-		"folder": "152-165",
-		"gameType": "fh"
-	},
-	{
-		"id": 155,
-		"name": "Curseward Armor",
-		"count": 1,
-		"cost": 75,
-		"slot": "body",
-		"source": "Reward from Scenario #108",
-		"desc": "You are immune to CURSE, even if the item is spent. On the next three sources of damage from attacks targeting you gain Shield 1.",
-		"spent": true,
-		"minusOneCardsAdded": 3,
-		"folder": "152-165",
-		"gameType": "fh"
-	},
-	{
-		"id": 156,
-		"name": "Elemental Claymore",
-		"count": 2,
-		"cost": 50,
-		"slot": "2h",
-		"source": "Rift Event #5",
-		"desc": "During your melee attack, {anyX} to add +2 Attack to a single attack.",
-		"folder": "152-165",
-		"gameType": "fh"
-	},
-	{
-		"id": 157,
-		"name": "Ancient Bow",
-		"count": 2,
-		"cost": 40,
-		"slot": "2h",
-		"source": "Scenario #107 (Treasure #78)\nSection 32\n\"Collapsed Atrium\"",
-		"desc": "During your ranged attack, add +2 Attack, CURSE, and WOUND to a single attack.",
-		"consumed": true,
-		"folder": "152-165",
-		"gameType": "fh"
-	},
-	{
-		"id": 158,
-		"name": "Rejuvenation Greaves",
-		"count": 2,
-		"cost": 35,
-		"slot": "legs",
-		"source": "Scenario #111 (Treasure #82)",
-		"desc": "During your movement, add +2 Move to the movement and gain REGENERATE.",
-		"spent": true,
-		"folder": "152-165",
-		"gameType": "fh"
-	},
-	{
-		"id": 159,
-		"name": "Scroll of Haste",
-		"count": 2,
-		"cost": 30,
-		"slot": "small",
-		"source": "Scenario #103 (Treasure #81)",
-		"desc": "During any one ally's movement, add +2 Move to the movement.",
-		"consumed": true,
-		"folder": "152-165",
-		"gameType": "fh"
-	},
-	{
-		"id": 160,
-		"name": "Cutpurse Dagger",
-		"count": 1,
-		"cost": 45,
-		"slot": "1h",
-		"source": "City Event #86",
-		"desc": "When you kill a monster during your turn, gain one money token.",
-		"spent": true,
-		"folder": "152-165",
-		"gameType": "fh"
-	},
-	{
-		"id": 161,
-		"name": "Throwing Axe",
-		"count": 2,
-		"cost": 35,
-		"slot": "1h",
-		"source": "Reward from Scenario #108",
-		"desc": "During your single-target melee attack action, add Range 3 to the attack.",
-		"consumed": true,
-		"folder": "152-165",
-		"gameType": "fh"
-	},
-	{
-		"id": 162,
-		"name": "Rift Device",
-		"count": 1,
-		"cost": 50,
-		"slot": "small",
-		"source": "Reward from Scenario #112\nSection 62\n\"Mechanical Splendor\"",
-		"desc": "During your turn, Teleport to any unoccupied hex within 4 hexes of you.",
-		"consumed": true,
-		"folder": "152-165",
-		"gameType": "fh"
-	},
-	{
-		"id": 163,
-		"name": "Crystal Tiara",
-		"count": 1,
-		"cost": 75,
-		"slot": "head",
-		"source": "Reward from Scenario #110",
-		"desc": "When you peform a long or short rest, gain STRENGTHEN.",
-		"folder": "152-165",
-		"gameType": "fh"
-	},
-	{
-		"id": 164,
-		"name": "Basin of Prophecy",
-		"count": 1,
-		"cost": 50,
-		"slot": "2h",
-		"source": "Reward from Solo Scenario #18 — {DR}",
-		"desc": "When you reveal cards from any deck, reveal one additional card.",
-		"soloItem": "DR",
-		"folder": "152-165"
 	}
 ]

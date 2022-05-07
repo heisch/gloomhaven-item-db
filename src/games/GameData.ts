@@ -66,16 +66,15 @@ const gameFolders: Record<AllGames, FolderData> = {
 	},
 };
 
-export const getItemFilename = (item: GloomhavenItem) => {
-	const { name, gameType, id } = item;
+const getItemFilename = (item: GloomhavenItem) => {
+	const { name, gameType, id, displayId, imagePrefix, imageSuffix } = item;
+	const idToUse = displayId || id;
 	const { leadingZeros, prefix } = gameFolders[gameType];
 	const filename = name.toLowerCase().replace(/\s/g, "-").replace(/'/, "");
-	let itemNumber = `${(id + "").padStart(leadingZeros, "0")}`;
-	if (gameType === GameType.Gloomhaven) {
-		if (id >= 71 && id <= 95) {
-			itemNumber = itemNumber + "b";
-		}
-	}
+	const itemNumber = `${imagePrefix || ""}${(idToUse + "").padStart(
+		leadingZeros,
+		"0"
+	)}${imageSuffix || ""}`;
 	return `${prefix}-${itemNumber}-${filename}`;
 };
 
