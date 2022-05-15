@@ -58,7 +58,6 @@ export const soloClassState = createSpoilerState<ClassesInUse[]>(
 );
 
 function shouldAddGame<E>(classesInUse: ClassesInUse[], e: E): boolean {
-	console.log(e, classesInUse);
 	const value = Object.values(e).some((classType) => {
 		if (classesInUse.includes(classType)) {
 			return true;

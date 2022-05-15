@@ -13,7 +13,7 @@ type Props = {
 	item: GloomhavenItem;
 };
 
-const formatId = (id: number) => {
+const formatId = (id: number | string) => {
 	return `#${id.toString().padStart(3, "0")}`;
 };
 
@@ -50,8 +50,10 @@ export const ItemTableRow = (props: Props) => {
 
 	const costClass = discount < 0 ? "blue" : discount > 0 ? "red" : "";
 
-	const displayCost = (
+	const displayCost = cost ? (
 		<strong className={"ui text " + costClass}>{cost + discount}g</strong>
+	) : (
+		<strong className={"ui text " + costClass}>-</strong>
 	);
 	return (
 		<Table.Row key={id}>
@@ -135,7 +137,9 @@ export const ItemTableRow = (props: Props) => {
 				))}
 			</Table.Cell>
 			<Table.Cell className={"store-inventory-col"} textAlign={"right"}>
-				<ItemManagement item={item} />
+				<div>
+					<ItemManagement item={item} />
+				</div>
 			</Table.Cell>
 		</Table.Row>
 	);

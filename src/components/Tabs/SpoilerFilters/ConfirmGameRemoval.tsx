@@ -1,50 +1,22 @@
 import React from "react";
-import { Button, Modal, Form } from "semantic-ui-react";
-import { useRecoilState, useRecoilValue } from "recoil";
-import {
-	classesInUseState,
-	removingGameState,
-	includeGameState,
-} from "../../../State";
-import {
-	ClassesInUse,
-	FCClasses,
-	FHClasses,
-	GHClasses,
-	JOTLClasses,
-} from "../../../State/Types";
-import { GameType } from "../../../games";
-import { Expansions } from "../../../games/GameType";
+import { Button, Modal, Form, List } from "semantic-ui-react";
+import { useRecoilState } from "recoil";
+import { removingGameState, includeGameState } from "../../../State";
 import { allFiltersData } from "./GameFilters";
 import { useRemovePlayerUtils } from "../../../hooks/useRemovePlayer";
 
 export const ConfirmGameRemoval = () => {
-	const { removeClasses } = useRemovePlayerUtils();
+	const {
+		removeClasses,
+		getClassesToRemove,
+		getRemovingItemCount,
+		anyGameItemsOwned,
+	} = useRemovePlayerUtils();
 	const [removingGame, setRemovingGame] = useRecoilState(removingGameState);
-	const classesInUse = useRecoilValue(classesInUseState);
 	const [includeGames, setIncludeGames] = useRecoilState(includeGameState);
 
 	const onClose = () => {
 		setRemovingGame(undefined);
-	};
-
-	const getClassesToRemove = () => {
-		let classes: ClassesInUse[] = [];
-		switch (removingGame) {
-			case GameType.Gloomhaven:
-				classes = Object.values(GHClasses);
-				break;
-			case GameType.JawsOfTheLion:
-				classes = Object.values(JOTLClasses);
-				break;
-			case GameType.Frosthaven:
-				classes = Object.values(FHClasses);
-				break;
-			case Expansions.ForgottenCircles:
-				classes = Object.values(FCClasses);
-				break;
-		}
-		return classes.filter((c) => classesInUse.includes(c));
 	};
 
 	const onApply = () => {
@@ -53,8 +25,10 @@ export const ConfirmGameRemoval = () => {
 		}
 		// Go through all classes and see if any of them are used..
 		// if so then remove their ownership
-		const classesToRemove = getClassesToRemove();
-		removeClasses(classesToRemove);
+		const classesToRemove = getClassesToRemove(removingGame);
+		if (classesToRemove) {
+			removeClasses(classesToRemove, removingGame);
+		}
 
 		// Remove the game
 		const value = Object.assign([], includeGames);
@@ -73,12 +47,30 @@ export const ConfirmGameRemoval = () => {
 			<Modal.Content>
 				<Form>
 					<Form.Group>{`Remove ${title} from the db?`}</Form.Group>
-					{getClassesToRemove().length > 0 && (
+					{removingGame && (
 						<Form.Group>
-							<p>
-								This will put all items back in iventory and
-								remove all characters.
-							</p>
+							<List bulleted>
+								<List.Header>Confirming this will:</List.Header>
+								{getClassesToRemove(removingGame).length >
+									0 && (
+									<List.Item>
+										Remove this game's classes from the
+										party
+									</List.Item>
+								)}
+								{getRemovingItemCount(removingGame) > 0 && (
+									<List.Item>
+										Put any items owned by this game's
+										classes back into available inventory
+									</List.Item>
+								)}
+								{anyGameItemsOwned(removingGame) > 0 && (
+									<List.Item>
+										Clear the owners of any of this game's
+										items.
+									</List.Item>
+								)}
+							</List>
 						</Form.Group>
 					)}
 				</Form>

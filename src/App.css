@@ -18,6 +18,21 @@
 	font-weight: bold;
 }
 
+.spirit {
+	color: #63c158;
+	font-weight: bold;
+}
+
+.prayer {
+	color: #e3e493;
+	font-weight: bold;
+}
+
+.mounted {
+	color: #76c9c7;
+	font-weight: bold;
+}
+
 .ui.table td {
 	padding: 0.5em;
 }
@@ -95,9 +110,9 @@ img.ui.image.icon {
 
 img.ui.image.icon {
 	width: auto;
-	height: 20px;
+	height: 35px;
 	vertical-align: top;
-	border: 1px solid limegreen;
+	border: 2px solid red;
 	border-radius: 100%;
 }
 
@@ -224,57 +239,29 @@ img.item-card {
 	background: black;
 }
 
-.store-inventory-col .ui.black.button.i0,
-.store-inventory-col .ui.black.button.i1,
-.store-inventory-col .ui.black.button.i2,
-.store-inventory-col .ui.black.button.i3 {
-	padding: 0;
-}
-
-.item-card-wrapper .ui.black.button.i0,
 .item-card-wrapper .ui.toggle.checkbox.i0 {
 	left: 7px;
 	top: 50px;
 }
-.item-card-wrapper .ui.black.button.i1,
 .item-card-wrapper .ui.toggle.checkbox.i1 {
 	left: 7px;
 	top: 85px;
 }
 
-.item-card-wrapper .ui.black.button.i2,
 .item-card-wrapper .ui.toggle.checkbox.i2 {
 	right: 7px;
 	top: 50px;
 }
 
-.item-card-wrapper .ui.black.button.i3,
 .item-card-wrapper .ui.toggle.checkbox.i3 {
 	right: 7px;
 	top: 85px;
 }
 
-.item-card-wrapper .ui.black.button {
+.item-card-wrapper .ui.red.button {
 	padding: 0;
 	z-index: 2;
 	position: absolute;
-}
-
-.noClass {
-	width: 30px;
-	height: 30px;
-	background-color: black;
-}
-
-.item-card-wrapper .black.button.i0 .delete.icon,
-.item-card-wrapper .ui.black.button.i1 .delete.icon,
-.item-card-wrapper .ui.black.button.i2 .delete.icon,
-.item-card-wrapper .ui.black.button.i3 .delete.icon {
-	padding: 0;
-	z-index: 1;
-	position: absolute;
-	left: 3px;
-	top: 0px;
 }
 
 .ui.form .fields.inline-break {
@@ -491,11 +478,21 @@ img.item-card {
 
 img.ui.image.soloClass {
 	width: auto;
+	padding: 5px;
 	height: 30px;
 	background-color: white;
 	border: 1px solid black;
 	opacity: 1;
 }
+
+.soloClass{
+	width: auto;
+	height: 30px;
+	background-color: white;
+	vertical-align: top;
+}
+
+
 
 button.ui.deleteUser {
 	display: flex;
@@ -525,3 +522,80 @@ button.ui.deleteUser .delete.icon {
 	display: flex;
 	flex-direction: row;
 }
+
+.item-card-wrapper .ownerButton {
+	padding: 0;
+	z-index: 2;
+	position: absolute;
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+	border: unset;
+}
+
+.store-inventory-col .ownerButton {
+	padding: 0;
+	z-index: 2;
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+	border: unset;
+}
+
+.store-inventory-col .party-management-container {
+	height: 75px;
+	width: 75px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	position: relative;
+}
+
+.noClass {
+	background-color: black;
+}
+
+.item-card-wrapper .ownerButton0 {
+	left: 7px;
+	top: 50px;
+}
+.item-card-wrapper .ownerButton1 {
+	left: 7px;
+	top: 90px;
+}
+
+.item-card-wrapper .ownerButton2 {
+	right: 7px;
+	top: 50px;
+}
+
+.item-card-wrapper .ownerButton3 {
+	right: 7px;
+	top: 90px;
+}
+
+img.ui.image.ownerIcon {
+	width: 35px;
+	height: 35px;
+	opacity: 1;
+}
+
+.addIcon {
+	width: 35px;
+	height: 35px;
+	color: white;
+	z-index: 3;
+	padding: 25%;
+}
+
+.deleteIcon {
+	left: -3px;
+	height: 15px;
+	width: 15px;
+	position: absolute;
+	z-index: 3;
+	border-radius: 50%;
+	background-color: white;
+}
+

@@ -23,6 +23,14 @@ export const allFiltersData = [
 		title: "Forgotten Circles",
 	},
 	{
+		allGameType: Expansions.CrimsonScales,
+		title: "Crimson Scales",
+	},
+	{
+		allGameType: Expansions.CrimsonScalesAddon,
+		title: "Crimson Scales Addon",
+	},
+	{
 		allGameType: GameType.JawsOfTheLion,
 		gameToFilterOn: GameType.JawsOfTheLion,
 		title: "Jaws of the Lion",
@@ -47,12 +55,12 @@ const GameHelp = () => {
 						Gloomhaven
 						<List.List>
 							<List.Item>
-								Adds Characters to party management
+								Add classes to party management
 							</List.Item>
 							<List.Item>Ability to solve Envelope X</List.Item>
 							{frosthavenEnabled &&
 								gameType === GameType.Frosthaven && (
-									<List.Item>Adds Items for use</List.Item>
+									<List.Item>Add Items for use</List.Item>
 								)}
 						</List.List>
 					</List.Item>
@@ -60,11 +68,27 @@ const GameHelp = () => {
 				<List.Item>
 					Forgotten Circles
 					<List.List>
-						<List.Item>
-							Adds Characters to party management
-						</List.Item>
+						<List.Item>Add classes to party management</List.Item>
 						{gameType === GameType.Gloomhaven && (
-							<List.Item>Adds Items for use</List.Item>
+							<List.Item>Add Items for use</List.Item>
+						)}
+					</List.List>
+				</List.Item>
+				<List.Item>
+					Crimson Scales
+					<List.List>
+						<List.Item>Add classes to party management</List.Item>
+						{gameType === GameType.Gloomhaven && (
+							<List.Item>Add Items for use</List.Item>
+						)}
+					</List.List>
+				</List.Item>
+				<List.Item>
+					Crimson Scales Add On
+					<List.List>
+						<List.Item>Add classes to party management</List.Item>
+						{gameType === GameType.Gloomhaven && (
+							<List.Item>Add Items for use</List.Item>
 						)}
 					</List.List>
 				</List.Item>
@@ -73,7 +97,7 @@ const GameHelp = () => {
 						Jaws of the Lion
 						<List.List>
 							<List.Item>
-								Adds Characters to party management
+								Add classes to party management
 							</List.Item>
 						</List.List>
 					</List.Item>
@@ -83,7 +107,7 @@ const GameHelp = () => {
 						Frosthaven
 						<List.List>
 							<List.Item>
-								Adds Characters to party management
+								Add classes to party management
 							</List.Item>
 						</List.List>
 					</List.Item>
@@ -114,7 +138,7 @@ export const GameFilters = () => {
 						frosthavenEnabled
 				)
 				.map((data) => (
-					<GameFilterCheckbox {...data} />
+					<GameFilterCheckbox key={data.allGameType} {...data} />
 				))}
 		</Form.Group>
 	);

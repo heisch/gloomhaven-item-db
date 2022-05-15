@@ -3,9 +3,25 @@ import { GameType } from "./games";
 
 type CreateParams = {
 	filename: string;
+	game?: string;
 	folder?: string;
 	className?: string;
 	lowercaseName?: boolean;
+	subfolder?: string;
+};
+
+export const createWorldhavenString = (parms: CreateParams) => {
+	let {
+		filename,
+		game,
+		folder = "general",
+		className = "icon",
+		lowercaseName = true,
+		subfolder = "",
+	} = parms;
+	filename = lowercaseName ? filename.toLowerCase() : filename;
+	const src = require(`../worldhaven/images/${folder}/${game}/${subfolder}/${filename}.png`);
+	return `<img class="${className}" src="${src}" alt="${filename}"/>`;
 };
 
 const createImageString = (parms: CreateParams) => {
@@ -89,13 +105,15 @@ export class Helpers {
 			);
 		});
 
-		["Refresh", "Recover", "Jump", "Teleport", "Flying"].forEach((find) => {
-			const reg = new RegExp(`\\b(${find})\\b`, "g");
-			text = text.replace(
-				reg,
-				`${"$1"} ${createImageString({ filename: find })}`
-			);
-		});
+		["Refresh", "Recover", "Jump", "Teleport", "Flying", "spent"].forEach(
+			(find) => {
+				const reg = new RegExp(`\\b(${find})\\b`, "g");
+				text = text.replace(
+					reg,
+					`${"$1"} ${createImageString({ filename: find })}`
+				);
+			}
+		);
 
 		[
 			"modifier_minus_one",
@@ -104,12 +122,29 @@ export class Helpers {
 			"experience_1",
 			"modifier_2x_circle",
 			"modifier_zero_circle",
+			"modifier_no_damage",
+			"modifier_plus_1",
+			"retaliate",
+			"eot",
+			"shield",
+			"target",
+			"attack",
+			"loot",
+			"scrapX",
 		].forEach((find) => {
 			const reg = new RegExp(`{${find}}`, "g");
 			text = text.replace(reg, createImageString({ filename: find }));
 		});
 
-		["Doom", "Command", "song", "Augment"].forEach((find) => {
+		[
+			"Doom",
+			"Command",
+			"song",
+			"Augment",
+			"Spirit",
+			"Prayer",
+			"Mounted",
+		].forEach((find) => {
 			const reg = new RegExp(`{${find}}`, "g");
 			text = text.replace(
 				reg,
@@ -148,6 +183,34 @@ export class Helpers {
 				folder: "multi_attack",
 				className,
 			});
+		});
+
+		["cs-spirit-caller-token"].forEach((find) => {
+			const reg = new RegExp(`{${find}}`, "g");
+			text = text.replace(
+				reg,
+				createWorldhavenString({
+					folder: "tokens",
+					game: "crimson-scales",
+					subfolder: "character-tokens",
+					filename: find,
+				})
+			);
+		});
+
+		["INFECT", "RUPTURE"].forEach((status) => {
+			let filename = status.toLowerCase();
+			filename = "cs-" + filename;
+			const reg = new RegExp(`\\b${status}\\b`, "g");
+			text = text.replace(
+				reg,
+				`${status} ${createWorldhavenString({
+					filename,
+					folder: "tokens",
+					game: "crimson-scales",
+					subfolder: "condition-tokens",
+				})}`
+			);
 		});
 
 		return text;

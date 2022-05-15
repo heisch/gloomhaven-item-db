@@ -1,7 +1,7 @@
 import { isNumber } from "lodash";
 import React from "react";
 import { Form } from "semantic-ui-react";
-import FilterCheckbox from "./FilterCheckbox";
+import FilterCheckbox, { FilterCheckboxProps } from "./FilterCheckbox";
 
 type Range = {
 	start: number;
@@ -10,12 +10,11 @@ type Range = {
 
 type Props = {
 	ranges: (Range | number)[];
-	title: string;
-	offset?: number;
-};
+	title?: string;
+} & FilterCheckboxProps;
 
 const SpoilerFilterItemList = (props: Props) => {
-	const { ranges, title, offset } = props;
+	const { ranges, title, ...rest } = props;
 
 	const checkBoxes: Array<any> = [];
 	ranges.forEach((range) => {
@@ -31,7 +30,7 @@ const SpoilerFilterItemList = (props: Props) => {
 		}
 		for (let i = first; i <= last; i++) {
 			checkBoxes.push(
-				<FilterCheckbox key={`filter${i}`} id={i} offset={offset || 0} />
+				<FilterCheckbox key={`filter${i}`} id={i} {...rest} />
 			);
 		}
 	});
@@ -41,7 +40,7 @@ const SpoilerFilterItemList = (props: Props) => {
 
 	return (
 		<Form.Group inline className={"inline-break"}>
-			<label>{title}:</label>
+			{title && <label>{title}:</label>}
 			{checkBoxes}
 		</Form.Group>
 	);

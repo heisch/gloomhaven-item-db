@@ -3,6 +3,7 @@ import SpoilerFilterItemList from "./SpoilerFilterItemList";
 import { ScenarioCompletedFilter } from "./ScenarioCompletedFilter";
 import { useRecoilValue } from "recoil";
 import { scenarioCompletedState } from "../../../State";
+import { Segment } from "semantic-ui-react";
 
 const scenariosOfImportance = [2, 9, 15];
 const JOTLSpoilerFilter = () => {
@@ -23,7 +24,9 @@ const JOTLSpoilerFilter = () => {
 	return (
 		<>
 			<ScenarioCompletedFilter scenarios={scenariosOfImportance} />
-			<SpoilerFilterItemList ranges={ranges} title="Items" />
+			<Segment>
+				<SpoilerFilterItemList ranges={ranges} title="Items" />
+			</Segment>
 		</>
 	);
 };

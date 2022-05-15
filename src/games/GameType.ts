@@ -6,6 +6,8 @@ export enum GameType {
 
 export enum Expansions {
 	ForgottenCircles = "fc",
+	CrimsonScales = "cs",
+	CrimsonScalesAddon = "csa",
 }
 
 export type AllGames = GameType | Expansions;

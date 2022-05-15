@@ -1,4 +1,3 @@
-import { GameType } from "../games";
 import { AllGames } from "../games/GameType";
 
 export type ItemsOwnedBy = Record<string, ClassesInUse[]>;
@@ -82,9 +81,34 @@ export enum FHClasses {
 	FH17 = "FH17",
 }
 
-export type SoloClasses = GHClasses | FCClasses | FHClasses;
+export enum CSClasses {
+	CS1 = "CS1",
+	CS2 = "CS2",
+	CS3 = "CS3",
+	CS4 = "CS4",
+	CS5 = "CS5",
+	CS6 = "CS6",
+	CS7 = "CS7",
+	CS8 = "CS8",
+	CS9 = "CS9",
+	CS10 = "CS10",
+	CS11 = "CS11",
+}
+export enum CSAClasses {
+	CSA1 = "CSA1",
+	CSA2 = "CSA2",
+	CSA3 = "CSA3",
+}
 
-export type ClassesInUse = GHClasses | FCClasses | JOTLClasses | FHClasses;
+export type SoloClasses = GHClasses | FCClasses | FHClasses | CSClasses;
+
+export type ClassesInUse =
+	| GHClasses
+	| FCClasses
+	| JOTLClasses
+	| FHClasses
+	| CSClasses
+	| CSAClasses;
 
 export enum GloomhavenItemSlot {
 	Head = "head",
@@ -116,7 +140,7 @@ export interface Summon {
 
 export interface GloomhavenItem {
 	id: number;
-	displayId: number;
+	displayId: string;
 	gameType: AllGames;
 	name: string;
 	count: number;
@@ -140,13 +164,3 @@ export interface GloomhavenItem {
 	imagePrefix?: string;
 	imageSuffix?: string;
 }
-export const getGHClassList = (envelopeX: boolean, fc: boolean = false) => {
-	let ghList: ClassesInUse[] = Object.values(GHClasses);
-	if (!envelopeX) {
-		ghList = ghList.filter((c) => c !== GHClasses.XX);
-	}
-	if (fc) {
-		ghList = ghList.concat(FCClasses.DR);
-	}
-	return ghList;
-};

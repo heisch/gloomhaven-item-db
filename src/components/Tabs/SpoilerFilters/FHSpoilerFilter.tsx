@@ -1,6 +1,6 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
-import { Form } from "semantic-ui-react";
+import { Form, Segment } from "semantic-ui-react";
 import {
 	ghItemOffset,
 	initialGHItemsUnlocked,
@@ -35,17 +35,28 @@ const FHSpoilerFilter = () => {
 	return (
 		<>
 			<ScenarioCompletedFilter scenarios={scenariosOfImportance} />
-			<Form.Field>
-				<SpoilerFilterItemList ranges={fhRanges} title="Items" />
-			</Form.Field>
-			<Form.Field>
-				<SpoilerFilterItemList
-					ranges={ghRanges}
-					title="Gloomhaven Items"
-					offset={ghItemOffset}
+			<Segment>
+				<Form.Field>
+					<SpoilerFilterItemList ranges={fhRanges} title="Items" />
+				</Form.Field>
+				<Form.Field>
+					<SpoilerFilterItemList
+						ranges={ghRanges}
+						title="Gloomhaven Items"
+						offset={ghItemOffset}
+					/>
+				</Form.Field>
+			</Segment>
+			<Segment>
+				<Form.Group inline>
+					<label>Solo Class Items:</label>
+				</Form.Group>
+
+				<SoloClassFilter
+					name="Frosthaven"
+					classes={Object.values(FHClasses)}
 				/>
-			</Form.Field>
-			<SoloClassFilter classes={Object.values(FHClasses)} />
+			</Segment>
 		</>
 	);
 };

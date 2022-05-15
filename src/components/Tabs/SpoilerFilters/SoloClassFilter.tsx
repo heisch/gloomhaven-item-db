@@ -2,15 +2,16 @@ import React from "react";
 import { useRecoilState } from "recoil";
 import { Form } from "semantic-ui-react";
 import { soloClassState } from "../../../State";
-import { ClassesInUse, FHClasses } from "../../../State/Types";
+import { ClassesInUse } from "../../../State/Types";
 import { ClassList } from "./ClassList";
 
 type Props = {
 	classes: ClassesInUse[];
+	name: string;
 };
 
 export const SoloClassFilter = (props: Props) => {
-	const { classes } = props;
+	const { classes, name } = props;
 	const [soloClass, setSoloClass] = useRecoilState(soloClassState);
 
 	const toggleClassFilter = (key: ClassesInUse) => {
@@ -29,7 +30,7 @@ export const SoloClassFilter = (props: Props) => {
 					isUsed={(className: ClassesInUse) =>
 						soloClass.includes(className)
 					}
-					label={"Solo Class Items:"}
+					label={`${name}:`}
 					classes={classes}
 					onClick={toggleClassFilter}
 				/>

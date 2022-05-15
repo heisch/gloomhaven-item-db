@@ -1,3 +1,4 @@
+import { getClassIcon } from "../components/Tabs/MainView/ClassIcon";
 import { Helpers } from "../helpers";
 import { GloomhavenItem, GloomhavenItemSlot } from "../State/Types";
 import { AllGames, Expansions, GameType } from "./GameType";
@@ -10,13 +11,10 @@ export type GameData = {
 };
 
 const deSpoilerItemSource = (source: string): string => {
-	return source.replace(
-		/{(.{2})}/,
-		(m, m1) =>
-			'<img class="icon" src="' +
-			require("../img/classes/" + m1 + ".png") +
-			'" alt="" />'
-	);
+	return source.replace(/{(.{2,})}/, (m, m1) => {
+		const classPath = getClassIcon(m1);
+		return `<img class="soloClass" src="${classPath}" alt="" />`;
+	});
 };
 
 export const getInitialItems = (gameType: GameType) => {
@@ -64,23 +62,35 @@ const gameFolders: Record<AllGames, FolderData> = {
 		prefix: "fc",
 		leadingZeros: 3,
 	},
+	[Expansions.CrimsonScales]: {
+		folderName: "crimson-scales",
+		prefix: "cs",
+		leadingZeros: 2,
+	},
+	[Expansions.CrimsonScalesAddon]: {
+		folderName: "crimson-scales",
+		prefix: "cs",
+		leadingZeros: 2,
+	},
 };
 
 const getItemFilename = (item: GloomhavenItem) => {
-	const { name, gameType, id, displayId, imagePrefix, imageSuffix } = item;
-	const idToUse = displayId || id;
+	const { folder, name, gameType, id, displayId, imagePrefix, imageSuffix } =
+		item;
+	const idToUse = displayId || id.toString();
 	const { leadingZeros, prefix } = gameFolders[gameType];
 	const filename = name.toLowerCase().replace(/\s/g, "-").replace(/'/, "");
 	const itemNumber = `${imagePrefix || ""}${(idToUse + "").padStart(
 		leadingZeros,
 		"0"
 	)}${imageSuffix || ""}`;
-	return `${prefix}-${itemNumber}-${filename}`;
+	const itemFolder = folder ? folder + "/" : "";
+	return `${itemFolder}${prefix}-${itemNumber}-${filename}.png`;
 };
 
 export const getItemPath = (item: GloomhavenItem) => {
-	const { folder, gameType } = item;
+	const { gameType } = item;
 	const { folderName } = gameFolders[gameType];
-	const fullName = getItemFilename(item);
-	return require(`../../worldhaven/images/items/${folderName}/${folder}/${fullName}.png`);
+	const itemName = getItemFilename(item);
+	return require(`../../worldhaven/images/items/${folderName}/${itemName}`);
 };

@@ -9,21 +9,68 @@ import {
 	lockSpoilerPanelState,
 	selectedItemState,
 } from "../../../../State";
-import { GloomhavenItem, ItemManagementType } from "../../../../State/Types";
+import {
+	ClassesInUse,
+	GloomhavenItem,
+	ItemManagementType,
+} from "../../../../State/Types";
 import ClassIcon from "../ClassIcon";
 
 type Props = {
 	item: GloomhavenItem;
 };
 
-const PartyItemManagement = (props: Props) => {
+type OwnerProps = {
+	item: GloomhavenItem;
+	owner?: ClassesInUse;
+	index: number;
+};
+
+const OwnerButton = (props: OwnerProps) => {
 	const { removeItemsFromOwner } = useRemovePlayerUtils();
 	const setSelectedItem = useSetRecoilState(selectedItemState);
+	const lockSpoilerPanel = useRecoilValue(lockSpoilerPanelState);
+
+	const { item, owner, index } = props;
+	let classNames = `ownerButton ownerButton${index}`;
+	if (!owner) {
+		classNames += " noClass";
+	}
+
+	const onClick = () => {
+		if (owner) {
+			removeItemsFromOwner(item.id, owner);
+		} else {
+			setSelectedItem(item);
+		}
+	};
+
+	return (
+		<button
+			className={classNames}
+			onClick={onClick}
+			disabled={lockSpoilerPanel}
+		>
+			{owner ? (
+				<>
+					<img
+						className="deleteIcon"
+						src={require(`../../../../img/icons/general/circle_x.png`)}
+					/>
+					<ClassIcon className="ownerIcon" name={owner} />
+				</>
+			) : (
+				<div className="addIcon">+</div>
+			)}
+		</button>
+	);
+};
+
+const PartyItemManagement = (props: Props) => {
 	const classesInUse = useRecoilValue(classesInUseState);
 	const itemsOwnedBy = useRecoilValue(itemsOwnedByState);
 	const itemManagementType = useRecoilValue(itemManagementTypeState);
 	const { item } = props;
-	const lockSpoilerPanel = useRecoilValue(lockSpoilerPanelState);
 
 	if (itemManagementType !== ItemManagementType.Party) {
 		return null;
@@ -38,41 +85,24 @@ const PartyItemManagement = (props: Props) => {
 		classesAvailable.length > 0
 			? Math.min(item.count - ownersLength, 4)
 			: 0;
+	let buttonData: OwnerProps[] = owners.map((owner, index) => ({
+		owner,
+		item,
+		index,
+	}));
+	buttonData = buttonData.concat(
+		[...Array(addButtonsToShow).keys()].map((index) => ({
+			item,
+			owner: undefined,
+			index: index + ownersLength,
+		}))
+	);
 	return (
-		<>
-			{owners &&
-				owners.map((owner, index) => {
-					return (
-						<Button
-							disabled={lockSpoilerPanel}
-							className={"i" + index}
-							key={`${item.id}-${owner}`}
-							basic
-							color="black"
-							icon="delete"
-							onClick={() => {
-								removeItemsFromOwner(item.id, owner);
-							}}
-							content={<ClassIcon name={owner} />}
-						/>
-					);
-				})}
-			{addButtonsToShow > 0 &&
-				[...Array(addButtonsToShow).keys()].map((i) => {
-					return (
-						<Button
-							key={`${item.id}-${i}`}
-							disabled={lockSpoilerPanel}
-							className={`i${ownersLength + i} noClass`}
-							color={"black"}
-							onClick={() => {
-								setSelectedItem(item);
-							}}
-							content="+"
-						/>
-					);
-				})}
-		</>
+		<div className="party-management-container">
+			{buttonData.map((data, i) => (
+				<OwnerButton key={`${item.id}-${i}`} {...data} />
+			))}
+		</div>
 	);
 };
 

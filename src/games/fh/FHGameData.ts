@@ -21,12 +21,14 @@ const getUnlockScenario = (id: number) => {
 };
 ghItems = ghItems.map((item: GloomhavenItem, index: number) => ({
 	...item,
-	displayId: item.id,
+	displayId: item.id.toString(),
 	unlockScenario: getUnlockScenario(item.id),
 	id: ghItemOffset + index + 1,
 	unlockProsperity: Number.MAX_VALUE,
 }));
-ghItems = ghItems.filter((item) => ghItemToImport.includes(item.displayId));
+ghItems = ghItems.filter((item) =>
+	ghItemToImport.includes(parseInt(item.displayId, 10))
+);
 items = items.concat(ghItems);
 
 filterSlots = Helpers.uniqueArray(filterSlots.concat(ghFilterSlots));
