@@ -1,14 +1,30 @@
-import React from "react";
-import { Button, Modal, Form } from "semantic-ui-react";
+import React, { useState } from "react";
+import {
+	Button,
+	Modal,
+	Form,
+	Table,
+	TableHeader,
+	TableHeaderCell,
+	TableBody,
+	TableRow,
+	TableCell,
+	Accordion,
+	AccordionTitle,
+	AccordionContent,
+	Icon,
+} from "semantic-ui-react";
 import ClassIcon from "../MainView/ClassIcon";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { classToDeleteState, gameDataState } from "../../../State";
 import { useRemovePlayerUtils } from "../../../hooks/useRemovePlayer";
+import { OwnedItemList } from "./OwnedItemsList";
 
 const ConfirmClassDelete = () => {
 	const { removeClasses, itemsOwnedByClass } = useRemovePlayerUtils();
 	const [classToDelete, setClassToDelete] =
 		useRecoilState(classToDeleteState);
+	const [itemsOpen, setItemsOpen] = useState(false);
 
 	const { items } = useRecoilValue(gameDataState);
 
@@ -20,8 +36,10 @@ const ConfirmClassDelete = () => {
 	const goldAmount = () => {
 		let totalGold = 0;
 		itemsOwned.forEach((itemId) => {
-			const { name, cost } = items[itemId - 1];
-			totalGold += Math.floor(cost / 2);
+			const { cost } = items[itemId - 1];
+			if (cost) {
+				totalGold += Math.floor(cost / 2);
+			}
 		});
 		return totalGold;
 	};
@@ -68,6 +86,27 @@ const ConfirmClassDelete = () => {
 									{` for their items`}
 								</p>
 							</Form.Group>
+							<Accordion>
+								<AccordionTitle
+									active={itemsOpen}
+									onClick={() =>
+										setItemsOpen((current) => !current)
+									}
+								>
+									<Icon name="dropdown" />
+									{`Items Owned - ${
+										itemsOpen
+											? "Click to hide"
+											: "Click to show"
+									} items`}
+								</AccordionTitle>
+								<AccordionContent active={itemsOpen}>
+									<OwnedItemList
+										itemIds={itemsOwned}
+										totalGold={`${goldAmount()}g`}
+									/>
+								</AccordionContent>
+							</Accordion>
 						</>
 					)}
 				</Form>

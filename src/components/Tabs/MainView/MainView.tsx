@@ -74,7 +74,19 @@ const MainView = () => {
 		<>
 			<ImportData />
 			<div className={getOutlineClass()}>
-				<Tab panes={panes} defaultActiveIndex={0} />
+				<Tab
+					panes={panes}
+					defaultActiveIndex={parseInt(
+						localStorage.getItem("lastTab") || "0",
+						10
+					)}
+					onTabChange={(_event, data) =>
+						localStorage.setItem(
+							"lastTab",
+							data.activeIndex ? data.activeIndex.toString() : "0"
+						)
+					}
+				/>
 			</div>
 			<em className={"pull-right ui text grey"}>
 				Gloomhaven and all related properties, images and text are owned
