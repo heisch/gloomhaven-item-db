@@ -26,7 +26,7 @@ const GHSpoilerFilter = () => {
 	const csaClasses = getClassesForGame(Expansions.CrimsonScalesAddon);
 
 	return (
-		<>
+		<Segment>
 			<Form.Group inline>
 				<label>Reputation Discount:</label>
 				<Form.Select
@@ -150,7 +150,7 @@ const GHSpoilerFilter = () => {
 					/>
 				)}
 			</Segment>
-		</>
+		</Segment>
 	);
 };
 

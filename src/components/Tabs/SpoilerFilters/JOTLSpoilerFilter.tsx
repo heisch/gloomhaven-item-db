@@ -22,12 +22,12 @@ const JOTLSpoilerFilter = () => {
 	ranges.push({ start: 27, end: 36 });
 
 	return (
-		<>
+		<Segment>
 			<ScenarioCompletedFilter scenarios={scenariosOfImportance} />
 			<Segment>
 				<SpoilerFilterItemList ranges={ranges} title="Items" />
 			</Segment>
-		</>
+		</Segment>
 	);
 };
 

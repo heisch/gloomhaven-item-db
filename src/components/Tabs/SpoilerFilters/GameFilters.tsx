@@ -1,6 +1,6 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
-import { Form, Icon, List, Popup } from "semantic-ui-react";
+import { Form, Icon, List, Popup, Segment } from "semantic-ui-react";
 import { AllGames, Expansions, GameType } from "../../../games/GameType";
 import { isFlagEnabled } from "../../../helpers";
 import { gameTypeState } from "../../../State";
@@ -121,25 +121,29 @@ export const GameFilters = () => {
 	const frosthavenEnabled = isFlagEnabled("frosthaven");
 
 	return (
-		<Form.Group inline>
-			<label>Games:</label>
-			<Popup
-				closeOnDocumentClick
-				hideOnScroll
-				trigger={<Icon name={"question circle"} className={"blue"} />}
-				header={"Game Types"}
-				content={<GameHelp />}
-			/>
+		<Segment>
+			<Form.Group inline>
+				<label>Games:</label>
+				<Popup
+					closeOnDocumentClick
+					hideOnScroll
+					trigger={
+						<Icon name={"question circle"} className={"blue"} />
+					}
+					header={"Game Types"}
+					content={<GameHelp />}
+				/>
 
-			{allFiltersData
-				.filter(
-					(data) =>
-						data.allGameType !== GameType.Frosthaven ||
-						frosthavenEnabled
-				)
-				.map((data) => (
-					<GameFilterCheckbox key={data.allGameType} {...data} />
-				))}
-		</Form.Group>
+				{allFiltersData
+					.filter(
+						(data) =>
+							data.allGameType !== GameType.Frosthaven ||
+							frosthavenEnabled
+					)
+					.map((data) => (
+						<GameFilterCheckbox key={data.allGameType} {...data} />
+					))}
+			</Form.Group>
+		</Segment>
 	);
 };

@@ -2,7 +2,6 @@ import React from "react";
 import { Form, Button, Icon } from "semantic-ui-react";
 import GHSpoilerFilter from "./GHSpoilerFilter";
 import JOTLSpoilerFilter from "./JOTLSpoilerFilter";
-import PartyManagementFilter from "./PartyManagementFilter";
 import ConfirmClassDelete from "./ConfirmClassDelete";
 import { PartySpoiler } from "./PartySpoiler";
 import ConfirmEnvelopeX from "./ConfirmEnvelopeX";
@@ -17,7 +16,6 @@ import {
 } from "../../../State";
 import FHSpoilerFilter from "./FHSpoilerFilter";
 import { GameFilters } from "./GameFilters";
-import { AllGames } from "../../../games/GameType";
 import { ConfirmGameRemoval } from "./ConfirmGameRemoval";
 
 const filters = {
@@ -55,15 +53,14 @@ const SpoilerFilters = () => {
 				</Button>
 			</Form.Group>
 
-			<PartyManagementFilter />
 			<GameFilters />
+			<PartySpoiler />
 			{!envelopeX && includeGames.includes(GameType.Gloomhaven) && (
 				<Button onClick={() => setConfirmEnvelopeX(true)}>
 					Envelope X
 				</Button>
 			)}
 			{filters[gameType]}
-			<PartySpoiler />
 			<ConfirmGameRemoval />
 			<ConfirmClassDelete />
 			<ConfirmEnvelopeX />

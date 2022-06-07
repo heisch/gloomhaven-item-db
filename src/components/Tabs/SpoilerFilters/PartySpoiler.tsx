@@ -4,6 +4,7 @@ import { Form, Popup, Icon, Segment } from "semantic-ui-react";
 import { Expansions, GameType } from "../../../games/GameType";
 import { itemManagementTypeState } from "../../../State";
 import { ItemManagementType } from "../../../State/Types";
+import PartyManagementFilter from "./PartyManagementFilter";
 import { PartySpoilerList } from "./PartySpoilerList";
 
 const PartFilterList = [
@@ -36,36 +37,35 @@ const PartFilterList = [
 export const PartySpoiler = () => {
 	const itemManagementType = useRecoilValue(itemManagementTypeState);
 
-	if (itemManagementType !== ItemManagementType.Party) {
-		return null;
-	}
-
 	return (
 		<Segment>
-			<Form.Group inline className={"inline-break"}>
-				<Form.Group inline>
-					<label>Party Members:</label>
-					{
-						<Popup
-							closeOnDocumentClick
-							hideOnScroll
-							trigger={
-								<Icon
-									name={"question circle"}
-									className={"blue"}
-								/>
-							}
-							header={"Party Members"}
-							content={
-								"Click on a class icon to add that class to you party.  You can then assign items to any members in a party. Clicking on member a second time will remove all items."
-							}
-						/>
-					}
+			<PartyManagementFilter />
+			{itemManagementType === ItemManagementType.Party && (
+				<Form.Group inline className={"inline-break"}>
+					<Form.Group inline>
+						<label>Party Members:</label>
+						{
+							<Popup
+								closeOnDocumentClick
+								hideOnScroll
+								trigger={
+									<Icon
+										name={"question circle"}
+										className={"blue"}
+									/>
+								}
+								header={"Party Members"}
+								content={
+									"Click on a class icon to add that class to you party.  You can then assign items to any members in a party. Clicking on member a second time will remove all items."
+								}
+							/>
+						}
+					</Form.Group>
+					{PartFilterList.map((filter) => (
+						<PartySpoilerList key={filter.type} {...filter} />
+					))}
 				</Form.Group>
-				{PartFilterList.map((filter) => (
-					<PartySpoilerList key={filter.type} {...filter} />
-				))}
-			</Form.Group>
+			)}
 		</Segment>
 	);
 };

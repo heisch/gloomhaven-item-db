@@ -33,7 +33,7 @@ const FHSpoilerFilter = () => {
 	}
 
 	return (
-		<>
+		<Segment>
 			<ScenarioCompletedFilter scenarios={scenariosOfImportance} />
 			<Segment>
 				<Form.Field>
@@ -57,7 +57,7 @@ const FHSpoilerFilter = () => {
 					classes={Object.values(FHClasses)}
 				/>
 			</Segment>
-		</>
+		</Segment>
 	);
 };
 
