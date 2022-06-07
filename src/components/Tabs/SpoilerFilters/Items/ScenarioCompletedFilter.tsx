@@ -1,7 +1,7 @@
 import React from "react";
 import { useRecoilState } from "recoil";
 import { Form } from "semantic-ui-react";
-import { scenarioCompletedState } from "../../../State";
+import { scenarioCompletedState } from "../../../../State";
 
 type Props = {
 	scenarios: number[];

@@ -1,66 +1,22 @@
 import React from "react";
-import { Form, Button, Icon } from "semantic-ui-react";
-import GHSpoilerFilter from "./GHSpoilerFilter";
-import JOTLSpoilerFilter from "./JOTLSpoilerFilter";
-import ConfirmClassDelete from "./ConfirmClassDelete";
-import { PartySpoiler } from "./PartySpoiler";
-import ConfirmEnvelopeX from "./ConfirmEnvelopeX";
-import { GameType } from "../../../games";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { Form } from "semantic-ui-react";
+import { ToggleAllButton, GameFilter } from "./Items";
 import {
-	allState,
-	confirmEnvelopeXState,
-	envelopeXState,
-	gameDataState,
-	includeGameState,
-} from "../../../State";
-import FHSpoilerFilter from "./FHSpoilerFilter";
-import { GameFilters } from "./GameFilters";
-import { ConfirmGameRemoval } from "./ConfirmGameRemoval";
-
-const filters = {
-	[GameType.Gloomhaven]: <GHSpoilerFilter />,
-	[GameType.JawsOfTheLion]: <JOTLSpoilerFilter />,
-	[GameType.Frosthaven]: <FHSpoilerFilter />,
-};
+	PartySpoiler,
+	ConfirmEnvelopeX,
+	ConfirmClassDelete,
+	EnvelopeXButton,
+} from "./Party";
+import { GameFilters, ConfirmGameRemoval } from "./Games";
 
 const SpoilerFilters = () => {
-	const [all, setAll] = useRecoilState(allState);
-	const includeGames = useRecoilValue(includeGameState);
-	const envelopeX = useRecoilValue(envelopeXState);
-	const { gameType } = useRecoilValue(gameDataState);
-	const setConfirmEnvelopeX = useSetRecoilState(confirmEnvelopeXState);
-
 	return (
 		<Form>
-			<Form.Group inline>
-				<label>Respecting Spoiler Settings:</label>
-				<Button
-					color={all ? "red" : "blue"}
-					onClick={() => {
-						setAll(!all);
-					}}
-				>
-					{all ? (
-						<>
-							<Icon name={"eye"} /> disabled
-						</>
-					) : (
-						<>
-							<Icon name={"eye slash"} /> enabled
-						</>
-					)}
-				</Button>
-			</Form.Group>
-
+			<ToggleAllButton />
 			<GameFilters />
 			<PartySpoiler />
-			{!envelopeX && includeGames.includes(GameType.Gloomhaven) && (
-				<Button onClick={() => setConfirmEnvelopeX(true)}>
-					Envelope X
-				</Button>
-			)}
-			{filters[gameType]}
+			<EnvelopeXButton />
+			<GameFilter />
 			<ConfirmGameRemoval />
 			<ConfirmClassDelete />
 			<ConfirmEnvelopeX />

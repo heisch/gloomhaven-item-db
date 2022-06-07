@@ -9,7 +9,7 @@ import {
 	SortDirection,
 	SortProperty,
 } from "../../../State/Types";
-import { ClassList } from "../SpoilerFilters/ClassList";
+import { ClassList } from "../SpoilerFilters/Party/ClassList";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
 	gameDataState,

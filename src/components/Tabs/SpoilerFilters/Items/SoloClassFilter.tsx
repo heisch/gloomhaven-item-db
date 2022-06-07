@@ -1,9 +1,9 @@
 import React from "react";
 import { useRecoilState } from "recoil";
 import { Form } from "semantic-ui-react";
-import { soloClassState } from "../../../State";
-import { ClassesInUse } from "../../../State/Types";
-import { ClassList } from "./ClassList";
+import { soloClassState } from "../../../../State";
+import { ClassesInUse } from "../../../../State/Types";
+import { ClassList } from "../Party/ClassList";
 
 type Props = {
 	classes: ClassesInUse[];

@@ -8,8 +8,8 @@ import {
 	Icon,
 	List,
 } from "semantic-ui-react";
-import { itemManagementTypeState } from "../../../State";
-import { ItemManagementType } from "../../../State/Types";
+import { itemManagementTypeState } from "../../../../State";
+import { ItemManagementType } from "../../../../State/Types";
 
 const PartyManagementFilter = () => {
 	const [itemManagementType, setItemManagementType] = useRecoilState(

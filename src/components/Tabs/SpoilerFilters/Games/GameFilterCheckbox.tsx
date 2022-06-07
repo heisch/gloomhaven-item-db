@@ -1,13 +1,13 @@
 import React from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { Form } from "semantic-ui-react";
-import { AllGames } from "../../../games/GameType";
-import { useRemovePlayerUtils } from "../../../hooks/useRemovePlayer";
+import { AllGames } from "../../../../games/GameType";
+import { useRemovePlayerUtils } from "../../../../hooks/useRemovePlayer";
 import {
 	gameTypeState,
 	includeGameState,
 	removingGameState,
-} from "../../../State";
+} from "../../../../State";
 import { AllFilterData } from "./GameFilters";
 
 type Props = {} & AllFilterData;

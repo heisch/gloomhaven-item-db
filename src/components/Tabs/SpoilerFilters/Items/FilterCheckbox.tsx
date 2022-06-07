@@ -1,7 +1,7 @@
 import React from "react";
 import { useRecoilState } from "recoil";
 import { Form } from "semantic-ui-react";
-import { itemState } from "../../../State";
+import { itemState } from "../../../../State";
 
 export type FilterCheckboxProps = {
 	offset?: number;

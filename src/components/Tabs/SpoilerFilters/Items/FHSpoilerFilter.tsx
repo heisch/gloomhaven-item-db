@@ -4,17 +4,17 @@ import { Form, Segment } from "semantic-ui-react";
 import {
 	ghItemOffset,
 	initialGHItemsUnlocked,
-} from "../../../games/fh/FHGameData";
-import { GameType } from "../../../games/GameType";
-import { includeGameState, scenarioCompletedState } from "../../../State";
-import { FHClasses } from "../../../State/Types";
+} from "../../../../games/fh/FHGameData";
+import { GameType } from "../../../../games/GameType";
+import { includeGameState, scenarioCompletedState } from "../../../../State";
+import { FHClasses } from "../../../../State/Types";
 import { ScenarioCompletedFilter } from "./ScenarioCompletedFilter";
 import { SoloClassFilter } from "./SoloClassFilter";
 import SpoilerFilterItemList from "./SpoilerFilterItemList";
 
 const scenariosOfImportance = [1];
 
-const FHSpoilerFilter = () => {
+export const FHSpoilerFilter = () => {
 	const includeGames = useRecoilValue(includeGameState);
 	const includeGloomhavenItems = includeGames.includes(GameType.Gloomhaven);
 	const scenariosComplete = useRecoilValue(scenarioCompletedState);
@@ -60,5 +60,3 @@ const FHSpoilerFilter = () => {
 		</Segment>
 	);
 };
-
-export default FHSpoilerFilter;

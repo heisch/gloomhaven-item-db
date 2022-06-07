@@ -1,9 +1,9 @@
 import React from "react";
 import { Button, Modal, Form, List } from "semantic-ui-react";
 import { useRecoilState } from "recoil";
-import { removingGameState, includeGameState } from "../../../State";
+import { removingGameState, includeGameState } from "../../../../State";
 import { allFiltersData } from "./GameFilters";
-import { useRemovePlayerUtils } from "../../../hooks/useRemovePlayer";
+import { useRemovePlayerUtils } from "../../../../hooks/useRemovePlayer";
 
 export const ConfirmGameRemoval = () => {
 	const {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, Modal } from "semantic-ui-react";
 import { ClassesInUse, ItemsOwnedBy } from "../../../State/Types";
-import { ClassList } from "../SpoilerFilters/ClassList";
+import { ClassList } from "../SpoilerFilters/Party/ClassList";
 import { getItemPath } from "../../../games/GameData";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {

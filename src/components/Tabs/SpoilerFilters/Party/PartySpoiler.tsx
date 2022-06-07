@@ -1,9 +1,9 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 import { Form, Popup, Icon, Segment } from "semantic-ui-react";
-import { Expansions, GameType } from "../../../games/GameType";
-import { itemManagementTypeState } from "../../../State";
-import { ItemManagementType } from "../../../State/Types";
+import { Expansions, GameType } from "../../../../games/GameType";
+import { itemManagementTypeState } from "../../../../State";
+import { ItemManagementType } from "../../../../State/Types";
 import PartyManagementFilter from "./PartyManagementFilter";
 import { PartySpoilerList } from "./PartySpoilerList";
 

@@ -8,9 +8,9 @@ import {
 	InputProps,
 } from "semantic-ui-react";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { confirmEnvelopeXState, envelopeXState } from "../../../State";
+import { confirmEnvelopeXState, envelopeXState } from "../../../../State";
 
-const ConfirmEnvelopeX = () => {
+export const ConfirmEnvelopeX = () => {
 	const [solutionCorrect, setSolutionCorrect] = useState(false);
 	const [confirmEnvelopeX, setConfirmEnvelopeX] = useRecoilState(
 		confirmEnvelopeXState
@@ -61,5 +61,3 @@ const ConfirmEnvelopeX = () => {
 		</Modal>
 	);
 };
-
-export default ConfirmEnvelopeX;

@@ -3,24 +3,18 @@ import {
 	Button,
 	Modal,
 	Form,
-	Table,
-	TableHeader,
-	TableHeaderCell,
-	TableBody,
-	TableRow,
-	TableCell,
 	Accordion,
 	AccordionTitle,
 	AccordionContent,
 	Icon,
 } from "semantic-ui-react";
-import ClassIcon from "../MainView/ClassIcon";
+import ClassIcon from "../../MainView/ClassIcon";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { classToDeleteState, gameDataState } from "../../../State";
-import { useRemovePlayerUtils } from "../../../hooks/useRemovePlayer";
+import { classToDeleteState, gameDataState } from "../../../../State";
+import { useRemovePlayerUtils } from "../../../../hooks/useRemovePlayer";
 import { OwnedItemList } from "./OwnedItemsList";
 
-const ConfirmClassDelete = () => {
+export const ConfirmClassDelete = () => {
 	const { removeClasses, itemsOwnedByClass } = useRemovePlayerUtils();
 	const [classToDelete, setClassToDelete] =
 		useRecoilState(classToDeleteState);
@@ -126,5 +120,3 @@ const ConfirmClassDelete = () => {
 		</Modal>
 	);
 };
-
-export default ConfirmClassDelete;

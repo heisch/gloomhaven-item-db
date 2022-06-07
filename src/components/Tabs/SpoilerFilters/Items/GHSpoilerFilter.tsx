@@ -1,18 +1,17 @@
 import React from "react";
-import { Container, Form, Segment } from "semantic-ui-react";
+import { Form, Segment } from "semantic-ui-react";
 import SpoilerFilterItemList from "./SpoilerFilterItemList";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
 	discountState,
 	includeGameState,
 	prosperityState,
-} from "../../../State";
+} from "../../../../State";
 import { SoloClassFilter } from "./SoloClassFilter";
-import { Expansions, GameType } from "../../../games/GameType";
-import { useRemovePlayerUtils } from "../../../hooks/useRemovePlayer";
-import { CSAClasses } from "../../../State/Types";
+import { Expansions, GameType } from "../../../../games/GameType";
+import { useRemovePlayerUtils } from "../../../../hooks/useRemovePlayer";
 
-const GHSpoilerFilter = () => {
+export const GHSpoilerFilter = () => {
 	const { getClassesForGame } = useRemovePlayerUtils();
 	const includeGames = useRecoilValue(includeGameState);
 	const [discount, setDiscount] = useRecoilState(discountState);
@@ -153,5 +152,3 @@ const GHSpoilerFilter = () => {
 		</Segment>
 	);
 };
-
-export default GHSpoilerFilter;

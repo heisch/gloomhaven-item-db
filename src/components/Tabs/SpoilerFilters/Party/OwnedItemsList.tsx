@@ -9,7 +9,7 @@ import {
 	TableRow,
 	TableCell,
 } from "semantic-ui-react";
-import { gameDataState } from "../../../State";
+import { gameDataState } from "../../../../State";
 
 type Props = {
 	itemIds: number[];

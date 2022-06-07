@@ -1,15 +1,15 @@
 import React, { useMemo } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { AllGames, GameType } from "../../../games/GameType";
-import { isFlagEnabled } from "../../../helpers";
-import { useRemovePlayerUtils } from "../../../hooks/useRemovePlayer";
+import { AllGames, GameType } from "../../../../games/GameType";
+import { isFlagEnabled } from "../../../../helpers";
+import { useRemovePlayerUtils } from "../../../../hooks/useRemovePlayer";
 import {
 	classesInUseState,
 	classToDeleteState,
 	gameTypeState,
 	includeGameState,
-} from "../../../State";
-import { ClassesInUse } from "../../../State/Types";
+} from "../../../../State";
+import { ClassesInUse } from "../../../../State/Types";
 import { ClassList } from "./ClassList";
 type Props = {
 	type: AllGames;
