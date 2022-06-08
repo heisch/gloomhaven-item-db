@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { GloomhavenItem } from "../../../State/Types";
-import { Label } from "semantic-ui-react";
+import { Button, Label } from "semantic-ui-react";
 import ItemManagement from "./ItemManagement";
 import { getItemPath } from "../../../games/GameData";
 import { getItemIdString } from "./ItemTableRow";
@@ -19,17 +19,29 @@ const ItemCard = (props: Props) => {
 	const { item } = props;
 
 	const [draw, setDraw] = useState(false);
+	const [showBackside, setShowBackside] = useState(false);
 
 	return (
 		<div className={"item-card-wrapper"}>
 			<img
-				src={getItemPath(item)}
+				src={getItemPath(item, showBackside)}
 				alt={item.name}
 				onLoad={() => setDraw(true)}
 				className={"item-card"}
 			/>
-			{draw && <ItemId item={item} />}
-			{draw && <ItemManagement item={item} />}
+			{draw && !showBackside && (
+				<>
+					<ItemId item={item} />
+					<ItemManagement item={item} />
+				</>
+			)}
+			{draw && item.flippable && (
+				<Button
+					icon={showBackside ? "redo" : "undo"}
+					className="flipItem"
+					onClick={() => setShowBackside((current) => !current)}
+				/>
+			)}
 		</div>
 	);
 };

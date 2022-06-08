@@ -163,4 +163,5 @@ export interface GloomhavenItem {
 	resources: Record<string, string>;
 	imagePrefix?: string;
 	imageSuffix?: string;
+	flippable?: boolean;
 }

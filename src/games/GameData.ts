@@ -74,7 +74,7 @@ const gameFolders: Record<AllGames, FolderData> = {
 	},
 };
 
-const getItemFilename = (item: GloomhavenItem) => {
+const getItemFilename = (item: GloomhavenItem, backside?: boolean) => {
 	const { folder, name, gameType, id, displayId, imagePrefix, imageSuffix } =
 		item;
 	const idToUse = displayId || id.toString();
@@ -85,12 +85,14 @@ const getItemFilename = (item: GloomhavenItem) => {
 		"0"
 	)}${imageSuffix || ""}`;
 	const itemFolder = folder ? folder + "/" : "";
-	return `${itemFolder}${prefix}-${itemNumber}-${filename}.png`;
+	return `${itemFolder}${prefix}-${itemNumber}-${filename}${
+		backside ? "-back" : ""
+	}.png`;
 };
 
-export const getItemPath = (item: GloomhavenItem) => {
+export const getItemPath = (item: GloomhavenItem, backside?: boolean) => {
 	const { gameType } = item;
 	const { folderName } = gameFolders[gameType];
-	const itemName = getItemFilename(item);
+	const itemName = getItemFilename(item, backside);
 	return require(`../../worldhaven/images/items/${folderName}/${itemName}`);
 };
