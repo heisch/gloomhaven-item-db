@@ -102,6 +102,13 @@ svg.item-card {
 	margin-bottom: 10px;
 }
 
+.purchase-card {
+	border-radius: 25px;
+	width: 200px;
+	margin-left: 50px;
+}
+
+
 img.ui.image.icon {
 	cursor: pointer;
 	margin-left: 1em;
@@ -534,10 +541,10 @@ button.ui.deleteUser .delete.icon {
 	width: 120px;
 }
 
-.purchase-card {
+/* .purchase-card {
 	width: 200px;
 	margin-left: 50px;
-}
+} */
 
 .purchase-content {
 	display: flex;
