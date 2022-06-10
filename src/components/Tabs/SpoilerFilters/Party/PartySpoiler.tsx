@@ -7,7 +7,7 @@ import { ItemManagementType } from "../../../../State/Types";
 import PartyManagementFilter from "./PartyManagementFilter";
 import { PartySpoilerList } from "./PartySpoilerList";
 
-const PartFilterList = [
+const PartyFilterList = [
 	{
 		type: GameType.Gloomhaven,
 		label: "Gloomhaven:",
@@ -61,7 +61,7 @@ export const PartySpoiler = () => {
 							/>
 						}
 					</Form.Group>
-					{PartFilterList.map((filter) => (
+					{PartyFilterList.map((filter) => (
 						<PartySpoilerList key={filter.type} {...filter} />
 					))}
 				</Form.Group>

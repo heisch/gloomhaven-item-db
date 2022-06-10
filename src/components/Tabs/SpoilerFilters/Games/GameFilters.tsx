@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Icon, Popup, Segment } from "semantic-ui-react";
+import { Form, Icon, Popup, Segment, List } from "semantic-ui-react";
 import { AllGames, Expansions, GameType } from "../../../../games/GameType";
 import { isFlagEnabled } from "../../../../helpers";
 import { GameFilterCheckbox } from "./GameFilterCheckbox";
