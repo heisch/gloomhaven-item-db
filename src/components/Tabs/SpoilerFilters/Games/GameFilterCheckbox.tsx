@@ -15,7 +15,7 @@ type Props = {} & AllFilterData;
 export const GameFilterCheckbox = (props: Props) => {
 	const { getClassesToRemove, getRemovingItemCount, anyGameItemsOwned } =
 		useRemovePlayerUtils();
-	const { allGameType, title, gameToFilterOn } = props;
+	const { allGameType, title, gamesToFilterOn } = props;
 	const [includeGames, setIncludeGames] = useRecoilState(includeGameState);
 	const gameType = useRecoilValue(gameTypeState);
 	const setRemovingGame = useSetRecoilState(removingGameState);
@@ -42,7 +42,7 @@ export const GameFilterCheckbox = (props: Props) => {
 		setIncludeGames(value);
 	};
 
-	if (gameType === gameToFilterOn) {
+	if (gamesToFilterOn && gamesToFilterOn.includes(gameType)) {
 		return null;
 	}
 	return (

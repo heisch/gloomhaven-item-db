@@ -19,6 +19,7 @@ export const GHSpoilerFilter = () => {
 	const includeFC = includeGames.includes(Expansions.ForgottenCircles);
 	const includeCS = includeGames.includes(Expansions.CrimsonScales);
 	const includeCSA = includeGames.includes(Expansions.CrimsonScalesAddon);
+	const includeGHSS = includeGames.includes(Expansions.GHSoloScenarios);
 	const ghClasses = getClassesForGame(GameType.Gloomhaven);
 	const fcClasses = getClassesForGame(Expansions.ForgottenCircles);
 	const csClasses = getClassesForGame(Expansions.CrimsonScales);
@@ -125,30 +126,37 @@ export const GHSpoilerFilter = () => {
 					)}
 				</Segment>
 			</Form.Field>
-			<Segment>
-				<Form.Group inline>
-					<label>Solo Class Items:</label>
-				</Form.Group>
-				<SoloClassFilter name="Gloomhaven" classes={ghClasses} />
-				{includeFC && (
-					<SoloClassFilter
-						name="Forgotten Circles"
-						classes={fcClasses}
-					/>
-				)}
-				{includeCS && (
-					<SoloClassFilter
-						name="Crimson Scales"
-						classes={csClasses}
-					/>
-				)}
-				{includeCSA && (
-					<SoloClassFilter
-						name="Crimson Scales Addon"
-						classes={csaClasses}
-					/>
-				)}
-			</Segment>
+			{(includeGHSS || includeFC || includeCS || includeCSA) && (
+				<Segment>
+					<Form.Group inline>
+						<label>Solo Class Items:</label>
+					</Form.Group>
+					{includeGHSS && (
+						<SoloClassFilter
+							name="Gloomhaven"
+							classes={ghClasses}
+						/>
+					)}
+					{includeFC && (
+						<SoloClassFilter
+							name="Forgotten Circles"
+							classes={fcClasses}
+						/>
+					)}
+					{includeCS && (
+						<SoloClassFilter
+							name="Crimson Scales"
+							classes={csClasses}
+						/>
+					)}
+					{includeCSA && (
+						<SoloClassFilter
+							name="Crimson Scales Addon"
+							classes={csaClasses}
+						/>
+					)}
+				</Segment>
+			)}
 		</Segment>
 	);
 };

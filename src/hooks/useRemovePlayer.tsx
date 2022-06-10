@@ -26,18 +26,21 @@ export const useRemovePlayerUtils = () => {
 	const envelopeX = useRecoilValue(envelopeXState);
 	const items = useItems();
 
-	const itemsOwnedByClass = useCallback((owner: ClassesInUse | undefined) => {
-		if (!owner) {
-			return [];
-		}
-		const itemIds: number[] = [];
-		Object.entries(itemsOwnedBy).forEach(([itemId, owners]) => {
-			if (owners && owners.includes(owner)) {
-				itemIds.push(parseInt(itemId));
+	const itemsOwnedByClass = useCallback(
+		(owner: ClassesInUse | undefined) => {
+			if (!owner) {
+				return [];
 			}
-		});
-		return itemIds;
-	}, []);
+			const itemIds: number[] = [];
+			Object.entries(itemsOwnedBy).forEach(([itemId, owners]) => {
+				if (owners && owners.includes(owner)) {
+					itemIds.push(parseInt(itemId));
+				}
+			});
+			return itemIds;
+		},
+		[itemsOwnedBy]
+	);
 
 	const removeItemsFromOwner = useCallback(
 		(
@@ -69,7 +72,7 @@ export const useRemovePlayerUtils = () => {
 			}
 			setItemsOwnedBy(newItemsOwnedBy);
 		},
-		[]
+		[itemsOwnedBy]
 	);
 
 	const removeClasses = useCallback(
@@ -150,18 +153,21 @@ export const useRemovePlayerUtils = () => {
 		[getClassesToRemove, itemsOwnedByClass]
 	);
 
-	const anyGameItemsOwned = useCallback((gameType: AllGames) => {
-		const gameItemIds = items
-			.filter((item) => item.gameType === gameType)
-			.map((item) => item.id.toString());
-		let itemCount = 0;
-		gameItemIds.forEach((id) => {
-			if (itemsOwnedBy[id.toString()]) {
-				itemCount++;
-			}
-		});
-		return itemCount;
-	}, []);
+	const anyGameItemsOwned = useCallback(
+		(gameType: AllGames) => {
+			const gameItemIds = items
+				.filter((item) => item.gameType === gameType)
+				.map((item) => item.id.toString());
+			let itemCount = 0;
+			gameItemIds.forEach((id) => {
+				if (itemsOwnedBy[id.toString()]) {
+					itemCount++;
+				}
+			});
+			return itemCount;
+		},
+		[itemsOwnedBy]
+	);
 
 	const functions = useMemo(
 		() => ({

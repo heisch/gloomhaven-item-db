@@ -5,7 +5,7 @@ import {
 	ghItemOffset,
 	initialGHItemsUnlocked,
 } from "../../../../games/fh/FHGameData";
-import { GameType } from "../../../../games/GameType";
+import { GameType, Expansions } from "../../../../games/GameType";
 import { includeGameState, scenarioCompletedState } from "../../../../State";
 import { FHClasses } from "../../../../State/Types";
 import { ScenarioCompletedFilter } from "./ScenarioCompletedFilter";
@@ -17,6 +17,7 @@ const scenariosOfImportance = [1];
 export const FHSpoilerFilter = () => {
 	const includeGames = useRecoilValue(includeGameState);
 	const includeGloomhavenItems = includeGames.includes(GameType.Gloomhaven);
+	const includeFhSS = includeGames.includes(Expansions.FHSoloScenarios);
 	const scenariosComplete = useRecoilValue(scenarioCompletedState);
 
 	const fhRanges = [];
@@ -47,16 +48,18 @@ export const FHSpoilerFilter = () => {
 					/>
 				</Form.Field>
 			</Segment>
-			<Segment>
-				<Form.Group inline>
-					<label>Solo Class Items:</label>
-				</Form.Group>
+			{includeFhSS && (
+				<Segment>
+					<Form.Group inline>
+						<label>Solo Class Items:</label>
+					</Form.Group>
 
-				<SoloClassFilter
-					name="Frosthaven"
-					classes={Object.values(FHClasses)}
-				/>
-			</Segment>
+					<SoloClassFilter
+						name="Frosthaven"
+						classes={Object.values(FHClasses)}
+					/>
+				</Segment>
+			)}
 		</Segment>
 	);
 };

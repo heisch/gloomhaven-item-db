@@ -7,14 +7,24 @@ import { GameHelp } from "./GameHelp";
 
 export type AllFilterData = {
 	allGameType: AllGames;
-	gameToFilterOn?: GameType;
+	gamesToFilterOn?: GameType[];
 	title: String;
 };
 
 export const allFiltersData = [
 	{
+		allGameType: Expansions.FHSoloScenarios,
+		gamesToFilterOn: [GameType.Gloomhaven, GameType.JawsOfTheLion],
+		title: "Solo Scenarios",
+	},
+	{
+		allGameType: Expansions.GHSoloScenarios,
+		gamesToFilterOn: [GameType.JawsOfTheLion, GameType.Frosthaven],
+		title: "Solo Scenarios",
+	},
+	{
 		allGameType: GameType.Gloomhaven,
-		gameToFilterOn: GameType.Gloomhaven,
+		gamesToFilterOn: [GameType.Gloomhaven],
 		title: "Gloomhaven",
 	},
 	{
@@ -31,12 +41,12 @@ export const allFiltersData = [
 	},
 	{
 		allGameType: GameType.JawsOfTheLion,
-		gameToFilterOn: GameType.JawsOfTheLion,
+		gamesToFilterOn: [GameType.JawsOfTheLion],
 		title: "Jaws of the Lion",
 	},
 	{
 		allGameType: GameType.Frosthaven,
-		gameToFilterOn: GameType.Frosthaven,
+		gamesToFilterOn: [GameType.Frosthaven],
 		title: "Frosthaven",
 	},
 ];

@@ -72,6 +72,16 @@ const gameFolders: Record<AllGames, FolderData> = {
 		prefix: "cs",
 		leadingZeros: 2,
 	},
+	[Expansions.GHSoloScenarios]: {
+		folderName: "gloomhaven",
+		prefix: "gh",
+		leadingZeros: 0,
+	},
+	[Expansions.FHSoloScenarios]: {
+		folderName: "frosthaven",
+		prefix: "fh",
+		leadingZeros: 0,
+	},
 };
 
 const getItemFilename = (item: GloomhavenItem, backside?: boolean) => {

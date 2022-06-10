@@ -92,6 +92,10 @@ const fixIncludedGames = (old: any, gameType: GameType, spoilerObj: any) => {
 				newGames.push(Expansions.ForgottenCircles);
 			}
 		}
+		const soloClass = spoilerObj["soloClass"];
+		if (gameType === GameType.Gloomhaven && soloClass && soloClass.length) {
+			newGames.push(Expansions.GHSoloScenarios);
+		}
 	}
 	if (!newGames.includes(gameType)) {
 		newGames.push(gameType);

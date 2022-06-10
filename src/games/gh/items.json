@@ -1714,7 +1714,7 @@
 		"desc": "Any time you kill an enemy during your turn, gain Shield 1 for the rest of the round.",
 		"soloItem": "BR",
 		"folder": "64-151",
-		"gameType": "gh"
+		"gameType": "ghss"
 	},
 	{
 		"id": 135,
@@ -1727,7 +1727,7 @@
 		"desc": "During your Heal action, double the value of the Heal.",
 		"soloItem": "TI",
 		"folder": "64-151",
-		"gameType": "gh"
+		"gameType": "ghss"
 	},
 	{
 		"id": 136,
@@ -1740,7 +1740,7 @@
 		"desc": "During your ranged attack, add +2 Attack and gain Advantage on the entire Attack action, but suffer 2 damage for each attack made.",
 		"soloItem": "SW",
 		"folder": "64-151",
-		"gameType": "gh"
+		"gameType": "ghss"
 	},
 	{
 		"id": 137,
@@ -1752,7 +1752,7 @@
 		"desc": "Any time you perform a melee attack, add PIERCE 1 to the Attack.",
 		"soloItem": "SC",
 		"folder": "64-151",
-		"gameType": "gh"
+		"gameType": "ghss"
 	},
 	{
 		"id": 138,
@@ -1765,7 +1765,7 @@
 		"desc": "During your action where an obstacle is created, create one additional obstacle and apply all effects of the action to it.",
 		"soloItem": "CH",
 		"folder": "64-151",
-		"gameType": "gh"
+		"gameType": "ghss"
 	},
 	{
 		"id": 139,
@@ -1777,7 +1777,7 @@
 		"desc": "Any time you perform an {Augment} action, add +1 Attack to the entire action.",
 		"soloItem": "MT",
 		"folder": "64-151",
-		"gameType": "gh"
+		"gameType": "ghss"
 	},
 	{
 		"id": 140,
@@ -1789,7 +1789,7 @@
 		"desc": "When damaged by an attack, you may {lightX} to gain Shield 3 for the attack.",
 		"soloItem": "SK",
 		"folder": "64-151",
-		"gameType": "gh"
+		"gameType": "ghss"
 	},
 	{
 		"id": 141,
@@ -1804,7 +1804,7 @@
 		"soloItem": "QM",
 		"folder": "64-151",
 		"lost": true,
-		"gameType": "gh"
+		"gameType": "ghss"
 	},
 	{
 		"id": 142,
@@ -1817,7 +1817,7 @@
 		"desc": "When a summon you own is damaged by an attack, it suffers no damage instead.",
 		"soloItem": "SU",
 		"folder": "64-151",
-		"gameType": "gh"
+		"gameType": "ghss"
 	},
 	{
 		"id": 143,
@@ -1830,7 +1830,7 @@
 		"desc": "During your turn, gain INVISIBLE and create dark. {dark}",
 		"soloItem": "NS",
 		"folder": "64-151",
-		"gameType": "gh"
+		"gameType": "ghss"
 	},
 	{
 		"id": 144,
@@ -1843,7 +1843,7 @@
 		"desc": "During your turn, POISON and CURSE one enemy within Range 3.",
 		"soloItem": "PH",
 		"folder": "64-151",
-		"gameType": "gh"
+		"gameType": "ghss"
 	},
 	{
 		"id": 145,
@@ -1855,7 +1855,7 @@
 		"desc": "Any time you perform a melee attack and you have exactly 1 hit point, add +2 Attack to the Attack.",
 		"soloItem": "BE",
 		"folder": "64-151",
-		"gameType": "gh"
+		"gameType": "ghss"
 	},
 	{
 		"id": 146,
@@ -1865,9 +1865,9 @@
 		"slot": "2h",
 		"source": "Reward from Solo Scenario #13 — {SS}",
 		"desc": "After performing any {song} action, immediately perform an Attack 2 or Move 2 action.",
-		"soloItem": "SS",
+		"soloItem": "ghSS",
 		"folder": "64-151",
-		"gameType": "gh"
+		"gameType": "ghss"
 	},
 	{
 		"id": 147,
@@ -1879,7 +1879,7 @@
 		"desc": "Any time you perform a {Doom} action, MUDDLE the target of the {Doom}.",
 		"soloItem": "DS",
 		"folder": "64-151",
-		"gameType": "gh"
+		"gameType": "ghss"
 	},
 	{
 		"id": 148,
@@ -1891,7 +1891,7 @@
 		"desc": "Any time an ally performs a Medical Pack or Large Medical Pack action, they add +1 Heal to their Heal.",
 		"soloItem": "SB",
 		"folder": "64-151",
-		"gameType": "gh"
+		"gameType": "ghss"
 	},
 	{
 		"id": 149,
@@ -1904,7 +1904,7 @@
 		"desc": "If you move 5 or more hexes on your turn, create any element. {any}",
 		"soloItem": "EL",
 		"folder": "64-151",
-		"gameType": "gh"
+		"gameType": "ghss"
 	},
 	{
 		"id": 150,
@@ -1917,7 +1917,7 @@
 		"desc": "After performing a {Command} action, play one card from your hand and immediately perform the same side of the card (top or bottom) as the {Command} action.",
 		"soloItem": "BT",
 		"folder": "64-151",
-		"gameType": "gh"
+		"gameType": "ghss"
 	},
 	{
 		"id": 151,
@@ -1930,7 +1930,7 @@
 		"desc": "During your melee attack, add POISON and WOUND to the entire action.",
 		"soloItem": "XX",
 		"folder": "64-151",
-		"gameType": "gh"
+		"gameType": "ghss"
 	},
 	{
 		"id": 152,
