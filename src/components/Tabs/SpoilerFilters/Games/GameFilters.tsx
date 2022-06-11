@@ -5,49 +5,69 @@ import { isFlagEnabled } from "../../../../helpers";
 import { GameFilterCheckbox } from "./GameFilterCheckbox";
 import { GameHelp } from "./GameHelp";
 
+export type HelpData = {
+	soloGameType?: string;
+	addClasses?: boolean;
+	addEnvelopeX?: boolean;
+	addItemsToGames?: GameType[];
+};
+
 export type AllFilterData = {
 	allGameType: AllGames;
 	gamesToFilterOn?: GameType[];
-	title: String;
-};
+	title: string;
+} & HelpData;
 
-export const allFiltersData = [
+export const allFiltersData: AllFilterData[] = [
 	{
 		allGameType: Expansions.FHSoloScenarios,
 		gamesToFilterOn: [GameType.Gloomhaven, GameType.JawsOfTheLion],
 		title: "Solo Scenarios",
+		soloGameType: "Frosthaven",
 	},
 	{
 		allGameType: Expansions.GHSoloScenarios,
 		gamesToFilterOn: [GameType.JawsOfTheLion, GameType.Frosthaven],
 		title: "Solo Scenarios",
+		soloGameType: "Gloomhaven",
 	},
 	{
 		allGameType: GameType.Gloomhaven,
 		gamesToFilterOn: [GameType.Gloomhaven],
 		title: "Gloomhaven",
+		addClasses: true,
+		addEnvelopeX: true,
+		addItemsToGames: [GameType.Frosthaven],
 	},
 	{
 		allGameType: Expansions.ForgottenCircles,
 		title: "Forgotten Circles",
+		addClasses: true,
+		addItemsToGames: [GameType.Gloomhaven],
 	},
 	{
 		allGameType: Expansions.CrimsonScales,
 		title: "Crimson Scales",
+		addClasses: true,
+		addItemsToGames: [GameType.Gloomhaven],
 	},
 	{
 		allGameType: Expansions.CrimsonScalesAddon,
 		title: "Crimson Scales Addon",
+		addClasses: true,
+		addItemsToGames: [GameType.Gloomhaven],
 	},
 	{
 		allGameType: GameType.JawsOfTheLion,
 		gamesToFilterOn: [GameType.JawsOfTheLion],
 		title: "Jaws of the Lion",
+		addClasses: true,
 	},
 	{
 		allGameType: GameType.Frosthaven,
 		gamesToFilterOn: [GameType.Frosthaven],
 		title: "Frosthaven",
+		addClasses: true,
 	},
 ];
 
