@@ -44,7 +44,7 @@ export const PartySpoiler = () => {
 				<Form.Group inline className={"inline-break"}>
 					<Form.Group inline>
 						<label>Party Members:</label>
-						{
+						<div style={{ margin: "5px 8px" }}>
 							<Popup
 								closeOnDocumentClick
 								hideOnScroll
@@ -59,7 +59,7 @@ export const PartySpoiler = () => {
 									"Click on a class icon to add that class to you party.  You can then assign items to any members in a party. Clicking on member a second time will remove all items."
 								}
 							/>
-						}
+						</div>
 					</Form.Group>
 					{PartyFilterList.map((filter) => (
 						<PartySpoilerList key={filter.type} {...filter} />

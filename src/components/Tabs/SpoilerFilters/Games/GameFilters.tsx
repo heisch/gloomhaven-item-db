@@ -8,7 +8,6 @@ import { GameHelp } from "./GameHelp";
 export type HelpData = {
 	soloGameType?: string;
 	addClasses?: boolean;
-	addEnvelopeX?: boolean;
 	addItemsToGames?: GameType[];
 };
 
@@ -36,7 +35,6 @@ export const allFiltersData: AllFilterData[] = [
 		gamesToFilterOn: [GameType.Gloomhaven],
 		title: "Gloomhaven",
 		addClasses: true,
-		addEnvelopeX: true,
 		addItemsToGames: [GameType.Frosthaven],
 	},
 	{
@@ -78,16 +76,17 @@ export const GameFilters = () => {
 		<Segment>
 			<Form.Group inline>
 				<label>Games:</label>
-				<Popup
-					closeOnDocumentClick
-					hideOnScroll
-					trigger={
-						<Icon name={"question circle"} className={"blue"} />
-					}
-					header={"Game Types"}
-					content={<GameHelp />}
-				/>
-
+				<div style={{ margin: "5px 8px" }}>
+					<Popup
+						closeOnDocumentClick
+						hideOnScroll
+						trigger={
+							<Icon name={"question circle"} className={"blue"} />
+						}
+						header={"Game Types"}
+						content={<GameHelp />}
+					/>
+				</div>
 				{allFiltersData
 					.filter(
 						(data) =>

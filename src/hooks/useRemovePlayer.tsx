@@ -6,6 +6,7 @@ import {
 	envelopeXState,
 	itemsOwnedByState,
 	selectedClassState,
+	gameDataState,
 } from "../State";
 import {
 	ClassesInUse,
@@ -16,15 +17,14 @@ import {
 	GHClasses,
 	JOTLClasses,
 } from "../State/Types";
-import useItems from "./useItems";
 
 export const useRemovePlayerUtils = () => {
+	const { items } = useRecoilValue(gameDataState);
 	const [classesInUse, setClassesInUseBy] = useRecoilState(classesInUseState);
 	const [selectedClass, setSelectedClass] =
 		useRecoilState(selectedClassState);
 	const [itemsOwnedBy, setItemsOwnedBy] = useRecoilState(itemsOwnedByState);
 	const envelopeX = useRecoilValue(envelopeXState);
-	const items = useItems();
 
 	const itemsOwnedByClass = useCallback(
 		(owner: ClassesInUse | undefined) => {
@@ -66,13 +66,14 @@ export const useRemovePlayerUtils = () => {
 				const gameItems = items.filter(
 					(item) => item.gameType === removingGame
 				);
+				console.log(gameItems);
 				gameItems.forEach(({ id }) => {
 					delete newItemsOwnedBy[id];
 				});
 			}
 			setItemsOwnedBy(newItemsOwnedBy);
 		},
-		[itemsOwnedBy, setItemsOwnedBy]
+		[itemsOwnedBy, setItemsOwnedBy, items]
 	);
 
 	const removeClasses = useCallback(
@@ -165,15 +166,9 @@ export const useRemovePlayerUtils = () => {
 			const gameItemIds = items
 				.filter((item) => item.gameType === gameType)
 				.map((item) => item.id.toString());
-			let itemCount = 0;
-			gameItemIds.forEach((id) => {
-				if (itemsOwnedBy[id.toString()]) {
-					itemCount++;
-				}
-			});
-			return itemCount;
+			return gameItemIds.filter((id) => itemsOwnedBy[id]).length;
 		},
-		[itemsOwnedBy]
+		[itemsOwnedBy, items]
 	);
 
 	const functions = useMemo(
