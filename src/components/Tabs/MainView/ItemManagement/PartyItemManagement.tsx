@@ -1,6 +1,5 @@
 import React from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { Button } from "semantic-ui-react";
 import { useRemovePlayerUtils } from "../../../../hooks/useRemovePlayer";
 import {
 	classesInUseState,

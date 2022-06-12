@@ -43,7 +43,10 @@ export const PartySpoilerList = (props: Props) => {
 		}
 	};
 
-	const classes = useMemo(() => getClassesForGame(type), [type]);
+	const classes = useMemo(
+		() => getClassesForGame(type),
+		[getClassesForGame, type]
+	);
 
 	if (!isGameIncluded()) {
 		return null;

@@ -1,9 +1,4 @@
-import {
-	GloomhavenItem,
-	ResourceTypes,
-	SortDirection,
-	SortProperty,
-} from "../State/Types";
+import { GloomhavenItem, SortDirection, SortProperty } from "../State/Types";
 import { useRecoilValue } from "recoil";
 import {
 	gameDataState,
@@ -23,7 +18,6 @@ import {
 	includeGameState,
 	resourcesState,
 } from "../State";
-import { GameType } from "../games";
 
 function compareItems<T>(a: T, b: T) {
 	if (a === b) {

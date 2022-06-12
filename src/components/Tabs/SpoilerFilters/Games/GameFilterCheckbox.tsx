@@ -10,7 +10,7 @@ import {
 } from "../../../../State";
 import { AllFilterData } from "./GameFilters";
 
-type Props = {} & AllFilterData;
+type Props = AllFilterData;
 
 export const GameFilterCheckbox = (props: Props) => {
 	const { getClassesToRemove, getRemovingItemCount, anyGameItemsOwned } =

@@ -2,7 +2,6 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 import { Icon, Popup, Table } from "semantic-ui-react";
 import { GameType } from "../../../games";
-import { Helpers } from "../../../helpers";
 import { discountState, gameTypeState } from "../../../State";
 import { GloomhavenItem } from "../../../State/Types";
 import { GHIcon } from "./GHIcon";

@@ -5,6 +5,7 @@ import React, {
 	useEffect,
 	FC,
 	useMemo,
+	useCallback,
 } from "react";
 import Firebase from "./firebase";
 import qs from "qs";
@@ -37,11 +38,14 @@ const FirebaseProvider: FC = ({ children }) => {
 		setFirebase(new Firebase());
 	}, []);
 
-	const updateRemoteData = (snapshot: any) => {
-		if (snapshot.val()) {
-			setRemoteData(snapshot.val()["configHash"]);
-		}
-	};
+	const updateRemoteData = useCallback(
+		(snapshot: any) => {
+			if (snapshot.val()) {
+				setRemoteData(snapshot.val()["configHash"]);
+			}
+		},
+		[setRemoteData]
+	);
 
 	useEffect(() => {
 		if (!firebase) return;
@@ -56,7 +60,7 @@ const FirebaseProvider: FC = ({ children }) => {
 				setRemoteData(undefined);
 			}
 		});
-	}, [firebase]);
+	}, [firebase, setRemoteData, updateRemoteData]);
 
 	useEffect(() => {
 		if (!firebase) {
@@ -81,14 +85,14 @@ const FirebaseProvider: FC = ({ children }) => {
 				console.log(error);
 			}
 		);
-	}, [firebase]);
+	}, [firebase, setImportHash]);
 
 	useEffect(() => {
 		if (!firebase || !authUser) {
 			return;
 		}
 		firebase.spoilerFilter(authUser.uid).on("value", updateRemoteData);
-	}, [firebase, authUser]);
+	}, [firebase, authUser, updateRemoteData]);
 
 	const value = useMemo(() => ({ firebase, authUser }), [firebase, authUser]);
 

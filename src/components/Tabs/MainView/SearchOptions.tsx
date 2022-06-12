@@ -58,7 +58,7 @@ const SearchOptions = (props: Props) => {
 			setSlotsState([]);
 			return;
 		}
-		let value = Object.assign([], slots);
+		const value = Object.assign([], slots);
 		const index = value.indexOf(slot);
 		if (index !== -1) {
 			value.splice(index, 1);
@@ -73,7 +73,7 @@ const SearchOptions = (props: Props) => {
 			setResourcesState([]);
 			return;
 		}
-		let value = Object.assign([], resources);
+		const value = Object.assign([], resources);
 		const index = value.indexOf(resource);
 		if (index !== -1) {
 			value.splice(index, 1);

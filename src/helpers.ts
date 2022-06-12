@@ -11,34 +11,34 @@ type CreateParams = {
 };
 
 export const createWorldhavenString = (parms: CreateParams) => {
-	let {
-		filename,
+	const {
 		game,
 		folder = "general",
 		className = "icon",
 		lowercaseName = true,
 		subfolder = "",
 	} = parms;
+	let { filename } = parms;
 	filename = lowercaseName ? filename.toLowerCase() : filename;
 	const src = require(`../worldhaven/images/${folder}/${game}/${subfolder}/${filename}.png`);
 	return `<img class="${className}" src="${src}" alt="${filename}"/>`;
 };
 
 const createImageString = (parms: CreateParams) => {
-	let {
-		filename,
+	const {
 		folder = "general",
 		className = "icon",
 		lowercaseName = true,
 	} = parms;
+	let { filename } = parms;
 	filename = lowercaseName ? filename.toLowerCase() : filename;
 	const src = require(`./img/icons/${folder}/${filename}.png`);
 	return `<img class="${className}" src="${src}" alt="${filename}"/>`;
 };
 
 export class Helpers {
-	static uniqueArray(arr: Array<any>, sort: boolean = true) {
-		const result: Array<any> = [];
+	static uniqueArray<T>(arr: Array<T>, sort = true) {
+		const result: Array<T> = [];
 		arr.forEach((entry) => {
 			if (!result.includes(entry)) {
 				result.push(entry);

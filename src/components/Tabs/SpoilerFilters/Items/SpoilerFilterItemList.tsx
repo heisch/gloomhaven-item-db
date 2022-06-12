@@ -24,7 +24,7 @@ const SpoilerFilterItemList = (props: Props) => {
 			first = range;
 			last = range;
 		} else {
-			let { start, end } = range;
+			const { start, end } = range;
 			first = start;
 			last = end || start;
 		}

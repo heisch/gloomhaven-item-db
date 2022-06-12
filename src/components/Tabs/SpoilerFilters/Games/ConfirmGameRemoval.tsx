@@ -54,20 +54,20 @@ export const ConfirmGameRemoval = () => {
 								{getClassesToRemove(removingGame).length >
 									0 && (
 									<List.Item>
-										Remove this game's classes from the
-										party
+										{`Remove this game's classes from the
+										party`}
 									</List.Item>
 								)}
 								{getRemovingItemCount(removingGame) > 0 && (
 									<List.Item>
-										Put any items owned by this game's
-										classes back into available inventory
+										{`Put any items owned by this game's
+										classes back into available inventory`}
 									</List.Item>
 								)}
 								{anyGameItemsOwned(removingGame) > 0 && (
 									<List.Item>
-										Clear the owners of any of this game's
-										items.
+										{`Clear the owners of any of this game's
+										items.`}
 									</List.Item>
 								)}
 							</List>

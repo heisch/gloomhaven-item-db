@@ -75,7 +75,13 @@ const ImportData = () => {
 		}
 		setDataDirty(false);
 		setDataMismatch(remoteData !== configHash);
-	}, [dataDirty, remoteData]);
+	}, [
+		dataDirty,
+		lockSpoilerPanel,
+		remoteData,
+		setDataDirty,
+		setDataMismatch,
+	]);
 
 	useEffect(() => {
 		if (importHash && importHash !== currentHash) {

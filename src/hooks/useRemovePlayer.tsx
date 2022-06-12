@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { AllGames, Expansions, GameType } from "../games/GameType";
 import {
@@ -72,7 +72,7 @@ export const useRemovePlayerUtils = () => {
 			}
 			setItemsOwnedBy(newItemsOwnedBy);
 		},
-		[itemsOwnedBy]
+		[itemsOwnedBy, setItemsOwnedBy]
 	);
 
 	const removeClasses = useCallback(
@@ -93,7 +93,7 @@ export const useRemovePlayerUtils = () => {
 					newClassesInUse.splice(index, 1);
 				}
 
-				let newSelectedClass = selectedClass;
+				const newSelectedClass = selectedClass;
 				if (newSelectedClass === classToRemove) {
 					clearClassSelection = true;
 				}
@@ -103,7 +103,14 @@ export const useRemovePlayerUtils = () => {
 			}
 			setClassesInUseBy(newClassesInUse);
 		},
-		[]
+		[
+			classesInUse,
+			itemsOwnedByClass,
+			removeItemsFromOwner,
+			selectedClass,
+			setClassesInUseBy,
+			setSelectedClass,
+		]
 	);
 
 	const getClassesForGame = useCallback(

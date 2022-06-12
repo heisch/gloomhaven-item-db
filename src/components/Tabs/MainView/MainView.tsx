@@ -94,7 +94,7 @@ const MainView = () => {
 				<a
 					href={"https://www.cephalofair.com/"}
 					target={"_blank"}
-					rel={"noopener"}
+					rel={"noopener noreferrer"}
 				>
 					Cephalofair Games
 				</a>

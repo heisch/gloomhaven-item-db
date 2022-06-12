@@ -7,9 +7,9 @@ export const initialGHItemsUnlocked = [10, 25, 72, 105, 109, 116];
 const ghItemToImport = [...initialGHItemsUnlocked];
 
 let { items, filterSlots } = getInitialItems(GameType.Frosthaven);
-export const ghItemOffset: number = 1000;
+export const ghItemOffset = 1000;
 
-let { items: ghItems, filterSlots: ghFilterSlots } = getInitialItems(
+const { items: ghItems, filterSlots: ghFilterSlots } = getInitialItems(
 	GameType.Gloomhaven
 );
 
@@ -19,17 +19,17 @@ const getUnlockScenario = (id: number) => {
 	}
 	return -1;
 };
-ghItems = ghItems.map((item: GloomhavenItem, index: number) => ({
+let filteredGhItems = ghItems.map((item: GloomhavenItem, index: number) => ({
 	...item,
 	displayId: item.id.toString(),
 	unlockScenario: getUnlockScenario(item.id),
 	id: ghItemOffset + index + 1,
 	unlockProsperity: Number.MAX_VALUE,
 }));
-ghItems = ghItems.filter((item) =>
+filteredGhItems = filteredGhItems.filter((item) =>
 	ghItemToImport.includes(parseInt(item.displayId, 10))
 );
-items = items.concat(ghItems);
+items = items.concat(filteredGhItems);
 
 filterSlots = Helpers.uniqueArray(filterSlots.concat(ghFilterSlots));
 
