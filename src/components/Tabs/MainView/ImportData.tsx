@@ -52,9 +52,7 @@ const ImportData = () => {
 	const remoteImportHash = useRecoilValue(importHashState);
 	const [importHash, setImportHash] = useState(qsImportHash);
 	const [isOpen, setIsOpen] = useState(false);
-	const currentHash = getShareHash(
-		localStorage.getItem("lockSpoilerPanel") === "true"
-	);
+
 	const setLockSpoilerPanel = useSetRecoilState(lockSpoilerPanelState);
 	const lockSpoilerPanel = useRecoilValue(lockSpoilerPanelState);
 	const [dataDirty, setDataDirty] = useRecoilState(dataDirtyState);
@@ -84,6 +82,9 @@ const ImportData = () => {
 	]);
 
 	useEffect(() => {
+		const currentHash = getShareHash(
+			localStorage.getItem("lockSpoilerPanel") === "true"
+		);
 		if (importHash && importHash !== currentHash) {
 			setIsOpen((importHash && importHash.length > 0) || false);
 		}

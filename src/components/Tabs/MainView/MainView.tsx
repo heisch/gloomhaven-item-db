@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo } from "react";
 import { Tab } from "semantic-ui-react";
 import ItemList from "./ItemList";
 import SpoilerFilters from "../SpoilerFilters/SpoilerFilters";
@@ -63,7 +63,7 @@ const MainView = () => {
 		})
 		.filter((pane) => pane.menuItem !== undefined);
 
-	const getOutlineClass = useCallback(() => {
+	const outlineClass = useMemo(() => {
 		if (all || dataMismatch) {
 			return "spoiler";
 		}
@@ -73,7 +73,7 @@ const MainView = () => {
 	return (
 		<>
 			<ImportData />
-			<div className={getOutlineClass()}>
+			<div className={outlineClass}>
 				<Tab
 					panes={panes}
 					defaultActiveIndex={parseInt(

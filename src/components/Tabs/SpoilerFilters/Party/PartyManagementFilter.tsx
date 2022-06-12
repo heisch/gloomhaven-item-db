@@ -1,13 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useRecoilState } from "recoil";
-import {
-	Dropdown,
-	DropdownProps,
-	Form,
-	Popup,
-	Icon,
-	List,
-} from "semantic-ui-react";
+import { Form, Popup, Icon, List } from "semantic-ui-react";
 import { itemManagementTypeState } from "../../../../State";
 import { ItemManagementType } from "../../../../State/Types";
 
@@ -16,22 +9,8 @@ const PartyManagementFilter = () => {
 		itemManagementTypeState
 	);
 
-	const [managementType, setManagmentType] = useState(itemManagementType);
-
-	useEffect(() => {
-		setManagmentType(itemManagementType);
-	}, [itemManagementType]);
-
-	const options = Object.keys(ItemManagementType).map((key) => {
-		return { value: key, text: key };
-	});
-
-	const onChangeItemManagement = (_d: any, data: DropdownProps) => {
-		const { value } = data;
-		if (value) {
-			setManagmentType(value as ItemManagementType);
-			setItemManagementType(value as ItemManagementType);
-		}
+	const onChangeItemManagement = (value: ItemManagementType) => {
+		setItemManagementType(value);
 	};
 
 	return (
@@ -76,11 +55,16 @@ const PartyManagementFilter = () => {
 						}
 					/>
 				</div>
-				<Dropdown
-					value={managementType}
-					onChange={onChangeItemManagement}
-					options={options}
-				/>
+				{Object.entries(ItemManagementType).map(([key, value]) => {
+					return (
+						<Form.Radio
+							key={key}
+							label={key}
+							checked={itemManagementType === value}
+							onChange={() => onChangeItemManagement(value)}
+						/>
+					);
+				})}
 			</Form.Group>
 		</Form.Group>
 	);
