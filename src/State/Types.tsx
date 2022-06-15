@@ -22,11 +22,11 @@ export enum ItemViewDisplayType {
 }
 
 export enum SortProperty {
-	Id,
-	Slot,
-	Cost,
-	Name,
-	Use,
+	Id = "id",
+	Slot = "slot",
+	Cost = "cost",
+	Name = "name",
+	Use = "use",
 }
 
 export enum GHClasses {

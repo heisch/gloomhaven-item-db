@@ -18,6 +18,7 @@ import {
 	includeGameState,
 	resourcesState,
 } from "../State";
+import { useCallback } from "react";
 
 function compareItems<T>(a: T, b: T) {
 	if (a === b) {
@@ -64,6 +65,11 @@ const useItems = (): Array<GloomhavenItem> => {
 		unlockProsperity,
 		unlockScenario,
 		gameType,
+		slot,
+		name,
+		resources: itemResources,
+		desc,
+		count,
 	}: GloomhavenItem) => {
 		if (!includeGames.includes(gameType)) {
 			return false;
@@ -74,58 +80,51 @@ const useItems = (): Array<GloomhavenItem> => {
 			return false;
 		}
 
-		if (all) {
-			return true;
-		}
-		if (prosperity >= unlockProsperity) {
-			return true;
-		}
-		if (scenarioCompleted.includes(unlockScenario)) {
-			return true;
-		}
+		let show =
+			all ||
+			prosperity >= unlockProsperity ||
+			scenarioCompleted.includes(unlockScenario) ||
+			(soloItem && soloClass.includes(soloItem)) ||
+			item.includes(id);
 
-		if (soloItem && soloClass.includes(soloItem)) {
-			return true;
-		}
-		return item.includes(id);
-	};
-	const getFilteredItems = () => {
-		const spoilerFiltered = items.filter(isItemShown);
-		return spoilerFiltered.filter((item: GloomhavenItem) => {
-			let hit = true;
-			if (slots.length > 0) {
-				hit = slots.includes(item.slot);
+		if (show) {
+			if (slots.length > 0 && !slots.includes(slot)) {
+				return false;
 			}
-			if (resources.length > 0 && item.resources && hit) {
-				const itemResourceTypes = Object.keys(item.resources);
-				hit = resources.some((r) => itemResourceTypes.indexOf(r) >= 0);
-			}
-			if (searchString.length > 2 && hit) {
-				hit =
-					!!item.name.match(new RegExp(searchString, "i")) ||
-					!!item.desc.match(new RegExp(searchString, "i"));
-			}
-			if (selectedClass && hit) {
-				const owners = itemsOwnedBy[item.id];
-				if (owners) {
-					hit = owners.includes(selectedClass);
-				} else {
-					hit = false;
+			if (resources.length > 0 && itemResources) {
+				const itemResourceTypes = Object.keys(itemResources);
+				if (!resources.some((r) => itemResourceTypes.indexOf(r) >= 0)) {
+					return false;
 				}
 			}
-			if (availableOnly && hit) {
-				const owners = itemsOwnedBy[item.id];
-				if (owners) {
-					hit = item.count != owners.length;
+			if (searchString.length > 2) {
+				if (
+					!name.match(new RegExp(searchString, "i")) &&
+					!desc.match(new RegExp(searchString, "i"))
+				) {
+					return false;
 				}
 			}
-			return hit;
-		});
+			if (selectedClass) {
+				const owners = itemsOwnedBy[id];
+				if (!owners || !owners.includes(selectedClass)) {
+					return false;
+				}
+			}
+			if (availableOnly) {
+				const owners = itemsOwnedBy[id];
+				if (owners) {
+					if (count == owners.length) {
+						return false;
+					}
+				}
+			}
+		}
+		return show;
 	};
 
-	const getSortedAndFilteredItems = () => {
-		const items = getFilteredItems();
-		return items.sort((itemA: GloomhavenItem, itemB: GloomhavenItem) => {
+	const doSort = useCallback(
+		(itemA: GloomhavenItem, itemB: GloomhavenItem) => {
 			let value = 0;
 			switch (sortProperty) {
 				case SortProperty.Name:
@@ -147,7 +146,13 @@ const useItems = (): Array<GloomhavenItem> => {
 			return sortDirection === SortDirection.ascending
 				? value
 				: value * -1;
-		});
+		},
+		[sortDirection, sortProperty]
+	);
+
+	const getSortedAndFilteredItems = () => {
+		const sorted = items.filter(isItemShown).sort(doSort);
+		return sorted;
 	};
 
 	return getSortedAndFilteredItems();
