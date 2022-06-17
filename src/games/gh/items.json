@@ -1930,7 +1930,8 @@
 		"desc": "During your melee attack, add POISON and WOUND to the entire action.",
 		"soloItem": "XX",
 		"folder": "64-151",
-		"gameType": "ghss"
+		"gameType": "ghss",
+		"specialUnlock": "envelopeX"
 	},
 	{
 		"id": 152,

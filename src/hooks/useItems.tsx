@@ -11,14 +11,14 @@ import {
 	itemState,
 	itemsOwnedByState,
 	allState,
-	envelopeXState,
+	specialUnlocksState,
 	prosperityState,
 	soloClassState,
 	scenarioCompletedState,
 	includeGameState,
 	resourcesState,
 } from "../State";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 function compareItems<T>(a: T, b: T) {
 	if (a === b) {
@@ -53,75 +53,14 @@ const useItems = (): Array<GloomhavenItem> => {
 	const item = useRecoilValue(itemState);
 	const itemsOwnedBy = useRecoilValue(itemsOwnedByState);
 	const all = useRecoilValue(allState);
-	const envelopeX = useRecoilValue(envelopeXState);
+	const specialUnlocks = useRecoilValue(specialUnlocksState);
 	const prosperity = useRecoilValue(prosperityState);
 	const soloClass = useRecoilValue(soloClassState);
 	const scenarioCompleted = useRecoilValue(scenarioCompletedState);
 	const includeGames = useRecoilValue(includeGameState);
 
-	const isItemShown = ({
-		id,
-		soloItem,
-		unlockProsperity,
-		unlockScenario,
-		gameType,
-		slot,
-		name,
-		resources: itemResources,
-		desc,
-		count,
-	}: GloomhavenItem) => {
-		if (!includeGames.includes(gameType)) {
-			return false;
-		}
-
-		// Special case for item XX Solo item.
-		if (soloItem && soloItem == "XX" && !envelopeX) {
-			return false;
-		}
-
-		let show =
-			all ||
-			prosperity >= unlockProsperity ||
-			scenarioCompleted.includes(unlockScenario) ||
-			(soloItem && soloClass.includes(soloItem)) ||
-			item.includes(id);
-
-		if (show) {
-			if (slots.length > 0 && !slots.includes(slot)) {
-				return false;
-			}
-			if (resources.length > 0 && itemResources) {
-				const itemResourceTypes = Object.keys(itemResources);
-				if (!resources.some((r) => itemResourceTypes.indexOf(r) >= 0)) {
-					return false;
-				}
-			}
-			if (searchString.length > 2) {
-				if (
-					!name.match(new RegExp(searchString, "i")) &&
-					!desc.match(new RegExp(searchString, "i"))
-				) {
-					return false;
-				}
-			}
-			if (selectedClass) {
-				const owners = itemsOwnedBy[id];
-				if (!owners || !owners.includes(selectedClass)) {
-					return false;
-				}
-			}
-			if (availableOnly) {
-				const owners = itemsOwnedBy[id];
-				if (owners) {
-					if (count == owners.length) {
-						return false;
-					}
-				}
-			}
-		}
-		return show;
-	};
+	const [sortedItems, setSortedItems] = useState<GloomhavenItem[]>([]);
+	const [filteredItems, setFilteredItems] = useState<GloomhavenItem[]>([]);
 
 	const doSort = useCallback(
 		(itemA: GloomhavenItem, itemB: GloomhavenItem) => {
@@ -150,12 +89,102 @@ const useItems = (): Array<GloomhavenItem> => {
 		[sortDirection, sortProperty]
 	);
 
-	const getSortedAndFilteredItems = () => {
-		const sorted = items.filter(isItemShown).sort(doSort);
-		return sorted;
-	};
+	useEffect(() => {
+		if (!items) {
+			return;
+		}
+		const foo = Object.assign([], items);
+		foo.sort(doSort);
+		setSortedItems(foo);
+	}, [items, doSort]);
 
-	return getSortedAndFilteredItems();
+	const isItemShown = useCallback(
+		({
+			id,
+			soloItem,
+			unlockProsperity,
+			unlockScenario,
+			gameType,
+			slot,
+			name,
+			resources: itemResources,
+			desc,
+			count,
+			specialUnlock,
+		}: GloomhavenItem) => {
+			if (!includeGames.includes(gameType)) {
+				return false;
+			}
+
+			let show =
+				all ||
+				prosperity >= unlockProsperity ||
+				scenarioCompleted.includes(unlockScenario) ||
+				(soloItem && soloClass.includes(soloItem)) ||
+				(specialUnlock && specialUnlocks.includes(specialUnlock)) ||
+				item.includes(id);
+
+			if (show) {
+				if (slots.length > 0 && !slots.includes(slot)) {
+					return false;
+				}
+				if (resources.length > 0 && itemResources) {
+					const itemResourceTypes = Object.keys(itemResources);
+					if (
+						!resources.some(
+							(r) => itemResourceTypes.indexOf(r) >= 0
+						)
+					) {
+						return false;
+					}
+				}
+				if (searchString.length > 2) {
+					if (
+						!name.match(new RegExp(searchString, "i")) &&
+						!desc.match(new RegExp(searchString, "i"))
+					) {
+						return false;
+					}
+				}
+				if (selectedClass) {
+					const owners = itemsOwnedBy[id];
+					if (!owners || !owners.includes(selectedClass)) {
+						return false;
+					}
+				}
+				if (availableOnly) {
+					const owners = itemsOwnedBy[id];
+					if (owners) {
+						if (count == owners.length) {
+							return false;
+						}
+					}
+				}
+			}
+			return show;
+		},
+		[
+			all,
+			availableOnly,
+			includeGames,
+			item,
+			itemsOwnedBy,
+			prosperity,
+			resources,
+			scenarioCompleted,
+			searchString,
+			selectedClass,
+			slots,
+			soloClass,
+			specialUnlocks,
+		]
+	);
+
+	useEffect(() => {
+		setFilteredItems(sortedItems.filter(isItemShown));
+	}, [sortedItems, isItemShown]);
+
+	return filteredItems;
 };
 
 export default useItems;

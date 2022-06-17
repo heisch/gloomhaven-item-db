@@ -164,4 +164,5 @@ export interface GloomhavenItem {
 	imagePrefix?: string;
 	imageSuffix?: string;
 	flippable?: boolean;
+	specialUnlock?: string;
 }

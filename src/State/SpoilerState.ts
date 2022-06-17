@@ -22,7 +22,26 @@ export const displayItemAsState = createSpoilerState<ItemViewDisplayType>(
 	"displayAs",
 	ItemViewDisplayType.List
 );
-export const envelopeXState = createSpoilerState<boolean>("envelopeX", false);
+
+const fixSpecialUnlocks = (
+	oldSpecialUnlocks: any,
+	gameType: GameType,
+	spoilerObj: any
+) => {
+	console.log(spoilerObj);
+	if (spoilerObj.envelopeX) {
+		delete spoilerObj.envelopeX;
+		return ["envelopeX"];
+	}
+	return oldSpecialUnlocks;
+};
+
+export const specialUnlocksState = createSpoilerState<string[]>(
+	"specialUnlocks",
+	[],
+	fixSpecialUnlocks
+);
+
 export const itemState = createSpoilerState<number[]>("item", []);
 export const itemManagementTypeState = createSpoilerState<ItemManagementType>(
 	"itemManagementType",

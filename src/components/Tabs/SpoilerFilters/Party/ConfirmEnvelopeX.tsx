@@ -8,14 +8,15 @@ import {
 	InputProps,
 } from "semantic-ui-react";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { confirmEnvelopeXState, envelopeXState } from "../../../../State";
+import { confirmEnvelopeXState, specialUnlocksState } from "../../../../State";
 
 export const ConfirmEnvelopeX = () => {
 	const [solutionCorrect, setSolutionCorrect] = useState(false);
 	const [confirmEnvelopeX, setConfirmEnvelopeX] = useRecoilState(
 		confirmEnvelopeXState
 	);
-	const setEnvelopeX = useSetRecoilState(envelopeXState);
+	const [specialUnlocks, setSpecialUnlocks] =
+		useRecoilState(specialUnlocksState);
 
 	const onClose = () => {
 		setConfirmEnvelopeX(false);
@@ -28,7 +29,11 @@ export const ConfirmEnvelopeX = () => {
 
 	const onApply = () => {
 		if (solutionCorrect) {
-			setEnvelopeX(true);
+			if (!specialUnlocks.includes("envelopeX")) {
+				setSpecialUnlocks((current) => {
+					return [...current, "envelopeX"];
+				});
+			}
 		}
 		onClose();
 	};

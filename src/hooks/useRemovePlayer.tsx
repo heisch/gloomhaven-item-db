@@ -3,7 +3,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { AllGames, Expansions, GameType } from "../games/GameType";
 import {
 	classesInUseState,
-	envelopeXState,
+	specialUnlocksState,
 	itemsOwnedByState,
 	selectedClassState,
 	gameDataState,
@@ -24,7 +24,8 @@ export const useRemovePlayerUtils = () => {
 	const [selectedClass, setSelectedClass] =
 		useRecoilState(selectedClassState);
 	const [itemsOwnedBy, setItemsOwnedBy] = useRecoilState(itemsOwnedByState);
-	const envelopeX = useRecoilValue(envelopeXState);
+	const specialUnlocks = useRecoilValue(specialUnlocksState);
+	const envelopeX = specialUnlocks.includes("envelopeX");
 
 	const itemsOwnedByClass = useCallback(
 		(owner: ClassesInUse | undefined) => {
