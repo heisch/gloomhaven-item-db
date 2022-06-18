@@ -3497,7 +3497,7 @@
 		"slot": "body",
 		"cost": 125,
 		"source": "Envelope E",
-		"desc": "You are immune to POISON and 'enchant slot'. When damage by an attack, gain Shield 0 'enhancement slot' for the attack.",
+		"desc": "You are immune to POISON and {enchantment-circle}. When damage by an attack, gain Shield 0 {enchantment-circle} for the attack.",
 		"gameType": "fc",
 		"folder": "152-165",
 		"specialUnlock": "envelopeE"

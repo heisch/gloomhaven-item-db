@@ -152,6 +152,14 @@ export class Helpers {
 			);
 		});
 
+		["enchantment-circle"].forEach((find) => {
+			const reg = new RegExp(`{${find}}`, "g");
+			text = text.replace(
+				reg,
+				`<span class="${find.toLowerCase()}"></span>`
+			);
+		});
+
 		text = text.replace(
 			/\bsmall items\b/g,
 			`${createImageString({

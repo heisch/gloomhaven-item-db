@@ -627,3 +627,8 @@ img.ui.image.ownerIcon {
 	background-color: white;
 }
 
+ .enchantment-circle:before {
+	content: ' \25CF';
+	font-size: 12px;
+  }
+  
