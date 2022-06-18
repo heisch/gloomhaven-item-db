@@ -3500,6 +3500,7 @@
 		"desc": "You are immune to POISON and {enchantment-circle}. When damage by an attack, gain Shield 0 {enchantment-circle} for the attack.",
 		"gameType": "fc",
 		"folder": "152-165",
-		"specialUnlock": "envelopeE"
+		"specialUnlock": "envelopeE",
+		"faqImage": "items/forgotten-circles/152-165/fc-1036-living-armor-reference.png"
 	}
 ]

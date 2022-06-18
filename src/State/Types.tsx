@@ -155,6 +155,7 @@ export interface GloomhavenItem {
 	desc: string;
 	descHTML: string;
 	faq?: string;
+	faqImage?: string;
 	summon?: Summon;
 	soloItem?: SoloClasses;
 	folder: string;

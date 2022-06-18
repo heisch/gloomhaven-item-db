@@ -631,4 +631,8 @@ img.ui.image.ownerIcon {
 	content: ' \25CF';
 	font-size: 12px;
   }
+
+  .faqImage {
+	width: 100%;
+  }
   

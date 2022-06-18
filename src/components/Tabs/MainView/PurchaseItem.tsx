@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Form, Modal } from "semantic-ui-react";
+import { Button, Form, Modal, Image } from "semantic-ui-react";
 import { ClassesInUse, ItemsOwnedBy } from "../../../State/Types";
 import { ClassList } from "../SpoilerFilters/Party/ClassList";
 import { getItemPath } from "../../../games/GameData";
@@ -73,7 +73,12 @@ const PurchaseItem = () => {
 	const { name, cost, count } = selectedItem;
 
 	return (
-		<Modal size="tiny" open={true} onClose={onClose}>
+		<Modal
+			size="tiny"
+			open={true}
+			onClose={onClose}
+			className="purchase-dialog"
+		>
 			<Modal.Header>Change Owners</Modal.Header>
 			<Modal.Content>
 				<div className="purchase-content">
@@ -101,10 +106,12 @@ const PurchaseItem = () => {
 							}
 						/>
 					</Form>
-					<img
-						src={getItemPath(selectedItem)}
-						className={"purchase-card"}
-					/>
+					<Form>
+						<Image
+							src={getItemPath(selectedItem)}
+							className={"purchase-card"}
+						/>
+					</Form>
 				</div>
 			</Modal.Content>
 			<Modal.Actions>

@@ -1,7 +1,8 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 import { Icon, Popup, Table } from "semantic-ui-react";
-import { GameType } from "../../../games";
+import { Expansions, GameType } from "../../../games";
+import { createWorldhavenString } from "../../../helpers";
 import { discountState, gameTypeState } from "../../../State";
 import { GloomhavenItem } from "../../../State/Types";
 import { GHIcon } from "./GHIcon";
@@ -40,6 +41,7 @@ export const ItemTableRow = (props: Props) => {
 			descHTML,
 			minusOneCardsAdded,
 			faq,
+			faqImage,
 			source,
 			summon,
 		},
@@ -119,6 +121,21 @@ export const ItemTableRow = (props: Props) => {
 						}
 						header={"FAQ"}
 						content={faq}
+					/>
+				)}
+				{faqImage && (
+					<Popup
+						closeOnDocumentClick
+						hideOnScroll
+						trigger={
+							<Icon name={"question circle"} className={"pink"} />
+						}
+						header={"FAQ"}
+						content={
+							<img className="faqImage"
+								src={require(`../../../../worldhaven/images/${faqImage}`)}
+							></img>
+						}
 					/>
 				)}
 				{summon && <ItemSummon summon={summon} />}
