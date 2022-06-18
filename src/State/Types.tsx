@@ -112,7 +112,7 @@ export type ClassesInUse =
 
 export enum GloomhavenItemSlot {
 	Head = "head",
-	Body = "nody",
+	Body = "body",
 	Legs = "legs",
 	OneHand = "1h",
 	TwoHands = "2h",
