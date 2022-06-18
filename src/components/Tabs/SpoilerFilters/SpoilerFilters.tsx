@@ -8,6 +8,7 @@ import {
 	EnvelopeXButton,
 } from "./Party";
 import { GameFilters, ConfirmGameRemoval } from "./Games";
+import { ConfirmEnvelopeE } from "./Items";
 
 const SpoilerFilters = () => {
 	return (
@@ -20,6 +21,7 @@ const SpoilerFilters = () => {
 			<ConfirmGameRemoval />
 			<ConfirmClassDelete />
 			<ConfirmEnvelopeX />
+			<ConfirmEnvelopeE />
 		</Form>
 	);
 };

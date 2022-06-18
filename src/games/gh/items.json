@@ -3488,5 +3488,18 @@
 		"consumed": true,
 		"desc": "The next two times you would lose a card from your hand to negate suffering damage, discard it instead and gain WOUND.",
 		"gameType": "csa"
+	},
+	{
+		"id": 280,
+		"displayId": "165",
+		"name": "Living Armor",
+		"count": 1,
+		"slot": "body",
+		"cost": 125,
+		"source": "Envelope E",
+		"desc": "You are immune to POISON and 'enchant slot'. When damage by an attack, gain Shield 0 'enhancement slot' for the attack.",
+		"gameType": "fc",
+		"folder": "152-165",
+		"specialUnlock": "envelopeE"
 	}
 ]

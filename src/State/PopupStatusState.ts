@@ -9,6 +9,10 @@ export const confirmEnvelopeXState = createState<boolean>(
 	"ConfirmEnvelopeX",
 	false
 );
+export const confirmEnvelopeEState = createState<boolean>(
+	"ConfirmEnvelopeE",
+	false
+);
 export const selectedItemState = createState<GloomhavenItem | undefined>(
 	"SelectedItem",
 	undefined

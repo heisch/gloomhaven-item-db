@@ -10,6 +10,7 @@ import {
 import { SoloClassFilter } from "./SoloClassFilter";
 import { Expansions, GameType } from "../../../../games/GameType";
 import { useRemovePlayerUtils } from "../../../../hooks/useRemovePlayer";
+import { EnvelopeEButton } from "./EnvelopeEButton";
 
 export const GHSpoilerFilter = () => {
 	const { getClassesForGame } = useRemovePlayerUtils();
@@ -67,6 +68,7 @@ export const GHSpoilerFilter = () => {
 				</Form.Group>
 
 				<Segment>
+					<EnvelopeEButton/>
 					<SpoilerFilterItemList
 						ranges={[{ start: (prosperity + 1) * 7 + 1, end: 70 }]}
 						title="Prosperity Items"

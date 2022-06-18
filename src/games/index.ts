@@ -1,4 +1,4 @@
-import { GameType } from "./GameType";
+import { GameType, Expansions } from "./GameType";
 import { GHGameData } from "./gh/GHGameData";
 import { JOTLGameData } from "./jotl/JOTlGameData";
 import { FHGameData } from "./fh/FHGameData";
@@ -9,4 +9,4 @@ const gameDataTypes = {
 	[GameType.Frosthaven]: FHGameData,
 };
 
-export { gameDataTypes, GameType };
+export { gameDataTypes, GameType, Expansions };
