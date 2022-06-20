@@ -2793,7 +2793,7 @@
 		"name": "Dizzying Tincture",
 		"count": 2,
 		"cost": 15,
-		"slot": "body",
+		"slot": "small",
 		"source": "Unknown",
 		"consumed": true,
 		"desc": "During you Attack ability, add DISARM to one attack.",
