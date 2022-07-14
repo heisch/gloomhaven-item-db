@@ -19,6 +19,8 @@ import {
 	resourcesState,
 } from "../State";
 import { useCallback, useEffect, useState } from "react";
+import { Expansions, GameType } from "../games";
+import { AllGames } from "../games/GameType";
 
 function compareItems<T>(a: T, b: T) {
 	if (a === b) {
@@ -39,6 +41,17 @@ const getItemUse = ({ consumed, spent, lost }: GloomhavenItem) => {
 		return "c";
 	}
 	return "d";
+};
+
+const sortOrder: Record<AllGames, number> = {
+	[GameType.Frosthaven]: 1,
+	[Expansions.FHSoloScenarios]: 2,
+	[GameType.Gloomhaven]: 3,
+	[Expansions.GHSoloScenarios]: 4,
+	[Expansions.ForgottenCircles]: 5,
+	[Expansions.CrimsonScales]: 6,
+	[Expansions.CrimsonScalesAddon]: 7,
+	[GameType.JawsOfTheLion]: 8,
 };
 
 const useItems = (): Array<GloomhavenItem> => {
@@ -76,7 +89,13 @@ const useItems = (): Array<GloomhavenItem> => {
 					value = compareItems(itemA.cost, itemB.cost);
 					break;
 				case SortProperty.Id:
-					value = compareItems(itemA.id, itemB.id);
+					value = compareItems(
+						sortOrder[itemA.gameType],
+						sortOrder[itemB.gameType]
+					);
+					if (value === 0) {
+						value = compareItems(itemA.id, itemB.id);
+					}
 					break;
 				case SortProperty.Use:
 					value = compareItems(getItemUse(itemA), getItemUse(itemB));
@@ -128,13 +147,17 @@ const useItems = (): Array<GloomhavenItem> => {
 				if (slots.length > 0 && !slots.includes(slot)) {
 					return false;
 				}
-				if (resources.length > 0 && itemResources) {
-					const itemResourceTypes = Object.keys(itemResources);
-					if (
-						!resources.some(
-							(r) => itemResourceTypes.indexOf(r) >= 0
-						)
-					) {
+				if (resources.length > 0) {
+					if (itemResources) {
+						const itemResourceTypes = Object.keys(itemResources);
+						if (
+							!resources.some(
+								(r) => itemResourceTypes.indexOf(r) >= 0
+							)
+						) {
+							return false;
+						}
+					} else {
 						return false;
 					}
 				}

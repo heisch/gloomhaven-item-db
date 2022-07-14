@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Icon, Popup, Segment } from "semantic-ui-react";
 import { AllGames, Expansions, GameType } from "../../../../games/GameType";
-import { isFlagEnabled } from "../../../../helpers";
+import { isFrosthavenGameAndEnabled } from "../../../../helpers";
 import { GameFilterCheckbox } from "./GameFilterCheckbox";
 import { GameHelp } from "./GameHelp";
 
@@ -12,66 +12,55 @@ export type HelpData = {
 };
 
 export type AllFilterData = {
-	allGameType: AllGames;
 	gamesToFilterOn?: GameType[];
 	title: string;
 } & HelpData;
 
-export const allFiltersData: AllFilterData[] = [
-	{
-		allGameType: Expansions.FHSoloScenarios,
+export const allFiltersData: Record<AllGames, AllFilterData> = {
+	[Expansions.FHSoloScenarios]: {
 		gamesToFilterOn: [GameType.Gloomhaven, GameType.JawsOfTheLion],
 		title: "Solo Scenarios",
 		soloGameType: "Frosthaven",
 	},
-	{
-		allGameType: Expansions.GHSoloScenarios,
+	[Expansions.GHSoloScenarios]: {
 		gamesToFilterOn: [GameType.JawsOfTheLion, GameType.Frosthaven],
 		title: "Solo Scenarios",
 		soloGameType: "Gloomhaven",
 	},
-	{
-		allGameType: GameType.Gloomhaven,
+	[GameType.Gloomhaven]: {
 		gamesToFilterOn: [GameType.Gloomhaven],
 		title: "Gloomhaven",
 		addClasses: true,
 		addItemsToGames: [GameType.Frosthaven],
 	},
-	{
-		allGameType: Expansions.ForgottenCircles,
+	[Expansions.ForgottenCircles]: {
 		title: "Forgotten Circles",
 		addClasses: true,
 		addItemsToGames: [GameType.Gloomhaven],
 	},
-	{
-		allGameType: Expansions.CrimsonScales,
+	[Expansions.CrimsonScales]: {
 		title: "Crimson Scales",
 		addClasses: true,
 		addItemsToGames: [GameType.Gloomhaven],
 	},
-	{
-		allGameType: Expansions.CrimsonScalesAddon,
+	[Expansions.CrimsonScalesAddon]: {
 		title: "Crimson Scales Addon",
 		addClasses: true,
 		addItemsToGames: [GameType.Gloomhaven],
 	},
-	{
-		allGameType: GameType.JawsOfTheLion,
+	[GameType.JawsOfTheLion]: {
 		gamesToFilterOn: [GameType.JawsOfTheLion],
 		title: "Jaws of the Lion",
 		addClasses: true,
 	},
-	{
-		allGameType: GameType.Frosthaven,
+	[GameType.Frosthaven]: {
 		gamesToFilterOn: [GameType.Frosthaven],
 		title: "Frosthaven",
 		addClasses: true,
 	},
-];
+};
 
 export const GameFilters = () => {
-	const frosthavenEnabled = isFlagEnabled("frosthaven");
-
 	return (
 		<Segment>
 			<Form.Group inline>
@@ -87,14 +76,16 @@ export const GameFilters = () => {
 						content={<GameHelp />}
 					/>
 				</div>
-				{allFiltersData
-					.filter(
-						(data) =>
-							data.allGameType !== GameType.Frosthaven ||
-							frosthavenEnabled
+				{Object.entries(allFiltersData)
+					.filter(([gameType]) =>
+						isFrosthavenGameAndEnabled(gameType as AllGames)
 					)
-					.map((data) => (
-						<GameFilterCheckbox key={data.allGameType} {...data} />
+					.map(([key, value]) => (
+						<GameFilterCheckbox
+							key={key}
+							allGameType={key as AllGames}
+							{...value}
+						/>
 					))}
 			</Form.Group>
 		</Segment>

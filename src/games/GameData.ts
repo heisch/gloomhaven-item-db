@@ -1,6 +1,10 @@
 import { getClassIcon } from "../components/Tabs/MainView/ClassIcon";
 import { Helpers } from "../helpers";
-import { GloomhavenItem, GloomhavenItemSlot } from "../State/Types";
+import {
+	GloomhavenItem,
+	GloomhavenItemSlot,
+	ResourceTypes,
+} from "../State/Types";
 import { AllGames, Expansions, GameType } from "./GameType";
 
 export type GameData = {
@@ -8,6 +12,7 @@ export type GameData = {
 	gameName: string;
 	items: GloomhavenItem[];
 	filterSlots: GloomhavenItemSlot[];
+	resources?: string[];
 };
 
 const deSpoilerItemSource = (source: string): string => {
@@ -20,6 +25,7 @@ const deSpoilerItemSource = (source: string): string => {
 export const getInitialItems = (gameType: GameType) => {
 	const items: GloomhavenItem[] = require(`./${gameType}/items.json`);
 	const filterSlots: GloomhavenItemSlot[] = [];
+	const resources: string[] = [];
 
 	items.forEach((item) => {
 		item.descHTML = Helpers.parseEffectText(item.desc, gameType);
@@ -31,8 +37,15 @@ export const getInitialItems = (gameType: GameType) => {
 		if (!filterSlots.includes(item.slot)) {
 			filterSlots.push(item.slot);
 		}
+		if (item.resources) {
+			Object.keys(item.resources).forEach((resource) => {
+				if (!resources.includes(resource)) {
+					resources.push(resource);
+				}
+			});
+		}
 	});
-	return { items, filterSlots };
+	return { items, filterSlots, resources };
 };
 
 type FolderData = {

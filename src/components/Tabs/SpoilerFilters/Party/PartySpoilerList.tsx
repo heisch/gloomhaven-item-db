@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { AllGames, GameType } from "../../../../games/GameType";
-import { isFlagEnabled } from "../../../../helpers";
+import { AllGames } from "../../../../games/GameType";
+import { isFrosthavenGameAndEnabled } from "../../../../helpers";
 import { useRemovePlayerUtils } from "../../../../hooks/useRemovePlayer";
 import {
 	classesInUseState,
@@ -10,14 +10,14 @@ import {
 	includeGameState,
 } from "../../../../State";
 import { ClassesInUse } from "../../../../State/Types";
+import { allFiltersData } from "../Games";
 import { ClassList } from "./ClassList";
 type Props = {
 	type: AllGames;
-	label: string;
 };
 
 export const PartySpoilerList = (props: Props) => {
-	const { type, label } = props;
+	const { type } = props;
 	const gameType = useRecoilValue(gameTypeState);
 	const includeGames = useRecoilValue(includeGameState);
 	const [classesInUse, setClassesInUse] = useRecoilState(classesInUseState);
@@ -25,8 +25,7 @@ export const PartySpoilerList = (props: Props) => {
 	const { getClassesForGame } = useRemovePlayerUtils();
 
 	const isGameIncluded = () => {
-		const frosthavenEnabled = isFlagEnabled("frosthaven");
-		if (type === GameType.Frosthaven && !frosthavenEnabled) {
+		if (!isFrosthavenGameAndEnabled(type)) {
 			return false;
 		}
 
@@ -51,10 +50,12 @@ export const PartySpoilerList = (props: Props) => {
 	if (!isGameIncluded()) {
 		return null;
 	}
+	const { title } = allFiltersData[type];
+
 	return (
 		<ClassList
 			classes={classes}
-			label={label}
+			label={title}
 			onClick={toggleClassFilter}
 			isUsed={(className: ClassesInUse) =>
 				classesInUse.includes(className)

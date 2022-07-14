@@ -2697,10 +2697,10 @@
 		"cost": 50,
 		"slot": "body",
 		"spent": true,
-		"source": "Solo {CS9}",
+		"source": "Solo {CS8}",
 		"desc": "During your turn, when you {anyX} an element, do not move the consumed element to the Inter column.",
 		"gameType": "cs",
-		"soloItem": "CS9"
+		"soloItem": "CS8"
 	},
 	{
 		"id": 215,
@@ -2733,10 +2733,10 @@
 		"count": 1,
 		"cost": 50,
 		"slot": "small",
-		"source": "Solo {CS8}",
+		"source": "Solo {CS9}",
 		"desc": "Once each turn, during your turn, you may remove one condition from an adjacent figure and place that condition on this card if it is not already on this card. During your turn, one adjacent figure gains all conditions on this card, then consume {consumed} this item.",
 		"gameType": "cs",
-		"soloItem": "CS8"
+		"soloItem": "CS9"
 	},
 	{
 		"id": 218,

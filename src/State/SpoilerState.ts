@@ -28,7 +28,6 @@ const fixSpecialUnlocks = (
 	gameType: GameType,
 	spoilerObj: any
 ) => {
-	console.log(spoilerObj);
 	if (spoilerObj.envelopeX) {
 		delete spoilerObj.envelopeX;
 		return ["envelopeX"];

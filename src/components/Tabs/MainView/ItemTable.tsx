@@ -15,19 +15,20 @@ import {
 } from "../../../State";
 import { GameType } from "../../../games";
 import { ItemTableRow } from "./ItemTableRow";
+import { useSetSorting } from "../../../hooks/useSetSorting";
 
 type Props = {
 	items: GloomhavenItem[];
-	setSorting: (newProperty: SortProperty) => void;
 };
 
 const ItemTable = (props: Props) => {
 	const sortProperty = useRecoilValue(sortPropertyState);
 	const sortDirection = useRecoilValue(sortDirectionState);
 	const itemManagementType = useRecoilValue(itemManagementTypeState);
-	const { items, setSorting } = props;
+	const { items } = props;
 	const discount = useRecoilValue(discountState);
 	const gameType = useRecoilValue(gameTypeState);
+	const setSorting = useSetSorting();
 
 	const costClass = discount < 0 ? "blue" : discount > 0 ? "red" : "";
 

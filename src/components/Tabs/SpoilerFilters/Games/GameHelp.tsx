@@ -2,7 +2,8 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 import { Form, List } from "semantic-ui-react";
 import { GameType } from "../../../../games";
-import { isFlagEnabled } from "../../../../helpers";
+import { AllGames } from "../../../../games/GameType";
+import { isFrosthavenGameAndEnabled } from "../../../../helpers";
 import { gameTypeState } from "../../../../State";
 import { allFiltersData, HelpData } from ".//GameFilters";
 
@@ -31,7 +32,6 @@ const constructHelpEntry = (
 
 export const GameHelp = () => {
 	const gameType = useRecoilValue(gameTypeState);
-	const frosthavenEnabled = isFlagEnabled("frosthaven");
 
 	return (
 		<Form.Group>
@@ -39,13 +39,11 @@ export const GameHelp = () => {
 				<List.Header>
 					Which Games/Expansions are you playing with?
 				</List.Header>
-				{allFiltersData
-					.filter(
-						(data) =>
-							data.allGameType !== GameType.Frosthaven ||
-							frosthavenEnabled
+				{Object.entries(allFiltersData)
+					.filter(([gameType]) =>
+						isFrosthavenGameAndEnabled(gameType as AllGames)
 					)
-					.map(({ title, gamesToFilterOn, ...rest }) => {
+					.map(([, { title, gamesToFilterOn, ...rest }]) => {
 						if (
 							!gamesToFilterOn ||
 							(gamesToFilterOn &&

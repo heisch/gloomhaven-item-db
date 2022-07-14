@@ -1,5 +1,7 @@
 import qs from "qs";
 import { GameType } from "./games";
+import { AllGames } from "./games/GameType";
+import { gameTypeState } from "./State";
 
 type CreateParams = {
 	filename: string;
@@ -71,8 +73,8 @@ export class Helpers {
 			"WARD",
 		].forEach((status) => {
 			let filename = status.toLowerCase();
-			if (status === "WOUND" && gameType === GameType.Frosthaven) {
-				filename = "FH-WOUND".toLowerCase();
+			if (filename === "wound" && gameType === GameType.Frosthaven) {
+				filename = "fh-" + filename;
 			}
 			const reg = new RegExp(`\\b${status}\\b`, "g");
 			text = text.replace(
@@ -245,3 +247,13 @@ export function isFlagEnabled(flagName: string) {
 
 	return window.localStorage.getItem(localStorageFlagKey) === "true";
 }
+
+export const isFrosthavenGameAndEnabled = (gameType: AllGames) => {
+	if (gameType === GameType.Frosthaven) {
+		if (isFlagEnabled("frosthaven")) {
+			return true;
+		}
+		return false;
+	}
+	return true;
+};

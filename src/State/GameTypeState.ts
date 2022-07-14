@@ -1,17 +1,14 @@
 import { atom, selector } from "recoil";
 import { gameDataTypes, GameType } from "../games";
 import { GameData } from "../games/GameData";
-import { isFlagEnabled } from "../helpers";
+import { isFrosthavenGameAndEnabled } from "../helpers";
 
 const getStartingGameType = () => {
-	const frosthavenEnabled = isFlagEnabled("frosthaven");
-
 	const lastGame = localStorage.getItem("lastGame") as GameType;
 	if (!lastGame) {
 		return GameType.Gloomhaven;
 	}
-
-	if (lastGame === GameType.Frosthaven && !frosthavenEnabled) {
+	if (!isFrosthavenGameAndEnabled(lastGame)) {
 		return GameType.Gloomhaven;
 	}
 	return lastGame;

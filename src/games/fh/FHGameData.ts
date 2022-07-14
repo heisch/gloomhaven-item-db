@@ -6,7 +6,7 @@ import { GameType } from "../GameType";
 export const initialGHItemsUnlocked = [10, 25, 72, 105, 109, 116];
 const ghItemToImport = [...initialGHItemsUnlocked];
 
-let { items, filterSlots } = getInitialItems(GameType.Frosthaven);
+let { items, filterSlots, resources } = getInitialItems(GameType.Frosthaven);
 export const ghItemOffset = 1000;
 
 const { items: ghItems, filterSlots: ghFilterSlots } = getInitialItems(
@@ -38,4 +38,5 @@ export const FHGameData: GameData = {
 	gameName: "Frosthaven",
 	items,
 	filterSlots,
+	resources,
 };

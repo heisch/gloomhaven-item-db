@@ -6,12 +6,8 @@ import { allFiltersData } from "./GameFilters";
 import { useRemovePlayerUtils } from "../../../../hooks/useRemovePlayer";
 
 export const ConfirmGameRemoval = () => {
-	const {
-		removeClasses,
-		getClassesToRemove,
-		getRemovingItemCount,
-		anyGameItemsOwned,
-	} = useRemovePlayerUtils();
+	const { removeClasses, getClassesToRemove, getRemovingItemCount } =
+		useRemovePlayerUtils();
 	const [removingGame, setRemovingGame] = useRecoilState(removingGameState);
 	const [includeGames, setIncludeGames] = useRecoilState(includeGameState);
 
@@ -26,7 +22,7 @@ export const ConfirmGameRemoval = () => {
 		// Go through all classes and see if any of them are used..
 		// if so then remove their ownership
 		const classesToRemove = getClassesToRemove(removingGame);
-		if (classesToRemove) {
+		if (classesToRemove.length > 0) {
 			removeClasses(classesToRemove, removingGame);
 		}
 
@@ -37,12 +33,14 @@ export const ConfirmGameRemoval = () => {
 		onClose();
 	};
 
-	const { title } = allFiltersData.find(
-		(data) => data.allGameType === removingGame
-	) || { title: "Unknown" };
+	if (!removingGame) {
+		return null;
+	}
+
+	const { title } = allFiltersData[removingGame];
 
 	return (
-		<Modal size="tiny" open={removingGame !== undefined} onClose={onClose}>
+		<Modal size="tiny" open={true} onClose={onClose}>
 			<Modal.Header>{`Remove ${title}`}</Modal.Header>
 			<Modal.Content>
 				<Form>
@@ -62,12 +60,6 @@ export const ConfirmGameRemoval = () => {
 									<List.Item>
 										{`Put any items owned by this game's
 										classes back into available inventory`}
-									</List.Item>
-								)}
-								{anyGameItemsOwned(removingGame) > 0 && (
-									<List.Item>
-										{`Clear the owners of any of this game's
-										items.`}
 									</List.Item>
 								)}
 							</List>

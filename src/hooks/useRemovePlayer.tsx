@@ -67,7 +67,6 @@ export const useRemovePlayerUtils = () => {
 				const gameItems = items.filter(
 					(item) => item.gameType === removingGame
 				);
-				console.log(gameItems);
 				gameItems.forEach(({ id }) => {
 					delete newItemsOwnedBy[id];
 				});

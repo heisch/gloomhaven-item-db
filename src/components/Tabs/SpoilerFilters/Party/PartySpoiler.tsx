@@ -1,38 +1,12 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 import { Form, Popup, Icon, Segment } from "semantic-ui-react";
-import { Expansions, GameType } from "../../../../games/GameType";
+import { AllGames } from "../../../../games/GameType";
 import { itemManagementTypeState } from "../../../../State";
 import { ItemManagementType } from "../../../../State/Types";
+import { allFiltersData } from "../Games";
 import PartyManagementFilter from "./PartyManagementFilter";
 import { PartySpoilerList } from "./PartySpoilerList";
-
-const PartyFilterList = [
-	{
-		type: GameType.Gloomhaven,
-		label: "Gloomhaven:",
-	},
-	{
-		type: Expansions.ForgottenCircles,
-		label: "Forgotten Circles:",
-	},
-	{
-		type: Expansions.CrimsonScales,
-		label: "Crimson Scales:",
-	},
-	{
-		type: Expansions.CrimsonScalesAddon,
-		label: "Crimson Scales Addon:",
-	},
-	{
-		type: GameType.JawsOfTheLion,
-		label: "Jaws of the Lion:",
-	},
-	{
-		type: GameType.Frosthaven,
-		label: "Frosthaven:",
-	},
-];
 
 export const PartySpoiler = () => {
 	const itemManagementType = useRecoilValue(itemManagementTypeState);
@@ -61,9 +35,16 @@ export const PartySpoiler = () => {
 							/>
 						</div>
 					</Form.Group>
-					{PartyFilterList.map((filter) => (
-						<PartySpoilerList key={filter.type} {...filter} />
-					))}
+					{Object.entries(allFiltersData)
+						.filter(([, data]) => {
+							return data.addClasses;
+						})
+						.map(([filter]) => (
+							<PartySpoilerList
+								key={filter}
+								type={filter as AllGames}
+							/>
+						))}
 				</Form.Group>
 			)}
 		</Segment>

@@ -73,7 +73,15 @@ export const ItemTableRow = (props: Props) => {
 					{resources &&
 						Object.entries(resources).map(([resource, value]) => {
 							if (resource === "item") {
-								return `Item: ${value}`;
+								return (
+									<div key={resource}>
+										<GHIcon
+											name={`${resource}.png`}
+											folder="resources"
+										/>
+										{` : ${value}`}
+									</div>
+								);
 							}
 							return (
 								<div key={resource}>
@@ -132,7 +140,8 @@ export const ItemTableRow = (props: Props) => {
 						}
 						header={"FAQ"}
 						content={
-							<img className="faqImage"
+							<img
+								className="faqImage"
 								src={require(`../../../../worldhaven/images/${faqImage}`)}
 							></img>
 						}
