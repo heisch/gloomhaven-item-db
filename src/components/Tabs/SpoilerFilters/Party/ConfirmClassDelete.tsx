@@ -13,9 +13,11 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { classToDeleteState, gameDataState } from "../../../../State";
 import { useRemovePlayerUtils } from "../../../../hooks/useRemovePlayer";
 import { OwnedItemList } from "./OwnedItemsList";
+import { useIsItemShown } from "../../../../hooks/useIsItemShown";
 
 export const ConfirmClassDelete = () => {
 	const { removeClasses, itemsOwnedByClass } = useRemovePlayerUtils();
+	const isItemShown = useIsItemShown();
 	const [classToDelete, setClassToDelete] =
 		useRecoilState(classToDeleteState);
 	const [itemsOpen, setItemsOpen] = useState(false);
@@ -27,10 +29,14 @@ export const ConfirmClassDelete = () => {
 	};
 
 	const itemsOwned = itemsOwnedByClass(classToDelete);
+	const itemsToList = itemsOwned
+		.map((id) => items[id - 1])
+		.filter(isItemShown);
+		
 	const goldAmount = () => {
 		let totalGold = 0;
-		itemsOwned.forEach((itemId) => {
-			const { cost } = items[itemId - 1];
+		itemsToList.forEach((item) => {
+			const { cost } = item;
 			if (cost) {
 				totalGold += Math.floor(cost / 2);
 			}
@@ -96,7 +102,7 @@ export const ConfirmClassDelete = () => {
 								</AccordionTitle>
 								<AccordionContent active={itemsOpen}>
 									<OwnedItemList
-										itemIds={itemsOwned}
+										items={itemsToList}
 										totalGold={`${goldAmount()}g`}
 									/>
 								</AccordionContent>

@@ -1,5 +1,4 @@
 import React from "react";
-import { useRecoilValue } from "recoil";
 import {
 	Form,
 	Table,
@@ -9,16 +8,15 @@ import {
 	TableRow,
 	TableCell,
 } from "semantic-ui-react";
-import { gameDataState } from "../../../../State";
+import { GloomhavenItem } from "../../../../State";
 
 type Props = {
-	itemIds: number[];
+	items: GloomhavenItem[];
 	totalGold: string;
 };
 
 export const OwnedItemList = (props: Props) => {
-	const { itemIds, totalGold } = props;
-	const { items } = useRecoilValue(gameDataState);
+	const { items, totalGold } = props;
 
 	return (
 		<Form.Group>
@@ -30,13 +28,13 @@ export const OwnedItemList = (props: Props) => {
 					</TableRow>
 				</TableHeader>
 				<TableBody>
-					{itemIds.map((itemId) => {
-						const { name, cost } = items[itemId - 1];
+					{items.map((item) => {
+						const { name, cost } = item;
 						const constStr = cost
 							? `${Math.floor(cost / 2)}g`
 							: "-";
 						return (
-							<TableRow key={itemId}>
+							<TableRow key={item.id}>
 								<TableCell>
 									<p>{name}</p>
 								</TableCell>
