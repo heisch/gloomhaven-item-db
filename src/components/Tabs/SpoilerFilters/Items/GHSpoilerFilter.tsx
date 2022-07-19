@@ -11,6 +11,8 @@ import { SoloClassFilter } from "./SoloClassFilter";
 import { Expansions, GameType } from "../../../../games/GameType";
 import { useRemovePlayerUtils } from "../../../../hooks/useRemovePlayer";
 import { EnvelopeEButton } from "./EnvelopeEButton";
+import { ReputationPulldown } from "./ReputationPulldown";
+import { ProsperityFilter } from "./ProsperityFilter";
 
 export const GHSpoilerFilter = () => {
 	const { getClassesForGame } = useRemovePlayerUtils();
@@ -28,106 +30,69 @@ export const GHSpoilerFilter = () => {
 
 	return (
 		<Segment>
-			<Form.Group inline>
-				<label>Reputation Discount:</label>
-				<Form.Select
-					value={discount}
-					options={[
-						{ value: -5, text: "-5 gold" }, // (19 - 20)
-						{ value: -4, text: "-4 gold" }, // (15 - 18)
-						{ value: -3, text: "-3 gold" }, // (11 - 14)
-						{ value: -2, text: "-2 gold" }, // (7 - 13)
-						{ value: -1, text: "-1 gold" }, // (3 - 6)
-						{ value: 0, text: "none" }, // (-2 - 2)
-						{ value: 1, text: "+1 gold" }, // (-3 - -6)
-						{ value: 2, text: "+2 gold" }, // (-7 - -10)
-						{ value: 3, text: "+3 gold" }, // (-11 - -14)
-						{ value: 4, text: "+4 gold" }, // (-15 - -18)
-						{ value: 5, text: "+5 gold" }, // (-19 - -20)
-					]}
-					onChange={(obj, e) => {
-						setDiscount(parseInt(e.value as string));
-					}}
+			<ReputationPulldown />
+			<ProsperityFilter />
+			<EnvelopeEButton />
+			<Segment>
+				<SpoilerFilterItemList
+					ranges={[{ start: (prosperity + 1) * 7 + 1, end: 70 }]}
+					title="Prosperity Items"
 				/>
-			</Form.Group>
-
-			<Form.Field>
-				<Form.Group inline>
-					<label>Prosperity:</label>
-					{[...Array(9).keys()].map((index) => {
-						const nextProsperity = index + 1;
-						return (
-							<Form.Radio
-								key={index}
-								label={nextProsperity}
-								checked={prosperity === nextProsperity}
-								onChange={() => setProsperity(nextProsperity)}
-							/>
-						);
-					})}
-				</Form.Group>
-
-				<Segment>
-					<EnvelopeEButton/>
+				<SpoilerFilterItemList
+					ranges={[{ start: 71, end: 95 }]}
+					title="Random Item Design"
+				/>
+				<SpoilerFilterItemList
+					ranges={[{ start: 96, end: 133 }]}
+					title="Other Items"
+				/>
+				{includeFC && (
 					<SpoilerFilterItemList
-						ranges={[{ start: (prosperity + 1) * 7 + 1, end: 70 }]}
-						title="Prosperity Items"
+						ranges={[{ start: 152, end: 163 }]}
+						title="Forgotten Circles Items"
 					/>
+				)}
+				{includeCS && (
 					<SpoilerFilterItemList
-						ranges={[{ start: 71, end: 95 }]}
-						title="Random Item Design"
+						offset={164}
+						ranges={[
+							{ start: 1, end: 33 },
+							{ start: 35, end: 39 },
+							{ start: 43, end: 44 },
+							{ start: 46 },
+							{ start: 49 },
+							{ start: 52 },
+							{ start: 54, end: 55 },
+							{ start: 58, end: 100 },
+						]}
+						title="Crimson Scales Items"
 					/>
-					<SpoilerFilterItemList
-						ranges={[{ start: 96, end: 133 }]}
-						title="Other Items"
-					/>
-					{includeFC && (
+				)}
+				{includeCSA && (
+					<>
 						<SpoilerFilterItemList
-							ranges={[{ start: 152, end: 163 }]}
-							title="Forgotten Circles Items"
+							ranges={[{ start: 1, end: 2 }]}
+							title="Crimson Scales Add on Items"
+							prefix="aa"
+							offset={264}
+							padCount={0}
 						/>
-					)}
-					{includeCS && (
 						<SpoilerFilterItemList
-							offset={164}
-							ranges={[
-								{ start: 1, end: 33 },
-								{ start: 35, end: 39 },
-								{ start: 43, end: 44 },
-								{ start: 46 },
-								{ start: 49 },
-								{ start: 52 },
-								{ start: 54, end: 55 },
-								{ start: 58, end: 100 },
-							]}
-							title="Crimson Scales Items"
+							ranges={[{ start: 1, end: 5 }]}
+							prefix="qa"
+							offset={267}
+							padCount={0}
 						/>
-					)}
-					{includeCSA && (
-						<>
-							<SpoilerFilterItemList
-								ranges={[{ start: 1, end: 2 }]}
-								title="Crimson Scales Add on Items"
-								prefix="aa"
-								offset={264}
-								padCount={0}
-							/>
-							<SpoilerFilterItemList
-								ranges={[{ start: 1, end: 5 }]}
-								prefix="qa"
-								offset={267}
-								padCount={0}
-							/>
-							<SpoilerFilterItemList
-								ranges={[{ start: 1, end: 4 }, { start: 6 }]}
-								prefix="rm"
-								offset={273}
-								padCount={0}
-							/>
-						</>
-					)}
-				</Segment>
-			</Form.Field>
+						<SpoilerFilterItemList
+							ranges={[{ start: 1, end: 4 }, { start: 6 }]}
+							prefix="rm"
+							offset={273}
+							padCount={0}
+						/>
+					</>
+				)}
+			</Segment>
+
 			{(includeGHSS || includeFC || includeCS || includeCSA) && (
 				<Segment>
 					<Form.Group inline>
