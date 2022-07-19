@@ -9,6 +9,7 @@ import {
 	TableCell,
 } from "semantic-ui-react";
 import { GloomhavenItem } from "../../../../State";
+import { getItemIdString } from "../../MainView/ItemTableRow";
 
 type Props = {
 	items: GloomhavenItem[];
@@ -23,6 +24,7 @@ export const OwnedItemList = (props: Props) => {
 			<Table>
 				<TableHeader>
 					<TableRow>
+						<TableHeaderCell>Id</TableHeaderCell>
 						<TableHeaderCell>Item</TableHeaderCell>
 						<TableHeaderCell>Cost</TableHeaderCell>
 					</TableRow>
@@ -35,6 +37,9 @@ export const OwnedItemList = (props: Props) => {
 							: "-";
 						return (
 							<TableRow key={item.id}>
+								<TableCell>
+									<p>{getItemIdString(item)}</p>
+								</TableCell>
 								<TableCell>
 									<p>{name}</p>
 								</TableCell>
