@@ -4,6 +4,7 @@ import { Button, Label } from "semantic-ui-react";
 import ItemManagement from "./ItemManagement";
 import { getItemPath } from "../../../games/GameData";
 import { getItemIdString } from "./ItemTableRow";
+import NoItemManagement from "./ItemManagement/NoItemManagement";
 
 type Props = {
 	item: GloomhavenItem;
@@ -37,8 +38,8 @@ const ItemCard = (props: Props) => {
 					)}
 				</div>
 			)}
+			{draw && !showBackside && <ItemManagement item={item} />}
 			<div className="item-card-wrapper-container">
-				{draw && !showBackside && <ItemManagement item={item} />}
 				<img
 					src={getItemPath(item, showBackside)}
 					alt={item.name}
@@ -46,6 +47,11 @@ const ItemCard = (props: Props) => {
 					className={"item-card"}
 				/>
 			</div>
+			{draw && (
+				<div className="item-card-wrapper-footer">
+					<NoItemManagement item={item} />
+				</div>
+			)}
 		</div>
 	);
 };

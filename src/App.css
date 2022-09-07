@@ -255,6 +255,28 @@ img.item-card {
 	margin: 0 2px;
 }
 
+.item-card-wrapper-footer {
+	display: flex;
+	justify-content: space-between;
+	margin: 0px;
+}
+
+.item-card-wrapper .ui.label.no-item-management-count {
+	padding: 0px 10px 10px 10px;
+	width: 100%;
+	right: 7px;
+	top: 0px;
+	background: white;
+}
+
+.store-inventory-col .ui.label.no-item-management-count {
+	padding: 0px 10px 10px 10px;
+	width: 100%;
+	right: 7px;
+	top: 0px;
+	background: white;
+}
+
 .item-card-wrapper-container {
 	/* position: absolute; */
 }

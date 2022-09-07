@@ -1,5 +1,6 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
+import { Label } from "semantic-ui-react";
 import { itemManagementTypeState } from "../../../../State";
 import { GloomhavenItem, ItemManagementType } from "../../../../State/Types";
 
@@ -14,7 +15,9 @@ const NoItemManagement = (props: Props) => {
 		return null;
 	}
 
-	return <>{item.count}</>;
+	return (
+		<Label className="no-item-management-count">{`Item count: ${item.count}`}</Label>
+	);
 };
 
 export default NoItemManagement;

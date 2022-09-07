@@ -7,6 +7,7 @@ import { discountState, gameTypeState } from "../../../State";
 import { GloomhavenItem } from "../../../State/Types";
 import { GHIcon } from "./GHIcon";
 import ItemManagement from "./ItemManagement";
+import NoItemManagement from "./ItemManagement/NoItemManagement";
 import { ItemSummon } from "./ItemSummon";
 
 type Props = {
@@ -164,6 +165,7 @@ export const ItemTableRow = (props: Props) => {
 			<Table.Cell className={"store-inventory-col"} textAlign={"right"}>
 				<div>
 					<ItemManagement item={item} />
+					<NoItemManagement item={item} />
 				</div>
 			</Table.Cell>
 		</Table.Row>
