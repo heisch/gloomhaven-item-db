@@ -31,6 +31,7 @@ export const ItemTableRow = (props: Props) => {
 	const {
 		item,
 		item: {
+			gameType: itemGameType,
 			id,
 			name,
 			slot,
@@ -90,7 +91,7 @@ export const ItemTableRow = (props: Props) => {
 										name={`${resource}.png`}
 										folder="resources"
 									/>
-									{` x ${value}`}
+									{parseInt(value, 10) > 1 && ` x ${value}`}
 								</div>
 							);
 						})}
@@ -116,7 +117,14 @@ export const ItemTableRow = (props: Props) => {
 									? numberAmountToText[minusOneCardsAdded]
 									: minusOneCardsAdded
 							} `}
-							<GHIcon name={"modifier_minus_one.png"} />
+							{itemGameType === GameType.Frosthaven ? (
+								<GHIcon
+									name={"modifier_minus_one_circle.png"}
+								/>
+							) : (
+								<GHIcon name={"modifier_minus_one.png"} />
+							)}
+
 							{` to your attack modifier deck.`}
 						</span>
 					</>

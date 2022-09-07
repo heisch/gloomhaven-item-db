@@ -24,7 +24,7 @@ export const FHSpoilerFilter = () => {
 	if (!scenariosComplete.includes(1)) {
 		fhRanges.push({ start: 1, end: 10 });
 	}
-	fhRanges.push({ start: 11, end: 164 });
+	// fhRanges.push({ start: 11, end: 164 });
 
 	const ghRanges = [];
 	if (includeGloomhavenItems) {

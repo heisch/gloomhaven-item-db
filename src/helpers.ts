@@ -133,9 +133,23 @@ export class Helpers {
 			"attack",
 			"loot",
 			"scrapX",
+			"damage",
+			"range",
+			"move",
 		].forEach((find) => {
 			const reg = new RegExp(`{${find}}`, "g");
+			if (find === "range" && gameType === GameType.Frosthaven) {
+				find = "fh-" + find;
+			}
 			text = text.replace(reg, createImageString({ filename: find }));
+		});
+
+		["muddle", "regenerate"].forEach((find) => {
+			const reg = new RegExp(`{${find}}`, "g");
+			text = text.replace(
+				reg,
+				createImageString({ filename: find, folder: "status" })
+			);
 		});
 
 		[

@@ -52,6 +52,7 @@ type FolderData = {
 	folderName: string;
 	prefix: string;
 	leadingZeros: number;
+	vendor?: string;
 };
 
 const gameFolders: Record<AllGames, FolderData> = {
@@ -66,9 +67,10 @@ const gameFolders: Record<AllGames, FolderData> = {
 		leadingZeros: 2,
 	},
 	[GameType.Frosthaven]: {
-		folderName: "gloomhaven",
-		prefix: "gh",
+		folderName: "frosthaven",
+		prefix: "fh",
 		leadingZeros: 3,
+		vendor: "nerdhaven",
 	},
 	[Expansions.ForgottenCircles]: {
 		folderName: "forgotten-circles",
@@ -115,7 +117,9 @@ const getItemFilename = (item: GloomhavenItem, backside?: boolean) => {
 
 export const getItemPath = (item: GloomhavenItem, backside?: boolean) => {
 	const { gameType } = item;
-	const { folderName } = gameFolders[gameType];
+	const { folderName, vendor } = gameFolders[gameType];
 	const itemName = getItemFilename(item, backside);
-	return require(`../../worldhaven/images/items/${folderName}/${itemName}`);
+	return require(`../../${
+		vendor || "worldhaven"
+	}/images/items/${folderName}/${itemName}`);
 };
