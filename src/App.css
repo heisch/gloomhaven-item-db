@@ -226,7 +226,7 @@ img.item-card {
 	width: 100%;
 	height: auto;
 	filter: brightness(105%) contrast(90%);
-	border-radius: 15px;
+	border-radius: 0 0 15px 15px;
 	padding: 0 2px;
 }
 .item-card-wrapper .ui.toggle.checkbox label:before {
@@ -238,33 +238,46 @@ img.item-card {
 }
 
 .item-card-wrapper .ui.label.itemId {
-	position: absolute;
+	/* position: absolute; */
+	width: 50%;
 	right: 7px;
 	top: 0px;
 	color: white;
-	border-radius: 5px;
+	border-radius: 15px 15px 0px 0px;
 	background: black;
 }
 
+.item-card-wrapper-header {
+	border-radius: 15px 15px 0px 0px;
+	background: black;
+	display: flex;
+	justify-content: space-between;
+	margin: 0 2px;
+}
+
+.item-card-wrapper-container {
+	/* position: absolute; */
+}
+
 .item-card-wrapper .ui.button.flipItem {
-	position: absolute;
-	left: 6px;
-	top: 6px;
-	/* margin: 10px; */
+	position: relative;
 	width: 20px;
 	height: 20px;
-	/* text-align: center; */
+	background: black;
+	right: 5px;
 
 }
 .item-card-wrapper .ui.button.flipItem .undo.icon,
 .item-card-wrapper .ui.button.flipItem .redo.icon {
 	position: absolute;
 	/* top: 50%; */
+	padding: 4px;
 	top: 0;
 	left: 0;
-	padding: 4px;
 	width: 20px;
 	height: 20px;
+	color: white;
+	background: black;
 }
 
 .item-card-wrapper .ui.toggle.checkbox.i0 {
@@ -568,6 +581,13 @@ button.ui.deleteUser .delete.icon {
 	height: 35px;
 	border-radius: 50%;
 	border: unset;
+}
+
+.item-card-wrapper .simple-managment-container, 
+.item-card-wrapper .party-management-container {
+	width: 100%;
+	height: 100%;
+	position: absolute;
 }
 
 .store-inventory-col .party-management-container {

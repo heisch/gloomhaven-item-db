@@ -32,7 +32,7 @@ const SimpleItemManagement = (props: Props) => {
 	};
 
 	return (
-		<>
+		<div className="simple-managment-container">
 			{[...Array(item.count).keys()].map((index) => (
 				<Checkbox
 					key={index}
@@ -45,7 +45,7 @@ const SimpleItemManagement = (props: Props) => {
 					}
 				/>
 			))}
-		</>
+		</div>
 	);
 };
 

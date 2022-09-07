@@ -22,26 +22,30 @@ const ItemCard = (props: Props) => {
 	const [showBackside, setShowBackside] = useState(false);
 
 	return (
-		<div className={"item-card-wrapper"}>
-			<img
-				src={getItemPath(item, showBackside)}
-				alt={item.name}
-				onLoad={() => setDraw(true)}
-				className={"item-card"}
-			/>
-			{draw && !showBackside && (
-				<>
+		<div className="item-card-wrapper">
+			{draw && (
+				<div className="item-card-wrapper-header">
 					<ItemId item={item} />
-					<ItemManagement item={item} />
-				</>
+					{item.flippable && (
+						<Button
+							icon={showBackside ? "redo" : "undo"}
+							className="flipItem"
+							onClick={() =>
+								setShowBackside((current) => !current)
+							}
+						/>
+					)}
+				</div>
 			)}
-			{draw && item.flippable && (
-				<Button
-					icon={showBackside ? "redo" : "undo"}
-					className="flipItem"
-					onClick={() => setShowBackside((current) => !current)}
+			<div className="item-card-wrapper-container">
+				{draw && !showBackside && <ItemManagement item={item} />}
+				<img
+					src={getItemPath(item, showBackside)}
+					alt={item.name}
+					onLoad={() => setDraw(true)}
+					className={"item-card"}
 				/>
-			)}
+			</div>
 		</div>
 	);
 };
