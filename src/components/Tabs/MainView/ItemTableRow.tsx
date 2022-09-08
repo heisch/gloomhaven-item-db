@@ -41,6 +41,7 @@ export const ItemTableRow = (props: Props) => {
 			consumed,
 			lost,
 			descHTML,
+			backDescHTML,
 			minusOneCardsAdded,
 			faq,
 			faqImage,
@@ -103,11 +104,26 @@ export const ItemTableRow = (props: Props) => {
 				{lost && <GHIcon name={"lost.png"} />}
 			</Table.Cell>
 			<Table.Cell className={"text-col"}>
-				<span
-					dangerouslySetInnerHTML={{
-						__html: descHTML,
-					}}
-				/>
+				{backDescHTML ? (
+					<>
+						<span
+							dangerouslySetInnerHTML={{
+								__html: `<b>Front</b>: ${descHTML}<br/>`,
+							}}
+						/>
+						<span
+							dangerouslySetInnerHTML={{
+								__html: `<b>Back</b>: ${backDescHTML}<br/>`,
+							}}
+						/>
+					</>
+				) : (
+					<span
+						dangerouslySetInnerHTML={{
+							__html: descHTML,
+						}}
+					/>
+				)}
 				{minusOneCardsAdded && (
 					<>
 						<br />

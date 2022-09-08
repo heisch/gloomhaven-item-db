@@ -153,7 +153,9 @@ export interface GloomhavenItem {
 	minusOneCardsAdded?: number;
 	useSlots?: number;
 	desc: string;
+	backDesc: string;
 	descHTML: string;
+	backDescHTML: string;
 	faq?: string;
 	faqImage?: string;
 	summon?: Summon;
@@ -164,6 +166,5 @@ export interface GloomhavenItem {
 	resources: Record<string, string>;
 	imagePrefix?: string;
 	imageSuffix?: string;
-	flippable?: boolean;
 	specialUnlock?: string;
 }

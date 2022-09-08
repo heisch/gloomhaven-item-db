@@ -29,6 +29,12 @@ export const getInitialItems = (gameType: GameType) => {
 
 	items.forEach((item) => {
 		item.descHTML = Helpers.parseEffectText(item.desc, gameType);
+		if (item.backDesc) {
+			item.backDescHTML = Helpers.parseEffectText(
+				item.backDesc,
+				gameType
+			);
+		}
 		const source = item.source
 			.replace(/Reward from /gi, "")
 			.replace(/ ?\((Treasure #\d+)\)/gi, "\n$1")

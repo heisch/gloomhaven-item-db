@@ -27,7 +27,7 @@ const ItemCard = (props: Props) => {
 			{draw && (
 				<div className="item-card-wrapper-header">
 					<ItemId item={item} />
-					{item.flippable && (
+					{item.backDesc && (
 						<Button
 							icon={showBackside ? "redo" : "undo"}
 							className="flipItem"
