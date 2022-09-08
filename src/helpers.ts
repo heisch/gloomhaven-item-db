@@ -50,6 +50,11 @@ export class Helpers {
 	}
 
 	static parseEffectText(text: string, gameType: GameType) {
+		if (text.includes("~!")) {
+			const reg = new RegExp(`(~!)(.+?)(!~)`, "g");
+			text = text.replace(reg, `<span class="action"> ${"$2"} </span>`);
+		}
+
 		[
 			"BANE",
 			"BLESS",

@@ -161,7 +161,7 @@
 		"count": 2,
 		"slot": "1h",
 		"source": "Unknown",
-		"desc": "During your turn peform {regenerate} \"{target} 1 ally, {range} 2\"",
+		"desc": "During your turn peform {regenerate} ~!{target} 1 ally, {range} 2!~",
 		"unlockScenario": 1,
 		"resources": { "lumber": 1, "hide": 1, "rockroot": 1 },
 		"gameType": "fh",

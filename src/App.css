@@ -3,6 +3,12 @@
 	font-weight: bold;
 }
 
+.action {
+    background-color: lightgray;
+    border-radius: 12px;
+    padding: 5px;
+}
+
 .command {
 	color: #c49986;
 	font-weight: bold;
