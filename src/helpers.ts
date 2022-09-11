@@ -85,6 +85,7 @@ export class Helpers {
 		text = this.parseForIcon("\\^", text);
 		text = this.parseForIcon("\\$", text, "status");
 		text = this.parseForIcon("\\@", text, "element");
+		text = this.parseForIcon("\\#", text, "equipment_slot");
 
 		[
 			"BANE",

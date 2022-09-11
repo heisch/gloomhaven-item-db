@@ -7,7 +7,7 @@
 		"slot": "legs",
 		"source": "Prosperity 1",
 		"spent": true,
-		"desc": "During your movement, add +2 Move to the movement.",
+		"desc": "During your movement, add +2 Move ^move^ to the movement.",
 		"faq": "Boots of Striding only add to the numerical value of an existing single movement ability. They do not give you a free movement action.",
 		"folder": "1-14",
 		"unlockProsperity": 1,
@@ -21,7 +21,7 @@
 		"slot": "legs",
 		"source": "Prosperity 1",
 		"spent": true,
-		"desc": "During your movement, add Jump to the movement.",
+		"desc": "During your movement, add Jump ^jump^ to the movement.",
 		"faq": "Winged Shoes may be used for only a single movement ability, not for multiple movement abilities of an action (ex: Action with Move, Attack, Move).",
 		"folder": "1-14",
 		"unlockProsperity": 1,
@@ -37,7 +37,7 @@
 		"spent": true,
 		"minusOneCardsAdded": 2,
 		"useSlots": 2,
-		"desc": "On the next two sources of damage to you from attacks, gain Shield 1.",
+		"desc": "On the next two sources of damage to you from attacks, gain Shield ^shield^ 1.",
 		"faq": "Hide Armor only grants the shield for the attack, not until the end of the round.",
 		"folder": "1-14",
 		"unlockProsperity": 1,
@@ -65,7 +65,7 @@
 		"slot": "body",
 		"source": "Prosperity 1",
 		"consumed": true,
-		"desc": "During your turn, gain INVISIBLE.",
+		"desc": "During your turn, gain INVISIBLE $invisible$.",
 		"folder": "1-14",
 		"unlockProsperity": 1,
 		"gameType": "gh"
@@ -90,7 +90,7 @@
 		"cost": 10,
 		"slot": "head",
 		"source": "Prosperity 1",
-		"desc": "When attacked, consider any {modifier_2x_circle} attack modifier card the enemy draws to be a {modifier_zero_circle} instead.",
+		"desc": "When attacked, consider any ^modifier_2x_circle^ attack modifier card the enemy draws to be a ^modifier_zero_circle^ instead.",
 		"folder": "1-14",
 		"unlockProsperity": 1,
 		"gameType": "gh"
@@ -103,7 +103,7 @@
 		"slot": "1h",
 		"source": "Prosperity 1",
 		"spent": true,
-		"desc": "When damaged by an attack, gain Shield 1 for the attack.",
+		"desc": "When damaged by an attack, gain Shield ^shield^ 1 for the attack.",
 		"folder": "1-14",
 		"unlockProsperity": 1,
 		"gameType": "gh"
@@ -129,7 +129,7 @@
 		"slot": "2h",
 		"source": "Prosperity 1",
 		"consumed": true,
-		"desc": "During your melee attack, add STUN to the entire Attack action.",
+		"desc": "During your melee attack, add STUN $stun$ to the entire Attack action.",
 		"folder": "1-14",
 		"unlockProsperity": 1,
 		"gameType": "gh"
@@ -142,7 +142,7 @@
 		"slot": "1h",
 		"source": "Prosperity 1",
 		"spent": true,
-		"desc": "During your melee attack, add POISON to a single attack.",
+		"desc": "During your melee attack, add POISON $poison$ to a single attack.",
 		"folder": "1-14",
 		"unlockProsperity": 1,
 		"gameType": "gh"
@@ -155,7 +155,7 @@
 		"slot": "small",
 		"source": "Prosperity 1",
 		"consumed": true,
-		"desc": "During your turn, perform a \"Heal 3, self\" action.",
+		"desc": "During your turn, perform a \"Heal ^heal^ 3, self\" action.",
 		"folder": "1-14",
 		"unlockProsperity": 1,
 		"gameType": "gh"
@@ -168,7 +168,7 @@
 		"slot": "small",
 		"source": "Prosperity 1",
 		"consumed": true,
-		"desc": "During your turn, Recover up to two of your discarded cards.",
+		"desc": "During your turn, Recover ^recover^ up to two of your discarded cards.",
 		"faq": "[Errata] The item should allow you to recover only one discarded card. This is change in an upcoming expansion but may be used for the base game.",
 		"folder": "1-14",
 		"unlockProsperity": 1,
@@ -182,7 +182,7 @@
 		"slot": "small",
 		"source": "Prosperity 1",
 		"consumed": true,
-		"desc": "During your attack, add +1 Attack to your entire Attack action.",
+		"desc": "During your attack, add +1 Attack ^attack^ to your entire Attack action.",
 		"folder": "1-14",
 		"unlockProsperity": 1,
 		"gameType": "gh"
@@ -207,7 +207,7 @@
 		"cost": 20,
 		"slot": "body",
 		"source": "Prosperity 2",
-		"desc": "You can carry two additional small items.",
+		"desc": "You can carry two additional #small# items.",
 		"folder": "15-21",
 		"unlockProsperity": 2,
 		"gameType": "gh"
@@ -220,7 +220,7 @@
 		"slot": "head",
 		"source": "Prosperity 2",
 		"consumed": true,
-		"desc": "During your turn, Refresh one of your consumed small items.",
+		"desc": "During your turn, Refresh ^refresh^ one of your consumed #small# items.",
 		"folder": "15-21",
 		"unlockProsperity": 2,
 		"gameType": "gh"
@@ -246,7 +246,7 @@
 		"slot": "2h",
 		"source": "Prosperity 2",
 		"spent": true,
-		"desc": "During your ranged attack, add IMMOBILIZE to a single attack.",
+		"desc": "During your ranged attack, add IMMOBILIZE $immobilize$ to a single attack.",
 		"folder": "15-21",
 		"unlockProsperity": 2,
 		"gameType": "gh"
@@ -259,7 +259,7 @@
 		"slot": "small",
 		"source": "Prosperity 2",
 		"consumed": true,
-		"desc": "During your turn, create any element. {any}",
+		"desc": "During your turn, create any element. @any@",
 		"folder": "15-21",
 		"unlockProsperity": 2,
 		"gameType": "gh"
@@ -272,7 +272,7 @@
 		"slot": "small",
 		"source": "Prosperity 2",
 		"consumed": true,
-		"desc": "During your attack, add STUN to a single attack.",
+		"desc": "During your attack, add STUN $stun$ to a single attack.",
 		"folder": "15-21",
 		"unlockProsperity": 2,
 		"gameType": "gh"
@@ -299,7 +299,7 @@
 		"source": "Prosperity 3",
 		"minusOneCardsAdded": 3,
 		"spent": true,
-		"desc": "On the next three sources of damage to you from attacks, gain Shield 1.",
+		"desc": "On the next three sources of damage to you from attacks, gain Shield ^shield^ 1.",
 		"faq": "Chainmail only grants the shield for the attack, not until the end of the round.",
 		"folder": "22-28",
 		"unlockProsperity": 3,
@@ -313,7 +313,7 @@
 		"slot": "head",
 		"source": "Prosperity 3",
 		"spent": true,
-		"desc": "During your turn, peform \"Heal 1, Self\" action.",
+		"desc": "During your turn, peform \"Heal ^heal^ 1, Self\" action.",
 		"folder": "22-28",
 		"unlockProsperity": 3,
 		"gameType": "gh"
@@ -326,7 +326,7 @@
 		"slot": "1h",
 		"source": "Prosperity 3",
 		"spent": true,
-		"desc": "During your melee attack, add WOUND to a single attack.",
+		"desc": "During your melee attack, add WOUND $wound$ to a single attack.",
 		"folder": "22-28",
 		"unlockProsperity": 3,
 		"gameType": "gh"
@@ -352,7 +352,7 @@
 		"slot": "small",
 		"source": "Prosperity 3",
 		"consumed": true,
-		"desc": "During your turn, perform a \"Heal 5, self\" action.",
+		"desc": "During your turn, perform a \"Heal ^heal^ 5, self\" action.",
 		"folder": "22-28",
 		"unlockProsperity": 3,
 		"gameType": "gh"
@@ -365,7 +365,7 @@
 		"slot": "small",
 		"source": "Prosperity 3",
 		"consumed": true,
-		"desc": "During your turn, Refresh all of your spent items.",
+		"desc": "During your turn, Refresh ^refresh^ all of your spent ^spent^ items.",
 		"folder": "22-28",
 		"unlockProsperity": 3,
 		"gameType": "gh"
@@ -377,7 +377,7 @@
 		"cost": 30,
 		"slot": "legs",
 		"source": "Prosperity 4",
-		"desc": "Whenever you use the default bottom of an ability card, perform a \"Move 3\" action instead of a \"Move 2\" action.",
+		"desc": "Whenever you use the default bottom of an ability card, perform a \"Move ^move^ 3\" action instead of a \"Move ^move^ 2\" action.",
 		"folder": "29-35",
 		"unlockProsperity": 4,
 		"gameType": "gh"
@@ -390,7 +390,7 @@
 		"slot": "body",
 		"source": "Prosperity 4",
 		"spent": true,
-		"desc": "When attacked, the attacker gains Disadvantage on the attack and you gain Shield 1 for the attack.",
+		"desc": "When attacked, the attacker gains Disadvantage on the attack and you gain Shield ^shield^ 1 for the attack.",
 		"folder": "29-35",
 		"unlockProsperity": 4,
 		"gameType": "gh"
@@ -403,7 +403,7 @@
 		"slot": "head",
 		"source": "Prosperity 4",
 		"spent": true,
-		"desc": "During your ranged attack, add +1 Range to your entire Attack action.",
+		"desc": "During your ranged attack, add +1 Range ^range^ to your entire Attack action.",
 		"folder": "29-35",
 		"unlockProsperity": 4,
 		"gameType": "gh"
@@ -416,7 +416,7 @@
 		"slot": "1h",
 		"source": "Prosperity 4",
 		"spent": true,
-		"desc": "When damaged by an attack, gain Shield 2 for the attack.",
+		"desc": "When damaged by an attack, gain Shield ^shield^ 2 for the attack.",
 		"folder": "29-35",
 		"unlockProsperity": 4,
 		"gameType": "gh"
