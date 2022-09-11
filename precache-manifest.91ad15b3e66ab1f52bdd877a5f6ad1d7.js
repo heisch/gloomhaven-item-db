@@ -1,23 +1,23 @@
 self.__precacheManifest = [
   {
-    "revision": "ed737623fb0ce2f7c244",
-    "url": "/gloomhaven-item-db/static/css/main.abe7c1f1.chunk.css"
+    "revision": "fc2b9902163bcd0dedec",
+    "url": "/gloomhaven-item-db/static/css/main.927fff57.chunk.css"
   },
   {
-    "revision": "ed737623fb0ce2f7c244",
-    "url": "/gloomhaven-item-db/static/js/main.bcae4135.chunk.js"
+    "revision": "fc2b9902163bcd0dedec",
+    "url": "/gloomhaven-item-db/static/js/main.b97aa623.chunk.js"
   },
   {
     "revision": "967e9c5ebb01dc23ffc9",
     "url": "/gloomhaven-item-db/static/js/runtime~main.9dfa5d91.js"
   },
   {
-    "revision": "2b6213cff6fc0a248aad",
+    "revision": "d376f4bf93c1ff7526f8",
     "url": "/gloomhaven-item-db/static/css/2.4b4f9452.chunk.css"
   },
   {
-    "revision": "2b6213cff6fc0a248aad",
-    "url": "/gloomhaven-item-db/static/js/2.0fd5767d.chunk.js"
+    "revision": "d376f4bf93c1ff7526f8",
+    "url": "/gloomhaven-item-db/static/js/2.42f9bcd6.chunk.js"
   },
   {
     "revision": "eb1c1013674897a1bc0601a130a27050",
@@ -23544,24 +23544,16 @@ self.__precacheManifest = [
     "url": "/gloomhaven-item-db/static/media/zz.dc712e69.txt"
   },
   {
-    "revision": "0ab54153eeeca0ce03978cc463b257f7",
-    "url": "/gloomhaven-item-db/static/media/icons.0ab54153.woff2"
+    "revision": "701ae6abd4719e9c2ada3535a497b341",
+    "url": "/gloomhaven-item-db/static/media/outline-icons.701ae6ab.eot"
   },
   {
     "revision": "b87b9ba532ace76ae9f6edfe9f72ded2",
     "url": "/gloomhaven-item-db/static/media/icons.b87b9ba5.ttf"
   },
   {
-    "revision": "701ae6abd4719e9c2ada3535a497b341",
-    "url": "/gloomhaven-item-db/static/media/outline-icons.701ae6ab.eot"
-  },
-  {
-    "revision": "cd6c777f1945164224dee082abaea03a",
-    "url": "/gloomhaven-item-db/static/media/outline-icons.cd6c777f.woff2"
-  },
-  {
-    "revision": "ef60a4f6c25ef7f39f2d25a748dbecfe",
-    "url": "/gloomhaven-item-db/static/media/outline-icons.ef60a4f6.woff"
+    "revision": "8e3c7f5520f5ae906c6cf6d7f3ddcd19",
+    "url": "/gloomhaven-item-db/static/media/icons.8e3c7f55.eot"
   },
   {
     "revision": "faff92145777a3cbaf8e7367b4807987",
@@ -23572,28 +23564,36 @@ self.__precacheManifest = [
     "url": "/gloomhaven-item-db/static/media/icons.962a1bf3.svg"
   },
   {
-    "revision": "8e3c7f5520f5ae906c6cf6d7f3ddcd19",
-    "url": "/gloomhaven-item-db/static/media/icons.8e3c7f55.eot"
+    "revision": "cd6c777f1945164224dee082abaea03a",
+    "url": "/gloomhaven-item-db/static/media/outline-icons.cd6c777f.woff2"
   },
   {
-    "revision": "82f60bd0b94a1ed68b1e6e309ce2e8c3",
-    "url": "/gloomhaven-item-db/static/media/outline-icons.82f60bd0.svg"
+    "revision": "ef60a4f6c25ef7f39f2d25a748dbecfe",
+    "url": "/gloomhaven-item-db/static/media/outline-icons.ef60a4f6.woff"
   },
   {
     "revision": "ad97afd3337e8cda302d10ff5a4026b8",
     "url": "/gloomhaven-item-db/static/media/outline-icons.ad97afd3.ttf"
   },
   {
-    "revision": "13db00b7a34fee4d819ab7f9838cc428",
-    "url": "/gloomhaven-item-db/static/media/brand-icons.13db00b7.eot"
-  },
-  {
-    "revision": "e8c322de9658cbeb8a774b6624167c2c",
-    "url": "/gloomhaven-item-db/static/media/brand-icons.e8c322de.woff2"
+    "revision": "0ab54153eeeca0ce03978cc463b257f7",
+    "url": "/gloomhaven-item-db/static/media/icons.0ab54153.woff2"
   },
   {
     "revision": "a046592bac8f2fd96e994733faf3858c",
     "url": "/gloomhaven-item-db/static/media/brand-icons.a046592b.woff"
+  },
+  {
+    "revision": "13db00b7a34fee4d819ab7f9838cc428",
+    "url": "/gloomhaven-item-db/static/media/brand-icons.13db00b7.eot"
+  },
+  {
+    "revision": "82f60bd0b94a1ed68b1e6e309ce2e8c3",
+    "url": "/gloomhaven-item-db/static/media/outline-icons.82f60bd0.svg"
+  },
+  {
+    "revision": "e8c322de9658cbeb8a774b6624167c2c",
+    "url": "/gloomhaven-item-db/static/media/brand-icons.e8c322de.woff2"
   },
   {
     "revision": "c5ebe0b32dc1b5cc449a76c4204d13bb",
@@ -23892,7 +23892,7 @@ self.__precacheManifest = [
     "url": "/gloomhaven-item-db/static/media/XX.8cac8215.png"
   },
   {
-    "revision": "c2b9e99861b429b88873bc2866569e97",
+    "revision": "5bb08e62080a5b1a3b9a1432fc8f0b2a",
     "url": "/gloomhaven-item-db/index.html"
   }
 ];
