@@ -138,6 +138,19 @@ export interface Summon {
 	range: number;
 }
 
+interface Resources {
+	metal?: number;
+	hide?: number;
+	lumber?: number;
+	item?: number[];
+	arrowvine?: number;
+	axenut?: number;
+	corpsecap?: number;
+	flamefruit?: number;
+	rockroot?: number;
+	snowthistle?: number;
+}
+
 export interface GloomhavenItem {
 	id: number;
 	displayId: string;
@@ -163,7 +176,7 @@ export interface GloomhavenItem {
 	folder: string;
 	unlockScenario: number;
 	unlockProsperity: number;
-	resources: Record<string, string>;
+	resources: Resources;
 	imagePrefix?: string;
 	imageSuffix?: string;
 	specialUnlock?: string;

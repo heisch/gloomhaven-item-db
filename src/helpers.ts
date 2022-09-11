@@ -141,15 +141,18 @@ export class Helpers {
 			"damage",
 			"range",
 			"move",
+			"recover",
+			"fh-range",
+			"fh-shield",
+			"fh-heal",
+			"fh-jump",
+			"fh-move",
 		].forEach((find) => {
 			const reg = new RegExp(`{${find}}`, "g");
-			if (find === "range" && gameType === GameType.Frosthaven) {
-				find = "fh-" + find;
-			}
 			text = text.replace(reg, createImageString({ filename: find }));
 		});
 
-		["muddle", "regenerate"].forEach((find) => {
+		["muddle", "regenerate", "fh-wound", "poison"].forEach((find) => {
 			const reg = new RegExp(`{${find}}`, "g");
 			text = text.replace(
 				reg,

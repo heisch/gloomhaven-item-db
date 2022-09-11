@@ -76,15 +76,15 @@ export const ItemTableRow = (props: Props) => {
 					{resources &&
 						Object.entries(resources).map(([resource, value]) => {
 							if (resource === "item") {
-								return (
+								return value.map((itemId: number) => (
 									<div key={resource}>
 										<GHIcon
 											name={`${resource}.png`}
 											folder="resources"
 										/>
-										{` : ${value}`}
+										{` : ${itemId}`}
 									</div>
-								);
+								));
 							}
 							return (
 								<div key={resource}>
@@ -92,7 +92,7 @@ export const ItemTableRow = (props: Props) => {
 										name={`${resource}.png`}
 										folder="resources"
 									/>
-									{parseInt(value, 10) > 1 && ` x ${value}`}
+									{value > 1 && ` x ${value}`}
 								</div>
 							);
 						})}
