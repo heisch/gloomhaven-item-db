@@ -319,6 +319,7 @@
 		"spent": true,
 		"desc": "During your ranged attack, add PULL 2 to a single attack.",
 		"folder": "21-26",
+		"unlockScenario": 15,
 		"gameType": "jotl"
 	},
 	{
