@@ -49,11 +49,35 @@ export class Helpers {
 		return sort ? result.sort() : result;
 	}
 
+	static parseForIcon(
+		delimiter: string,
+		text: string,
+		folder: string = "general"
+	) {
+		const exp = new RegExp(`${delimiter}(.+?)${delimiter}`, "g");
+		const matches = text.match(exp);
+		if (matches) {
+			matches.forEach((match) => {
+				text = text.replace(
+					match,
+					createImageString({
+						filename: match.substring(1, match.length - 1),
+						folder,
+					})
+				);
+			});
+		}
+		return text;
+	}
+
 	static parseEffectText(text: string, gameType: GameType) {
 		if (text.includes("~!")) {
 			const reg = new RegExp(`(~!)(.+?)(!~)`, "g");
 			text = text.replace(reg, `<span class="action"> ${"$2"} </span>`);
 		}
+
+		text = this.parseForIcon("\\^", text);
+		text = this.parseForIcon("\\$", text, "status");
 
 		[
 			"BANE",
