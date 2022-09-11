@@ -51,6 +51,7 @@ export const getInitialItems = (gameType: GameType) => {
 			});
 		}
 	});
+	console.log(`after ${gameType} ${Helpers.itemCount}`);
 	return { items, filterSlots, resources };
 };
 

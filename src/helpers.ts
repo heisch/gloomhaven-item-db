@@ -70,14 +70,21 @@ export class Helpers {
 		return text;
 	}
 
+	static itemCount = 0;
+
 	static parseEffectText(text: string, gameType: GameType) {
 		if (text.includes("~!")) {
 			const reg = new RegExp(`(~!)(.+?)(!~)`, "g");
 			text = text.replace(reg, `<span class="action"> ${"$2"} </span>`);
 		}
 
+		if (text.includes("{")) {
+			this.itemCount += 1;
+		}
+
 		text = this.parseForIcon("\\^", text);
 		text = this.parseForIcon("\\$", text, "status");
+		text = this.parseForIcon("\\@", text, "element");
 
 		[
 			"BANE",
