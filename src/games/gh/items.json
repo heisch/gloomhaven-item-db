@@ -442,7 +442,7 @@
 		"slot": "small",
 		"source": "Prosperity 4",
 		"consumed": true,
-		"desc": "During your turn, Recover up to three of your discarded cards.",
+		"desc": "During your turn, Recover ^recover^ up to three of your discarded cards.",
 		"faq": "[Errata] The item should allow you to recover only two discarded cards. This is change in an upcoming expansion but may be used in the base game.",
 		"folder": "29-35",
 		"unlockProsperity": 4,
@@ -462,7 +462,7 @@
 			"attack": 2,
 			"range": 0
 		},
-		"desc": "Summon Jade Falcon (Flying)",
+		"desc": "Summon Jade Falcon (Flying ^flying^)",
 		"faq": "The card is treated like a persistent bonus, going in the active area until the summon is killed or the card is removed (removing the summon and consuming the item). If the card is refreshed and there is an active summon from the card, the active summon disappears.",
 		"folder": "29-35",
 		"unlockProsperity": 4,
@@ -476,7 +476,7 @@
 		"slot": "legs",
 		"source": "Prosperity 5",
 		"spent": true,
-		"desc": "During your movement, add +3 Move to the movement.",
+		"desc": "During your movement, add +3 Move ^move^ to the movement.",
 		"folder": "36-42",
 		"unlockProsperity": 5,
 		"gameType": "gh"
@@ -489,7 +489,7 @@
 		"slot": "body",
 		"source": "Prosperity 5",
 		"spent": true,
-		"desc": "During your attack, {anyX} to add +1 Attack to the entire Attack action.",
+		"desc": "During your attack, @x-any@  to add +1 Attack ^attack^ to the entire Attack action.",
 		"folder": "36-42",
 		"unlockProsperity": 5,
 		"gameType": "gh"
@@ -502,7 +502,7 @@
 		"slot": "head",
 		"source": "Prosperity 5",
 		"minusOneCardsAdded": 2,
-		"desc": "You are immune to STUN and MUDDLE.",
+		"desc": "You are immune to STUN $stun$ and MUDDLE $muddle$.",
 		"folder": "36-42",
 		"unlockProsperity": 5,
 		"gameType": "gh"
@@ -515,7 +515,7 @@
 		"slot": "2h",
 		"source": "Prosperity 5",
 		"spent": true,
-		"desc": "During your ranged attack, add PULL 2 to the entire Attack action.",
+		"desc": "During your ranged attack, add PULL $pull$ 2 to the entire Attack action.",
 		"folder": "36-42",
 		"unlockProsperity": 5,
 		"gameType": "gh"
@@ -527,7 +527,7 @@
 		"cost": 25,
 		"slot": "1h",
 		"source": "Prosperity 5",
-		"desc": "Whenever you use the default top of an ability card, perform an \"Attack 3\" action instead of an \"Attack 2\" action.",
+		"desc": "Whenever you use the default top of an ability card, perform an \"Attack ^attack^ 3\" action instead of an \"Attack ^attack^ 2\" action.",
 		"folder": "36-42",
 		"unlockProsperity": 5,
 		"gameType": "gh"
@@ -540,7 +540,7 @@
 		"slot": "small",
 		"source": "Prosperity 5\nScenario #105 (Treasure #83)",
 		"consumed": true,
-		"desc": "During your attack, add +2 Attack to your entire Attack action.",
+		"desc": "During your attack, add +2 Attack ^attack^ to your entire Attack action.",
 		"folder": "36-42",
 		"unlockProsperity": 5,
 		"gameType": "gh"
@@ -579,7 +579,7 @@
 		"slot": "body",
 		"source": "Prosperity 6",
 		"minusOneCardsAdded": 4,
-		"desc": "On the next four sources of damage to you from attacks, gain Shield 1.",
+		"desc": "On the next four sources of damage to you from attacks, gain Shield ^shield^ 1.",
 		"folder": "43-49",
 		"unlockProsperity": 6,
 		"gameType": "gh"
@@ -592,7 +592,7 @@
 		"slot": "head",
 		"source": "Prosperity 6",
 		"consumed": true,
-		"desc": "During your turn, Refresh two of your consumed small items. Gain CURSE.",
+		"desc": "During your turn, Refresh ^refresh^ two of your consumed #small# items. Gain CURSE $curse$.",
 		"faq": "The perk that ignores item effects does not prevent you from being cursed.",
 		"folder": "43-49",
 		"unlockProsperity": 6,
@@ -606,7 +606,7 @@
 		"slot": "1h",
 		"source": "Prosperity 6",
 		"spent": true,
-		"desc": "When damaged by an attack, gain Shield 1 and Retaliate 2 for the attack.",
+		"desc": "When damaged by an attack, gain Shield ^shield^ 1 and Retaliate ^retaliate^ 2 for the attack.",
 		"folder": "43-49",
 		"unlockProsperity": 6,
 		"gameType": "gh"
@@ -632,7 +632,7 @@
 		"slot": "small",
 		"source": "Prosperity 6\nReward from Scenario #104",
 		"consumed": true,
-		"desc": "During your turn, create any two elements. {any} {any}",
+		"desc": "During your turn, create any two elements. @any@ @any@",
 		"folder": "43-49",
 		"unlockProsperity": 6,
 		"gameType": "gh"
@@ -645,7 +645,7 @@
 		"slot": "small",
 		"source": "Prosperity 6",
 		"consumed": true,
-		"desc": "During your turn, Refresh all of your spent items and \"Heal 3, Self\" action.",
+		"desc": "During your turn, Refresh ^refresh^ all of your spent ^spent^ items and \"Heal ^heal^ 3, Self\" action.",
 		"folder": "43-49",
 		"unlockProsperity": 6,
 		"gameType": "gh"
@@ -658,7 +658,7 @@
 		"slot": "legs",
 		"source": "Prosperity 7",
 		"minusOneCardsAdded": 2,
-		"desc": "If you move 1 or fewer hexes on your turn, gain Shield 1 for the round.",
+		"desc": "If you move 1 or fewer hexes on your turn, gain Shield ^shield^ 1 for the round.",
 		"folder": "50-56",
 		"unlockProsperity": 7,
 		"gameType": "gh"
@@ -683,7 +683,7 @@
 		"cost": 60,
 		"slot": "head",
 		"source": "Prosperity 7\nReward from Scenario #109",
-		"desc": "You are immune to POISON and WOUND.",
+		"desc": "You are immune to POISON $poison$ and WOUND $wound$.",
 		"folder": "50-56",
 		"unlockProsperity": 7,
 		"gameType": "gh"
@@ -696,7 +696,7 @@
 		"slot": "1h",
 		"source": "Prosperity 7",
 		"spent": true,
-		"desc": "During your melee attack, add CURSE to a single attack.",
+		"desc": "During your melee attack, add CURSE $curse$ to a single attack.",
 		"folder": "50-56",
 		"unlockProsperity": 7,
 		"gameType": "gh"
@@ -709,7 +709,7 @@
 		"slot": "2h",
 		"source": "Prosperity 7",
 		"spent": true,
-		"desc": "During your ranged attack, {anyX} to add +1 Attack to the entire Attack action.",
+		"desc": "During your ranged attack, @x-any@ to add +1 Attack ^attack^ to the entire Attack action.",
 		"folder": "50-56",
 		"unlockProsperity": 7,
 		"gameType": "gh"
@@ -722,7 +722,7 @@
 		"slot": "small",
 		"source": "Prosperity 7",
 		"consumed": true,
-		"desc": "During your turn, perform a \"Heal 7, self\" action.",
+		"desc": "During your turn, perform a \"Heal ^heal^ 7, self\" action.",
 		"folder": "50-56",
 		"unlockProsperity": 7,
 		"gameType": "gh"
@@ -747,7 +747,7 @@
 		"cost": 75,
 		"slot": "legs",
 		"source": "Prosperity 8",
-		"desc": "Whenever you use the default bottom of an ability card perform a \"Move 4\" action instead of a \"Move 2\" action.",
+		"desc": "Whenever you use the default bottom of an ability card perform a \"Move ^move^ 4\" action instead of a \"Move ^move^ 2\" action.",
 		"folder": "57-63",
 		"unlockProsperity": 8,
 		"gameType": "gh"
@@ -759,7 +759,7 @@
 		"cost": 75,
 		"slot": "body",
 		"source": "Prosperity 8",
-		"desc": "Gain Flying. While occupying an obstacle hex, you are considered INVISIBLE and cannot attack",
+		"desc": "Gain Flying ^flying^. While occupying an obstacle hex, you are considered INVISIBLE $invisible$ and cannot attack",
 		"folder": "57-63",
 		"unlockProsperity": 8,
 		"gameType": "gh"
@@ -772,7 +772,7 @@
 		"slot": "head",
 		"source": "Prosperity 8\nOption from Scenario 100",
 		"spent": true,
-		"desc": "During your ranged attack, add +2 Range to your entire Attack action",
+		"desc": "During your ranged attack, add +2 Range ^range^ to your entire Attack action",
 		"folder": "57-63",
 		"unlockProsperity": 8,
 		"gameType": "gh"
@@ -798,7 +798,7 @@
 		"slot": "2h",
 		"source": "Prosperity 8",
 		"spent": true,
-		"desc": "When damaged by an attack, gain Shield 4 for the attack.",
+		"desc": "When damaged by an attack, gain Shield ^shield^ 4 for the attack.",
 		"folder": "57-63",
 		"unlockProsperity": 8,
 		"gameType": "gh"
@@ -811,7 +811,7 @@
 		"slot": "small",
 		"source": "Prosperity 8",
 		"consumed": true,
-		"desc": "During your attack, add STUN, POISON, and CURSE to a single attack.",
+		"desc": "During your attack, add STUN $stun$, POISON $poison$, and CURSE $curse$ to a single attack.",
 		"folder": "57-63",
 		"unlockProsperity": 8,
 		"gameType": "gh"
@@ -824,7 +824,7 @@
 		"slot": "small",
 		"source": "Prosperity 8",
 		"consumed": true,
-		"desc": "During your turn, STRENGTHEN yourself and all adjacent allies.",
+		"desc": "During your turn, STRENGTHEN $strengthen$ yourself and all adjacent allies.",
 		"folder": "57-63",
 		"unlockProsperity": 8,
 		"gameType": "gh"
@@ -837,7 +837,7 @@
 		"slot": "legs",
 		"source": "Prosperity 9",
 		"spent": true,
-		"desc": "During your movement, add +4 Move to the movement.",
+		"desc": "During your movement, add +4 Move ^move^ to the movement.",
 		"folder": "64-151",
 		"unlockProsperity": 9,
 		"gameType": "gh"
@@ -852,7 +852,7 @@
 		"spent": true,
 		"minusOneCardsAdded": 5,
 		"useSlots": 5,
-		"desc": "On the next five sources of damage to you from attacks, gain Shield 1.",
+		"desc": "On the next five sources of damage to you from attacks, gain Shield ^shield^ 1.",
 		"folder": "64-151",
 		"unlockProsperity": 9,
 		"gameType": "gh"
@@ -864,7 +864,7 @@
 		"cost": 50,
 		"slot": "head",
 		"source": "Prosperity 9\nScenario #110 (Treasure #84)",
-		"desc": "During your melee attack, add PUSH 1.",
+		"desc": "During your melee attack, add PUSH $push$ 1.",
 		"folder": "64-151",
 		"unlockProsperity": 9,
 		"gameType": "gh"
@@ -876,7 +876,7 @@
 		"cost": 60,
 		"slot": "1h",
 		"source": "Prosperity 9",
-		"desc": "Whenever you use the default top of an ability card, perform an \"Attack 4\" instead of an \"Attack 2\" action.",
+		"desc": "Whenever you use the default top of an ability card, perform an \"Attack ^attack^ 4\" instead of an \"Attack ^attack^ 2\" action.",
 		"folder": "64-151",
 		"unlockProsperity": 9,
 		"gameType": "gh"
@@ -900,7 +900,7 @@
 		"cost": 70,
 		"slot": "small",
 		"source": "Prosperity 9\nTreasure #56",
-		"desc": "During your turn, Refresh all of your spent items, \"Heal 3, Self\" action, and Recover up to two of your discarded cards.",
+		"desc": "During your turn, Refresh ^refresh^ all of your spent ^spent^ items, \"Heal ^heal^ 3, Self\" action, and Recover ^recover^ up to two of your discarded cards.",
 		"folder": "64-151",
 		"consumed": true,
 		"unlockProsperity": 9,
@@ -926,7 +926,7 @@
 		"cost": 50,
 		"slot": "legs",
 		"source": "Random Item",
-		"desc": "Gain Flying",
+		"desc": "Gain Flying ^flying^",
 		"folder": "64-151",
 		"gameType": "gh",
 		"imageSuffix": "b"
@@ -938,7 +938,7 @@
 		"cost": 50,
 		"slot": "legs",
 		"source": "Random Item",
-		"desc": "If you move 6 or more hexes on your turn, gain {experience_1}.",
+		"desc": "If you move 6 or more hexes on your turn, gain ^experience_1^.",
 		"folder": "64-151",
 		"gameType": "gh",
 		"imageSuffix": "b"
@@ -951,7 +951,7 @@
 		"slot": "body",
 		"source": "Random Item",
 		"consumed": true,
-		"desc": "During your turn, perform a \"Move 4, Jump\" action",
+		"desc": "During your turn, perform a \"Move ^move^ 4, Jump ^jump^\" action",
 		"folder": "64-151",
 		"gameType": "gh",
 		"imageSuffix": "b"
@@ -965,7 +965,7 @@
 		"source": "Random Item",
 		"spent": true,
 		"minusOneCardsAdded": 4,
-		"desc": "On the next three sources of damage from attacks targeting you, gain Shield 1, Retaliate 1",
+		"desc": "On the next three sources of damage from attacks targeting you, gain Shield ^shield^ 1, Retaliate ^retaliate^ 1",
 		"folder": "64-151",
 		"gameType": "gh",
 		"imageSuffix": "b"
@@ -978,7 +978,7 @@
 		"slot": "head",
 		"source": "Random Item",
 		"spent": true,
-		"desc": "During your turn, {anyX} to create any element. {any}",
+		"desc": "During your turn, @x-any@ to create any element. @any@",
 		"folder": "64-151",
 		"gameType": "gh",
 		"imageSuffix": "b"
@@ -991,7 +991,7 @@
 		"slot": "head",
 		"source": "Random Item",
 		"minusOneCardsAdded": 1,
-		"desc": "While you are adjacent to three or more monsters, gain Shield 1",
+		"desc": "While you are adjacent to three or more monsters, gain Shield ^shield^ 1",
 		"folder": "64-151",
 		"gameType": "gh",
 		"imageSuffix": "b"
@@ -1003,7 +1003,7 @@
 		"cost": 30,
 		"slot": "1h",
 		"source": "Random Item",
-		"desc": "During your melee attack, {iceX} to add +2 Attack to a single attack.",
+		"desc": "During your melee attack, @x-ice@ to add +2 Attack ^attack^ to a single attack.",
 		"folder": "64-151",
 		"gameType": "gh",
 		"imageSuffix": "b"
@@ -1015,7 +1015,7 @@
 		"cost": 30,
 		"slot": "1h",
 		"source": "Random Item",
-		"desc": "During your melee attack, {windX} to add +2 Attack to a single attack.",
+		"desc": "During your melee attack, @x-wind@ to add +2 Attack ^attack^ to a single attack.",
 		"folder": "64-151",
 		"gameType": "gh",
 		"imageSuffix": "b"
@@ -1027,7 +1027,7 @@
 		"cost": 30,
 		"slot": "1h",
 		"source": "Random Item",
-		"desc": "During your melee attack, {fireX} to add +2 Attack to a single attack.",
+		"desc": "During your melee attack, @x-fire@ to add +2 Attack ^attack^ to a single attack.",
 		"folder": "64-151",
 		"gameType": "gh",
 		"imageSuffix": "b"
@@ -1039,7 +1039,7 @@
 		"cost": 30,
 		"slot": "1h",
 		"source": "Random Item",
-		"desc": "During your melee attack, {earthX} to add +2 Attack to a single attack.",
+		"desc": "During your melee attack, @x-earth@ to add +2 Attack ^attack^ to a single attack.",
 		"folder": "64-151",
 		"gameType": "gh",
 		"imageSuffix": "b"
@@ -1051,7 +1051,7 @@
 		"cost": 30,
 		"slot": "1h",
 		"source": "Random Item",
-		"desc": "During your melee attack, {lightX} to add +2 Attack to a single attack.",
+		"desc": "During your melee attack, @x-light@ to add +2 Attack ^attack^ to a single attack.",
 		"folder": "64-151",
 		"gameType": "gh",
 		"imageSuffix": "b"
@@ -1063,7 +1063,7 @@
 		"cost": 30,
 		"slot": "1h",
 		"source": "Random Item",
-		"desc": "During your melee attack, {darkX} to add +2 Attack to a single attack.",
+		"desc": "During your melee attack, @x-dark@ to add +2 Attack ^attack^ to a single attack.",
 		"folder": "64-151",
 		"gameType": "gh",
 		"imageSuffix": "b"
@@ -1076,7 +1076,7 @@
 		"slot": "1h",
 		"source": "Random Item",
 		"spent": true,
-		"desc": "During your turn, create Ice. {ice}",
+		"desc": "During your turn, create Ice. @ice@",
 		"folder": "64-151",
 		"gameType": "gh",
 		"imageSuffix": "b"
@@ -1089,7 +1089,7 @@
 		"slot": "1h",
 		"source": "Random Item",
 		"spent": true,
-		"desc": "During your turn, create Wind. {wind}",
+		"desc": "During your turn, create Wind. @wind@",
 		"folder": "64-151",
 		"gameType": "gh",
 		"imageSuffix": "b"
@@ -1102,7 +1102,7 @@
 		"slot": "1h",
 		"source": "Random Item",
 		"spent": true,
-		"desc": "During your turn, create Fire. {fire}",
+		"desc": "During your turn, create Fire. @fire@",
 		"folder": "64-151",
 		"gameType": "gh",
 		"imageSuffix": "b"
@@ -1115,7 +1115,7 @@
 		"slot": "1h",
 		"source": "Random Item",
 		"spent": true,
-		"desc": "During your turn, create Earth. {earth}",
+		"desc": "During your turn, create Earth. @earth@",
 		"folder": "64-151",
 		"gameType": "gh",
 		"imageSuffix": "b"
@@ -1128,7 +1128,7 @@
 		"slot": "1h",
 		"source": "Random Item",
 		"spent": true,
-		"desc": "During your turn, create Light. {light}",
+		"desc": "During your turn, create Light. @light@",
 		"folder": "64-151",
 		"gameType": "gh",
 		"imageSuffix": "b"
@@ -1141,7 +1141,7 @@
 		"slot": "1h",
 		"source": "Random Item",
 		"spent": true,
-		"desc": "During your turn, create Dark. {dark}",
+		"desc": "During your turn, create Dark. @dark@",
 		"folder": "64-151",
 		"gameType": "gh",
 		"imageSuffix": "b"
@@ -1154,7 +1154,7 @@
 		"slot": "small",
 		"source": "Random Item",
 		"consumed": true,
-		"desc": "During your turn, remove one negative condition on yourself. This can be used while you have STUN.",
+		"desc": "During your turn, remove one negative condition on yourself. This can be used while you have STUN $stun$.",
 		"folder": "64-151",
 		"gameType": "gh",
 		"imageSuffix": "b"
@@ -1167,7 +1167,7 @@
 		"slot": "small",
 		"source": "Random Item\nScenario #102 (Treasure #77)",
 		"consumed": true,
-		"desc": "During your turn, remove all negative conditions on yourself. This can be used while you have STUN.",
+		"desc": "During your turn, remove all negative conditions on yourself. This can be used while you have STUN $stun$.",
 		"folder": "64-151",
 		"gameType": "gh",
 		"imageSuffix": "b"
@@ -1180,7 +1180,7 @@
 		"slot": "small",
 		"source": "Random Item",
 		"consumed": true,
-		"desc": "When damaged by an attack targeting you, gain Shield 4 for the attack.",
+		"desc": "When damaged by an attack targeting you, gain Shield ^shield^ 4 for the attack.",
 		"folder": "64-151",
 		"gameType": "gh",
 		"imageSuffix": "b"
@@ -1206,7 +1206,7 @@
 		"slot": "small",
 		"source": "Random Item",
 		"consumed": true,
-		"desc": "During an ally's attack, add +1 Attack to their entire attack action",
+		"desc": "During an ally's attack, add +1 Attack ^attack^ to their entire attack action",
 		"folder": "64-151",
 		"gameType": "gh",
 		"imageSuffix": "b"
@@ -1219,7 +1219,7 @@
 		"slot": "small",
 		"source": "Random Item",
 		"consumed": true,
-		"desc": "During your turn, perform a \"Heal 3, Range 5\" action",
+		"desc": "During your turn, perform a \"Heal ^heal^ 3, Range ^range^ 5\" action",
 		"folder": "64-151",
 		"gameType": "gh",
 		"imageSuffix": "b"
@@ -1232,7 +1232,7 @@
 		"slot": "small",
 		"source": "Random Item",
 		"consumed": true,
-		"desc": "During your turn, an ally within Range 5 may Recover up to two of their discarded cards",
+		"desc": "During your turn, an ally within Range ^range^ 5 may Recover ^recover^ up to two of their discarded cards",
 		"folder": "64-151",
 		"gameType": "gh",
 		"imageSuffix": "b"
@@ -1245,7 +1245,7 @@
 		"slot": "legs",
 		"source": "Scenario #66 (Treasure #36)",
 		"spent": true,
-		"desc": "During your movement, add +3 Move and Jump to a single movement",
+		"desc": "During your movement, add +3 Move ^move^ and Jump ^jump^ to a single movement",
 		"folder": "64-151",
 		"gameType": "gh"
 	},
@@ -1256,7 +1256,7 @@
 		"cost": 40,
 		"slot": "legs",
 		"source": "Scenario #38 (Treasure #29)",
-		"desc": "If you move 4 or more hexes on your turn, perform a \"\"Heal 1, Self\"\" action.",
+		"desc": "If you move 4 or more hexes on your turn, perform a \"\"Heal ^heal^ 1, Self\"\" action.",
 		"folder": "64-151",
 		"gameType": "gh"
 	},
@@ -1278,7 +1278,7 @@
 		"cost": 50,
 		"slot": "legs",
 		"source": "Scenario #63 (Treasure #12)",
-		"desc": "Ignore the damaging effects of hazardous terrain and perform a \"Heal 2, Self\" action on any turn in which you have entered a hazardous terrain hex.",
+		"desc": "Ignore the damaging effects of hazardous terrain and perform a \"Heal ^heal^ 2, Self\" action on any turn in which you have entered a hazardous terrain hex.",
 		"folder": "64-151",
 		"gameType": "gh"
 	},
@@ -1290,7 +1290,7 @@
 		"slot": "body",
 		"source": "Scenario #31 (Treasure #69)",
 		"spent": true,
-		"desc": "During your turn, perform a \"Heal 2, target any summoned ally\" action.",
+		"desc": "During your turn, perform a \"Heal ^heal^ 2, target any summoned ally\" action.",
 		"folder": "64-151",
 		"gameType": "gh"
 	},
@@ -1301,7 +1301,7 @@
 		"cost": 30,
 		"slot": "body",
 		"source": "Scenario #06 (Treasure #50)",
-		"desc": "Remove two {modifier_minus_one_circle} from your attack modifier deck.",
+		"desc": "Remove two ^modifier_minus_one_circle^ from your attack modifier deck.",
 		"folder": "64-151",
 		"gameType": "gh"
 	},
@@ -1313,7 +1313,7 @@
 		"slot": "body",
 		"source": "City Event 40",
 		"spent": true,
-		"desc": "During your ranged attack, suffer 3 damage to add +1 Attack to the entire Attack action.",
+		"desc": "During your ranged attack, suffer 3 damage to add +1 Attack ^attack^ to the entire Attack action.",
 		"folder": "64-151",
 		"gameType": "gh"
 	},
@@ -1324,7 +1324,7 @@
 		"cost": 50,
 		"slot": "body",
 		"source": "Scenario #34 (Treasure #23)",
-		"desc": "You are immune to POISON and WOUND.",
+		"desc": "You are immune to POISON $poison$ and WOUND $wound$.",
 		"folder": "64-151",
 		"gameType": "gh"
 	},
@@ -1336,7 +1336,7 @@
 		"slot": "body",
 		"source": "Scenario #40 (Treasure #47)",
 		"consumed": true,
-		"desc": "On the next five sources of damage from attacks targeting you, gain Shield 1.",
+		"desc": "On the next five sources of damage from attacks targeting you, gain Shield ^shield^ 1.",
 		"folder": "64-151",
 		"gameType": "gh"
 	},
@@ -1359,7 +1359,7 @@
 		"cost": 40,
 		"slot": "head",
 		"source": "Road Event 05",
-		"desc": "Any time you kill an enemy during your turn, perform a \"Heal 1, Self\" action.",
+		"desc": "Any time you kill an enemy during your turn, perform a \"Heal ^heal^ 1, Self\" action.",
 		"folder": "64-151",
 		"gameType": "gh"
 	},
@@ -1370,7 +1370,7 @@
 		"cost": 30,
 		"slot": "head",
 		"source": "Scenario #03 (Treasure #65)",
-		"desc": "After moving 4 or more hexes on your turn, add +1 Attack to your next melee attack this turn.",
+		"desc": "After moving 4 or more hexes on your turn, add +1 Attack ^attack^ to your next melee attack this turn.",
 		"faq": "This bonus must be used on the turn it is gained. It cannot be saved. If you perform multiple move abilities, you may use the item as long as you have moved a total of at least 4 hexes. The item can only be used once during your turn even if you move 4 hexes multiple times during your turn.",
 		"folder": "64-151",
 		"gameType": "gh"
@@ -1382,7 +1382,7 @@
 		"cost": 50,
 		"slot": "head",
 		"source": "Scenario #25 (Treasure #58)",
-		"desc": "Whenever you gain MUDDLE, gain STRENGTHEN instead.",
+		"desc": "Whenever you gain MUDDLE $muddle$, gain STRENGTHEN $strengthen$ instead.",
 		"folder": "64-151",
 		"gameType": "gh"
 	},
@@ -1394,7 +1394,7 @@
 		"slot": "head",
 		"source": "City Event 62",
 		"consumed": true,
-		"desc": "During your \"Loot 1\" ability, perform a \"Loot 2\" ability instead.",
+		"desc": "During your \"Loot ^loot^ 1\" ability, perform a \"Loot ^loot^ 2\" ability instead.",
 		"folder": "64-151",
 		"gameType": "gh"
 	},
@@ -1405,7 +1405,7 @@
 		"cost": 50,
 		"slot": "head",
 		"source": "Scenario #82 (Treasure #62)",
-		"desc": "When attacked, if {earth} is Strong, IMMOBILIZE the attacker.",
+		"desc": "When attacked, if @earth@ is Strong, IMMOBILIZE $immobilize$ the attacker.",
 		"folder": "64-151",
 		"gameType": "gh"
 	},
@@ -1416,7 +1416,7 @@
 		"cost": 50,
 		"slot": "head",
 		"source": "Scenario #64 (Treasure #09)",
-		"desc": "When attacked, if {ice} is Strong, perform a \"PUSH 2\" action targeting the attacker.",
+		"desc": "When attacked, if @ice@ is Strong, perform a \"PUSH $push$ 2\" action targeting the attacker.",
 		"folder": "64-151",
 		"gameType": "gh"
 	},
@@ -1428,7 +1428,7 @@
 		"slot": "2h",
 		"source": "Reward From Scenario #65\nOption from Scenario 100",
 		"consumed": true,
-		"desc": "During your melee attack, add +2 Attack and PIERCE 2 to the entire Attack action",
+		"desc": "During your melee attack, add +2 Attack ^attack^ and PIERCE $pierce$ 2 to the entire Attack action",
 		"folder": "64-151",
 		"gameType": "gh"
 	},
@@ -1440,7 +1440,7 @@
 		"slot": "2h",
 		"source": "Reward From Scenario #11\nReward From Scenario #12",
 		"spent": true,
-		"desc": "During your melee attack targeting a Living Corpse, Living Spirit, or Living Bones, add +5 Attack to a single attack.",
+		"desc": "During your melee attack targeting a Living Corpse, Living Spirit, or Living Bones, add +5 Attack ^attack^ to a single attack.",
 		"folder": "64-151",
 		"gameType": "gh"
 	},
@@ -1452,7 +1452,7 @@
 		"slot": "2h",
 		"source": "Reward from Scenario #53",
 		"consumed": true,
-		"desc": "During your ranged attack, add POISON and MUDDLE to the entire Attack action",
+		"desc": "During your ranged attack, add POISON $poison$ and MUDDLE $muddle$ to the entire Attack action",
 		"folder": "64-151",
 		"gameType": "gh"
 	},
@@ -1495,7 +1495,7 @@
 		"slot": "1h",
 		"source": "City Event 53\nRoad Event 53",
 		"spent": true,
-		"desc": "During your melee attack, suffer 2 damage to add +1 Attack to the entire Attack action.",
+		"desc": "During your melee attack, suffer 2 damage to add +1 Attack ^attack^ to the entire Attack action.",
 		"folder": "64-151",
 		"gameType": "gh"
 	},
@@ -1507,7 +1507,7 @@
 		"slot": "2h",
 		"source": "City Event 57",
 		"spent": true,
-		"desc": "During your turn, create any element. {any}",
+		"desc": "During your turn, create any element. @any@",
 		"folder": "64-151",
 		"gameType": "gh"
 	},
@@ -1519,7 +1519,7 @@
 		"slot": "1h",
 		"source": "Reward From Scenario #95",
 		"consumed": true,
-		"desc": "During your turn, CURSE all adjacent enemies.",
+		"desc": "During your turn, CURSE $curse$ all adjacent enemies.",
 		"folder": "64-151",
 		"gameType": "gh"
 	},
@@ -1531,7 +1531,7 @@
 		"slot": "2h",
 		"source": "Reward From Scenario #88",
 		"spent": true,
-		"desc": "During your turn, a summoned ally within Range 3 performs a \"Move 3\" action with you controlling the action.",
+		"desc": "During your turn, a summoned ally within Range ^range^ 3 performs a \"Move ^move^ 3\" action with you controlling the action.",
 		"folder": "64-151",
 		"gameType": "gh"
 	},
@@ -1542,7 +1542,7 @@
 		"cost": 50,
 		"slot": "1h",
 		"source": "Reward From Scenario #85",
-		"desc": "During your turn, {darkX} to create Light. {light}",
+		"desc": "During your turn, @x-dark@ to create Light. @light@",
 		"folder": "64-151",
 		"gameType": "gh"
 	},
@@ -1553,7 +1553,7 @@
 		"cost": 50,
 		"slot": "1h",
 		"source": "Scenario #89 (Treasure #27)",
-		"desc": "During your turn, {lightX} to create Dark. {dark}",
+		"desc": "During your turn, @x-light@ to create Dark. @dark@",
 		"folder": "64-151",
 		"gameType": "gh"
 	},
@@ -1584,7 +1584,7 @@
 		"slot": "small",
 		"source": "Scenario #93 (Treasure #54)",
 		"consumed": true,
-		"desc": "During your turn, force an enemy within Range 5 to perform a \"Move 2\" action with you controlling the action.",
+		"desc": "During your turn, force an enemy within Range ^range^ 5 to perform a \"Move ^move^ 2\" action with you controlling the action.",
 		"folder": "64-151",
 		"gameType": "gh"
 	},
@@ -1596,7 +1596,7 @@
 		"slot": "small",
 		"source": "City Event 03\nOption from Scenario 100",
 		"consumed": true,
-		"desc": "During your turn, disarm all traps within Range 2.",
+		"desc": "During your turn, disarm all traps within Range ^range^ 2.",
 		"folder": "64-151",
 		"gameType": "gh"
 	},
@@ -1608,7 +1608,7 @@
 		"slot": "small",
 		"source": "City Event 43\nOption from Scenario 100",
 		"consumed": true,
-		"desc": "During your turn, POISON all adjacent enemies.",
+		"desc": "During your turn, POISON $poison$ all adjacent enemies.",
 		"folder": "64-151",
 		"gameType": "gh"
 	},
@@ -1620,7 +1620,7 @@
 		"slot": "small",
 		"source": "City Event 61",
 		"consumed": true,
-		"desc": "During your turn, perform a \"Loot 1\" action.",
+		"desc": "During your turn, perform a \"Loot ^loot^ 1\" action.",
 		"folder": "64-151",
 		"gameType": "gh"
 	},
@@ -1632,7 +1632,7 @@
 		"slot": "small",
 		"source": "Reward From Scenario #90",
 		"consumed": true,
-		"desc": "During your turn, MUDDLE all enemies with Range 2.",
+		"desc": "During your turn, MUDDLE $muddle$ all enemies with Range ^range^ 2.",
 		"folder": "64-151",
 		"gameType": "gh"
 	},
@@ -1644,7 +1644,7 @@
 		"slot": "small",
 		"source": "Road Event 51",
 		"consumed": true,
-		"desc": "During your turn, place a character token on an adjacent normal or elite enemy. You add +1 Attack to all your attacks targeting this enemy.",
+		"desc": "During your turn, place a character token on an adjacent normal or elite enemy. You add +1 Attack ^attack^ to all your attacks targeting this enemy.",
 		"folder": "64-151",
 		"gameType": "gh"
 	},
@@ -1656,7 +1656,7 @@
 		"slot": "small",
 		"source": "Scenario #81 (Treasure #68)",
 		"consumed": true,
-		"desc": "During your turn, {lightX} {darkX} to perform a \"Heal 25, Self\" action",
+		"desc": "During your turn, @x-light@ @x-dark@ to perform a \"Heal ^heal^ 25, Self\" action",
 		"folder": "64-151",
 		"gameType": "gh"
 	},
