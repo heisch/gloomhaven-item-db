@@ -1941,7 +1941,7 @@
 		"slot": "small",
 		"source": "Reward from Scenario #97\nSection 125\n\"A locked chest\"",
 		"consumed": true,
-		"desc": "After performing the top action of any ability card, you may immediately peform the bottom action of the same card. This item cannot be used if both actions trigger a lost card icon consumed {consumed}.",
+		"desc": "After performing the top action of any ability card, you may immediately peform the bottom action of the same card. This item cannot be used if both actions trigger a lost card icon consumed ^consumed^.",
 		"folder": "152-165",
 		"gameType": "fc"
 	},
@@ -1952,7 +1952,7 @@
 		"cost": 25,
 		"slot": "small",
 		"source": "Reward From Scenario #99",
-		"desc": "The next three times you would gain POISON prevent the condition.",
+		"desc": "The next three times you would gain POISON $poison$ prevent the condition.",
 		"folder": "152-165",
 		"gameType": "fc"
 	},
@@ -1963,7 +1963,7 @@
 		"cost": 50,
 		"slot": "small",
 		"source": "Reward from Scenario #105",
-		"desc": "The next five times you would gain POISON prevent the condition.",
+		"desc": "The next five times you would gain POISON $poison$ prevent the condition.",
 		"folder": "152-165",
 		"gameType": "fc"
 	},
@@ -1974,7 +1974,7 @@
 		"cost": 75,
 		"slot": "body",
 		"source": "Reward from Scenario #108",
-		"desc": "You are immune to CURSE, even if the item is spent. On the next three sources of damage from attacks targeting you gain Shield 1.",
+		"desc": "You are immune to CURSE $curse$, even if the item is spent ^spent^. On the next three sources of damage from attacks targeting you gain Shield ^shield^ 1.",
 		"spent": true,
 		"minusOneCardsAdded": 3,
 		"folder": "152-165",
@@ -1987,7 +1987,7 @@
 		"cost": 50,
 		"slot": "2h",
 		"source": "Rift Event #5",
-		"desc": "During your melee attack, {anyX} to add +2 Attack to a single attack.",
+		"desc": "During your melee attack, @x-any@ to add +2 Attack ^attack^ to a single attack.",
 		"folder": "152-165",
 		"gameType": "fc"
 	},
@@ -1998,7 +1998,7 @@
 		"cost": 40,
 		"slot": "2h",
 		"source": "Scenario #107 (Treasure #78)\nSection 32\n\"Collapsed Atrium\"",
-		"desc": "During your ranged attack, add +2 Attack, CURSE, and WOUND to a single attack.",
+		"desc": "During your ranged attack, add +2 Attack ^attack^, CURSE $curse$, and WOUND $wound$ to a single attack.",
 		"consumed": true,
 		"folder": "152-165",
 		"gameType": "fc"
@@ -2010,7 +2010,7 @@
 		"cost": 35,
 		"slot": "legs",
 		"source": "Scenario #111 (Treasure #82)",
-		"desc": "During your movement, add +2 Move to the movement and gain REGENERATE.",
+		"desc": "During your movement, add +2 Move ^move^ to the movement and gain REGENERATE $regenerate$.",
 		"spent": true,
 		"folder": "152-165",
 		"gameType": "fc"
@@ -2022,7 +2022,7 @@
 		"cost": 30,
 		"slot": "small",
 		"source": "Scenario #103 (Treasure #81)",
-		"desc": "During any one ally's movement, add +2 Move to the movement.",
+		"desc": "During any one ally's movement, add +2 Move ^move^ to the movement.",
 		"consumed": true,
 		"folder": "152-165",
 		"gameType": "fc"
@@ -2046,7 +2046,7 @@
 		"cost": 35,
 		"slot": "1h",
 		"source": "Reward from Scenario #108",
-		"desc": "During your single-target melee attack action, add Range 3 to the attack.",
+		"desc": "During your single-target melee attack action, add Range 3 ^range^ to the attack.",
 		"consumed": true,
 		"folder": "152-165",
 		"gameType": "fc"
@@ -2058,7 +2058,7 @@
 		"cost": 50,
 		"slot": "small",
 		"source": "Reward from Scenario #112\nSection 62\n\"Mechanical Splendor\"",
-		"desc": "During your turn, Teleport to any unoccupied hex within 4 hexes of you.",
+		"desc": "During your turn, Teleport ^teleport^ to any unoccupied hex within 4 hexes of you.",
 		"consumed": true,
 		"folder": "152-165",
 		"gameType": "fc"
@@ -2070,7 +2070,7 @@
 		"cost": 75,
 		"slot": "head",
 		"source": "Reward from Scenario #110",
-		"desc": "When you peform a long or short rest, gain STRENGTHEN.",
+		"desc": "When you peform a long or short rest, gain STRENGTHEN $strengthen$.",
 		"folder": "152-165",
 		"gameType": "fc"
 	},
@@ -2094,7 +2094,7 @@
 		"cost": 15,
 		"slot": "small",
 		"source": "Unknown",
-		"desc": "During your Attack ability, you may place one characer token on this card to add MUDDLE to one attack.  When there are three tokens on this card it is consumed {consumed}.",
+		"desc": "During your Attack ability, you may place one characer token on this card to add MUDDLE $muddle$ to one attack.  When there are three tokens on this card it is consumed ^consumed^.",
 		"gameType": "cs",
 		"imageSuffix": "a"
 	},
@@ -2106,7 +2106,7 @@
 		"cost": 15,
 		"slot": "small",
 		"source": "Unknown",
-		"desc": "During your Move ability, you may place one characer token on this card to add +1 Move. When there are three tokens on this card it is consumed {consumed}.",
+		"desc": "During your Move ability, you may place one characer token on this card to add +1 Move ^move^. When there are three tokens on this card it is consumed ^consumed^.",
 		"gameType": "cs",
 		"imageSuffix": "a"
 	},
@@ -2118,7 +2118,7 @@
 		"cost": 15,
 		"slot": "small",
 		"source": "Unknown",
-		"desc": "During your Move ability, you may place one characer token on this card to add Jump. When there are three tokens on this card it is consumed {consumed}.",
+		"desc": "During your Move ability, you may place one characer token on this card to add Jump ^jump^. When there are three tokens on this card it is consumed ^consumed^.",
 		"gameType": "cs",
 		"imageSuffix": "a"
 	},
@@ -2130,7 +2130,7 @@
 		"cost": 15,
 		"slot": "small",
 		"source": "Unknown",
-		"desc": "During your Attack ability, you may place one characer token on this card to add +1 Attack. When there are three tokens on this card it is consumed {consumed}.",
+		"desc": "During your Attack ability, you may place one characer token on this card to add +1 Attack ^attack^. When there are three tokens on this card it is consumed ^consumed^.",
 		"gameType": "cs",
 		"imageSuffix": "a"
 	},
@@ -2142,7 +2142,7 @@
 		"cost": 15,
 		"slot": "small",
 		"source": "Unknown",
-		"desc": "When attacked by an adjacent enemy, you may place one characer token on this card to gain Retaliate 1 for the attack. When there are three tokens on this card it is consumed {consumed}.",
+		"desc": "When attacked by an adjacent enemy, you may place one characer token on this card to gain Retaliate ^retaliate^ 1 for the attack. When there are three tokens on this card it is consumed ^consumed^.",
 		"gameType": "cs",
 		"imageSuffix": "a"
 	},
@@ -2154,7 +2154,7 @@
 		"cost": 15,
 		"slot": "small",
 		"source": "Unknown",
-		"desc": "During your Attack ability, you may place one characer token on this card to add POISON to one attack. When there are three tokens on this card it is consumed {consumed}.",
+		"desc": "During your Attack ability, you may place one characer token on this card to add POISON ${poison} to one attack. When there are three tokens on this card it is consumed ^consumed^.",
 		"gameType": "cs",
 		"imageSuffix": "a"
 	},
@@ -2166,7 +2166,7 @@
 		"cost": 15,
 		"slot": "small",
 		"source": "Unknown",
-		"desc": "During your turn, you may place one characer token on this card to peform \"Heal 1, Self\". When there are three tokens on this card it is consumed {consumed}.",
+		"desc": "During your turn, you may place one characer token on this card to peform \"Heal ^heal^ 1, Self\". When there are three tokens on this card it is consumed ^consumed^.",
 		"gameType": "cs",
 		"imageSuffix": "a"
 	},
@@ -2178,7 +2178,7 @@
 		"cost": 15,
 		"slot": "small",
 		"source": "Unknown",
-		"desc": "When damaged by an attack, you may place one characer token on this card to gain Shield 1 for the attack. When there are three tokens on this card it is consumed {consumed}.",
+		"desc": "When damaged by an attack, you may place one characer token on this card to gain Shield ^shield^ 1 for the attack. When there are three tokens on this card it is consumed ^consumed^.",
 		"gameType": "cs",
 		"imageSuffix": "a"
 	},
@@ -2202,7 +2202,7 @@
 		"cost": 15,
 		"slot": "small",
 		"source": "Unknown",
-		"desc": "During your Attack ability, you may place one characer token on this card to add CURSE to one attack. When there are three tokens on this card it is consumed {consumed}.",
+		"desc": "During your Attack ability, you may place one characer token on this card to add CURSE $curse$ to one attack. When there are three tokens on this card it is consumed {consumed}.",
 		"gameType": "cs",
 		"imageSuffix": "a"
 	},
@@ -2214,7 +2214,7 @@
 		"cost": 10,
 		"slot": "small",
 		"source": "Unknown",
-		"desc": "During your turn, remove INFECT from Self or adjacent ally.",
+		"desc": "During your turn, remove INFECT $infect$ from Self or adjacent ally.",
 		"gameType": "cs",
 		"spent": true
 	},
@@ -2226,7 +2226,7 @@
 		"cost": 60,
 		"slot": "head",
 		"source": "Unknown",
-		"desc": "Your attacks are unaffected by Retaliate {retaliate}.",
+		"desc": "Your attacks are unaffected by Retaliate ^retaliate^.",
 		"gameType": "cs"
 	},
 	{
@@ -2238,7 +2238,7 @@
 		"slot": "1h",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your melee Attack ability, add PIERCE 4 to one attack.",
+		"desc": "During your melee Attack ability, add PIERCE $pierce$ 4 to one attack.",
 		"gameType": "cs",
 		"imageSuffix": "a"
 	},
@@ -2251,7 +2251,7 @@
 		"slot": "1h",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your turn, peform \"Attack 3, Range 2\".",
+		"desc": "During your turn, peform \"Attack ^attack^ 3, Range ^range^ 2\".",
 		"gameType": "cs",
 		"imageSuffix": "a"
 	},
@@ -2287,7 +2287,7 @@
 		"spent": true,
 		"slot": "legs",
 		"source": "Unknown",
-		"desc": "During your Move ability, add +2 Move and Jump.",
+		"desc": "During your Move ability, add +2 Move ^move^ and Jump ^jump^.",
 		"gameType": "cs",
 		"imageSuffix": "a"
 	},
@@ -2300,7 +2300,7 @@
 		"consumed": true,
 		"slot": "small",
 		"source": "Unknown",
-		"desc": "During your Heal ability, add +2 Heal and STRENGTHEN to each heal.",
+		"desc": "During your Heal ability, add +2 Heal ^heal^ and STRENGTHEN $strengthen$ to each heal.",
 		"gameType": "cs",
 		"imageSuffix": "a"
 	},
@@ -2312,7 +2312,7 @@
 		"cost": 60,
 		"slot": "legs",
 		"source": "Unknown",
-		"desc": "You are immune to IMMOBILIZE. At the end of your turn, if you moved zeo hexes on your turn, perform \"Move 1\"",
+		"desc": "You are immune to IMMOBILIZE $immobilize$. At the end of your turn, if you moved zeo hexes on your turn, perform \"Move ^move^ 1\"",
 		"gameType": "cs"
 	},
 	{
@@ -2325,7 +2325,7 @@
 		"source": "Unknown",
 		"consumed": true,
 		"lost": true,
-		"desc": "During your turn, Recover one lost card played this round.",
+		"desc": "During your turn, Recover ^recover^ one lost card played this round.",
 		"gameType": "cs",
 		"imageSuffix": "a"
 	},
@@ -2337,7 +2337,7 @@
 		"cost": 20,
 		"slot": "head",
 		"source": "Unknown",
-		"desc": "Gain Advantage on all attacks you peform while INVISIBLE.",
+		"desc": "Gain Advantage on all attacks you peform while INVISIBLE $invisible$.",
 		"gameType": "cs"
 	},
 	{
@@ -2348,7 +2348,7 @@
 		"cost": 30,
 		"slot": "head",
 		"source": "Unknown",
-		"desc": "When attacked, consider any {modifier_plus_1} modifier card the enemy draws to be a {modifier_zero_circle} instead.",
+		"desc": "When attacked, consider any ^modifier_plus_1^ modifier card the enemy draws to be a ^modifier_zero_circle^ instead.",
 		"gameType": "cs",
 		"imageSuffix": "a",
 		"minusOneCardsAdded": 1
@@ -2362,7 +2362,7 @@
 		"slot": "body",
 		"spent": true,
 		"source": "Unknown",
-		"desc": "When attacked, the attacker gains Disadvantage on the attack and you gain Shield 2 for the attack.",
+		"desc": "When attacked, the attacker gains Disadvantage on the attack and you gain Shield ^shield^ 2 for the attack.",
 		"imageSuffix": "a",
 		"gameType": "cs"
 	},
@@ -2388,7 +2388,7 @@
 		"slot": "body",
 		"spent": true,
 		"source": "Unknown",
-		"desc": "On the next two attacks targeting you peformed by adjacent enemies, gain Retaliate 2 for the attack.",
+		"desc": "On the next two attacks targeting you peformed by adjacent enemies, gain Retaliate ^retaliate^ 2 for the attack.",
 		"imageSuffix": "a",
 		"gameType": "cs"
 	},
@@ -2401,7 +2401,7 @@
 		"slot": "body",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "When your hit poit would be reduced to 0 by an attack targeting you, instead suffer no damage and gain INVISIBLE.",
+		"desc": "When your hit point would be reduced to 0 by an attack targeting you, instead suffer no damage and gain INVISIBLE $invisible$.",
 		"gameType": "cs"
 	},
 	{
@@ -2413,7 +2413,7 @@
 		"slot": "small",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your turn, swap positions with one enemy within Range 5.",
+		"desc": "During your turn, swap positions with one enemy within Range ^range^ 5.",
 		"gameType": "cs"
 	},
 	{
@@ -2438,7 +2438,7 @@
 		"slot": "small",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your turn, peform \"Heal 5, POISON, Self\".",
+		"desc": "During your turn, peform \"Heal ^heal^ 5, POISON $poison$, Self\".",
 		"gameType": "cs"
 	},
 	{
@@ -2450,7 +2450,7 @@
 		"slot": "small",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your turn, create one IMMOBILIZE trap in an empty hex within Range 3.",
+		"desc": "During your turn, create one IMMOBILIZE $immobilize$ trap in an empty hex within Range ^range^ 3.",
 		"gameType": "cs",
 		"imageSuffix": "a"
 	},
@@ -2463,7 +2463,7 @@
 		"slot": "small",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your turn, create one STUN trap in an empty hex within Range 3.",
+		"desc": "During your turn, create one STUN $stun$ trap in an empty hex within Range ^range^ 3.",
 		"gameType": "cs",
 		"imageSuffix": "a"
 	},
@@ -2476,7 +2476,7 @@
 		"slot": "small",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your turn, force an enemy within Rang 5 to perform a \"Move 2, Jump\" ability with you controlling the ability.",
+		"desc": "During your turn, force an enemy within Range ^range^ 5 to perform a \"Move ^move^ 2, Jump ^jump^\" ability with you controlling the ability.",
 		"gameType": "cs"
 	},
 	{
@@ -2488,7 +2488,7 @@
 		"slot": "2h",
 		"spent": true,
 		"source": "Unknown",
-		"desc": "During your melee Attack ability, add MUDDLE and PUSH 2 to all your attacks.",
+		"desc": "During your melee Attack ability, add MUDDLE $muddle$ and PUSH $push$ 2 to all your attacks.",
 		"gameType": "cs"
 	},
 	{
@@ -2500,7 +2500,7 @@
 		"slot": "small",
 		"consumed": true,
 		"source": "Solo {CS3}",
-		"desc": "At the end of your turn, create one 4 damage POISON trap in an adjacent empty hex.",
+		"desc": "At the end of your turn, create one 4 damage POISON $poison$ trap in an adjacent empty hex.",
 		"gameType": "cs",
 		"soloItem": "CS3"
 	},
@@ -2513,7 +2513,7 @@
 		"slot": "1h",
 		"spent": true,
 		"source": "Unknown",
-		"desc": "When attacked, gain Retaliate 1, Range 3 for the attack.",
+		"desc": "When attacked, gain Retaliate ^retaliate^ 1, Range ^range^ 3 for the attack.",
 		"gameType": "cs"
 	},
 	{
@@ -2525,7 +2525,7 @@
 		"slot": "1h",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your melee Attack ability, suffer 1 damage to add CURSE to all your attacks.",
+		"desc": "During your melee Attack ability, suffer 1 damage to add CURSE $curse$ to all your attacks.",
 		"gameType": "cs"
 	},
 	{
@@ -2537,7 +2537,7 @@
 		"slot": "1h",
 		"spent": true,
 		"source": "Unknown",
-		"desc": "When attacked by an adjacent enemy, gain Retaliate 3 for the attack.",
+		"desc": "When attacked by an adjacent enemy, gain Retaliate ^retaliate^ 3 for the attack.",
 		"gameType": "cs",
 		"imageSuffix": "a"
 	},
@@ -2562,7 +2562,7 @@
 		"slot": "1h",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your turn, peform \"Attack 2, Range 3, PIERCE 2\".",
+		"desc": "During your turn, peform \"Attack ^attack^ 2, Range ^range^ 3, PIERCE $pierce$ 2\".",
 		"gameType": "cs"
 	},
 	{
@@ -2574,7 +2574,7 @@
 		"slot": "legs",
 		"consumed": true,
 		"source": "Solo {CS11}",
-		"desc": "Add +1 Move to all your movement while you are at full health.",
+		"desc": "Add +1 Move ^move^ to all your movement while you are at full health.",
 		"gameType": "cs",
 		"soloItem": "CS11"
 	},
@@ -2587,7 +2587,7 @@
 		"slot": "small",
 		"consumed": true,
 		"source": "Solo {CS10}",
-		"desc": "During your turn remove one damage token from one {Spirit} {cs-spirit-caller-token}. This {Spirit} may immediately take a turn without receiving a damage token.",
+		"desc": "During your turn remove one damage token from one %Spirit% {cs-spirit-caller-token}. This %Spirit% may immediately take a turn without receiving a damage token.",
 		"gameType": "cs",
 		"soloItem": "CS10"
 	},
@@ -2599,7 +2599,7 @@
 		"cost": 50,
 		"slot": "body",
 		"source": "Solo {CS6}",
-		"desc": "Whenever you given an ally a {Prayer} ability card, that ally may peform \"Heal 2, Self\".",
+		"desc": "Whenever you given an ally a %Prayer% ability card, that ally may peform \"Heal ^heal^ 2, Self\".",
 		"gameType": "cs",
 		"soloItem": "CS6"
 	},
@@ -2612,7 +2612,7 @@
 		"spent": true,
 		"slot": "head",
 		"source": "Unknown",
-		"desc": "During your Heal action, add +2 Heal to each Heal.",
+		"desc": "During your Heal action, add +2 Heal ^heal^ to each Heal.",
 		"gameType": "cs"
 	},
 	{
@@ -2624,7 +2624,7 @@
 		"spent": true,
 		"slot": "1h",
 		"source": "Unknown",
-		"desc": "During your ranged Attack ability, add PIERCE 2 to one attack.",
+		"desc": "During your ranged Attack ability, add PIERCE $pierce$ 2 to one attack.",
 		"gameType": "cs"
 	},
 	{
@@ -2636,7 +2636,7 @@
 		"spent": true,
 		"slot": "1h",
 		"source": "Solo {CS1}",
-		"desc": "During your turn, peform \"PULL 2, Self toward one enemy within Range 3\".",
+		"desc": "During your turn, peform \"PULL $pull$ 2, Self toward one enemy within Range ^range^ 3\".",
 		"gameType": "cs",
 		"soloItem": "CS1"
 	},
@@ -2649,7 +2649,7 @@
 		"consumed": true,
 		"slot": "small",
 		"source": "Unknown",
-		"desc": "During your turn, one summoned ally you own performs Move +0 Attack +0 with you controlling the abilities.",
+		"desc": "During your turn, one summoned ally you own performs Move ^move^ +0 Attack ^attack^ +0 with you controlling the abilities.",
 		"gameType": "cs"
 	},
 	{
@@ -2660,7 +2660,7 @@
 		"cost": 50,
 		"slot": "1h",
 		"source": "Solo {CS4}",
-		"desc": "While {Mounted} on a summon, you can aply your small items item effects to the summon instead.",
+		"desc": "While %Mounted% on a summon, you can aply your #small# items item effects to the summon instead.",
 		"gameType": "cs",
 		"soloItem": "CS4"
 	},
@@ -2673,7 +2673,7 @@
 		"slot": "1h",
 		"spent": true,
 		"source": "Solo {CS2}",
-		"desc": "During your turn, {anyX} to peforme one of the following: Move 2, Jump, {wind} | Heal 3, Self, {light} | Attack 2, {fire}.",
+		"desc": "During your turn, @x-any@ to peforme one of the following: Move ^move^ 2, Jump ^jump^, @wind@ | Heal ^heal^ 3, Self, @light@ | Attack ^attack^ 2, @fire@.",
 		"gameType": "cs",
 		"soloItem": "CS2"
 	},
@@ -2686,7 +2686,7 @@
 		"slot": "small",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your turn, perform one of the following: Recover one discarded card | Heal 3, Self | Add +2 Attack to your next attack this turn.",
+		"desc": "During your turn, perform one of the following: Recover ^recover^ one discarded card | Heal ^heal^ 3, Self | Add +2 Attack ^attack^ to your next attack this turn.",
 		"gameType": "cs"
 	},
 	{
@@ -2698,7 +2698,7 @@
 		"slot": "body",
 		"spent": true,
 		"source": "Solo {CS8}",
-		"desc": "During your turn, when you {anyX} an element, do not move the consumed element to the Inter column.",
+		"desc": "During your turn, when you @x-any@ an element, do not move the consumed element to the Inert column.",
 		"gameType": "cs",
 		"soloItem": "CS8"
 	},
@@ -2710,7 +2710,7 @@
 		"cost": 50,
 		"slot": "body",
 		"source": "Solo {CS5}",
-		"desc": "When attacked, you may {fireX} to gain Retaliate 3 for the attack.",
+		"desc": "When attacked, you may @x-fire@ to gain Retaliate ^retaliate^ 3 for the attack.",
 		"gameType": "cs",
 		"soloItem": "CS5"
 	},
@@ -2723,7 +2723,7 @@
 		"slot": "2h",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your melee Attack ability, add +1 Attack and WOUND to all your attacks. {fire}",
+		"desc": "During your melee Attack ability, add +1 Attack ^attack^ and WOUND $wound$ to all your attacks. @fire@",
 		"gameType": "cs"
 	},
 	{
@@ -2734,7 +2734,7 @@
 		"cost": 50,
 		"slot": "small",
 		"source": "Solo {CS9}",
-		"desc": "Once each turn, during your turn, you may remove one condition from an adjacent figure and place that condition on this card if it is not already on this card. During your turn, one adjacent figure gains all conditions on this card, then consume {consumed} this item.",
+		"desc": "Once each turn, during your turn, you may remove one condition from an adjacent figure and place that condition on this card if it is not already on this card. During your turn, one adjacent figure gains all conditions on this card, then consume ^consumed^ this item.",
 		"gameType": "cs",
 		"soloItem": "CS9"
 	},
@@ -2758,7 +2758,7 @@
 		"consumed": true,
 		"slot": "small",
 		"source": "Unknown",
-		"desc": "During your Attack ability, add POISON 2 to one attack.",
+		"desc": "During your Attack ability, add POISON $poison$ 2 to one attack.",
 		"gameType": "cs",
 		"imageSuffix": "a"
 	},
@@ -2771,7 +2771,7 @@
 		"consumed": true,
 		"slot": "small",
 		"source": "Solo {CS3}",
-		"desc": "At the end of your turn create one 3 damage IMMOBILIZE trap in an adjacent empty hex.",
+		"desc": "At the end of your turn create one 3 damage IMMOBILIZE $immobilize$ trap in an adjacent empty hex.",
 		"gameType": "cs",
 		"soloItem": "CS3"
 	},
@@ -2783,7 +2783,7 @@
 		"cost": 50,
 		"slot": "body",
 		"source": "Solo {CS7}",
-		"desc": "You are immune to MUDDLE. At the end of each round, if you have WOUND gain REGENERATE.",
+		"desc": "You are immune to MUDDLE $muddle$. At the end of each round, if you have WOUND $wound$ gain REGENERATE $regenerate$.",
 		"gameType": "cs",
 		"soloItem": "CS7"
 	},
@@ -2796,7 +2796,7 @@
 		"slot": "small",
 		"source": "Unknown",
 		"consumed": true,
-		"desc": "During you Attack ability, add DISARM to one attack.",
+		"desc": "During you Attack ability, add DISARM $disarm$ to one attack.",
 		"gameType": "cs",
 		"imageSuffix": "a"
 	},
@@ -2809,7 +2809,7 @@
 		"slot": "small",
 		"source": "Unknown",
 		"consumed": true,
-		"desc": "During your turn, remove all positive conditions from all enemies within Range 2.  This can be used on enemies that have INVISIBLE.",
+		"desc": "During your turn, remove all positive conditions from all enemies within Range ^range^ 2.  This can be used on enemies that have INVISIBLE $invisible$.",
 		"gameType": "cs",
 		"imageSuffix": "a"
 	},
@@ -2822,7 +2822,7 @@
 		"slot": "small",
 		"source": "Unknown",
 		"spent": true,
-		"desc": "During your turn, peform \"Heal 5, Self\". {any}",
+		"desc": "During your turn, peform \"Heal ^heal^ 5, Self\". @any@",
 		"gameType": "cs",
 		"imageSuffix": "a"
 	},
@@ -2835,7 +2835,7 @@
 		"slot": "1h",
 		"source": "Unknown",
 		"spent": true,
-		"desc": "You are immune to DISARM, even if this item is spent. During your turn gain Shield 1 for the round. {eot}",
+		"desc": "You are immune to DISARM $disarm$, even if this item is spent. During your turn gain Shield ^shield^ 1 for the round. {eot}",
 		"gameType": "cs",
 		"minusOneCardsAdded": 2
 	},
@@ -2848,7 +2848,7 @@
 		"slot": "small",
 		"source": "Unknown",
 		"consumed": true,
-		"desc": "At the end of your turn, all enemies consider all empty hexes within Range 2 of you to be difficult terrain for the round. {eot}",
+		"desc": "At the end of your turn, all enemies consider all empty hexes within Range ^range^ 2 of you to be difficult terrain for the round. ^eot^",
 		"gameType": "cs"
 	},
 	{
@@ -2872,7 +2872,7 @@
 		"slot": "small",
 		"source": "Unknown",
 		"consumed": true,
-		"desc": "When an ally targets you with a Heal ability, remove one negative condition from yourself before the Heal and gain STRENGTHEN.",
+		"desc": "When an ally targets you with a Heal ability, remove one negative condition from yourself before the Heal and gain STRENGTHEN $strengthen$.",
 		"gameType": "cs"
 	},
 	{
@@ -2884,7 +2884,7 @@
 		"slot": "1h",
 		"source": "Unknown",
 		"spent": true,
-		"desc": "During your melee Attack ability, add +1 Attack and MUDDLE to one attack targeting an enemy adjacent to one of your allies.",
+		"desc": "During your melee Attack ability, add +1 Attack ^attack^ and MUDDLE $muddle$ to one attack targeting an enemy adjacent to one of your allies.",
 		"gameType": "cs"
 	},
 	{
@@ -2896,7 +2896,7 @@
 		"slot": "1h",
 		"source": "Unknown",
 		"consumed": true,
-		"desc": "During your melee Attack ability, add +1 Attack and IMMOBILIZE to all your attacks.",
+		"desc": "During your melee Attack ability, add +1 Attack ^attack^ and IMMOBILIZE $immobilize$ to all your attacks.",
 		"gameType": "cs"
 	},
 	{
@@ -2908,7 +2908,7 @@
 		"slot": "2h",
 		"source": "Unknown",
 		"spent": true,
-		"desc": "During your single-target melee Attack ability, add PIERCE 2 and PULL 1 to the attack and you may target one enemy within 2 hexes.",
+		"desc": "During your single-target melee Attack ability, add PIERCE $pierce$ 2 and PULL $pull$ 1 to the attack and you may target one enemy within 2 hexes.",
 		"gameType": "cs"
 	},
 	{
@@ -2920,7 +2920,7 @@
 		"slot": "small",
 		"source": "Unknown",
 		"consume": true,
-		"desc": "During your turn, peform: WOUND Range 3 {multi_attack.cone_1_1}",
+		"desc": "During your turn, peform: WOUND $wound$ Range ^range^ 3 {multi_attack.cone_1_1}",
 		"gameType": "cs"
 	},
 	{
@@ -2932,7 +2932,7 @@
 		"slot": "small",
 		"source": "Unknown",
 		"consume": true,
-		"desc": "On the next three Heal abilities targeting you, you may either first remove all negative conditions from yourself or gain STRENGTHEN.",
+		"desc": "On the next three Heal abilities targeting you, you may either first remove all negative conditions from yourself or gain STRENGTHEN $strengthen$.",
 		"gameType": "cs"
 	},
 	{
@@ -2944,7 +2944,7 @@
 		"slot": "1h",
 		"source": "Unknown",
 		"spent": true,
-		"desc": "During your turn, peform \"PULL 2, Target one ally or enemy within Range 3.\"",
+		"desc": "During your turn, peform \"PULL $pull$ 2, Target one ally or enemy within Range ^range^ 3.\"",
 		"gameType": "cs"
 	},
 	{
@@ -2955,7 +2955,7 @@
 		"cost": 50,
 		"slot": "head",
 		"source": "Unknown",
-		"desc": "Whenever you would suffer damage from WOUND instead perform \"Heal 1, Self\"",
+		"desc": "Whenever you would suffer damage from WOUND $wound$ instead perform \"Heal ^heal^ 1, Self\"",
 		"gameType": "cs"
 	},
 	{
@@ -2966,7 +2966,7 @@
 		"cost": 50,
 		"slot": "2h",
 		"source": "Unknown",
-		"desc": "Add +1 Range to all your ranged abilities peformed while adjacent to an obstacle. Whenever you enter a hex with a trap, you may choose not to spring the trap.",
+		"desc": "Add +1 Range ^range^ to all your ranged abilities peformed while adjacent to an obstacle. Whenever you enter a hex with a trap, you may choose not to spring the trap.",
 		"gameType": "cs"
 	},
 	{
@@ -2977,7 +2977,7 @@
 		"cost": 30,
 		"slot": "1h",
 		"source": "Unknown",
-		"desc": "Whenever you use the default top action of an ability card, you may perform a \"Heal 2, Range 1\" ability instead of an \"Attack 2\" ability.",
+		"desc": "Whenever you use the default top action of an ability card, you may perform a \"Heal ^heal^ 2, Range ^range^ 1\" ability instead of an \"Attack ^attack^ 2\" ability.",
 		"gameType": "cs"
 	},
 	{
@@ -2989,7 +2989,7 @@
 		"slot": "small",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your Heal ability targeting at least one ally, add +1 Heal and STRENGTHEN to each Heal.",
+		"desc": "During your Heal ability targeting at least one ally, add +1 Heal ^heal^ and STRENGTHEN $strengthen$ to each Heal.",
 		"gameType": "cs"
 	},
 	{
@@ -3001,7 +3001,7 @@
 		"slot": "head",
 		"spent": true,
 		"source": "Unknown",
-		"desc": "When attacked this round, you and all adjacent allies consider any negative and {modifier_no_damage} attack modifiers drawn to be {modifier_zero_circle} instead.",
+		"desc": "When attacked this round, you and all adjacent allies consider any negative and ^modifier_no_damage^ attack modifiers drawn to be ^modifier_zero_circle^ instead.",
 		"gameType": "cs"
 	},
 	{
@@ -3013,7 +3013,7 @@
 		"slot": "small",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your Heal ability, add +3 Heal and WOUND to each Heal.",
+		"desc": "During your Heal ability, add +3 Heal ^heal^ and WOUND $wound$ to each Heal.",
 		"gameType": "cs"
 	},
 	{
@@ -3025,7 +3025,7 @@
 		"slot": "1h",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your Heal ability, double the value of each Heal. If this Heal ability removes WOUND, this item is spent instead of consumed.",
+		"desc": "During your Heal ability, double the value of each Heal. If this Heal ability removes WOUND $wound$, this item is spent ^spent^ instead of consumed.",
 		"gameType": "cs"
 	},
 	{
@@ -3037,7 +3037,7 @@
 		"slot": "small",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your turn, one ally within Range 2 may perform one of the following: Attack 2| Move 2| Heal 2, Self.",
+		"desc": "During your turn, one ally within Range ^range^ 2 may perform one of the following: Attack ^attack^ 2| Move ^move^ 2| Heal ^heal^ 2, Self.",
 		"gameType": "cs"
 	},
 	{
@@ -3049,7 +3049,7 @@
 		"slot": "1h",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "When an adjacent ally is damage by an attack targeting them, that ally gains Shield 2 for the attack and removes all negative conditions applied by the attack.",
+		"desc": "When an adjacent ally is damage by an attack targeting them, that ally gains Shield ^shield^ 2 for the attack and removes all negative conditions applied by the attack.",
 		"gameType": "cs"
 	},
 	{
@@ -3061,7 +3061,7 @@
 		"slot": "small",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "When an ally within Range 5 would be damaged by an attack targeting them, they suffer no damage instead.",
+		"desc": "When an ally within Range ^range^ 5 would be damaged by an attack targeting them, they suffer no damage instead.",
 		"gameType": "cs"
 	},
 	{
@@ -3073,7 +3073,7 @@
 		"slot": "small",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your Heal ability targeting at least one ally add +2 Healm STRENGTHEN and BLESS to each Heal.",
+		"desc": "During your Heal ability targeting at least one ally add +2 Heal ^heal^ STRENGTHEN $strengthen$ and BLESS $bless$ to each Heal.",
 		"gameType": "cs"
 	},
 	{
@@ -3085,7 +3085,7 @@
 		"slot": "small",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During you turn one ally within Range 3 may peform one of the following: Attack 3 | Move 3 | Heal 3, Self.",
+		"desc": "During you turn one ally within Range ^range^ 3 may peform one of the following: Attack ^attack^ 3 | Move ^move^ 3 | Heal ^heal^ 3, Self.",
 		"gameType": "cs"
 	},
 	{
@@ -3097,7 +3097,7 @@
 		"slot": "small",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your turn, create two water difficult terrain tiles in hexes within Range 3 that contain no overlay tiles. MUDDLE all figures within Range 3 occupying a water tile.",
+		"desc": "During your turn, create two water difficult terrain tiles in hexes within Range ^range^ 3 that contain no overlay tiles. MUDDLE $muddle$ all figures within Range ^range^ 3 occupying a water tile.",
 		"gameType": "cs"
 	},
 	{
@@ -3120,7 +3120,7 @@
 		"slot": "1h",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your single-targetranged Attack ability, add +1 Attack and turn the attack into the following: {multi_attack.line_1_1}.",
+		"desc": "During your single-targetranged Attack ability, add +1 Attack ^attack^ and turn the attack into the following: {multi_attack.line_1_1}.",
 		"gameType": "cs"
 	},
 	{
@@ -3131,7 +3131,7 @@
 		"slot": "1h",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your turn, you and all allies gain Shield 1 for the round. {eot}",
+		"desc": "During your turn, you and all allies gain Shield ^shield^ 1 for the round. ^eot^",
 		"gameType": "cs"
 	},
 	{
@@ -3143,7 +3143,7 @@
 		"slot": "1h",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your turn, all adjacent allies gain Shield {shield} equal to your current Shield value from abilities for the round. {eot}",
+		"desc": "During your turn, all adjacent allies gain Shield ^shield^ equal to your current Shield value from abilities for the round. ^eot^",
 		"gameType": "cs"
 	},
 	{
@@ -3154,7 +3154,7 @@
 		"slot": "small",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your turn, open one unlocked closed door within Range 2.",
+		"desc": "During your turn, open one unlocked closed door within Range ^range^ 2.",
 		"gameType": "cs"
 	},
 	{
@@ -3166,7 +3166,7 @@
 		"cost": 40,
 		"spent": true,
 		"source": "Unknown",
-		"desc": "During your turn, open one unlocked closed door within Range 2.",
+		"desc": "During your turn, open one unlocked closed door within Range ^range^ 2.",
 		"gameType": "cs"
 	},
 	{
@@ -3189,7 +3189,7 @@
 		"slot": "small",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your Move ability, add Jump and double the value of the movement.",
+		"desc": "During your Move ability, add Jump ^jump^ and double the value of the movement.",
 		"gameType": "cs"
 	},
 	{
@@ -3200,7 +3200,7 @@
 		"slot": "1h",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your turn, you may {earthX} to perform \"Attack 1, Range 3, POISON\".",
+		"desc": "During your turn, you may @x-earth@ to perform \"Attack ^attack^ 1, Range ^range^ 3, POISON $poison$\".",
 		"gameType": "cs"
 	},
 	{
@@ -3212,7 +3212,7 @@
 		"cost": 40,
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your turn, perform \"Attack 1, Range 4, POISON\". You may {earthX} to ADD TARGET.",
+		"desc": "During your turn, perform \"Attack ^attack^ 1, Range ^range^ 4, POISON $poison$\". You may @x-earth@ to ADD TARGET $target$.",
 		"gameType": "cs"
 	},
 	{
@@ -3224,7 +3224,7 @@
 		"cost": 25,
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your turn you may place one character token on this card to generate: {ice}. When there are two tokens on this card it is consumed {consumed}.",
+		"desc": "During your turn you may place one character token on this card to generate: @ice@. When there are two tokens on this card it is consumed ^consumed^.",
 		"gameType": "cs"
 	},
 	{
@@ -3236,7 +3236,7 @@
 		"cost": 25,
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your turn you may place one character token on this card to generate: {wind}. When there are two tokens on this card it is consumed {consumed}.",
+		"desc": "During your turn you may place one character token on this card to generate: @wind@. When there are two tokens on this card it is consumed ^consumed^.",
 		"gameType": "cs"
 	},
 	{
@@ -3248,7 +3248,7 @@
 		"cost": 25,
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your turn you may place one character token on this card to generate: {fire}. When there are two tokens on this card it is consumed {consumed}.",
+		"desc": "During your turn you may place one character token on this card to generate: @fire@. When there are two tokens on this card it is consumed ^consumed^.",
 		"gameType": "cs"
 	},
 	{
@@ -3260,7 +3260,7 @@
 		"cost": 25,
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your turn you may place one character token on this card to generate: {earth}. When there are two tokens on this card it is consumed {consumed}.",
+		"desc": "During your turn you may place one character token on this card to generate: @earth@. When there are two tokens on this card it is consumed ^consumed^.",
 		"gameType": "cs"
 	},
 	{
@@ -3272,7 +3272,7 @@
 		"cost": 25,
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your turn you may place one character token on this card to generate: {light}. When there are two tokens on this card it is consumed {consumed}.",
+		"desc": "During your turn you may place one character token on this card to generate: @light@. When there are two tokens on this card it is consumed ^consumed^.",
 		"gameType": "cs"
 	},
 	{
@@ -3284,7 +3284,7 @@
 		"cost": 25,
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your turn you may place one character token on this card to generate: {dark}. When there are two tokens on this card it is consumed {consumed}.",
+		"desc": "During your turn you may place one character token on this card to generate: @dark@. When there are two tokens on this card it is consumed ^consumed^.",
 		"gameType": "cs"
 	},
 	{
@@ -3296,7 +3296,7 @@
 		"cost": 25,
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your turn you may place one character token on this card to generate: {any}. When there are two tokens on this card it is consumed {consumed}.",
+		"desc": "During your turn you may place one character token on this card to generate: @any@. When there are two tokens on this card it is consumed ^consumed^.",
 		"gameType": "cs"
 	},
 	{
@@ -3308,7 +3308,7 @@
 		"cost": 35,
 		"spent": true,
 		"source": "Unknown",
-		"desc": "On the next three sources of damage from attacks targeting you or an adjacent ally, the attacked figure gains Shield 1 for the attack.",
+		"desc": "On the next three sources of damage from attacks targeting you or an adjacent ally, the attacked figure gains Shield ^shield^ 1 for the attack.",
 		"minusOneCardsAdded": 3,
 		"gameType": "csa"
 	},
@@ -3321,7 +3321,7 @@
 		"cost": 35,
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your turn, peform Heal 3 REGENERATE Affect self and one adjacent ally.",
+		"desc": "During your turn, peform Heal ^heal^ 3 REGENERATE $regenerate$ Affect self and one adjacent ally.",
 		"gameType": "csa"
 	},
 	{
@@ -3333,7 +3333,7 @@
 		"cost": 50,
 		"spent": true,
 		"source": "Solo {CSA1}",
-		"desc": "The next two times an enemy suffers damage from attacking you, that enemy gains IMMOBILIZE.",
+		"desc": "The next two times an enemy suffers damage from attacking you, that enemy gains IMMOBILIZE $immobilize$.",
 		"gameType": "csa",
 		"soloItem": "CSA1"
 	},
@@ -3346,7 +3346,7 @@
 		"cost": 50,
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "(X is 1, 2, 3) During your turn, forgo your top action to peform Attack {attack} X + 1 Range 2 Target {target} 4 - X.",
+		"desc": "(X is 1, 2, 3) During your turn, forgo your top action to peform Attack ^attack^ X + 1 Range ^range^ 2 Target ^target^ 4 - X.",
 		"gameType": "csa"
 	},
 	{
@@ -3358,7 +3358,7 @@
 		"cost": 30,
 		"spent": true,
 		"source": "Unknown",
-		"desc": "During your melee Attack ability, add MUDDLE and PUSH 1 to a single attack.",
+		"desc": "During your melee Attack ability, add MUDDLE $muddle$ and PUSH $push$ 1 to a single attack.",
 		"gameType": "csa",
 		"imageSuffix": "b"
 	},
@@ -3370,7 +3370,7 @@
 		"slot": "1h",
 		"cost": 30,
 		"source": "Unknown",
-		"desc": "Your movement may enter and end in hexes containing obstacles as if you had Flying.",
+		"desc": "Your movement may enter and end in hexes containing obstacles as if you had Flying ^flying^.",
 		"gameType": "csa",
 		"imageSuffix": "b"
 	},
@@ -3383,7 +3383,7 @@
 		"cost": 40,
 		"source": "Unknown",
 		"spent": true,
-		"desc": "Crate one trap in an empty hex within Range 3. If you or an ally trigger this trap, that figure gains Flying for the round. | Any enemy that enters a hex with this trap triggers it and loses Flying for the round.",
+		"desc": "Crate one trap in an empty hex within Range ^range^ 3. If you or an ally trigger this trap, that figure gains Flying ^flying^ for the round. | Any enemy that enters a hex with this trap triggers it and loses Flying ^flying^ for the round.",
 		"gameType": "csa"
 	},
 	{
@@ -3394,7 +3394,7 @@
 		"slot": "small",
 		"cost": 50,
 		"source": "Unknown",
-		"desc": "You Loot {loot} each hex this summon enters. You control this summon's actions.",
+		"desc": "You Loot ^loot^ each hex this summon enters. You control this summon's actions.",
 		"gameType": "csa",
 		"summon": {
 			"hp": 1,
@@ -3411,7 +3411,7 @@
 		"source": "Solo {CSA2}",
 		"consumed": true,
 		"lost": true,
-		"desc": "During your turn, forgo your top action to play a summon action from a card in your lost pile, ignoring two {scrapX}.",
+		"desc": "During your turn, forgo your top action to play a summon action from a card in your lost pile, ignoring two ^scrapX^.",
 		"gameType": "csa",
 		"soloItem": "CSA2"
 	},
@@ -3424,7 +3424,7 @@
 		"cost": 25,
 		"source": "Unknown",
 		"spent": true,
-		"desc": "During your melee attack ability, add RUPTURE to one attack.",
+		"desc": "During your melee attack ability, add RUPTURE $rupture$ to one attack.",
 		"gameType": "csa",
 		"imageSuffix": "a"
 	},
@@ -3437,7 +3437,7 @@
 		"cost": 20,
 		"source": "Unknown",
 		"spent": true,
-		"desc": "After your move ability, peform PUSH Target one adjacent enemy. Add +1 PUSH if you have move 4 or more hexes this round.",
+		"desc": "After your move ability, peform PUSH $push$ 1 Target one adjacent enemy. Add +1 PUSH $push$ if you have move 4 or more hexes this round.",
 		"gameType": "csa"
 	},
 	{
@@ -3449,7 +3449,7 @@
 		"cost": 40,
 		"source": "Unknown",
 		"spent": true,
-		"desc": "During your melee attack ability, add +1 Attack and PIERCE 2 to one attack targeting an enemy with WOUND or RUPTURE.",
+		"desc": "During your melee attack ability, add +1 Attack ^attack^ and PIERCE $pierce$ 2 to one attack targeting an enemy with WOUND $wound$ or RUPTURE $rupture$.",
 		"gameType": "csa"
 	},
 	{
@@ -3473,7 +3473,7 @@
 		"cost": 40,
 		"source": "Solo {CSA3}",
 		"consumed": true,
-		"desc": "During your attack ability gain WOUND to add +3 Attack to one attack. If you kill the target perform \"Heal 3, Self\".",
+		"desc": "During your attack ability gain WOUND $wound$ to add +3 Attack ^attack^ to one attack. If you kill the target perform \"Heal ^heal^ 3, Self\".",
 		"gameType": "csa",
 		"soloItem": "CSA3"
 	},
@@ -3486,7 +3486,7 @@
 		"cost": 50,
 		"source": "Unknown",
 		"consumed": true,
-		"desc": "The next two times you would lose a card from your hand to negate suffering damage, discard it instead and gain WOUND.",
+		"desc": "The next two times you would lose a card from your hand to negate suffering damage, discard it instead and gain WOUND $wound$.",
 		"gameType": "csa"
 	},
 	{
@@ -3497,7 +3497,7 @@
 		"slot": "body",
 		"cost": 125,
 		"source": "Envelope E",
-		"desc": "You are immune to POISON and {enchantment-circle}. When damage by an attack, gain Shield 0 {enchantment-circle} for the attack.",
+		"desc": "You are immune to POISON and %enchantment-circle%. When damage by an attack, gain Shield ^shield^ 0 %enchantment-circle% for the attack.",
 		"gameType": "fc",
 		"folder": "152-165",
 		"specialUnlock": "envelopeE",
