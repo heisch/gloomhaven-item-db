@@ -226,7 +226,7 @@
 		"slot": "1h",
 		"source": "Reward from Scenario #9",
 		"consumed": true,
-		"desc": "During your single-target melee attack action, turn the attack into the following: {multi_attack.cone_0_1}",
+		"desc": "During your single-target melee attack action, turn the attack into the following: *cone_0_1*",
 		"folder": "15-20",
 		"unlockScenario": 9,
 		"gameType": "jotl"
@@ -304,7 +304,7 @@
 		"slot": "1h",
 		"source": "Reward from Scenario #15",
 		"consumed": true,
-		"desc": "During your single-target ranged attack action, turn the attack into the following: {multi_attack.cone_1_1}",
+		"desc": "During your single-target ranged attack action, turn the attack into the following: *cone_1_1*",
 		"folder": "21-26",
 		"unlockScenario": 15,
 		"gameType": "jotl"

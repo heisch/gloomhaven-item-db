@@ -80,12 +80,27 @@ export class Helpers {
 
 		if (text.includes("{")) {
 			this.itemCount += 1;
+			console.log(text);
 		}
 
 		text = this.parseForIcon("\\^", text);
 		text = this.parseForIcon("\\$", text, "status");
 		text = this.parseForIcon("\\@", text, "element");
 		text = this.parseForIcon("\\#", text, "equipment_slot");
+		text = this.parseForIcon("\\*", text, "multi_attack");
+
+		// text = text.replace(/{multi_attack\.(.+?)}/, (m, m1) => {
+		// 	let className = "icon";
+		// 	const type = m1.replace(/^(.+?)_.*$/, "$1");
+		// 	if (["cleave", "cone", "cube"].includes(type)) {
+		// 		className += " double-height";
+		// 	}
+		// 	return createImageString({
+		// 		filename: m1,
+		// 		folder: "multi_attack",
+		// 		className,
+		// 	});
+		// });
 
 		const reg = new RegExp(`%(.+?)%`, "g");
 		text = text.replace(reg, `<span class="${"$1"}">${"$1"}</span>`);

@@ -233,7 +233,7 @@
 		"slot": "1h",
 		"source": "Prosperity 2",
 		"consumed": true,
-		"desc": "During your single-target melee attack action, turn the attack into the following: {multi_attack.cone_0_1}",
+		"desc": "During your single-target melee attack action, turn the attack into the following: *cone_0_1*",
 		"folder": "15-21",
 		"unlockProsperity": 2,
 		"gameType": "gh"
@@ -339,7 +339,7 @@
 		"slot": "2h",
 		"source": "Prosperity 3",
 		"spent": true,
-		"desc": "Turn a single-target melee attack into the following: {multi_attack.line_0_1_1}",
+		"desc": "Turn a single-target melee attack into the following: *line_0_1_1*",
 		"folder": "22-28",
 		"unlockProsperity": 3,
 		"gameType": "gh"
@@ -429,7 +429,7 @@
 		"slot": "1h",
 		"source": "Prosperity 4",
 		"consumed": true,
-		"desc": "During your single-target ranged attack action, turn the attack into the following: {multi_attack.cone_1_1}",
+		"desc": "During your single-target ranged attack action, turn the attack into the following: *cone_1_1*",
 		"folder": "29-35",
 		"unlockProsperity": 4,
 		"gameType": "gh"
@@ -619,7 +619,7 @@
 		"slot": "2h",
 		"source": "Prosperity 6",
 		"consumed": true,
-		"desc": "During your single-target melee attack action, turn the attack into the following:  {multi_attack.cleave_0_1}",
+		"desc": "During your single-target melee attack action, turn the attack into the following:  *cleave_0_1*",
 		"folder": "43-49",
 		"unlockProsperity": 6,
 		"gameType": "gh"
@@ -785,7 +785,7 @@
 		"slot": "1h",
 		"source": "Prosperity 8",
 		"consumed": true,
-		"desc": "Turn a single target ranged attack into the following: {multi_attack.cube_2_2}. All allies in the attack area suffer 3 damage.",
+		"desc": "Turn a single target ranged attack into the following: *cube_2_2*. All allies in the attack area suffer 3 damage.",
 		"folder": "57-63",
 		"unlockProsperity": 8,
 		"gameType": "gh"
@@ -2154,7 +2154,7 @@
 		"cost": 15,
 		"slot": "small",
 		"source": "Unknown",
-		"desc": "During your Attack ability, you may place one characer token on this card to add POISON ${poison} to one attack. When there are three tokens on this card it is consumed ^consumed^.",
+		"desc": "During your Attack ability, you may place one characer token on this card to add POISON $poison to one attack. When there are three tokens on this card it is consumed ^consumed^.",
 		"gameType": "cs",
 		"imageSuffix": "a"
 	},
@@ -2190,7 +2190,7 @@
 		"cost": 15,
 		"slot": "small",
 		"source": "Unknown",
-		"desc": "During your Attack ability, you may place one characer token on this card to gain Advantage for one attack. When there are three tokens on this card it is consumed {consumed}.",
+		"desc": "During your Attack ability, you may place one characer token on this card to gain Advantage for one attack. When there are three tokens on this card it is consumed ^consumed^.",
 		"gameType": "cs",
 		"imageSuffix": "a"
 	},
@@ -2202,7 +2202,7 @@
 		"cost": 15,
 		"slot": "small",
 		"source": "Unknown",
-		"desc": "During your Attack ability, you may place one characer token on this card to add CURSE $curse$ to one attack. When there are three tokens on this card it is consumed {consumed}.",
+		"desc": "During your Attack ability, you may place one characer token on this card to add CURSE $curse$ to one attack. When there are three tokens on this card it is consumed ^consumed^.",
 		"gameType": "cs",
 		"imageSuffix": "a"
 	},
@@ -2835,7 +2835,7 @@
 		"slot": "1h",
 		"source": "Unknown",
 		"spent": true,
-		"desc": "You are immune to DISARM $disarm$, even if this item is spent. During your turn gain Shield ^shield^ 1 for the round. {eot}",
+		"desc": "You are immune to DISARM $disarm$, even if this item is spent. During your turn gain Shield ^shield^ 1 for the round. ^eot^",
 		"gameType": "cs",
 		"minusOneCardsAdded": 2
 	},
@@ -2920,7 +2920,7 @@
 		"slot": "small",
 		"source": "Unknown",
 		"consume": true,
-		"desc": "During your turn, peform: WOUND $wound$ Range ^range^ 3 {multi_attack.cone_1_1}",
+		"desc": "During your turn, peform: WOUND $wound$ Range ^range^ 3 *cone_1_1*",
 		"gameType": "cs"
 	},
 	{
@@ -3108,7 +3108,7 @@
 		"slot": "1h",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your single-target ranged Attack ability, turn the attack into the following: {multi_attack.line_1_1}.",
+		"desc": "During your single-target ranged Attack ability, turn the attack into the following: *line_1_1*.",
 		"gameType": "cs"
 	},
 	{
@@ -3120,7 +3120,7 @@
 		"slot": "1h",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your single-targetranged Attack ability, add +1 Attack ^attack^ and turn the attack into the following: {multi_attack.line_1_1}.",
+		"desc": "During your single-targetranged Attack ability, add +1 Attack ^attack^ and turn the attack into the following: *line_1_1*.",
 		"gameType": "cs"
 	},
 	{
