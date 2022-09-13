@@ -3411,7 +3411,7 @@
 		"source": "Solo {CSA2}",
 		"consumed": true,
 		"lost": true,
-		"desc": "During your turn, forgo your top action to play a summon action from a card in your lost pile, ignoring two ^scrapX^.",
+		"desc": "During your turn, forgo your top action to play a summon action from a card in your lost pile, ignoring two ^scrapx^.",
 		"gameType": "csa",
 		"soloItem": "CSA2"
 	},

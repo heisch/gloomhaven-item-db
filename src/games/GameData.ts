@@ -28,12 +28,9 @@ export const getInitialItems = (gameType: GameType) => {
 	const resources: string[] = [];
 
 	items.forEach((item) => {
-		item.descHTML = Helpers.parseEffectText(item.desc, gameType);
+		item.descHTML = Helpers.parseEffectText(item.desc);
 		if (item.backDesc) {
-			item.backDescHTML = Helpers.parseEffectText(
-				item.backDesc,
-				gameType
-			);
+			item.backDescHTML = Helpers.parseEffectText(item.backDesc);
 		}
 		const source = item.source
 			.replace(/Reward from /gi, "")
@@ -51,7 +48,6 @@ export const getInitialItems = (gameType: GameType) => {
 			});
 		}
 	});
-	console.log(`after ${gameType} ${Helpers.itemCount}`);
 	return { items, filterSlots, resources };
 };
 
