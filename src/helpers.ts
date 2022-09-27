@@ -5,40 +5,21 @@ import { AllGames } from "./games/GameType";
 interface CreateParams {
 	filename: string;
 	folder: string;
-}
-
-interface WHCreateParams extends CreateParams {
 	game?: string;
-	className?: string;
-	lowercaseName?: boolean;
 	subfolder?: string;
 }
 
-export const createWorldhavenString = (parms: WHCreateParams) => {
-	const {
-		game,
-		folder = "general",
-		className = "icon",
-		lowercaseName = true,
-		subfolder = "",
-	} = parms;
-	let { filename } = parms;
-	filename = lowercaseName ? filename.toLowerCase() : filename;
+export const createWorldhavenString = (parms: CreateParams) => {
+	const { game, folder = "general", subfolder = "", filename } = parms;
 	const src = require(`../worldhaven/images/${folder}/${game}/${subfolder}/${filename}.png`);
-	return `<img class="${className}" src="${src}" alt="${filename}"/>`;
-};
-
-const createImageString = (parms: CreateParams) => {
-	const { folder = "general", filename } = parms;
-	const src = require(`./img/icons/${folder}/${filename}.png`);
 	return `<img class="icon" src="${src}" alt="${filename}"/>`;
 };
 
 const folderMap: Record<string, string> = {
-	"\\^": "general",
-	"\\$": "status",
 	"\\@": "element",
 	"\\#": "equipment_slot",
+	"\\$": "status",
+	"\\^": "general",
 	"\\*": "multi_attack",
 };
 
@@ -59,12 +40,11 @@ export class Helpers {
 		const matches = text.match(exp);
 		if (matches) {
 			matches.forEach((match) => {
+				const filename = match.substring(1, match.length - 1);
+				const src = require(`./img/icons/${folder}/${filename}.png`);
 				text = text.replace(
 					match,
-					createImageString({
-						filename: match.substring(1, match.length - 1),
-						folder,
-					})
+					`<img class="icon" src="${src}" alt="${filename}"/>`
 				);
 			});
 		}
@@ -83,6 +63,9 @@ export class Helpers {
 
 		const reg = new RegExp(`%(.+?)%`, "g");
 		text = text.replace(reg, `<span class="${"$1"}">${"$1"}</span>`);
+
+		const reg2 = new RegExp(`!(.+?)!`, "g");
+		text = text.replace(reg2, `<span class="${"$1"}"/>`);
 
 		["cs-spirit-caller-token"].forEach((find) => {
 			const reg = new RegExp(`{${find}}`, "g");
