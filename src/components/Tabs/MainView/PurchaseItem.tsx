@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Form, Modal, Image } from "semantic-ui-react";
+import { Button, Form, Modal, Image, Segment } from "semantic-ui-react";
 import { ClassesInUse, ItemsOwnedBy } from "../../../State/Types";
 import { ClassList } from "../SpoilerFilters/Party/ClassList";
 import { getItemPath } from "../../../games/GameData";
@@ -78,11 +78,12 @@ const PurchaseItem = () => {
 			open={true}
 			onClose={onClose}
 			className="purchase-dialog"
+			// style={{ width: "100%" }}
 		>
 			<Modal.Header>Change Owners</Modal.Header>
 			<Modal.Content>
 				<div className="purchase-content">
-					<Form>
+					<Form style={{ width: "50%" }}>
 						<Form.Group inline>
 							<label>Name:</label> {name}
 						</Form.Group>
@@ -94,19 +95,21 @@ const PurchaseItem = () => {
 							<label>Items Available:</label>{" "}
 							{`${count - owners.length} of ${count}`}
 						</Form.Group>
-						<ClassList
-							classes={classesInUse}
-							label="Party Members:"
-							onClick={toggleOwnership}
-							isEnabled={(className: ClassesInUse) =>
-								isItemEnabled(className)
-							}
-							isUsed={(className: ClassesInUse) =>
-								owners ? owners.includes(className) : false
-							}
-						/>
+						<Segment>
+							<ClassList
+								classes={classesInUse}
+								label="Party Members:"
+								onClick={toggleOwnership}
+								isEnabled={(className: ClassesInUse) =>
+									isItemEnabled(className)
+								}
+								isUsed={(className: ClassesInUse) =>
+									owners ? owners.includes(className) : false
+								}
+							/>
+						</Segment>
 					</Form>
-					<Form>
+					<Form style={{ width: "50%" }}>
 						<Image
 							src={getItemPath(selectedItem)}
 							className={"purchase-card"}
