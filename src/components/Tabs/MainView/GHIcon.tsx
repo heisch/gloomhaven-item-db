@@ -2,16 +2,19 @@ import React from "react";
 
 type Props = {
 	name: string;
+	className?: string;
 	folder?: string;
+	onClick?: () => void;
 };
 
 export const GHIcon = (props: Props) => {
-	const { name, folder } = props;
+	const { name, folder = "general", onClick, className = "icon" } = props;
 	return (
 		<img
-			src={require(`../../../img/icons/${folder || "general"}/${name}`)}
-			className={"icon"}
+			src={require(`../../../img/icons/${folder}/${name}`)}
+			className={className}
 			alt={name}
+			onClick={onClick}
 		/>
 	);
 };

@@ -5,6 +5,7 @@ import ItemManagement from "./ItemManagement";
 import { getItemPath } from "../../../games/GameData";
 import { getItemIdString } from "./ItemTableRow";
 import NoItemManagement from "./ItemManagement/NoItemManagement";
+import { GHIcon } from "./GHIcon";
 
 type Props = {
 	item: GloomhavenItem;
@@ -28,13 +29,21 @@ const ItemCard = (props: Props) => {
 				<div className="item-card-wrapper-header">
 					<ItemId item={item} />
 					{item.backDesc && (
-						<Button
-							icon={showBackside ? "redo" : "undo"}
-							className="flipItem"
+						<GHIcon
+							className="flip"
+							name={
+								showBackside
+									? "flip_white.png"
+									: "flip_back_white.png"
+							}
 							onClick={() =>
 								setShowBackside((current) => !current)
 							}
 						/>
+						// <Button
+						// 	icon={showBackside ? "redo" : "undo"}
+						// 	className="flipItem"
+						// />
 					)}
 				</div>
 			)}
