@@ -1,4 +1,4 @@
-.doom {
+.Doom {
 	color: #39c3f1;
 	font-weight: bold;
 }
@@ -9,12 +9,12 @@
     padding: 5px;
 }
 
-.command {
+.Command {
 	color: #c49986;
 	font-weight: bold;
 }
 
-.augment {
+.Augment {
 	color: #bbbbb9;
 	font-weight: bold;
 }

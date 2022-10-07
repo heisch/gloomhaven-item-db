@@ -87,6 +87,9 @@ export class Helpers {
 		text = this.parseForIcon("\\@", text, "element");
 		text = this.parseForIcon("\\#", text, "equipment_slot");
 
+		const reg = new RegExp(`%(.+?)%`, "g");
+		text = text.replace(reg, `<span class="${"$1"}">${"$1"}</span>`);
+
 		[
 			"BANE",
 			"BLESS",

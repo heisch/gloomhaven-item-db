@@ -1711,7 +1711,7 @@
 		"cost": 50,
 		"slot": "1h",
 		"source": "Reward from Solo Scenario #01 — {BR}",
-		"desc": "Any time you kill an enemy during your turn, gain Shield 1 for the rest of the round.",
+		"desc": "Any time you kill an enemy during your turn, gain Shield ^shield^ 1 for the rest of the round.",
 		"soloItem": "BR",
 		"folder": "64-151",
 		"gameType": "ghss"
@@ -1737,7 +1737,7 @@
 		"slot": "small",
 		"source": "Reward from Solo Scenario #03 — {SW}",
 		"consumed": true,
-		"desc": "During your ranged attack, add +2 Attack and gain Advantage on the entire Attack action, but suffer 2 damage for each attack made.",
+		"desc": "During your ranged attack, add +2 Attack ^attack^ and gain Advantage on the entire Attack action, but suffer 2 damage for each attack made.",
 		"soloItem": "SW",
 		"folder": "64-151",
 		"gameType": "ghss"
@@ -1749,7 +1749,7 @@
 		"cost": 50,
 		"slot": "1h",
 		"source": "Reward from Solo Scenario #04 — {SC}",
-		"desc": "Any time you perform a melee attack, add PIERCE 1 to the Attack.",
+		"desc": "Any time you perform a melee attack, add PIERCE $pierce$ 1 to the Attack.",
 		"soloItem": "SC",
 		"folder": "64-151",
 		"gameType": "ghss"
@@ -1774,7 +1774,7 @@
 		"cost": 50,
 		"slot": "1h",
 		"source": "Reward from Solo Scenario #06 — {MT}",
-		"desc": "Any time you perform an {Augment} action, add +1 Attack to the entire action.",
+		"desc": "Any time you perform an %Augment% action, add +1 Attack ^attack^ to the entire action.",
 		"soloItem": "MT",
 		"folder": "64-151",
 		"gameType": "ghss"
@@ -1786,7 +1786,7 @@
 		"cost": 50,
 		"slot": "1h",
 		"source": "Reward from Solo Scenario #07 — {SK}",
-		"desc": "When damaged by an attack, you may {lightX} to gain Shield 3 for the attack.",
+		"desc": "When damaged by an attack, you may @x-light@ to gain Shield ^shield^ 3 for the attack.",
 		"soloItem": "SK",
 		"folder": "64-151",
 		"gameType": "ghss"
@@ -1799,7 +1799,7 @@
 		"slot": "small",
 		"source": "Reward from Solo Scenario #09 — {QM}",
 		"consumed": true,
-		"desc": "During your turn, you or any one ally may Refresh one of your spent or consumed items.",
+		"desc": "During your turn, you or any one ally may Refresh ^refresh^ one of your spent ^spent^ or consumed items.",
 		"faq": "This item cannot be refreshed.",
 		"soloItem": "QM",
 		"folder": "64-151",
@@ -1827,7 +1827,7 @@
 		"slot": "small",
 		"source": "Reward from Solo Scenario #11 — {NS}",
 		"consumed": true,
-		"desc": "During your turn, gain INVISIBLE and create dark. {dark}",
+		"desc": "During your turn, gain INVISIBLE $invisible$ and create dark. @dark@",
 		"soloItem": "NS",
 		"folder": "64-151",
 		"gameType": "ghss"
@@ -1840,7 +1840,7 @@
 		"slot": "head",
 		"source": "Reward from Solo Scenario #12 — {PH}",
 		"spent": true,
-		"desc": "During your turn, POISON and CURSE one enemy within Range 3.",
+		"desc": "During your turn, POISON $poison$ and CURSE $curse$ one enemy within Range ^range^ 3.",
 		"soloItem": "PH",
 		"folder": "64-151",
 		"gameType": "ghss"
@@ -1852,7 +1852,7 @@
 		"cost": 50,
 		"slot": "head",
 		"source": "Reward from Solo Scenario #08 — {BE}",
-		"desc": "Any time you perform a melee attack and you have exactly 1 hit point, add +2 Attack to the Attack.",
+		"desc": "Any time you perform a melee attack and you have exactly 1 hit point, add +2 Attack ^attack^ to the Attack.",
 		"soloItem": "BE",
 		"folder": "64-151",
 		"gameType": "ghss"
@@ -1864,7 +1864,7 @@
 		"cost": 50,
 		"slot": "2h",
 		"source": "Reward from Solo Scenario #13 — {SS}",
-		"desc": "After performing any {song} action, immediately perform an Attack 2 or Move 2 action.",
+		"desc": "After performing any %song% action, immediately perform an Attack ^attack^ 2 or Move ^move^ 2 action.",
 		"soloItem": "SS",
 		"folder": "64-151",
 		"gameType": "ghss"
@@ -1876,7 +1876,7 @@
 		"cost": 50,
 		"slot": "body",
 		"source": "Reward from Solo Scenario #14 — {DS}",
-		"desc": "Any time you perform a {Doom} action, MUDDLE the target of the {Doom}.",
+		"desc": "Any time you perform a %Doom% action, MUDDLE $muddle$ the target of the %Doom%.",
 		"soloItem": "DS",
 		"folder": "64-151",
 		"gameType": "ghss"
@@ -1888,7 +1888,7 @@
 		"cost": 50,
 		"slot": "body",
 		"source": "Reward from Solo Scenario #15 — {SB}",
-		"desc": "Any time an ally performs a Medical Pack or Large Medical Pack action, they add +1 Heal to their Heal.",
+		"desc": "Any time an ally performs a Medical Pack or Large Medical Pack action, they add +1 Heal ^heal^ to their Heal.",
 		"soloItem": "SB",
 		"folder": "64-151",
 		"gameType": "ghss"
@@ -1901,7 +1901,7 @@
 		"slot": "legs",
 		"source": "Reward from Solo Scenario #16 — {EL}",
 		"spent": true,
-		"desc": "If you move 5 or more hexes on your turn, create any element. {any}",
+		"desc": "If you move 5 or more hexes on your turn, create any element. @any@",
 		"soloItem": "EL",
 		"folder": "64-151",
 		"gameType": "ghss"
@@ -1914,7 +1914,7 @@
 		"slot": "2h",
 		"source": "Reward from Solo Scenario #17 — {BT}",
 		"spent": true,
-		"desc": "After performing a {Command} action, play one card from your hand and immediately perform the same side of the card (top or bottom) as the {Command} action.",
+		"desc": "After performing a %Command% action, play one card from your hand and immediately perform the same side of the card (top or bottom) as the %Command% action.",
 		"soloItem": "BT",
 		"folder": "64-151",
 		"gameType": "ghss"
@@ -1927,7 +1927,7 @@
 		"slot": "1h",
 		"source": "Reward from Solo Scenario #18 — {XX}",
 		"consumed": true,
-		"desc": "During your melee attack, add POISON and WOUND to the entire action.",
+		"desc": "During your melee attack, add POISON $poison$ and WOUND $wound$ to the entire action.",
 		"soloItem": "XX",
 		"folder": "64-151",
 		"gameType": "ghss",
