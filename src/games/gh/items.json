@@ -1865,7 +1865,7 @@
 		"slot": "2h",
 		"source": "Reward from Solo Scenario #13 — {SS}",
 		"desc": "After performing any {song} action, immediately perform an Attack 2 or Move 2 action.",
-		"soloItem": "ghSS",
+		"soloItem": "SS",
 		"folder": "64-151",
 		"gameType": "ghss"
 	},
