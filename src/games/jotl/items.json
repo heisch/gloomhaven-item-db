@@ -425,7 +425,7 @@
 		"count": 1,
 		"cost": 40,
 		"slot": "1h",
-		"source": "Reward from Scenario #34",
+		"source": "Reward from Scenario #23",
 		"consumed": true,
 		"desc": "During your attack, add WOUND $wound$ to the entire Attack Action.",
 		"folder": "27-36",
