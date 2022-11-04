@@ -1,7 +1,11 @@
 import React from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { Button, Form } from "semantic-ui-react";
-import { availableOnlyState } from "../../../../State";
+import {
+	availableOnlyState,
+	ItemManagementType,
+	itemManagementTypeState,
+} from "../../../../State";
 
 type Props = {
 	available: boolean;
@@ -25,6 +29,10 @@ const FilterAvailabilityButton = (props: Props) => {
 };
 
 export const FilterAvailability = () => {
+	const itemManagementType = useRecoilValue(itemManagementTypeState);
+	if (itemManagementType === ItemManagementType.None) {
+		return null;
+	}
 	return (
 		<Form.Group inline>
 			<label>Availability</label>
