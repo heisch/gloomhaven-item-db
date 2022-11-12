@@ -10,6 +10,7 @@ import {
 	ItemsOwnedBy,
 	ItemViewDisplayType,
 	JOTLClasses,
+	SpecialUnlockTypes,
 } from "./Types";
 
 export const allState = createSpoilerState<boolean>("all", false);
@@ -30,12 +31,12 @@ const fixSpecialUnlocks = (
 ) => {
 	if (spoilerObj.envelopeX) {
 		delete spoilerObj.envelopeX;
-		return ["envelopeX"];
+		return [SpecialUnlockTypes.EnvelopeX];
 	}
 	return oldSpecialUnlocks;
 };
 
-export const specialUnlocksState = createSpoilerState<string[]>(
+export const specialUnlocksState = createSpoilerState<SpecialUnlockTypes[]>(
 	"specialUnlocks",
 	[],
 	fixSpecialUnlocks

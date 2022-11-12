@@ -1,68 +1,19 @@
-import React, { useState } from "react";
-import {
-	Button,
-	ListItem,
-	List,
-	Modal,
-	Input,
-	InputProps,
-} from "semantic-ui-react";
-import { useRecoilState, useSetRecoilState } from "recoil";
-import { confirmEnvelopeXState, specialUnlocksState } from "../../../../State";
+import React from "react";
+import { ListItem } from "semantic-ui-react";
+import { SpecialUnlockTypes } from "../../../../State";
+import { ConfirmSpecialUnlockPanel } from "../Common/ConfirmSpecialUnlockPanel";
+
+const solutions = ["eHh4", "YmxhZGVzd2FybQ=="];
 
 export const ConfirmEnvelopeX = () => {
-	const [solutionCorrect, setSolutionCorrect] = useState(false);
-	const [confirmEnvelopeX, setConfirmEnvelopeX] = useRecoilState(
-		confirmEnvelopeXState
-	);
-	const [specialUnlocks, setSpecialUnlocks] =
-		useRecoilState(specialUnlocksState);
-
-	const onClose = () => {
-		setConfirmEnvelopeX(false);
-	};
-
-	const checkSolution = (_e: any, data: InputProps) => {
-		const solution = data.value || "";
-		setSolutionCorrect(btoa(solution.toLowerCase()) === "YmxhZGVzd2FybQ==");
-	};
-
-	const onApply = () => {
-		if (solutionCorrect) {
-			if (!specialUnlocks.includes("envelopeX")) {
-				setSpecialUnlocks((current) => {
-					return [...current, "envelopeX"];
-				});
-			}
-		}
-		onClose();
-	};
-
 	return (
-		<Modal size="tiny" open={confirmEnvelopeX} onClose={onClose}>
-			<Modal.Header>Envelope X</Modal.Header>
-			<Modal.Content>
-				<List>
-					<ListItem>Have you solved Envelope X?</ListItem>
-					<ListItem>Enter the solution here:</ListItem>
-					<ListItem>
-						<Input onChange={checkSolution} />
-					</ListItem>
-				</List>
-			</Modal.Content>
-			<Modal.Actions>
-				<Button negative onClick={onClose}>
-					No
-				</Button>
-				<Button
-					disabled={!solutionCorrect}
-					positive
-					icon="checkmark"
-					labelPosition="right"
-					content="Yes"
-					onClick={onApply}
-				/>
-			</Modal.Actions>
-		</Modal>
+		<ConfirmSpecialUnlockPanel
+			solutions={solutions}
+			specialUnlockType={SpecialUnlockTypes.EnvelopeX}
+			title="Envelope X"
+		>
+			<ListItem>Have you solved Envelope X?</ListItem>
+			<ListItem>Enter the solution here:</ListItem>
+		</ConfirmSpecialUnlockPanel>
 	);
 };

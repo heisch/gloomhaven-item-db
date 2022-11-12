@@ -100,6 +100,11 @@ export enum CSAClasses {
 	CSA3 = "CSA3",
 }
 
+export enum SpecialUnlockTypes {
+	EnvelopeX = "envelopeX",
+	EnvelopeE = "envelopeE",
+}
+
 export type SoloClasses = GHClasses | FCClasses | FHClasses | CSClasses;
 
 export type ClassesInUse =
@@ -179,5 +184,6 @@ export interface GloomhavenItem {
 	resources: Resources;
 	imagePrefix?: string;
 	imageSuffix?: string;
-	specialUnlock?: string;
+	specialUnlock?: SpecialUnlockTypes;
+	alwaysShown?: boolean;
 }

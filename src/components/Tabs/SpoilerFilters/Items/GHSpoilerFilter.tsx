@@ -1,24 +1,23 @@
 import React from "react";
 import { Form, Segment } from "semantic-ui-react";
 import SpoilerFilterItemList from "./SpoilerFilterItemList";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import {
-	discountState,
 	includeGameState,
 	prosperityState,
+	SpecialUnlockTypes,
 } from "../../../../State";
 import { SoloClassFilter } from "./SoloClassFilter";
 import { Expansions, GameType } from "../../../../games/GameType";
 import { useRemovePlayerUtils } from "../../../../hooks/useRemovePlayer";
-import { EnvelopeEButton } from "./EnvelopeEButton";
 import { ReputationPulldown } from "./ReputationPulldown";
 import { ProsperityFilter } from "./ProsperityFilter";
+import { SpecialUnlocksButton } from "../Common/SpecialUnlockButton";
 
 export const GHSpoilerFilter = () => {
 	const { getClassesForGame } = useRemovePlayerUtils();
 	const includeGames = useRecoilValue(includeGameState);
-	const [discount, setDiscount] = useRecoilState(discountState);
-	const [prosperity, setProsperity] = useRecoilState(prosperityState);
+	const prosperity = useRecoilValue(prosperityState);
 	const includeFC = includeGames.includes(Expansions.ForgottenCircles);
 	const includeCS = includeGames.includes(Expansions.CrimsonScales);
 	const includeCSA = includeGames.includes(Expansions.CrimsonScalesAddon);
@@ -32,7 +31,11 @@ export const GHSpoilerFilter = () => {
 		<Segment>
 			<ReputationPulldown />
 			<ProsperityFilter />
-			<EnvelopeEButton />
+			<SpecialUnlocksButton
+				gameType={Expansions.ForgottenCircles}
+				specialUnlockType={SpecialUnlockTypes.EnvelopeE}
+				text="Envelope E"
+			/>
 			<Segment>
 				<SpoilerFilterItemList
 					ranges={[{ start: (prosperity + 1) * 7 + 1, end: 70 }]}

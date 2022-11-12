@@ -16,19 +16,6 @@ import {
 	resourcesState,
 } from "../State";
 import { useCallback } from "react";
-import { Expansions, GameType } from "../games";
-import { AllGames } from "../games/GameType";
-
-const sortOrder: Record<AllGames, number> = {
-	[GameType.Frosthaven]: 1,
-	[Expansions.FHSoloScenarios]: 2,
-	[GameType.Gloomhaven]: 3,
-	[Expansions.GHSoloScenarios]: 4,
-	[Expansions.ForgottenCircles]: 5,
-	[Expansions.CrimsonScales]: 6,
-	[Expansions.CrimsonScalesAddon]: 7,
-	[GameType.JawsOfTheLion]: 8,
-};
 
 export const useIsItemShown = (): ((item: GloomhavenItem) => boolean) => {
 	const slots = useRecoilValue(slotsState);
@@ -58,8 +45,12 @@ export const useIsItemShown = (): ((item: GloomhavenItem) => boolean) => {
 			desc,
 			count,
 			specialUnlock,
+			alwaysShown = false,
 		}: GloomhavenItem) => {
 			if (!includeGames.includes(gameType)) {
+				return false;
+			}
+			if (specialUnlock && !specialUnlocks.includes(specialUnlock)) {
 				return false;
 			}
 
@@ -68,8 +59,8 @@ export const useIsItemShown = (): ((item: GloomhavenItem) => boolean) => {
 				prosperity >= unlockProsperity ||
 				scenarioCompleted.includes(unlockScenario) ||
 				(soloItem && soloClass.includes(soloItem)) ||
-				(specialUnlock && specialUnlocks.includes(specialUnlock)) ||
-				item.includes(id);
+				item.includes(id) ||
+				alwaysShown;
 
 			if (show) {
 				if (slots.length > 0 && !slots.includes(slot)) {

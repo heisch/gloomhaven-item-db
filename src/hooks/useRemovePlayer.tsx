@@ -16,6 +16,7 @@ import {
 	FHClasses,
 	GHClasses,
 	JOTLClasses,
+	SpecialUnlockTypes,
 } from "../State/Types";
 
 export const useRemovePlayerUtils = () => {
@@ -25,7 +26,7 @@ export const useRemovePlayerUtils = () => {
 		useRecoilState(selectedClassState);
 	const [itemsOwnedBy, setItemsOwnedBy] = useRecoilState(itemsOwnedByState);
 	const specialUnlocks = useRecoilValue(specialUnlocksState);
-	const envelopeX = specialUnlocks.includes("envelopeX");
+	const envelopeX = specialUnlocks.includes(SpecialUnlockTypes.EnvelopeX);
 
 	const itemsOwnedByClass = useCallback(
 		(owner: ClassesInUse | undefined) => {
