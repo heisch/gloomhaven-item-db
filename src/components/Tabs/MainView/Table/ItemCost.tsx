@@ -1,8 +1,12 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
-import { GameType } from "../../../games";
-import { discountState, gameTypeState, GloomhavenItem } from "../../../State";
-import { GHIcon } from "./GHIcon";
+import { GameType } from "../../../../games";
+import {
+	discountState,
+	gameTypeState,
+	GloomhavenItem,
+} from "../../../../State";
+import { GHIcon } from "../GHIcon";
 
 interface Props {
 	item: GloomhavenItem;

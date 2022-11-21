@@ -8,7 +8,7 @@ type Props = {
 	item: GloomhavenItem;
 };
 
-const NoItemManagement = (props: Props) => {
+export const NoItemManagement = (props: Props) => {
 	const { item } = props;
 	const itemManagementType = useRecoilValue(itemManagementTypeState);
 	if (itemManagementType !== ItemManagementType.None) {
@@ -19,5 +19,3 @@ const NoItemManagement = (props: Props) => {
 		<Label className="no-item-management-count">{`Item count: ${item.count}`}</Label>
 	);
 };
-
-export default NoItemManagement;

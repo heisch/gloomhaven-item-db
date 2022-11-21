@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { GloomhavenItem } from "../../../State/Types";
-import { Button, Label } from "semantic-ui-react";
-import ItemManagement from "./ItemManagement";
+import { Label } from "semantic-ui-react";
 import { getItemPath } from "../../../games/GameData";
-import { getItemIdString } from "./ItemTableRow";
-import NoItemManagement from "./ItemManagement/NoItemManagement";
 import { GHIcon } from "./GHIcon";
+import { getItemIdString } from "../../../helpers";
+import { ItemManagementContainer } from "./ItemManagement/ItemManagementContainer";
+import { NoItemManagement } from "./ItemManagement/NoItemManagement";
 
 type Props = {
 	item: GloomhavenItem;
@@ -47,7 +47,7 @@ const ItemCard = (props: Props) => {
 					)}
 				</div>
 			)}
-			{draw && !showBackside && <ItemManagement item={item} />}
+			{draw && !showBackside && <ItemManagementContainer item={item} />}
 			<div className="item-card-wrapper-container">
 				<img
 					src={getItemPath(item, showBackside)}

@@ -1,6 +1,7 @@
 import qs from "qs";
 import { GameType } from "./games";
 import { AllGames } from "./games/GameType";
+import { GloomhavenItem } from "./State";
 
 interface CreateParams {
 	filename: string;
@@ -113,4 +114,15 @@ export const isFrosthavenGameAndEnabled = (gameType: AllGames) => {
 		return false;
 	}
 	return true;
+};
+
+const formatId = (id: number | string) => {
+	return `#${id.toString().padStart(3, "0")}`;
+};
+
+export const getItemIdString = (item: GloomhavenItem) => {
+	const { displayId, id, gameType } = item;
+	return `${gameType ? gameType.toUpperCase() : ""} ${formatId(
+		displayId || id
+	)}`;
 };

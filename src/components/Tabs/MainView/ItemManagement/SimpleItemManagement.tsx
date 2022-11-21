@@ -12,7 +12,7 @@ type Props = {
 	item: GloomhavenItem;
 };
 
-const SimpleItemManagement = (props: Props) => {
+export const SimpleItemManagement = (props: Props) => {
 	const lockSpoilerPanel = useRecoilValue(lockSpoilerPanelState);
 	const { item } = props;
 	const [itemsInUse, setItemsInUse] = useRecoilState(itemsInUseState);
@@ -48,5 +48,3 @@ const SimpleItemManagement = (props: Props) => {
 		</div>
 	);
 };
-
-export default SimpleItemManagement;

@@ -5,7 +5,7 @@ import useItems from "../../../../hooks/useItems";
 import { displayItemAsState } from "../../../../State";
 import { ItemViewDisplayType } from "../../../../State/Types";
 import ItemGrid from "../ItemGrid";
-import ItemTable from "../ItemTable";
+import { ItemTable } from "../Table";
 
 export const ItemsView = () => {
 	const items = useItems();

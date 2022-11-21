@@ -8,8 +8,8 @@ import {
 	TableRow,
 	TableCell,
 } from "semantic-ui-react";
+import { getItemIdString } from "../../../../helpers";
 import { GloomhavenItem } from "../../../../State";
-import { getItemIdString } from "../../MainView/ItemTableRow";
 
 type Props = {
 	items: GloomhavenItem[];

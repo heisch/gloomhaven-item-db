@@ -65,7 +65,7 @@ const OwnerButton = (props: OwnerProps) => {
 	);
 };
 
-const PartyItemManagement = (props: Props) => {
+export const PartyItemManagement = (props: Props) => {
 	const classesInUse = useRecoilValue(classesInUseState);
 	const itemsOwnedBy = useRecoilValue(itemsOwnedByState);
 	const itemManagementType = useRecoilValue(itemManagementTypeState);
@@ -104,5 +104,3 @@ const PartyItemManagement = (props: Props) => {
 		</div>
 	);
 };
-
-export default PartyItemManagement;
