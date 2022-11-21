@@ -1,11 +1,9 @@
 import React from "react";
-import { useRecoilValue } from "recoil";
 import { Icon, Popup, Table } from "semantic-ui-react";
-import { Expansions, GameType } from "../../../games";
-import { createWorldhavenString } from "../../../helpers";
-import { discountState, gameTypeState } from "../../../State";
+import { GameType } from "../../../games";
 import { GloomhavenItem } from "../../../State/Types";
 import { GHIcon } from "./GHIcon";
+import { ItemCost } from "./ItemCost";
 import ItemManagement from "./ItemManagement";
 import NoItemManagement from "./ItemManagement/NoItemManagement";
 import { ItemSummon } from "./ItemSummon";
@@ -35,8 +33,6 @@ export const ItemTableRow = (props: Props) => {
 			id,
 			name,
 			slot,
-			cost,
-			resources,
 			spent,
 			consumed,
 			lost,
@@ -49,16 +45,7 @@ export const ItemTableRow = (props: Props) => {
 			summon,
 		},
 	} = props;
-	const discount = useRecoilValue(discountState);
-	const gameType = useRecoilValue(gameTypeState);
 
-	const costClass = discount < 0 ? "blue" : discount > 0 ? "red" : "";
-
-	const displayCost = cost ? (
-		<strong className={"ui text " + costClass}>{cost + discount}g</strong>
-	) : (
-		<strong className={"ui text " + costClass}>-</strong>
-	);
 	return (
 		<Table.Row key={id}>
 			<Table.Cell className={"id-col"} textAlign={"right"}>
@@ -68,36 +55,9 @@ export const ItemTableRow = (props: Props) => {
 			<Table.Cell className={"slot-col"} textAlign={"center"}>
 				<GHIcon name={`${slot}.png`} folder={"equipment_slot"} />
 			</Table.Cell>
-			<Table.Cell className={"cost-col"} textAlign={"right"}>
-				{displayCost}
+			<Table.Cell className={"cost-col"} textAlign={"center"}>
+				<ItemCost item={item} />
 			</Table.Cell>
-			{gameType === GameType.Frosthaven && (
-				<Table.Cell className={"resources-col"} textAlign={"center"}>
-					{resources &&
-						Object.entries(resources).map(([resource, value]) => {
-							if (resource === "item") {
-								return value.map((itemId: number) => (
-									<div key={resource}>
-										<GHIcon
-											name={`${resource}.png`}
-											folder="resources"
-										/>
-										{` : ${itemId}`}
-									</div>
-								));
-							}
-							return (
-								<div key={resource}>
-									<GHIcon
-										name={`${resource}.png`}
-										folder="resources"
-									/>
-									{value > 1 && ` x ${value}`}
-								</div>
-							);
-						})}
-				</Table.Cell>
-			)}
 			<Table.Cell className={"use-col"} textAlign={"center"}>
 				{spent && <GHIcon name={"spent.png"} />}
 				{consumed && <GHIcon name={"consumed.png"} />}

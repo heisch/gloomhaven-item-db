@@ -58,7 +58,13 @@ const useItems = (): Array<GloomhavenItem> => {
 					value = compareItems(itemA.slot, itemB.slot);
 					break;
 				case SortProperty.Cost:
-					value = compareItems(itemA.cost, itemB.cost);
+					if (itemA.cost && itemB.cost) {
+						value = compareItems(itemA.cost, itemB.cost);
+					} else if (itemA.cost) {
+						return -1;
+					} else {
+						return 1;
+					}
 					break;
 				case SortProperty.Id:
 					value = compareItems(

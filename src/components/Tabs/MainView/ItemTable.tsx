@@ -11,9 +11,7 @@ import {
 	sortDirectionState,
 	discountState,
 	itemManagementTypeState,
-	gameTypeState,
 } from "../../../State";
-import { GameType } from "../../../games";
 import { ItemTableRow } from "./ItemTableRow";
 import { useSetSorting } from "../../../hooks/useSetSorting";
 
@@ -27,7 +25,6 @@ const ItemTable = (props: Props) => {
 	const itemManagementType = useRecoilValue(itemManagementTypeState);
 	const { items } = props;
 	const discount = useRecoilValue(discountState);
-	const gameType = useRecoilValue(gameTypeState);
 	const setSorting = useSetSorting();
 
 	const costClass = discount < 0 ? "blue" : discount > 0 ? "red" : "";
@@ -83,7 +80,8 @@ const ItemTable = (props: Props) => {
 					</Table.HeaderCell>
 					<Table.HeaderCell
 						className={"cost-col"}
-						textAlign={"right"}
+						textAlign={"center"}
+						width={1}
 						onClick={() => setSorting(SortProperty.Cost)}
 						sorted={
 							sortProperty === SortProperty.Cost
@@ -93,14 +91,6 @@ const ItemTable = (props: Props) => {
 					>
 						{getCostTitle()}
 					</Table.HeaderCell>
-					{gameType === GameType.Frosthaven && (
-						<Table.HeaderCell
-							className={"resources-col"}
-							textAlign={"center"}
-						>
-							Resource
-						</Table.HeaderCell>
-					)}
 					<Table.HeaderCell
 						className={"use-col"}
 						onClick={() => setSorting(SortProperty.Use)}
