@@ -690,4 +690,8 @@ img.ui.image.ownerIcon {
   .faqImage {
 	width: 100%;
   }
+
+  .search-options {
+	margin-bottom: 10px;
+  }
   

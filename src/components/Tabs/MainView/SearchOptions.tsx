@@ -1,5 +1,5 @@
 import React from "react";
-import { Form } from "semantic-ui-react";
+import { Form, Segment } from "semantic-ui-react";
 import {
 	RenderAs,
 	FilterSlots,
@@ -13,15 +13,17 @@ import {
 
 const SearchOptions = () => {
 	return (
-		<Form>
-			<RenderAs />
-			<FilterSlots />
-			<FilterResorces />
-			<FindItemSearchBar />
-			<FilterClass />
-			<FilterAvailability />
-			<SortItems />
-			<Discount />
+		<Form className="search-options">
+			<Segment>
+				<RenderAs />
+				<FilterSlots />
+				<FilterResorces />
+				<FindItemSearchBar />
+				<FilterClass />
+				<FilterAvailability />
+				<SortItems />
+				<Discount />
+			</Segment>
 		</Form>
 	);
 };
