@@ -1,6 +1,6 @@
 import React from "react";
-import { Summon } from "../../../../State/Types";
-import { GHIcon } from "../GHIcon";
+import { Summon } from "../../../../../State/Types";
+import { GHIcon } from "../../../../Utils";
 
 type Props = {
 	summon: Summon;

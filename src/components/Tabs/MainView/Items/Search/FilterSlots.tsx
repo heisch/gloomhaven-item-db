@@ -1,9 +1,9 @@
 import React, { useCallback } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { Form } from "semantic-ui-react";
-import { gameDataState, slotsState } from "../../../../State";
-import { GloomhavenItemSlot } from "../../../../State/Types";
-import { GHIcon } from "../GHIcon";
+import { gameDataState, slotsState } from "../../../../../State";
+import { GloomhavenItemSlot } from "../../../../../State/Types";
+import { GHIcon } from "../../../../Utils";
 
 export const FilterSlots = () => {
 	const [slots, setSlotsState] = useRecoilState(slotsState);

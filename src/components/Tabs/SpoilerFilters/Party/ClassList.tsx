@@ -1,7 +1,7 @@
 import React from "react";
 import { Form } from "semantic-ui-react";
 import { ClassesInUse } from "../../../../State/Types";
-import ClassIcon from "../../MainView/ClassIcon";
+import { ClassIcon } from "../../../Utils";
 
 type Props = {
 	label: string;

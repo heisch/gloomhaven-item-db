@@ -1,8 +1,8 @@
 import React from "react";
 import { Table } from "semantic-ui-react";
-import { getItemIdString } from "../../../../helpers";
-import { GloomhavenItem } from "../../../../State/Types";
-import { GHIcon } from "../GHIcon";
+import { getItemIdString } from "../../../../../helpers";
+import { GloomhavenItem } from "../../../../../State/Types";
+import { GHIcon } from "../../../../Utils";
 import { ItemManagementContainer } from "../ItemManagement/ItemManagementContainer";
 import { NoItemManagement } from "../ItemManagement/NoItemManagement";
 import { ItemCost } from "./ItemCost";

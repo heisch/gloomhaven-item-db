@@ -1,19 +1,19 @@
 import React from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { useRemovePlayerUtils } from "../../../../hooks/useRemovePlayer";
+import { useRemovePlayerUtils } from "../../../../../hooks/useRemovePlayer";
 import {
 	classesInUseState,
 	itemManagementTypeState,
 	itemsOwnedByState,
 	lockSpoilerPanelState,
 	selectedItemState,
-} from "../../../../State";
+} from "../../../../../State";
 import {
 	ClassesInUse,
 	GloomhavenItem,
 	ItemManagementType,
-} from "../../../../State/Types";
-import ClassIcon from "../ClassIcon";
+} from "../../../../../State/Types";
+import { ClassIcon, GHIcon } from "../../../../Utils";
 
 type Props = {
 	item: GloomhavenItem;
@@ -52,10 +52,7 @@ const OwnerButton = (props: OwnerProps) => {
 		>
 			{owner ? (
 				<>
-					<img
-						className="deleteIcon"
-						src={require(`../../../../img/icons/general/circle_x.png`)}
-					/>
+					<GHIcon className="deleteIcon" name="circle_x.png" />
 					<ClassIcon className="ownerIcon" name={owner} />
 				</>
 			) : (

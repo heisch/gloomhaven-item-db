@@ -1,7 +1,7 @@
 import React from "react";
 import { useRecoilState } from "recoil";
 import { Form, Input } from "semantic-ui-react";
-import { searchState } from "../../../../State";
+import { searchState } from "../../../../../State";
 
 export const FindItemSearchBar = () => {
 	const [searchString, setSearchString] = useRecoilState(searchState);

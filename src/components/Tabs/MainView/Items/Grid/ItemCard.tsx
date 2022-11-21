@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { GloomhavenItem } from "../../../State/Types";
+import { GloomhavenItem } from "../../../../../State/Types";
 import { Label } from "semantic-ui-react";
-import { getItemPath } from "../../../games/GameData";
-import { GHIcon } from "./GHIcon";
-import { getItemIdString } from "../../../helpers";
-import { ItemManagementContainer } from "./ItemManagement/ItemManagementContainer";
-import { NoItemManagement } from "./ItemManagement/NoItemManagement";
+import { getItemPath } from "../../../../../games/GameData";
+import { GHIcon } from "../../../../Utils";
+import { getItemIdString } from "../../../../../helpers";
+import { ItemManagementContainer } from "../ItemManagement/ItemManagementContainer";
+import { NoItemManagement } from "../ItemManagement/NoItemManagement";
 
 type Props = {
 	item: GloomhavenItem;

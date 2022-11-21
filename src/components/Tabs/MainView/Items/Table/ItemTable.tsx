@@ -3,7 +3,7 @@ import {
 	GloomhavenItem,
 	ItemManagementType,
 	SortProperty,
-} from "../../../../State/Types";
+} from "../../../../../State/Types";
 import { Table } from "semantic-ui-react";
 import { useRecoilValue } from "recoil";
 import {
@@ -11,9 +11,9 @@ import {
 	sortDirectionState,
 	discountState,
 	itemManagementTypeState,
-} from "../../../../State";
+} from "../../../../../State";
 import { ItemTableRow } from "./ItemTableRow";
-import { useSetSorting } from "../../../../hooks/useSetSorting";
+import { useSetSorting } from "../../../../../hooks/useSetSorting";
 
 type Props = {
 	items: GloomhavenItem[];

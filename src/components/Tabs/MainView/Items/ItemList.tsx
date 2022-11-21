@@ -1,6 +1,6 @@
 import React from "react";
-import { ItemManagementType } from "../../../State/Types";
-import SearchOptions from "./SearchOptions";
+import { ItemManagementType } from "../../../../State/Types";
+import SearchOptions from "./Search/SearchOptions";
 import { Message, Icon } from "semantic-ui-react";
 import PurchaseItem from "./PurchaseItem";
 import { useRecoilValue } from "recoil";
@@ -8,10 +8,10 @@ import {
 	allState,
 	itemManagementTypeState,
 	dataMismatchState,
-} from "../../../State";
-import { ItemsView } from "./Items/ItemsView";
+} from "../../../../State";
+import { ItemsView } from "./ItemsView";
 
-const ItemList = () => {
+export const ItemList = () => {
 	const all = useRecoilValue(allState);
 	const itemManagementType = useRecoilValue(itemManagementTypeState);
 	const dataMismatch = useRecoilValue(dataMismatchState);
@@ -46,5 +46,3 @@ const ItemList = () => {
 		</>
 	);
 };
-
-export default ItemList;

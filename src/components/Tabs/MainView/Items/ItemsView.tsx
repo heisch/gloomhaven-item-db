@@ -4,8 +4,8 @@ import { Message } from "semantic-ui-react";
 import useItems from "../../../../hooks/useItems";
 import { displayItemAsState } from "../../../../State";
 import { ItemViewDisplayType } from "../../../../State/Types";
-import ItemGrid from "../ItemGrid";
-import { ItemTable } from "../Table";
+import { ItemGrid } from "./Grid";
+import { ItemTable } from "./Table";
 
 export const ItemsView = () => {
 	const items = useItems();

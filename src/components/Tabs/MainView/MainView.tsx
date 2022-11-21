@@ -1,6 +1,6 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useMemo } from "react";
 import { Tab } from "semantic-ui-react";
-import ItemList from "./ItemList";
+import { ItemList } from "./Items";
 import SpoilerFilters from "../SpoilerFilters/SpoilerFilters";
 import Share from "../Share/Share";
 import ImportData from "./ImportData";

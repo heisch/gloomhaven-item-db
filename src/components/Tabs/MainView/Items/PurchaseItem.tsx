@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, Modal, Image, Segment } from "semantic-ui-react";
-import { ClassesInUse, ItemsOwnedBy } from "../../../State/Types";
-import { ClassList } from "../SpoilerFilters/Party/ClassList";
-import { getItemPath } from "../../../games/GameData";
+import { ClassesInUse, ItemsOwnedBy } from "../../../../State/Types";
+import { ClassList } from "../../SpoilerFilters/Party/ClassList";
+import { getItemPath } from "../../../../games/GameData";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
 	classesInUseState,
 	discountState,
 	itemsOwnedByState,
 	selectedItemState,
-} from "../../../State";
+} from "../../../../State";
 
 const PurchaseItem = () => {
 	const classesInUse = useRecoilValue(classesInUseState);

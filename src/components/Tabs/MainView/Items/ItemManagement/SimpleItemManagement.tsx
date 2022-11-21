@@ -5,8 +5,8 @@ import {
 	itemManagementTypeState,
 	itemsInUseState,
 	lockSpoilerPanelState,
-} from "../../../../State";
-import { GloomhavenItem, ItemManagementType } from "../../../../State/Types";
+} from "../../../../../State";
+import { GloomhavenItem, ItemManagementType } from "../../../../../State/Types";
 
 type Props = {
 	item: GloomhavenItem;

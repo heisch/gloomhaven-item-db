@@ -8,7 +8,7 @@ import {
 	AccordionContent,
 	Icon,
 } from "semantic-ui-react";
-import ClassIcon from "../../MainView/ClassIcon";
+import { ClassIcon } from "../../../Utils";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { classToDeleteState, gameDataState } from "../../../../State";
 import { useRemovePlayerUtils } from "../../../../hooks/useRemovePlayer";
@@ -32,7 +32,7 @@ export const ConfirmClassDelete = () => {
 	const itemsToList = itemsOwned
 		.map((id) => items[id - 1])
 		.filter(isItemShown);
-		
+
 	const goldAmount = () => {
 		let totalGold = 0;
 		itemsToList.forEach((item) => {

@@ -9,7 +9,7 @@ import {
 	FilterAvailability,
 	SortItems,
 	Discount,
-} from "./Search";
+} from ".";
 
 const SearchOptions = () => {
 	return (

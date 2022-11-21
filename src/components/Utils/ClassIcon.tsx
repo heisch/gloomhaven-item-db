@@ -1,6 +1,6 @@
 import React from "react";
 import { Image } from "semantic-ui-react";
-import { ClassesInUse, CSClasses, CSAClasses } from "../../../State/Types";
+import { ClassesInUse, CSClasses, CSAClasses } from "../../State/Types";
 type Props = {
 	name: ClassesInUse | undefined;
 	className?: string;
@@ -8,7 +8,7 @@ type Props = {
 };
 
 export const getWorldHavenClass = (name: string) => {
-	return require(`../../../../worldhaven/images/tokens/crimson-scales/character-tokens/cs-${name}-token.png`);
+	return require(`../../../worldhaven/images/tokens/crimson-scales/character-tokens/cs-${name}-token.png`);
 };
 
 const classIconFolder: Record<string, string> = {
@@ -32,15 +32,15 @@ export const getClassIcon = (name: string) => {
 	let classPath = classIconFolder[name];
 	if (!classPath) {
 		try {
-			classPath = require(`../../../img/class-tokens/${name.toLowerCase()}.png`);
+			classPath = require(`../../img/class-tokens/${name.toLowerCase()}.png`);
 		} catch {
-			classPath = require(`../../../img/classes/${name}.png`);
+			classPath = require(`../../img/classes/${name}.png`);
 		}
 	}
 	return classPath;
 };
 
-const ClassIcon = (props: Props) => {
+export const ClassIcon = (props: Props) => {
 	const { name, className = "soloClass", onClick } = props;
 	if (!name) {
 		return null;
@@ -55,5 +55,3 @@ const ClassIcon = (props: Props) => {
 		/>
 	);
 };
-
-export default ClassIcon;

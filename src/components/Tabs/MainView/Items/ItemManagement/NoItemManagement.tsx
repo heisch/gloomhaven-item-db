@@ -1,8 +1,8 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 import { Label } from "semantic-ui-react";
-import { itemManagementTypeState } from "../../../../State";
-import { GloomhavenItem, ItemManagementType } from "../../../../State/Types";
+import { itemManagementTypeState } from "../../../../../State";
+import { GloomhavenItem, ItemManagementType } from "../../../../../State/Types";
 
 type Props = {
 	item: GloomhavenItem;

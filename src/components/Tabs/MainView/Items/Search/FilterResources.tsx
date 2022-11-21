@@ -1,9 +1,9 @@
 import React, { useCallback } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { Form } from "semantic-ui-react";
-import { gameDataState, resourcesState } from "../../../../State";
-import { ResourceTypes } from "../../../../State/Types";
-import { GHIcon } from "../GHIcon";
+import { gameDataState, resourcesState } from "../../../../../State";
+import { ResourceTypes } from "../../../../../State/Types";
+import { GHIcon } from "../../../../Utils";
 
 export const FilterResorces = () => {
 	const [resources, setResourcesState] = useRecoilState(resourcesState);

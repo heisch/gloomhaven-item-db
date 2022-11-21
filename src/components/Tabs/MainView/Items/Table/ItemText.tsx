@@ -1,8 +1,8 @@
 import React from "react";
 import { Icon, Popup } from "semantic-ui-react";
-import { GameType } from "../../../../games";
-import { GloomhavenItem } from "../../../../State";
-import { GHIcon } from "../GHIcon";
+import { GameType } from "../../../../../games";
+import { GloomhavenItem } from "../../../../../State";
+import { GHIcon } from "../../../../Utils";
 import { ItemSummon } from "./ItemSummon";
 
 interface Props {
@@ -87,7 +87,7 @@ export const ItemText = (props: Props) => {
 					content={
 						<img
 							className="faqImage"
-							src={require(`../../../../../worldhaven/images/${faqImage}`)}
+							src={require(`../../../../../../worldhaven/images/${faqImage}`)}
 						></img>
 					}
 				/>

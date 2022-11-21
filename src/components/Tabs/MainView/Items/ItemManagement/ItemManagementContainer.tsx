@@ -1,5 +1,5 @@
 import React from "react";
-import { GloomhavenItem } from "../../../../State/Types";
+import { GloomhavenItem } from "../../../../../State/Types";
 import { PartyItemManagement } from "./PartyItemManagement";
 import { SimpleItemManagement } from "./SimpleItemManagement";
 

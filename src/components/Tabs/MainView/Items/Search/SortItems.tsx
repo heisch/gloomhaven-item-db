@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { Button, Form, Icon } from "semantic-ui-react";
-import { useSetSorting } from "../../../../hooks/useSetSorting";
+import { useSetSorting } from "../../../../../hooks/useSetSorting";
 import {
 	displayItemAsState,
 	ItemViewDisplayType,
@@ -9,7 +9,7 @@ import {
 	sortDirectionState,
 	SortProperty,
 	sortPropertyState,
-} from "../../../../State";
+} from "../../../../../State";
 
 export const SortItems = () => {
 	const setSorting = useSetSorting();

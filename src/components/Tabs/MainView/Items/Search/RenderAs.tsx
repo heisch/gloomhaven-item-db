@@ -1,8 +1,8 @@
 import React from "react";
 import { useRecoilState } from "recoil";
 import { Button, Form } from "semantic-ui-react";
-import { displayItemAsState } from "../../../../State";
-import { ItemViewDisplayType } from "../../../../State/Types";
+import { displayItemAsState } from "../../../../../State";
+import { ItemViewDisplayType } from "../../../../../State/Types";
 
 type Props = {
 	type: ItemViewDisplayType;

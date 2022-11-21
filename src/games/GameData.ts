@@ -1,10 +1,6 @@
-import { getClassIcon } from "../components/Tabs/MainView/ClassIcon";
+import { getClassIcon } from "../components/Utils";
 import { Helpers } from "../helpers";
-import {
-	GloomhavenItem,
-	GloomhavenItemSlot,
-	ResourceTypes,
-} from "../State/Types";
+import { GloomhavenItem, GloomhavenItemSlot } from "../State/Types";
 import { AllGames, Expansions, GameType } from "./GameType";
 
 export type GameData = {

@@ -5,9 +5,9 @@ import {
 	classesInUseState,
 	itemManagementTypeState,
 	selectedClassState,
-} from "../../../../State";
-import { ClassesInUse, ItemManagementType } from "../../../../State/Types";
-import { ClassList } from "../../SpoilerFilters/Party/ClassList";
+} from "../../../../../State";
+import { ClassesInUse, ItemManagementType } from "../../../../../State/Types";
+import { ClassList } from "../../../SpoilerFilters/Party/ClassList";
 
 export const FilterClass = () => {
 	const itemManagementType = useRecoilValue(itemManagementTypeState);

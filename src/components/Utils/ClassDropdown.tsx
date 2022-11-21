@@ -1,7 +1,7 @@
 import React from "react";
 import { Dropdown, DropdownProps } from "semantic-ui-react";
-import { ClassesInUse } from "../../../State/Types";
-import ClassIcon from "./ClassIcon";
+import { ClassesInUse } from "../../State/Types";
+import { ClassIcon } from "./ClassIcon";
 
 type Props = {
 	className?: string;
