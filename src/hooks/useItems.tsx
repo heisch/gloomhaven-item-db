@@ -35,7 +35,8 @@ const sortOrder: Record<AllGames, number> = {
 	[Expansions.ForgottenCircles]: 5,
 	[Expansions.CrimsonScales]: 6,
 	[Expansions.CrimsonScalesAddon]: 7,
-	[GameType.JawsOfTheLion]: 8,
+	[Expansions.TrailOfAshes]: 8,
+	[GameType.JawsOfTheLion]: 9,
 };
 
 const useItems = (): Array<GloomhavenItem> => {

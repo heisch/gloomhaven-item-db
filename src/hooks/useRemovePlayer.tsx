@@ -17,6 +17,7 @@ import {
 	GHClasses,
 	JOTLClasses,
 	SpecialUnlockTypes,
+	TOAClasses,
 } from "../State/Types";
 
 export const useRemovePlayerUtils = () => {
@@ -134,6 +135,8 @@ export const useRemovePlayerUtils = () => {
 					return Object.values(CSClasses);
 				case Expansions.CrimsonScalesAddon:
 					return Object.values(CSAClasses);
+				case Expansions.TrailOfAshes:
+					return Object.values(TOAClasses);
 				default:
 					return [];
 			}

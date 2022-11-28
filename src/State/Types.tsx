@@ -100,6 +100,15 @@ export enum CSAClasses {
 	CSA3 = "CSA3",
 }
 
+export enum TOAClasses {
+	TOA1 = "TOA1",
+	TOA2 = "TOA2",
+	TOA3 = "TOA3",
+	TOA4 = "TOA4",
+	TOA5 = "TOA5",
+	TOA6 = "TOA6",
+}
+
 export enum SpecialUnlockTypes {
 	EnvelopeX = "envelopeX",
 	EnvelopeE = "envelopeE",
@@ -113,7 +122,8 @@ export type ClassesInUse =
 	| JOTLClasses
 	| FHClasses
 	| CSClasses
-	| CSAClasses;
+	| CSAClasses
+	| TOAClasses;
 
 export enum GloomhavenItemSlot {
 	Head = "head",

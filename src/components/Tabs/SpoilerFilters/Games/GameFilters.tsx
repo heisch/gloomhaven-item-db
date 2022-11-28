@@ -48,6 +48,11 @@ export const allFiltersData: Record<AllGames, AllFilterData> = {
 		addClasses: true,
 		addItemsToGames: [GameType.Gloomhaven],
 	},
+	[Expansions.TrailOfAshes]: {
+		title: "Trail of Ashes",
+		addClasses: true,
+		addItemsToGames: [GameType.Gloomhaven],
+	},
 	[GameType.JawsOfTheLion]: {
 		gamesToFilterOn: [GameType.JawsOfTheLion],
 		title: "Jaws of the Lion",

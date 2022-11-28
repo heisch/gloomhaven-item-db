@@ -86,6 +86,11 @@ const gameFolders: Record<AllGames, FolderData> = {
 		prefix: "cs",
 		leadingZeros: 2,
 	},
+	[Expansions.TrailOfAshes]: {
+		folderName: "trail-of-ashes",
+		prefix: "toa",
+		leadingZeros: 2,
+	},
 	[Expansions.GHSoloScenarios]: {
 		folderName: "gloomhaven",
 		prefix: "gh",

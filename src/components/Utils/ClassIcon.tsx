@@ -1,31 +1,54 @@
 import React from "react";
 import { Image } from "semantic-ui-react";
-import { ClassesInUse, CSClasses, CSAClasses } from "../../State/Types";
+import {
+	ClassesInUse,
+	CSClasses,
+	CSAClasses,
+	TOAClasses,
+} from "../../State/Types";
 type Props = {
 	name: ClassesInUse | undefined;
 	className?: string;
 	onClick?: (name: ClassesInUse) => void;
 };
 
-export const getWorldHavenClass = (name: string) => {
-	return require(`../../../worldhaven/images/tokens/crimson-scales/character-tokens/cs-${name}-token.png`);
+export const getWorldHavenClass = (
+	name: string,
+	game: string,
+	gamePrefix: string
+) => {
+	return require(`../../../worldhaven/images/tokens/${game}/character-tokens/${gamePrefix}-${name}-token.png`);
+};
+
+export const getCSClass = (name: string) => {
+	return getWorldHavenClass(name, "crimson-scales", "cs");
+};
+
+export const getTOAClass = (name: string) => {
+	return getWorldHavenClass(name, "trail-of-ashes", "toa");
 };
 
 const classIconFolder: Record<string, string> = {
-	[CSClasses.CS1]: getWorldHavenClass("bombard"),
-	[CSClasses.CS2]: getWorldHavenClass("brightspark"),
-	[CSClasses.CS3]: getWorldHavenClass("chainguard"),
-	[CSClasses.CS4]: getWorldHavenClass("chieftain"),
-	[CSClasses.CS5]: getWorldHavenClass("fire-knight"),
-	[CSClasses.CS6]: getWorldHavenClass("hierophant"),
-	[CSClasses.CS7]: getWorldHavenClass("hollowpact"),
-	[CSClasses.CS8]: getWorldHavenClass("luminary"),
-	[CSClasses.CS9]: getWorldHavenClass("mirefoot"),
-	[CSClasses.CS10]: getWorldHavenClass("spirit-caller"),
-	[CSClasses.CS11]: getWorldHavenClass("starslinger"),
-	[CSAClasses.CSA1]: getWorldHavenClass("amber-aegis"),
-	[CSAClasses.CSA2]: getWorldHavenClass("artificer"),
-	[CSAClasses.CSA3]: getWorldHavenClass("ruinmaw"),
+	[CSClasses.CS1]: getCSClass("bombard"),
+	[CSClasses.CS2]: getCSClass("brightspark"),
+	[CSClasses.CS3]: getCSClass("chainguard"),
+	[CSClasses.CS4]: getCSClass("chieftain"),
+	[CSClasses.CS5]: getCSClass("fire-knight"),
+	[CSClasses.CS6]: getCSClass("hierophant"),
+	[CSClasses.CS7]: getCSClass("hollowpact"),
+	[CSClasses.CS8]: getCSClass("luminary"),
+	[CSClasses.CS9]: getCSClass("mirefoot"),
+	[CSClasses.CS10]: getCSClass("spirit-caller"),
+	[CSClasses.CS11]: getCSClass("starslinger"),
+	[CSAClasses.CSA1]: getCSClass("amber-aegis"),
+	[CSAClasses.CSA2]: getCSClass("artificer"),
+	[CSAClasses.CSA3]: getCSClass("ruinmaw"),
+	[TOAClasses.TOA1]: getTOAClass("incarnate"),
+	[TOAClasses.TOA2]: getTOAClass("rimehearth"),
+	[TOAClasses.TOA3]: getTOAClass("shardrender"),
+	[TOAClasses.TOA4]: getTOAClass("tempest"),
+	[TOAClasses.TOA5]: getTOAClass("thornreaper"),
+	[TOAClasses.TOA6]: getTOAClass("vanquisher"),
 };
 
 export const getClassIcon = (name: string) => {

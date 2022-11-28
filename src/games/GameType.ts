@@ -10,6 +10,7 @@ export enum Expansions {
 	CrimsonScalesAddon = "csa",
 	GHSoloScenarios = "ghss",
 	FHSoloScenarios = "fhss",
+	TrailOfAshes = "toa",
 }
 
 export type AllGames = GameType | Expansions;
