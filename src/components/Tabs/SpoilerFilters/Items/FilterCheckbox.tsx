@@ -3,18 +3,14 @@ import { useRecoilState } from "recoil";
 import { Form } from "semantic-ui-react";
 import { itemState } from "../../../../State";
 
-export type FilterCheckboxProps = {
-	offset?: number;
-	prefix?: string;
-	padCount?: number;
-};
-
 type Props = {
 	id: number;
-} & FilterCheckboxProps;
+	offset?: number;
+	prefix?: string;
+};
 
 const FilterCheckbox = (props: Props) => {
-	const { id, offset = 0, prefix = "", padCount = 3 } = props;
+	const { id, offset = 0, prefix = "" } = props;
 	const [item, setItem] = useRecoilState(itemState);
 
 	const toggleItemFilter = (key: number) => {
@@ -30,7 +26,7 @@ const FilterCheckbox = (props: Props) => {
 	return (
 		<Form.Checkbox
 			key={id}
-			label={`#${prefix}${id.toString().padStart(padCount, "0")}`}
+			label={`#${prefix}${id.toString().padStart(prefix ? 0 : 3, "0")}`}
 			checked={item.includes(id + offset)}
 			onChange={() => toggleItemFilter(id + offset)}
 		/>

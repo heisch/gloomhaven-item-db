@@ -1,38 +1,60 @@
 import { isNumber } from "lodash";
 import React from "react";
+import { useRecoilValue } from "recoil";
 import { Form } from "semantic-ui-react";
-import FilterCheckbox, { FilterCheckboxProps } from "./FilterCheckbox";
+import { AllGames } from "../../../../games/GameType";
+import { includeGameState } from "../../../../State";
+import FilterCheckbox from "./FilterCheckbox";
 
 type Range = {
 	start: number;
 	end?: number;
 };
 
+export type ItemRange = {
+	range: (Range | number)[];
+	offset?: number;
+	prefix?: string;
+};
+
 type Props = {
-	ranges: (Range | number)[];
+	ranges: ItemRange[];
 	title?: string;
-} & FilterCheckboxProps;
+	filterOn?: AllGames;
+};
 
 const SpoilerFilterItemList = (props: Props) => {
-	const { ranges, title, ...rest } = props;
+	const { ranges, title, filterOn } = props;
+	const includeGames = useRecoilValue(includeGameState);
 
-	const checkBoxes: Array<any> = [];
-	ranges.forEach((range) => {
-		let first;
-		let last;
-		if (isNumber(range)) {
-			first = range;
-			last = range;
-		} else {
-			const { start, end } = range;
-			first = start;
-			last = end || start;
-		}
-		for (let i = first; i <= last; i++) {
-			checkBoxes.push(
-				<FilterCheckbox key={`filter${i}`} id={i} {...rest} />
-			);
-		}
+	if (filterOn && !includeGames.includes(filterOn)) {
+		return null;
+	}
+
+	const checkBoxes: Array<JSX.Element> = [];
+	ranges.forEach(({ range, offset, prefix }: ItemRange) => {
+		range.forEach((r) => {
+			let first;
+			let last;
+			if (isNumber(range)) {
+				first = range;
+				last = range;
+			} else {
+				const { start, end } = r as Range;
+				first = start;
+				last = end || start;
+			}
+			for (let i = first; i <= last; i++) {
+				checkBoxes.push(
+					<FilterCheckbox
+						key={`filter${i}`}
+						id={i}
+						offset={offset}
+						prefix={prefix}
+					/>
+				);
+			}
+		});
 	});
 	if (checkBoxes.length === 0) {
 		return null;

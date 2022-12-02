@@ -10,27 +10,27 @@ import { includeGameState, scenarioCompletedState } from "../../../../State";
 import { FHClasses } from "../../../../State/Types";
 import { ScenarioCompletedFilter } from "./ScenarioCompletedFilter";
 import { SoloClassFilter } from "./SoloClassFilter";
-import SpoilerFilterItemList from "./SpoilerFilterItemList";
+import SpoilerFilterItemList, { ItemRange } from "./SpoilerFilterItemList";
 
 const scenariosOfImportance = [1];
 
 export const FHSpoilerFilter = () => {
 	const includeGames = useRecoilValue(includeGameState);
-	const includeGloomhavenItems = includeGames.includes(GameType.Gloomhaven);
 	const includeFhSS = includeGames.includes(Expansions.FHSoloScenarios);
 	const scenariosComplete = useRecoilValue(scenarioCompletedState);
 
-	const fhRanges = [];
+	const fhRanges: ItemRange[] = [];
 	if (!scenariosComplete.includes(1)) {
-		fhRanges.push({ start: 1, end: 10 });
+		fhRanges.push({ range: [{ start: 1, end: 10 }] });
 	}
 	// fhRanges.push({ start: 11, end: 164 });
 
 	const ghRanges = [];
-	if (includeGloomhavenItems) {
-		if (!scenariosComplete.includes(1)) {
-			ghRanges.push(...initialGHItemsUnlocked);
-		}
+	if (!scenariosComplete.includes(1)) {
+		ghRanges.push({
+			offset: ghItemOffset,
+			range: [...initialGHItemsUnlocked],
+		});
 	}
 
 	return (
@@ -44,7 +44,7 @@ export const FHSpoilerFilter = () => {
 					<SpoilerFilterItemList
 						ranges={ghRanges}
 						title="Gloomhaven Items"
-						offset={ghItemOffset}
+						filterOn={GameType.Gloomhaven}
 					/>
 				</Form.Field>
 			</Segment>
