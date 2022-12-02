@@ -2,8 +2,8 @@ import React from "react";
 import { Button, Modal, Form, List } from "semantic-ui-react";
 import { useRecoilState } from "recoil";
 import { removingGameState, includeGameState } from "../../../../State";
-import { allFiltersData } from "./GameFilters";
 import { useRemovePlayerUtils } from "../../../../hooks/useRemovePlayer";
+import { gameInfo } from "../../../../games/GameInfo";
 
 export const ConfirmGameRemoval = () => {
 	const { removeClasses, getClassesToRemove, getRemovingItemCount } =
@@ -37,7 +37,7 @@ export const ConfirmGameRemoval = () => {
 		return null;
 	}
 
-	const { title } = allFiltersData[removingGame];
+	const { title } = gameInfo[removingGame];
 
 	return (
 		<Modal size="tiny" open={true} onClose={onClose}>

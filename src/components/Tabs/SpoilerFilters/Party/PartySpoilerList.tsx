@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { gameInfo } from "../../../../games/GameInfo";
 import { AllGames } from "../../../../games/GameType";
 import { isFrosthavenGameAndEnabled } from "../../../../helpers";
 import { useRemovePlayerUtils } from "../../../../hooks/useRemovePlayer";
@@ -10,7 +11,6 @@ import {
 	includeGameState,
 } from "../../../../State";
 import { ClassesInUse } from "../../../../State/Types";
-import { allFiltersData } from "../Games";
 import { ClassList } from "./ClassList";
 type Props = {
 	type: AllGames;
@@ -50,7 +50,7 @@ export const PartySpoilerList = (props: Props) => {
 	if (!isGameIncluded()) {
 		return null;
 	}
-	const { title } = allFiltersData[type];
+	const { title } = gameInfo[type];
 
 	return (
 		<ClassList

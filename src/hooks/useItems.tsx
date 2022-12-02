@@ -2,11 +2,10 @@ import { GloomhavenItem, SortDirection, SortProperty } from "../State/Types";
 import { useRecoilValue } from "recoil";
 import { gameDataState, sortPropertyState, sortDirectionState } from "../State";
 import { useCallback, useEffect, useState } from "react";
-import { Expansions, GameType } from "../games";
-import { AllGames } from "../games/GameType";
 import { useIsItemShown } from "./useIsItemShown";
+import { gameInfo } from "../games/GameInfo";
 
-function compareItems<T>(a: T, b: T) {
+export function compareItems<T>(a: T, b: T) {
 	if (a === b) {
 		return 0;
 	} else {
@@ -25,18 +24,6 @@ const getItemUse = ({ consumed, spent, lost }: GloomhavenItem) => {
 		return "c";
 	}
 	return "d";
-};
-
-const sortOrder: Record<AllGames, number> = {
-	[GameType.Frosthaven]: 1,
-	[Expansions.FHSoloScenarios]: 2,
-	[GameType.Gloomhaven]: 3,
-	[Expansions.GHSoloScenarios]: 4,
-	[Expansions.ForgottenCircles]: 5,
-	[Expansions.CrimsonScales]: 6,
-	[Expansions.CrimsonScalesAddon]: 7,
-	[Expansions.TrailOfAshes]: 8,
-	[GameType.JawsOfTheLion]: 9,
 };
 
 const useItems = (): Array<GloomhavenItem> => {
@@ -69,8 +56,8 @@ const useItems = (): Array<GloomhavenItem> => {
 					break;
 				case SortProperty.Id:
 					value = compareItems(
-						sortOrder[itemA.gameType],
-						sortOrder[itemB.gameType]
+						gameInfo[itemA.gameType].itemsSortOrder,
+						gameInfo[itemB.gameType].itemsSortOrder
 					);
 					if (value === 0) {
 						value = compareItems(itemA.id, itemB.id);

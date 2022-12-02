@@ -1,7 +1,8 @@
 import { getClassIcon } from "../components/Utils";
 import { Helpers } from "../helpers";
 import { GloomhavenItem, GloomhavenItemSlot } from "../State/Types";
-import { AllGames, Expansions, GameType } from "./GameType";
+import { gameInfo } from "./GameInfo";
+import { GameType } from "./GameType";
 
 export type GameData = {
 	gameType: GameType;
@@ -47,67 +48,11 @@ export const getInitialItems = (gameType: GameType) => {
 	return { items, filterSlots, resources };
 };
 
-type FolderData = {
-	folderName: string;
-	prefix: string;
-	leadingZeros: number;
-	vendor?: string;
-};
-
-const gameFolders: Record<AllGames, FolderData> = {
-	[GameType.Gloomhaven]: {
-		folderName: "gloomhaven",
-		prefix: "gh",
-		leadingZeros: 3,
-	},
-	[GameType.JawsOfTheLion]: {
-		folderName: "jaws-of-the-lion",
-		prefix: "jl",
-		leadingZeros: 2,
-	},
-	[GameType.Frosthaven]: {
-		folderName: "frosthaven",
-		prefix: "fh",
-		leadingZeros: 3,
-		vendor: "nerdhaven",
-	},
-	[Expansions.ForgottenCircles]: {
-		folderName: "forgotten-circles",
-		prefix: "fc",
-		leadingZeros: 3,
-	},
-	[Expansions.CrimsonScales]: {
-		folderName: "crimson-scales",
-		prefix: "cs",
-		leadingZeros: 2,
-	},
-	[Expansions.CrimsonScalesAddon]: {
-		folderName: "crimson-scales",
-		prefix: "cs",
-		leadingZeros: 2,
-	},
-	[Expansions.TrailOfAshes]: {
-		folderName: "trail-of-ashes",
-		prefix: "toa",
-		leadingZeros: 2,
-	},
-	[Expansions.GHSoloScenarios]: {
-		folderName: "gloomhaven",
-		prefix: "gh",
-		leadingZeros: 0,
-	},
-	[Expansions.FHSoloScenarios]: {
-		folderName: "frosthaven",
-		prefix: "fh",
-		leadingZeros: 0,
-	},
-};
-
 const getItemFilename = (item: GloomhavenItem, backside?: boolean) => {
 	const { folder, name, gameType, id, displayId, imagePrefix, imageSuffix } =
 		item;
 	const idToUse = displayId || id.toString();
-	const { leadingZeros, prefix } = gameFolders[gameType];
+	const { leadingZeros, prefix } = gameInfo[gameType];
 	const filename = name.toLowerCase().replace(/\s/g, "-").replace(/'/, "");
 	const itemNumber = `${imagePrefix || ""}${(idToUse + "").padStart(
 		leadingZeros,
@@ -121,7 +66,7 @@ const getItemFilename = (item: GloomhavenItem, backside?: boolean) => {
 
 export const getItemPath = (item: GloomhavenItem, backside?: boolean) => {
 	const { gameType } = item;
-	const { folderName, vendor } = gameFolders[gameType];
+	const { folderName, vendor } = gameInfo[gameType];
 	const itemName = getItemFilename(item, backside);
 	return require(`../../${
 		vendor || "worldhaven"

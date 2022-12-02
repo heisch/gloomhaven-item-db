@@ -1,6 +1,7 @@
 import React from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { Form } from "semantic-ui-react";
+import { GameInfo } from "../../../../games/GameInfo";
 import { AllGames } from "../../../../games/GameType";
 import { useRemovePlayerUtils } from "../../../../hooks/useRemovePlayer";
 import {
@@ -8,11 +9,10 @@ import {
 	includeGameState,
 	removingGameState,
 } from "../../../../State";
-import { AllFilterData } from "./GameFilters";
 
 type Props = {
 	allGameType: AllGames;
-} & AllFilterData;
+} & GameInfo;
 
 export const GameFilterCheckbox = (props: Props) => {
 	const { getClassesToRemove, getRemovingItemCount, anyGameItemsOwned } =

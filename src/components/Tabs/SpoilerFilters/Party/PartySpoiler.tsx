@@ -1,10 +1,10 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 import { Form, Popup, Icon, Segment } from "semantic-ui-react";
+import { gameInfo, sortOrder } from "../../../../games/GameInfo";
 import { AllGames } from "../../../../games/GameType";
 import { itemManagementTypeState } from "../../../../State";
 import { ItemManagementType } from "../../../../State/Types";
-import { allFiltersData } from "../Games";
 import PartyManagementFilter from "./PartyManagementFilter";
 import { PartySpoilerList } from "./PartySpoilerList";
 
@@ -35,10 +35,11 @@ export const PartySpoiler = () => {
 							/>
 						</div>
 					</Form.Group>
-					{Object.entries(allFiltersData)
+					{Object.entries(gameInfo)
 						.filter(([, data]) => {
 							return data.addClasses;
 						})
+						.sort(sortOrder)
 						.map(([filter]) => (
 							<PartySpoilerList
 								key={filter}

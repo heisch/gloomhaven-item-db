@@ -2,15 +2,15 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 import { Form, List } from "semantic-ui-react";
 import { GameType } from "../../../../games";
+import { gameInfo, GameInfo, sortOrder } from "../../../../games/GameInfo";
 import { AllGames } from "../../../../games/GameType";
 import { isFrosthavenGameAndEnabled } from "../../../../helpers";
 import { gameTypeState } from "../../../../State";
-import { allFiltersData, HelpData } from ".//GameFilters";
 
 const constructHelpEntry = (
 	title: string,
 	gameType: GameType,
-	{ addClasses, addItemsToGames, soloGameType }: HelpData
+	{ addClasses, addItemsToGames, soloGameType }: GameInfo
 ) => {
 	return (
 		<List.Item key={`${title}-${gameType}`}>
@@ -39,17 +39,19 @@ export const GameHelp = () => {
 				<List.Header>
 					Which Games/Expansions are you playing with?
 				</List.Header>
-				{Object.entries(allFiltersData)
+				{Object.entries(gameInfo)
 					.filter(([gameType]) =>
 						isFrosthavenGameAndEnabled(gameType as AllGames)
 					)
-					.map(([, { title, gamesToFilterOn, ...rest }]) => {
+					.sort(sortOrder)
+					.map(([, info]) => {
+						const { title, gamesToFilterOn } = info;
 						if (
 							!gamesToFilterOn ||
 							(gamesToFilterOn &&
 								!gamesToFilterOn.includes(gameType))
 						)
-							return constructHelpEntry(title, gameType, rest);
+							return constructHelpEntry(title, gameType, info);
 					})}
 			</List>
 		</Form.Group>

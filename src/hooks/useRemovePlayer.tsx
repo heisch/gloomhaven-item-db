@@ -1,6 +1,7 @@
 import { useCallback, useMemo } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { AllGames, Expansions, GameType } from "../games/GameType";
+import { gameInfo } from "../games/GameInfo";
+import { AllGames, GameType } from "../games/GameType";
 import {
 	classesInUseState,
 	specialUnlocksState,
@@ -8,17 +9,7 @@ import {
 	selectedClassState,
 	gameDataState,
 } from "../State";
-import {
-	ClassesInUse,
-	CSAClasses,
-	CSClasses,
-	FCClasses,
-	FHClasses,
-	GHClasses,
-	JOTLClasses,
-	SpecialUnlockTypes,
-	TOAClasses,
-} from "../State/Types";
+import { ClassesInUse, GHClasses, SpecialUnlockTypes } from "../State/Types";
 
 export const useRemovePlayerUtils = () => {
 	const { items } = useRecoilValue(gameDataState);
@@ -117,29 +108,16 @@ export const useRemovePlayerUtils = () => {
 	);
 
 	const getClassesForGame = useCallback(
-		(gameType: AllGames | undefined) => {
+		(gameType: AllGames) => {
+			const classes = gameInfo[gameType].gameClasses();
 			switch (gameType) {
 				case GameType.Gloomhaven:
-					const classes = Object.values(GHClasses);
 					if (!envelopeX) {
 						return classes.filter((c) => c !== GHClasses.XX);
 					}
-					return classes;
-				case GameType.JawsOfTheLion:
-					return Object.values(JOTLClasses);
-				case GameType.Frosthaven:
-					return Object.values(FHClasses);
-				case Expansions.ForgottenCircles:
-					return Object.values(FCClasses);
-				case Expansions.CrimsonScales:
-					return Object.values(CSClasses);
-				case Expansions.CrimsonScalesAddon:
-					return Object.values(CSAClasses);
-				case Expansions.TrailOfAshes:
-					return Object.values(TOAClasses);
-				default:
-					return [];
+					break;
 			}
+			return classes;
 		},
 		[envelopeX]
 	);
