@@ -19,7 +19,7 @@ export type ItemRange = {
 
 type Props = {
 	ranges: ItemRange[];
-	title?: string;
+	title: string;
 	filterOn?: AllGames;
 };
 
@@ -36,9 +36,9 @@ const SpoilerFilterItemList = (props: Props) => {
 		range.forEach((r) => {
 			let first;
 			let last;
-			if (isNumber(range)) {
-				first = range;
-				last = range;
+			if (isNumber(r)) {
+				first = r;
+				last = r;
 			} else {
 				const { start, end } = r as Range;
 				first = start;

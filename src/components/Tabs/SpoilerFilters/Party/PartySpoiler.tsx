@@ -37,7 +37,7 @@ export const PartySpoiler = () => {
 					</Form.Group>
 					{Object.entries(gameInfo)
 						.filter(([, data]) => {
-							return data.addClasses;
+							return data.gameClasses().length > 0;
 						})
 						.sort(sortOrder)
 						.map(([filter]) => (

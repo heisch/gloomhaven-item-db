@@ -12,8 +12,7 @@ import {
 import { AllGames, Expansions, GameType } from "./GameType";
 
 export interface GameInfo {
-	soloGameType?: string;
-	addClasses?: boolean;
+	soloGameTitle?: string;
 	addItemsToGames?: GameType[];
 	gamesToFilterOn?: GameType[];
 	title: string;
@@ -24,6 +23,7 @@ export interface GameInfo {
 	itemsSortOrder: number;
 	gameClasses: () => ClassesInUse[];
 	filterSortOrder: number;
+	soloGameType?: GameType;
 }
 
 export const gameInfo: Record<AllGames, GameInfo> = {
@@ -33,7 +33,6 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		leadingZeros: 3,
 		gamesToFilterOn: [GameType.Gloomhaven],
 		title: "Gloomhaven",
-		addClasses: true,
 		addItemsToGames: [GameType.Frosthaven],
 		itemsSortOrder: 3,
 		gameClasses: () => Object.values(GHClasses),
@@ -45,7 +44,6 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		leadingZeros: 2,
 		gamesToFilterOn: [GameType.JawsOfTheLion],
 		title: "Jaws of the Lion",
-		addClasses: true,
 		itemsSortOrder: 9,
 		gameClasses: () => Object.values(JOTLClasses),
 		filterSortOrder: 8,
@@ -57,7 +55,6 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		vendor: "nerdhaven",
 		gamesToFilterOn: [GameType.Frosthaven],
 		title: "Frosthaven",
-		addClasses: true,
 		itemsSortOrder: 1,
 		gameClasses: () => Object.values(FHClasses),
 		filterSortOrder: 9,
@@ -67,7 +64,6 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		prefix: "fc",
 		leadingZeros: 3,
 		title: "Forgotten Circles",
-		addClasses: true,
 		addItemsToGames: [GameType.Gloomhaven],
 		itemsSortOrder: 5,
 		gameClasses: () => Object.values(FCClasses),
@@ -78,7 +74,6 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		prefix: "cs",
 		leadingZeros: 2,
 		title: "Crimson Scales",
-		addClasses: true,
 		addItemsToGames: [GameType.Gloomhaven],
 		itemsSortOrder: 6,
 		gameClasses: () => Object.values(CSClasses),
@@ -89,7 +84,6 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		prefix: "cs",
 		leadingZeros: 2,
 		title: "Crimson Scales Addon",
-		addClasses: true,
 		addItemsToGames: [GameType.Gloomhaven],
 		itemsSortOrder: 7,
 		gameClasses: () => Object.values(CSAClasses),
@@ -100,7 +94,6 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		prefix: "toa",
 		leadingZeros: 2,
 		title: "Trail of Ashes",
-		addClasses: true,
 		addItemsToGames: [GameType.Gloomhaven],
 		itemsSortOrder: 8,
 		gameClasses: () => Object.values(TOAClasses),
@@ -112,10 +105,11 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		leadingZeros: 0,
 		gamesToFilterOn: [GameType.JawsOfTheLion, GameType.Frosthaven],
 		title: "Solo Scenarios",
-		soloGameType: "Gloomhaven",
+		soloGameTitle: "Gloomhaven",
 		itemsSortOrder: 4,
 		gameClasses: () => [],
 		filterSortOrder: 2,
+		soloGameType: GameType.Gloomhaven,
 	},
 	[Expansions.FHSoloScenarios]: {
 		folderName: "frosthaven",
@@ -123,10 +117,11 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		leadingZeros: 0,
 		gamesToFilterOn: [GameType.Gloomhaven, GameType.JawsOfTheLion],
 		title: "Solo Scenarios",
-		soloGameType: "Frosthaven",
+		soloGameTitle: "Frosthaven",
 		itemsSortOrder: 2,
 		gameClasses: () => [],
 		filterSortOrder: 1,
+		soloGameType: GameType.Frosthaven,
 	},
 };
 

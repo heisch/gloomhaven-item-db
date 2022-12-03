@@ -10,13 +10,13 @@ import { gameTypeState } from "../../../../State";
 const constructHelpEntry = (
 	title: string,
 	gameType: GameType,
-	{ addClasses, addItemsToGames, soloGameType }: GameInfo
+	{ addItemsToGames, soloGameTitle: soloGameType, gameClasses }: GameInfo
 ) => {
 	return (
 		<List.Item key={`${title}-${gameType}`}>
 			<strong>{title}</strong>
 			<List.List>
-				{addClasses && (
+				{gameClasses().length && (
 					<List.Item>Add classes to party management</List.Item>
 				)}
 				{addItemsToGames && addItemsToGames.includes(gameType) && (

@@ -1,31 +1,24 @@
 import React from "react";
-import { Form, Segment } from "semantic-ui-react";
+import { Segment } from "semantic-ui-react";
 import SpoilerFilterItemList from "./SpoilerFilterItemList";
 import { useRecoilValue } from "recoil";
-import {
-	includeGameState,
-	prosperityState,
-	SpecialUnlockTypes,
-} from "../../../../State";
-import { SoloClassFilter } from "./SoloClassFilter";
-import { Expansions, GameType } from "../../../../games/GameType";
-import { useRemovePlayerUtils } from "../../../../hooks/useRemovePlayer";
+import { prosperityState, SpecialUnlockTypes } from "../../../../State";
+import { AllGames, Expansions } from "../../../../games/GameType";
 import { ReputationPulldown } from "./ReputationPulldown";
 import { ProsperityFilter } from "./ProsperityFilter";
 import { SpecialUnlocksButton } from "../Common/SpecialUnlockButton";
+import { SoloClassFilterBlock } from "./SoloClassFilterBlock";
+
+const soloClassesToInclude: AllGames[] = [
+	Expansions.GHSoloScenarios,
+	Expansions.ForgottenCircles,
+	Expansions.CrimsonScales,
+	Expansions.CrimsonScalesAddon,
+	Expansions.TrailOfAshes,
+];
 
 export const GHSpoilerFilter = () => {
-	const { getClassesForGame } = useRemovePlayerUtils();
-	const includeGames = useRecoilValue(includeGameState);
 	const prosperity = useRecoilValue(prosperityState);
-	const includeFC = includeGames.includes(Expansions.ForgottenCircles);
-	const includeCS = includeGames.includes(Expansions.CrimsonScales);
-	const includeCSA = includeGames.includes(Expansions.CrimsonScalesAddon);
-	const includeGHSS = includeGames.includes(Expansions.GHSoloScenarios);
-	const ghClasses = getClassesForGame(GameType.Gloomhaven);
-	const fcClasses = getClassesForGame(Expansions.ForgottenCircles);
-	const csClasses = getClassesForGame(Expansions.CrimsonScales);
-	const csaClasses = getClassesForGame(Expansions.CrimsonScalesAddon);
 
 	return (
 		<Segment>
@@ -102,37 +95,7 @@ export const GHSpoilerFilter = () => {
 				/>
 			</Segment>
 
-			{(includeGHSS || includeFC || includeCS || includeCSA) && (
-				<Segment>
-					<Form.Group inline>
-						<label>Solo Class Items:</label>
-					</Form.Group>
-					{includeGHSS && (
-						<SoloClassFilter
-							name="Gloomhaven"
-							classes={ghClasses}
-						/>
-					)}
-					{includeFC && (
-						<SoloClassFilter
-							name="Forgotten Circles"
-							classes={fcClasses}
-						/>
-					)}
-					{includeCS && (
-						<SoloClassFilter
-							name="Crimson Scales"
-							classes={csClasses}
-						/>
-					)}
-					{includeCSA && (
-						<SoloClassFilter
-							name="Crimson Scales Addon"
-							classes={csaClasses}
-						/>
-					)}
-				</Segment>
-			)}
+			<SoloClassFilterBlock gameTypes={soloClassesToInclude} />
 		</Segment>
 	);
 };

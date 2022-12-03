@@ -1,18 +1,27 @@
 import React from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { Form } from "semantic-ui-react";
-import { soloClassState } from "../../../../State";
+import { gameInfo } from "../../../../games/GameInfo";
+import { AllGames } from "../../../../games/GameType";
+import { useRemovePlayerUtils } from "../../../../hooks/useRemovePlayer";
+import { includeGameState, soloClassState } from "../../../../State";
 import { ClassesInUse } from "../../../../State/Types";
 import { ClassList } from "../Party/ClassList";
 
 type Props = {
-	classes: ClassesInUse[];
-	name: string;
+	gameType: AllGames;
 };
 
 export const SoloClassFilter = (props: Props) => {
-	const { classes, name } = props;
+	const { gameType } = props;
+	const { soloGameType, soloGameTitle, title } = gameInfo[gameType];
 	const [soloClass, setSoloClass] = useRecoilState(soloClassState);
+	const { getClassesForGame } = useRemovePlayerUtils();
+	const includeGames = useRecoilValue(includeGameState);
+	if (!includeGames.includes(gameType)) {
+		return null;
+	}
+	const classes = getClassesForGame(soloGameType || gameType);
 
 	const toggleClassFilter = (key: ClassesInUse) => {
 		const value = Object.assign([], soloClass);
@@ -30,7 +39,7 @@ export const SoloClassFilter = (props: Props) => {
 					isUsed={(className: ClassesInUse) =>
 						soloClass.includes(className)
 					}
-					label={`${name}:`}
+					label={soloGameTitle || title}
 					classes={classes}
 					onClick={toggleClassFilter}
 				/>

@@ -5,18 +5,17 @@ import {
 	ghItemOffset,
 	initialGHItemsUnlocked,
 } from "../../../../games/fh/FHGameData";
-import { GameType, Expansions } from "../../../../games/GameType";
-import { includeGameState, scenarioCompletedState } from "../../../../State";
-import { FHClasses } from "../../../../State/Types";
+import { GameType, Expansions, AllGames } from "../../../../games/GameType";
+import { scenarioCompletedState } from "../../../../State";
 import { ScenarioCompletedFilter } from "./ScenarioCompletedFilter";
-import { SoloClassFilter } from "./SoloClassFilter";
+import { SoloClassFilterBlock } from "./SoloClassFilterBlock";
 import SpoilerFilterItemList, { ItemRange } from "./SpoilerFilterItemList";
 
 const scenariosOfImportance = [1];
 
+const soloClassesToInclude: AllGames[] = [Expansions.FHSoloScenarios];
+
 export const FHSpoilerFilter = () => {
-	const includeGames = useRecoilValue(includeGameState);
-	const includeFhSS = includeGames.includes(Expansions.FHSoloScenarios);
 	const scenariosComplete = useRecoilValue(scenarioCompletedState);
 
 	const fhRanges: ItemRange[] = [];
@@ -32,7 +31,6 @@ export const FHSpoilerFilter = () => {
 			range: [...initialGHItemsUnlocked],
 		});
 	}
-
 	return (
 		<Segment>
 			<ScenarioCompletedFilter scenarios={scenariosOfImportance} />
@@ -48,18 +46,7 @@ export const FHSpoilerFilter = () => {
 					/>
 				</Form.Field>
 			</Segment>
-			{includeFhSS && (
-				<Segment>
-					<Form.Group inline>
-						<label>Solo Class Items:</label>
-					</Form.Group>
-
-					<SoloClassFilter
-						name="Frosthaven"
-						classes={Object.values(FHClasses)}
-					/>
-				</Segment>
-			)}
+			<SoloClassFilterBlock gameTypes={soloClassesToInclude} />
 		</Segment>
 	);
 };
