@@ -25,7 +25,10 @@ export const SoloClassFilterBlock = (props: Props) => {
 				<label>Solo Class Items:</label>
 			</Form.Group>
 			{includeList.map((gameType) => (
-				<SoloClassFilter gameType={gameType} />
+				<SoloClassFilter
+					key={`solo-class-filter-${gameType}`}
+					gameType={gameType}
+				/>
 			))}
 		</Segment>
 	);

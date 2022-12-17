@@ -93,6 +93,21 @@ export const GHSpoilerFilter = () => {
 					title="Crimson Scales Add on Items"
 					filterOn={Expansions.CrimsonScalesAddon}
 				/>
+				<SpoilerFilterItemList
+					ranges={[
+						{
+							offset: 180,
+							range: [
+								{ start: 101, end: 118 },
+								{ start: 122 },
+								{ start: 124, end: 127 },
+								{ start: 129, end: 130 },
+							],
+						},
+					]}
+					title="Trail of Ashes Items"
+					filterOn={Expansions.TrailOfAshes}
+				/>
 			</Segment>
 
 			<SoloClassFilterBlock gameTypes={soloClassesToInclude} />

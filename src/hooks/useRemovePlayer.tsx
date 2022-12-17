@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { gameInfo } from "../games/GameInfo";
-import { AllGames, GameType } from "../games/GameType";
+import { AllGames, Expansions, GameType } from "../games/GameType";
 import {
 	classesInUseState,
 	specialUnlocksState,
@@ -9,7 +9,12 @@ import {
 	selectedClassState,
 	gameDataState,
 } from "../State";
-import { ClassesInUse, GHClasses, SpecialUnlockTypes } from "../State/Types";
+import {
+	ClassesInUse,
+	GHClasses,
+	SpecialUnlockTypes,
+	TOAClasses,
+} from "../State/Types";
 
 export const useRemovePlayerUtils = () => {
 	const { items } = useRecoilValue(gameDataState);
@@ -19,6 +24,7 @@ export const useRemovePlayerUtils = () => {
 	const [itemsOwnedBy, setItemsOwnedBy] = useRecoilState(itemsOwnedByState);
 	const specialUnlocks = useRecoilValue(specialUnlocksState);
 	const envelopeX = specialUnlocks.includes(SpecialUnlockTypes.EnvelopeX);
+	const envelopeV = specialUnlocks.includes(SpecialUnlockTypes.EnvelopeV);
 
 	const itemsOwnedByClass = useCallback(
 		(owner: ClassesInUse | undefined) => {
@@ -109,17 +115,22 @@ export const useRemovePlayerUtils = () => {
 
 	const getClassesForGame = useCallback(
 		(gameType: AllGames) => {
-			const classes = gameInfo[gameType].gameClasses();
+			let classes = gameInfo[gameType].gameClasses();
 			switch (gameType) {
 				case GameType.Gloomhaven:
 					if (!envelopeX) {
-						return classes.filter((c) => c !== GHClasses.XX);
+						classes = classes.filter((c) => c !== GHClasses.XX);
+					}
+					break;
+				case Expansions.TrailOfAshes:
+					if (!envelopeV) {
+						classes = classes.filter((c) => c !== TOAClasses.TOA6);
 					}
 					break;
 			}
 			return classes;
 		},
-		[envelopeX]
+		[envelopeX, envelopeV]
 	);
 
 	const getClassesToRemove = useCallback(

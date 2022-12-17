@@ -112,6 +112,7 @@ export enum TOAClasses {
 export enum SpecialUnlockTypes {
 	EnvelopeX = "envelopeX",
 	EnvelopeE = "envelopeE",
+	EnvelopeV = "envelopeV",
 }
 
 export type SoloClasses = GHClasses | FCClasses | FHClasses | CSClasses;
@@ -151,6 +152,7 @@ export interface Summon {
 	move: number;
 	attack: number;
 	range: number;
+	desc?: string;
 }
 
 interface Resources {

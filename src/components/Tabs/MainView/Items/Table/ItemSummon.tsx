@@ -8,7 +8,7 @@ type Props = {
 
 export const ItemSummon = (props: Props) => {
 	const {
-		summon: { hp, move, attack, range },
+		summon: { hp, move, attack, range, desc },
 	} = props;
 	return (
 		<div className={"item-summon"}>
@@ -24,6 +24,13 @@ export const ItemSummon = (props: Props) => {
 			<div>
 				<GHIcon name={"range.png"} />: {range || "-"}
 			</div>
+			{desc && (
+				<span
+					dangerouslySetInnerHTML={{
+						__html: `${desc}<br/>`,
+					}}
+				/>
+			)}
 		</div>
 	);
 };

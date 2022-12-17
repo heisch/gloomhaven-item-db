@@ -1,11 +1,16 @@
 import React from "react";
 import { Form } from "semantic-ui-react";
 import { ToggleAllButton, GameFilter } from "./Items";
-import { PartySpoiler, ConfirmEnvelopeX, ConfirmClassDelete } from "./Party";
+import {
+	PartySpoiler,
+	ConfirmEnvelopeX,
+	ConfirmEnvelopeV,
+	ConfirmClassDelete,
+} from "./Party";
 import { GameFilters, ConfirmGameRemoval } from "./Games";
 import { ConfirmEnvelopeE } from "./Items";
 import { SpecialUnlocksButton } from "./Common/SpecialUnlockButton";
-import { GameType } from "../../../games";
+import { Expansions, GameType } from "../../../games";
 import { SpecialUnlockTypes } from "../../../State";
 
 const SpoilerFilters = () => {
@@ -19,10 +24,16 @@ const SpoilerFilters = () => {
 				specialUnlockType={SpecialUnlockTypes.EnvelopeX}
 				text="Envelope X"
 			/>
+			<SpecialUnlocksButton
+				gameType={Expansions.TrailOfAshes}
+				specialUnlockType={SpecialUnlockTypes.EnvelopeV}
+				text="Envelope V"
+			/>
 			<GameFilter />
 			<ConfirmGameRemoval />
 			<ConfirmClassDelete />
 			<ConfirmEnvelopeX />
+			<ConfirmEnvelopeV />
 			<ConfirmEnvelopeE />
 		</Form>
 	);
