@@ -1,40 +1,20 @@
 import React from "react";
 import { Form } from "semantic-ui-react";
 import { ToggleAllButton, GameFilter } from "./Items";
-import {
-	PartySpoiler,
-	ConfirmEnvelopeX,
-	ConfirmEnvelopeV,
-	ConfirmClassDelete,
-} from "./Party";
+import { PartySpoiler, ConfirmClassDelete } from "./Party";
 import { GameFilters, ConfirmGameRemoval } from "./Games";
-import { ConfirmEnvelopeE } from "./Items";
-import { SpecialUnlocksButton } from "./Common/SpecialUnlockButton";
-import { Expansions, GameType } from "../../../games";
-import { SpecialUnlockTypes } from "../../../State";
+import { Secrets } from "./Secrets/Secrets";
 
 const SpoilerFilters = () => {
 	return (
 		<Form>
 			<ToggleAllButton />
 			<GameFilters />
+			<Secrets />
 			<PartySpoiler />
-			<SpecialUnlocksButton
-				gameType={GameType.Gloomhaven}
-				specialUnlockType={SpecialUnlockTypes.EnvelopeX}
-				text="Envelope X"
-			/>
-			<SpecialUnlocksButton
-				gameType={Expansions.TrailOfAshes}
-				specialUnlockType={SpecialUnlockTypes.EnvelopeV}
-				text="Envelope V"
-			/>
 			<GameFilter />
 			<ConfirmGameRemoval />
 			<ConfirmClassDelete />
-			<ConfirmEnvelopeX />
-			<ConfirmEnvelopeV />
-			<ConfirmEnvelopeE />
 		</Form>
 	);
 };

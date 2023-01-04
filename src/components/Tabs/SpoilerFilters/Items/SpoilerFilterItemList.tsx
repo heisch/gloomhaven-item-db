@@ -47,7 +47,7 @@ const SpoilerFilterItemList = (props: Props) => {
 			for (let i = first; i <= last; i++) {
 				checkBoxes.push(
 					<FilterCheckbox
-						key={`filter${i}`}
+						key={`filter${i + (offset || 0)}`}
 						id={i}
 						offset={offset}
 						prefix={prefix}

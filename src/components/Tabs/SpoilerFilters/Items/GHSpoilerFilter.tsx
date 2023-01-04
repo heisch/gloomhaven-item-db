@@ -24,11 +24,6 @@ export const GHSpoilerFilter = () => {
 		<Segment>
 			<ReputationPulldown />
 			<ProsperityFilter />
-			<SpecialUnlocksButton
-				gameType={Expansions.ForgottenCircles}
-				specialUnlockType={SpecialUnlockTypes.EnvelopeE}
-				text="Envelope E"
-			/>
 			<Segment>
 				<SpoilerFilterItemList
 					ranges={[
