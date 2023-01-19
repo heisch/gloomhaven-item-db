@@ -2,6 +2,7 @@ import React from "react";
 import { useRecoilState } from "recoil";
 import { DropdownProps, Form } from "semantic-ui-react";
 import { gameDataTypes, GameType } from "../games";
+import { gameInfo } from "../games/GameInfo";
 import { isFrosthavenGameAndEnabled } from "../helpers";
 import { gameTypeState } from "../State";
 
@@ -12,7 +13,8 @@ export const GameSelector = () => {
 	Object.values(gameDataTypes)
 		.filter((gameData) => isFrosthavenGameAndEnabled(gameData.gameType))
 		.forEach((gameData) => {
-			const { gameName: text, gameType: value } = gameData;
+			const { gameType: value } = gameData;
+			const text = gameInfo[value].title;
 			options.push({ text, value });
 		});
 

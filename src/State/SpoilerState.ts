@@ -5,6 +5,7 @@ import {
 	ClassesInUse,
 	FCClasses,
 	GHClasses,
+	ImportedSet,
 	ItemManagementType,
 	ItemsInUse,
 	ItemsOwnedBy,
@@ -71,6 +72,11 @@ export const scenarioCompletedState = createSpoilerState<number[]>(
 	"scenarioCompleted",
 	[]
 );
+export const importedSetState = createSpoilerState<ImportedSet[]>(
+	"importedSet",
+	[]
+);
+
 export const soloClassState = createSpoilerState<ClassesInUse[]>(
 	"soloClass",
 	[]

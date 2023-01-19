@@ -5,6 +5,13 @@ export type ItemsOwnedBy = Record<string, ClassesInUse[]>;
 
 export type ItemsInUse = Record<number, number>;
 
+export enum ImportedSet {
+	GloomhavenA,
+	GloomhavenB,
+	GloomhavenC,
+	ForgottenCirclesA,
+}
+
 export enum SortDirection {
 	ascending = "ascending",
 	descending = "descending",

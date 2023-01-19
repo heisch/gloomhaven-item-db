@@ -6,7 +6,6 @@ import { GameType } from "./GameType";
 
 export type GameData = {
 	gameType: GameType;
-	gameName: string;
 	items: GloomhavenItem[];
 	filterSlots: GloomhavenItemSlot[];
 	resources?: string[];
