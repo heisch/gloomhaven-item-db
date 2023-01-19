@@ -23,6 +23,10 @@ export const ScenarioCompletedFilter = (props: Props) => {
 		setScenarioComplete(value);
 	};
 
+	if (scenarios.length === 0) {
+		return null;
+	}
+
 	return (
 		<Form.Group inline className={"inline-break"}>
 			<label>Scenarios Completed:</label>

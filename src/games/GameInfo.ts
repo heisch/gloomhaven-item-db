@@ -64,7 +64,7 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		prefix: "fc",
 		leadingZeros: 3,
 		title: "Forgotten Circles",
-		addItemsToGames: [GameType.Gloomhaven],
+		addItemsToGames: [GameType.Gloomhaven, GameType.Frosthaven],
 		itemsSortOrder: 5,
 		gameClasses: () => Object.values(FCClasses),
 		filterSortOrder: 4,
