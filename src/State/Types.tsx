@@ -69,12 +69,12 @@ export enum JOTLClasses {
 }
 
 export enum FHClasses {
-	BB = "BB",
-	BN = "BN",
-	BO = "BO",
-	DF = "DF",
-	DW = "DW",
-	GE = "GE",
+	BB = "FH1",
+	BN = "FH2",
+	BO = "FH3",
+	DF = "FH4",
+	DW = "FH5",
+	GE = "FH6",
 	FH7 = "FH7",
 	FH8 = "FH8",
 	FH9 = "FH9",

@@ -2741,7 +2741,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "248-264"
+		"folder": "248-264",
+		"soloItem": "FH4"
 	},
 	{
 		"id": 249,
@@ -2752,7 +2753,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "248-264"
+		"folder": "248-264",
+		"soloItem": "FH1"
 	},
 	{
 		"id": 250,
@@ -2763,7 +2765,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "248-264"
+		"folder": "248-264",
+		"soloItem": "FH2"
 	},
 	{
 		"id": 251,
@@ -2774,7 +2777,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "248-264"
+		"folder": "248-264",
+		"soloItem": "FH5"
 	},
 	{
 		"id": 252,
@@ -2785,7 +2789,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "248-264"
+		"folder": "248-264",
+		"soloItem": "FH3"
 	},
 	{
 		"id": 253,
@@ -2796,7 +2801,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "248-264"
+		"folder": "248-264",
+		"soloItem": "FH6"
 	},
 	{
 		"id": 254,
@@ -2807,7 +2813,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "248-264"
+		"folder": "248-264",
+		"soloItem": "FH17"
 	},
 	{
 		"id": 255,
@@ -2818,7 +2825,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "248-264"
+		"folder": "248-264",
+		"soloItem": "FH14"
 	},
 	{
 		"id": 256,
@@ -2829,7 +2837,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "248-264"
+		"folder": "248-264",
+		"soloItem": "FH15"
 	},
 	{
 		"id": 257,
@@ -2840,7 +2849,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "248-264"
+		"folder": "248-264",
+		"soloItem": "FH11"
 	},
 	{
 		"id": 258,
@@ -2851,7 +2861,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "248-264"
+		"folder": "248-264",
+		"soloItem": "FH12"
 	},
 	{
 		"id": 259,
@@ -2862,7 +2873,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "248-264"
+		"folder": "248-264",
+		"soloItem": "FH13"
 	},
 	{
 		"id": 260,
@@ -2873,7 +2885,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "248-264"
+		"folder": "248-264",
+		"soloItem": "FH8"
 	},
 	{
 		"id": 261,
@@ -2884,7 +2897,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "248-264"
+		"folder": "248-264",
+		"soloItem": "FH10"
 	},
 	{
 		"id": 262,
@@ -2895,7 +2909,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "248-264"
+		"folder": "248-264",
+		"soloItem": "FH16"
 	},
 	{
 		"id": 263,
@@ -2906,7 +2921,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "248-264"
+		"folder": "248-264",
+		"soloItem": "FH9"
 	},
 	{
 		"id": 264,
@@ -2917,6 +2933,7 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "248-264"
+		"folder": "248-264",
+		"soloItem": "FH7"
 	}
 ]
