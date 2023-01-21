@@ -19,7 +19,6 @@ export interface GameInfo {
 	folderName: string;
 	prefix: string;
 	leadingZeros: number;
-	vendor?: string;
 	itemsSortOrder: number;
 	gameClasses: () => ClassesInUse[];
 	filterSortOrder: number;
@@ -52,7 +51,6 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		folderName: "frosthaven",
 		prefix: "fh",
 		leadingZeros: 3,
-		vendor: "nerdhaven",
 		gamesToFilterOn: [GameType.Frosthaven],
 		title: "Frosthaven",
 		itemsSortOrder: 1,
