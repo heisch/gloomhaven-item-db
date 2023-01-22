@@ -20,7 +20,6 @@ dirs.forEach((dir) => {
 					idStr.endsWith("c") ||
 					idStr.endsWith("d")
 				) {
-					console.log(`ignoring ${idStr}`);
 					return null;
 				}
 				const count = idStr.endsWith("a") ? 2 : 1;
