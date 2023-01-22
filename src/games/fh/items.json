@@ -8,7 +8,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "001-010"
+		"folder": "001-010",
+		"unlockCrafstmanLevel": 1
 	},
 	{
 		"id": 2,
@@ -19,7 +20,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "001-010"
+		"folder": "001-010",
+		"unlockCrafstmanLevel": 1
 	},
 	{
 		"id": 3,
@@ -30,7 +32,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "001-010"
+		"folder": "001-010",
+		"unlockCrafstmanLevel": 1
 	},
 	{
 		"id": 4,
@@ -41,7 +44,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "001-010"
+		"folder": "001-010",
+		"unlockCrafstmanLevel": 1
 	},
 	{
 		"id": 5,
@@ -52,7 +56,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "001-010"
+		"folder": "001-010",
+		"unlockCrafstmanLevel": 1
 	},
 	{
 		"id": 6,
@@ -63,7 +68,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "001-010"
+		"folder": "001-010",
+		"unlockCrafstmanLevel": 1
 	},
 	{
 		"id": 7,
@@ -74,7 +80,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "001-010"
+		"folder": "001-010",
+		"unlockCrafstmanLevel": 1
 	},
 	{
 		"id": 8,
@@ -85,7 +92,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "001-010"
+		"folder": "001-010",
+		"unlockCrafstmanLevel": 1
 	},
 	{
 		"id": 9,
@@ -96,7 +104,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "001-010"
+		"folder": "001-010",
+		"unlockCrafstmanLevel": 1
 	},
 	{
 		"id": 10,
@@ -107,7 +116,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "001-010"
+		"folder": "001-010",
+		"unlockCrafstmanLevel": 1
 	},
 	{
 		"id": 11,
@@ -118,7 +128,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "011-015"
+		"folder": "011-015",
+		"unlockCrafstmanLevel": 2
 	},
 	{
 		"id": 12,
@@ -129,7 +140,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "011-015"
+		"folder": "011-015",
+		"unlockCrafstmanLevel": 2
 	},
 	{
 		"id": 13,
@@ -140,7 +152,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "011-015"
+		"folder": "011-015",
+		"unlockCrafstmanLevel": 2
 	},
 	{
 		"id": 14,
@@ -151,7 +164,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "011-015"
+		"folder": "011-015",
+		"unlockCrafstmanLevel": 2
 	},
 	{
 		"id": 15,
@@ -162,7 +176,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "011-015"
+		"folder": "011-015",
+		"unlockCrafstmanLevel": 2
 	},
 	{
 		"id": 16,
@@ -173,7 +188,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "016-020"
+		"folder": "016-020",
+		"unlockCrafstmanLevel": 3
 	},
 	{
 		"id": 17,
@@ -184,7 +200,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "016-020"
+		"folder": "016-020",
+		"unlockCrafstmanLevel": 3
 	},
 	{
 		"id": 18,
@@ -195,7 +212,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "016-020"
+		"folder": "016-020",
+		"unlockCrafstmanLevel": 3
 	},
 	{
 		"id": 19,
@@ -206,7 +224,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "016-020"
+		"folder": "016-020",
+		"unlockCrafstmanLevel": 3
 	},
 	{
 		"id": 20,
@@ -217,7 +236,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "016-020"
+		"folder": "016-020",
+		"unlockCrafstmanLevel": 3
 	},
 	{
 		"id": 21,
@@ -228,7 +248,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "021-025"
+		"folder": "021-025",
+		"unlockCrafstmanLevel": 4
 	},
 	{
 		"id": 22,
@@ -239,7 +260,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "021-025"
+		"folder": "021-025",
+		"unlockCrafstmanLevel": 4
 	},
 	{
 		"id": 23,
@@ -250,7 +272,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "021-025"
+		"folder": "021-025",
+		"unlockCrafstmanLevel": 4
 	},
 	{
 		"id": 24,
@@ -261,7 +284,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "021-025"
+		"folder": "021-025",
+		"unlockCrafstmanLevel": 4
 	},
 	{
 		"id": 25,
@@ -272,7 +296,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "021-025"
+		"folder": "021-025",
+		"unlockCrafstmanLevel": 4
 	},
 	{
 		"id": 26,
@@ -283,7 +308,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "026-030"
+		"folder": "026-030",
+		"unlockCrafstmanLevel": 5
 	},
 	{
 		"id": 27,
@@ -294,7 +320,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "026-030"
+		"folder": "026-030",
+		"unlockCrafstmanLevel": 5
 	},
 	{
 		"id": 28,
@@ -305,7 +332,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "026-030"
+		"folder": "026-030",
+		"unlockCrafstmanLevel": 5
 	},
 	{
 		"id": 29,
@@ -316,7 +344,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "026-030"
+		"folder": "026-030",
+		"unlockCrafstmanLevel": 5
 	},
 	{
 		"id": 30,
@@ -327,7 +356,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "026-030"
+		"folder": "026-030",
+		"unlockCrafstmanLevel": 5
 	},
 	{
 		"id": 31,
@@ -338,7 +368,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "031-035"
+		"folder": "031-035",
+		"unlockCrafstmanLevel": 6
 	},
 	{
 		"id": 32,
@@ -349,7 +380,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "031-035"
+		"folder": "031-035",
+		"unlockCrafstmanLevel": 6
 	},
 	{
 		"id": 33,
@@ -360,7 +392,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "031-035"
+		"folder": "031-035",
+		"unlockCrafstmanLevel": 6
 	},
 	{
 		"id": 34,
@@ -371,7 +404,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "031-035"
+		"folder": "031-035",
+		"unlockCrafstmanLevel": 6
 	},
 	{
 		"id": 35,
@@ -382,7 +416,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "031-035"
+		"folder": "031-035",
+		"unlockCrafstmanLevel": 6
 	},
 	{
 		"id": 36,
@@ -393,7 +428,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "036-040"
+		"folder": "036-040",
+		"unlockCrafstmanLevel": 7
 	},
 	{
 		"id": 37,
@@ -404,7 +440,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "036-040"
+		"folder": "036-040",
+		"unlockCrafstmanLevel": 7
 	},
 	{
 		"id": 38,
@@ -415,7 +452,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "036-040"
+		"folder": "036-040",
+		"unlockCrafstmanLevel": 7
 	},
 	{
 		"id": 39,
@@ -426,7 +464,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "036-040"
+		"folder": "036-040",
+		"unlockCrafstmanLevel": 7
 	},
 	{
 		"id": 40,
@@ -437,7 +476,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "036-040"
+		"folder": "036-040",
+		"unlockCrafstmanLevel": 7
 	},
 	{
 		"id": 41,
@@ -448,7 +488,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "041-045"
+		"folder": "041-045",
+		"unlockCrafstmanLevel": 8
 	},
 	{
 		"id": 42,
@@ -459,7 +500,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "041-045"
+		"folder": "041-045",
+		"unlockCrafstmanLevel": 8
 	},
 	{
 		"id": 43,
@@ -470,7 +512,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "041-045"
+		"folder": "041-045",
+		"unlockCrafstmanLevel": 8
 	},
 	{
 		"id": 44,
@@ -481,7 +524,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "041-045"
+		"folder": "041-045",
+		"unlockCrafstmanLevel": 8
 	},
 	{
 		"id": 45,
@@ -492,7 +536,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "041-045"
+		"folder": "041-045",
+		"unlockCrafstmanLevel": 8
 	},
 	{
 		"id": 46,
@@ -503,7 +548,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "046-050"
+		"folder": "046-050",
+		"unlockCrafstmanLevel": 9
 	},
 	{
 		"id": 47,
@@ -514,7 +560,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "046-050"
+		"folder": "046-050",
+		"unlockCrafstmanLevel": 9
 	},
 	{
 		"id": 48,
@@ -525,7 +572,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "046-050"
+		"folder": "046-050",
+		"unlockCrafstmanLevel": 9
 	},
 	{
 		"id": 49,
@@ -536,7 +584,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "046-050"
+		"folder": "046-050",
+		"unlockCrafstmanLevel": 9
 	},
 	{
 		"id": 50,
@@ -547,7 +596,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "046-050"
+		"folder": "046-050",
+		"unlockCrafstmanLevel": 9
 	},
 	{
 		"id": 51,
@@ -1332,7 +1382,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "120-128"
+		"folder": "120-128",
+		"alwaysShown": true
 	},
 	{
 		"id": 121,
@@ -1343,7 +1394,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "120-128"
+		"folder": "120-128",
+		"alwaysShown": true
 	},
 	{
 		"id": 122,
@@ -1354,7 +1406,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "120-128"
+		"folder": "120-128",
+		"alwaysShown": true
 	},
 	{
 		"id": 123,
@@ -1365,7 +1418,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "120-128"
+		"folder": "120-128",
+		"alwaysShown": true
 	},
 	{
 		"id": 124,
@@ -1376,7 +1430,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "120-128"
+		"folder": "120-128",
+		"alwaysShown": true
 	},
 	{
 		"id": 125,
@@ -1387,7 +1442,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "120-128"
+		"folder": "120-128",
+		"alwaysShown": true
 	},
 	{
 		"id": 126,
@@ -1398,7 +1454,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "120-128"
+		"folder": "120-128",
+		"alwaysShown": true
 	},
 	{
 		"id": 127,
@@ -1409,7 +1466,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "120-128"
+		"folder": "120-128",
+		"alwaysShown": true
 	},
 	{
 		"id": 128,
@@ -1420,7 +1478,8 @@
 		"slot": "head",
 		"source": "unknown",
 		"desc": "",
-		"folder": "120-128"
+		"folder": "120-128",
+		"alwaysShown": true
 	},
 	{
 		"id": 129,

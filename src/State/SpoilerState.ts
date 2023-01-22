@@ -153,3 +153,8 @@ export const lockSpoilerPanelState = atom({
 	key: "lock-spoiler-panel-state",
 	default: localStorage.getItem("lockSpoilerPanel") === "true",
 });
+
+export const craftsmanBuildingLevelState = createSpoilerState<number>(
+	"craftsmanBuildingLevel",
+	1
+);

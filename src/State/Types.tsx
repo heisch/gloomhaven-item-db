@@ -205,4 +205,5 @@ export interface GloomhavenItem {
 	imageSuffix?: string;
 	specialUnlock?: SpecialUnlockTypes;
 	alwaysShown?: boolean;
+	unlockCrafstmanLevel: number;
 }

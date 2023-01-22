@@ -2,11 +2,10 @@ import React from "react";
 import { Segment } from "semantic-ui-react";
 import SpoilerFilterItemList from "./SpoilerFilterItemList";
 import { useRecoilValue } from "recoil";
-import { prosperityState, SpecialUnlockTypes } from "../../../../State";
+import { prosperityState } from "../../../../State";
 import { AllGames, Expansions } from "../../../../games/GameType";
 import { ReputationPulldown } from "./ReputationPulldown";
 import { ProsperityFilter } from "./ProsperityFilter";
-import { SpecialUnlocksButton } from "../Common/SpecialUnlockButton";
 import { SoloClassFilterBlock } from "./SoloClassFilterBlock";
 
 const soloClassesToInclude: AllGames[] = [
