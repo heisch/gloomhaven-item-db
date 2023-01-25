@@ -17,9 +17,9 @@ export const createWorldhavenString = (parms: CreateParams) => {
 };
 
 const folderMap: Record<string, string> = {
-	"\\@": "element",
+	"\\@": "elements",
 	"\\#": "equipment_slot",
-	"\\$": "status",
+	"\\$": "conditions",
 	"\\^": "general",
 	"\\*": "multi_attack",
 };
