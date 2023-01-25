@@ -206,4 +206,6 @@ export interface GloomhavenItem {
 	specialUnlock?: SpecialUnlockTypes;
 	alwaysShown?: boolean;
 	unlockCrafstmanLevel: number;
+	unlockTradingPostLevel: number;
+	unlockJewelerLevel: number;
 }

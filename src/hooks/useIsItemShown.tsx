@@ -14,7 +14,7 @@ import {
 	scenarioCompletedState,
 	includeGameState,
 	resourcesState,
-	craftsmanBuildingLevelState,
+	buildingLevelState,
 } from "../State";
 import { useCallback } from "react";
 
@@ -32,7 +32,10 @@ export const useIsItemShown = (): ((item: GloomhavenItem) => boolean) => {
 	const soloClass = useRecoilValue(soloClassState);
 	const scenarioCompleted = useRecoilValue(scenarioCompletedState);
 	const includeGames = useRecoilValue(includeGameState);
-	const craftsmanLevel = useRecoilValue(craftsmanBuildingLevelState);
+	const buildingLevels = useRecoilValue(buildingLevelState);
+	const craftsmanLevel = buildingLevels["cm"];
+	const jewelerLevel = buildingLevels["jw"];
+	const tradingPostLevel = buildingLevels["tp"];
 
 	const isItemShown = useCallback(
 		({
@@ -49,6 +52,8 @@ export const useIsItemShown = (): ((item: GloomhavenItem) => boolean) => {
 			specialUnlock,
 			alwaysShown = false,
 			unlockCrafstmanLevel,
+			unlockTradingPostLevel,
+			unlockJewelerLevel,
 		}: GloomhavenItem) => {
 			if (!includeGames.includes(gameType)) {
 				return false;
@@ -64,6 +69,8 @@ export const useIsItemShown = (): ((item: GloomhavenItem) => boolean) => {
 				(soloItem && soloClass.includes(soloItem)) ||
 				item.includes(id) ||
 				craftsmanLevel >= unlockCrafstmanLevel ||
+				tradingPostLevel >= unlockTradingPostLevel ||
+				jewelerLevel >= unlockJewelerLevel ||
 				alwaysShown;
 
 			if (show) {
@@ -124,6 +131,8 @@ export const useIsItemShown = (): ((item: GloomhavenItem) => boolean) => {
 			soloClass,
 			specialUnlocks,
 			craftsmanLevel,
+			jewelerLevel,
+			tradingPostLevel,
 		]
 	);
 

@@ -61,10 +61,12 @@ const SpoilerFilterItemList = (props: Props) => {
 	}
 
 	return (
-		<Form.Group inline className={"inline-break"}>
-			{title && <label>{title}:</label>}
-			{checkBoxes}
-		</Form.Group>
+		<Form.Field>
+			<Form.Group inline className={"inline-break"}>
+				{title && <label>{title}:</label>}
+				{checkBoxes}
+			</Form.Group>
+		</Form.Field>
 	);
 };
 
