@@ -24,6 +24,28 @@ const folderMap: Record<string, string> = {
 	"\\*": "multi_attack",
 };
 
+const parseForIcon = (delimiter: string, text: string) => {
+	const folder = folderMap[delimiter];
+	const exp = new RegExp(`${delimiter}(.+?)${delimiter}`, "g");
+	const matches = text.match(exp);
+	if (matches) {
+		matches.forEach((match) => {
+			const filename = match.substring(1, match.length - 1);
+			let src;
+			if (filename.startsWith("w-fh-")) {
+				src = require(`../worldhaven/images/tokens/frosthaven/${folder}/${filename}.png`);
+			} else {
+				src = require(`./img/icons/${folder}/${filename}.png`);
+			}
+			text = text.replace(
+				match,
+				`<img class="icon" src="${src}" alt="${filename}"/>`
+			);
+		});
+	}
+	return text;
+};
+
 export class Helpers {
 	static uniqueArray<T>(arr: Array<T>, sort = true) {
 		const result: Array<T> = [];
@@ -35,32 +57,15 @@ export class Helpers {
 		return sort ? result.sort() : result;
 	}
 
-	static parseForIcon(delimiter: string, text: string) {
-		const folder = folderMap[delimiter];
-		const exp = new RegExp(`${delimiter}(.+?)${delimiter}`, "g");
-		const matches = text.match(exp);
-		if (matches) {
-			matches.forEach((match) => {
-				const filename = match.substring(1, match.length - 1);
-				const src = require(`./img/icons/${folder}/${filename}.png`);
-				text = text.replace(
-					match,
-					`<img class="icon" src="${src}" alt="${filename}"/>`
-				);
-			});
-		}
-		return text;
-	}
-
 	static parseEffectText(text: string) {
 		const actionReg = new RegExp(`(~!)(.+?)(!~)`, "g");
 		text = text.replace(actionReg, `<span class="action"> ${"$2"} </span>`);
 
-		text = this.parseForIcon("\\^", text);
-		text = this.parseForIcon("\\$", text);
-		text = this.parseForIcon("\\@", text);
-		text = this.parseForIcon("\\#", text);
-		text = this.parseForIcon("\\*", text);
+		text = parseForIcon("\\^", text);
+		text = parseForIcon("\\$", text);
+		text = parseForIcon("\\@", text);
+		text = parseForIcon("\\#", text);
+		text = parseForIcon("\\*", text);
 
 		const reg = new RegExp(`%(.+?)%`, "g");
 		text = text.replace(reg, `<span class="${"$1"}">${"$1"}</span>`);
