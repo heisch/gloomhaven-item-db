@@ -30,9 +30,10 @@ const parseForIcon = (delimiter: string, text: string) => {
 	const matches = text.match(exp);
 	if (matches) {
 		matches.forEach((match) => {
-			const filename = match.substring(1, match.length - 1);
+			let filename = match.substring(1, match.length - 1);
 			let src;
-			if (filename.startsWith("w-fh-")) {
+			if (filename.startsWith("wfh-")) {
+				filename = filename.substring(1);
 				src = require(`../worldhaven/images/tokens/frosthaven/${folder}/${filename}.png`);
 			} else {
 				src = require(`./img/icons/${folder}/${filename}.png`);
@@ -121,13 +122,13 @@ export const isFrosthavenGameAndEnabled = (gameType: AllGames) => {
 	return true;
 };
 
-const formatId = (id: number | string) => {
-	return `#${id.toString().padStart(3, "0")}`;
+export const formatId = (id: number | string) => {
+	return id.toString().padStart(3, "0");
 };
 
 export const getItemIdString = (item: GloomhavenItem) => {
 	const { displayId, id, gameType } = item;
-	return `${gameType ? gameType.toUpperCase() : ""} ${formatId(
+	return `${gameType ? gameType.toUpperCase() : ""} #${formatId(
 		displayId || id
 	)}`;
 };

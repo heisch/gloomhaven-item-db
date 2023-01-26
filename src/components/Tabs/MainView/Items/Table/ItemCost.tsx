@@ -1,6 +1,7 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 import { GameType } from "../../../../../games";
+import { formatId } from "../../../../../helpers";
 import {
 	discountState,
 	gameTypeState,
@@ -42,7 +43,7 @@ export const ItemCost = (props: Props) => {
 									name={`${resource}.png`}
 									folder="resources"
 								/>
-								{` : ${itemId}`}
+								{` : ${formatId(itemId)}`}
 							</div>
 						));
 					}
