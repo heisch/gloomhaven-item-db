@@ -343,7 +343,7 @@
 		"slot": "small",
 		"source": "Scenario #3 (Treasure #10)",
 		"consumed": true,
-		"desc": "During your turn, force one enemy within Range ^range^ 3 to peform a \"Move ^move^ 2\" action with you controlling the action.",
+		"desc": "During your turn, force one enemy within Range ^range^ 3 to perform a \"Move ^move^ 2\" action with you controlling the action.",
 		"folder": "27-36",
 		"gameType": "jotl"
 	},

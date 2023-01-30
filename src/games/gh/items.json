@@ -313,7 +313,7 @@
 		"slot": "head",
 		"source": "Prosperity 3",
 		"spent": true,
-		"desc": "During your turn, peform \"Heal ^heal^ 1, Self\" action.",
+		"desc": "During your turn, perform \"Heal ^heal^ 1, Self\" action.",
 		"folder": "22-28",
 		"unlockProsperity": 3,
 		"gameType": "gh"
@@ -1941,7 +1941,7 @@
 		"slot": "small",
 		"source": "Reward from Scenario #97\nSection 125\n\"A locked chest\"",
 		"consumed": true,
-		"desc": "After performing the top action of any ability card, you may immediately peform the bottom action of the same card. This item cannot be used if both actions trigger a lost card icon consumed ^consumed^.",
+		"desc": "After performing the top action of any ability card, you may immediately perform the bottom action of the same card. This item cannot be used if both actions trigger a lost card icon consumed ^consumed^.",
 		"folder": "152-165",
 		"gameType": "fc"
 	},
@@ -2070,7 +2070,7 @@
 		"cost": 75,
 		"slot": "head",
 		"source": "Reward from Scenario #110",
-		"desc": "When you peform a long or short rest, gain STRENGTHEN $strengthen$.",
+		"desc": "When you perform a long or short rest, gain STRENGTHEN $strengthen$.",
 		"folder": "152-165",
 		"gameType": "fc"
 	},
@@ -2166,7 +2166,7 @@
 		"cost": 15,
 		"slot": "small",
 		"source": "Unknown",
-		"desc": "During your turn, you may place one characer token on this card to peform \"Heal ^heal^ 1, Self\". When there are three tokens on this card it is consumed ^consumed^.",
+		"desc": "During your turn, you may place one characer token on this card to perform \"Heal ^heal^ 1, Self\". When there are three tokens on this card it is consumed ^consumed^.",
 		"gameType": "cs",
 		"imageSuffix": "a"
 	},
@@ -2251,7 +2251,7 @@
 		"slot": "1h",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your turn, peform \"Attack ^attack^ 3, Range ^range^ 2\".",
+		"desc": "During your turn, perform \"Attack ^attack^ 3, Range ^range^ 2\".",
 		"gameType": "cs",
 		"imageSuffix": "a"
 	},
@@ -2337,7 +2337,7 @@
 		"cost": 20,
 		"slot": "head",
 		"source": "Unknown",
-		"desc": "Gain Advantage on all attacks you peform while INVISIBLE $invisible$.",
+		"desc": "Gain Advantage on all attacks you perform while INVISIBLE $invisible$.",
 		"gameType": "cs"
 	},
 	{
@@ -2438,7 +2438,7 @@
 		"slot": "small",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your turn, peform \"Heal ^heal^ 5, POISON $poison$, Self\".",
+		"desc": "During your turn, perform \"Heal ^heal^ 5, POISON $poison$, Self\".",
 		"gameType": "cs"
 	},
 	{
@@ -2562,7 +2562,7 @@
 		"slot": "1h",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your turn, peform \"Attack ^attack^ 2, Range ^range^ 3, PIERCE $pierce$ 2\".",
+		"desc": "During your turn, perform \"Attack ^attack^ 2, Range ^range^ 3, PIERCE $pierce$ 2\".",
 		"gameType": "cs"
 	},
 	{
@@ -2599,7 +2599,7 @@
 		"cost": 50,
 		"slot": "body",
 		"source": "Solo {CS6}",
-		"desc": "Whenever you given an ally a %Prayer% ability card, that ally may peform \"Heal ^heal^ 2, Self\".",
+		"desc": "Whenever you given an ally a %Prayer% ability card, that ally may perform \"Heal ^heal^ 2, Self\".",
 		"gameType": "cs",
 		"soloItem": "CS6"
 	},
@@ -2636,7 +2636,7 @@
 		"spent": true,
 		"slot": "1h",
 		"source": "Solo {CS1}",
-		"desc": "During your turn, peform \"PULL $pull$ 2, Self toward one enemy within Range ^range^ 3\".",
+		"desc": "During your turn, perform \"PULL $pull$ 2, Self toward one enemy within Range ^range^ 3\".",
 		"gameType": "cs",
 		"soloItem": "CS1"
 	},
@@ -2822,7 +2822,7 @@
 		"slot": "small",
 		"source": "Unknown",
 		"spent": true,
-		"desc": "During your turn, peform \"Heal ^heal^ 5, Self\". @any@",
+		"desc": "During your turn, perform \"Heal ^heal^ 5, Self\". @any@",
 		"gameType": "cs",
 		"imageSuffix": "a"
 	},
@@ -2920,7 +2920,7 @@
 		"slot": "small",
 		"source": "Unknown",
 		"consume": true,
-		"desc": "During your turn, peform: WOUND $wound$ Range ^range^ 3 *cone_1_1*",
+		"desc": "During your turn, perform: WOUND $wound$ Range ^range^ 3 *cone_1_1*",
 		"gameType": "cs"
 	},
 	{
@@ -2944,7 +2944,7 @@
 		"slot": "1h",
 		"source": "Unknown",
 		"spent": true,
-		"desc": "During your turn, peform \"PULL $pull$ 2, Target one ally or enemy within Range ^range^ 3.\"",
+		"desc": "During your turn, perform \"PULL $pull$ 2, Target one ally or enemy within Range ^range^ 3.\"",
 		"gameType": "cs"
 	},
 	{
@@ -3085,7 +3085,7 @@
 		"slot": "small",
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During you turn one ally within Range ^range^ 3 may peform one of the following: Attack ^attack^ 3 | Move ^move^ 3 | Heal ^heal^ 3, Self.",
+		"desc": "During you turn one ally within Range ^range^ 3 may perform one of the following: Attack ^attack^ 3 | Move ^move^ 3 | Heal ^heal^ 3, Self.",
 		"gameType": "cs"
 	},
 	{
@@ -3321,7 +3321,7 @@
 		"cost": 35,
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "During your turn, peform Heal ^heal^ 3 REGENERATE $regenerate$ Affect self and one adjacent ally.",
+		"desc": "During your turn, perform Heal ^heal^ 3 REGENERATE $regenerate$ Affect self and one adjacent ally.",
 		"gameType": "csa"
 	},
 	{
@@ -3346,7 +3346,7 @@
 		"cost": 50,
 		"consumed": true,
 		"source": "Unknown",
-		"desc": "(X is 1, 2, 3) During your turn, forgo your top action to peform Attack ^attack^ X + 1 Range ^range^ 2 Target ^target^ 4 - X.",
+		"desc": "(X is 1, 2, 3) During your turn, forgo your top action to perform Attack ^attack^ X + 1 Range ^range^ 2 Target ^target^ 4 - X.",
 		"gameType": "csa"
 	},
 	{
@@ -3437,7 +3437,7 @@
 		"cost": 20,
 		"source": "Unknown",
 		"spent": true,
-		"desc": "After your move ability, peform PUSH $push$ 1 Target one adjacent enemy. Add +1 PUSH $push$ if you have move 4 or more hexes this round.",
+		"desc": "After your move ability, perform PUSH $push$ 1 Target one adjacent enemy. Add +1 PUSH $push$ if you have move 4 or more hexes this round.",
 		"gameType": "csa"
 	},
 	{
@@ -3536,7 +3536,7 @@
 		"slot": "1h",
 		"cost": 30,
 		"source": "Unknown",
-		"desc": "During your turn peform \"Teleport ^teleport^ 5\". This Teleport must end in a hex containing a treasure tile or money token.",
+		"desc": "During your turn perform \"Teleport ^teleport^ 5\". This Teleport must end in a hex containing a treasure tile or money token.",
 		"gameType": "toa",
 		"consumed": true
 	},
@@ -3643,7 +3643,7 @@
 		"slot": "1h",
 		"cost": 30,
 		"source": "Unknown",
-		"desc": "When damaged by an attack peform a \"Heal ^heal^ X, Range ^range^ 3\" ability after the attack, where X is the damage you suffered.",
+		"desc": "When damaged by an attack perform a \"Heal ^heal^ X, Range ^range^ 3\" ability after the attack, where X is the damage you suffered.",
 		"gameType": "toa",
 		"consumed": true
 	},
@@ -3691,7 +3691,7 @@
 		"slot": "1h",
 		"cost": 45,
 		"source": "Unknown",
-		"desc": "During your turn, one ally within Range ^range^ 2 may peform \"Attack ^attack^ 2\".",
+		"desc": "During your turn, one ally within Range ^range^ 2 may perform \"Attack ^attack^ 2\".",
 		"gameType": "toa",
 		"spent": true
 	},
@@ -3767,7 +3767,7 @@
 		"slot": "small",
 		"cost": 50,
 		"source": "Solo {TOA3}",
-		"desc": "During your turn, play one level 5 or lower card from your hand or discard pile and immediately peform a %Crystalize% ^Crystalize^ action from that card.",
+		"desc": "During your turn, play one level 5 or lower card from your hand or discard pile and immediately perform a %Crystalize% ^Crystalize^ action from that card.",
 		"gameType": "toa",
 		"soloItem": "TOA3",
 		"consumed": true
@@ -3817,7 +3817,7 @@
 		"slot": "small",
 		"cost": 40,
 		"source": "Unknown",
-		"desc": "During your turn peform \"DODGE $dodge$, Range ^range^ 5\".",
+		"desc": "During your turn perform \"DODGE $dodge$, Range ^range^ 5\".",
 		"gameType": "toa",
 		"consumed": true
 	},
