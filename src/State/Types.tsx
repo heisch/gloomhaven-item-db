@@ -173,6 +173,7 @@ interface Resources {
 	flamefruit?: number;
 	rockroot?: number;
 	snowthistle?: number;
+	any?: number[];
 }
 
 export interface GloomhavenItem {

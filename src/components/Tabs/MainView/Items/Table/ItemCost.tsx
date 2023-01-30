@@ -1,5 +1,6 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
+import { Divider } from "semantic-ui-react";
 import { GameType } from "../../../../../games";
 import { formatId } from "../../../../../helpers";
 import {
@@ -37,24 +38,44 @@ export const ItemCost = (props: Props) => {
 				resources &&
 				Object.entries(resources).map(([resource, value], index) => {
 					if (resource === "item") {
-						return value.map((itemId: number) => (
-							<div key={`${itemId}-${resource}-${index}`}>
+						return value.map(
+							(itemId: number, itemIndex: number) => (
+								<div key={`${itemId}-${resource}-${index}`}>
+									<>
+										{itemIndex > 0 && <Divider />}
+										<GHIcon
+											name={`${resource}.png`}
+											folder="resources"
+										/>
+										{` : ${formatId(itemId)}`}
+									</>
+								</div>
+							)
+						);
+					}
+					if (resource === "any") {
+						return value.map((count: number, anyIndex: number) => (
+							<>
+								{anyIndex > 0 && <Divider />}
+								<div key={`any-${count}-${resource}-${index}`}>
+									{`any herb ${
+										count > 1 ? `x ${count}` : ""
+									}`}
+								</div>
+							</>
+						));
+					}
+					return (
+						<>
+							{index > 0 && <Divider />}
+							<div key={`${resource}-${index}`}>
 								<GHIcon
 									name={`${resource}.png`}
 									folder="resources"
 								/>
-								{` : ${formatId(itemId)}`}
+								{value > 1 && ` x ${value}`}
 							</div>
-						));
-					}
-					return (
-						<div key={`${resource}-${index}`}>
-							<GHIcon
-								name={`${resource}.png`}
-								folder="resources"
-							/>
-							{value > 1 && ` x ${value}`}
-						</div>
+						</>
 					);
 				})}
 		</>

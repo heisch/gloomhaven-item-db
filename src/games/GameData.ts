@@ -41,7 +41,7 @@ export const getInitialItems = (gameType: GameType) => {
 		}
 		if (item.resources) {
 			Object.keys(item.resources).forEach((resource) => {
-				if (!resources.includes(resource)) {
+				if (resource !== "any" && !resources.includes(resource)) {
 					resources.push(resource);
 				}
 			});
