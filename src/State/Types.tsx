@@ -209,4 +209,5 @@ export interface GloomhavenItem {
 	unlockCrafstmanLevel: number;
 	unlockTradingPostLevel: number;
 	unlockJewelerLevel: number;
+	importedSet?: ImportedSet;
 }

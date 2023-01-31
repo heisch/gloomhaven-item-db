@@ -1514,7 +1514,7 @@
 		"cost": 25,
 		"slot": "head",
 		"source": "Initially Available",
-		"desc": "During your turn, perform: ~!@wfh-wild-consume@: @wfh-wild@!~",
+		"desc": "During your turn, perform: ~@@wfh-wild-consume@: @wfh-wild@@~",
 		"folder": "120-128",
 		"unlockTradingPostLevel": -1,
 		"spent": true
@@ -1992,7 +1992,7 @@
 		"cost": 30,
 		"slot": "small",
 		"source": "Jeweler 1",
-		"desc": "During your turn, perform @wfh-earth-consume@@wfh-dark-consume@: ^fh-heal^ 3 ~!self, $wfh-ward$!~",
+		"desc": "During your turn, perform ~@@wfh-earth-consume@/@wfh-dark-consume@: ^fh-heal^ 3 ~!self, $wfh-ward$!~@~",
 		"folder": "129-167",
 		"unlockJewelerLevel": 1,
 		"consumed": true
@@ -2044,7 +2044,7 @@
 		"cost": 40,
 		"slot": "small",
 		"source": "Jeweler 2",
-		"desc": "During your turn, perform @wfh-ice-consume@@wfh-air-consume@: ^attack^ 3 ~!^fh-range^ 3, $wfh-immobilize$!~",
+		"desc": "During your turn, perform ~@@wfh-ice-consume@/@wfh-air-consume@: ^attack^ 3 ~!^fh-range^ 3, $wfh-immobilize$!~@~",
 		"folder": "129-167",
 		"unlockJewelerLevel": 2,
 		"consumed": true
@@ -2096,7 +2096,7 @@
 		"cost": 50,
 		"slot": "head",
 		"source": "Jeweler 3",
-		"desc": "During your turn, perform @wfh-fire-consume@@wfh-light-consume@: ^attack^ 3 ~!$wfh-disarm$!~",
+		"desc": "During your turn, perform ~@@wfh-fire-consume@/@wfh-light-consume@: ^attack^ 3 ~!$wfh-disarm$!~@~",
 		"folder": "129-167",
 		"unlockJewelerLevel": 3,
 		"consumed": true

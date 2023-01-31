@@ -59,6 +59,12 @@ export class Helpers {
 	}
 
 	static parseEffectText(text: string) {
+		const consumeReg = new RegExp(`(~@)(.+?)(@~)`, "g");
+		text = text.replace(
+			consumeReg,
+			`<span class="consume-action"> ${"$2"} </span>`
+		);
+
 		const actionReg = new RegExp(`(~!)(.+?)(!~)`, "g");
 		text = text.replace(actionReg, `<span class="action"> ${"$2"} </span>`);
 
@@ -132,3 +138,7 @@ export const getItemIdString = (item: GloomhavenItem) => {
 		displayId || id
 	)}`;
 };
+
+export const isLocalHost = /localhost|127\.0\.0\.1|::1/.test(
+	window.location.host
+);

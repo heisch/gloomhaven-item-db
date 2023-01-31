@@ -70,6 +70,14 @@ const { items: ghItems, filterSlots: ghFilterSlots } = getInitialItems(
 	GameType.Gloomhaven
 );
 
+const getImportedSet = (id: number) => {
+	const set = ghImportSets.find((set) => set.items.includes(id));
+	if (set) {
+		return set.importSet;
+	}
+	return undefined;
+};
+
 const filteredGhItems = ghItems
 	.filter((item) => ghItemToImport.includes(item.id))
 	.map((item: GloomhavenItem) => ({
@@ -77,6 +85,7 @@ const filteredGhItems = ghItems
 		displayId: item.id.toString(),
 		id: ghItemOffset + item.id,
 		unlockProsperity: Number.MAX_VALUE,
+		importedSet: getImportedSet(item.id),
 	}));
 
 items = items.concat(filteredGhItems);

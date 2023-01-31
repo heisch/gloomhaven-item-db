@@ -15,6 +15,7 @@ import {
 	includeGameState,
 	resourcesState,
 	buildingLevelState,
+	importedSetState,
 } from "../State";
 import { useCallback } from "react";
 
@@ -33,6 +34,7 @@ export const useIsItemShown = (): ((item: GloomhavenItem) => boolean) => {
 	const scenarioCompleted = useRecoilValue(scenarioCompletedState);
 	const includeGames = useRecoilValue(includeGameState);
 	const buildingLevels = useRecoilValue(buildingLevelState);
+	const importSets = useRecoilValue(importedSetState);
 	const craftsmanLevel = buildingLevels["cm"];
 	const jewelerLevel = buildingLevels["jw"];
 	const tradingPostLevel = buildingLevels["tp"];
@@ -54,6 +56,7 @@ export const useIsItemShown = (): ((item: GloomhavenItem) => boolean) => {
 			unlockCrafstmanLevel,
 			unlockTradingPostLevel,
 			unlockJewelerLevel,
+			importedSet,
 		}: GloomhavenItem) => {
 			if (!includeGames.includes(gameType)) {
 				return false;
@@ -62,6 +65,12 @@ export const useIsItemShown = (): ((item: GloomhavenItem) => boolean) => {
 				return false;
 			}
 
+			if (
+				importedSet !== undefined &&
+				!importSets.includes(importedSet)
+			) {
+				return false;
+			}
 			let show =
 				all ||
 				prosperity >= unlockProsperity ||
@@ -133,6 +142,7 @@ export const useIsItemShown = (): ((item: GloomhavenItem) => boolean) => {
 			craftsmanLevel,
 			jewelerLevel,
 			tradingPostLevel,
+			importSets,
 		]
 	);
 

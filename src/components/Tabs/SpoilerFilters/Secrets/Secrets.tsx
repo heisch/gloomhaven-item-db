@@ -19,6 +19,7 @@ interface SecretData {
 	line1: string;
 	line2: string;
 	isItem?: boolean;
+	shownGames: GameType[];
 }
 
 const secretAnswers: Record<SpecialUnlockTypes, SecretData> = {
@@ -28,6 +29,11 @@ const secretAnswers: Record<SpecialUnlockTypes, SecretData> = {
 		line1: "Have solved Envelope X?",
 		line2: "Enter the solution:",
 		gameType: GameType.Gloomhaven,
+		shownGames: [
+			GameType.Gloomhaven,
+			GameType.JawsOfTheLion,
+			GameType.Frosthaven,
+		],
 	},
 	[SpecialUnlockTypes.EnvelopeE]: {
 		solutions: ["ZWVl", "bGl2aW5nIGFybW9y"],
@@ -36,6 +42,7 @@ const secretAnswers: Record<SpecialUnlockTypes, SecretData> = {
 		line2: "Enter name of reward:",
 		gameType: Expansions.ForgottenCircles,
 		isItem: true,
+		shownGames: [GameType.Gloomhaven],
 	},
 	[SpecialUnlockTypes.EnvelopeV]: {
 		solutions: ["dnZ2", "YXNoZXM="],
@@ -43,6 +50,11 @@ const secretAnswers: Record<SpecialUnlockTypes, SecretData> = {
 		line1: "Have you been told to open Envelope V",
 		line2: "Enter the password:",
 		gameType: Expansions.TrailOfAshes,
+		shownGames: [
+			GameType.Gloomhaven,
+			GameType.JawsOfTheLion,
+			GameType.Frosthaven,
+		],
 	},
 };
 
@@ -53,7 +65,10 @@ export const Secrets = () => {
 
 	const isButtonShown = (params: any) => {
 		const [key, data] = params;
-		const { gameType, isItem } = data;
+		const { gameType, isItem, shownGames } = data;
+		if (!shownGames.includes(currentGameType)) {
+			return false;
+		}
 		if (isItem) {
 			const info = gameInfo[gameType as AllGames];
 			if (
