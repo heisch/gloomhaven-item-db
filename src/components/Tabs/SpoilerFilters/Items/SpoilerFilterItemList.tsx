@@ -1,9 +1,10 @@
 import { isNumber } from "lodash";
-import React from "react";
-import { useRecoilValue } from "recoil";
-import { Form } from "semantic-ui-react";
+import React, { useMemo } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { Button, Form } from "semantic-ui-react";
 import { AllGames } from "../../../../games/GameType";
-import { includeGameState } from "../../../../State";
+import { isLocalHost } from "../../../../helpers";
+import { includeGameState, itemState } from "../../../../State";
 import FilterCheckbox from "./FilterCheckbox";
 
 type Range = {
@@ -23,15 +24,14 @@ type Props = {
 	filterOn?: AllGames;
 };
 
-const SpoilerFilterItemList = (props: Props) => {
-	const { ranges, title, filterOn } = props;
-	const includeGames = useRecoilValue(includeGameState);
-
-	if (filterOn && !includeGames.includes(filterOn)) {
-		return null;
-	}
-
-	const checkBoxes: Array<JSX.Element> = [];
+const peformAll = (
+	ranges: ItemRange[],
+	callback: (
+		i: number,
+		offset: number | undefined,
+		prefix: string | undefined
+	) => void
+) => {
 	ranges.forEach(({ range, offset, prefix }: ItemRange) => {
 		range.forEach((r) => {
 			let first;
@@ -45,17 +45,69 @@ const SpoilerFilterItemList = (props: Props) => {
 				last = end || start;
 			}
 			for (let i = first; i <= last; i++) {
-				checkBoxes.push(
-					<FilterCheckbox
-						key={`filter${i + (offset || 0)}`}
-						id={i}
-						offset={offset}
-						prefix={prefix}
-					/>
-				);
+				callback(i, offset, prefix);
 			}
 		});
 	});
+};
+
+const SpoilerFilterItemList = (props: Props) => {
+	const { ranges, title, filterOn } = props;
+	const includeGames = useRecoilValue(includeGameState);
+	const [item, setItem] = useRecoilState(itemState);
+
+	const turnThemOn = useMemo(() => {
+		let offCount = 0;
+		peformAll(ranges, (i: number) => {
+			if (!item.includes(i)) {
+				offCount++;
+			}
+		});
+		return offCount > 0;
+	}, [ranges, item]);
+
+	if (filterOn && !includeGames.includes(filterOn)) {
+		return null;
+	}
+
+	const toggleAll = () => {
+		if (!isLocalHost) {
+			return;
+		}
+		const value = Object.assign([], item);
+		const toggleItemFilter = (key: number) => {
+			const isOn = value.includes(key);
+			if (turnThemOn) {
+				if (!isOn) {
+					value.push(key);
+				}
+			} else {
+				if (isOn) {
+					value.splice(value.indexOf(key), 1);
+				}
+			}
+		};
+		peformAll(ranges, (i: number, offset: number | undefined) => {
+			toggleItemFilter(i + (offset || 0));
+		});
+
+		setItem(value);
+	};
+
+	const checkBoxes: Array<JSX.Element> = [];
+	peformAll(
+		ranges,
+		(i: number, offset: number | undefined, prefix: string | undefined) => {
+			checkBoxes.push(
+				<FilterCheckbox
+					key={`filter${i + (offset || 0)}`}
+					id={i}
+					offset={offset}
+					prefix={prefix}
+				/>
+			);
+		}
+	);
 	if (checkBoxes.length === 0) {
 		return null;
 	}
@@ -63,7 +115,12 @@ const SpoilerFilterItemList = (props: Props) => {
 	return (
 		<Form.Field>
 			<Form.Group inline className={"inline-break"}>
-				{title && <label>{title}:</label>}
+				<Form.Group inline>
+					{title && <label>{title}:</label>}
+					{isLocalHost && (
+						<label onClick={() => toggleAll()}>Toggle All</label>
+					)}
+				</Form.Group>
 				{checkBoxes}
 			</Form.Group>
 		</Form.Field>
