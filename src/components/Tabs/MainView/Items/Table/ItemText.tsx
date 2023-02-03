@@ -3,6 +3,7 @@ import { Icon, Popup } from "semantic-ui-react";
 import { GameType } from "../../../../../games";
 import { GloomhavenItem } from "../../../../../State";
 import { GHIcon } from "../../../../Utils";
+import { ConsumptionPanel } from "./ConsumptionPanel";
 import { ItemSummon } from "./ItemSummon";
 
 interface Props {
@@ -21,6 +22,7 @@ export const ItemText = (props: Props) => {
 			faq,
 			faqImage,
 			summon,
+			consumption,
 		},
 	} = props;
 
@@ -45,6 +47,11 @@ export const ItemText = (props: Props) => {
 						__html: descHTML,
 					}}
 				/>
+			)}
+			{consumption && (
+				<div>
+					<ConsumptionPanel {...consumption} />
+				</div>
 			)}
 			{minusOneCardsAdded && (
 				<>

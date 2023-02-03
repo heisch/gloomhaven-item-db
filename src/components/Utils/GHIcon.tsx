@@ -5,16 +5,34 @@ type Props = {
 	className?: string;
 	folder?: string;
 	onClick?: () => void;
+	style?: any;
 };
 
 export const GHIcon = (props: Props) => {
-	const { name, folder = "general", onClick, className = "icon" } = props;
+	const {
+		name,
+		folder = "general",
+		onClick,
+		className = "icon",
+		style,
+	} = props;
+
+	let filename = name;
+	let src;
+	if (filename.startsWith("wfh-")) {
+		filename = filename.substring(1);
+		src = require(`../../../worldhaven/images/tokens/frosthaven/${folder}/${filename}`);
+	} else {
+		src = require(`../../img/icons/${folder}/${name}`);
+	}
+
 	return (
 		<img
-			src={require(`../../img/icons/${folder}/${name}`)}
+			src={src}
 			className={className}
-			alt={name}
+			alt={filename}
 			onClick={onClick}
+			style={style}
 		/>
 	);
 };

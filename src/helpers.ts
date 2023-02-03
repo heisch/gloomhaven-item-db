@@ -22,6 +22,7 @@ const folderMap: Record<string, string> = {
 	"\\$": "conditions",
 	"\\^": "general",
 	"\\*": "multi_attack",
+	"\\`": "resources",
 };
 
 const parseForIcon = (delimiter: string, text: string) => {
@@ -68,11 +69,9 @@ export class Helpers {
 		const actionReg = new RegExp(`(~!)(.+?)(!~)`, "g");
 		text = text.replace(actionReg, `<span class="action"> ${"$2"} </span>`);
 
-		text = parseForIcon("\\^", text);
-		text = parseForIcon("\\$", text);
-		text = parseForIcon("\\@", text);
-		text = parseForIcon("\\#", text);
-		text = parseForIcon("\\*", text);
+		Object.keys(folderMap).forEach((key) => {
+			text = parseForIcon(key, text);
+		});
 
 		const reg = new RegExp(`%(.+?)%`, "g");
 		text = text.replace(reg, `<span class="${"$1"}">${"$1"}</span>`);

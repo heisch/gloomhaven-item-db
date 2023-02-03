@@ -176,6 +176,18 @@ interface Resources {
 	any?: number[];
 }
 
+export interface ElementData {
+	element: string;
+	consume?: boolean;
+	colorize?: boolean;
+}
+
+interface Consumption {
+	elements: ElementData[];
+	effect: string;
+	effectHtml: string;
+}
+
 export interface GloomhavenItem {
 	id: number;
 	displayId: string;
@@ -210,4 +222,5 @@ export interface GloomhavenItem {
 	unlockTradingPostLevel: number;
 	unlockJewelerLevel: number;
 	importedSet?: ImportedSet;
+	consumption?: Consumption;
 }
