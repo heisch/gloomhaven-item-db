@@ -25,7 +25,9 @@ export const ItemTableRow = (props: Props) => {
 			</Table.Cell>
 			<Table.Cell className={"name-col"}>{name}</Table.Cell>
 			<Table.Cell className={"slot-col"} textAlign={"center"}>
-				<GHIcon name={`${slot}.png`} folder={"equipment_slot"} />
+				{slot && (
+					<GHIcon name={`${slot}.png`} folder={"equipment_slot"} />
+				)}
 			</Table.Cell>
 			<Table.Cell className={"cost-col"} textAlign={"center"}>
 				<ItemCost item={item} />

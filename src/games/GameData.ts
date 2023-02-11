@@ -41,7 +41,7 @@ export const getInitialItems = (gameType: GameType) => {
 			.replace(/ ?\((Treasure #\d+)\)/gi, "\n$1")
 			.replace(/Solo Scenario #\d+ — /i, "Solo ");
 		item.source = deSpoilerItemSource(source);
-		if (!filterSlots.includes(item.slot)) {
+		if (item.slot && !filterSlots.includes(item.slot)) {
 			filterSlots.push(item.slot);
 		}
 		if (item.resources) {

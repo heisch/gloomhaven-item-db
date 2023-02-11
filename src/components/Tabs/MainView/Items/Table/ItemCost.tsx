@@ -16,7 +16,7 @@ interface Props {
 
 export const ItemCost = (props: Props) => {
 	const {
-		item: { cost, resources },
+		item: { cost, resources, id },
 	} = props;
 	const discount = useRecoilValue(discountState);
 	const gameType = useRecoilValue(gameTypeState);
@@ -55,27 +55,23 @@ export const ItemCost = (props: Props) => {
 					}
 					if (resource === "any") {
 						return value.map((count: number, anyIndex: number) => (
-							<>
+							<div key={`any-${count}-${resource}-${index}`}>
 								{anyIndex > 0 && <Divider />}
-								<div key={`any-${count}-${resource}-${index}`}>
-									{`any herb ${
-										count > 1 ? `x ${count}` : ""
-									}`}
-								</div>
-							</>
+								{`any herb ${count > 1 ? `x ${count}` : ""}`}
+							</div>
 						));
 					}
 					return (
-						<>
+						<div key={`${id}-${resource}-${index}`}>
 							{index > 0 && <Divider />}
-							<div key={`${resource}-${index}`}>
+							<>
 								<GHIcon
 									name={`${resource}.png`}
 									folder="resources"
 								/>
 								{value > 1 && ` x ${value}`}
-							</div>
-						</>
+							</>
+						</div>
 					);
 				})}
 		</>

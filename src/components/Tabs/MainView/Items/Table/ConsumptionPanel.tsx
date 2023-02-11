@@ -87,7 +87,7 @@ export const ConsumptionPanel = (props: Props) => {
 						? `fh-${element}-icon.png`
 						: `fh-${element}.png`;
 					return (
-						<>
+						<div key={`${element}-${index}`}>
 							<GHIcon
 								name={name}
 								folder="elements"
@@ -122,7 +122,7 @@ export const ConsumptionPanel = (props: Props) => {
 									}}
 								/>
 							)}
-						</>
+						</div>
 					);
 				})}
 			</div>

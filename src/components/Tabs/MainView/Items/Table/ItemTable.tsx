@@ -117,7 +117,12 @@ export const ItemTable = (props: Props) => {
 			</Table.Header>
 			<Table.Body>
 				{items.map((item) => {
-					return <ItemTableRow key={item.id} item={item} />;
+					return (
+						<ItemTableRow
+							key={`${item.id}-${item.imageSuffix}`}
+							item={item}
+						/>
+					);
 				})}
 			</Table.Body>
 		</Table>
