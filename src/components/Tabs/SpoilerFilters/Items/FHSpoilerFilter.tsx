@@ -18,7 +18,10 @@ import { ImportedSetFilter } from "./ImportedSetFilter";
 import { SoloClassFilterBlock } from "./SoloClassFilterBlock";
 import SpoilerFilterItemList, { ItemRange } from "./SpoilerFilterItemList";
 
-const soloClassesToInclude: AllGames[] = [Expansions.FHSoloScenarios];
+const soloClassesToInclude: AllGames[] = [
+	Expansions.FHSoloScenarios,
+	Expansions.GHSoloScenarios,
+];
 
 const filterGroups: Record<string, ItemRange[]> = {
 	"Random Blueprint": [{ range: [{ start: 51, end: 65 }] }],
@@ -79,7 +82,7 @@ export const FHSpoilerFilter = () => {
 	return (
 		<Segment>
 			{buildingFilters.map((filter) => (
-				<BuildingLevelFilter {...filter} />
+				<BuildingLevelFilter key={filter.label} {...filter} />
 			))}
 			<Segment>
 				<SpoilerFilterItemList
@@ -96,7 +99,11 @@ export const FHSpoilerFilter = () => {
 					title="Craftsman Items"
 				/>
 				{Object.entries(filterGroups).map(([title, group]) => (
-					<SpoilerFilterItemList ranges={group} title={title} />
+					<SpoilerFilterItemList
+						key={title}
+						ranges={group}
+						title={title}
+					/>
 				))}
 
 				{tp > -1 && (
@@ -131,7 +138,11 @@ export const FHSpoilerFilter = () => {
 				)}
 
 				{Object.entries(filterGroups2).map(([title, group]) => (
-					<SpoilerFilterItemList ranges={group} title={title} />
+					<SpoilerFilterItemList
+						key={title}
+						ranges={group}
+						title={title}
+					/>
 				))}
 			</Segment>
 			{ghImportSets.some((group) =>
