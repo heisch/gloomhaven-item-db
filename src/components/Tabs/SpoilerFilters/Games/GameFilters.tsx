@@ -2,7 +2,6 @@ import React from "react";
 import { Form, Icon, Popup, Segment } from "semantic-ui-react";
 import { gameInfo, sortOrder } from "../../../../games/GameInfo";
 import { AllGames } from "../../../../games/GameType";
-import { isFrosthavenGameAndEnabled } from "../../../../helpers";
 import { GameFilterCheckbox } from "./GameFilterCheckbox";
 import { GameHelp } from "./GameHelp";
 
@@ -23,9 +22,6 @@ export const GameFilters = () => {
 					/>
 				</div>
 				{Object.entries(gameInfo)
-					.filter(([gameType]) =>
-						isFrosthavenGameAndEnabled(gameType as AllGames)
-					)
 					.sort(sortOrder)
 					.map(([key, value]) => (
 						<GameFilterCheckbox

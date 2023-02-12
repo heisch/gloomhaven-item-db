@@ -117,16 +117,6 @@ export function isFlagEnabled(flagName: string) {
 	return window.localStorage.getItem(localStorageFlagKey) === "true";
 }
 
-export const isFrosthavenGameAndEnabled = (gameType: AllGames) => {
-	if (gameType === GameType.Frosthaven) {
-		if (isFlagEnabled("frosthaven")) {
-			return true;
-		}
-		return false;
-	}
-	return true;
-};
-
 export const formatId = (id: number | string) => {
 	return id.toString().padStart(3, "0");
 };

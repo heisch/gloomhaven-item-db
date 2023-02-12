@@ -3,8 +3,6 @@ import { useRecoilValue } from "recoil";
 import { Form, List } from "semantic-ui-react";
 import { GameType } from "../../../../games";
 import { gameInfo, GameInfo, sortOrder } from "../../../../games/GameInfo";
-import { AllGames } from "../../../../games/GameType";
-import { isFrosthavenGameAndEnabled } from "../../../../helpers";
 import { gameTypeState } from "../../../../State";
 
 const constructHelpEntry = (
@@ -40,9 +38,6 @@ export const GameHelp = () => {
 					Which Games/Expansions are you playing with?
 				</List.Header>
 				{Object.entries(gameInfo)
-					.filter(([gameType]) =>
-						isFrosthavenGameAndEnabled(gameType as AllGames)
-					)
 					.sort(sortOrder)
 					.map(([, info]) => {
 						const { title, gamesToFilterOn } = info;
