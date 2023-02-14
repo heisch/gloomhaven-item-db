@@ -2313,7 +2313,7 @@
 		"cost": 40,
 		"slot": "2h",
 		"source": "Loot Deck Random",
-		"desc": "Afer your melee attack , place a character token on the target. The target loses flying. ^ongoing^",
+		"desc": "Afer your melee attack , place a character token on the target. The target loses ^fh-flying^. ^ongoing^",
 		"folder": "168-192",
 		"spent": true
 	},
@@ -3016,7 +3016,7 @@
 		"cost": 15,
 		"slot": "small",
 		"source": "unknown",
-		"desc": "When you fail a scenario, still earn all checkmark from your battle goal if it was completed.",
+		"desc": "When you fail a scenario, still earn all ^checkmark^ from your battle goal if it was completed.",
 		"folder": "193-247",
 		"consumed": true
 	},
