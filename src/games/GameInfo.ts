@@ -12,7 +12,6 @@ import {
 import { AllGames, Expansions, GameType } from "./GameType";
 
 export interface GameInfo {
-	soloGameTitle?: string;
 	addItemsToGames?: AllGames[];
 	gamesToFilterOn?: AllGames[];
 	title: string;
@@ -104,7 +103,6 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		leadingZeros: 0,
 		gamesToFilterOn: [GameType.JawsOfTheLion],
 		title: "Gloomhaven Solo Scenarios",
-		soloGameTitle: "Gloomhaven",
 		itemsSortOrder: 4,
 		gameClasses: () => [],
 		soloGameType: GameType.Gloomhaven,
@@ -115,7 +113,6 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		leadingZeros: 0,
 		gamesToFilterOn: [GameType.Gloomhaven, GameType.JawsOfTheLion],
 		title: "Frosthaven Solo Scenarios",
-		soloGameTitle: "Frosthaven",
 		itemsSortOrder: 2,
 		gameClasses: () => [],
 		soloGameType: GameType.Frosthaven,

@@ -14,7 +14,7 @@ type Props = {
 
 export const SoloClassFilter = (props: Props) => {
 	const { gameType } = props;
-	const { soloGameType, soloGameTitle, title } = gameInfo[gameType];
+	const { soloGameType, title } = gameInfo[gameType];
 	const [soloClass, setSoloClass] = useRecoilState(soloClassState);
 	const { getClassesForGame } = useRemovePlayerUtils();
 	const includeGames = useRecoilValue(includeGameState);
@@ -22,6 +22,9 @@ export const SoloClassFilter = (props: Props) => {
 		return null;
 	}
 	const classes = getClassesForGame(soloGameType || gameType);
+	const soloGameTitle = soloGameType
+		? gameInfo[soloGameType].title
+		: undefined;
 
 	const toggleClassFilter = (key: ClassesInUse) => {
 		const value = Object.assign([], soloClass);

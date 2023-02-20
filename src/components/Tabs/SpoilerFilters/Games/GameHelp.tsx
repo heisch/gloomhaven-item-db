@@ -10,8 +10,11 @@ import { gameTypeState } from "../../../../State";
 const constructHelpEntry = (
 	title: string,
 	gameType: AllGames,
-	{ addItemsToGames, soloGameTitle: soloGameType, gameClasses }: GameInfo
+	{ addItemsToGames, gameClasses, soloGameType }: GameInfo
 ) => {
+	const soloGameTitle = soloGameType
+		? gameInfo[soloGameType].title
+		: undefined;
 	return (
 		<List.Item key={`${title}-${gameType}`}>
 			<strong>{title}</strong>
@@ -22,8 +25,8 @@ const constructHelpEntry = (
 				{addItemsToGames && addItemsToGames.includes(gameType) && (
 					<List.Item>Add Items for use</List.Item>
 				)}
-				{soloGameType && (
-					<List.Item>{`Add solo scenario items for ${soloGameType}`}</List.Item>
+				{soloGameTitle && (
+					<List.Item>{`Add solo scenario items for ${soloGameTitle}`}</List.Item>
 				)}
 			</List.List>
 		</List.Item>
