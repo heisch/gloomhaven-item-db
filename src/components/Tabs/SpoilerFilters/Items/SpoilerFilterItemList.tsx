@@ -1,7 +1,7 @@
 import { isNumber } from "lodash";
 import React, { useMemo } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { Button, Form } from "semantic-ui-react";
+import { Form } from "semantic-ui-react";
 import { AllGames } from "../../../../games/GameType";
 import { isLocalHost } from "../../../../helpers";
 import { includeGameState, itemState } from "../../../../State";

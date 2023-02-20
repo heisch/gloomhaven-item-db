@@ -12,7 +12,7 @@ import { ClassIcon } from "../../../Utils";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { classToDeleteState, gameDataState } from "../../../../State";
 import { useRemovePlayerUtils } from "../../../../hooks/useRemovePlayer";
-import { OwnedItemList } from "./OwnedItemsList";
+import { itemGoldValue, OwnedItemList } from "./OwnedItemsList";
 import { useIsItemShown } from "../../../../hooks/useIsItemShown";
 
 export const ConfirmClassDelete = () => {
@@ -36,10 +36,7 @@ export const ConfirmClassDelete = () => {
 	const goldAmount = () => {
 		let totalGold = 0;
 		itemsToList.forEach((item) => {
-			const { cost } = item;
-			if (cost) {
-				totalGold += Math.floor(cost / 2);
-			}
+			totalGold += itemGoldValue(item);
 		});
 		return totalGold;
 	};

@@ -1,6 +1,4 @@
 import qs from "qs";
-import { GameType } from "./games";
-import { AllGames } from "./games/GameType";
 import { GloomhavenItem } from "./State";
 
 interface CreateParams {

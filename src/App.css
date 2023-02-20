@@ -138,6 +138,12 @@ svg.item-card {
 	margin: 8px;
 }
 
+.sell-card {
+	border-radius: 25px;
+	width: 100%;
+	margin: 8px;
+}
+
 
 img.ui.image.icon {
 	cursor: pointer;

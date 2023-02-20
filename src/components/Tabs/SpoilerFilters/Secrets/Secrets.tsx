@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { useRecoilValue } from "recoil";
-import { Form, Label, ListItem, Segment } from "semantic-ui-react";
+import { Form, ListItem, Segment } from "semantic-ui-react";
 import { gameInfo } from "../../../../games/GameInfo";
 import { AllGames, Expansions, GameType } from "../../../../games/GameType";
 import {
