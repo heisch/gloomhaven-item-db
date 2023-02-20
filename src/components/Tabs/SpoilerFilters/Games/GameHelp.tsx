@@ -45,8 +45,14 @@ export const GameHelp = () => {
 				</List.Header>
 				{withoutCurrent.map((gameType) => {
 					const gi = gameInfo[gameType];
-					const { title } = gi;
-					return constructHelpEntry(title, gameType, gi);
+					const { title, gamesToFilterOn } = gi;
+					if (
+						!gamesToFilterOn ||
+						(gamesToFilterOn &&
+							!gamesToFilterOn.includes(currentGameType))
+					) {
+						return constructHelpEntry(title, gameType, gi);
+					}
 				})}
 			</List>
 		</Form.Group>

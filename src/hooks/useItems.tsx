@@ -4,6 +4,7 @@ import { gameDataState, sortPropertyState, sortDirectionState } from "../State";
 import { useCallback, useEffect, useState } from "react";
 import { useIsItemShown } from "./useIsItemShown";
 import { gameInfo } from "../games/GameInfo";
+import { useGameSort } from "../games/useGameSort";
 
 export function compareItems<T>(a: T, b: T) {
 	if (a === b) {
@@ -31,6 +32,7 @@ const useItems = (): Array<GloomhavenItem> => {
 	const isItemShown = useIsItemShown();
 	const sortProperty = useRecoilValue(sortPropertyState);
 	const sortDirection = useRecoilValue(sortDirectionState);
+	const { allGames } = useGameSort();
 
 	const [sortedItems, setSortedItems] = useState<GloomhavenItem[]>([]);
 	const [filteredItems, setFilteredItems] = useState<GloomhavenItem[]>([]);
@@ -55,10 +57,13 @@ const useItems = (): Array<GloomhavenItem> => {
 					}
 					break;
 				case SortProperty.Id:
-					value = compareItems(
-						gameInfo[itemA.gameType].itemsSortOrder,
-						gameInfo[itemB.gameType].itemsSortOrder
+					const itemAIndex = allGames.findIndex(
+						(item) => item === itemA.gameType
 					);
+					const itemBIndex = allGames.findIndex(
+						(item) => item === itemB.gameType
+					);
+					value = compareItems(itemAIndex, itemBIndex);
 					if (value === 0) {
 						value = compareItems(itemA.id, itemB.id);
 					}
@@ -71,7 +76,7 @@ const useItems = (): Array<GloomhavenItem> => {
 				? value
 				: value * -1;
 		},
-		[sortDirection, sortProperty]
+		[sortDirection, sortProperty, allGames]
 	);
 
 	useEffect(() => {

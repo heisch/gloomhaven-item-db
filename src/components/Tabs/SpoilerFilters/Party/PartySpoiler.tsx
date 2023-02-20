@@ -43,7 +43,6 @@ export const PartySpoiler = () => {
 						if (!hasClasses) {
 							return null;
 						}
-
 						return (
 							<PartySpoilerList
 								key={gameType}

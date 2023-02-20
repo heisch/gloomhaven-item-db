@@ -1,4 +1,3 @@
-import { compareItems } from "../hooks/useItems";
 import {
 	ClassesInUse,
 	CSAClasses,
@@ -18,7 +17,6 @@ export interface GameInfo {
 	folderName: string;
 	prefix: string;
 	leadingZeros: number;
-	itemsSortOrder: number;
 	gameClasses: () => ClassesInUse[];
 	soloGameType?: GameType;
 	linkedGameTypes?: Expansions[];
@@ -29,10 +27,8 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		folderName: "gloomhaven",
 		prefix: "gh",
 		leadingZeros: 3,
-		gamesToFilterOn: [GameType.Gloomhaven],
 		title: "Gloomhaven",
 		addItemsToGames: [GameType.Frosthaven],
-		itemsSortOrder: 3,
 		gameClasses: () => Object.values(GHClasses),
 		linkedGameTypes: [
 			Expansions.GHSoloScenarios,
@@ -46,18 +42,14 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		folderName: "jaws-of-the-lion",
 		prefix: "jl",
 		leadingZeros: 2,
-		gamesToFilterOn: [GameType.JawsOfTheLion],
 		title: "Jaws of the Lion",
-		itemsSortOrder: 9,
 		gameClasses: () => Object.values(JOTLClasses),
 	},
 	[GameType.Frosthaven]: {
 		folderName: "frosthaven",
 		prefix: "fh",
 		leadingZeros: 3,
-		gamesToFilterOn: [GameType.Frosthaven],
 		title: "Frosthaven",
-		itemsSortOrder: 1,
 		gameClasses: () => Object.values(FHClasses),
 		linkedGameTypes: [Expansions.FHSoloScenarios],
 	},
@@ -67,7 +59,6 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		leadingZeros: 3,
 		title: "Forgotten Circles",
 		addItemsToGames: [GameType.Gloomhaven, GameType.Frosthaven],
-		itemsSortOrder: 5,
 		gameClasses: () => Object.values(FCClasses),
 	},
 	[Expansions.CrimsonScales]: {
@@ -76,7 +67,6 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		leadingZeros: 2,
 		title: "Crimson Scales",
 		addItemsToGames: [GameType.Gloomhaven],
-		itemsSortOrder: 6,
 		gameClasses: () => Object.values(CSClasses),
 	},
 	[Expansions.CrimsonScalesAddon]: {
@@ -85,7 +75,6 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		leadingZeros: 2,
 		title: "Crimson Scales Addon",
 		addItemsToGames: [GameType.Gloomhaven],
-		itemsSortOrder: 7,
 		gameClasses: () => Object.values(CSAClasses),
 	},
 	[Expansions.TrailOfAshes]: {
@@ -94,7 +83,6 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		leadingZeros: 2,
 		title: "Trail of Ashes",
 		addItemsToGames: [GameType.Gloomhaven],
-		itemsSortOrder: 8,
 		gameClasses: () => Object.values(TOAClasses),
 	},
 	[Expansions.GHSoloScenarios]: {
@@ -103,7 +91,6 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		leadingZeros: 0,
 		gamesToFilterOn: [GameType.JawsOfTheLion],
 		title: "Gloomhaven Solo Scenarios",
-		itemsSortOrder: 4,
 		gameClasses: () => [],
 		soloGameType: GameType.Gloomhaven,
 	},
@@ -113,7 +100,6 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		leadingZeros: 0,
 		gamesToFilterOn: [GameType.Gloomhaven, GameType.JawsOfTheLion],
 		title: "Frosthaven Solo Scenarios",
-		itemsSortOrder: 2,
 		gameClasses: () => [],
 		soloGameType: GameType.Frosthaven,
 	},
