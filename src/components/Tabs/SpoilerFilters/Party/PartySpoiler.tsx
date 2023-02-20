@@ -11,7 +11,7 @@ import { PartySpoilerList } from "./PartySpoilerList";
 
 export const PartySpoiler = () => {
 	const itemManagementType = useRecoilValue(itemManagementTypeState);
-	const gameSortOrder = useGameSort();
+	const { allGames } = useGameSort();
 
 	return (
 		<Segment>
@@ -37,7 +37,7 @@ export const PartySpoiler = () => {
 							/>
 						</div>
 					</Form.Group>
-					{gameSortOrder.map((gameType) => {
+					{allGames.map((gameType) => {
 						const gi = gameInfo[gameType];
 						const hasClasses = gi.gameClasses().length > 0;
 						if (!hasClasses) {

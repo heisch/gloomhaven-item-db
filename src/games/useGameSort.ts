@@ -9,7 +9,7 @@ export const useGameSort = () => {
 
 	return useMemo(() => {
 		const currentGameInfo = gameInfo[currentGameType];
-		const games = [
+		let games = [
 			currentGameType,
 			...(currentGameInfo.linkedGameTypes || []),
 		];
@@ -23,6 +23,17 @@ export const useGameSort = () => {
 				);
 			}
 		});
-		return games;
+		games = games.filter((game) => {
+			const { gamesToFilterOn } = gameInfo[game];
+			return (
+				!gamesToFilterOn ||
+				(gamesToFilterOn && !gamesToFilterOn.includes(currentGameType))
+			);
+		});
+		console.log(games);
+		return {
+			allGames: games,
+			withoutCurrent: games.filter((game) => game !== currentGameType),
+		};
 	}, [currentGameType]);
 };

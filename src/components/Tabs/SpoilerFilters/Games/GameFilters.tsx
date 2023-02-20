@@ -9,7 +9,7 @@ import { GameFilterCheckbox } from "./GameFilterCheckbox";
 import { GameHelp } from "./GameHelp";
 
 export const GameFilters = () => {
-	const gameSortOrder = useGameSort();
+	const { withoutCurrent } = useGameSort();
 	const currentGameType = useRecoilValue(gameTypeState);
 
 	return (
@@ -27,18 +27,16 @@ export const GameFilters = () => {
 						content={<GameHelp />}
 					/>
 				</div>
-				{gameSortOrder
-					.filter((gameType) => gameType !== currentGameType)
-					.map((gameType) => {
-						const gi = gameInfo[gameType];
-						return (
-							<GameFilterCheckbox
-								key={gameType}
-								allGameType={gameType as AllGames}
-								{...gi}
-							/>
-						);
-					})}
+				{withoutCurrent.map((gameType) => {
+					const gi = gameInfo[gameType];
+					return (
+						<GameFilterCheckbox
+							key={gameType}
+							allGameType={gameType as AllGames}
+							{...gi}
+						/>
+					);
+				})}
 			</Form.Group>
 		</Segment>
 	);

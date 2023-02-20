@@ -35,7 +35,7 @@ const constructHelpEntry = (
 
 export const GameHelp = () => {
 	const currentGameType = useRecoilValue(gameTypeState);
-	const gameSortOrder = useGameSort();
+	const { withoutCurrent } = useGameSort();
 
 	return (
 		<Form.Group>
@@ -43,19 +43,11 @@ export const GameHelp = () => {
 				<List.Header>
 					Which Games/Expansions are you playing with?
 				</List.Header>
-				{gameSortOrder
-					.filter((gameType) => gameType !== currentGameType)
-					.map((gameType) => {
-						const gi = gameInfo[gameType];
-						const { title, gamesToFilterOn } = gi;
-						if (
-							!gamesToFilterOn ||
-							(gamesToFilterOn &&
-								!gamesToFilterOn.includes(currentGameType))
-						) {
-							return constructHelpEntry(title, gameType, gi);
-						}
-					})}
+				{withoutCurrent.map((gameType) => {
+					const gi = gameInfo[gameType];
+					const { title } = gi;
+					return constructHelpEntry(title, gameType, gi);
+				})}
 			</List>
 		</Form.Group>
 	);
