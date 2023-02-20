@@ -2,12 +2,14 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 import { Form, List } from "semantic-ui-react";
 import { GameType } from "../../../../games";
-import { gameInfo, GameInfo, sortOrder } from "../../../../games/GameInfo";
+import { gameInfo, GameInfo } from "../../../../games/GameInfo";
+import { AllGames } from "../../../../games/GameType";
+import { useGameSort } from "../../../../games/useGameSort";
 import { gameTypeState } from "../../../../State";
 
 const constructHelpEntry = (
 	title: string,
-	gameType: GameType,
+	gameType: AllGames,
 	{ addItemsToGames, soloGameTitle: soloGameType, gameClasses }: GameInfo
 ) => {
 	return (
@@ -29,7 +31,8 @@ const constructHelpEntry = (
 };
 
 export const GameHelp = () => {
-	const gameType = useRecoilValue(gameTypeState);
+	const currentGameType = useRecoilValue(gameTypeState);
+	const gameSortOrder = useGameSort();
 
 	return (
 		<Form.Group>
@@ -37,16 +40,18 @@ export const GameHelp = () => {
 				<List.Header>
 					Which Games/Expansions are you playing with?
 				</List.Header>
-				{Object.entries(gameInfo)
-					.sort(sortOrder)
-					.map(([, info]) => {
-						const { title, gamesToFilterOn } = info;
+				{gameSortOrder
+					.filter((gameType) => gameType !== currentGameType)
+					.map((gameType) => {
+						const gi = gameInfo[gameType];
+						const { title, gamesToFilterOn } = gi;
 						if (
 							!gamesToFilterOn ||
 							(gamesToFilterOn &&
-								!gamesToFilterOn.includes(gameType))
-						)
-							return constructHelpEntry(title, gameType, info);
+								!gamesToFilterOn.includes(currentGameType))
+						) {
+							return constructHelpEntry(title, gameType, gi);
+						}
 					})}
 			</List>
 		</Form.Group>

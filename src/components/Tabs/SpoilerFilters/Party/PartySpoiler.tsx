@@ -1,8 +1,9 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 import { Form, Popup, Icon, Segment } from "semantic-ui-react";
-import { gameInfo, sortOrder } from "../../../../games/GameInfo";
+import { gameInfo } from "../../../../games/GameInfo";
 import { AllGames } from "../../../../games/GameType";
+import { useGameSort } from "../../../../games/useGameSort";
 import { itemManagementTypeState } from "../../../../State";
 import { ItemManagementType } from "../../../../State/Types";
 import PartyManagementFilter from "./PartyManagementFilter";
@@ -10,6 +11,7 @@ import { PartySpoilerList } from "./PartySpoilerList";
 
 export const PartySpoiler = () => {
 	const itemManagementType = useRecoilValue(itemManagementTypeState);
+	const gameSortOrder = useGameSort();
 
 	return (
 		<Segment>
@@ -35,17 +37,20 @@ export const PartySpoiler = () => {
 							/>
 						</div>
 					</Form.Group>
-					{Object.entries(gameInfo)
-						.filter(([, data]) => {
-							return data.gameClasses().length > 0;
-						})
-						.sort(sortOrder)
-						.map(([filter]) => (
+					{gameSortOrder.map((gameType) => {
+						const gi = gameInfo[gameType];
+						const hasClasses = gi.gameClasses().length > 0;
+						if (!hasClasses) {
+							return null;
+						}
+
+						return (
 							<PartySpoilerList
-								key={filter}
-								type={filter as AllGames}
+								key={gameType}
+								type={gameType as AllGames}
 							/>
-						))}
+						);
+					})}
 				</Form.Group>
 			)}
 		</Segment>

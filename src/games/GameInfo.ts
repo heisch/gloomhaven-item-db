@@ -13,16 +13,16 @@ import { AllGames, Expansions, GameType } from "./GameType";
 
 export interface GameInfo {
 	soloGameTitle?: string;
-	addItemsToGames?: GameType[];
-	gamesToFilterOn?: GameType[];
+	addItemsToGames?: AllGames[];
+	gamesToFilterOn?: AllGames[];
 	title: string;
 	folderName: string;
 	prefix: string;
 	leadingZeros: number;
 	itemsSortOrder: number;
 	gameClasses: () => ClassesInUse[];
-	filterSortOrder: number;
 	soloGameType?: GameType;
+	linkedGameTypes?: Expansions[];
 }
 
 export const gameInfo: Record<AllGames, GameInfo> = {
@@ -35,7 +35,13 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		addItemsToGames: [GameType.Frosthaven],
 		itemsSortOrder: 3,
 		gameClasses: () => Object.values(GHClasses),
-		filterSortOrder: 2,
+		linkedGameTypes: [
+			Expansions.GHSoloScenarios,
+			Expansions.ForgottenCircles,
+			Expansions.CrimsonScales,
+			Expansions.CrimsonScalesAddon,
+			Expansions.TrailOfAshes,
+		],
 	},
 	[GameType.JawsOfTheLion]: {
 		folderName: "jaws-of-the-lion",
@@ -45,7 +51,6 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		title: "Jaws of the Lion",
 		itemsSortOrder: 9,
 		gameClasses: () => Object.values(JOTLClasses),
-		filterSortOrder: 8,
 	},
 	[GameType.Frosthaven]: {
 		folderName: "frosthaven",
@@ -55,7 +60,7 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		title: "Frosthaven",
 		itemsSortOrder: 1,
 		gameClasses: () => Object.values(FHClasses),
-		filterSortOrder: 9,
+		linkedGameTypes: [Expansions.FHSoloScenarios],
 	},
 	[Expansions.ForgottenCircles]: {
 		folderName: "forgotten-circles",
@@ -65,7 +70,6 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		addItemsToGames: [GameType.Gloomhaven, GameType.Frosthaven],
 		itemsSortOrder: 5,
 		gameClasses: () => Object.values(FCClasses),
-		filterSortOrder: 4,
 	},
 	[Expansions.CrimsonScales]: {
 		folderName: "crimson-scales",
@@ -75,7 +79,6 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		addItemsToGames: [GameType.Gloomhaven],
 		itemsSortOrder: 6,
 		gameClasses: () => Object.values(CSClasses),
-		filterSortOrder: 5,
 	},
 	[Expansions.CrimsonScalesAddon]: {
 		folderName: "crimson-scales",
@@ -85,7 +88,6 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		addItemsToGames: [GameType.Gloomhaven],
 		itemsSortOrder: 7,
 		gameClasses: () => Object.values(CSAClasses),
-		filterSortOrder: 6,
 	},
 	[Expansions.TrailOfAshes]: {
 		folderName: "trail-of-ashes",
@@ -95,7 +97,6 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		addItemsToGames: [GameType.Gloomhaven],
 		itemsSortOrder: 8,
 		gameClasses: () => Object.values(TOAClasses),
-		filterSortOrder: 7,
 	},
 	[Expansions.GHSoloScenarios]: {
 		folderName: "gloomhaven",
@@ -106,7 +107,6 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		soloGameTitle: "Gloomhaven",
 		itemsSortOrder: 4,
 		gameClasses: () => [],
-		filterSortOrder: 3,
 		soloGameType: GameType.Gloomhaven,
 	},
 	[Expansions.FHSoloScenarios]: {
@@ -118,15 +118,6 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		soloGameTitle: "Frosthaven",
 		itemsSortOrder: 2,
 		gameClasses: () => [],
-		filterSortOrder: 1,
 		soloGameType: GameType.Frosthaven,
 	},
-};
-
-export const sortOrder = (a: [string, GameInfo], b: [string, GameInfo]) => {
-	const [, aInfo] = a;
-	const [, bInfo] = b;
-	const { filterSortOrder: sortOrderA } = aInfo;
-	const { filterSortOrder: sortOrderB } = bInfo;
-	return compareItems(sortOrderA, sortOrderB);
 };
