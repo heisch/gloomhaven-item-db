@@ -20,6 +20,7 @@ export interface GameInfo {
 	gameClasses: () => ClassesInUse[];
 	soloGameType?: GameType;
 	linkedGameTypes?: Expansions[];
+	soloClassesToInclude?: AllGames[];
 }
 
 export const gameInfo: Record<AllGames, GameInfo> = {
@@ -31,6 +32,13 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		addItemsToGames: [GameType.Frosthaven],
 		gameClasses: () => Object.values(GHClasses),
 		linkedGameTypes: [
+			Expansions.GHSoloScenarios,
+			Expansions.ForgottenCircles,
+			Expansions.CrimsonScales,
+			Expansions.CrimsonScalesAddon,
+			Expansions.TrailOfAshes,
+		],
+		soloClassesToInclude: [
 			Expansions.GHSoloScenarios,
 			Expansions.ForgottenCircles,
 			Expansions.CrimsonScales,
@@ -52,6 +60,14 @@ export const gameInfo: Record<AllGames, GameInfo> = {
 		title: "Frosthaven",
 		gameClasses: () => Object.values(FHClasses),
 		linkedGameTypes: [Expansions.FHSoloScenarios],
+		soloClassesToInclude: [
+			Expansions.FHSoloScenarios,
+			Expansions.GHSoloScenarios,
+			Expansions.ForgottenCircles,
+			Expansions.CrimsonScales,
+			Expansions.CrimsonScalesAddon,
+			Expansions.TrailOfAshes,
+		],
 	},
 	[Expansions.ForgottenCircles]: {
 		folderName: "forgotten-circles",

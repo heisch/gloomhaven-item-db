@@ -79,11 +79,7 @@ const getImportedSet = (id: number) => {
 };
 
 const filteredGhItems = ghItems
-	.filter(
-		(item) =>
-			ghItemToImport.includes(item.id) ||
-			item.gameType === Expansions.GHSoloScenarios
-	)
+	.filter((item) => ghItemToImport.includes(item.id) || item.soloItem)
 	.map((item: GloomhavenItem) => ({
 		...item,
 		displayId: item.id.toString(),

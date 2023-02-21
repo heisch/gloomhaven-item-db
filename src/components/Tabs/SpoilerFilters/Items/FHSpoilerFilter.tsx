@@ -7,7 +7,6 @@ import {
 	alwaysImported,
 } from "../../../../games/fh/FHGameData";
 import { gameInfo } from "../../../../games/GameInfo";
-import { Expansions, AllGames } from "../../../../games/GameType";
 import {
 	buildingLevelState,
 	importedSetState,
@@ -17,11 +16,6 @@ import { BuildingLevelFilter } from "./BuildingLevelFilter";
 import { ImportedSetFilter } from "./ImportedSetFilter";
 import { SoloClassFilterBlock } from "./SoloClassFilterBlock";
 import SpoilerFilterItemList, { ItemRange } from "./SpoilerFilterItemList";
-
-const soloClassesToInclude: AllGames[] = [
-	Expansions.FHSoloScenarios,
-	Expansions.GHSoloScenarios,
-];
 
 const filterGroups: Record<string, ItemRange[]> = {
 	"Random Blueprint": [{ range: [{ start: 51, end: 65 }] }],
@@ -76,8 +70,6 @@ export const FHSpoilerFilter = () => {
 	const importedSets = useRecoilValue(importedSetState);
 	const includedGames = useRecoilValue(includeGameState);
 	const { cm, tp, jw } = useRecoilValue(buildingLevelState);
-
-	// fhRanges.push({ start: 11, end: 164 });
 
 	return (
 		<Segment>
@@ -187,7 +179,7 @@ export const FHSpoilerFilter = () => {
 					</Form.Field>
 				</Segment>
 			)}
-			<SoloClassFilterBlock gameTypes={soloClassesToInclude} />
+			<SoloClassFilterBlock />
 		</Segment>
 	);
 };

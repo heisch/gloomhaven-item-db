@@ -3,18 +3,10 @@ import { Segment } from "semantic-ui-react";
 import SpoilerFilterItemList from "./SpoilerFilterItemList";
 import { useRecoilValue } from "recoil";
 import { prosperityState } from "../../../../State";
-import { AllGames, Expansions } from "../../../../games/GameType";
+import { Expansions } from "../../../../games/GameType";
 import { ReputationPulldown } from "./ReputationPulldown";
 import { ProsperityFilter } from "./ProsperityFilter";
 import { SoloClassFilterBlock } from "./SoloClassFilterBlock";
-
-const soloClassesToInclude: AllGames[] = [
-	Expansions.GHSoloScenarios,
-	Expansions.ForgottenCircles,
-	Expansions.CrimsonScales,
-	Expansions.CrimsonScalesAddon,
-	Expansions.TrailOfAshes,
-];
 
 export const GHSpoilerFilter = () => {
 	const prosperity = useRecoilValue(prosperityState);
@@ -104,7 +96,7 @@ export const GHSpoilerFilter = () => {
 				/>
 			</Segment>
 
-			<SoloClassFilterBlock gameTypes={soloClassesToInclude} />
+			<SoloClassFilterBlock />
 		</Segment>
 	);
 };

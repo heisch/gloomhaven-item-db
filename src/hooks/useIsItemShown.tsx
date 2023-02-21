@@ -66,6 +66,7 @@ export const useIsItemShown = (): ((item: GloomhavenItem) => boolean) => {
 			}
 
 			if (
+				!all &&
 				importedSet !== undefined &&
 				!importSets.includes(importedSet)
 			) {

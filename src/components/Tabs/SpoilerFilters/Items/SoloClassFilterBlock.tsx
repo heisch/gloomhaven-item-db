@@ -1,21 +1,20 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 import { Form, Segment } from "semantic-ui-react";
-import { AllGames } from "../../../../games/GameType";
-import { includeGameState } from "../../../../State";
+import { gameInfo } from "../../../../games/GameInfo";
+import { gameTypeState, includeGameState } from "../../../../State";
 import { SoloClassFilter } from "./SoloClassFilter";
 
-interface Props {
-	gameTypes: AllGames[];
-}
-
-export const SoloClassFilterBlock = (props: Props) => {
-	const { gameTypes } = props;
+export const SoloClassFilterBlock = () => {
+	const currentGameType = useRecoilValue(gameTypeState);
+	const { soloClassesToInclude } = gameInfo[currentGameType];
 	const includeGames = useRecoilValue(includeGameState);
-	const includeList = gameTypes.filter((gameType) =>
-		includeGames.includes(gameType)
-	);
-	if (includeList.length === 0) {
+	const includeList =
+		soloClassesToInclude &&
+		soloClassesToInclude.filter((gameType) =>
+			includeGames.includes(gameType)
+		);
+	if (!includeList || includeList.length === 0) {
 		return null;
 	}
 
