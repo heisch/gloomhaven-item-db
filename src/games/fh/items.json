@@ -2451,8 +2451,8 @@
 		"count": 1,
 		"cost": 30,
 		"slot": "head",
-		"source": "During your turn, control one enemy withing ^fh-range^ 3: ^attack^ 3",
-		"desc": "",
+		"source": "unknown",
+		"desc": "During your turn, control one enemy withing ^fh-range^ 3: ^attack^ 3",
 		"folder": "193-247",
 		"consumed": true
 	},
@@ -3142,77 +3142,91 @@
 	{
 		"id": 248,
 		"gameType": "fhss",
-		"name": "wanderers club",
+		"name": "Wanderer's Club",
 		"count": 1,
-		"cost": 50,
-		"slot": "head",
+		"cost": 0,
+		"slot": "1h",
 		"source": "Reward from Solo Scenario #01 — {FH1}",
-		"desc": "",
+		"desc": "Duing your attack ability, move one character token on one of your peristent abilities backward one slot and add +X ^attack^ to one attack, where X is the nuber of active peristent abilities.",
 		"folder": "248-264",
 		"soloItem": "FH1",
-		"lockToClasses": ["FH1"]
+		"lockToClasses": ["FH1"],
+		"consumed": true
 	},
 	{
 		"id": 249,
 		"gameType": "fhss",
-		"name": "recalibration trigger",
+		"name": "Recalibration Trigger",
 		"count": 1,
-		"cost": 50,
-		"slot": "head",
+		"cost": 0,
+		"slot": "small",
 		"source": "Reward from Solo Scenario #02 — {FH2}",
-		"desc": "",
+		"desc": "During our turn, perform one of the two following abilities: Lose one card from your hand to gain 3 ^fh-hourglass^. ~@-2 ^fh-hourglass^ : ^recover^ up to two of your discarded cards@~",
 		"folder": "248-264",
 		"soloItem": "FH2",
-		"lockToClasses": ["FH2"]
+		"lockToClasses": ["FH2"],
+		"lost": true,
+		"consumed": true
 	},
 	{
 		"id": 250,
 		"gameType": "fhss",
-		"name": "spear of justice",
+		"name": "Spear of Justice",
 		"count": 1,
-		"cost": 50,
-		"slot": "head",
+		"cost": 0,
+		"slot": "1h",
 		"source": "Reward from Solo Scenario #03 — {FH3}",
-		"desc": "",
+		"desc": "During your turn perform: ^attack^ ~!^fh-range^ 3!~. All your banners are treated as additionally occupying the hex of the attack target of their bonuses and that hex is treated as occupied by an ally this round. ^eot^",
 		"folder": "248-264",
 		"soloItem": "FH3",
-		"lockToClasses": ["FH3"]
+		"lockToClasses": ["FH3"],
+		"consumed": true
 	},
 	{
 		"id": 251,
 		"gameType": "fhss",
-		"name": "soul urn",
+		"name": "Soul Urn",
 		"count": 1,
-		"cost": 50,
-		"slot": "head",
+		"cost": 0,
+		"slot": "1h",
 		"source": "Reward from Solo Scenario #04 — {FH4}",
-		"desc": "",
+		"desc": "Place one ^fh-shadow^ in an adjacent hex. @wfh-dark@",
 		"folder": "248-264",
 		"soloItem": "FH4",
-		"lockToClasses": ["FH4"]
+		"lockToClasses": ["FH4"],
+		"consumed": true
 	},
 	{
 		"id": 252,
 		"gameType": "fhss",
-		"name": "black earth codex",
+		"name": "Black Earth Codex",
 		"count": 1,
-		"cost": 50,
-		"slot": "head",
+		"cost": 0,
+		"slot": "1h",
 		"source": "Reward from Solo Scenario #05 — {FH5}",
-		"desc": "",
+		"desc": "On the next three deaths of any of your summons,",
+		"consumption": {
+			"elements": [
+				{ "element": "earth", "colorize": true },
+				{ "element": "dark", "colorize": true }
+			],
+			"effect": "and perform: ^fh-heal^ 2 ~!self!~"
+		},
 		"folder": "248-264",
 		"soloItem": "FH5",
-		"lockToClasses": ["FH5"]
+		"lockToClasses": ["FH5"],
+		"consumed": true
 	},
 	{
 		"id": 253,
 		"gameType": "fhss",
-		"name": "mask of duality",
+		"name": "Mask of Duality",
 		"count": 1,
-		"cost": 50,
+		"cost": 0,
 		"slot": "head",
 		"source": "Reward from Solo Scenario #06 — {FH6}",
-		"desc": "",
+		"desc": "During your ranged attack ability while in ^fh-geminate-right^, gain advantage for one attack, then flip this card over.",
+		"backDesc": "When an enemy performs an attack targeting you while you are in ^fh-geminate-left^, the attacker gains disadvantage, then flip this card over.",
 		"folder": "248-264",
 		"soloItem": "FH6",
 		"lockToClasses": ["FH6"]
@@ -3220,77 +3234,96 @@
 	{
 		"id": 254,
 		"gameType": "fhss",
-		"name": "ancestral blade",
+		"name": "Ancestral Blade",
 		"count": 1,
-		"cost": 50,
-		"slot": "head",
+		"cost": 0,
+		"slot": "2h",
 		"source": "Reward from Solo Scenario #07 — {FH7}",
-		"desc": "",
+		"desc": "During your turn, activate all your ^fh-astral^ as if you just performed a ^fh-astral^ action.",
 		"folder": "248-264",
 		"soloItem": "FH7",
-		"lockToClasses": ["FH7"]
+		"lockToClasses": ["FH7"],
+		"consumed": true
 	},
 	{
 		"id": 255,
 		"gameType": "fhss",
-		"name": "mountains heart",
+		"name": "Mountain's Heart",
 		"count": 1,
-		"cost": 50,
-		"slot": "head",
+		"cost": 0,
+		"slot": "small",
 		"source": "Reward from Solo Scenario #08 — {FH8}",
-		"desc": "",
+		"desc": "During your turn, you may create either one 1-hex obstacle or hazardous terrain tile in an empty tile within ^fh-range^ 2.",
+		"consumption": {
+			"elements": [
+				{ "element": "fire", "colorize": true },
+				{ "element": "earth", "colorize": true }
+			]
+		},
 		"folder": "248-264",
 		"soloItem": "FH8",
-		"lockToClasses": ["FH8"]
+		"lockToClasses": ["FH8"],
+		"consumed": true
 	},
 	{
 		"id": 256,
 		"gameType": "fhss",
-		"name": "sonorous shard",
+		"name": "Sonorous Shard",
 		"count": 1,
-		"cost": 50,
-		"slot": "head",
+		"cost": 0,
+		"slot": "small",
 		"source": "Reward from Solo Scenario #09 — {FH9}",
-		"desc": "",
+		"desc": "Gain 3 ^fh-shards^",
 		"folder": "248-264",
 		"soloItem": "FH9",
-		"lockToClasses": ["FH9"]
+		"lockToClasses": ["FH9"],
+		"consumption": {
+			"elements": [
+				{ "element": "air", "colorize": true },
+				{ "element": "earth", "colorize": true }
+			]
+		},
+		"lost": true,
+		"consumed": true
 	},
 	{
 		"id": 257,
 		"gameType": "fhss",
-		"name": "sly camouflage",
+		"name": "Sly Camouflage",
 		"count": 1,
-		"cost": 50,
-		"slot": "head",
+		"cost": 0,
+		"slot": "1h",
 		"source": "Reward from Solo Scenario #10 — {FH10}",
-		"desc": "",
+		"desc": "When you create a trap, place a character token on it.  Monsters do not treat the trap as negative. Remvoe the token when you ^recover^ this item. ^ongoing^",
 		"folder": "248-264",
 		"soloItem": "FH10",
-		"lockToClasses": ["FH10"]
+		"lockToClasses": ["FH10"],
+		"spent": true
 	},
 	{
 		"id": 258,
 		"gameType": "fhss",
-		"name": "skull of agony",
+		"name": "Skull of Agony",
 		"count": 1,
-		"cost": 50,
-		"slot": "head",
+		"cost": 0,
+		"slot": "small",
 		"source": "Reward from Solo Scenario #11 — {FH11}",
-		"desc": "",
+		"desc": "When you suffer damage, if your hit point value is reduced to below half your maximum, perform: ^fh-heal^ 7 ~!self, $wfh-curse$!~ This heal is not affect by and cannot remove negative conditions.",
 		"folder": "248-264",
 		"soloItem": "FH11",
-		"lockToClasses": ["FH11"]
+		"lockToClasses": ["FH11"],
+		"consumed": true
 	},
 	{
 		"id": 259,
 		"gameType": "fhss",
-		"name": "storm carving",
+		"name": "Storm Carving",
 		"count": 1,
-		"cost": 50,
-		"slot": "head",
+		"cost": 0,
+		"slot": "1h",
 		"source": "Reward from Solo Scenario #12 — {FH12}",
-		"desc": "",
+		"desc": "During an attack ability you grant an ally, add $wfh-push$ 2 to one of their attacks, then flip this card over.",
+		"backDesc": "During your attack ability you, add $wfh-pull$ 2 to one attack, then flip this card over.",
 		"folder": "248-264",
 		"soloItem": "FH12",
 		"lockToClasses": ["FH12"]
@@ -3298,38 +3331,41 @@
 	{
 		"id": 260,
 		"gameType": "fhss",
-		"name": "freezing orb",
+		"name": "Freezing Orb",
 		"count": 1,
-		"cost": 50,
-		"slot": "head",
+		"cost": 0,
+		"slot": "1h",
 		"source": "Reward from Solo Scenario #13 — {FH13}",
-		"desc": "",
+		"desc": "During your attack ability, add $wfh-brittle$ to one attack and create one 1-hex icy terrain tile in the featureless hex occupied by the target.",
 		"folder": "248-264",
 		"soloItem": "FH13",
-		"lockToClasses": ["FH13"]
+		"lockToClasses": ["FH13"],
+		"consumed": true
 	},
 	{
 		"id": 261,
 		"gameType": "fhss",
-		"name": "energized module",
+		"name": "Energized Module",
 		"count": 1,
-		"cost": 50,
-		"slot": "head",
+		"cost": 0,
+		"slot": "small",
 		"source": "Reward from Solo Scenario #14 — {FH14}",
-		"desc": "",
+		"desc": "Remove all damage and negative conditions from one of your summons, then ^fh-prism^ to that summon.",
 		"folder": "248-264",
 		"soloItem": "FH14",
-		"lockToClasses": ["FH14"]
+		"lockToClasses": ["FH14"],
+		"consumed": true
 	},
 	{
 		"id": 262,
 		"gameType": "fhss",
-		"name": "exhaust boots",
+		"name": "Exhaust Boots",
 		"count": 1,
-		"cost": 50,
-		"slot": "head",
+		"cost": 0,
+		"slot": "legs",
 		"source": "Reward from Solo Scenario #15 — {FH15}",
-		"desc": "",
+		"desc": "During your move ability, when you have ^fh-meter-yellow^ or ^fh-meter-red^, add +1 ^fh-move^, then flip this card over at the end of your turn.",
+		"backDesc": "During your turn when you have ^fh-meter-blue^, perform: $wfh-muddle$ ~!^fh-range^ 1!~ then flip this card over at the end of your turn.",
 		"folder": "248-264",
 		"soloItem": "FH15",
 		"lockToClasses": ["FH15"]
@@ -3337,12 +3373,12 @@
 	{
 		"id": 263,
 		"gameType": "fhss",
-		"name": "warlords skull",
+		"name": "Warlords Skull",
 		"count": 1,
-		"cost": 50,
-		"slot": "head",
+		"cost": 0,
+		"slot": "1h",
 		"source": "Reward from Solo Scenario #16 — {FH16}",
-		"desc": "",
+		"desc": "Whenever you gain $wfh-invisible$ or peform a teleport ability while you have $wfh-invisible$, after the ability perform: $wfh-muddle$ ~!^fh-range^ 1!~",
 		"folder": "248-264",
 		"soloItem": "FH16",
 		"lockToClasses": ["FH16"]
@@ -3350,14 +3386,22 @@
 	{
 		"id": 264,
 		"gameType": "fhss",
-		"name": "spiraled medallion",
+		"name": "Spiraled Medallion",
 		"count": 1,
-		"cost": 50,
+		"cost": 0,
 		"slot": "head",
 		"source": "Reward from Solo Scenario #17 — {FH17}",
-		"desc": "",
+		"desc": "When you rest, you may keep up to three ^fh-anemone^ cards in your active area.",
 		"folder": "248-264",
 		"soloItem": "FH17",
-		"lockToClasses": ["FH17"]
+		"lockToClasses": ["FH17"],
+		"lost": true,
+		"consumed": true,
+		"consumption": {
+			"elements": [
+				{ "element": "light", "colorize": true },
+				{ "element": "dark", "colorize": true }
+			]
+		}
 	}
 ]

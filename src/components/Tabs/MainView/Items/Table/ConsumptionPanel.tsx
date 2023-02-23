@@ -25,6 +25,7 @@ export const ConsumptionPanel = (props: Props) => {
 	const leftColor = colors[leftElement];
 	const rightColor = rightElement ? colors[rightElement] : undefined;
 	const iconSize = 18;
+	const anyConsumption = elements.some((element) => element.consume);
 	return (
 		<span
 			style={{
@@ -139,7 +140,7 @@ export const ConsumptionPanel = (props: Props) => {
 						top: 0,
 					}}
 				>
-					{" : "}
+					{anyConsumption && " : "}
 
 					<span
 						dangerouslySetInnerHTML={{

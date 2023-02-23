@@ -80,13 +80,20 @@ const getImportedSet = (id: number) => {
 
 const filteredGhItems = ghItems
 	.filter((item) => ghItemToImport.includes(item.id) || item.soloItem)
-	.map((item: GloomhavenItem) => ({
-		...item,
-		displayId: item.id.toString(),
-		id: ghItemOffset + item.id,
-		unlockProsperity: Number.MAX_VALUE,
-		importedSet: getImportedSet(item.id),
-	}));
+	.map((item: GloomhavenItem) => {
+		let lockToClasses = undefined;
+		if (item.soloItem) {
+			lockToClasses = [item.soloItem];
+		}
+		return {
+			...item,
+			displayId: item.id.toString(),
+			id: ghItemOffset + item.id,
+			unlockProsperity: Number.MAX_VALUE,
+			importedSet: getImportedSet(item.id),
+			lockToClasses,
+		};
+	});
 
 items = items.concat(filteredGhItems);
 
