@@ -3146,10 +3146,10 @@
 		"count": 1,
 		"cost": 50,
 		"slot": "head",
-		"source": "unknown",
+		"source": "Reward from Solo Scenario #01 — {FH1}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH4"
+		"soloItem": "FH1"
 	},
 	{
 		"id": 249,
@@ -3158,10 +3158,10 @@
 		"count": 1,
 		"cost": 50,
 		"slot": "head",
-		"source": "unknown",
+		"source": "Reward from Solo Scenario #02 — {FH2}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH1"
+		"soloItem": "FH2"
 	},
 	{
 		"id": 250,
@@ -3170,10 +3170,10 @@
 		"count": 1,
 		"cost": 50,
 		"slot": "head",
-		"source": "unknown",
+		"source": "Reward from Solo Scenario #03 — {FH3}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH2"
+		"soloItem": "FH3"
 	},
 	{
 		"id": 251,
@@ -3182,10 +3182,10 @@
 		"count": 1,
 		"cost": 50,
 		"slot": "head",
-		"source": "unknown",
+		"source": "Reward from Solo Scenario #04 — {FH4}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH5"
+		"soloItem": "FH4"
 	},
 	{
 		"id": 252,
@@ -3194,10 +3194,10 @@
 		"count": 1,
 		"cost": 50,
 		"slot": "head",
-		"source": "unknown",
+		"source": "Reward from Solo Scenario #05 — {FH5}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH3"
+		"soloItem": "FH5"
 	},
 	{
 		"id": 253,
@@ -3206,7 +3206,7 @@
 		"count": 1,
 		"cost": 50,
 		"slot": "head",
-		"source": "unknown",
+		"source": "Reward from Solo Scenario #06 — {FH6}",
 		"desc": "",
 		"folder": "248-264",
 		"soloItem": "FH6"
@@ -3218,10 +3218,10 @@
 		"count": 1,
 		"cost": 50,
 		"slot": "head",
-		"source": "unknown",
+		"source": "Reward from Solo Scenario #07 — {FH7}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH17"
+		"soloItem": "FH7"
 	},
 	{
 		"id": 255,
@@ -3230,10 +3230,10 @@
 		"count": 1,
 		"cost": 50,
 		"slot": "head",
-		"source": "unknown",
+		"source": "Reward from Solo Scenario #08 — {FH8}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH14"
+		"soloItem": "FH8"
 	},
 	{
 		"id": 256,
@@ -3242,10 +3242,10 @@
 		"count": 1,
 		"cost": 50,
 		"slot": "head",
-		"source": "unknown",
+		"source": "Reward from Solo Scenario #09 — {FH9}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH15"
+		"soloItem": "FH9"
 	},
 	{
 		"id": 257,
@@ -3254,10 +3254,10 @@
 		"count": 1,
 		"cost": 50,
 		"slot": "head",
-		"source": "unknown",
+		"source": "Reward from Solo Scenario #10 — {FH10}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH11"
+		"soloItem": "FH10"
 	},
 	{
 		"id": 258,
@@ -3266,10 +3266,10 @@
 		"count": 1,
 		"cost": 50,
 		"slot": "head",
-		"source": "unknown",
+		"source": "Reward from Solo Scenario #11 — {FH11}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH12"
+		"soloItem": "FH11"
 	},
 	{
 		"id": 259,
@@ -3278,10 +3278,10 @@
 		"count": 1,
 		"cost": 50,
 		"slot": "head",
-		"source": "unknown",
+		"source": "Reward from Solo Scenario #12 — {FH12}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH13"
+		"soloItem": "FH12"
 	},
 	{
 		"id": 260,
@@ -3290,10 +3290,10 @@
 		"count": 1,
 		"cost": 50,
 		"slot": "head",
-		"source": "unknown",
+		"source": "Reward from Solo Scenario #13 — {FH13}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH8"
+		"soloItem": "FH13"
 	},
 	{
 		"id": 261,
@@ -3302,10 +3302,10 @@
 		"count": 1,
 		"cost": 50,
 		"slot": "head",
-		"source": "unknown",
+		"source": "Reward from Solo Scenario #14 — {FH14}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH10"
+		"soloItem": "FH14"
 	},
 	{
 		"id": 262,
@@ -3314,10 +3314,10 @@
 		"count": 1,
 		"cost": 50,
 		"slot": "head",
-		"source": "unknown",
+		"source": "Reward from Solo Scenario #15 — {FH15}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH16"
+		"soloItem": "FH15"
 	},
 	{
 		"id": 263,
@@ -3326,10 +3326,10 @@
 		"count": 1,
 		"cost": 50,
 		"slot": "head",
-		"source": "unknown",
+		"source": "Reward from Solo Scenario #16 — {FH16}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH9"
+		"soloItem": "FH16"
 	},
 	{
 		"id": 264,
@@ -3338,9 +3338,9 @@
 		"count": 1,
 		"cost": 50,
 		"slot": "head",
-		"source": "unknown",
+		"source": "Reward from Solo Scenario #17 — {FH17}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH7"
+		"soloItem": "FH17"
 	}
 ]
