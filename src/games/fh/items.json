@@ -3141,7 +3141,7 @@
 	},
 	{
 		"id": 248,
-		"gameType": "fh",
+		"gameType": "fhss",
 		"name": "wanderers club",
 		"count": 1,
 		"cost": 50,
@@ -3149,11 +3149,12 @@
 		"source": "Reward from Solo Scenario #01 — {FH1}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH1"
+		"soloItem": "FH1",
+		"lockToClasses": ["FH1"]
 	},
 	{
 		"id": 249,
-		"gameType": "fh",
+		"gameType": "fhss",
 		"name": "recalibration trigger",
 		"count": 1,
 		"cost": 50,
@@ -3161,11 +3162,12 @@
 		"source": "Reward from Solo Scenario #02 — {FH2}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH2"
+		"soloItem": "FH2",
+		"lockToClasses": ["FH2"]
 	},
 	{
 		"id": 250,
-		"gameType": "fh",
+		"gameType": "fhss",
 		"name": "spear of justice",
 		"count": 1,
 		"cost": 50,
@@ -3173,11 +3175,12 @@
 		"source": "Reward from Solo Scenario #03 — {FH3}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH3"
+		"soloItem": "FH3",
+		"lockToClasses": ["FH3"]
 	},
 	{
 		"id": 251,
-		"gameType": "fh",
+		"gameType": "fhss",
 		"name": "soul urn",
 		"count": 1,
 		"cost": 50,
@@ -3185,11 +3188,12 @@
 		"source": "Reward from Solo Scenario #04 — {FH4}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH4"
+		"soloItem": "FH4",
+		"lockToClasses": ["FH4"]
 	},
 	{
 		"id": 252,
-		"gameType": "fh",
+		"gameType": "fhss",
 		"name": "black earth codex",
 		"count": 1,
 		"cost": 50,
@@ -3197,11 +3201,12 @@
 		"source": "Reward from Solo Scenario #05 — {FH5}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH5"
+		"soloItem": "FH5",
+		"lockToClasses": ["FH5"]
 	},
 	{
 		"id": 253,
-		"gameType": "fh",
+		"gameType": "fhss",
 		"name": "mask of duality",
 		"count": 1,
 		"cost": 50,
@@ -3209,11 +3214,12 @@
 		"source": "Reward from Solo Scenario #06 — {FH6}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH6"
+		"soloItem": "FH6",
+		"lockToClasses": ["FH6"]
 	},
 	{
 		"id": 254,
-		"gameType": "fh",
+		"gameType": "fhss",
 		"name": "ancestral blade",
 		"count": 1,
 		"cost": 50,
@@ -3221,11 +3227,12 @@
 		"source": "Reward from Solo Scenario #07 — {FH7}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH7"
+		"soloItem": "FH7",
+		"lockToClasses": ["FH7"]
 	},
 	{
 		"id": 255,
-		"gameType": "fh",
+		"gameType": "fhss",
 		"name": "mountains heart",
 		"count": 1,
 		"cost": 50,
@@ -3233,11 +3240,12 @@
 		"source": "Reward from Solo Scenario #08 — {FH8}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH8"
+		"soloItem": "FH8",
+		"lockToClasses": ["FH8"]
 	},
 	{
 		"id": 256,
-		"gameType": "fh",
+		"gameType": "fhss",
 		"name": "sonorous shard",
 		"count": 1,
 		"cost": 50,
@@ -3245,11 +3253,12 @@
 		"source": "Reward from Solo Scenario #09 — {FH9}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH9"
+		"soloItem": "FH9",
+		"lockToClasses": ["FH9"]
 	},
 	{
 		"id": 257,
-		"gameType": "fh",
+		"gameType": "fhss",
 		"name": "sly camouflage",
 		"count": 1,
 		"cost": 50,
@@ -3257,11 +3266,12 @@
 		"source": "Reward from Solo Scenario #10 — {FH10}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH10"
+		"soloItem": "FH10",
+		"lockToClasses": ["FH10"]
 	},
 	{
 		"id": 258,
-		"gameType": "fh",
+		"gameType": "fhss",
 		"name": "skull of agony",
 		"count": 1,
 		"cost": 50,
@@ -3269,11 +3279,12 @@
 		"source": "Reward from Solo Scenario #11 — {FH11}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH11"
+		"soloItem": "FH11",
+		"lockToClasses": ["FH11"]
 	},
 	{
 		"id": 259,
-		"gameType": "fh",
+		"gameType": "fhss",
 		"name": "storm carving",
 		"count": 1,
 		"cost": 50,
@@ -3281,11 +3292,12 @@
 		"source": "Reward from Solo Scenario #12 — {FH12}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH12"
+		"soloItem": "FH12",
+		"lockToClasses": ["FH12"]
 	},
 	{
 		"id": 260,
-		"gameType": "fh",
+		"gameType": "fhss",
 		"name": "freezing orb",
 		"count": 1,
 		"cost": 50,
@@ -3293,11 +3305,12 @@
 		"source": "Reward from Solo Scenario #13 — {FH13}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH13"
+		"soloItem": "FH13",
+		"lockToClasses": ["FH13"]
 	},
 	{
 		"id": 261,
-		"gameType": "fh",
+		"gameType": "fhss",
 		"name": "energized module",
 		"count": 1,
 		"cost": 50,
@@ -3305,11 +3318,12 @@
 		"source": "Reward from Solo Scenario #14 — {FH14}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH14"
+		"soloItem": "FH14",
+		"lockToClasses": ["FH14"]
 	},
 	{
 		"id": 262,
-		"gameType": "fh",
+		"gameType": "fhss",
 		"name": "exhaust boots",
 		"count": 1,
 		"cost": 50,
@@ -3317,11 +3331,12 @@
 		"source": "Reward from Solo Scenario #15 — {FH15}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH15"
+		"soloItem": "FH15",
+		"lockToClasses": ["FH15"]
 	},
 	{
 		"id": 263,
-		"gameType": "fh",
+		"gameType": "fhss",
 		"name": "warlords skull",
 		"count": 1,
 		"cost": 50,
@@ -3329,11 +3344,12 @@
 		"source": "Reward from Solo Scenario #16 — {FH16}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH16"
+		"soloItem": "FH16",
+		"lockToClasses": ["FH16"]
 	},
 	{
 		"id": 264,
-		"gameType": "fh",
+		"gameType": "fhss",
 		"name": "spiraled medallion",
 		"count": 1,
 		"cost": 50,
@@ -3341,6 +3357,7 @@
 		"source": "Reward from Solo Scenario #17 — {FH17}",
 		"desc": "",
 		"folder": "248-264",
-		"soloItem": "FH17"
+		"soloItem": "FH17",
+		"lockToClasses": ["FH17"]
 	}
 ]

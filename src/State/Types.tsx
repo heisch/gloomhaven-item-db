@@ -223,4 +223,5 @@ export interface GloomhavenItem {
 	unlockJewelerLevel: number;
 	importedSet?: ImportedSet;
 	consumption?: Consumption;
+	lockToClasses?: ClassesInUse[];
 }

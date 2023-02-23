@@ -72,6 +72,16 @@ const PurchaseItem = () => {
 
 	const { name, cost, count } = selectedItem;
 
+	let classes = classesInUse;
+	if (selectedItem.lockToClasses) {
+		const classesCount = selectedItem.lockToClasses.filter((c) =>
+			classesInUse.includes(c)
+		).length;
+		if (classesCount) {
+			classes = [...selectedItem.lockToClasses];
+		}
+	}
+
 	return (
 		<Modal
 			size="tiny"
@@ -97,7 +107,7 @@ const PurchaseItem = () => {
 						</Form.Group>
 						<Segment>
 							<ClassList
-								classes={classesInUse}
+								classes={classes}
 								label="Party Members:"
 								onClick={toggleOwnership}
 								isEnabled={(className: ClassesInUse) =>
