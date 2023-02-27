@@ -1,67 +1,32 @@
 import { Helpers } from "../../helpers";
-import { GloomhavenItem, ImportedSet } from "../../State/Types";
+import { GloomhavenItem } from "../../State/Types";
 import { GameData, getInitialItems } from "../GameData";
 import { AllGames, Expansions, GameType } from "../GameType";
 
-export interface BaseImportedSetData {
-	title: string;
-	items: number[];
-	game: AllGames;
-}
+export const ghImportSets: number[][] = [
+	[10, 25, 72, 105, 109, 116],
+	[21, 37, 53, 93, 94, 106, 115],
+	[46, 83, 84, 85, 86, 87, 88, 102, 110, 111, 121, 122, 126, 123, 128],
+	[
+		17, 35, 47, 51, 62, 74, 77, 78, 79, 80, 81, 82, 117, 118, 119, 127, 129,
+		131,
+	],
+];
 
-export interface ImportedSetData extends BaseImportedSetData {
-	importSet: ImportedSet;
-}
-
-export const alwaysImported: BaseImportedSetData = {
-	title: "Initial",
-	items: [10, 25, 72, 105, 109, 116],
-	game: GameType.Gloomhaven,
-};
-
-export const ghImportSets: ImportedSetData[] = [
-	{
-		title: "Set 1",
-		importSet: ImportedSet.GloomhavenA,
-		items: [106, 37, 53, 115, 21, 93, 94],
-		game: GameType.Gloomhaven,
-	},
-	{
-		title: "Set 2",
-		importSet: ImportedSet.GloomhavenB,
-		items: [
-			110, 111, 102, 121, 122, 46, 126, 123, 83, 84, 85, 86, 87, 88, 128,
-		],
-		game: GameType.Gloomhaven,
-	},
-	{
-		title: "Set 3",
-		importSet: ImportedSet.GloomhavenC,
-		items: [
-			17, 74, 51, 35, 62, 129, 127, 131, 119, 117, 47, 118, 77, 78, 79,
-			80, 81, 82,
-		],
-		game: GameType.Gloomhaven,
-	},
-	{
-		title: "Set 1",
-		importSet: ImportedSet.ForgottenCirclesA,
-		items: [153, 154, 155, 157, 159, 161, 163],
-		game: Expansions.ForgottenCircles,
-	},
+export const fcImportSets: number[][] = [
+	[153, 159, 161],
+	[154, 155, 157, 163],
 ];
 
 const sortById = (a: number, b: number) => a - b;
 
-const allImportSets = [alwaysImported, ...ghImportSets];
+export const ghItemToImport = ghImportSets
+	.flatMap((groups) => [...groups])
+	.sort(sortById);
 
-allImportSets.forEach((group) => group.items.sort(sortById));
-
-export const ghItemToImport = allImportSets.flatMap((groups) => [
-	...groups.items,
-]);
-
-ghItemToImport.sort(sortById);
+export const fcItemToImport = fcImportSets
+	.flatMap((groups) => [...groups])
+	.sort(sortById);
 
 let { items, filterSlots, resources } = getInitialItems(GameType.Frosthaven);
 export const ghItemOffset = 1000;
@@ -70,27 +35,53 @@ const { items: ghItems, filterSlots: ghFilterSlots } = getInitialItems(
 	GameType.Gloomhaven
 );
 
-const getImportedSet = (id: number) => {
-	const set = ghImportSets.find((set) => set.items.includes(id));
-	if (set) {
-		return set.importSet;
+const getTradingPostLevel = (id: number) => {
+	const setIndex = ghImportSets.findIndex((set) => set.includes(id));
+	if (setIndex !== -1) {
+		return setIndex;
+	}
+	return undefined;
+};
+
+const getScenarioLevel = (id: number) => {
+	if (fcImportSets[0].includes(id)) {
+		return 82;
+	}
+	return undefined;
+};
+
+const getEnchancerLevel = (id: number) => {
+	if (fcImportSets[1].includes(id)) {
+		return 4;
 	}
 	return undefined;
 };
 
 const filteredGhItems = ghItems
-	.filter((item) => ghItemToImport.includes(item.id) || item.soloItem)
+	.filter(
+		(item) =>
+			ghItemToImport.includes(item.id) ||
+			fcItemToImport.includes(item.id) ||
+			item.soloItem
+	)
 	.map((item: GloomhavenItem) => {
 		let lockToClasses = undefined;
 		if (item.soloItem) {
 			lockToClasses = [item.soloItem];
 		}
+		const unlockTradingPostLevel =
+			getTradingPostLevel(item.id) || Number.MAX_VALUE;
+		const unlockScenario = getScenarioLevel(item.id) || Number.MAX_VALUE;
+		const unlockEnhancerLevel =
+			getEnchancerLevel(item.id) || Number.MAX_VALUE;
 		return {
 			...item,
 			displayId: item.id.toString(),
 			id: ghItemOffset + item.id,
 			unlockProsperity: Number.MAX_VALUE,
-			importedSet: getImportedSet(item.id),
+			unlockTradingPostLevel,
+			unlockEnhancerLevel,
+			unlockScenario,
 			lockToClasses,
 		};
 	});

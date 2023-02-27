@@ -5,7 +5,6 @@ import {
 	ClassesInUse,
 	FCClasses,
 	GHClasses,
-	ImportedSet,
 	ItemManagementType,
 	ItemsInUse,
 	ItemsOwnedBy,
@@ -70,10 +69,6 @@ export const itemsOwnedByState = createSpoilerState<ItemsOwnedBy>(
 export const prosperityState = createSpoilerState<number>("prosperity", 1);
 export const scenarioCompletedState = createSpoilerState<number[]>(
 	"scenarioCompleted",
-	[]
-);
-export const importedSetState = createSpoilerState<ImportedSet[]>(
-	"importedSet",
 	[]
 );
 
@@ -160,5 +155,6 @@ export const buildingLevelState = createSpoilerState<Record<string, number>>(
 		cm: 1,
 		tp: -1,
 		jw: -1,
+		en: -1,
 	}
 );

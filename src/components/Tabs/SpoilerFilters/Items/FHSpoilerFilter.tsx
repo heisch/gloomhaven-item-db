@@ -1,19 +1,23 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 import { Form, Segment } from "semantic-ui-react";
+import { Expansions, GameType } from "../../../../games";
 import {
 	ghItemOffset,
 	ghImportSets,
-	alwaysImported,
+	fcImportSets,
 } from "../../../../games/fh/FHGameData";
 import { gameInfo } from "../../../../games/GameInfo";
 import {
 	buildingLevelState,
-	importedSetState,
 	includeGameState,
+	scenarioCompletedState,
 } from "../../../../State";
-import { BuildingLevelFilter } from "./BuildingLevelFilter";
-import { ImportedSetFilter } from "./ImportedSetFilter";
+import {
+	BuildingLevelFilter,
+	BuildingLevelFilterProps,
+} from "./BuildingLevelFilter";
+import { ScenarioCompletedFilter } from "./ScenarioCompletedFilter";
 import { SoloClassFilterBlock } from "./SoloClassFilterBlock";
 import SpoilerFilterItemList, { ItemRange } from "./SpoilerFilterItemList";
 
@@ -34,48 +38,45 @@ const filterGroups2 = {
 		},
 	],
 };
-
-interface BuildingFilter {
-	label: string;
-	lockedLabel?: string;
-	maxLevel: number;
-	minLevel: number;
-	buildingKey: string;
-}
-
-const buildingFilters: BuildingFilter[] = [
+const buildingFilters: BuildingLevelFilterProps[] = [
 	{
 		label: "Craftsman Level",
-		maxLevel: 9,
-		minLevel: 1,
+		endBuildingLevel: 9,
 		buildingKey: "cm",
 	},
 	{
 		label: "Trading Post Level",
 		lockedLabel: "Envelope 37",
-		maxLevel: 4,
-		minLevel: -1,
+		endBuildingLevel: 4,
 		buildingKey: "tp",
 	},
 	{
 		label: "Jeweler Level",
 		lockedLabel: "Envelope 39",
-		maxLevel: 3,
-		minLevel: -1,
+		endBuildingLevel: 3,
 		buildingKey: "jw",
+	},
+	{
+		label: "Enhancer Level",
+		lockedLabel: "Envelope 44",
+		startBuildingLevel: 4,
+		buildingKey: "en",
 	},
 ];
 
 export const FHSpoilerFilter = () => {
-	const importedSets = useRecoilValue(importedSetState);
 	const includedGames = useRecoilValue(includeGameState);
-	const { cm, tp, jw } = useRecoilValue(buildingLevelState);
+	const scenariosComplete = useRecoilValue(scenarioCompletedState);
+	const { cm, tp, jw, en } = useRecoilValue(buildingLevelState);
 
 	return (
 		<Segment>
 			{buildingFilters.map((filter) => (
 				<BuildingLevelFilter key={filter.label} {...filter} />
 			))}
+			{includedGames.includes(Expansions.ForgottenCircles) && (
+				<ScenarioCompletedFilter scenarios={[82]} />
+			)}
 			<Segment>
 				<SpoilerFilterItemList
 					ranges={[
@@ -137,30 +138,29 @@ export const FHSpoilerFilter = () => {
 					/>
 				))}
 			</Segment>
-			{ghImportSets.some((group) =>
-				includedGames.includes(group.game)
-			) && (
-				<Segment>
+			<Segment>
+				{includedGames.includes(GameType.Gloomhaven) && (
 					<Form.Field>
-						<ImportedSetFilter sets={ghImportSets} />
-						<SpoilerFilterItemList
-							ranges={[
-								{
-									offset: ghItemOffset,
-									range: [...alwaysImported.items],
-								},
-							]}
-							title={gameInfo[alwaysImported.game].title}
-							filterOn={alwaysImported.game}
-						/>
-						{ghImportSets.map(
-							({ items, importSet, title, game }) => {
-								if (!importedSets.includes(importSet)) {
+						{ghImportSets.map((items, index) => {
+							if (index === 0) {
+								return (
+									<SpoilerFilterItemList
+										ranges={[
+											{
+												offset: ghItemOffset,
+												range: [...items],
+											},
+										]}
+										title={`${
+											gameInfo[GameType.Gloomhaven].title
+										} - Initially Available`}
+										filterOn={GameType.Gloomhaven}
+									/>
+								);
+							} else {
+								if (index + 1 > tp) {
 									return null;
 								}
-								const gameTitle = `${gameInfo[game].title} ${
-									title || ""
-								}`;
 
 								return (
 									<SpoilerFilterItemList
@@ -170,15 +170,45 @@ export const FHSpoilerFilter = () => {
 												range: [...items],
 											},
 										]}
-										title={gameTitle}
-										filterOn={game}
+										title={`${
+											gameInfo[GameType.Gloomhaven].title
+										} - Trading Post Level ${index + 1}`}
+										filterOn={GameType.Gloomhaven}
 									/>
 								);
 							}
-						)}
+						})}
 					</Form.Field>
-				</Segment>
-			)}
+				)}
+				{scenariosComplete.includes(82) && (
+					<SpoilerFilterItemList
+						ranges={[
+							{
+								offset: ghItemOffset,
+								range: [...fcImportSets[0]],
+							},
+						]}
+						title={`${
+							gameInfo[Expansions.ForgottenCircles].title
+						} - Scenario 82 rewards`}
+						filterOn={Expansions.ForgottenCircles}
+					/>
+				)}
+				{en >= 4 && (
+					<SpoilerFilterItemList
+						ranges={[
+							{
+								offset: ghItemOffset,
+								range: [...fcImportSets[1]],
+							},
+						]}
+						title={`${
+							gameInfo[Expansions.ForgottenCircles].title
+						} - Enhancer Level 4`}
+						filterOn={Expansions.ForgottenCircles}
+					/>
+				)}
+			</Segment>
 			<SoloClassFilterBlock />
 		</Segment>
 	);

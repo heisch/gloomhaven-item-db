@@ -15,9 +15,9 @@ import {
 	includeGameState,
 	resourcesState,
 	buildingLevelState,
-	importedSetState,
 } from "../State";
 import { useCallback } from "react";
+import { ghItemOffset } from "../games/fh/FHGameData";
 
 export const useIsItemShown = (): ((item: GloomhavenItem) => boolean) => {
 	const slots = useRecoilValue(slotsState);
@@ -34,10 +34,10 @@ export const useIsItemShown = (): ((item: GloomhavenItem) => boolean) => {
 	const scenarioCompleted = useRecoilValue(scenarioCompletedState);
 	const includeGames = useRecoilValue(includeGameState);
 	const buildingLevels = useRecoilValue(buildingLevelState);
-	const importSets = useRecoilValue(importedSetState);
 	const craftsmanLevel = buildingLevels["cm"];
 	const jewelerLevel = buildingLevels["jw"];
 	const tradingPostLevel = buildingLevels["tp"];
+	const enhancerLevel = buildingLevels["en"];
 
 	const isItemShown = useCallback(
 		({
@@ -56,21 +56,38 @@ export const useIsItemShown = (): ((item: GloomhavenItem) => boolean) => {
 			unlockCrafstmanLevel,
 			unlockTradingPostLevel,
 			unlockJewelerLevel,
-			importedSet,
+			unlockEnhancerLevel,
 		}: GloomhavenItem) => {
 			if (!includeGames.includes(gameType)) {
 				return false;
 			}
+
 			if (specialUnlock && !specialUnlocks.includes(specialUnlock)) {
 				return false;
 			}
 
-			if (
-				!all &&
-				importedSet !== undefined &&
-				!importSets.includes(importedSet)
-			) {
-				return false;
+			if (!all && id >= ghItemOffset) {
+				if (
+					unlockTradingPostLevel !== undefined &&
+					unlockTradingPostLevel !== Number.MAX_VALUE &&
+					tradingPostLevel < unlockTradingPostLevel
+				) {
+					return false;
+				}
+				if (
+					unlockScenario !== undefined &&
+					unlockScenario !== Number.MAX_VALUE &&
+					!scenarioCompleted.includes(unlockScenario)
+				) {
+					return false;
+				}
+				if (
+					unlockEnhancerLevel !== undefined &&
+					unlockEnhancerLevel !== Number.MAX_VALUE &&
+					enhancerLevel < unlockEnhancerLevel
+				) {
+					return false;
+				}
 			}
 			let show =
 				all ||
@@ -81,6 +98,7 @@ export const useIsItemShown = (): ((item: GloomhavenItem) => boolean) => {
 				craftsmanLevel >= unlockCrafstmanLevel ||
 				tradingPostLevel >= unlockTradingPostLevel ||
 				jewelerLevel >= unlockJewelerLevel ||
+				enhancerLevel >= unlockEnhancerLevel ||
 				alwaysShown;
 
 			if (show) {
@@ -143,7 +161,7 @@ export const useIsItemShown = (): ((item: GloomhavenItem) => boolean) => {
 			craftsmanLevel,
 			jewelerLevel,
 			tradingPostLevel,
-			importSets,
+			enhancerLevel,
 		]
 	);
 

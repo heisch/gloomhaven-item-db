@@ -5,13 +5,6 @@ export type ItemsOwnedBy = Record<string, ClassesInUse[]>;
 
 export type ItemsInUse = Record<number, number>;
 
-export enum ImportedSet {
-	GloomhavenA,
-	GloomhavenB,
-	GloomhavenC,
-	ForgottenCirclesA,
-}
-
 export enum SortDirection {
 	ascending = "ascending",
 	descending = "descending",
@@ -221,7 +214,7 @@ export interface GloomhavenItem {
 	unlockCrafstmanLevel: number;
 	unlockTradingPostLevel: number;
 	unlockJewelerLevel: number;
-	importedSet?: ImportedSet;
+	unlockEnhancerLevel: number;
 	consumption?: Consumption;
 	lockToClasses?: ClassesInUse[];
 }
