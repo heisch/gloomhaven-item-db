@@ -99,36 +99,32 @@ export const FHSpoilerFilter = () => {
 					/>
 				))}
 
-				{tp > -1 && (
-					<SpoilerFilterItemList
-						ranges={[
-							{
-								range: [
-									{
-										start: Math.max(129, tp * 9 + 120),
-										end: 155,
-									},
-								],
-							},
-						]}
-						title="Trading Post Items"
-					/>
-				)}
-				{jw > -1 && (
-					<SpoilerFilterItemList
-						ranges={[
-							{
-								range: [
-									{
-										start: jw * 4 + 156,
-										end: 167,
-									},
-								],
-							},
-						]}
-						title="Jeweler Items"
-					/>
-				)}
+				<SpoilerFilterItemList
+					ranges={[
+						{
+							range: [
+								{
+									start: Math.max(129, tp * 9 + 120),
+									end: 155,
+								},
+							],
+						},
+					]}
+					title={tp > -1 ? "Trading Post Items" : "Envelope 37 Items"}
+				/>
+				<SpoilerFilterItemList
+					ranges={[
+						{
+							range: [
+								{
+									start: Math.max(156, jw * 4 + 156),
+									end: 167,
+								},
+							],
+						},
+					]}
+					title={jw > -1 ? "Jeweler Items" : "Envelope 39 Items"}
+				/>
 
 				{Object.entries(filterGroups2).map(([title, group]) => (
 					<SpoilerFilterItemList
