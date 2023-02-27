@@ -58,8 +58,8 @@ const SpoilerFilterItemList = (props: Props) => {
 
 	const turnThemOn = useMemo(() => {
 		let offCount = 0;
-		peformAll(ranges, (i: number) => {
-			if (!item.includes(i)) {
+		peformAll(ranges, (i: number, offset: number | undefined) => {
+			if (!item.includes(i + (offset || 0))) {
 				offCount++;
 			}
 		});

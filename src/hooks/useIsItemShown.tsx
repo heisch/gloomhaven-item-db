@@ -88,6 +88,7 @@ export const useIsItemShown = (): ((item: GloomhavenItem) => boolean) => {
 				) {
 					return false;
 				}
+				return item.includes(id);
 			}
 			let show =
 				all ||

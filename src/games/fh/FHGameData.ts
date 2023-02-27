@@ -1,9 +1,11 @@
 import { Helpers } from "../../helpers";
 import { GloomhavenItem } from "../../State/Types";
 import { GameData, getInitialItems } from "../GameData";
+import { gameInfo } from "../GameInfo";
 import { AllGames, Expansions, GameType } from "../GameType";
 
 export const ghImportSets: number[][] = [
+	[],
 	[10, 25, 72, 105, 109, 116],
 	[21, 37, 53, 93, 94, 106, 115],
 	[46, 83, 84, 85, 86, 87, 88, 102, 110, 111, 121, 122, 126, 123, 128],
@@ -18,7 +20,7 @@ export const fcImportSets: number[][] = [
 	[154, 155, 157, 163],
 ];
 
-const sortById = (a: number, b: number) => a - b;
+export const sortById = (a: number, b: number) => a - b;
 
 export const ghItemToImport = ghImportSets
 	.flatMap((groups) => [...groups])
@@ -83,6 +85,9 @@ const filteredGhItems = ghItems
 			unlockEnhancerLevel,
 			unlockScenario,
 			lockToClasses,
+			source: item.soloItem
+				? item.source
+				: `${gameInfo[item.gameType].title} Import`,
 		};
 	});
 

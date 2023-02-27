@@ -6,6 +6,7 @@ import {
 	ghItemOffset,
 	ghImportSets,
 	fcImportSets,
+	sortById,
 } from "../../../../games/fh/FHGameData";
 import { gameInfo } from "../../../../games/GameInfo";
 import {
@@ -68,6 +69,28 @@ export const FHSpoilerFilter = () => {
 	const includedGames = useRecoilValue(includeGameState);
 	const scenariosComplete = useRecoilValue(scenarioCompletedState);
 	const { cm, tp, jw, en } = useRecoilValue(buildingLevelState);
+
+	const ghRange = ghImportSets
+		.map((items: number[], index: number) => {
+			if (index === 1) {
+				return [...items];
+			}
+			if (index <= tp) {
+				return [...items];
+			}
+			return [];
+		})
+		.flat()
+		.sort(sortById);
+
+	const fcRange = [];
+	if (scenariosComplete.includes(82)) {
+		fcRange.push(...fcImportSets[0]);
+	}
+	if (en >= 4) {
+		fcRange.push(...fcImportSets[1]);
+	}
+	fcRange.sort(sortById);
 
 	return (
 		<Segment>
@@ -133,77 +156,26 @@ export const FHSpoilerFilter = () => {
 						title={title}
 					/>
 				))}
-			</Segment>
-			<Segment>
-				{includedGames.includes(GameType.Gloomhaven) && (
-					<Form.Field>
-						{ghImportSets.map((items, index) => {
-							if (index === 0) {
-								return (
-									<SpoilerFilterItemList
-										ranges={[
-											{
-												offset: ghItemOffset,
-												range: [...items],
-											},
-										]}
-										title={`${
-											gameInfo[GameType.Gloomhaven].title
-										} - Initially Available`}
-										filterOn={GameType.Gloomhaven}
-									/>
-								);
-							} else {
-								if (index + 1 > tp) {
-									return null;
-								}
-
-								return (
-									<SpoilerFilterItemList
-										ranges={[
-											{
-												offset: ghItemOffset,
-												range: [...items],
-											},
-										]}
-										title={`${
-											gameInfo[GameType.Gloomhaven].title
-										} - Trading Post Level ${index + 1}`}
-										filterOn={GameType.Gloomhaven}
-									/>
-								);
-							}
-						})}
-					</Form.Field>
-				)}
-				{scenariosComplete.includes(82) && (
-					<SpoilerFilterItemList
-						ranges={[
-							{
-								offset: ghItemOffset,
-								range: [...fcImportSets[0]],
-							},
-						]}
-						title={`${
-							gameInfo[Expansions.ForgottenCircles].title
-						} - Scenario 82 rewards`}
-						filterOn={Expansions.ForgottenCircles}
-					/>
-				)}
-				{en >= 4 && (
-					<SpoilerFilterItemList
-						ranges={[
-							{
-								offset: ghItemOffset,
-								range: [...fcImportSets[1]],
-							},
-						]}
-						title={`${
-							gameInfo[Expansions.ForgottenCircles].title
-						} - Enhancer Level 4`}
-						filterOn={Expansions.ForgottenCircles}
-					/>
-				)}
+				<SpoilerFilterItemList
+					ranges={[
+						{
+							offset: ghItemOffset,
+							range: ghRange,
+						},
+					]}
+					title={`Gloomhaven Imported Items`}
+					filterOn={GameType.Gloomhaven}
+				/>
+				<SpoilerFilterItemList
+					ranges={[
+						{
+							offset: ghItemOffset,
+							range: fcRange,
+						},
+					]}
+					title={"Forgotten Circles Imported Items"}
+					filterOn={Expansions.ForgottenCircles}
+				/>
 			</Segment>
 			<SoloClassFilterBlock />
 		</Segment>
