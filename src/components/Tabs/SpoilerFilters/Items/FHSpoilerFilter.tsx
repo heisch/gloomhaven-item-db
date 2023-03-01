@@ -62,6 +62,7 @@ const buildingFilters: BuildingLevelFilterProps[] = [
 		lockedLabel: "Envelope 44",
 		startBuildingLevel: 4,
 		buildingKey: "en",
+		gameType: Expansions.ForgottenCircles,
 	},
 ];
 

@@ -17,7 +17,6 @@ import {
 	buildingLevelState,
 } from "../State";
 import { useCallback } from "react";
-import { ghItemOffset } from "../games/fh/FHGameData";
 
 export const useIsItemShown = (): ((item: GloomhavenItem) => boolean) => {
 	const slots = useRecoilValue(slotsState);
@@ -57,6 +56,7 @@ export const useIsItemShown = (): ((item: GloomhavenItem) => boolean) => {
 			unlockTradingPostLevel,
 			unlockJewelerLevel,
 			unlockEnhancerLevel,
+			importedItem,
 		}: GloomhavenItem) => {
 			if (!includeGames.includes(gameType)) {
 				return false;
@@ -66,7 +66,7 @@ export const useIsItemShown = (): ((item: GloomhavenItem) => boolean) => {
 				return false;
 			}
 
-			if (!all && id >= ghItemOffset) {
+			if (!all && importedItem) {
 				if (
 					unlockTradingPostLevel !== undefined &&
 					unlockTradingPostLevel !== Number.MAX_VALUE &&

@@ -2,7 +2,7 @@ import { Helpers } from "../../helpers";
 import { GloomhavenItem } from "../../State/Types";
 import { GameData, getInitialItems } from "../GameData";
 import { gameInfo } from "../GameInfo";
-import { AllGames, Expansions, GameType } from "../GameType";
+import { GameType } from "../GameType";
 
 export const ghImportSets: number[][] = [
 	[],
@@ -40,7 +40,7 @@ const { items: ghItems, filterSlots: ghFilterSlots } = getInitialItems(
 const getTradingPostLevel = (id: number) => {
 	const setIndex = ghImportSets.findIndex((set) => set.includes(id));
 	if (setIndex !== -1) {
-		return setIndex;
+		return setIndex === 1 ? -1 : setIndex;
 	}
 	return undefined;
 };
@@ -88,6 +88,7 @@ const filteredGhItems = ghItems
 			source: item.soloItem
 				? item.source
 				: `${gameInfo[item.gameType].title} Import`,
+			importedItem: true,
 		};
 	});
 

@@ -217,4 +217,5 @@ export interface GloomhavenItem {
 	unlockEnhancerLevel: number;
 	consumption?: Consumption;
 	lockToClasses?: ClassesInUse[];
+	importedItem?: boolean;
 }

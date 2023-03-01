@@ -1,7 +1,8 @@
 import React from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { Form } from "semantic-ui-react";
-import { buildingLevelState } from "../../../../State";
+import { AllGames } from "../../../../games/GameType";
+import { buildingLevelState, includeGameState } from "../../../../State";
 
 export interface BuildingLevelFilterProps {
 	label: string;
@@ -9,6 +10,7 @@ export interface BuildingLevelFilterProps {
 	startBuildingLevel?: number;
 	endBuildingLevel?: number;
 	buildingKey: string;
+	gameType?: AllGames;
 }
 
 export const BuildingLevelFilter = (props: BuildingLevelFilterProps) => {
@@ -18,9 +20,16 @@ export const BuildingLevelFilter = (props: BuildingLevelFilterProps) => {
 		startBuildingLevel,
 		endBuildingLevel,
 		buildingKey,
+		gameType,
 	} = props;
+	const includedGames = useRecoilValue(includeGameState);
 	const [buildingLevels, setBuildingLevel] =
 		useRecoilState(buildingLevelState);
+
+	if (gameType && !includedGames.includes(gameType)) {
+		return null;
+	}
+
 	const currentLevel = buildingLevels[buildingKey];
 	let min = startBuildingLevel || 1;
 	let max = endBuildingLevel || min;
