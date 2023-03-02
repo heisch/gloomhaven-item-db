@@ -2267,7 +2267,7 @@
 		"cost": 40,
 		"slot": "legs",
 		"source": "Loot Deck Random",
-		"desc": "At the start of your turn in which your initiative is 60 or higher and you are not performing a long rest, perform ^fh-heal^ ~!self!~.",
+		"desc": "At the start of your turn in which your initiative is 60 or higher and you are not performing a long rest, perform ^fh-heal^ 1 ~!self!~.",
 		"folder": "168-192"
 	},
 	{
