@@ -4,31 +4,31 @@ import { useFirebase } from "../../Firebase";
 import { PasswordChangeDialog } from "./PasswordChangeDialog";
 
 export const SignedInAccount = (): JSX.Element | null => {
-  const { authUser, firebase } = useFirebase();
-  const [resetPasswordOpen, setResetPasswordOpen] = useState(false);
-  if (!authUser || !firebase) {
-    return null;
-  }
-  return (
-    <>
-    <h1>Account</h1>
-      {`Signed in as: ${authUser.email}`}
-      <Form>
-        <Button
-          onClick={() => {
-            firebase.doSignOut();
-          }}
-        >
-          Sign Out
-        </Button>
-        <p onClick={() => setResetPasswordOpen(true)}>
-          Change Password? <a>Click here</a>
-        </p>
-        <PasswordChangeDialog
-          isOpen={resetPasswordOpen}
-          onClose={() => setResetPasswordOpen(false)}
-        />
-      </Form>
-    </>
-  );
+	const { user, signOut } = useFirebase();
+	const [resetPasswordOpen, setResetPasswordOpen] = useState(false);
+	if (!user || user.isAnonymous) {
+		return null;
+	}
+	return (
+		<>
+			<h1>Account</h1>
+			{`Signed in as: ${user.email}`}
+			<Form>
+				<Button
+					onClick={() => {
+						signOut();
+					}}
+				>
+					Sign Out
+				</Button>
+				<p onClick={() => setResetPasswordOpen(true)}>
+					Change Password? <a>Click here</a>
+				</p>
+				<PasswordChangeDialog
+					isOpen={resetPasswordOpen}
+					onClose={() => setResetPasswordOpen(false)}
+				/>
+			</Form>
+		</>
+	);
 };

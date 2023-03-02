@@ -6,12 +6,12 @@ import { SignInDialog } from "./SignInDialog";
 import { SignUpDialog } from "./SignUpDialog";
 
 export const SignedOutAccount = (): JSX.Element | null => {
-	const { authUser, firebase } = useFirebase();
+	const { user } = useFirebase();
 	const [passwordForgottenOpen, setPasswordForgottenOpen] = useState(false);
 	const [signInOpen, setSignInOpen] = useState(false);
 	const [signUpOpen, setSignUpOpen] = useState(false);
 
-	if (authUser || !firebase) {
+	if (!user || !user.isAnonymous) {
 		return null;
 	}
 	return (
@@ -24,7 +24,7 @@ export const SignedOutAccount = (): JSX.Element | null => {
 			/>
 			<p>
 				No account?
-				<a onClick={() => setSignUpOpen(true)}>Sign Up</a>
+				<a onClick={() => setSignUpOpen(true)}>Create Account</a>
 			</p>
 			<SignUpDialog
 				isOpen={signUpOpen}

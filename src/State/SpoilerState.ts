@@ -77,8 +77,26 @@ export const soloClassState = createSpoilerState<ClassesInUse[]>(
 	[]
 );
 
-function shouldAddGame<E>(classesInUse: ClassesInUse[], e: E): boolean {
-	const value = Object.values(e).some((classType) => {
+function shouldAddGameGH(classesInUse: ClassesInUse[]): boolean {
+	const value = Object.values(GHClasses).some((classType) => {
+		if (classesInUse.includes(classType)) {
+			return true;
+		}
+	});
+	return value;
+}
+
+function shouldAddGameFC(classesInUse: ClassesInUse[]): boolean {
+	const value = Object.values(FCClasses).some((classType) => {
+		if (classesInUse.includes(classType)) {
+			return true;
+		}
+	});
+	return value;
+}
+
+function shouldAddGameJOTL(classesInUse: ClassesInUse[]): boolean {
+	const value = Object.values(JOTLClasses).some((classType) => {
 		if (classesInUse.includes(classType)) {
 			return true;
 		}
@@ -91,13 +109,13 @@ const fixIncludedGames = (old: any, gameType: GameType, spoilerObj: any) => {
 	if (!newGames || newGames.length === 0) {
 		const classesInUse = spoilerObj["classesInUse"];
 		if (classesInUse) {
-			if (shouldAddGame(classesInUse, GHClasses)) {
+			if (shouldAddGameGH(classesInUse)) {
 				newGames.push(GameType.Gloomhaven);
 			}
-			if (shouldAddGame(classesInUse, FCClasses)) {
+			if (shouldAddGameFC(classesInUse)) {
 				newGames.push(Expansions.ForgottenCircles);
 			}
-			if (shouldAddGame(classesInUse, JOTLClasses)) {
+			if (shouldAddGameJOTL(classesInUse)) {
 				newGames.push(GameType.JawsOfTheLion);
 			}
 		}

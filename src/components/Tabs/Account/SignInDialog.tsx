@@ -9,29 +9,17 @@ type Props = {
 
 export const SignInDialog = (props: Props) => {
 	const { isOpen, onClose } = props;
-	const { firebase } = useFirebase();
+	const { signIn, error } = useFirebase();
 	const [email, setEmail] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
-	const [error, setError] = useState<Error | null>(null);
 
 	const onSubmit = useCallback(
 		(event: any) => {
-			if (!firebase) return;
-
-			firebase
-				.doSignInWithEmailAndPassword(email, password)
-				.then(() => {
-					setEmail("");
-					setPassword("");
-					setError(null);
-				})
-				.catch((error) => {
-					setError(error);
-				});
-
+			signIn(email, password);
+			onClose();
 			event.preventDefault();
 		},
-		[firebase, email, password]
+		[email, password, signIn, onClose]
 	);
 
 	const isInvalid = password === "" || email === "";
