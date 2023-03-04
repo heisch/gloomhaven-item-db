@@ -6,17 +6,18 @@ import { SignInDialog } from "./SignInDialog";
 import { SignUpDialog } from "./SignUpDialog";
 
 export const SignedOutAccount = (): JSX.Element | null => {
-	const { user } = useFirebase();
+	const { user, googleSignIn } = useFirebase();
 	const [passwordForgottenOpen, setPasswordForgottenOpen] = useState(false);
 	const [signInOpen, setSignInOpen] = useState(false);
 	const [signUpOpen, setSignUpOpen] = useState(false);
 
-	if (!user || !user.isAnonymous) {
+	if (user) {
 		return null;
 	}
 	return (
 		<Form>
 			<h1>Sign In</h1>
+			<Button onClick={() => googleSignIn()}>Google Sign In</Button>
 			<Button onClick={() => setSignInOpen(true)}>Sign In</Button>
 			<SignInDialog
 				isOpen={signInOpen}

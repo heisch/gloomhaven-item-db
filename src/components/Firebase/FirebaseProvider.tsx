@@ -19,6 +19,8 @@ import {
 	updatePassword,
 	onAuthStateChanged,
 	signInAnonymously,
+	GoogleAuthProvider,
+	signInWithPopup,
 } from "firebase/auth";
 import {
 	getDatabase,
@@ -39,6 +41,7 @@ type Data = {
 	passwordReset: (email: string) => void;
 	passwordUpdate: (newPassword: string) => void;
 	exportData: (configHash: string) => void;
+	googleSignIn: () => void;
 	user: User | undefined;
 	error: any;
 };
@@ -58,6 +61,8 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getDatabase(app);
 
+const provider = new GoogleAuthProvider();
+
 export const FirebaseProvider: FC = ({ children }) => {
 	const [user, setUser] = useState<User | undefined>();
 	const [error, setError] = useState<Error>();
@@ -69,6 +74,26 @@ export const FirebaseProvider: FC = ({ children }) => {
 				setUser(user);
 			})
 			.catch(setError);
+	}, []);
+
+	const googleSignIn = useCallback(() => {
+		signInWithPopup(auth, provider)
+			.then((result) => {
+				// This gives you a Google Access Token. You can use it to access the Google API.
+				const credential =
+					GoogleAuthProvider.credentialFromResult(result);
+				if (credential) {
+					const token = credential.accessToken;
+					// The signed-in user info.
+					const user = result.user;
+					// IdP data available using getAdditionalUserInfo(result)
+					// ...
+				}
+			})
+			.catch((error) => {
+				console.log(error);
+				setError(error);
+			});
 	}, []);
 
 	const signIn = useCallback((email: string, password: string) => {
@@ -136,20 +161,11 @@ export const FirebaseProvider: FC = ({ children }) => {
 		onAuthStateChanged(auth, (authUser) => {
 			setUser(authUser || undefined);
 			if (authUser) {
-				console.log("In here 2");
 				get(child(ref(db), `spoilerFilter/${authUser.uid}`)).then(
 					updateRemoteData
 				);
 			} else {
-				console.log("In here");
-				signInAnonymously(auth)
-					.then((userCredential) => {
-						// Signed in
-						const user = userCredential.user;
-						setUser(user);
-						// ...
-					})
-					.catch(setError);
+				setRemoteData(undefined);
 			}
 		});
 	}, [setRemoteData, updateRemoteData]);
@@ -188,6 +204,7 @@ export const FirebaseProvider: FC = ({ children }) => {
 			passwordReset,
 			passwordUpdate,
 			exportData,
+			googleSignIn,
 			error,
 			user,
 		}),
@@ -198,6 +215,7 @@ export const FirebaseProvider: FC = ({ children }) => {
 			passwordReset,
 			passwordUpdate,
 			exportData,
+			googleSignIn,
 			error,
 			user,
 		]
