@@ -88,7 +88,9 @@ export const useIsItemShown = (): ((item: GloomhavenItem) => boolean) => {
 				) {
 					return false;
 				}
-				return item.includes(id);
+				if(!item.includes(id)){
+					return false
+				}
 			}
 			let show =
 				all ||
