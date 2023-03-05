@@ -21,6 +21,7 @@ import {
 	signInAnonymously,
 	GoogleAuthProvider,
 	signInWithPopup,
+	EmailAuthProvider,
 } from "firebase/auth";
 import {
 	getDatabase,
@@ -58,7 +59,7 @@ export function useFirebase() {
 
 const { Provider } = FirebaseContext;
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+export const auth = getAuth(app);
 const db = getDatabase(app);
 
 const provider = new GoogleAuthProvider();

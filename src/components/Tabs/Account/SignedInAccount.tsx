@@ -5,8 +5,7 @@ import { PasswordChangeDialog } from "./PasswordChangeDialog";
 
 export const SignedInAccount = (): JSX.Element | null => {
 	const { user, signOut } = useFirebase();
-	const [resetPasswordOpen, setResetPasswordOpen] = useState(false);
-	if (!user || user.isAnonymous) {
+	if (!user) {
 		return null;
 	}
 	return (
@@ -21,13 +20,6 @@ export const SignedInAccount = (): JSX.Element | null => {
 				>
 					Sign Out
 				</Button>
-				<p onClick={() => setResetPasswordOpen(true)}>
-					Change Password? <a>Click here</a>
-				</p>
-				<PasswordChangeDialog
-					isOpen={resetPasswordOpen}
-					onClose={() => setResetPasswordOpen(false)}
-				/>
 			</Form>
 		</>
 	);

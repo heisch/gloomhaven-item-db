@@ -717,4 +717,8 @@ img.ui.image.ownerIcon {
   .search-options {
 	margin-bottom: 10px;
   }
+
+  .login-screen {
+	display: inline-block;
+  }
   
