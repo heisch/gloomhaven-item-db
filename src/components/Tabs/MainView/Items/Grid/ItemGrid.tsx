@@ -10,9 +10,13 @@ export const ItemGrid = (props: Props) => {
 	const { items } = props;
 	return (
 		<>
-			{items.map((item) => (
-				<ItemCard key={item.id} item={item} />
-			))}
+			{items.map((item) => {
+				let key = `${item.id}`;
+				if (item.imageSuffix) {
+					key += `-${item.imageSuffix}`;
+				}
+				return <ItemCard key={key} item={item} />;
+			})}
 		</>
 	);
 };
