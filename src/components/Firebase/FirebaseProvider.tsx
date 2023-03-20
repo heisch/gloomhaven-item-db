@@ -172,10 +172,6 @@ export const FirebaseProvider: FC = ({ children }) => {
 	}, [setRemoteData, updateRemoteData]);
 
 	useEffect(() => {
-		if (!user) {
-			return;
-		}
-
 		const urlParams = QueryString.parse(window.location.search.substr(1));
 		const importUserId = urlParams["importFrom"] as string;
 		if (!importUserId) {
