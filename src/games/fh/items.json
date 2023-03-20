@@ -215,7 +215,7 @@
 		"count": 2,
 		"resources": { "item": [4, 8] },
 		"slot": "body",
-		"source": "Craftsman 3",
+		"source": "Craftsman 3\nTreasure 50",
 		"desc": "On the next two attacks targeting you, the attacker gains disadvantage.",
 		"folder": "016-020",
 		"unlockCrafstmanLevel": 3,
@@ -309,7 +309,7 @@
 		"count": 2,
 		"resources": { "item": [14, 98] },
 		"slot": "1h",
-		"source": "Craftsman 4",
+		"source": "Craftsman 4\nWR-04",
 		"desc": "During your melee attack ability, add $wfh-wound$, $wfh-poison$, $wfh-muddle$ to one attack.",
 		"folder": "021-025",
 		"unlockCrafstmanLevel": 4,
@@ -348,7 +348,7 @@
 		"count": 2,
 		"resources": { "item": [3, 91], "hide": 1 },
 		"slot": "body",
-		"source": "Craftsman 5",
+		"source": "Craftsman 5\nSR-17",
 		"desc": "Immediately after an enemy ends its move ability adjacent to you, perform $wfh-push$ 1 ~!^target^ the enemy!~",
 		"folder": "026-030",
 		"unlockCrafstmanLevel": 5,
@@ -400,7 +400,7 @@
 		"count": 2,
 		"resources": { "item": [11, 106] },
 		"slot": "head",
-		"source": "Craftsman 6",
+		"source": "Craftsman 6\nWR-37\nSO-11",
 		"desc": "When you suffer ^damage^ from any source, negate the ^damage^.",
 		"folder": "031-035",
 		"unlockCrafstmanLevel": 6,
@@ -478,7 +478,7 @@
 		"count": 2,
 		"resources": { "item": [3, 114], "corpsecap": 1 },
 		"slot": "body",
-		"source": "Craftsman 7",
+		"source": "Craftsman 7\nSR-36",
 		"desc": "During your turn suffer ^damage^ 3 to perform $invisible$ ~!self!~",
 		"folder": "036-040",
 		"unlockCrafstmanLevel": 7,
@@ -608,7 +608,7 @@
 		"count": 2,
 		"resources": { "item": [27, 119, 162] },
 		"slot": "body",
-		"source": "Craftsman 9",
+		"source": "Craftsman 9\nWR-34",
 		"desc": "On the next two sources of ^damage^ from attacks targeting you, suffer ^damage^ 3 to give the attacker $wfh-brittle$.",
 		"folder": "046-050",
 		"unlockCrafstmanLevel": 9,
@@ -661,7 +661,7 @@
 		"count": 2,
 		"resources": { "item": [11], "flamefruit": 1 },
 		"slot": "head",
-		"source": "Random Blueprint",
+		"source": "Random Blueprint\nSO-48",
 		"desc": "During your turn perform $wfh-wound$ ~!self!~",
 		"folder": "051-065",
 		"imageSuffix": "a",
@@ -853,7 +853,7 @@
 		"count": 2,
 		"resources": { "item": [109, 120] },
 		"slot": "head",
-		"source": "unknown",
+		"source": "Scenario 188",
 		"desc": "At the start of your rest, perform: ^fh-heal^ 1 ~!self!~",
 		"folder": "066-082"
 	},
@@ -876,7 +876,7 @@
 		"count": 2,
 		"resources": { "item": [89, 123] },
 		"slot": "body",
-		"source": "unknown",
+		"source": "Treasure 22",
 		"desc": "On the next three sources of 2 or fewer ^damage^ you would suffer, negate the ^damage^.",
 		"folder": "066-082",
 		"consumed": true
@@ -888,7 +888,7 @@
 		"count": 2,
 		"resources": { "item": [3, 233] },
 		"slot": "body",
-		"source": "unknown",
+		"source": "Scenario 32",
 		"desc": "When you suffer ^damage^ from an attack, @wfh-air-consume@ to gain ^fh-shield^ 3 for the attack.",
 		"folder": "066-082",
 		"spent": true
@@ -900,7 +900,7 @@
 		"count": 2,
 		"resources": { "item": [27, 113] },
 		"slot": "body",
-		"source": "unknown",
+		"source": "Scenario 81",
 		"desc": "When you suffer ^damage^ from ^retaliate^, reduce the ^damage^ to 1. If it already 1, reduce it to 0 instead.",
 		"folder": "066-082"
 	},
@@ -911,7 +911,7 @@
 		"count": 2,
 		"resources": { "item": [18], "corpsecap": 1 },
 		"slot": "legs",
-		"source": "unknown",
+		"source": "Treasure 49",
 		"desc": "After your ability where you kill an enemy, perform: ^fh-move^ 4",
 		"folder": "066-082",
 		"consumed": true
@@ -923,7 +923,7 @@
 		"count": 2,
 		"resources": { "item": [91], "lumber": 1 },
 		"slot": "2h",
-		"source": "unknown",
+		"source": "Treasure 82",
 		"desc": "During you turn, @wfh-light-consume@ to perform: $wfh-bless$ ~!^fh-range^ 3!~",
 		"folder": "066-082",
 		"spent": true
@@ -935,7 +935,7 @@
 		"count": 2,
 		"resources": { "item": [101], "metal": 2 },
 		"slot": "1h",
-		"source": "unknown",
+		"source": "Scenario 44",
 		"desc": "When you apply a positive condition to an ally, a different ally within ^fh-range^ 3 gains the same condition.",
 		"folder": "066-082",
 		"spent": true
@@ -947,7 +947,7 @@
 		"count": 2,
 		"resources": { "item": [19, 97] },
 		"slot": "1h",
-		"source": "unknown",
+		"source": "Scenario 51",
 		"desc": "During your turn, perform $wfh-muddle$ ~!^fh-range^ 2!~ *cone_1_1*",
 		"folder": "066-082",
 		"spent": true
@@ -959,7 +959,7 @@
 		"count": 2,
 		"resources": { "item": [30], "flamefruit": 1, "snowthistle": 1 },
 		"slot": "1h",
-		"source": "unknown",
+		"source": "Scenario 110",
 		"desc": "After any ally within ^fh-range^ 2 suffers ^damage^ from an attack, remove all negative conditions from the ally then perform: ^fh-heal^ 3 ~!^target^ the ally, $wfh-pull$ 1!~",
 		"folder": "066-082",
 		"consumed": true
@@ -971,7 +971,7 @@
 		"count": 2,
 		"resources": { "metal": 1, "hide": 1, "rockroot": 1 },
 		"slot": "1h",
-		"source": "unknown",
+		"source": "Treasure 70",
 		"desc": "During one of your summons' turns, decide how it peforms it's abilities.",
 		"folder": "066-082",
 		"spent": true
@@ -983,7 +983,7 @@
 		"count": 2,
 		"resources": { "item": [86], "metal": 2 },
 		"slot": "1h",
-		"source": "unknown",
+		"source": "Treasure 40",
 		"desc": "During you turn, replace one 1-hex obstacle, hazardous terrain, difficult terrain, or icy terrain tile in an unoccupied hex withing ^fh-range^ 2 with a different type of tile listed above.",
 		"folder": "066-082",
 		"consumed": true
@@ -995,10 +995,11 @@
 		"count": 2,
 		"resources": { "item": [110], "metal": 1, "hide": 1 },
 		"slot": "1h",
-		"source": "unknown",
+		"source": "Treasure 31",
 		"desc": "Once each turn, during your attack ability, gain advantage on one attack, then flip this card over at the end of your turn.",
 		"backDesc": "Once each turn, during your attack ability, gain disadvantage on one attack, then flip this card over at the end of your turn.",
-		"folder": "066-082"
+		"folder": "066-082",
+		"faq": "In Scenario 122, both treasures are listed as 31. This might be an error. As such, the source might not be acurate."
 	},
 	{
 		"id": 79,
@@ -1007,7 +1008,7 @@
 		"count": 2,
 		"resources": { "hide": 2, "flamefruit": 1, "snowthistle": 1 },
 		"slot": "small",
-		"source": "unknown",
+		"source": "Scenario 93",
 		"desc": "During you turn, add +1 ^attack^ to all your attacks and perform: ^fh-heal^ 2 ~!self!~",
 		"folder": "066-082",
 		"consumed": true
@@ -1019,7 +1020,7 @@
 		"count": 2,
 		"resources": { "item": [99, 156], "rockroot": 1 },
 		"slot": "small",
-		"source": "unknown",
+		"source": "Treasure 72",
 		"desc": "When you would suffer 4 or fewer ^damage^ from attack, negate the ^damage^ and perform ^fh-heal^ X ~!self!~ wheee x is the amount of damage you would have suffered.",
 		"folder": "066-082",
 		"consumed": true
@@ -1031,7 +1032,7 @@
 		"count": 2,
 		"resources": { "item": [97], "hide": 2 },
 		"slot": "small",
-		"source": "unknown",
+		"source": "Treasure 59",
 		"desc": "When you suffer 5 or fewer ^damage^ from an attack, one enemy within ^fh-range^ 2 also suffers the same amount of ^damage^.",
 		"folder": "066-082",
 		"consumed": true
@@ -1043,7 +1044,7 @@
 		"count": 2,
 		"resources": { "item": [112], "metal": 2 },
 		"slot": "small",
-		"source": "unknown",
+		"source": "Both Treasure 62 and 69",
 		"desc": "During your move ability, after you enter any one hex, give $wfh-immobilize$ to all adjacent enemies.",
 		"folder": "066-082",
 		"consumed": true
@@ -1200,7 +1201,7 @@
 		"count": 2,
 		"resources": { "snowthistle": 1, "corpsecap": 1 },
 		"slot": "small",
-		"source": "Alchemy",
+		"source": "Alchemy\nSR-14",
 		"desc": "During your turn, perform $wfh-poison$ ~!^fh-range^ 1!~",
 		"folder": "083-119",
 		"consumed": true
@@ -1236,7 +1237,7 @@
 		"count": 2,
 		"resources": {},
 		"slot": "small",
-		"source": "Alchemy",
+		"source": "Alchemy\nWO-10",
 		"desc": "During your turn, perform $wfh-wound$, $wfh-poison$ ~!self!~",
 		"folder": "083-119",
 		"consumed": true
@@ -2134,7 +2135,7 @@
 		"count": 2,
 		"cost": 40,
 		"slot": "small",
-		"source": "Jeweler 3",
+		"source": "Jeweler 3\nWR-10",
 		"desc": "At the start of the enemy's turn, before it determines its focus, perform: $wfh-pull$ 4 ~!^target^ the enemy, ^fh-range^ 5, $wfh-muddle$!~",
 		"folder": "129-167",
 		"unlockJewelerLevel": 3,
@@ -2325,7 +2326,7 @@
 		"count": 1,
 		"cost": 35,
 		"slot": "1h",
-		"source": "Loot Deck Random",
+		"source": "Loot Deck Random\nTreasure 16",
 		"desc": "During your turn, all figures gain disadvantage on and add 1 ^fh-range^ to all ranged attacks this round. ^eot^",
 		"folder": "168-192",
 		"consumed": true
@@ -2452,7 +2453,7 @@
 		"count": 1,
 		"cost": 30,
 		"slot": "head",
-		"source": "unknown",
+		"source": "Scenario 121",
 		"desc": "During your turn, control one enemy withing ^fh-range^ 3: ^attack^ 3",
 		"folder": "193-247",
 		"consumed": true
@@ -2464,7 +2465,7 @@
 		"count": 1,
 		"cost": 30,
 		"slot": "head",
-		"source": "unknown",
+		"source": "Scenario 125",
 		"desc": "During ordering of initiative after all ability card have been revealed, increase or decrease a monster set's initiative by 30.",
 		"folder": "193-247"
 	},
@@ -2475,7 +2476,7 @@
 		"count": 2,
 		"cost": 30,
 		"slot": "head",
-		"source": "unknown",
+		"source": "Treasure 83\nScenario 127",
 		"desc": "During your turn add +1 ^fh-range^ and $wfh-pierce$ 1 to one of your ranged attacks.",
 		"folder": "193-247",
 		"spent": true
@@ -2487,7 +2488,7 @@
 		"count": 1,
 		"cost": 30,
 		"slot": "head",
-		"source": "unknown",
+		"source": "SR-26",
 		"desc": "During your turn, discard one loot card except Random Item to perform: ^fh-heal^ 5 ~!^fh-range^ 2, $wfh-ward$!~",
 		"folder": "193-247",
 		"consumed": true
@@ -2499,7 +2500,7 @@
 		"count": 1,
 		"cost": 30,
 		"slot": "head",
-		"source": "unknown",
+		"source": "WO-77",
 		"desc": "After ordering of initiative, exchange a card in your hand for one which you have played. Your initiative is unaffected.",
 		"folder": "193-247",
 		"consumed": true
@@ -2511,7 +2512,7 @@
 		"count": 1,
 		"cost": 35,
 		"slot": "head",
-		"source": "unknown",
+		"source": "WR-36",
 		"desc": "During your turn, perform $wfh-pull$ 3 ~!^fh-range^ 4!~",
 		"folder": "193-247",
 		"consumed": true
@@ -2523,9 +2524,10 @@
 		"count": 2,
 		"cost": 30,
 		"slot": "legs",
-		"source": "unknown",
+		"source": "Treasure 6\nTreasure 78",
 		"desc": "At the start of the scenario, consider yourself to be your summons in initiative order when determining monster focus for the remainder of the scenario.",
-		"folder": "193-247"
+		"folder": "193-247",
+		"faq": "In Scenario 122, both treasures are listed as 31. This might be an error. As such, the source might not be acurate."
 	},
 	{
 		"id": 200,
@@ -2534,7 +2536,7 @@
 		"count": 1,
 		"cost": 50,
 		"slot": "1h",
-		"source": "unknown",
+		"source": "Treasure 4",
 		"desc": "During your heal ability targeting an ally, @wfh-light-consume@ to add $wfh-regenerate$ to one heal and flip this card over.",
 		"backDesc": "During your attack ability, @wfh-dark-consume@ to add $wfh-curse$ to one attack and flip this card over.",
 		"folder": "193-247"
@@ -2546,7 +2548,7 @@
 		"count": 1,
 		"cost": 50,
 		"slot": "2h",
-		"source": "unknown",
+		"source": "Scenario 76\nScenario 77",
 		"desc": "Diromg your attack ability performed while occupying or ad adjacent to a hex with a water tile, add $wfh-push$ 1 and $wfh-immobilize$ to one attack.",
 		"folder": "193-247",
 		"spent": true
@@ -2558,7 +2560,7 @@
 		"count": 1,
 		"cost": 40,
 		"slot": "2h",
-		"source": "unknown",
+		"source": "Scenario 83",
 		"desc": "During your melee attack ability, add $wfh-pierce$ 2 and $wfh-wound$ to one attack.",
 		"folder": "193-247",
 		"spent": true
@@ -2570,7 +2572,7 @@
 		"count": 1,
 		"cost": 50,
 		"slot": "1h",
-		"source": "unknown",
+		"source": "Scenario 119",
 		"desc": "After your ability control one target: ^fh-move^ 2",
 		"folder": "193-247",
 		"consumed": true
@@ -2582,7 +2584,7 @@
 		"count": 1,
 		"cost": 35,
 		"slot": "1h",
-		"source": "unknown",
+		"source": "Treasure 5",
 		"desc": "During your turn, one adjacent normal or elite enemy suffers ^damage^ to their ^fh-shield^ value.",
 		"folder": "193-247",
 		"consumed": true,
@@ -2595,7 +2597,7 @@
 		"count": 1,
 		"cost": 30,
 		"slot": "2h",
-		"source": "unknown",
+		"source": "Treasure 55",
 		"desc": "During your, perform ^attack^ 2 ~!^fh-range^, $wfh-pull$ 2!~",
 		"folder": "193-247",
 		"consumed": true
@@ -2620,7 +2622,7 @@
 		"count": 1,
 		"cost": 25,
 		"slot": "2h",
-		"source": "unknown",
+		"source": "Treasure 13",
 		"desc": "After your attack, if the target's current hit point is 3 or less, give the target $wfh-bane$",
 		"folder": "193-247",
 		"spent": true
@@ -2632,7 +2634,7 @@
 		"count": 1,
 		"cost": 35,
 		"slot": "2h",
-		"source": "unknown",
+		"source": "Treasure 52",
 		"desc": "During your attack ability add $wfh-pierce$ 3 to one attack targeting an enemy whose current hit point value is 4 or less.",
 		"folder": "193-247",
 		"spent": true
@@ -2644,7 +2646,7 @@
 		"count": 1,
 		"cost": 60,
 		"slot": "2h",
-		"source": "unknown",
+		"source": "SR-35",
 		"desc": "During your melee attack ability, give advantage on one atrack.  For each master you have completed also add one following to the attack: +1 ^attack^, $wfh-wound$, or $wfh-poison$. ",
 		"folder": "193-247",
 		"spent": true
@@ -2656,7 +2658,7 @@
 		"count": 1,
 		"cost": 30,
 		"slot": "2h",
-		"source": "unknown",
+		"source": "SO-39",
 		"desc": "During your turn, add +3 ^attack^ to all your attacks performed by Lurkers targeting you this round. ^eot^",
 		"folder": "193-247",
 		"spent": true
@@ -2668,7 +2670,7 @@
 		"count": 1,
 		"cost": 30,
 		"slot": "2h",
-		"source": "unknown",
+		"source": "Boat Event 11",
 		"desc": "During your turn, designate one adjacent hex.  At the end of your turn, all figures withing ^fh-range^ 2 of the designated hex suffer ^damage^ 1.",
 		"folder": "193-247",
 		"consumed": true
@@ -2680,7 +2682,7 @@
 		"count": 1,
 		"cost": 30,
 		"slot": "1h",
-		"source": "unknown",
+		"source": "Scenario 66",
 		"desc": "After ordering of initiative, choose one element. This element cannot be infused or consume by any monster this round. ^eot^",
 		"folder": "193-247",
 		"spent": true
@@ -2692,7 +2694,7 @@
 		"count": 1,
 		"cost": 70,
 		"slot": "1h",
-		"source": "unknown",
+		"source": "Scenario 106",
 		"desc": "During your attack ability @wfh-ice-consume@ to add $wfh-immobilize$ to one attack, then flip this card over at the end of your turn.",
 		"backDesc": "During your attack ability @wfh-fire-consume@ to add $wfh-wound$ to one attack, then flip this card over at the end of your turn.",
 		"folder": "193-247"
@@ -2704,7 +2706,7 @@
 		"count": 1,
 		"cost": 30,
 		"slot": "1h",
-		"source": "unknown",
+		"source": "Scenario 107",
 		"desc": "During your heal ability add one positive condition you have to one heal.",
 		"folder": "193-247",
 		"spent": true
@@ -2716,7 +2718,7 @@
 		"count": 1,
 		"cost": 30,
 		"slot": "1h",
-		"source": "unknown",
+		"source": "Scenario 128",
 		"desc": "During your, add +1 ^attack^ and $wfh-muddle$ to all your attacks. At the end of your turn, perform: $wfh-muddle$ ~!self!~",
 		"folder": "193-247",
 		"consumed": true
@@ -2776,7 +2778,7 @@
 		"count": 1,
 		"cost": 50,
 		"slot": "1h",
-		"source": "unknown",
+		"source": "Scenario 135",
 		"desc": "During your turn, ^recover^ up to one Tome item.",
 		"folder": "193-247",
 		"consumed": true
@@ -2788,7 +2790,7 @@
 		"count": 1,
 		"cost": 30,
 		"slot": "1h",
-		"source": "unknown",
+		"source": "Treasure 84",
 		"desc": "During your melee attack ability, @wfh-ice-consume@ to add $wfh-pierce$ 3 to one attack.",
 		"folder": "193-247",
 		"spent": true
@@ -2800,7 +2802,7 @@
 		"count": 1,
 		"cost": 30,
 		"slot": "1h",
-		"source": "unknown",
+		"source": "Treasure 36",
 		"desc": "During yor turn, discard two cards from your hand to perform: ^fh-heal^ 6 ~!self!~",
 		"folder": "193-247",
 		"spent": true
@@ -2812,7 +2814,7 @@
 		"count": 1,
 		"cost": 20,
 		"slot": "1h",
-		"source": "unknown",
+		"source": "Treasure 26",
 		"desc": "After ordering of initiative, all monsters consider you to be first in initiative order when determining focus this round. ^eot^",
 		"folder": "193-247",
 		"spent": true
@@ -2836,7 +2838,7 @@
 		"count": 1,
 		"cost": 60,
 		"slot": "body",
-		"source": "unknown",
+		"source": "Treasure 41",
 		"desc": "During your melee attack ability, @wfh-earth-consume@ to add +1 ^attack^ to one attack and flip this card over.",
 		"backDesc": "During your melee attack ability, @wfh-air-consume@ to add $wfh-push$ 2 to one attack and flip this card over.",
 		"folder": "193-247"
@@ -2848,7 +2850,7 @@
 		"count": 1,
 		"cost": 20,
 		"slot": "1h",
-		"source": "unknown",
+		"source": "Treasure 81\nWR-22",
 		"desc": "During your attack ability, double the numerical value of the next attack modifier card you draw. ^modifier_2x_circle^ and ^modifier_no_damage^ modifier cards are unaffected.",
 		"folder": "193-247",
 		"spent": true
@@ -2860,7 +2862,7 @@
 		"count": 1,
 		"cost": 40,
 		"slot": "1h",
-		"source": "unknown",
+		"source": "Treasure 7",
 		"desc": "When you short rest, place half (rounded down) of your discard pile on this item, lose of the remaining cards randomly as normal, then draw the cards on this item.",
 		"folder": "193-247",
 		"spent": true
@@ -2872,7 +2874,7 @@
 		"count": 1,
 		"cost": 20,
 		"slot": "1h",
-		"source": "unknown",
+		"source": "Treasure 35",
 		"desc": "During your turn, open one unlocked door while withing ^fh-range^ 2.",
 		"folder": "193-247",
 		"spent": true
@@ -2884,7 +2886,7 @@
 		"count": 1,
 		"cost": 50,
 		"slot": "1h",
-		"source": "unknown",
+		"source": "SO-42",
 		"desc": "During your turn grant one ally withing ^fh-range^ 3: ^fh-move^ 3",
 		"folder": "193-247",
 		"consumed": true
@@ -2896,7 +2898,7 @@
 		"count": 1,
 		"cost": 20,
 		"slot": "1h",
-		"source": "unknown",
+		"source": "SR-26",
 		"desc": "After you draw one loot card, draw one additional card, keep one, and place the other on either the top or bottom of the loot deck.",
 		"folder": "193-247",
 		"consumed": true
@@ -2908,7 +2910,7 @@
 		"count": 1,
 		"cost": 15,
 		"slot": "1h",
-		"source": "unknown",
+		"source": "WR-16",
 		"desc": "When you gain a loot token, gain 3 `hide` instead of drawning a loot card.",
 		"folder": "193-247",
 		"consumed": true
@@ -2920,7 +2922,7 @@
 		"count": 1,
 		"cost": 20,
 		"slot": "1h",
-		"source": "unknown",
+		"source": "WR-12",
 		"desc": "During your turn lose 1 morale to perform: $wfh-bless$ ~!^target^ all allies and self!~",
 		"folder": "193-247",
 		"consumed": true
@@ -2932,7 +2934,7 @@
 		"count": 1,
 		"cost": 30,
 		"slot": "small",
-		"source": "unknown",
+		"source": "Scenario 13",
 		"desc": "During you ally's ranged attack ability, add $wfh-muddle$ and $wfh-curse$ to one attack.",
 		"folder": "193-247",
 		"consumed": true
@@ -2944,7 +2946,7 @@
 		"count": 1,
 		"cost": 30,
 		"slot": "small",
-		"source": "unknown",
+		"source": "Scenario 84",
 		"desc": "During your turn, create one $wfh-poison$, $wfh-immobilize$ trap in an empty hex within ^fh-range^ 2.",
 		"folder": "193-247",
 		"consumed": true
@@ -2956,7 +2958,7 @@
 		"count": 1,
 		"cost": 10,
 		"slot": "small",
-		"source": "unknown",
+		"source": "Scenario 93",
 		"desc": "During your turn, loot one loot token within ^fh-range^ 2.",
 		"folder": "193-247",
 		"consumed": true
@@ -2968,7 +2970,7 @@
 		"count": 1,
 		"cost": 30,
 		"slot": "small",
-		"source": "unknown",
+		"source": "Scenario 111",
 		"desc": "During your turn, lose one card from your hand to ^recover^ one card from your loot pile of equal of lower level.",
 		"folder": "193-247",
 		"consumed": true
@@ -2980,7 +2982,7 @@
 		"count": 1,
 		"cost": 45,
 		"slot": "small",
-		"source": "unknown",
+		"source": "Scenario 131",
 		"desc": "During your turn, choose one of six directions. You and all figures withing ^fh-range^ 2 are forced to simultaneously move 2 hexes in the chosen directon.",
 		"folder": "193-247",
 		"consumed": true
@@ -2992,7 +2994,7 @@
 		"count": 1,
 		"cost": 30,
 		"slot": "small",
-		"source": "unknown",
+		"source": "Scenario 133",
 		"desc": "When you would become exhausted from suffering ^damage^, set your hit point value to 1 instead.",
 		"folder": "193-247",
 		"consumed": true
@@ -3004,7 +3006,7 @@
 		"count": 1,
 		"cost": 40,
 		"slot": "small",
-		"source": "unknown",
+		"source": "Treasure 53",
 		"desc": "During your turn, all allies and enemies within ^fh-range^ 2 suffer ^damage^ 1.",
 		"folder": "193-247",
 		"consumed": true
@@ -3028,7 +3030,7 @@
 		"count": 1,
 		"cost": 40,
 		"slot": "small",
-		"source": "unknown",
+		"source": "SR-26",
 		"desc": "After you draw one loot card, draw one additional loot card.",
 		"folder": "193-247",
 		"consumed": true
@@ -3040,7 +3042,7 @@
 		"count": 1,
 		"cost": 30,
 		"slot": "small",
-		"source": "unknown",
+		"source": "SO-4",
 		"desc": "During your attack ability, treat the next three attack modifier cards you draw as rolling",
 		"folder": "193-247",
 		"consumed": true
@@ -3052,7 +3054,7 @@
 		"count": 1,
 		"cost": 10,
 		"slot": "small",
-		"source": "unknown",
+		"source": "WR-3",
 		"desc": "This item cannot be sold and must be brought into and used every scenario. At the start of the scenario perform: $wfh-curse$, $wfh-bless$ ~!self!~",
 		"folder": "193-247",
 		"consumed": true
@@ -3064,7 +3066,7 @@
 		"count": 1,
 		"cost": 50,
 		"slot": "small",
-		"source": "unknown",
+		"source": "Scenario 33",
 		"desc": "During your turn, increase the printed ^attack^, ^fh-move^, ^target^, or ^fh-range^ numerical value on one of your abilities by 1.",
 		"folder": "193-247",
 		"consumed": true
@@ -3123,7 +3125,7 @@
 		"name": "Key Card",
 		"count": 1,
 		"cost": 0,
-		"source": "unknown",
+		"source": "Scenario 58\nScenario 59",
 		"desc": "",
 		"folder": "193-247",
 		"faqImage": "items/frosthaven/193-247/fh-246-key-card.png"
@@ -3135,7 +3137,7 @@
 		"count": 1,
 		"cost": 50,
 		"slot": "1h",
-		"source": "unknown",
+		"source": "Stables",
 		"desc": "During your turn, capture an adjacent enemy whose hit point value is 1 or 2.",
 		"folder": "193-247",
 		"consumed": true

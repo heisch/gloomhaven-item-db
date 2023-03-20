@@ -102,3 +102,114 @@ export const FHGameData: GameData = {
 	filterSlots,
 	resources,
 };
+
+/* Items left to source
+67 / ? 
+206 / Giant Sword -- Scenario 89, Treasure 42; and 183.4 Mail Call (mail call source unknown, possibly an event?)
+216 / Tome of Elements -- 104.3; and 163.1 (Road Event outcomes, specific event unknown at this time)
+217 / Tome of Time -- 107.2; and 191.1 (Road Event outcomes, specific event unknown at this time)
+218 / Tome of Life -- 81.4; and 162.5 (Road Event outcomes, specific event unknown at this time)
+219 / Tome of Conflict -- Scenario 134 Reward; and 153.3 (Road Event outcome, specific event unknown at this time)
+224 / ?
+240 / Demons Eye -- 108.2 Event --> 180.2 Accuse Cecil Event Reward (Specific event unknown at this time)
+245 / Ancient Coin -- Scenario 136 Reward; Tavern (Building 74) Upgraded to Level 3, 128.5 on Loot Card 1419; 133.4 on Loot Card 1418
+*/
+
+/*
+44.4 -> SR-48 Event chain, WR-46 event chain
+142.1 -> SR-47 Event Chain, WR-45 event chain
+153.3 -> Scenario 134
+181.1 -> SR-49 event chain, WR-47 event chain
+
+144.2 -> SO-53 event chain
+187.3 -> SO-53 event chain
+*/
+
+/* 
+81.4
+162.5
+	142.1
+		?
+
+104.3
+163.1
+	44.4
+		?
+
+107.2
+191.1
+	181.1
+		?
+
+153.3
+	?
+
+183.4 - SO-30
+
+
+// These two are intertwinned some how
+180.2
+	88.2
+		108.2
+			113.2
+			117.1
+				144.2
+					?
+				187.3
+					?
+		113.2
+		117.1
+			144.2
+				?
+			187.3
+				?
+		135.5
+			113.2
+			117.1
+				above
+		149.2
+			108.2
+				above
+			135.5
+				above
+			150.1
+				below
+			172.4
+				below
+			185.3
+				below
+		150.1
+			113.2
+			117.1
+				above
+		166.1
+			108.2
+				above
+			135.5
+				above
+			150.1
+				above
+			172.4
+				below
+			185.3
+				below	
+		172.4
+			113.2
+			117.1
+				above
+		179.3
+			108.2
+				above
+			135.5
+				above
+			150.1
+				above
+			172.4
+				above
+			185.3
+				below
+		185.3
+			113.2
+			117.1
+				above
+*/
