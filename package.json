@@ -4,57 +4,54 @@
 	"version": "1.0.0",
 	"private": true,
 	"dependencies": {
-		"@reduxjs/toolkit": "^1.4.0",
-		"@types/jest": "^24.0.11",
-		"@types/lodash.memoize": "^4.1.6",
-		"@types/node": "^11.12.1",
-		"@types/qs": "^6.9.6",
-		"@types/react": "^16.8.10",
-		"@types/react-dom": "^16.8.3",
-		"@types/react-redux": "^7.1.9",
-		"@types/react-router": "^5.1.8",
-		"@types/react-router-dom": "^5.1.5",
-		"eslint-plugin-react": "^7.30.0",
-		"firebase": "^9.17.2",
-		"fsevents": "^2.3.2",
-		"gh-pages": "^2.0.1",
-		"qs": "^6.9.6",
-		"react": "^16.8.6",
-		"react-dom": "^16.8.6",
+		"@testing-library/jest-dom": "^5.16.5",
+		"@testing-library/react": "^13.4.0",
+		"@testing-library/user-event": "^13.5.0",
+		"@types/jest": "^27.5.2",
+		"@types/node": "^16.18.21",
+		"@types/react": "^18.0.30",
+		"@types/react-dom": "^18.0.11",
+		"firebase": "^9.18.0",
+		"lodash": "^4.17.21",
+		"react": "^17.0.0",
+		"react-dom": "^17.0.0",
 		"react-firebaseui": "^6.0.0",
-		"react-redux": "^7.2.0",
-		"react-router": "^5.2.0",
-		"react-router-dom": "^5.2.0",
-		"react-scripts": "^2.1.8",
-		"recoil": "^0.6.1",
-		"redux": "^4.0.5",
-		"redux-devtools-extension": "^2.13.8",
-		"reselect": "^4.0.0",
-		"semantic-ui-css": "^2.4.1",
-		"semantic-ui-react": "^2.0.3",
+		"react-router-dom": "^6.9.0",
+		"react-scripts": "5.0.1",
+		"recoil": "^0.7.7",
+		"sass": "^1.60.0",
+		"semantic-ui-css": "^2.5.0",
+		"semantic-ui-react": "^2.1.4",
 		"typescript": "^4.9.5",
-		"watch": "^1.0.2"
+		"web-vitals": "^2.1.4"
 	},
 	"scripts": {
 		"deploy": "gh-pages -d build",
-		"start": "react-scripts start && npm run watch",
+		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
-		"lint": "eslint '*/**/*.{js,ts,tsx}' --fix --cache"
+    "lint": "eslint '*/**/*.{js,ts,tsx}' --fix --cache"
 	},
 	"eslintConfig": {
-		"extends": "react-app"
+		"extends": [
+			"react-app",
+			"react-app/jest"
+		]
 	},
-	"browserslist": [
-		">0.2%",
-		"not dead",
-		"not ie <= 11",
-		"not op_mini all"
-	],
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
 	"devDependencies": {
-		"@typescript-eslint/eslint-plugin": "^5.27.1",
-		"@typescript-eslint/parser": "^5.27.1",
-		"eslint-plugin-react-hooks": "^4.5.0"
+		"@types/lodash": "^4.14.192"
 	}
 }

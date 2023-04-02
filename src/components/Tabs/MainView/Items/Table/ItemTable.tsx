@@ -15,6 +15,8 @@ import {
 import { ItemTableRow } from "./ItemTableRow";
 import { useSetSorting } from "../../../../../hooks/useSetSorting";
 
+import "./itemTable.scss";
+
 type Props = {
 	items: GloomhavenItem[];
 };

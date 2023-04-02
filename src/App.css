@@ -84,13 +84,6 @@ img.icon {
 	vertical-align: top;
 }
 
-img.flip {
-	width: auto;
-	height: 26px;
-	vertical-align: baseline;
-}
-
-
 img.ui.image.confirmDeleteIcon {
 	left: 5px;
 	display: inline-block;
@@ -253,116 +246,6 @@ div.spoiler .ui.tabular.menu {
 	border-bottom: var(--spoiler-color);
 }
 
-.item-card-wrapper {
-	max-width: 20%;
-	position: relative;
-	display: inline-block;
-}
-img.item-card {
-	width: 100%;
-	height: auto;
-	filter: brightness(105%) contrast(90%);
-	border-radius: 0 0 15px 15px;
-	padding: 0 2px;
-}
-.item-card-wrapper .ui.toggle.checkbox label:before {
-	background: rgba(255, 255, 255, 0.5);
-}
-
-.item-card-wrapper .ui.toggle.checkbox {
-	position: absolute;
-}
-
-.item-card-wrapper .ui.label.itemId {
-	/* position: absolute; */
-	width: 50%;
-	right: 7px;
-	top: 0px;
-	color: white;
-	border-radius: 15px 15px 0px 0px;
-	background: black;
-}
-
-.item-card-wrapper-header {
-	border-radius: 15px 15px 0px 0px;
-	background: black;
-	display: flex;
-	justify-content: space-between;
-	margin: 0 2px;
-}
-
-.item-card-wrapper-footer {
-	display: flex;
-	justify-content: space-between;
-	margin: 0px;
-}
-
-.item-card-wrapper .ui.label.no-item-management-count {
-	padding: 0px 10px 10px 10px;
-	width: 100%;
-	right: 7px;
-	top: 0px;
-	background: white;
-}
-
-.store-inventory-col .ui.label.no-item-management-count {
-	padding: 0px 10px 10px 10px;
-	width: 100%;
-	right: 7px;
-	top: 0px;
-	background: white;
-}
-
-.item-card-wrapper-container {
-	/* position: absolute; */
-}
-
-.item-card-wrapper .ui.button.flipItem {
-	position: relative;
-	width: 20px;
-	height: 20px;
-	background: black;
-	right: 5px;
-
-}
-.item-card-wrapper .ui.button.flipItem .undo.icon,
-.item-card-wrapper .ui.button.flipItem .redo.icon {
-	position: absolute;
-	/* top: 50%; */
-	padding: 4px;
-	top: 0;
-	left: 0;
-	width: 20px;
-	height: 20px;
-	color: white;
-	background: black;
-}
-
-.item-card-wrapper .ui.toggle.checkbox.i0 {
-	left: 7px;
-	top: 50px;
-}
-.item-card-wrapper .ui.toggle.checkbox.i1 {
-	left: 7px;
-	top: 85px;
-}
-
-.item-card-wrapper .ui.toggle.checkbox.i2 {
-	right: 7px;
-	top: 50px;
-}
-
-.item-card-wrapper .ui.toggle.checkbox.i3 {
-	right: 7px;
-	top: 85px;
-}
-
-.item-card-wrapper .ui.red.button {
-	padding: 0;
-	z-index: 2;
-	position: absolute;
-}
-
 .ui.form .fields.inline-break {
 	display: initial;
 }
@@ -431,10 +314,6 @@ img.item-card {
 		margin-bottom: 10px;
 	}
 
-	.items-table .ui.image {
-		margin-top: 7px;
-	}
-
 	.items-table thead tr th.name-col,
 	.items-table tbody tr td.name-col {
 		grid-column: 3/7;
@@ -486,25 +365,7 @@ img.item-card {
 		grid-row: 1/3;
 	}
 }
-
-@media screen and (min-width: 415px) and (max-width: 768px) {
-	.item-card-wrapper {
-		max-width: 33.3333333333333%;
-		padding: 0 2px;
-	}
-}
-
 @media screen and (max-width: 414px) {
-	.item-card-wrapper {
-		max-width: 50%;
-		padding-right: 2px;
-	}
-
-	.item-card-wrapper:nth-of-type(2n) {
-		padding-right: 0;
-		padding-left: 2px;
-	}
-
 	.items-table thead tr th.use-col,
 	.items-table tbody tr td.use-col,
 	.items-table thead tr th.text-col,
@@ -612,99 +473,10 @@ button.ui.deleteUser .delete.icon {
 	width: 120px;
 }
 
-/* .purchase-card {
-	width: 200px;
-	margin-left: 50px;
-} */
-
 .purchase-content {
 	display: flex;
 	flex-direction: row;
 }
-
-.item-card-wrapper .ownerButton {
-	padding: 0;
-	z-index: 2;
-	position: absolute;
-	width: 35px;
-	height: 35px;
-	border-radius: 50%;
-	border: unset;
-}
-
-.store-inventory-col .ownerButton {
-	padding: 0;
-	z-index: 2;
-	width: 35px;
-	height: 35px;
-	border-radius: 50%;
-	border: unset;
-}
-
-.item-card-wrapper .simple-managment-container, 
-.item-card-wrapper .party-management-container {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-}
-
-.store-inventory-col .party-management-container {
-	height: 75px;
-	width: 75px;
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	position: relative;
-}
-
-.noClass {
-	background-color: black;
-}
-
-.item-card-wrapper .ownerButton0 {
-	left: 7px;
-	top: 50px;
-}
-.item-card-wrapper .ownerButton1 {
-	left: 7px;
-	top: 90px;
-}
-
-.item-card-wrapper .ownerButton2 {
-	right: 7px;
-	top: 50px;
-}
-
-.item-card-wrapper .ownerButton3 {
-	right: 7px;
-	top: 90px;
-}
-
-img.ui.image.ownerIcon {
-	width: 35px;
-	height: 35px;
-	opacity: 1;
-}
-
-.addIcon {
-	width: 35px;
-	height: 35px;
-	color: white;
-	z-index: 3;
-	padding: 25%;
-}
-
-.deleteIcon {
-	left: -3px;
-	height: 15px;
-	width: 15px;
-	position: absolute;
-	z-index: 3;
-	border-radius: 50%;
-	background-color: white;
-}
-
  .enchantment-circle:before {
 	content: ' \25CF';
 	font-size: 12px;

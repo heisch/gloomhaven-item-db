@@ -2,6 +2,8 @@ import React from "react";
 import { GloomhavenItem } from "../../../../../State/Types";
 import ItemCard from "./ItemCard";
 
+import "./itemGrid.scss";
+
 type Props = {
 	items: GloomhavenItem[];
 };
@@ -9,7 +11,7 @@ type Props = {
 export const ItemGrid = (props: Props) => {
 	const { items } = props;
 	return (
-		<>
+		<div className="item-grid">
 			{items.map((item) => {
 				let key = `${item.id}`;
 				if (item.imageSuffix) {
@@ -17,6 +19,6 @@ export const ItemGrid = (props: Props) => {
 				}
 				return <ItemCard key={key} item={item} />;
 			})}
-		</>
+		</div>
 	);
 };

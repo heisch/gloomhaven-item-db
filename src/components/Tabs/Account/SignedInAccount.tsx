@@ -1,26 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Form } from "semantic-ui-react";
 import { useFirebase } from "../../Firebase";
-import { PasswordChangeDialog } from "./PasswordChangeDialog";
 
 export const SignedInAccount = (): JSX.Element | null => {
-	const { user, signOut } = useFirebase();
-	if (!user) {
-		return null;
-	}
-	return (
-		<>
-			<h1>Account</h1>
-			{`Signed in as: ${user.email}`}
-			<Form>
-				<Button
-					onClick={() => {
-						signOut();
-					}}
-				>
-					Sign Out
-				</Button>
-			</Form>
-		</>
-	);
+  const { user, signOut } = useFirebase();
+  if (!user) {
+    return null;
+  }
+  return (
+    <>
+      <h1>Account</h1>
+      {`Signed in as: ${user.email}`}
+      <Form>
+        <Button
+          onClick={() => {
+            signOut();
+          }}
+        >
+          Sign Out
+        </Button>
+      </Form>
+    </>
+  );
 };

@@ -1,0 +1,92 @@
+.item-card-container  {
+    .party-management-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+
+        .ownerButton {
+            padding: 0;
+            z-index: 2;
+            width: 19%;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            border: unset;
+            margin: 5px;
+            position: relative;
+        }
+    }
+
+    .addIcon {
+        width: 100%;
+        height: 100%;
+        color: black;
+        padding: 25%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .deleteIcon {
+        height: 40%;
+        width: 40%;
+        position: absolute;
+        z-index: 3;
+        border-radius: 50%;
+        background-color: white;
+        right: 0;
+        bottom: 0;
+    }
+
+    img.ui.image.ownerIcon {
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+    }
+
+    .flip {
+        width: auto;
+        height: 100%;
+        vertical-align: baseline;
+        margin-right: 10px;
+    }
+}
+
+.store-inventory-col {
+    .party-management-container {
+        height: 75px;
+        width: 75px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        position: relative;
+    }
+
+    .ownerButton {
+        padding: 0;
+        z-index: 2;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        border: unset;
+        position: relative;
+    }
+
+    img.ui.image.ownerIcon {
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+    }
+
+    .deleteIcon {
+        height: 15px;
+        width: 15px;
+        position: absolute;
+        z-index: 3;
+        border-radius: 50%;
+        background-color: white;
+        right: 0;
+        bottom: 0;
+    }
+}

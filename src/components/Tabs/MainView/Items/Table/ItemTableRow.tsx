@@ -55,7 +55,6 @@ export const ItemTableRow = (props: Props) => {
 			<Table.Cell className={"store-inventory-col"} textAlign={"right"}>
 				<div>
 					<ItemManagementContainer item={item} />
-					<NoItemManagement item={item} />
 				</div>
 			</Table.Cell>
 		</Table.Row>

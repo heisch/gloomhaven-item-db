@@ -15,6 +15,8 @@ import {
 } from "../../../../../State/Types";
 import { ClassIcon, GHIcon } from "../../../../Utils";
 
+import "./partyItemManagement.scss";
+
 type Props = {
 	item: GloomhavenItem;
 };
@@ -22,7 +24,6 @@ type Props = {
 type OwnerProps = {
 	item: GloomhavenItem;
 	owner?: ClassesInUse;
-	index: number;
 };
 
 const OwnerButton = (props: OwnerProps) => {
@@ -30,12 +31,8 @@ const OwnerButton = (props: OwnerProps) => {
 	const setSelectedItem = useSetRecoilState(selectedItemState);
 	const lockSpoilerPanel = useRecoilValue(lockSpoilerPanelState);
 
-	const { item, owner, index } = props;
-	let classNames = `ownerButton ownerButton${index}`;
-	if (!owner) {
-		classNames += " noClass";
-	}
-
+	const { item, owner } = props;
+	let classNames = `ownerButton`;
 	const onClick = () => {
 		if (owner) {
 			removeItemsFromOwner(item.id, owner);
@@ -93,13 +90,11 @@ export const PartyItemManagement = (props: Props) => {
 	let buttonData: OwnerProps[] = owners.map((owner, index) => ({
 		owner,
 		item,
-		index,
 	}));
 	buttonData = buttonData.concat(
 		[...Array(addButtonsToShow).keys()].map((index) => ({
 			item,
 			owner: undefined,
-			index: index + ownersLength,
 		}))
 	);
 	return (

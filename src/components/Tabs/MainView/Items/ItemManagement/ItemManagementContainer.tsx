@@ -1,5 +1,6 @@
 import React from "react";
 import { GloomhavenItem } from "../../../../../State/Types";
+import { NoItemManagement } from "./NoItemManagement";
 import { PartyItemManagement } from "./PartyItemManagement";
 import { SimpleItemManagement } from "./SimpleItemManagement";
 
@@ -14,6 +15,7 @@ export const ItemManagementContainer = (props: Props) => {
 		<>
 			<SimpleItemManagement item={item} />
 			<PartyItemManagement item={item} />
+			<NoItemManagement item={item} />
 		</>
 	);
 };

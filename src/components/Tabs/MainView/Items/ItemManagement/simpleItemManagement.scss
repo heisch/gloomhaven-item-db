@@ -1,0 +1,26 @@
+.item-card-container {
+    .simple-management-container {
+        width: 100%;
+        position: absolute;
+        display: flex;
+        flex-flow: wrap;
+        align-content: center;
+        height: 100%;
+
+        .ui.fitted.checkbox{
+            width: 25%;
+            justify-content: center;
+            display: flex;
+            left: -7px;
+        }
+    }
+}
+
+.store-inventory-col {
+    .simple-management-container {
+        .ui.fitted.checkbox{
+            width: 50%;
+            padding: 0 5px;
+        }
+    }
+}

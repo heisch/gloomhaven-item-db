@@ -47,7 +47,43 @@ export const itemManagementTypeState = createSpoilerState<ItemManagementType>(
 	"itemManagementType",
 	ItemManagementType.None
 );
-export const itemsInUseState = createSpoilerState<ItemsInUse>("itemsInUse", {});
+
+const fixedItemsInUseCount = (
+	oldItemsInUseCount: ItemsInUse,
+	gameType: GameType,
+	spoilerObj?: any
+) => {
+	const oldItemsInUse: ItemsInUse = spoilerObj["itemsInUse"];
+	if (oldItemsInUse) {
+		const newItemsInUseCount: ItemsInUse = {};
+		Object.entries(oldItemsInUse).forEach(([itemId, value]) => {
+			const id = parseInt(itemId, 10);
+			let count = 0;
+			if (value & Math.pow(2, 0)) {
+				count += 1;
+			}
+			if (value & Math.pow(2, 1)) {
+				count += 1;
+			}
+			if (value & Math.pow(2, 2)) {
+				count += 1;
+			}
+			if (value & Math.pow(2, 3)) {
+				count += 1;
+			}
+			console.log(id, value, count);
+			newItemsInUseCount[id] = count;
+		});
+		delete spoilerObj["itemsInUse"];
+		return newItemsInUseCount;
+	}
+	return oldItemsInUseCount;
+};
+export const itemsInUseCountState = createSpoilerState<ItemsInUse>(
+	"itemsInUseCount",
+	{},
+	fixedItemsInUseCount
+);
 
 const fixItemsOwnedBy = (oldItemsOwnedBy: any) => {
 	if (Array.isArray(oldItemsOwnedBy)) {
@@ -79,27 +115,21 @@ export const soloClassState = createSpoilerState<ClassesInUse[]>(
 
 function shouldAddGameGH(classesInUse: ClassesInUse[]): boolean {
 	const value = Object.values(GHClasses).some((classType) => {
-		if (classesInUse.includes(classType)) {
-			return true;
-		}
+		return classesInUse.includes(classType);
 	});
 	return value;
 }
 
 function shouldAddGameFC(classesInUse: ClassesInUse[]): boolean {
 	const value = Object.values(FCClasses).some((classType) => {
-		if (classesInUse.includes(classType)) {
-			return true;
-		}
+		return classesInUse.includes(classType);
 	});
 	return value;
 }
 
 function shouldAddGameJOTL(classesInUse: ClassesInUse[]): boolean {
 	const value = Object.values(JOTLClasses).some((classType) => {
-		if (classesInUse.includes(classType)) {
-			return true;
-		}
+		return classesInUse.includes(classType);
 	});
 	return value;
 }

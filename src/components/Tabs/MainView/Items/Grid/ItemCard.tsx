@@ -7,6 +7,8 @@ import { getItemIdString } from "../../../../../helpers";
 import { ItemManagementContainer } from "../ItemManagement/ItemManagementContainer";
 import { NoItemManagement } from "../ItemManagement/NoItemManagement";
 
+import "./itemCard.scss";
+
 type Props = {
 	item: GloomhavenItem;
 };
@@ -14,7 +16,7 @@ type Props = {
 const ItemId = (props: Props) => {
 	const { item } = props;
 	const id = getItemIdString(item);
-	return <Label className="itemId"> {id} </Label>;
+	return <div className="item-card-id"> {id} </div>;
 };
 
 const ItemCard = (props: Props) => {
@@ -24,9 +26,9 @@ const ItemCard = (props: Props) => {
 	const [showBackside, setShowBackside] = useState(false);
 
 	return (
-		<div className="item-card-wrapper">
+		<div className="item-card-container">
 			{draw && (
-				<div className="item-card-wrapper-header">
+				<div className="item-card-container-header">
 					<ItemId item={item} />
 					{item.backDesc && (
 						<GHIcon
@@ -40,25 +42,18 @@ const ItemCard = (props: Props) => {
 								setShowBackside((current) => !current)
 							}
 						/>
-						// <Button
-						// 	icon={showBackside ? "redo" : "undo"}
-						// 	className="flipItem"
-						// />
 					)}
 				</div>
 			)}
-			{draw && !showBackside && <ItemManagementContainer item={item} />}
-			<div className="item-card-wrapper-container">
-				<img
-					src={getItemPath(item, showBackside)}
-					alt={item.name}
-					onLoad={() => setDraw(true)}
-					className={"item-card"}
-				/>
-			</div>
+			<img
+				src={getItemPath(item, showBackside)}
+				alt={item.name}
+				onLoad={() => setDraw(true)}
+				className={"item-card"}
+			/>
 			{draw && (
-				<div className="item-card-wrapper-footer">
-					<NoItemManagement item={item} />
+				<div className="item-card-container-footer">
+					<ItemManagementContainer item={item} />
 				</div>
 			)}
 		</div>
