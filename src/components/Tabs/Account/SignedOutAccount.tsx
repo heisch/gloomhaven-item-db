@@ -5,7 +5,7 @@ import { Form } from "semantic-ui-react";
 import { auth, useFirebase } from "../../Firebase";
 
 const uiConfig = {
-	signInFlow: "redirect",
+	signInFlow: "popup",
 	signInOptions: [
 		{
 			provider: GoogleAuthProvider.PROVIDER_ID,
