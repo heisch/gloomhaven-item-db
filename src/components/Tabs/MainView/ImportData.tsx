@@ -86,19 +86,17 @@ const ImportData = () => {
     if (importHash) {
       const hashConfig = parseHash(importHash);
       if (hashConfig !== undefined) {
-        if (hashConfig.hasOwnProperty(GameType.Gloomhaven)) {
-          Object.values(GameType).forEach((gt: GameType) => {
-            const filterOptions = hashConfig[gt];
-            if (filterOptions) {
-              localStorage.setItem(
-                LOCAL_STORAGE_PREFIX + gt,
-                JSON.stringify(filterOptions)
-              );
-            } else {
-              localStorage.removeItem(LOCAL_STORAGE_PREFIX + gt);
-            }
-          });
-        }
+        Object.values(GameType).forEach((gt: GameType) => {
+          const filterOptions = hashConfig[gt];
+          if (filterOptions) {
+            localStorage.setItem(
+              LOCAL_STORAGE_PREFIX + gt,
+              JSON.stringify(filterOptions)
+            );
+          } else {
+            localStorage.removeItem(LOCAL_STORAGE_PREFIX + gt);
+          }
+        });
         setDataDirty(true);
         if (hashConfig.hasOwnProperty("lockSpoilerPanel")) {
           setLockSpoilerPanel(hashConfig.lockSpoilerPanel);

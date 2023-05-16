@@ -12,11 +12,15 @@ import { GHIcon } from "../../../../Utils";
 
 interface Props {
 	item: GloomhavenItem;
+	showDiscount?: boolean;
+	hideDivider?: boolean;
 }
 
 export const ItemCost = (props: Props) => {
 	const {
 		item: { cost, resources, id },
+		showDiscount,
+		hideDivider
 	} = props;
 	const discount = useRecoilValue(discountState);
 	const gameType = useRecoilValue(gameTypeState);
@@ -31,7 +35,7 @@ export const ItemCost = (props: Props) => {
 		<>
 			{cost > 0 && (
 				<strong className={"ui text " + costClass}>
-					{cost + discount}g
+					{showDiscount? `${cost + discount}g (${discount}g)` : `${cost + discount}g`}
 				</strong>
 			)}
 			{gameType === GameType.Frosthaven &&
@@ -63,7 +67,7 @@ export const ItemCost = (props: Props) => {
 					}
 					return (
 						<div key={`${id}-${resource}-${index}`}>
-							{index > 0 && <Divider />}
+							{!hideDivider && index > 0 && <Divider />}
 							<>
 								<GHIcon
 									name={`${resource}.png`}

@@ -10,6 +10,7 @@ import {
 	itemsOwnedByState,
 	selectedItemState,
 } from "../../../../State";
+import { ItemCost } from "./Table/ItemCost";
 
 const PurchaseItem = () => {
 	const classesInUse = useRecoilValue(classesInUseState);
@@ -97,10 +98,11 @@ const PurchaseItem = () => {
 						<Form.Group inline>
 							<label>Name:</label> {name}
 						</Form.Group>
-						<Form.Group inline>
-							<label>Cost:</label>{" "}
-							{`${cost + discount} (${discount}g)`}
-						</Form.Group>
+						{cost > 0  && <Form.Group inline>
+								<label>Cost:</label>{" "}
+								<ItemCost item={selectedItem} showDiscount={discount>0} hideDivider={true}/>
+							</Form.Group>
+						}
 						<Form.Group inline>
 							<label>Items Available:</label>{" "}
 							{`${count - owners.length} of ${count}`}
