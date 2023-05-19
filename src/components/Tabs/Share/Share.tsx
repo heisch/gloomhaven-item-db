@@ -13,7 +13,7 @@ const Share = () => {
   }, [lockSpoilerPanel]);
 
   const shareUrl =
-    window.location.origin + window.location.pathname + "#" + configHash();
+    `${window.location.origin}${window.location.pathname}?lastGame=${localStorage.getItem("lastGame")}#${configHash()}`;
   return (
     <>
       <p>

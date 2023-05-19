@@ -21,10 +21,7 @@ const UploadForm = (props: Props) => {
   const authUserId = user && !user.isAnonymous && user.uid;
 
   const shareUrl =
-    window.location.origin +
-    window.location.pathname +
-    "?importFrom=" +
-    authUserId;
+    `${window.location.origin}${window.location.pathname}?importFrom=${authUserId}&lastGame=${localStorage.getItem("lastGame")}`;
 
   return (
     <>
