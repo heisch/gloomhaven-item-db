@@ -3179,7 +3179,7 @@
     "cost": 0,
     "slot": "1h",
     "source": "Reward from Solo Scenario #03 — {FH3}",
-    "desc": "During your turn perform: ^attack^ ~!^fh-range^ 3!~. All your banners are treated as additionally occupying the hex of the attack target of their bonuses and that hex is treated as occupied by an ally this round. ^eot^",
+    "desc": "During your turn perform: ^attack^ 2 ~!^fh-range^ 3!~. All your banners are treated as additionally occupying the hex of the attack target of their bonuses and that hex is treated as occupied by an ally this round. ^eot^",
     "folder": "248-264",
     "soloItem": "FH3",
     "lockToClasses": ["FH3"],
