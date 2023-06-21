@@ -4,7 +4,9 @@
     "gameType": "fh",
     "name": "Spyglass",
     "count": 2,
-    "resources": { "metal": 1 },
+    "resources": {
+      "metal": 1
+    },
     "slot": "head",
     "source": "Craftsman 1",
     "desc": "During your attack ability, gain advantage on one attack.",
@@ -17,7 +19,9 @@
     "gameType": "fh",
     "name": "Crude Helmet",
     "count": 2,
-    "resources": { "metal": 1 },
+    "resources": {
+      "metal": 1
+    },
     "slot": "head",
     "source": "Craftsman 1",
     "desc": "When you are attacked, treat any ^modifier_2x_circle^ attack modifier card the enemy draws as a ^modifier_plus_1^ instead.",
@@ -29,7 +33,9 @@
     "gameType": "fh",
     "name": "Traveling Cloak",
     "count": 2,
-    "resources": { "hide": 1 },
+    "resources": {
+      "hide": 1
+    },
     "slot": "body",
     "source": "Craftsman 1",
     "desc": "At the start of the scenario increase your maximum hit point value by 1.",
@@ -41,7 +47,9 @@
     "gameType": "fh",
     "name": "Crude Hide Armor",
     "count": 2,
-    "resources": { "hide": 2 },
+    "resources": {
+      "hide": 2
+    },
     "slot": "body",
     "source": "Craftsman 1",
     "desc": "On the next two attacks targeting you, the attacker gains disadvantage.",
@@ -55,7 +63,9 @@
     "gameType": "fh",
     "name": "Crude Boots",
     "count": 2,
-    "resources": { "hide": 2 },
+    "resources": {
+      "hide": 2
+    },
     "slot": "legs",
     "source": "Craftsman 1",
     "desc": "During your move ability, add +1 ^fh-move^",
@@ -68,7 +78,9 @@
     "gameType": "fh",
     "name": "Flexible Slippers",
     "count": 2,
-    "resources": { "hide": 1 },
+    "resources": {
+      "hide": 1
+    },
     "slot": "legs",
     "source": "Craftsman 1",
     "desc": "During your end-of-turn looting, loot an adjacent hex instead of the hex you occupy.",
@@ -81,7 +93,9 @@
     "gameType": "fh",
     "name": "Crude Bow",
     "count": 2,
-    "resources": { "lumber": 1 },
+    "resources": {
+      "lumber": 1
+    },
     "slot": "2h",
     "source": "Craftsman 1",
     "desc": "During your turn, add +1 ^fh-range^ to one of your ranged attacks.",
@@ -94,7 +108,10 @@
     "gameType": "fh",
     "name": "Crude Spear",
     "count": 2,
-    "resources": { "lumber": 1, "metal": 1 },
+    "resources": {
+      "lumber": 1,
+      "metal": 1
+    },
     "slot": "2h",
     "source": "Craftsman 1",
     "desc": "During your turn, one of your single-target melee attack abilities may target an enemy two hexes away.",
@@ -107,7 +124,10 @@
     "gameType": "fh",
     "name": "Protective Scepter",
     "count": 2,
-    "resources": { "lumber": 1, "hide": 1 },
+    "resources": {
+      "lumber": 1,
+      "hide": 1
+    },
     "slot": "1h",
     "source": "Craftsman 1",
     "desc": "During you turn, grant one ally within ^fh-range^ 2: ^fh-shield^ 1. ^eot^",
@@ -120,7 +140,9 @@
     "gameType": "fh",
     "name": "Crude Shield",
     "count": 2,
-    "resources": { "metal": 1 },
+    "resources": {
+      "metal": 1
+    },
     "slot": "1h",
     "source": "Craftsman 1",
     "desc": "When an enemy would apply a negative condition to you, prevent the condition",
@@ -134,7 +156,9 @@
     "gameType": "fh",
     "name": "Simple Charm",
     "count": 2,
-    "resources": { "metal": 2 },
+    "resources": {
+      "metal": 2
+    },
     "slot": "head",
     "source": "Craftsman 2",
     "desc": "At the start of the scenario remove one ^modifier_minus_one_circle^ modifier card from your attack modifier deck.",
@@ -146,7 +170,9 @@
     "gameType": "fh",
     "name": "Crude Chain Armor",
     "count": 2,
-    "resources": { "metal": 1 },
+    "resources": {
+      "metal": 1
+    },
     "slot": "body",
     "source": "Craftsman 2",
     "desc": "When you suffer ^damage^ from an attack, gain ^fh-shield^ 2 for the attack.",
@@ -160,7 +186,10 @@
     "gameType": "fh",
     "name": "Dancing Slippers",
     "count": 2,
-    "resources": { "hide": 1, "snowthistle": 1 },
+    "resources": {
+      "hide": 1,
+      "snowthistle": 1
+    },
     "slot": "legs",
     "source": "Craftsman 2",
     "desc": "After you suffer ^damage^ from an attack, perform: ^fh-move^ 2",
@@ -173,7 +202,10 @@
     "gameType": "fh",
     "name": "Heavy Sword",
     "count": 2,
-    "resources": { "metal": 1, "hide": 1 },
+    "resources": {
+      "metal": 1,
+      "hide": 1
+    },
     "slot": "1h",
     "source": "Craftsman 2",
     "desc": "During your melee attack ability, add +1 ^attack^ to one attack.",
@@ -186,7 +218,12 @@
     "gameType": "fh",
     "name": "Reinforced Shield",
     "count": 1,
-    "resources": { "item": [10], "lumber": 1 },
+    "resources": {
+      "item": [
+        10
+      ],
+      "lumber": 1
+    },
     "slot": "1h",
     "source": "Craftsman 2",
     "desc": "When an enemy would apply a negative condition to you, prevent the condition.",
@@ -200,7 +237,13 @@
     "gameType": "fh",
     "name": "Inspiring Helmet",
     "count": 2,
-    "resources": { "item": [2], "metal": 1, "hide": 1 },
+    "resources": {
+      "item": [
+        2
+      ],
+      "metal": 1,
+      "hide": 1
+    },
     "slot": "head",
     "source": "Craftsman 3",
     "desc": "During your turn, grant all adjacent allies: ^fh-move^ 2",
@@ -213,7 +256,12 @@
     "gameType": "fh",
     "name": "Cured Leather Armor",
     "count": 2,
-    "resources": { "item": [4, 8] },
+    "resources": {
+      "item": [
+        4,
+        98
+      ]
+    },
     "slot": "body",
     "source": "Craftsman 3\nTreasure 50",
     "desc": "On the next two attacks targeting you, the attacker gains disadvantage.",
@@ -226,7 +274,12 @@
     "gameType": "fh",
     "name": "Rough Boots",
     "count": 2,
-    "resources": { "item": [5], "hide": 1 },
+    "resources": {
+      "item": [
+        5
+      ],
+      "hide": 1
+    },
     "slot": "legs",
     "source": "Craftsman 3",
     "desc": "During your turn add +1 ^fh-move^ to all your move abilities.",
@@ -239,7 +292,11 @@
     "gameType": "fh",
     "name": "Ringing Hammer",
     "count": 1,
-    "resources": { "lumber": 1, "metal": 1, "axenut": 1 },
+    "resources": {
+      "lumber": 1,
+      "metal": 1,
+      "axenut": 1
+    },
     "slot": "1h",
     "source": "Craftsman 3",
     "desc": "During your attack ability add $wfh-muddle$ to all your attacks.",
@@ -253,7 +310,12 @@
     "gameType": "fh",
     "name": "Well Strung Bow",
     "count": 1,
-    "resources": { "item": [7], "arrowvine": 1 },
+    "resources": {
+      "item": [
+        7
+      ],
+      "arrowvine": 1
+    },
     "slot": "2h",
     "source": "Craftsman 3",
     "desc": "During your turn, add +1 ^fh-range^ to all your ranged attacks.",
@@ -266,7 +328,10 @@
     "gameType": "fh",
     "name": "Chain Hood",
     "count": 2,
-    "resources": { "metal": 3, "hide": 1 },
+    "resources": {
+      "metal": 3,
+      "hide": 1
+    },
     "slot": "head",
     "source": "Craftsman 4",
     "desc": "While you are adjacent to tree or more enemies, gain ^fh-shield^ 1.",
@@ -279,7 +344,12 @@
     "gameType": "fh",
     "name": "Heavy Chain Armor",
     "count": 2,
-    "resources": { "item": [12], "metal": 1 },
+    "resources": {
+      "item": [
+        12
+      ],
+      "metal": 1
+    },
     "slot": "body",
     "source": "Craftsman 4",
     "desc": "When you suffer ^damage^ from an attack, gain ^fh-shield^ 3 for the attack.",
@@ -293,7 +363,10 @@
     "gameType": "fh",
     "name": "Sturdy Greaves",
     "count": 1,
-    "resources": { "metal": 2, "hide": 2 },
+    "resources": {
+      "metal": 2,
+      "hide": 2
+    },
     "slot": "legs",
     "source": "Craftsman 4",
     "desc": "At the start of your turn, add -2 ^fh-move^ to all your move abilities to gain ^fh-shield^ this round. ^eot^",
@@ -307,7 +380,12 @@
     "gameType": "fh",
     "name": "Corrupted Blade",
     "count": 2,
-    "resources": { "item": [14, 98] },
+    "resources": {
+      "item": [
+        14,
+        98
+      ]
+    },
     "slot": "1h",
     "source": "Craftsman 4\nWR-04",
     "desc": "During your melee attack ability, add $wfh-wound$, $wfh-poison$, $wfh-muddle$ to one attack.",
@@ -320,7 +398,11 @@
     "gameType": "fh",
     "name": "Soothing Scepter",
     "count": 1,
-    "resources": { "lumber": 1, "hide": 1, "rockroot": 1 },
+    "resources": {
+      "lumber": 1,
+      "hide": 1,
+      "rockroot": 1
+    },
     "slot": "1h",
     "source": "Craftsman 4",
     "desc": "During your turn, perform $wfh-regenerate$ ~!^target^ 1 ally, ^fh-range^ 2!~",
@@ -333,7 +415,10 @@
     "gameType": "fh",
     "name": "Truesight Lenses",
     "count": 2,
-    "resources": { "metal": 1, "hide": 1 },
+    "resources": {
+      "metal": 1,
+      "hide": 1
+    },
     "slot": "head",
     "source": "Craftsman 5",
     "desc": "During your attack ability, treat all negative and ^modifier_no_damage^ modifier cards as ^modifier_zero_circle^ instead.",
@@ -346,7 +431,13 @@
     "gameType": "fh",
     "name": "Cloak of Warding",
     "count": 2,
-    "resources": { "item": [3, 91], "hide": 1 },
+    "resources": {
+      "item": [
+        3,
+        91
+      ],
+      "hide": 1
+    },
     "slot": "body",
     "source": "Craftsman 5\nSR-17",
     "desc": "Immediately after an enemy ends its move ability adjacent to you, perform $wfh-push$ 1 ~!^target^ the enemy!~",
@@ -359,7 +450,12 @@
     "gameType": "fh",
     "name": "Sturdy Boots",
     "count": 2,
-    "resources": { "item": [18], "hide": 1 },
+    "resources": {
+      "item": [
+        18
+      ],
+      "hide": 1
+    },
     "slot": "legs",
     "source": "Craftsman 5",
     "desc": "During your turn add +1 ^fh-move^ to all your move abilities and ignor difficult terrain.",
@@ -372,7 +468,10 @@
     "gameType": "fh",
     "name": "Cleaving Axe",
     "count": 2,
-    "resources": { "lumber": 1, "metal": 2 },
+    "resources": {
+      "lumber": 1,
+      "metal": 2
+    },
     "slot": "2h",
     "source": "Craftsman 5",
     "desc": "After your melee attack, one enemy adjacent to the target suffers ^damage^ 2.",
@@ -385,7 +484,10 @@
     "gameType": "fh",
     "name": "Parrying Gauntlet",
     "count": 2,
-    "resources": { "metal": 1, "hide": 1 },
+    "resources": {
+      "metal": 1,
+      "hide": 1
+    },
     "slot": "1h",
     "source": "Craftsman 5",
     "desc": "Immediately after an enemy ends its move ability adjacent to you, perform ^attack^ 3 ~!^target^ the enemy!~",
@@ -398,7 +500,12 @@
     "gameType": "fh",
     "name": "Deathproof Charm",
     "count": 2,
-    "resources": { "item": [11, 106] },
+    "resources": {
+      "item": [
+        11,
+        106
+      ]
+    },
     "slot": "head",
     "source": "Craftsman 6\nWR-37\nSO-11",
     "desc": "When you suffer ^damage^ from any source, negate the ^damage^.",
@@ -411,7 +518,11 @@
     "gameType": "fh",
     "name": "Shell Armor",
     "count": 1,
-    "resources": { "lumber": 1, "metal": 2, "hide": 2 },
+    "resources": {
+      "lumber": 1,
+      "metal": 2,
+      "hide": 2
+    },
     "slot": "body",
     "source": "Craftsman 6",
     "desc": "During yur turn, perform $wfh-ward$ ~!self!~",
@@ -424,7 +535,13 @@
     "gameType": "fh",
     "name": "Volatile Boots",
     "count": 2,
-    "resources": { "item": [18, 96], "metal": 1 },
+    "resources": {
+      "item": [
+        18,
+        96
+      ],
+      "metal": 1
+    },
     "slot": "legs",
     "source": "Craftsman 6",
     "desc": "Up to once each turn during your move ability, add +1 ^fh-move^, then flip this card over at the end of your turn.",
@@ -437,7 +554,12 @@
     "gameType": "fh",
     "name": "Shrapnel Bomb",
     "count": 2,
-    "resources": { "item": [97], "metal": 2 },
+    "resources": {
+      "item": [
+        97
+      ],
+      "metal": 2
+    },
     "slot": "1h",
     "source": "Craftsman 6",
     "desc": "After your ranged attack, all enemies adjacent to the target suffer ^damage^ 2.",
@@ -450,7 +572,10 @@
     "gameType": "fh",
     "name": "Kite Shield",
     "count": 2,
-    "resources": { "lumber": 2, "metal": 1 },
+    "resources": {
+      "lumber": 2,
+      "metal": 1
+    },
     "slot": "1h",
     "source": "Craftsman 6",
     "desc": "When you suffer ^damage^ from an attack, gain ^fh-shield^ 1 for the attack and prevent any negative conditions from the attack.",
@@ -464,7 +589,13 @@
     "gameType": "fh",
     "name": "Plumed Helmet",
     "count": 2,
-    "resources": { "item": [16], "hide": 1, "snowthistle": 1 },
+    "resources": {
+      "item": [
+        16
+      ],
+      "hide": 1,
+      "snowthistle": 1
+    },
     "slot": "head",
     "source": "Craftsman 7",
     "desc": "When you are attacked by an attack with disadvantage, treat all ^modifier_zero_circle^ and ^modifier_plus_1^ attack modifier cards as ^modifier_minus_one_circle^.",
@@ -476,7 +607,13 @@
     "gameType": "fh",
     "name": "Ghost Cloak",
     "count": 2,
-    "resources": { "item": [3, 114], "corpsecap": 1 },
+    "resources": {
+      "item": [
+        3,
+        114
+      ],
+      "corpsecap": 1
+    },
     "slot": "body",
     "source": "Craftsman 7\nSR-36",
     "desc": "During your turn suffer ^damage^ 3 to perform $invisible$ ~!self!~",
@@ -489,7 +626,12 @@
     "gameType": "fh",
     "name": "Duelists Shoes",
     "count": 1,
-    "resources": { "item": [13, 113] },
+    "resources": {
+      "item": [
+        13,
+        113
+      ]
+    },
     "slot": "legs",
     "source": "Craftsman 7",
     "desc": "During your turn, perform: ^fh-move^ 2 This movement must end adjacent to an enemy.",
@@ -502,7 +644,13 @@
     "gameType": "fh",
     "name": "Abyss Axe",
     "count": 2,
-    "resources": { "item": [29, 101, 112] },
+    "resources": {
+      "item": [
+        29,
+        101,
+        112
+      ]
+    },
     "slot": "2h",
     "source": "Craftsman 7",
     "desc": "During your attack ability, add +3 ^attack^ and $wfh-pierce$ 1 to one attack targeting a Frozen Corpse, Ice Wraith, or Living Doom.",
@@ -515,7 +663,13 @@
     "gameType": "fh",
     "name": "Heartstrike Bow",
     "count": 1,
-    "resources": { "item": [20, 85], "lumber": 1 },
+    "resources": {
+      "item": [
+        20,
+        85
+      ],
+      "lumber": 1
+    },
     "slot": "2h",
     "source": "Craftsman 7",
     "desc": "During your turn, add +1 ^attack^ and +2 ^fh-range^ to one of your ranged attacks.",
@@ -528,7 +682,13 @@
     "gameType": "fh",
     "name": "Intricate Charm",
     "count": 2,
-    "resources": { "item": [11, 110], "metal": 1 },
+    "resources": {
+      "item": [
+        11,
+        110
+      ],
+      "metal": 1
+    },
     "slot": "head",
     "source": "Craftsman 8",
     "desc": "At the start of the scenario remove one ^modifier_zero_circle^ and one ^modifier_minus_one_circle^ modifier card from your attack modifier deck.",
@@ -540,7 +700,12 @@
     "gameType": "fh",
     "name": "Ornate Armor",
     "count": 2,
-    "resources": { "item": [112], "metal": 3 },
+    "resources": {
+      "item": [
+        112
+      ],
+      "metal": 3
+    },
     "slot": "body",
     "source": "Craftsman 8",
     "desc": "On the next two sources of ^damage^ from attacks targeting you gain ^fh-shield^ 2 for the attacks.",
@@ -554,7 +719,13 @@
     "gameType": "fh",
     "name": "Kicking Boots",
     "count": 2,
-    "resources": { "item": [28, 90], "metal": 1 },
+    "resources": {
+      "item": [
+        28,
+        90
+      ],
+      "metal": 1
+    },
     "slot": "legs",
     "source": "Craftsman 8",
     "desc": "During your melee attack ability, add $wfh-push$ 2 to one attack.",
@@ -567,7 +738,12 @@
     "gameType": "fh",
     "name": "Sword of Absolution",
     "count": 2,
-    "resources": { "item": [24, 101] },
+    "resources": {
+      "item": [
+        24,
+        101
+      ]
+    },
     "slot": "1h",
     "source": "Craftsman 8",
     "desc": "When you would gain $wfh-poison$ or $wfh-curse$, gain $wfh-bless$ instead.",
@@ -580,7 +756,12 @@
     "gameType": "fh",
     "name": "Master Scepter",
     "count": 2,
-    "resources": { "item": [9, 25] },
+    "resources": {
+      "item": [
+        9,
+        25
+      ]
+    },
     "slot": "1h",
     "source": "Craftsman 8",
     "desc": "During your turn, perform: ^fh-heal^ 1 ~!^target^ 1 ally, ^fh-range^ 2, $wfh-ward$!~ ",
@@ -593,7 +774,13 @@
     "gameType": "fh",
     "name": "Double-Lens Goggles",
     "count": 2,
-    "resources": { "item": [26, 129], "hide": 1 },
+    "resources": {
+      "item": [
+        26,
+        129
+      ],
+      "hide": 1
+    },
     "slot": "head",
     "source": "Craftsman 9",
     "desc": "During your attack ability, gain advantage on all attacks and treat all ^modifier_zero_circle^ and ^modifier_minus_one_circle^ modifier cards as ^modifier_plus_1^ instead.",
@@ -606,7 +793,13 @@
     "gameType": "fh",
     "name": "Robes of Doom",
     "count": 2,
-    "resources": { "item": [27, 119, 162] },
+    "resources": {
+      "item": [
+        27,
+        119,
+        162
+      ]
+    },
     "slot": "body",
     "source": "Craftsman 9\nWR-34",
     "desc": "On the next two sources of ^damage^ from attacks targeting you, suffer ^damage^ 3 to give the attacker $wfh-brittle$.",
@@ -619,7 +812,13 @@
     "gameType": "fh",
     "name": "Living Shoes",
     "count": 2,
-    "resources": { "item": [13], "hide": 2, "flamefruit": 1 },
+    "resources": {
+      "item": [
+        13
+      ],
+      "hide": 2,
+      "flamefruit": 1
+    },
     "slot": "legs",
     "source": "Craftsman 9",
     "desc": "After an ally's heal ability targeting you, perform: ^fh-move^ 2",
@@ -631,7 +830,13 @@
     "gameType": "fh",
     "name": "Cruel Dagger",
     "count": 2,
-    "resources": { "item": [111, 145], "metal": 1 },
+    "resources": {
+      "item": [
+        111,
+        145
+      ],
+      "metal": 1
+    },
     "slot": "1h",
     "source": "Craftsman 9",
     "desc": "During your melee attack ability, add +1 ^attack^ and $wfh-wound$ to one attack.",
@@ -645,7 +850,14 @@
     "gameType": "fh",
     "name": "Shield of Reciprocity",
     "count": 2,
-    "resources": { "item": [35, 105, 161], "metal": 1 },
+    "resources": {
+      "item": [
+        35,
+        105,
+        161
+      ],
+      "metal": 1
+    },
     "slot": "1h",
     "source": "Craftsman 9",
     "desc": "When you suffer ^damage^ from an attack, gain ^fh-shield^ 1 for the attack and flip this card over.",
@@ -659,7 +871,12 @@
     "gameType": "fh",
     "name": "Spiked Collar",
     "count": 2,
-    "resources": { "item": [11], "flamefruit": 1 },
+    "resources": {
+      "item": [
+        11
+      ],
+      "flamefruit": 1
+    },
     "slot": "head",
     "source": "Random Blueprint\nSO-48",
     "desc": "During your turn perform $wfh-wound$ ~!self!~",
@@ -672,7 +889,12 @@
     "gameType": "fh",
     "name": "Laser Lens",
     "count": 2,
-    "resources": { "item": [97, 129] },
+    "resources": {
+      "item": [
+        97,
+        129
+      ]
+    },
     "slot": "head",
     "source": "Random Blueprint",
     "desc": "During your turn, @wfh-fire-consume@ to cause up to two enemies within ^fh-range^ 4 to suffer ^damage^ 1.",
@@ -685,7 +907,13 @@
     "gameType": "fh",
     "name": "Hobnail Boots",
     "count": 2,
-    "resources": { "item": [18, 88], "metal": 1 },
+    "resources": {
+      "item": [
+        18,
+        88
+      ],
+      "metal": 1
+    },
     "slot": "legs",
     "source": "Random Blueprint",
     "desc": "After you move 4 or more hexes during your turn, gain ^retaliate^ 1 for the round.",
@@ -697,7 +925,13 @@
     "gameType": "fh",
     "name": "Restful Slippers",
     "count": 2,
-    "resources": { "item": [6, 92], "snowthistle": 1 },
+    "resources": {
+      "item": [
+        6,
+        92
+      ],
+      "snowthistle": 1
+    },
     "slot": "legs",
     "source": "Random Blueprint",
     "desc": "During your short rest, instead of randomly losing one card from your discard pile, randomly draw three cards from your discard pile and choose one to lose.",
@@ -710,7 +944,13 @@
     "gameType": "fh",
     "name": "Biting Gauntlet",
     "count": 2,
-    "resources": { "item": [94], "metal": 1, "hide": 1 },
+    "resources": {
+      "item": [
+        94
+      ],
+      "metal": 1,
+      "hide": 1
+    },
     "slot": "1h",
     "source": "Random Blueprint",
     "desc": "When you are attacked by an adjacent enemy, gain ^retaliate^ 2 for the attack.",
@@ -723,7 +963,10 @@
     "gameType": "fh",
     "name": "Scavenger's Magnet",
     "count": 2,
-    "resources": { "lumber": 1, "metal": 1 },
+    "resources": {
+      "lumber": 1,
+      "metal": 1
+    },
     "slot": "1h",
     "source": "Random Blueprint",
     "desc": "During your turn, @wfh-earth-consume@ to loot one adjacent loot token.",
@@ -736,7 +979,10 @@
     "gameType": "fh",
     "name": "Shovel",
     "count": 2,
-    "resources": { "lumber": 1, "metal": 1 },
+    "resources": {
+      "lumber": 1,
+      "metal": 1
+    },
     "slot": "1h",
     "source": "Random Blueprint",
     "desc": "During your turn, destroy one adjacent obstacle, hazardous terrain, difficult terrain, icy terrain, or trap tile.",
@@ -749,7 +995,13 @@
     "gameType": "fh",
     "name": "Slippery Sword",
     "count": 2,
-    "resources": { "item": [14, 85, 90] },
+    "resources": {
+      "item": [
+        14,
+        85,
+        90
+      ]
+    },
     "slot": "1h",
     "source": "Random Blueprint",
     "desc": "During your melee attack abiluty, add +2 ^attack^ to one attack. After the ability, gain $wfh-disarm$.",
@@ -762,7 +1014,12 @@
     "gameType": "fh",
     "name": "Charm of Expertise",
     "count": 2,
-    "resources": { "item": [11, 113] },
+    "resources": {
+      "item": [
+        11,
+        113
+      ]
+    },
     "slot": "head",
     "source": "Random Blueprint",
     "desc": "At the start of the scenario, for the scenario, gain one 1-mark perk from your character sheet which you have not yet gained.",
@@ -774,7 +1031,12 @@
     "gameType": "fh",
     "name": "Cloak of Many Pockets",
     "count": 2,
-    "resources": { "item": [132], "hide": 3 },
+    "resources": {
+      "item": [
+        132
+      ],
+      "hide": 3
+    },
     "slot": "body",
     "source": "Random Blueprint",
     "desc": "At the start of the scenario, bring up to two additional #small# items.",
@@ -786,7 +1048,13 @@
     "gameType": "fh",
     "name": "Spiked Shell",
     "count": 2,
-    "resources": { "item": [32, 105], "metal": 1 },
+    "resources": {
+      "item": [
+        32,
+        105
+      ],
+      "metal": 1
+    },
     "slot": "body",
     "source": "Random Blueprint",
     "desc": "Immediately after you are attacked by an adjacent enemy, that enemy suffers ^damage^ X, where is X is your ^fh-shield^ value for the attack.",
@@ -799,7 +1067,12 @@
     "gameType": "fh",
     "name": "Everlasting Boots",
     "count": 2,
-    "resources": { "item": [28, 99] },
+    "resources": {
+      "item": [
+        28,
+        99
+      ]
+    },
     "slot": "legs",
     "source": "Random Blueprint",
     "desc": "During your move ability, add +1 ^fh-move^ and gain $wfh-regenerate$",
@@ -812,7 +1085,12 @@
     "gameType": "fh",
     "name": "Shadow Stompers",
     "count": 2,
-    "resources": { "item": [13, 158] },
+    "resources": {
+      "item": [
+        13,
+        158
+      ]
+    },
     "slot": "legs",
     "source": "Random Blueprint",
     "desc": "During your move ability, @wfh-dark-consume@ add +2 ^fh-move^",
@@ -825,7 +1103,13 @@
     "gameType": "fh",
     "name": "Detonator",
     "count": 2,
-    "resources": { "item": [96, 112], "metal": 1 },
+    "resources": {
+      "item": [
+        96,
+        112
+      ],
+      "metal": 1
+    },
     "slot": "1h",
     "source": "Random Blueprint",
     "desc": "When one of your summons is killed, all enemies adjacent to it suffer ^damage^ 2 and gain $wfh-wound$.",
@@ -838,7 +1122,12 @@
     "gameType": "fh",
     "name": "Rust Powder",
     "count": 2,
-    "resources": { "item": [157], "corpsecap": 1 },
+    "resources": {
+      "item": [
+        157
+      ],
+      "corpsecap": 1
+    },
     "slot": "small",
     "source": "Random Blueprint",
     "desc": "During your turn, place a character token on one normal or elite enemy within ^fh-range^ 3.  That enemy gains -1 ^fh-shield^ for the scenario. ^ongoing^",
@@ -851,7 +1140,12 @@
     "gameType": "fh",
     "name": "Amulet of Eternal Life",
     "count": 2,
-    "resources": { "item": [109, 120] },
+    "resources": {
+      "item": [
+        109,
+        120
+      ]
+    },
     "slot": "head",
     "source": "Scenario 188",
     "desc": "At the start of your rest, perform: ^fh-heal^ 1 ~!self!~",
@@ -862,7 +1156,13 @@
     "gameType": "fh",
     "name": "Converging Lenses",
     "count": 2,
-    "resources": { "item": [1, 93], "metal": 1 },
+    "resources": {
+      "item": [
+        1,
+        93
+      ],
+      "metal": 1
+    },
     "slot": "head",
     "source": "unknown",
     "desc": "When you are attacked, add +1 ^attack^ to attack to instead of drawing an attack modifier card and flip this card over.",
@@ -874,7 +1174,12 @@
     "gameType": "fh",
     "name": "Scaled Armor",
     "count": 2,
-    "resources": { "item": [89, 123] },
+    "resources": {
+      "item": [
+        89,
+        123
+      ]
+    },
     "slot": "body",
     "source": "Treasure 22",
     "desc": "On the next three sources of 2 or fewer ^damage^ you would suffer, negate the ^damage^.",
@@ -886,7 +1191,12 @@
     "gameType": "fh",
     "name": "Feathered Cloak",
     "count": 2,
-    "resources": { "item": [3, 233] },
+    "resources": {
+      "item": [
+        3,
+        233
+      ]
+    },
     "slot": "body",
     "source": "Scenario 32",
     "desc": "When you suffer ^damage^ from an attack, @wfh-air-consume@ to gain ^fh-shield^ 3 for the attack.",
@@ -898,7 +1208,12 @@
     "gameType": "fh",
     "name": "Aesther Robe",
     "count": 2,
-    "resources": { "item": [27, 113] },
+    "resources": {
+      "item": [
+        27,
+        113
+      ]
+    },
     "slot": "body",
     "source": "Scenario 81",
     "desc": "When you suffer ^damage^ from ^retaliate^, reduce the ^damage^ to 1. If it already 1, reduce it to 0 instead.",
@@ -909,7 +1224,12 @@
     "gameType": "fh",
     "name": "Bone Boots",
     "count": 2,
-    "resources": { "item": [18], "corpsecap": 1 },
+    "resources": {
+      "item": [
+        18
+      ],
+      "corpsecap": 1
+    },
     "slot": "legs",
     "source": "Treasure 49",
     "desc": "After your ability where you kill an enemy, perform: ^fh-move^ 4",
@@ -921,7 +1241,12 @@
     "gameType": "fh",
     "name": "Oak Staff",
     "count": 2,
-    "resources": { "item": [91], "lumber": 1 },
+    "resources": {
+      "item": [
+        91
+      ],
+      "lumber": 1
+    },
     "slot": "2h",
     "source": "Treasure 82",
     "desc": "During you turn, @wfh-light-consume@ to perform: $wfh-bless$ ~!^fh-range^ 3!~",
@@ -933,7 +1258,12 @@
     "gameType": "fh",
     "name": "Energizing Baton",
     "count": 2,
-    "resources": { "item": [101], "metal": 2 },
+    "resources": {
+      "item": [
+        101
+      ],
+      "metal": 2
+    },
     "slot": "1h",
     "source": "Scenario 44",
     "desc": "When you apply a positive condition to an ally, a different ally within ^fh-range^ 3 gains the same condition.",
@@ -945,7 +1275,12 @@
     "gameType": "fh",
     "name": "Shock Grenades",
     "count": 2,
-    "resources": { "item": [19, 97] },
+    "resources": {
+      "item": [
+        19,
+        97
+      ]
+    },
     "slot": "1h",
     "source": "Scenario 51",
     "desc": "During your turn, perform $wfh-muddle$ ~!^fh-range^ 2!~ *cone_1_1*",
@@ -957,7 +1292,13 @@
     "gameType": "fh",
     "name": "Rose Gauntlet",
     "count": 2,
-    "resources": { "item": [30], "flamefruit": 1, "snowthistle": 1 },
+    "resources": {
+      "item": [
+        30
+      ],
+      "flamefruit": 1,
+      "snowthistle": 1
+    },
     "slot": "1h",
     "source": "Scenario 110",
     "desc": "After any ally within ^fh-range^ 2 suffers ^damage^ from an attack, remove all negative conditions from the ally then perform: ^fh-heal^ 3 ~!^target^ the ally, $wfh-pull$ 1!~",
@@ -969,7 +1310,11 @@
     "gameType": "fh",
     "name": "Horn of Command",
     "count": 2,
-    "resources": { "metal": 1, "hide": 1, "rockroot": 1 },
+    "resources": {
+      "metal": 1,
+      "hide": 1,
+      "rockroot": 1
+    },
     "slot": "1h",
     "source": "Treasure 70",
     "desc": "During one of your summons' turns, decide how it peforms it's abilities.",
@@ -981,7 +1326,12 @@
     "gameType": "fh",
     "name": "Chaos Cannon",
     "count": 2,
-    "resources": { "item": [86], "metal": 2 },
+    "resources": {
+      "item": [
+        86
+      ],
+      "metal": 2
+    },
     "slot": "1h",
     "source": "Treasure 40",
     "desc": "During you turn, replace one 1-hex obstacle, hazardous terrain, difficult terrain, or icy terrain tile in an unoccupied hex withing ^fh-range^ 2 with a different type of tile listed above.",
@@ -993,7 +1343,13 @@
     "gameType": "fh",
     "name": "Balanced Scales",
     "count": 2,
-    "resources": { "item": [110], "metal": 1, "hide": 1 },
+    "resources": {
+      "item": [
+        110
+      ],
+      "metal": 1,
+      "hide": 1
+    },
     "slot": "1h",
     "source": "Treasure 31",
     "desc": "Once each turn, during your attack ability, gain advantage on one attack, then flip this card over at the end of your turn.",
@@ -1006,7 +1362,11 @@
     "gameType": "fh",
     "name": "Roasted Fowl",
     "count": 2,
-    "resources": { "hide": 2, "flamefruit": 1, "snowthistle": 1 },
+    "resources": {
+      "hide": 2,
+      "flamefruit": 1,
+      "snowthistle": 1
+    },
     "slot": "small",
     "source": "Scenario 93",
     "desc": "During you turn, add +1 ^attack^ to all your attacks and perform: ^fh-heal^ 2 ~!self!~",
@@ -1018,7 +1378,13 @@
     "gameType": "fh",
     "name": "Living Stone",
     "count": 2,
-    "resources": { "item": [99, 156], "rockroot": 1 },
+    "resources": {
+      "item": [
+        99,
+        156
+      ],
+      "rockroot": 1
+    },
     "slot": "small",
     "source": "Treasure 72",
     "desc": "When you would suffer 4 or fewer ^damage^ from attack, negate the ^damage^ and perform ^fh-heal^ X ~!self!~ wheee x is the amount of damage you would have suffered.",
@@ -1030,7 +1396,12 @@
     "gameType": "fh",
     "name": "Pain Simulacrum",
     "count": 2,
-    "resources": { "item": [97], "hide": 2 },
+    "resources": {
+      "item": [
+        97
+      ],
+      "hide": 2
+    },
     "slot": "small",
     "source": "Treasure 59",
     "desc": "When you suffer 5 or fewer ^damage^ from an attack, one enemy within ^fh-range^ 2 also suffers the same amount of ^damage^.",
@@ -1042,7 +1413,12 @@
     "gameType": "fh",
     "name": "Mechanical Cube",
     "count": 2,
-    "resources": { "item": [112], "metal": 2 },
+    "resources": {
+      "item": [
+        112
+      ],
+      "metal": 2
+    },
     "slot": "small",
     "source": "Both Treasure 62 and 69",
     "desc": "During your move ability, after you enter any one hex, give $wfh-immobilize$ to all adjacent enemies.",
@@ -1054,7 +1430,10 @@
     "gameType": "fh",
     "name": "Healing Potion",
     "count": 2,
-    "resources": { "arrowvine": 1, "rockroot": 1 },
+    "resources": {
+      "arrowvine": 1,
+      "rockroot": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn, perform ^fh-heal^ 3 ~!self!~",
@@ -1066,7 +1445,10 @@
     "gameType": "fh",
     "name": "Stamina Potion",
     "count": 2,
-    "resources": { "arrowvine": 1, "snowthistle": 1 },
+    "resources": {
+      "arrowvine": 1,
+      "snowthistle": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn, ^recover^ one level 1 card from your discard pile.",
@@ -1079,7 +1461,10 @@
     "gameType": "fh",
     "name": "Power Potion",
     "count": 2,
-    "resources": { "arrowvine": 1, "axenut": 1 },
+    "resources": {
+      "arrowvine": 1,
+      "axenut": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn, add +1 ^attack^ to all your attacks.",
@@ -1091,7 +1476,10 @@
     "gameType": "fh",
     "name": "Element Potion",
     "count": 2,
-    "resources": { "arrowvine": 1, "flamefruit": 1 },
+    "resources": {
+      "arrowvine": 1,
+      "flamefruit": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn, @wfh-wild@",
@@ -1103,7 +1491,10 @@
     "gameType": "fh",
     "name": "Cure Potion",
     "count": 2,
-    "resources": { "arrowvine": 1, "corpsecap": 1 },
+    "resources": {
+      "arrowvine": 1,
+      "corpsecap": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn, remove one negative condition you have.  This item can be used while you have $wfh-impair$ or $wfh-stun$.",
@@ -1115,7 +1506,10 @@
     "gameType": "fh",
     "name": "Fireshield Potion",
     "count": 2,
-    "resources": { "rockroot": 1, "flamefruit": 1 },
+    "resources": {
+      "rockroot": 1,
+      "flamefruit": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn perform ^retaliate^ 1 ~!^fh-range^ 3!~ ^eot^",
@@ -1127,7 +1521,10 @@
     "gameType": "fh",
     "name": "Stoneskin Potion",
     "count": 2,
-    "resources": { "rockroot": 1, "corpsecap": 1 },
+    "resources": {
+      "rockroot": 1,
+      "corpsecap": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn, perform $wfh-ward$ ~!self!~",
@@ -1139,7 +1536,10 @@
     "gameType": "fh",
     "name": "Muscle Potion",
     "count": 2,
-    "resources": { "rockroot": 1, "flamefruit": 1 },
+    "resources": {
+      "rockroot": 1,
+      "flamefruit": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn, perform $wfh-strengthen$ ~!self!~",
@@ -1151,7 +1551,10 @@
     "gameType": "fh",
     "name": "Holy Water",
     "count": 2,
-    "resources": { "corpsecap": 1, "flamefruit": 1 },
+    "resources": {
+      "corpsecap": 1,
+      "flamefruit": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn, perform $wfh-bless$ ~!self!~",
@@ -1163,7 +1566,10 @@
     "gameType": "fh",
     "name": "Renewing Potion",
     "count": 2,
-    "resources": { "rockroot": 1, "snowthistle": 1 },
+    "resources": {
+      "rockroot": 1,
+      "snowthistle": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn, ^recover^ up to two of your spent items.",
@@ -1175,7 +1581,10 @@
     "gameType": "fh",
     "name": "Glancing Potion",
     "count": 2,
-    "resources": { "rockroot": 1, "axenut": 1 },
+    "resources": {
+      "rockroot": 1,
+      "axenut": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "When you reveal a ^modifier_no_damage^ attack modifier card from your attack modifier deck, treat it as a ^modifier_zero_circle^ instead.",
@@ -1187,7 +1596,10 @@
     "gameType": "fh",
     "name": "Frenzy Potion",
     "count": 2,
-    "resources": { "corpsecap": 1, "axenut": 1 },
+    "resources": {
+      "corpsecap": 1,
+      "axenut": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn, perform: ^attack^ 2",
@@ -1199,7 +1611,10 @@
     "gameType": "fh",
     "name": "Poison Vial",
     "count": 2,
-    "resources": { "snowthistle": 1, "corpsecap": 1 },
+    "resources": {
+      "snowthistle": 1,
+      "corpsecap": 1
+    },
     "slot": "small",
     "source": "Alchemy\nSR-14",
     "desc": "During your turn, perform $wfh-poison$ ~!^fh-range^ 1!~",
@@ -1211,7 +1626,10 @@
     "gameType": "fh",
     "name": "Flame Vial",
     "count": 2,
-    "resources": { "snowthistle": 1, "flamefruit": 1 },
+    "resources": {
+      "snowthistle": 1,
+      "flamefruit": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn, perform $wfh-wound$ ~!^fh-range^ 1!~",
@@ -1223,7 +1641,10 @@
     "gameType": "fh",
     "name": "Explosive Vial",
     "count": 2,
-    "resources": { "snowthistle": 1, "axenut": 1 },
+    "resources": {
+      "snowthistle": 1,
+      "axenut": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn, one enemy withing ^fh-range^ 2 suffers ^damage^ 2.",
@@ -1247,7 +1668,11 @@
     "gameType": "fh",
     "name": "Major Healing Potion",
     "count": 2,
-    "resources": { "arrowvine": 1, "rockroot": 1, "snowthistle": 1 },
+    "resources": {
+      "arrowvine": 1,
+      "rockroot": 1,
+      "snowthistle": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn, perform ^fh-heal^ 6 ~!self!~",
@@ -1259,7 +1684,11 @@
     "gameType": "fh",
     "name": "Major Stamina Potion",
     "count": 2,
-    "resources": { "arrowvine": 1, "snowthistle": 1, "axenut": 1 },
+    "resources": {
+      "arrowvine": 1,
+      "snowthistle": 1,
+      "axenut": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn, ^recover^ one card from your discard pile.",
@@ -1272,7 +1701,11 @@
     "gameType": "fh",
     "name": "Major Power Potion",
     "count": 2,
-    "resources": { "arrowvine": 1, "axenut": 1, "corpsecap": 1 },
+    "resources": {
+      "arrowvine": 1,
+      "axenut": 1,
+      "corpsecap": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn, add +2 ^attack^ to all your attacks.",
@@ -1284,7 +1717,11 @@
     "gameType": "fh",
     "name": "Major Element Potion",
     "count": 2,
-    "resources": { "arrowvine": 1, "axenut": 1, "flamefruit": 1 },
+    "resources": {
+      "arrowvine": 1,
+      "axenut": 1,
+      "flamefruit": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn, @wfh-wild@ @wfh-wild@",
@@ -1296,7 +1733,11 @@
     "gameType": "fh",
     "name": "Major Cure Potion",
     "count": 2,
-    "resources": { "arrowvine": 1, "corpsecap": 1, "flamefruit": 1 },
+    "resources": {
+      "arrowvine": 1,
+      "corpsecap": 1,
+      "flamefruit": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn, remove all negative conditions you have.  This item can be used while you have $wfh-impair$ or $wfh-stun$.",
@@ -1308,7 +1749,11 @@
     "gameType": "fh",
     "name": "Swiftness Potion",
     "count": 2,
-    "resources": { "rockroot": 1, "axenut": 1, "flamefruit": 1 },
+    "resources": {
+      "rockroot": 1,
+      "axenut": 1,
+      "flamefruit": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your move ability, add +3 ^fh-move^ and ^fh-jump^.",
@@ -1320,7 +1765,11 @@
     "gameType": "fh",
     "name": "Major Fireshield Potion",
     "count": 2,
-    "resources": { "arrowvine": 1, "rockroot": 1, "flamefruit": 1 },
+    "resources": {
+      "arrowvine": 1,
+      "rockroot": 1,
+      "flamefruit": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn, perform, ^retaliate^ 2 ~!^fh-range^ 3!~ ^eot^",
@@ -1332,7 +1781,11 @@
     "gameType": "fh",
     "name": "Stonewall Potion",
     "count": 2,
-    "resources": { "arrowvine": 1, "rockroot": 1, "axenut": 1 },
+    "resources": {
+      "arrowvine": 1,
+      "rockroot": 1,
+      "axenut": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn, perform $wfh-ward$ ~!^target^ 2 adjacent allies and self!~",
@@ -1344,7 +1797,11 @@
     "gameType": "fh",
     "name": "Vigor Potion",
     "count": 2,
-    "resources": { "arrowvine": 1, "rockroot": 1, "corpsecap": 1 },
+    "resources": {
+      "arrowvine": 1,
+      "rockroot": 1,
+      "corpsecap": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn, perform $wfh-strengthen$ ~!^target^ 2 adjacent allies and self!~",
@@ -1356,7 +1813,11 @@
     "gameType": "fh",
     "name": "Holy Rain",
     "count": 2,
-    "resources": { "arrowvine": 1, "snowthistle": 1, "corpsecap": 1 },
+    "resources": {
+      "arrowvine": 1,
+      "snowthistle": 1,
+      "corpsecap": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn, perform $wfh-bless$ ~!^target^ 2 adjacent allies and self!~",
@@ -1368,7 +1829,11 @@
     "gameType": "fh",
     "name": "Major Renewing Potion",
     "count": 2,
-    "resources": { "rockroot": 1, "snowthistle": 1, "flamefruit": 1 },
+    "resources": {
+      "rockroot": 1,
+      "snowthistle": 1,
+      "flamefruit": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn, ^recover^ up to one of your lost 2-herb potions.",
@@ -1380,7 +1845,11 @@
     "gameType": "fh",
     "name": "Precision Potion",
     "count": 2,
-    "resources": { "rockroot": 1, "snowthistle": 1, "corpsecap": 1 },
+    "resources": {
+      "rockroot": 1,
+      "snowthistle": 1,
+      "corpsecap": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "When you reveal a ^modifier_no_damage^ attack modifier card from your attack modifier deck, treat it as a ^modifier_plus_2^ instead.",
@@ -1392,7 +1861,11 @@
     "gameType": "fh",
     "name": "Major Frenzy Potion",
     "count": 2,
-    "resources": { "rockroot": 1, "axenut": 1, "corpsecap": 1 },
+    "resources": {
+      "rockroot": 1,
+      "axenut": 1,
+      "corpsecap": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn, perform: ^attack^ 4",
@@ -1404,7 +1877,11 @@
     "gameType": "fh",
     "name": "Hammer Potion",
     "count": 2,
-    "resources": { "rockroot": 1, "snowthistle": 1, "axenut": 1 },
+    "resources": {
+      "rockroot": 1,
+      "snowthistle": 1,
+      "axenut": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn suffer ^damage^ 10.",
@@ -1416,7 +1893,11 @@
     "gameType": "fh",
     "name": "Expertise Potion",
     "count": 2,
-    "resources": { "rockroot": 1, "corpsecap": 1, "flamefruit": 1 },
+    "resources": {
+      "rockroot": 1,
+      "corpsecap": 1,
+      "flamefruit": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "At the start of your turn, discard one of your played cards to perform both the top and bottom actions of your other played card. At most one action can trigger a ^consumed^ icon.",
@@ -1428,7 +1909,11 @@
     "gameType": "fh",
     "name": "Foresight Potion",
     "count": 2,
-    "resources": { "snowthistle": 1, "corpsecap": 1, "flamefruit": 1 },
+    "resources": {
+      "snowthistle": 1,
+      "corpsecap": 1,
+      "flamefruit": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn, reveal the top card of one monster ability deck. You may place the card on the bottom of the deck.",
@@ -1440,7 +1925,11 @@
     "gameType": "fh",
     "name": "Infusion Potion",
     "count": 2,
-    "resources": { "axenut": 1, "corpsecap": 1, "flamefruit": 1 },
+    "resources": {
+      "axenut": 1,
+      "corpsecap": 1,
+      "flamefruit": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn, ignore one elemental consumption symbol on an action you played and gain its effect.",
@@ -1452,7 +1941,11 @@
     "gameType": "fh",
     "name": "Plague Flask",
     "count": 2,
-    "resources": { "snowthistle": 1, "axenut": 1, "corpsecap": 1 },
+    "resources": {
+      "snowthistle": 1,
+      "axenut": 1,
+      "corpsecap": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn perform, $wfh-poison$ ~!^fh-range^ 1!~ *cone_1_1*",
@@ -1464,7 +1957,11 @@
     "gameType": "fh",
     "name": "Inferno Flask",
     "count": 2,
-    "resources": { "snowthistle": 1, "axenut": 1, "flamefruit": 1 },
+    "resources": {
+      "snowthistle": 1,
+      "axenut": 1,
+      "flamefruit": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn perform, $wfh-wound$ ~!^fh-range^ 1!~ *cone_1_1*",
@@ -1476,7 +1973,11 @@
     "gameType": "fh",
     "name": "Fulminant Flask",
     "count": 2,
-    "resources": { "arrowvine": 1, "snowthistle": 1, "flamefruit": 1 },
+    "resources": {
+      "arrowvine": 1,
+      "snowthistle": 1,
+      "flamefruit": 1
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn, one enemy within ^fh-range^ 2 suffers ^damage^ 4.",
@@ -1488,7 +1989,12 @@
     "gameType": "fh",
     "name": "Deadly Mixture",
     "count": 2,
-    "resources": { "any": [2, 1] },
+    "resources": {
+      "any": [
+        2,
+        1
+      ]
+    },
     "slot": "small",
     "source": "Alchemy",
     "desc": "During your turn, perform: $wfh-wound$, $wfh-poison$, $wfh-immobilize$, $wfh-disarm$ ~!self!~",
@@ -1521,7 +2027,12 @@
     "unlockTradingPostLevel": -1,
     "spent": true,
     "consumption": {
-      "elements": [{ "element": "wild", "consume": true }],
+      "elements": [
+        {
+          "element": "wild",
+          "consume": true
+        }
+      ],
       "effect": "@fh-wild@"
     }
   },
@@ -2004,8 +2515,15 @@
     "consumed": true,
     "consumption": {
       "elements": [
-        { "element": "earth", "colorize": true },
-        { "element": "dark", "colorize": true, "consume": true }
+        {
+          "element": "earth",
+          "colorize": true
+        },
+        {
+          "element": "dark",
+          "colorize": true,
+          "consume": true
+        }
       ],
       "effect": "^fh-heal^ 3 ~!self, $wfh-ward$!~"
     }
@@ -2063,8 +2581,15 @@
     "consumed": true,
     "consumption": {
       "elements": [
-        { "element": "ice", "colorize": true },
-        { "element": "air", "colorize": true, "consume": true }
+        {
+          "element": "ice",
+          "colorize": true
+        },
+        {
+          "element": "air",
+          "colorize": true,
+          "consume": true
+        }
       ],
       "effect": "^attack^ 3 ~!^fh-range^ 3, $wfh-immobilize$!~"
     }
@@ -2122,8 +2647,15 @@
     "consumed": true,
     "consumption": {
       "elements": [
-        { "element": "fire", "colorize": true },
-        { "element": "light", "colorize": true, "consume": true }
+        {
+          "element": "fire",
+          "colorize": true
+        },
+        {
+          "element": "light",
+          "colorize": true,
+          "consume": true
+        }
       ],
       "effect": "^attack^ 3 ~!$wfh-disarm$!~"
     }
@@ -2404,8 +2936,14 @@
     "consumed": true,
     "consumption": {
       "elements": [
-        { "element": "dark", "consume": true },
-        { "element": "wild", "consume": true }
+        {
+          "element": "dark",
+          "consume": true
+        },
+        {
+          "element": "wild",
+          "consume": true
+        }
       ],
       "effect": "$wfh-invisible$ ~!self!~"
     }
@@ -3153,7 +3691,9 @@
     "desc": "Duing your attack ability, move one character token on one of your peristent abilities backward one slot and add +X ^attack^ to one attack, where X is the nuber of active peristent abilities.",
     "folder": "248-264",
     "soloItem": "FH1",
-    "lockToClasses": ["FH1"],
+    "lockToClasses": [
+      "FH1"
+    ],
     "consumed": true
   },
   {
@@ -3167,7 +3707,9 @@
     "desc": "During our turn, perform one of the two following abilities: Lose one card from your hand to gain 3 ^fh-hourglass^. ~@-2 ^fh-hourglass^ : ^recover^ up to two of your discarded cards@~",
     "folder": "248-264",
     "soloItem": "FH2",
-    "lockToClasses": ["FH2"],
+    "lockToClasses": [
+      "FH2"
+    ],
     "lost": true,
     "consumed": true
   },
@@ -3182,7 +3724,9 @@
     "desc": "During your turn perform: ^attack^ 2 ~!^fh-range^ 3!~. All your banners are treated as additionally occupying the hex of the attack target of their bonuses and that hex is treated as occupied by an ally this round. ^eot^",
     "folder": "248-264",
     "soloItem": "FH3",
-    "lockToClasses": ["FH3"],
+    "lockToClasses": [
+      "FH3"
+    ],
     "consumed": true
   },
   {
@@ -3196,7 +3740,9 @@
     "desc": "Place one ^fh-shadow^ in an adjacent hex. @wfh-dark@",
     "folder": "248-264",
     "soloItem": "FH4",
-    "lockToClasses": ["FH4"],
+    "lockToClasses": [
+      "FH4"
+    ],
     "consumed": true
   },
   {
@@ -3210,14 +3756,22 @@
     "desc": "On the next three deaths of any of your summons,",
     "consumption": {
       "elements": [
-        { "element": "earth", "colorize": true },
-        { "element": "dark", "colorize": true }
+        {
+          "element": "earth",
+          "colorize": true
+        },
+        {
+          "element": "dark",
+          "colorize": true
+        }
       ],
       "effect": "and perform: ^fh-heal^ 2 ~!self!~"
     },
     "folder": "248-264",
     "soloItem": "FH5",
-    "lockToClasses": ["FH5"],
+    "lockToClasses": [
+      "FH5"
+    ],
     "consumed": true
   },
   {
@@ -3232,7 +3786,9 @@
     "backDesc": "When an enemy performs an attack targeting you while you are in ^fh-geminate-left^, the attacker gains disadvantage, then flip this card over.",
     "folder": "248-264",
     "soloItem": "FH6",
-    "lockToClasses": ["FH6"]
+    "lockToClasses": [
+      "FH6"
+    ]
   },
   {
     "id": 254,
@@ -3245,7 +3801,9 @@
     "desc": "During your turn, activate all your ^fh-astral^ as if you just performed a ^fh-astral^ action.",
     "folder": "248-264",
     "soloItem": "FH7",
-    "lockToClasses": ["FH7"],
+    "lockToClasses": [
+      "FH7"
+    ],
     "consumed": true
   },
   {
@@ -3259,13 +3817,21 @@
     "desc": "During your turn, you may create either one 1-hex obstacle or hazardous terrain tile in an empty tile within ^fh-range^ 2.",
     "consumption": {
       "elements": [
-        { "element": "fire", "colorize": true },
-        { "element": "earth", "colorize": true }
+        {
+          "element": "fire",
+          "colorize": true
+        },
+        {
+          "element": "earth",
+          "colorize": true
+        }
       ]
     },
     "folder": "248-264",
     "soloItem": "FH8",
-    "lockToClasses": ["FH8"],
+    "lockToClasses": [
+      "FH8"
+    ],
     "consumed": true
   },
   {
@@ -3279,11 +3845,19 @@
     "desc": "Gain 3 ^fh-shards^",
     "folder": "248-264",
     "soloItem": "FH9",
-    "lockToClasses": ["FH9"],
+    "lockToClasses": [
+      "FH9"
+    ],
     "consumption": {
       "elements": [
-        { "element": "air", "colorize": true },
-        { "element": "earth", "colorize": true }
+        {
+          "element": "air",
+          "colorize": true
+        },
+        {
+          "element": "earth",
+          "colorize": true
+        }
       ]
     },
     "lost": true,
@@ -3300,7 +3874,9 @@
     "desc": "When you create a trap, place a character token on it.  Monsters do not treat the trap as negative. Remvoe the token when you ^recover^ this item. ^ongoing^",
     "folder": "248-264",
     "soloItem": "FH10",
-    "lockToClasses": ["FH10"],
+    "lockToClasses": [
+      "FH10"
+    ],
     "spent": true
   },
   {
@@ -3314,7 +3890,9 @@
     "desc": "When you suffer damage, if your hit point value is reduced to below half your maximum, perform: ^fh-heal^ 7 ~!self, $wfh-curse$!~ This heal is not affect by and cannot remove negative conditions.",
     "folder": "248-264",
     "soloItem": "FH11",
-    "lockToClasses": ["FH11"],
+    "lockToClasses": [
+      "FH11"
+    ],
     "consumed": true
   },
   {
@@ -3329,7 +3907,9 @@
     "backDesc": "During your attack ability you, add $wfh-pull$ 2 to one attack, then flip this card over.",
     "folder": "248-264",
     "soloItem": "FH12",
-    "lockToClasses": ["FH12"]
+    "lockToClasses": [
+      "FH12"
+    ]
   },
   {
     "id": 260,
@@ -3342,7 +3922,9 @@
     "desc": "During your attack ability, add $wfh-brittle$ to one attack and create one 1-hex icy terrain tile in the featureless hex occupied by the target.",
     "folder": "248-264",
     "soloItem": "FH13",
-    "lockToClasses": ["FH13"],
+    "lockToClasses": [
+      "FH13"
+    ],
     "consumed": true
   },
   {
@@ -3356,7 +3938,9 @@
     "desc": "Remove all damage and negative conditions from one of your summons, then ^fh-prism^ to that summon.",
     "folder": "248-264",
     "soloItem": "FH14",
-    "lockToClasses": ["FH14"],
+    "lockToClasses": [
+      "FH14"
+    ],
     "consumed": true
   },
   {
@@ -3371,7 +3955,9 @@
     "backDesc": "During your turn when you have ^fh-meter-blue^, perform: $wfh-muddle$ ~!^fh-range^ 1!~ then flip this card over at the end of your turn.",
     "folder": "248-264",
     "soloItem": "FH15",
-    "lockToClasses": ["FH15"]
+    "lockToClasses": [
+      "FH15"
+    ]
   },
   {
     "id": 263,
@@ -3384,7 +3970,9 @@
     "desc": "Whenever you gain $wfh-invisible$ or peform a teleport ability while you have $wfh-invisible$, after the ability perform: $wfh-muddle$ ~!^fh-range^ 1!~",
     "folder": "248-264",
     "soloItem": "FH16",
-    "lockToClasses": ["FH16"]
+    "lockToClasses": [
+      "FH16"
+    ]
   },
   {
     "id": 264,
@@ -3397,13 +3985,21 @@
     "desc": "When you rest, you may keep up to three ^fh-anemone^ cards in your active area.",
     "folder": "248-264",
     "soloItem": "FH17",
-    "lockToClasses": ["FH17"],
+    "lockToClasses": [
+      "FH17"
+    ],
     "lost": true,
     "consumed": true,
     "consumption": {
       "elements": [
-        { "element": "light", "colorize": true },
-        { "element": "dark", "colorize": true }
+        {
+          "element": "light",
+          "colorize": true
+        },
+        {
+          "element": "dark",
+          "colorize": true
+        }
       ]
     }
   }
