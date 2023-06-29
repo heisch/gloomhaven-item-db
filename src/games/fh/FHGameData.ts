@@ -78,7 +78,7 @@ const filteredGhItems = ghItems
 			getEnchancerLevel(item.id) || Number.MAX_VALUE;
 		return {
 			...item,
-			displayId: item.id.toString(),
+			displayId: item.displayId || item.id.toString(),
 			id: ghItemOffset + item.id,
 			unlockProsperity: Number.MAX_VALUE,
 			unlockTradingPostLevel,
