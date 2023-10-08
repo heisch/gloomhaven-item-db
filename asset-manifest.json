@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/gloomhaven-item-db/static/css/main.bb4d6a6f.css",
-    "main.js": "/gloomhaven-item-db/static/js/main.5203c163.js",
+    "main.css": "/gloomhaven-item-db/static/css/main.c8a1c761.css",
+    "main.js": "/gloomhaven-item-db/static/js/main.cf5c713e.js",
     "static/media/fh-rule-book.pdf": "/gloomhaven-item-db/static/media/fh-rule-book.d81ea5708e6010b98516.pdf",
     "static/media/AdobeSongStd-Light.otf": "/gloomhaven-item-db/static/media/AdobeSongStd-Light.4bdbb1e095488ab3d0ad.otf",
     "static/media/fh-scenario-book-142-166.pdf": "/gloomhaven-item-db/static/media/fh-scenario-book-142-166.b80358353d1c78fad65b.pdf",
@@ -11317,11 +11317,11 @@
     "static/media/AncientGlyphs-Regular.ttf": "/gloomhaven-item-db/static/media/AncientGlyphs-Regular.546102e317b85016c095.ttf",
     "index.html": "/gloomhaven-item-db/index.html",
     "static/media/zz.txt": "/gloomhaven-item-db/static/media/zz.3a996d5f2350e5a0fef1.txt",
-    "main.bb4d6a6f.css.map": "/gloomhaven-item-db/static/css/main.bb4d6a6f.css.map",
-    "main.5203c163.js.map": "/gloomhaven-item-db/static/js/main.5203c163.js.map"
+    "main.c8a1c761.css.map": "/gloomhaven-item-db/static/css/main.c8a1c761.css.map",
+    "main.cf5c713e.js.map": "/gloomhaven-item-db/static/js/main.cf5c713e.js.map"
   },
   "entrypoints": [
-    "static/css/main.bb4d6a6f.css",
-    "static/js/main.5203c163.js"
+    "static/css/main.c8a1c761.css",
+    "static/js/main.cf5c713e.js"
   ]
 }
