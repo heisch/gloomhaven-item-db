@@ -45,16 +45,16 @@
 
     .item-card {
         width: 100%;
-        height: auto;
+        // height: auto;
         filter: brightness(105%) contrast(90%);
-        // height: 77%;
+        height: 77%;
         margin-top: -4%; // you can get away with a bit of negative margins since there's no info you lose on the cards
         margin-bottom: -4%;
     }
 
     &-footer {
         display: flex;
-        border-radius: 0px 0px 15px 15px;
+        border-radius: 0px 0px 8px 8px;
         background: black;
         justify-content: space-between;
         margin: 0px;
@@ -69,7 +69,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        border-radius: 0px 0px 15px 15px;
+        border-radius: 0px 0px 8px 8px;
         background: transparent;
     }
 }
