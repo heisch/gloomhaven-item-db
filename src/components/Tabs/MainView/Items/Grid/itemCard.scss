@@ -1,10 +1,10 @@
 .item-card-container {
-	max-width: 20%;
+    max-width: 20%;
     aspect-ratio: 0.63;
-	position: relative;
+    position: relative;
     padding: 2px;
     display: flex;
-   flex-direction: column;
+    flex-direction: column;
 
     @media screen and (min-width: 768px) and (max-width: 990px) {
         max-width: 25%;
@@ -14,40 +14,42 @@
     @media screen and (min-width: 560px) and (max-width: 768px) {
         max-width: 33.3333333333333%;
     }
-    
-    @media screen and (min-width: 390px) and (max-width: 560px) { 
+
+    @media screen and (min-width: 390px) and (max-width: 560px) {
         max-width: 50%;
     }
 
-    @media screen and (max-width: 390px) { 
+    @media screen and (max-width: 390px) {
         max-width: 100%;
     }
 
 
     &-header {
-        border-radius: 15px 15px 0px 0px;
+        border-radius: 8px 8px 0px 0px;
         background: black;
         display: flex;
         justify-content: space-between;
         height: 7%;
+        z-index: 1; // required because of the negative margin-top on .item-card
 
         .item-card-id {
             font-size: 1.1vh;
             font-weight: 700;
             width: 50%;
-            padding-top: 4px;
+            padding-top: 0px;
             padding-left: 10px;
             color: white;
-            border-radius: 15px 15px 0px 0px;
+            border-radius: 8px 8px 0px 0px;
         }
     }
 
     .item-card {
         width: 100%;
-        height: 100%;
+        height: auto;
         filter: brightness(105%) contrast(90%);
-        // border-radius: 0 0 15px 15px;
-        height: 77%;
+        // height: 77%;
+        margin-top: -4%; // you can get away with a bit of negative margins since there's no info you lose on the cards
+        margin-bottom: -4%;
     }
 
     &-footer {
@@ -73,8 +75,7 @@
 }
 
 .item-card-wrapper .ui.red.button {
-	padding: 0;
-	z-index: 2;
-	position: absolute;
+    padding: 0;
+    z-index: 2;
+    position: absolute;
 }
-

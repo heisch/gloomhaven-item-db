@@ -3673,7 +3673,7 @@
     "gameType": "fh",
     "name": "Trainers Net",
     "count": 1,
-    "cost": 50,
+    "cost": 10,
     "slot": "1h",
     "source": "Stables",
     "desc": "During your turn, capture an adjacent enemy whose hit point value is 1 or 2.",
