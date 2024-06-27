@@ -217,7 +217,7 @@
     "id": 15,
     "gameType": "fh",
     "name": "Reinforced Shield",
-    "count": 1,
+    "count": 2,
     "resources": {
       "item": [
         10
@@ -2261,7 +2261,7 @@
     "id": 139,
     "gameType": "fh",
     "name": "Horned Helm",
-    "count": 1,
+    "count": 2,
     "cost": 50,
     "slot": "head",
     "source": "Trading Post 3",
@@ -3364,7 +3364,7 @@
     "count": 1,
     "cost": 40,
     "slot": "body",
-    "source": "unknown",
+    "source": "Scenario 60",
     "desc": "After the next three attacks targeting you, flip this card over.",
     "backDesc": "During your turn, perform ^fh-heal^ 3 ~!^target^ 1 ally, ^fh-range^ 3, $wfh-bless$!~ then flip this card over.",
     "folder": "193-247"
