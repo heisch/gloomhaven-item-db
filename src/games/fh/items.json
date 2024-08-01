@@ -3509,7 +3509,7 @@
     "cost": 30,
     "slot": "small",
     "source": "Scenario 111",
-    "desc": "During your turn, lose one card from your hand to ^recover^ one card from your loot pile of equal of lower level.",
+    "desc": "During your turn, lose one card from your hand to ^recover^ one card from your lost pile of equal or lower level.",
     "folder": "193-247",
     "consumed": true
   },
