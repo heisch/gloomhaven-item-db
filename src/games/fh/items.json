@@ -458,7 +458,7 @@
     },
     "slot": "legs",
     "source": "Craftsman 5",
-    "desc": "During your turn add +1 ^fh-move^ to all your move abilities and ignor difficult terrain.",
+    "desc": "During your turn add +1 ^fh-move^ to all your move abilities and ignore difficult terrain.",
     "folder": "026-030",
     "unlockCrafstmanLevel": 5,
     "spent": true
@@ -1004,7 +1004,7 @@
     },
     "slot": "1h",
     "source": "Random Blueprint",
-    "desc": "During your melee attack abiluty, add +2 ^attack^ to one attack. After the ability, gain $wfh-disarm$.",
+    "desc": "During your melee attack ability, add +2 ^attack^ to one attack. After the ability, gain $wfh-disarm$.",
     "folder": "051-065",
     "imageSuffix": "a",
     "spent": true
@@ -1317,7 +1317,7 @@
     },
     "slot": "1h",
     "source": "Treasure 70",
-    "desc": "During one of your summons' turns, decide how it peforms it's abilities.",
+    "desc": "During one of your summons' turns, decide how it performs its abilities.",
     "folder": "066-082",
     "spent": true
   },
@@ -1334,7 +1334,7 @@
     },
     "slot": "1h",
     "source": "Treasure 40",
-    "desc": "During you turn, replace one 1-hex obstacle, hazardous terrain, difficult terrain, or icy terrain tile in an unoccupied hex withing ^fh-range^ 2 with a different type of tile listed above.",
+    "desc": "During you turn, replace one 1-hex obstacle, hazardous terrain, difficult terrain, or icy terrain tile in an unoccupied hex within ^fh-range^ 2 with a different type of tile listed above.",
     "folder": "066-082",
     "consumed": true
   },
@@ -1355,7 +1355,7 @@
     "desc": "Once each turn, during your attack ability, gain advantage on one attack, then flip this card over at the end of your turn.",
     "backDesc": "Once each turn, during your attack ability, gain disadvantage on one attack, then flip this card over at the end of your turn.",
     "folder": "066-082",
-    "faq": "In Scenario 122, both treasures are listed as 31. This might be an error. As such, the source might not be acurate."
+    "faq": "In Scenario 122, both treasures are listed as 31. This might be an error. As such, the source might not be accurate."
   },
   {
     "id": 79,
@@ -1387,7 +1387,7 @@
     },
     "slot": "small",
     "source": "Treasure 72",
-    "desc": "When you would suffer 4 or fewer ^damage^ from attack, negate the ^damage^ and perform ^fh-heal^ X ~!self!~ wheee x is the amount of damage you would have suffered.",
+    "desc": "When you would suffer 4 or fewer ^damage^ from attack, negate the ^damage^ and perform ^fh-heal^ X ~!self!~ where x is the amount of damage you would have suffered.",
     "folder": "066-082",
     "consumed": true
   },
@@ -1647,7 +1647,7 @@
     },
     "slot": "small",
     "source": "Alchemy",
-    "desc": "During your turn, one enemy withing ^fh-range^ 2 suffers ^damage^ 2.",
+    "desc": "During your turn, one enemy within ^fh-range^ 2 suffers ^damage^ 2.",
     "folder": "083-119",
     "consumed": true
   },
@@ -2353,7 +2353,7 @@
     "cost": 35,
     "slot": "2h",
     "source": "Trading Post 3",
-    "desc": "Duiring your attack, add $wfh-pull$ 2 to all your ranged attacks.",
+    "desc": "During your attack, add $wfh-pull$ 2 to all your ranged attacks.",
     "folder": "129-167",
     "unlockTradingPostLevel": 3,
     "spent": true
@@ -2379,7 +2379,7 @@
     "slot": "head",
     "source": "Trading Post 4",
     "desc": "After the next three attacks targeting an ally within ^fh-range^ 2, flip this card over.",
-    "backDesc": "During your turn, perfor: $wfh-ward$ ~!^fh-range^3!~ then flip this card over.",
+    "backDesc": "During your turn, perform: $wfh-ward$ ~!^fh-range^3!~ then flip this card over.",
     "folder": "129-167",
     "unlockTradingPostLevel": 4
   },
@@ -2789,7 +2789,7 @@
     "cost": 40,
     "slot": "legs",
     "source": "Loot Deck Random",
-    "desc": "When you spring a trap by entering its hex, you may apply its effects to a figure withing ^fh-range^ 3 instead of yourself.",
+    "desc": "When you spring a trap by entering its hex, you may apply its effects to a figure within ^fh-range^ 3 instead of yourself.",
     "folder": "168-192",
     "consumed": true
   },
@@ -2824,7 +2824,7 @@
     "cost": 35,
     "slot": "legs",
     "source": "Loot Deck Random",
-    "desc": "When you loot two or more tokens at once, peform: $wfh-bless$ ~!self!~.",
+    "desc": "When you loot two or more tokens at once, perform: $wfh-bless$ ~!self!~.",
     "folder": "168-192"
   },
   {
@@ -2847,7 +2847,7 @@
     "cost": 40,
     "slot": "2h",
     "source": "Loot Deck Random",
-    "desc": "Afer your melee attack , place a character token on the target. The target loses ^fh-flying^. ^ongoing^",
+    "desc": "After your melee attack, place a character token on the target. The target loses ^fh-flying^. ^ongoing^",
     "folder": "168-192",
     "spent": true
   },
@@ -2956,7 +2956,7 @@
     "cost": 20,
     "slot": "small",
     "source": "Loot Deck Random",
-    "desc": "During your turn, place a character token on one normal or elite enemy withing ^fh-range^ 3. This enemy adds -1 ^attack^ to all its attacks. ^ongoing^.",
+    "desc": "During your turn, place a character token on one normal or elite enemy within ^fh-range^ 3. This enemy adds -1 ^attack^ to all its attacks. ^ongoing^.",
     "folder": "168-192",
     "consumed": true
   },
@@ -2980,7 +2980,7 @@
     "cost": 25,
     "slot": "small",
     "source": "Loot Deck Random",
-    "desc": "At the end of your turn, designate one enemy withing ^fh-range^ 3. You are its primary focus and it does not avoid negative hexes when determining movement this round. ^eot^",
+    "desc": "At the end of your turn, designate one enemy within ^fh-range^ 3. You are its primary focus and it does not avoid negative hexes when determining movement this round. ^eot^",
     "folder": "168-192",
     "consumed": true
   },
@@ -2992,7 +2992,7 @@
     "cost": 30,
     "slot": "head",
     "source": "Scenario 121",
-    "desc": "During your turn, control one enemy withing ^fh-range^ 3: ^attack^ 3",
+    "desc": "During your turn, control one enemy within ^fh-range^ 3: ^attack^ 3",
     "folder": "193-247",
     "consumed": true
   },
@@ -3065,7 +3065,7 @@
     "source": "Treasure 6\nTreasure 78",
     "desc": "At the start of the scenario, consider yourself to be your summons in initiative order when determining monster focus for the remainder of the scenario.",
     "folder": "193-247",
-    "faq": "In Scenario 122, both treasures are listed as 31. This might be an error. As such, the source might not be acurate."
+    "faq": "In Scenario 122, both treasures are listed as 31. This might be an error. As such, the source might not be accurate."
   },
   {
     "id": 200,
@@ -3087,7 +3087,7 @@
     "cost": 50,
     "slot": "2h",
     "source": "Scenario 76\nScenario 77",
-    "desc": "Diromg your attack ability performed while occupying or ad adjacent to a hex with a water tile, add $wfh-push$ 1 and $wfh-immobilize$ to one attack.",
+    "desc": "During your attack ability performed while occupying or adjacent to a hex with a water tile, add $wfh-push$ 1 and $wfh-immobilize$ to one attack.",
     "folder": "193-247",
     "spent": true
   },
@@ -3148,7 +3148,7 @@
     "cost": 40,
     "slot": "2h",
     "source": "Treasure 42\nSO-30",
-    "desc": "During your melee attack ability, if you have not move this round, add +2 ^attack^ to one attack, and you may perform no move abilites this turn.",
+    "desc": "During your melee attack ability, if you have not move this round, add +2 ^attack^ to one attack, and you may perform no move abilities this turn.",
     "folder": "193-247",
     "spent": true,
     "minusOneCardsAdded": 3
@@ -3185,7 +3185,7 @@
     "cost": 60,
     "slot": "2h",
     "source": "SR-35",
-    "desc": "During your melee attack ability, give advantage on one atrack.  For each master you have completed also add one following to the attack: +1 ^attack^, $wfh-wound$, or $wfh-poison$. ",
+    "desc": "During your melee attack ability, give advantage on one attack.  For each mastery you have completed, also add one of the following to the attack: +1 ^attack^, $wfh-wound$, or $wfh-poison$. ",
     "folder": "193-247",
     "spent": true
   },
@@ -3209,7 +3209,7 @@
     "cost": 30,
     "slot": "2h",
     "source": "Boat Event 11",
-    "desc": "During your turn, designate one adjacent hex.  At the end of your turn, all figures withing ^fh-range^ 2 of the designated hex suffer ^damage^ 1.",
+    "desc": "During your turn, designate one adjacent hex.  At the end of your turn, all figures within ^fh-range^ 2 of the designated hex suffer ^damage^ 1.",
     "folder": "193-247",
     "consumed": true
   },
@@ -3413,7 +3413,7 @@
     "cost": 20,
     "slot": "1h",
     "source": "Treasure 35",
-    "desc": "During your turn, open one unlocked door while withing ^fh-range^ 2.",
+    "desc": "During your turn, open one unlocked door while within ^fh-range^ 2.",
     "folder": "193-247",
     "spent": true
   },
@@ -3425,7 +3425,7 @@
     "cost": 50,
     "slot": "1h",
     "source": "SO-42",
-    "desc": "During your turn grant one ally withing ^fh-range^ 3: ^fh-move^ 3",
+    "desc": "During your turn grant one ally within ^fh-range^ 3: ^fh-move^ 3",
     "folder": "193-247",
     "consumed": true
   },
@@ -3449,7 +3449,7 @@
     "cost": 15,
     "slot": "1h",
     "source": "WR-16",
-    "desc": "When you gain a loot token, gain 3 `hide` instead of drawning a loot card.",
+    "desc": "When you gain a loot token, gain 3 `hide` instead of drawing a loot card.",
     "folder": "193-247",
     "consumed": true
   },
@@ -3521,7 +3521,7 @@
     "cost": 45,
     "slot": "small",
     "source": "Scenario 131",
-    "desc": "During your turn, choose one of six directions. You and all figures withing ^fh-range^ 2 are forced to simultaneously move 2 hexes in the chosen directon.",
+    "desc": "During your turn, choose one of six directions. You and all figures within ^fh-range^ 2 are forced to simultaneously move 2 hexes in the chosen direction.",
     "folder": "193-247",
     "consumed": true
   },
@@ -3688,7 +3688,7 @@
     "cost": 0,
     "slot": "1h",
     "source": "Reward from Solo Scenario #01 — {FH1}",
-    "desc": "Duing your attack ability, move one character token on one of your peristent abilities backward one slot and add +X ^attack^ to one attack, where X is the nuber of active peristent abilities.",
+    "desc": "During your attack ability, move one character token on one of your persistent abilities backward one slot and add +X ^attack^ to one attack, where X is the number of active persistent abilities.",
     "folder": "248-264",
     "soloItem": "FH1",
     "lockToClasses": [
@@ -3871,7 +3871,7 @@
     "cost": 0,
     "slot": "1h",
     "source": "Reward from Solo Scenario #10 — {FH10}",
-    "desc": "When you create a trap, place a character token on it.  Monsters do not treat the trap as negative. Remvoe the token when you ^recover^ this item. ^ongoing^",
+    "desc": "When you create a trap, place a character token on it.  Monsters do not treat the trap as negative. Remove the token when you ^recover^ this item. ^ongoing^",
     "folder": "248-264",
     "soloItem": "FH10",
     "lockToClasses": [
@@ -3967,7 +3967,7 @@
     "cost": 0,
     "slot": "1h",
     "source": "Reward from Solo Scenario #16 — {FH16}",
-    "desc": "Whenever you gain $wfh-invisible$ or peform a teleport ability while you have $wfh-invisible$, after the ability perform: $wfh-muddle$ ~!^fh-range^ 1!~",
+    "desc": "Whenever you gain $wfh-invisible$ or perform a teleport ability while you have $wfh-invisible$, after the ability perform: $wfh-muddle$ ~!^fh-range^ 1!~",
     "folder": "248-264",
     "soloItem": "FH16",
     "lockToClasses": [
