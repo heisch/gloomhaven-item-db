@@ -67,6 +67,9 @@ export const useIsItemShown = (): ((item: GloomhavenItem) => boolean) => {
       }
 
       if (!all && importedItem) {
+        if (soloItem && soloClass.includes(soloItem)) {
+          return true;
+        }
         if (
           unlockTradingPostLevel !== undefined &&
           unlockTradingPostLevel !== Number.MAX_VALUE &&
