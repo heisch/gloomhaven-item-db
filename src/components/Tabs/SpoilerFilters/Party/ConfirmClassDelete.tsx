@@ -30,7 +30,9 @@ export const ConfirmClassDelete = () => {
 
 	const itemsOwned = itemsOwnedByClass(classToDelete);
 	const itemsToList = itemsOwned
-		.map((id) => items[id - 1])
+		.map((id) => (
+			items.find(item => item.id === id)!
+		))
 		.filter(isItemShown);
 
 	const goldAmount = () => {
@@ -91,11 +93,10 @@ export const ConfirmClassDelete = () => {
 									}
 								>
 									<Icon name="dropdown" />
-									{`Items Owned - ${
-										itemsOpen
-											? "Click to hide"
-											: "Click to show"
-									} items`}
+									{`Items Owned - ${itemsOpen
+										? "Click to hide"
+										: "Click to show"
+										} items`}
 								</AccordionTitle>
 								<AccordionContent active={itemsOpen}>
 									<OwnedItemList
