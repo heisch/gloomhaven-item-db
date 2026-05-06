@@ -291,7 +291,7 @@
     "id": 19,
     "gameType": "fh",
     "name": "Ringing Hammer",
-    "count": 1,
+    "count": 2,
     "resources": {
       "lumber": 1,
       "metal": 1,
@@ -309,7 +309,7 @@
     "id": 20,
     "gameType": "fh",
     "name": "Well Strung Bow",
-    "count": 1,
+    "count": 2,
     "resources": {
       "item": [
         7
@@ -362,7 +362,7 @@
     "id": 23,
     "gameType": "fh",
     "name": "Sturdy Greaves",
-    "count": 1,
+    "count": 2,
     "resources": {
       "metal": 2,
       "hide": 2
@@ -517,7 +517,7 @@
     "id": 32,
     "gameType": "fh",
     "name": "Shell Armor",
-    "count": 1,
+    "count": 2,
     "resources": {
       "lumber": 1,
       "metal": 2,
@@ -2234,7 +2234,7 @@
     "id": 137,
     "gameType": "fh",
     "name": "Tower Shield",
-    "count": 1,
+    "count": 2,
     "cost": 35,
     "slot": "1h",
     "source": "Trading Post 2",
@@ -2349,7 +2349,7 @@
     "id": 146,
     "gameType": "fh",
     "name": "Hooked Chain",
-    "count": 1,
+    "count": 2,
     "cost": 35,
     "slot": "2h",
     "source": "Trading Post 3",
