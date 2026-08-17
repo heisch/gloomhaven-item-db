@@ -625,7 +625,7 @@
     "id": 38,
     "gameType": "fh",
     "name": "Duelists Shoes",
-    "count": 1,
+    "count": 2,
     "resources": {
       "item": [
         13,
@@ -662,7 +662,7 @@
     "id": 40,
     "gameType": "fh",
     "name": "Heartstrike Bow",
-    "count": 1,
+    "count": 2,
     "resources": {
       "item": [
         20,
